@@ -72,6 +72,16 @@ same ID set and STEP assignments. Use `from_model` to add, remove, reorder or
 change steps; that constructor expects parts ordered by nondecreasing step.
 `Model.fingerprint()` hashes typed placements and metadata, not comments or the
 original text. Inspection also reports the independent source-file SHA-256.
+`read_source(path)` returns a `SourceDocument` containing the parsed document,
+path and hash of the same byte snapshot. `load(path)` remains a convenience
+wrapper returning only the document.
+
+`RawLine` accepts one validated comment, primitive or blank line. References
+must be typed `PartInstance` records, and reserved instance/model metadata must
+be represented through the typed API. JSON metadata rejects duplicate fields
+and non-finite values. Whitespace variants of STEP are recognized. Serialization
+keeps `BFC INVERTNEXT` adjacent to its reference (apart from permitted blank
+lines), placing instance metadata before the BFC statement.
 
 ## Geometry and dependencies
 
@@ -120,7 +130,7 @@ MPD (`FILE`/`NOFILE`), embedded binary data and TEXMAP are explicitly unsupporte
 and fail rather than flattening submodels or counting texture fallbacks twice.
 External dependency resolution supplies bounds; it does not flatten a bill of
 materials or treat subfile references as proven physical parts. Rendering,
-marketplace exports, near-duplicate tolerances, collision/contact tests and
+near-duplicate tolerances, collision/contact tests and
 connection legality remain future work. Legacy non-UTF-8 libraries require an
 explicit conversion outside this API.
 

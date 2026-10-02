@@ -14,10 +14,15 @@ uv run --locked brickbuilder diff tests/fixtures/solar_orbiter_v15/solar_orbiter
 
 The selection manifest chooses exactly one checksummed source file. `full`
 (966), `spacecraft` (890), `solar_module` (44), and `articulated` (966) are
-alternative inputs. Never add their inventories together. `inventory` reports
+alternative inputs. Never add their inventories together. `read_selection`
+returns a source snapshot whose hash is checked against that manifest; parsing
+and hashing use the same bytes. `load_selection` retains its document/path
+convenience return value. `inventory` reports
 native part and colour namespaces, source-file and typed-model hashes, total
 quantity and sorted rows. `diff` reports signed changes for each native
-part/colour pair; pure pose changes produce no quantity differences.
+part/colour pair; pure pose changes produce no quantity differences. Its
+`before_source_sha256` / `after_source_sha256` fields identify input bytes;
+`before_model_sha256` / `after_model_sha256` identify typed models.
 
 The Python API offers `inventory(model)`, `difference(before, after)` and
 `select(model, groups=..., instance_ids=...)`. CLI `--group` and `--instance-id`
@@ -43,7 +48,8 @@ uv run --locked brickbuilder export --selections projects/solar_orbiter/selectio
 ```
 
 The destination must be new and its parent must exist. All model/mapping checks
-and files are prepared before writing. Existing directories and files are
+and UTF-8 file payloads are prepared before writing. Files are written once;
+a partial I/O failure removes files created by that run. Existing directories and files are
 refused, so a failed run cannot silently reuse an old inventory/report. The
 bundle has these files:
 
@@ -70,7 +76,9 @@ buildable model and must not replace native CAD.
 The full selection reconciles to 965 imported instances plus one manual dish;
 the spacecraft selection reconciles to 889 plus one; the solar module has all
 44 instances in its ordering file. Reconciliation checks native identities and
-instance IDs, not just total counts. XML combines mappings that reach the same
+instance IDs, not just total counts. Native output is reparsed for semantic
+equality, and serialized ordering output is reparsed to verify target part/colour
+quantities before the report marks reconciliation as passed. XML combines mappings that reach the same
 catalog part/colour pair and uses `ITEMTYPE`, `ITEMID`, `COLOR` and `MINQTY`, with
 no XML declaration. Live importer acceptance and current stock remain untested.
 
@@ -80,7 +88,9 @@ JSON files use schema version 1 and separate `brickowl`/`bricklink` profiles.
 Each part rule has a native `part`, optional native `colour`, candidate `target`,
 `manual` flag, optional `catalog_url` and an `evidence` object. Evidence records
 `status` (`accepted`, `rejected`, `untested`), `recorded_on`, `note` and `source`.
-Specific part/colour rules override generic rules. Duplicate keys fail.
+Specific part/colour rules override generic rules. Duplicate JSON fields,
+duplicate mapping keys and non-finite JSON values fail. Rule hashes identify the
+same byte snapshot used to parse the rules.
 
 BrickOwl LDraw imports retain LDraw colour IDs. BrickLink XML requires an explicit
 native-to-catalog colour table; there is no identity fallback for colours. The

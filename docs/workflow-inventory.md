@@ -246,7 +246,8 @@ Do not copy historical migration scripts or generated audit JSONs into the activ
 
 Repository: https://github.com/silver5753/brickbuilder
 Project display name: Brick Builder. Python package and CLI name: `brickbuilder`.
-Commit 1 is implemented by the initial project scaffold. Commits 2 and 3 remain proposed work.
+Milestones 1–3 are implemented within the scope recorded below. Connectivity and
+physical validation remain later work. See the [code review](review-milestones-1-3.md).
 
 ### Commit 1 — `chore: establish Brick Builder project and preserve baseline`
 

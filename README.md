@@ -44,6 +44,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Model API and inspection CLI](docs/model-api.md)
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Workflow inventory and planned commits](docs/workflow-inventory.md)
+- [Milestones 1–3 code review](docs/review-milestones-1-3.md)
 - [Validation levels](docs/validation-levels.md)
 - [Solar Orbiter requirements](projects/solar_orbiter/requirements.yaml)
 - [Reference sources](projects/solar_orbiter/sources.yaml)

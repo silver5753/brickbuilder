@@ -1,6 +1,7 @@
 """Vertex bounds and placement diagnostics, not collision/connectivity proofs."""
+
 from dataclasses import dataclass
-from typing import Iterable
+from typing import Iterable, Iterator
 
 from .ldraw import LDrawError, PartLibrary, Primitive, Reference
 from .model import Model, reference_name
@@ -47,6 +48,7 @@ class GeometryLoader:
     points affect visibility, not physical bounds, and are excluded. BFC affects
     winding only; no face culling or solid-volume inference is performed.
     """
+
     def __init__(self, library: PartLibrary):
         self.library = library
         self._cache: dict[str, Geometry] = {}
@@ -72,7 +74,9 @@ class GeometryLoader:
                 missing.update(child.missing)
                 empty.update(child.empty)
             else:
-                points.extend(record.vertices[:2] if record.kind == 5 else record.vertices)
+                points.extend(
+                    record.vertices[:2] if record.kind == 5 else record.vertices
+                )
         if not points and not missing:
             empty.add(key)
         result = Geometry(tuple(points), tuple(sorted(missing)), tuple(sorted(empty)))
@@ -90,32 +94,48 @@ class GeometryReport:
     total_instances: int
 
 
-def inspect_geometry(model: Model, loader: GeometryLoader,
-                     primitives: Iterable[Primitive] = ()) -> GeometryReport:
-    world: list[Vector] = []
+def inspect_geometry(
+    model: Model, loader: GeometryLoader, primitives: Iterable[Primitive] = ()
+) -> GeometryReport:
     missing: set[str] = set()
     empty: set[str] = set()
     resolved = 0
-    for part in model.parts:
-        geometry = loader.load(part.reference)
-        world.extend(part.transform.point(v) for v in geometry.points)
-        missing.update(geometry.missing)
-        empty.update(geometry.empty)
-        if geometry.points and not geometry.missing and not geometry.empty:
-            resolved += 1
-    for primitive in primitives:
-        world.extend(primitive.vertices[:2] if primitive.kind == 5 else primitive.vertices)
-    bounds = Bounds.of(world)
+
+    def world_points() -> Iterator[Vector]:
+        nonlocal resolved
+        for part in model.parts:
+            geometry = loader.load(part.reference)
+            missing.update(geometry.missing)
+            empty.update(geometry.empty)
+            if geometry.points and not geometry.missing and not geometry.empty:
+                resolved += 1
+            yield from (part.transform.point(v) for v in geometry.points)
+        for primitive in primitives:
+            yield from (
+                primitive.vertices[:2] if primitive.kind == 5 else primitive.vertices
+            )
+
+    bounds = Bounds.of(world_points())
     status = "partial" if missing or empty else ("resolved" if bounds else "empty")
-    return GeometryReport(bounds, status, tuple(sorted(missing)), tuple(sorted(empty)),
-                          resolved, len(model.parts))
+    return GeometryReport(
+        bounds,
+        status,
+        tuple(sorted(missing)),
+        tuple(sorted(empty)),
+        resolved,
+        len(model.parts),
+    )
 
 
 def duplicate_placements(model: Model) -> tuple[tuple[str, ...], ...]:
     """Exact duplicate native reference/colour/transform; never silently remove."""
     groups: dict[tuple, list[str]] = {}
     for part in model.parts:
-        key = (reference_name(part.reference), part.colour,
-               part.transform.position, part.transform.rotation)
+        key = (
+            reference_name(part.reference),
+            part.colour,
+            part.transform.position,
+            part.transform.rotation,
+        )
         groups.setdefault(key, []).append(part.instance_id)
     return tuple(tuple(ids) for ids in groups.values() if len(ids) > 1)

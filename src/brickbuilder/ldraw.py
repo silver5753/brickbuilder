@@ -3,6 +3,7 @@
 Model references are rigid; part-library references may be affine. MPD and
 embedded texture/data extensions are rejected rather than silently flattened.
 """
+
 from collections import Counter
 from dataclasses import dataclass
 from hashlib import sha256
@@ -10,8 +11,10 @@ import json
 from pathlib import Path
 from typing import Iterable, TypedDict
 
+from .jsonio import decode_json, object_fields
 from .model import GeometryConfidence, Model, PartInstance, reference_name
 from .transforms import Transform, matrix, vector
+
 
 class InstanceMetadata(TypedDict):
     id: str
@@ -21,16 +24,20 @@ class InstanceMetadata(TypedDict):
 
 
 def _metadata(text: str) -> InstanceMetadata:
-    data = json.loads(text)
-    if not isinstance(data, dict) or set(data) != {"id", "group", "confidence", "note"}:
-        raise LDrawError("Invalid instance metadata fields")
+    data = object_fields(
+        decode_json(text), {"id", "group", "confidence", "note"}, "instance metadata"
+    )
     if not isinstance(data["id"], str) or not isinstance(data["confidence"], str):
         raise LDrawError("Instance ID and confidence must be strings")
     for name in ("group", "note"):
         if data[name] is not None and not isinstance(data[name], str):
             raise LDrawError(f"Metadata {name} must be a string or null")
-    return InstanceMetadata(id=data["id"], group=data["group"],
-                            confidence=data["confidence"], note=data["note"])
+    return InstanceMetadata(
+        id=data["id"],
+        group=data["group"],
+        confidence=data["confidence"],
+        note=data["note"],
+    )
 
 
 META_PREFIX = "0 !BRICKBUILDER INSTANCE "
@@ -59,6 +66,16 @@ class Primitive:
 class RawLine:
     text: str
 
+    def __post_init__(self) -> None:
+        if self.text and self.text.splitlines() != [self.text]:
+            raise LDrawError("RawLine must contain exactly one logical line")
+        if self.text.split()[:2] == ["0", "!BRICKBUILDER"]:
+            raise LDrawError(
+                "Reserved metadata belongs on the typed model, not RawLine"
+            )
+        if isinstance(parse_line(self.text), Reference):
+            raise LDrawError("Type-1 references must be typed PartInstance records")
+
 
 Record = PartInstance | RawLine
 
@@ -73,13 +90,25 @@ def parse_colour(token: str) -> int:
     return value
 
 
+def is_step(line: str) -> bool:
+    return line.split() == ["0", "STEP"]
+
+
 def parse_line(line: str) -> Reference | Primitive | None:
     fields = line.split()
     if not fields:
         return None
     if fields[0] == "0":
+        if len(fields) > 1 and fields[1] == "STEP" and len(fields) != 2:
+            raise LDrawError("STEP does not accept parameters")
         # Do not count MPD blocks, embedded binary data or TEXMAP fallback as parts.
-        if len(fields) > 1 and fields[1] in ("FILE", "NOFILE", "!DATA", "!:", "!TEXMAP"):
+        if len(fields) > 1 and fields[1] in (
+            "FILE",
+            "NOFILE",
+            "!DATA",
+            "!:",
+            "!TEXMAP",
+        ):
             raise LDrawError(f"Unsupported extension: {fields[1]}")
         return None
     try:
@@ -87,19 +116,29 @@ def parse_line(line: str) -> Reference | Primitive | None:
         if kind == 1:
             tokens = line.split(maxsplit=14)
             if len(tokens) != 15:
-                raise LDrawError("Type 1 requires colour, 12 coefficients and a filename")
+                raise LDrawError(
+                    "Type 1 requires colour, 12 coefficients and a filename"
+                )
             colour = parse_colour(tokens[1])
             if colour == 24:
                 raise LDrawError("Type 1 cannot use edge colour 24")
             numbers = [float(x) for x in tokens[2:14]]
             reference_name(tokens[14])
-            return Reference(colour, Transform(vector(numbers[:3]),
-                             matrix(numbers[3+i:6+i] for i in (0, 3, 6))), tokens[14])
+            return Reference(
+                colour,
+                Transform(
+                    vector(numbers[:3]),
+                    matrix(numbers[3 + i : 6 + i] for i in (0, 3, 6)),
+                ),
+                tokens[14],
+            )
         lengths = {2: 8, 3: 11, 4: 14, 5: 14}
         if kind not in lengths or len(fields) != lengths[kind]:
             raise LDrawError(f"Invalid type {kind} or field count")
-        vertices = tuple(vector(float(x) for x in fields[i:i+3])
-                         for i in range(2, len(fields), 3))
+        vertices = tuple(
+            vector(float(x) for x in fields[i : i + 3])
+            for i in range(2, len(fields), 3)
+        )
         return Primitive(kind, parse_colour(fields[1]), vertices)
     except (ValueError, OverflowError) as exc:
         raise LDrawError(str(exc)) from exc
@@ -112,12 +151,17 @@ class Document:
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "records", tuple(self.records))
+        if any(not isinstance(r, (PartInstance, RawLine)) for r in self.records):
+            raise LDrawError("Document records must be PartInstance or RawLine")
         # Check ID uniqueness even for callers constructing documents directly.
         self.model
 
     @property
     def model(self) -> Model:
-        return Model(tuple(r for r in self.records if isinstance(r, PartInstance)), frame=self.frame)
+        return Model(
+            tuple(r for r in self.records if isinstance(r, PartInstance)),
+            frame=self.frame,
+        )
 
     def with_model(self, model: Model) -> "Document":
         """Replace placements by stable ID, preserving comment/primitive order.
@@ -132,8 +176,13 @@ class Document:
         for old in original:
             if parts[old.instance_id].step != old.step:
                 raise LDrawError("Use from_model when changing assembly steps")
-        return Document(tuple(parts[r.instance_id] if isinstance(r, PartInstance) else r
-                              for r in self.records), frame=model.frame)
+        return Document(
+            tuple(
+                parts[r.instance_id] if isinstance(r, PartInstance) else r
+                for r in self.records
+            ),
+            frame=model.frame,
+        )
 
 
 def loads(text: str) -> Document:
@@ -145,40 +194,81 @@ def loads(text: str) -> Document:
     occurrences: Counter[str] = Counter()
     for lineno, line in enumerate(text.splitlines(), 1):
         try:
-            stripped = line.strip()
-            if stripped.startswith(MODEL_PREFIX):
+            fields = line.split(maxsplit=2)
+            command = argument = ""
+            if fields[:2] == ["0", "!BRICKBUILDER"]:
+                tail = fields[2].split(maxsplit=1) if len(fields) == 3 else []
+                if len(tail) != 2 or tail[0] not in ("MODEL", "INSTANCE"):
+                    raise LDrawError("Invalid Brick Builder metadata statement")
+                command, argument = tail
+            if command == "MODEL":
                 if frame_seen or pending is not None:
                     raise LDrawError("Duplicate or misplaced model metadata")
-                metadata = json.loads(stripped[len(MODEL_PREFIX):])
-                if (not isinstance(metadata, dict) or set(metadata) != {"frame", "units"}
-                        or metadata["units"] != "ldraw"
-                        or not isinstance(metadata["frame"], str) or not metadata["frame"]):
-                    raise LDrawError("Model metadata requires LDraw units and a named frame")
+                metadata = decode_json(argument)
+                if (
+                    not isinstance(metadata, dict)
+                    or set(metadata) != {"frame", "units"}
+                    or metadata["units"] != "ldraw"
+                    or not isinstance(metadata["frame"], str)
+                    or not metadata["frame"]
+                ):
+                    raise LDrawError(
+                        "Model metadata requires LDraw units and a named frame"
+                    )
                 frame, frame_seen = metadata["frame"], True
                 continue
-            if stripped.startswith(META_PREFIX):
+            if command == "INSTANCE":
                 if pending is not None:
-                    raise LDrawError("Two instance metadata records without a reference")
-                pending = _metadata(stripped[len(META_PREFIX):])
+                    raise LDrawError(
+                        "Two instance metadata records without a reference"
+                    )
+                pending = _metadata(argument)
                 continue
             parsed = parse_line(line)
             if isinstance(parsed, Reference):
-                identity = json.dumps([reference_name(parsed.name), parsed.colour,
-                                       parsed.transform.position, parsed.transform.rotation],
-                                      separators=(",", ":"))
+                identity = json.dumps(
+                    [
+                        reference_name(parsed.name),
+                        parsed.colour,
+                        parsed.transform.position,
+                        parsed.transform.rotation,
+                    ],
+                    separators=(",", ":"),
+                )
                 occurrences[identity] += 1
-                generated = sha256((identity + f"#{occurrences[identity]}").encode()).hexdigest()
-                data = pending or InstanceMetadata(id="import-"+generated, group=None,
-                                       confidence="unknown", note=None)
-                records.append(PartInstance(data["id"], parsed.name, parsed.colour,
-                               parsed.transform, data["group"], step,
-                               GeometryConfidence(data["confidence"]), data["note"]))
+                generated = sha256(
+                    (identity + f"#{occurrences[identity]}").encode()
+                ).hexdigest()
+                data = pending or InstanceMetadata(
+                    id="import-" + generated,
+                    group=None,
+                    confidence="unknown",
+                    note=None,
+                )
+                records.append(
+                    PartInstance(
+                        data["id"],
+                        parsed.name,
+                        parsed.colour,
+                        parsed.transform,
+                        data["group"],
+                        step,
+                        GeometryConfidence(data["confidence"]),
+                        data["note"],
+                    )
+                )
                 pending = None
             else:
-                if pending is not None:
-                    raise LDrawError("Instance metadata must immediately precede a reference")
+                if (
+                    pending is not None
+                    and line.strip()
+                    and line.split() != ["0", "BFC", "INVERTNEXT"]
+                ):
+                    raise LDrawError(
+                        "Instance metadata must immediately precede a reference or BFC INVERTNEXT"
+                    )
                 records.append(RawLine(line))
-                if stripped == "0 STEP":
+                if is_step(line):
                     step += 1
         except (ValueError, TypeError, KeyError) as exc:
             raise LDrawError(f"Line {lineno}: {exc}") from exc
@@ -187,8 +277,36 @@ def loads(text: str) -> Document:
     return Document(tuple(records), frame=frame)
 
 
+@dataclass(frozen=True)
+class SourceDocument:
+    document: Document
+    path: Path
+    sha256: str
+
+
+def read_source(path: Path) -> SourceDocument:
+    """Parse and hash one byte snapshot; never reread a file after checking it."""
+    payload = path.read_bytes()
+    return SourceDocument(
+        loads(payload.decode("utf-8-sig")), path, sha256(payload).hexdigest()
+    )
+
+
 def load(path: Path) -> Document:
-    return loads(path.read_text(encoding="utf-8-sig"))
+    return read_source(path).document
+
+
+def part_line(part: PartInstance, *, reference: str | None = None) -> str:
+    """Shared exact-value serialization for native and ordering references."""
+    name = part.reference if reference is None else reference
+    reference_name(name)
+    numbers = (
+        *part.transform.position,
+        *(x for row in part.transform.rotation for x in row),
+    )
+    return (
+        f"1 {part.colour} " + " ".join(format(x, ".17g") for x in numbers) + " " + name
+    )
 
 
 def dumps(document: Document) -> str:
@@ -196,31 +314,42 @@ def dumps(document: Document) -> str:
     step = 1
     for record in document.records:
         if isinstance(record, RawLine):
-            if record.text.strip().startswith((META_PREFIX, MODEL_PREFIX)):
-                raise LDrawError("Instance metadata belongs on PartInstance, not RawLine")
-            parse_line(record.text)
             lines.append(record.text)
-            if record.text.strip() == "0 STEP":
+            if is_step(record.text):
                 step += 1
         else:
             if record.step != step:
                 raise LDrawError("Part step does not match STEP boundaries")
-            data = dict(id=record.instance_id, group=record.group,
-                        confidence=record.geometry_confidence.value, note=record.geometry_note)
-            lines.append(META_PREFIX + json.dumps(data, ensure_ascii=True, separators=(",", ":")))
-            numbers = (*record.transform.position, *(x for row in record.transform.rotation for x in row))
+            data = dict(
+                id=record.instance_id,
+                group=record.group,
+                confidence=record.geometry_confidence.value,
+                note=record.geometry_note,
+            )
+            metadata = META_PREFIX + json.dumps(
+                data, ensure_ascii=True, separators=(",", ":")
+            )
+            index = len(lines)
+            while index and not lines[index - 1].strip():
+                index -= 1
+            if index and lines[index - 1].split() == ["0", "BFC", "INVERTNEXT"]:
+                # BFC must remain immediately before the reference (blank lines allowed).
+                lines.insert(index - 1, metadata)
+            else:
+                lines.append(metadata)
             # 17 significant digits preserve parsed IEEE-754 values exactly.
-            lines.append("1 " + str(record.colour) + " " + " ".join(format(x, ".17g") for x in numbers)
-                         + " " + record.reference)
+            lines.append(part_line(record))
     if document.frame != "ldraw_world":
-        lines.append(MODEL_PREFIX + json.dumps(dict(frame=document.frame, units="ldraw")))
-    return "\r\n".join(lines) + "\r\n"
+        lines.append(
+            MODEL_PREFIX + json.dumps(dict(frame=document.frame, units="ldraw"))
+        )
+    return "\r\n".join(lines) + ("\r\n" if lines else "")
 
 
 def from_model(model: Model, title: str = "Brick Builder model") -> Document:
     if "\n" in title or "\r" in title:
         raise LDrawError("Title must be one line")
-    records: list[Record] = [RawLine("0 " + title)]
+    records: list[Record] = [RawLine("0 // " + title)]
     step = 1
     for part in model.parts:
         if part.step < step:
@@ -247,6 +376,7 @@ class PartLibrary:
     roots may include a model directory and a library root (parts/ and p/).
     Paths are matched case-insensitively, as LDraw names are case-insensitive.
     """
+
     def __init__(self, roots: Iterable[Path], *, missing: dict[str, str] | None = None):
         self.roots = tuple(Path(p).resolve() for p in roots)
         if not self.roots or any(not p.is_dir() for p in self.roots):
@@ -280,12 +410,21 @@ class PartLibrary:
         key = reference_name(name)
         if key in self._cache:
             return self._cache[key]
-        path = next((found for root in self.roots for base in (root, root/"parts", root/"p")
-                     if (found := self._find(base, key)) is not None), None)
+        path = next(
+            (
+                found
+                for root in self.roots
+                for base in (root, root / "parts", root / "p")
+                if (found := self._find(base, key)) is not None
+            ),
+            None,
+        )
         if path is None:
             if key not in self.missing:
                 raise LDrawError(f"Unresolved undeclared dependency: {name}")
-            self.dependencies[key] = Dependency(key, None, None, "declared_missing", self.missing[key])
+            self.dependencies[key] = Dependency(
+                key, None, None, "declared_missing", self.missing[key]
+            )
             self._cache[key] = None
             return None
         payload = path.read_bytes()
@@ -297,6 +436,8 @@ class PartLibrary:
                     records.append(parsed)
             except ValueError as exc:
                 raise LDrawError(f"{path}:{lineno}: {exc}") from exc
-        self.dependencies[key] = Dependency(key, str(path), sha256(payload).hexdigest(), "resolved")
+        self.dependencies[key] = Dependency(
+            key, str(path), sha256(payload).hexdigest(), "resolved"
+        )
         self._cache[key] = tuple(records)
         return self._cache[key]
