@@ -1,0 +1,24 @@
+project: solar_orbiter
+baseline: v15
+units: ldraw
+axes:
+  x: wing_span
+  y: down
+  negative_z: sun_facing
+requirements:
+  - Real existing parts with rigid transforms.
+  - Technic structure with System surfaces; current design is a hybrid.
+  - Prominent HIS instrument with a sunward slit and upper-left shield cutout.
+  - Lower-left PAS cutout in the supplied front view.
+  - Shield overhangs the body.
+  - Detailed rectangular solar sections using plain tiles and separate stickers.
+  - Rotatable solar wings and articulated dish on the rear/boom side.
+  - Offset science boom with two MAG stations, RPW/SCM and paired EAS heads.
+  - Connected roof, floor, side equipment, antennas, cradle and stand.
+  - Israeli sourcing constraints and a budget for scarce connectors.
+known_limits:
+  - Exact part 7798 mesh and underside fit are unverified.
+  - Native CAD connectivity does not prove physical strength.
+  - Wing holding torque, boom sag and tipping remain physically untested.
+  - Authenticated marketplace import acceptance is unverified.
+  - Existing STEP markers are not complete building instructions.

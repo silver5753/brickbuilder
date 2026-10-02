@@ -1,0 +1,73 @@
+{
+  "baseline": "solar_orbiter_v15",
+  "counts": {
+    "full": 966,
+    "spacecraft": 890,
+    "solar_module": 44,
+    "ordering_import": 965,
+    "manual_dish": 1
+  },
+  "files": {
+    "model_data.json.gz": {
+      "sha256": "9a208ba3dd554658fc6ad47db273b21a994718d52203810ff4cf2304137127d6",
+      "source_sha256": "ef6dab47d7837cc646b6c3cdbbb82d32782f2c840b699fe8e6511f1a67e231e0",
+      "source_file": "model_data.json",
+      "encoding": "gzip",
+      "source_size_bytes": 388771
+    },
+    "model_data_articulated.json.gz": {
+      "sha256": "05514941e94f86918c97d78104d8cce9d70e3b596d4cb81c87e33ee9d9b0f712",
+      "source_sha256": "961fd99c962c04425c038ac51b2736a7073f3c38c1ae36fd529243019418f348",
+      "source_file": "model_data_articulated.json",
+      "encoding": "gzip",
+      "source_size_bytes": 422539
+    },
+    "solar_module_data.json.gz": {
+      "sha256": "9b5549ac4886cd024414abdc3d7e4b2ff9d57c47e27dcfef19f7d8a0b6fd1282",
+      "source_sha256": "5abeab8aadc4d9076c345ccd77a09f08eb310878d2591b9cedab0d2b358cbdbe",
+      "source_file": "solar_module_data.json",
+      "encoding": "gzip",
+      "source_size_bytes": 19006
+    },
+    "parts_inventory.json.gz": {
+      "sha256": "637445729e9f7640e99856e0eb026306eafb2a191d94b12af6a66593ac500c67",
+      "source_sha256": "63fa7d5f13a7beed8cb8d7ec69b8c61a34d487ff016c41457ec1e18ddaf9ea15",
+      "source_file": "parts_inventory.json",
+      "encoding": "gzip",
+      "source_size_bytes": 17519
+    },
+    "solar_orbiter_v15.ldr": {
+      "sha256": "6da0f38625c5357af6984fd06e31bf89438a90a9f36a80a419b354630b07d035",
+      "source_sha256": "6da0f38625c5357af6984fd06e31bf89438a90a9f36a80a419b354630b07d035",
+      "source_file": "solar_orbiter_v15.ldr",
+      "encoding": "utf-8",
+      "source_size_bytes": 50376
+    },
+    "solar_orbiter_v15_articulated.ldr": {
+      "sha256": "e1924acc75e6125d06ccce8bcbde5e3fe923fa2afa76ec264a857cb993aad3ce",
+      "source_sha256": "e1924acc75e6125d06ccce8bcbde5e3fe923fa2afa76ec264a857cb993aad3ce",
+      "source_file": "solar_orbiter_v15_articulated.ldr",
+      "encoding": "utf-8",
+      "source_size_bytes": 66074
+    },
+    "solar_orbiter_v15_spacecraft.ldr": {
+      "sha256": "09123d13280fd5fee0adc59fb24cd2ef792077cef7ba1468284d47fd5891d18c",
+      "source_sha256": "09123d13280fd5fee0adc59fb24cd2ef792077cef7ba1468284d47fd5891d18c",
+      "source_file": "solar_orbiter_v15_spacecraft.ldr",
+      "encoding": "utf-8",
+      "source_size_bytes": 46635
+    },
+    "solar_orbiter_v15_solar_module.ldr": {
+      "sha256": "1c1121dff9cfa94ee2f1cc031efdc42653bf911b481684ec3b1976d151472175",
+      "source_sha256": "1c1121dff9cfa94ee2f1cc031efdc42653bf911b481684ec3b1976d151472175",
+      "source_file": "solar_orbiter_v15_solar_module.ldr",
+      "encoding": "utf-8",
+      "source_size_bytes": 2604
+    }
+  },
+  "physical_build_tested": false,
+  "authenticated_import_tested": false,
+  "exact_geometry_missing": [
+    "7798"
+  ]
+}

@@ -1,0 +1,32 @@
+sources:
+  - id: science_overview_published
+    url: https://www.aanda.org/articles/aa/pdf/2020/10/aa38467-20.pdf
+    doi: 10.1051/0004-6361/202038467
+    use: Instrument locations and spacecraft layout.
+    access_note: Publisher endpoint previously returned HTTP 403.
+  - id: science_overview_author_manuscript
+    url: https://arxiv.org/pdf/2009.00861
+    use: Inspected figures 13 through 16 and 20.
+    access_note: Author manuscript has different PDF pagination; record figure numbers.
+  - id: rover_manual
+    url: https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6471105.pdf
+    use: Framed pin-connected construction and modular structure.
+  - id: station_manual
+    url: https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6327401.pdf
+    use: Repeated panel modules and display support.
+  - id: clean_room_photos
+    url: https://www.space.com/solar-orbiter-clean-room-photos.html
+    use: Shield overhang and flight appearance.
+  - id: deployment_animation
+    url: https://svs.gsfc.nasa.gov/13505
+    use: Boom placement and deployment interpretation.
+  - id: instrument_boom_manufacturer
+    url: https://www.group.sener/en/project/solar-orbiter-instrument-boom/
+    use: Boom layout context.
+interpretation:
+  - HIS flight exterior has a narrow slit; do not model it as a round lens.
+  - Cutaways locate instruments but do not establish normal exterior appearance.
+  - Ground-support hardware is not flight hardware.
+  - Generated concept dimensions are not engineering measurements.
+  - Offset boom geometry is a visually informed brick approximation.
+redistribution: Reference assets are linked, not included.
