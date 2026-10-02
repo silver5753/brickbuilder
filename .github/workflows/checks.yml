@@ -7,24 +7,21 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.12"
       - uses: astral-sh/setup-uv@v6
         with:
           version: "0.12.11"
-      - run: uv sync --locked --python ${{ matrix.python-version }}
+      - run: uv sync --locked --python "3.12"
       - name: Type check source and tests
-        run: uv run --locked --python ${{ matrix.python-version }} ty check src tests --error-on-warning
-      - run: uv run --locked --python ${{ matrix.python-version }} python -m unittest discover -s tests -v
-      - run: uv run --locked --python ${{ matrix.python-version }} python -c "import brickbuilder; print(brickbuilder.__version__)"
+        run: uv run --locked --python "3.12" ty check src tests --error-on-warning
+      - run: uv run --locked --python "3.12" python -m unittest discover -s tests -v
+      - run: uv run --locked --python "3.12" python -c "import brickbuilder; print(brickbuilder.__version__)"
       - name: Inspect native baseline
-        run: uv run --locked --python ${{ matrix.python-version }} brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
+        run: uv run --locked --python "3.12" brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
       - name: Count spacecraft alternative
-        run: uv run --locked --python ${{ matrix.python-version }} brickbuilder inventory --selections projects/solar_orbiter/selections.json --selection spacecraft
-      - run: uv build --python ${{ matrix.python-version }}
+        run: uv run --locked --python "3.12" brickbuilder inventory --selections projects/solar_orbiter/selections.json --selection spacecraft
+      - run: uv build --python "3.12"

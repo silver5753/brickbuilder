@@ -11,7 +11,7 @@ are also implemented. Connectivity and rendering remain planned modules.
 
 ## Setup and checks
 
-Use Python 3.11 or 3.12 and uv:
+Use Python 3.12 and uv:
 
 ```sh
 uv sync --locked
