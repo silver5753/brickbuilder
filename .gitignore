@@ -1,0 +1,43 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+/build/
+/dist/
+
+# Generated outputs and fetched dependencies; baseline fixtures remain tracked
+/output/
+/artifacts/
+/cache/
+/vendor/
+*.so
+*.dylib
+*.dll
+*.blend
+*.blend1
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+.aws/
+.ssh/
+credentials*.json
+*.pem
+*.key
+
+# Machine-specific settings and transfer receipts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+/upload_receipt*.json
+/upload_results*.json
