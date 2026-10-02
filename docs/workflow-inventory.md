@@ -298,6 +298,13 @@ The original planned contents below remain the milestone specification.
 
 ### Commit 3 — `feat: add inventories and marketplace ordering exports`
 
+**Implemented:** native inventories, checksummed alternative selections, quantity
+deltas, simultaneous one-for-one substitution recipes, separate native/BrickOwl/
+BrickLink bundles, dated JSON mapping rules and importer-rejection fixtures.
+Authenticated import and stock checks remain untested. See
+[inventory/export instructions](inventory-exports.md). The original planned
+contents below remain the milestone specification.
+
 **Purpose:** Automate the sourcing and importer work that caused repeated revisions.
 
 **Planned contents**

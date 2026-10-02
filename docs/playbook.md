@@ -26,8 +26,11 @@
 Environment setup, type checking, fixture checks, typed model transforms,
 LDraw round-trips and recursive vertex-bound inspection are executable. Read
 [the model API](model-api.md) for supported formats and explicit unknowns.
-Spacecraft assembly builders, purchasing exports, connectivity, rendering,
-motion checks and a unified release command remain planned modules. Historical
+Native inventories, revision quantity differences, one-for-one substitution
+recipes and reconciled purchasing bundles are implemented; see
+[inventory/export instructions](inventory-exports.md). Spacecraft assembly
+builders, connectivity, rendering, motion checks and a unified release command
+remain planned modules. Historical
 scripts are starting material, not proof those APIs already exist.
 
 ## Known pitfalls from Solar Orbiter

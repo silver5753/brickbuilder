@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "selections": {
+    "full": {
+      "path": "../../tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr",
+      "sha256": "6da0f38625c5357af6984fd06e31bf89438a90a9f36a80a419b354630b07d035"
+    },
+    "spacecraft": {
+      "path": "../../tests/fixtures/solar_orbiter_v15/solar_orbiter_v15_spacecraft.ldr",
+      "sha256": "09123d13280fd5fee0adc59fb24cd2ef792077cef7ba1468284d47fd5891d18c"
+    },
+    "solar_module": {
+      "path": "../../tests/fixtures/solar_orbiter_v15/solar_orbiter_v15_solar_module.ldr",
+      "sha256": "1c1121dff9cfa94ee2f1cc031efdc42653bf911b481684ec3b1976d151472175"
+    },
+    "articulated": {
+      "path": "../../tests/fixtures/solar_orbiter_v15/solar_orbiter_v15_articulated.ldr",
+      "sha256": "e1924acc75e6125d06ccce8bcbde5e3fe923fa2afa76ec264a857cb993aad3ce"
+    }
+  }
+}

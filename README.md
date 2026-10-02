@@ -6,7 +6,8 @@ worked example and frozen regression baseline.
 
 The package includes typed part instances, rigid transforms, native LDraw
 round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
-Connectivity, rendering and purchasing exports remain planned modules.
+Native inventories, quantity differences and separate purchasing export bundles
+are also implemented. Connectivity and rendering remain planned modules.
 
 ## Setup and checks
 
@@ -41,6 +42,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Agent instructions](AGENTS.md)
 - [Playbook](docs/playbook.md)
 - [Model API and inspection CLI](docs/model-api.md)
+- [Inventories and ordering exports](docs/inventory-exports.md)
 - [Workflow inventory and planned commits](docs/workflow-inventory.md)
 - [Validation levels](docs/validation-levels.md)
 - [Solar Orbiter requirements](projects/solar_orbiter/requirements.yaml)
@@ -56,8 +58,9 @@ selections, not quantities to combine. Normal and articulated full-model
 poses use the same inventory.
 
 The previous ordering workflow omitted one black dish from the import file:
-965 import entries plus one manual addition reconcile to 966. No importer
-acceptance or purchasing operation is tested by this scaffold.
+965 import entries plus one manual addition reconcile to 966. No authenticated importer
+acceptance or purchasing operation is tested. Ordering exports preserve explicit
+mapping uncertainty and manual additions.
 
 The model is an unbuilt Technic/System hybrid with custom solar stickers.
 Nominal connection checks are documented, but physical strength, sag,
@@ -66,8 +69,7 @@ unavailable; its native identity remains preserved.
 
 ## Planned next commits
 
-1. Inventories, revision differences and purchasing exports.
-2. Connectivity rules with valid/invalid fixtures and explicit unknowns.
+1. Connectivity rules with valid/invalid fixtures and explicit unknowns.
 
 Generated renders, releases and fetched reference assets belong outside
 source-controlled code. The committed baseline fixture directory is the

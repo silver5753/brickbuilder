@@ -19,7 +19,9 @@ scope, method and explicit exceptions. Never convert unknown into pass.
 CI runs type checking for source and tests, fixture integrity/consistency,
 package import and package builds. It also exercises rigid transforms, native
 round-trips and synthetic nested geometry/dependency fixtures. Type checking
-does not validate model geometry. Full spacecraft geometry, connections,
+does not validate model geometry. Inventory/export tests establish quantity
+conservation, namespace mapping and rejection handling; they do not test a live
+importer or stock. Full spacecraft geometry, connections,
 collisions and physical strength are not certified by these tests.
 The preserved historical reports are evidence from prior methods and scopes,
 not new validation performed by the package. In particular, three small joint

@@ -25,4 +25,6 @@ jobs:
       - run: uv run --locked --python ${{ matrix.python-version }} python -c "import brickbuilder; print(brickbuilder.__version__)"
       - name: Inspect native baseline
         run: uv run --locked --python ${{ matrix.python-version }} brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
+      - name: Count spacecraft alternative
+        run: uv run --locked --python ${{ matrix.python-version }} brickbuilder inventory --selections projects/solar_orbiter/selections.json --selection spacecraft
       - run: uv build --python ${{ matrix.python-version }}

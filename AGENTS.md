@@ -50,6 +50,8 @@ failure cases, quantity conservation and stable transforms; do not claim
 checks that are not implemented. Current tests cover fixture integrity, typed
 models, transforms, LDraw round-trips, dependency failures and vertex bounds.
 Read docs/model-api.md before using the CAD APIs; MPD/TEXMAP are unsupported.
+Read docs/inventory-exports.md before sourcing. Tests also cover native quantity
+conservation, substitution deltas, ordering namespaces and rejected mappings.
 
 Read the fixture manifest before using a baseline. JSON fixtures are stored
 as deterministic gzip streams; decompressed bytes are the original source

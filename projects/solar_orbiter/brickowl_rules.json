@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "market": "brickowl",
+  "parts": [
+    {
+      "part": "90498",
+      "colour": null,
+      "target": "4974",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "4032a",
+      "colour": null,
+      "target": "4032",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "6141",
+      "colour": null,
+      "target": "4073",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "44375a",
+      "colour": 0,
+      "target": null,
+      "manual": true,
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Keep the dish in native CAD; omit only from ordering and add manually. BrickOwl aliases 44375 and 35327 were reported rejected.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "catalog_url": "https://www.brickowl.com/catalog/lego-black-dish-6-x-6-35327-44375"
+    }
+  ],
+  "colours": [],
+  "rejected": [
+    {
+      "target": "72504",
+      "native_colour": 71,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "72504",
+      "native_colour": 179,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "4032a",
+      "native_colour": 72,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "4032a",
+      "native_colour": 71,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "6141",
+      "native_colour": 297,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "6141",
+      "native_colour": 0,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "6141",
+      "native_colour": 72,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "3713",
+      "native_colour": 297,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "2431p70",
+      "native_colour": 272,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "44375a",
+      "native_colour": 0,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "2431pb499",
+      "native_colour": 272,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "44375",
+      "native_colour": 0,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "37096",
+      "native_colour": 272,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    },
+    {
+      "target": "35327",
+      "native_colour": 0,
+      "evidence": {
+        "status": "rejected",
+        "recorded_on": "2026-10-02",
+        "note": "User reported this attempted ID/colour rejected by BrickOwl.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      }
+    }
+  ],
+  "identity_fallback": {
+    "status": "untested",
+    "recorded_on": "2026-10-02",
+    "note": "Unenumerated native-ID pass-through is a candidate only; not verified in this marketplace.",
+    "source": "Solar Orbiter conversation and archived v15 exporter"
+  }
+}

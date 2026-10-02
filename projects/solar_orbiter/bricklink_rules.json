@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "market": "bricklink",
+  "parts": [
+    {
+      "part": "90498",
+      "colour": null,
+      "target": "4974",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "4032a",
+      "colour": null,
+      "target": "4032",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "6141",
+      "colour": null,
+      "target": "4073",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "3062b",
+      "colour": null,
+      "target": "3062",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "3068b",
+      "colour": null,
+      "target": "3068",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "3794b",
+      "colour": null,
+      "target": "3794",
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Candidate catalog alias; authenticated import not tested.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "manual": false,
+      "catalog_url": null
+    },
+    {
+      "part": "44375a",
+      "colour": 0,
+      "target": null,
+      "manual": true,
+      "evidence": {
+        "status": "untested",
+        "recorded_on": "2026-10-02",
+        "note": "Keep the dish in native CAD; omit only from ordering and add manually. BrickOwl aliases 44375 and 35327 were reported rejected.",
+        "source": "Solar Orbiter conversation and archived v15 exporter"
+      },
+      "catalog_url": null
+    }
+  ],
+  "colours": [
+    {
+      "native": 0,
+      "target": 11,
+      "evidence": {
+        "status": "accepted",
+        "recorded_on": "2026-10-02",
+        "note": "Black: named colour correspondence only; no part availability/import claim.",
+        "source": "https://www.ldraw.org/article/547.html ; https://www.bricklink.com/catalogColors.asp"
+      }
+    },
+    {
+      "native": 1,
+      "target": 7,
+      "evidence": {
+        "status": "accepted",
+        "recorded_on": "2026-10-02",
+        "note": "Blue: named colour correspondence only; no part availability/import claim.",
+        "source": "https://www.ldraw.org/article/547.html ; https://www.bricklink.com/catalogColors.asp"
+      }
+    },
+    {
+      "native": 15,
+      "target": 1,
+      "evidence": {
+        "status": "accepted",
+        "recorded_on": "2026-10-02",
+        "note": "White: named colour correspondence only; no part availability/import claim.",
+        "source": "https://www.ldraw.org/article/547.html ; https://www.bricklink.com/catalogColors.asp"
+      }
+    },
+    {
+      "native": 28,
+      "target": 69,
+      "evidence": {
+        "status": "accepted",
+        "recorded_on": "2026-10-02",
+        "note": "Dark Tan: named colour correspondence only; no part availability/import claim.",
+        "source": "https://www.ldraw.org/article/547.html ; https://www.bricklink.com/catalogColors.asp"
+      }
+    },
+    {
+      "native": 71,
+      "target": 86,
+      "evidence": {
+        "status": "accepted",
+        "recorded_on": "2026-10-02",
+        "note": "Light Bluish Gray: named colour correspondence only; no part availability/import claim.",
+        "source": "https://www.ldraw.org/article/547.html ; https://www.bricklink.com/catalogColors.asp"
+      }
+    },
+    {
+      "native": 72,
+      "target": 85,
+      "evidence": {
+        "status": "accepted",
+        "recorded_on": "2026-10-02",
+        "note": "Dark Bluish Gray: named colour correspondence only; no part availability/import claim.",
+        "source": "https://www.ldraw.org/article/547.html ; https://www.bricklink.com/catalogColors.asp"
+      }
+    },
+    {
+      "native": 297,
+      "target": 115,
+      "evidence": {
+        "status": "accepted",
+        "recorded_on": "2026-10-02",
+        "note": "Pearl Gold: named colour correspondence only; no part availability/import claim.",
+        "source": "https://www.ldraw.org/article/547.html ; https://www.bricklink.com/catalogColors.asp"
+      }
+    }
+  ],
+  "rejected": [],
+  "identity_fallback": {
+    "status": "untested",
+    "recorded_on": "2026-10-02",
+    "note": "Unenumerated native-ID pass-through is a candidate only; not verified in this marketplace.",
+    "source": "Solar Orbiter conversation and archived v15 exporter"
+  }
+}

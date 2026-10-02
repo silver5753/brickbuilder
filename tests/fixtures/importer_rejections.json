@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "market": "brickowl",
+  "colour_namespace": "ldraw",
+  "recorded_on": "2026-10-02",
+  "date_note": "Date consolidated; exact original import dates are not available.",
+  "failures": [
+    {
+      "attempted_import_id": "72504",
+      "native_colour": 71,
+      "status": "reported_rejected",
+      "error": "No match found for 72504 with color 71"
+    },
+    {
+      "attempted_import_id": "72504",
+      "native_colour": 179,
+      "status": "reported_rejected",
+      "error": "No match found for 72504 with color 179"
+    },
+    {
+      "attempted_import_id": "4032a",
+      "native_colour": 72,
+      "status": "reported_rejected",
+      "error": "No match found for 4032a with color 72"
+    },
+    {
+      "attempted_import_id": "4032a",
+      "native_colour": 71,
+      "status": "reported_rejected",
+      "error": "No match found for 4032a with color 71"
+    },
+    {
+      "attempted_import_id": "6141",
+      "native_colour": 297,
+      "status": "reported_rejected",
+      "error": "No match found for 6141 with color 297"
+    },
+    {
+      "attempted_import_id": "6141",
+      "native_colour": 0,
+      "status": "reported_rejected",
+      "error": "No match found for 6141 with color 0"
+    },
+    {
+      "attempted_import_id": "6141",
+      "native_colour": 72,
+      "status": "reported_rejected",
+      "error": "No match found for 6141 with color 72"
+    },
+    {
+      "attempted_import_id": "3713",
+      "native_colour": 297,
+      "status": "reported_rejected",
+      "error": "No match found for 3713 with color 297"
+    },
+    {
+      "attempted_import_id": "2431p70",
+      "native_colour": 272,
+      "status": "reported_rejected",
+      "error": "No match found for 2431p70 with color 272"
+    },
+    {
+      "attempted_import_id": "44375a",
+      "native_colour": 0,
+      "status": "reported_rejected",
+      "error": "No match found for 44375a with color 0"
+    },
+    {
+      "attempted_import_id": "2431pb499",
+      "native_colour": 272,
+      "status": "reported_rejected",
+      "error": "No match found for 2431pb499 with color 272"
+    },
+    {
+      "attempted_import_id": "44375",
+      "native_colour": 0,
+      "status": "reported_rejected",
+      "error": "No match found for 44375 with color 0"
+    },
+    {
+      "attempted_import_id": "37096",
+      "native_colour": 272,
+      "status": "reported_rejected",
+      "error": "No match found for 37096 with color 272"
+    },
+    {
+      "attempted_import_id": "35327",
+      "native_colour": 0,
+      "status": "reported_rejected",
+      "error": "No match found for 35327 with color 0"
+    }
+  ]
+}
