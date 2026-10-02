@@ -10,6 +10,9 @@ readme = "README.md"
 requires-python = ">=3.11,<3.13"
 dependencies = []
 
+[project.scripts]
+brickbuilder = "brickbuilder.cli:main"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/brickbuilder"]
 

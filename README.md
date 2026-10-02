@@ -4,9 +4,9 @@ Brick Builder prepares reusable tools and an agent playbook for designing,
 checking, rendering and sourcing brick models. Solar Orbiter is the first
 worked example and frozen regression baseline.
 
-This first implementation establishes the package, workflow documentation,
-CI and baseline fixtures. Reusable CAD, inventory and validation APIs follow
-in later commits; no command-line modeling interface is available yet.
+The package includes typed part instances, rigid transforms, native LDraw
+round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
+Connectivity, rendering and purchasing exports remain planned modules.
 
 ## Setup and checks
 
@@ -23,10 +23,24 @@ uv build
 The core has no runtime dependencies. Rendering will have a separately
 specified environment when that module is added.
 
+## Native model commands
+
+```sh
+uv run --locked brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
+mkdir -p output
+uv run --locked brickbuilder roundtrip tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr output/solar_orbiter.ldr
+```
+
+Inspection without a supplied geometry library reports geometry as not tested.
+See the [API documentation](docs/model-api.md) for library/exceptions options,
+format limits and exit codes. Round-trip outputs preserve semantic placements
+and add stable instance metadata; the baseline files stay unchanged.
+
 ## Start here
 
 - [Agent instructions](AGENTS.md)
 - [Playbook](docs/playbook.md)
+- [Model API and inspection CLI](docs/model-api.md)
 - [Workflow inventory and planned commits](docs/workflow-inventory.md)
 - [Validation levels](docs/validation-levels.md)
 - [Solar Orbiter requirements](projects/solar_orbiter/requirements.yaml)
@@ -52,9 +66,8 @@ unavailable; its native identity remains preserved.
 
 ## Planned next commits
 
-1. Model schema, transforms, LDraw round-trip and geometry inspection.
-2. Inventories, revision differences and purchasing exports.
-3. Connectivity rules with valid/invalid fixtures and explicit unknowns.
+1. Inventories, revision differences and purchasing exports.
+2. Connectivity rules with valid/invalid fixtures and explicit unknowns.
 
 Generated renders, releases and fetched reference assets belong outside
 source-controlled code. The committed baseline fixture directory is the

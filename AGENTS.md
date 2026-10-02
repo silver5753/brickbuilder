@@ -47,8 +47,9 @@ ordering export omits a part for manual addition.
 Keep the lightweight core separate from optional rendering dependencies.
 Use uv sync --locked, the documented ty check and unittest commands. Test relevant
 failure cases, quantity conservation and stable transforms; do not claim
-checks that are not implemented. Current tests validate only frozen fixture
-integrity/consistency and package import.
+checks that are not implemented. Current tests cover fixture integrity, typed
+models, transforms, LDraw round-trips, dependency failures and vertex bounds.
+Read docs/model-api.md before using the CAD APIs; MPD/TEXMAP are unsupported.
 
 Read the fixture manifest before using a baseline. JSON fixtures are stored
 as deterministic gzip streams; decompressed bytes are the original source

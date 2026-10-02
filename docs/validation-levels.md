@@ -17,7 +17,10 @@ Use pass, fail, unknown and not-tested. Every result needs a model hash,
 scope, method and explicit exceptions. Never convert unknown into pass.
 
 CI runs type checking for source and tests, fixture integrity/consistency,
-package import and package builds. Type checking does not validate model geometry.
+package import and package builds. It also exercises rigid transforms, native
+round-trips and synthetic nested geometry/dependency fixtures. Type checking
+does not validate model geometry. Full spacecraft geometry, connections,
+collisions and physical strength are not certified by these tests.
 The preserved historical reports are evidence from prior methods and scopes,
 not new validation performed by the package. In particular, three small joint
 contact flags required follow-up and exact 7798 geometry remains unavailable.

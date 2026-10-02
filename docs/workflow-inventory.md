@@ -271,6 +271,12 @@ Commit 1 is implemented by the initial project scaffold. Commits 2 and 3 remain 
 
 ### Commit 2 — `feat: add brick model schema and LDraw round-trip tools`
 
+**Implemented:** typed immutable models, stable IDs and metadata, rigid transforms,
+single-file reader/writer, external dependency resolution, vertex bounds, exact
+duplicate diagnostics and inspection/round-trip CLI. MPD/TEXMAP are explicitly
+unsupported. See [model API](model-api.md) for actual scope and limits.
+The original planned contents below remain the milestone specification.
+
 **Purpose:** Extract the reusable modeling foundation so an agent can manipulate real parts without rewriting coordinate and file-format code.
 
 **Planned contents**

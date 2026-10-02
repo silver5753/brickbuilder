@@ -23,4 +23,6 @@ jobs:
         run: uv run --locked --python ${{ matrix.python-version }} ty check src tests --error-on-warning
       - run: uv run --locked --python ${{ matrix.python-version }} python -m unittest discover -s tests -v
       - run: uv run --locked --python ${{ matrix.python-version }} python -c "import brickbuilder; print(brickbuilder.__version__)"
+      - name: Inspect native baseline
+        run: uv run --locked --python ${{ matrix.python-version }} brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
       - run: uv build --python ${{ matrix.python-version }}

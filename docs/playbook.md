@@ -23,10 +23,12 @@
     quantity and document the exact validation status.
 12. Incorporate physical-build feedback as measurements for the next revision.
 
-Only environment setup, type checking, package import and frozen-fixture checks are executable
-in the initial scaffold. Modeling, exports, connectivity, rendering, motion
-checks and a unified release command are planned modules. Historical scripts
-are starting material, not proof that these package APIs already exist.
+Environment setup, type checking, fixture checks, typed model transforms,
+LDraw round-trips and recursive vertex-bound inspection are executable. Read
+[the model API](model-api.md) for supported formats and explicit unknowns.
+Spacecraft assembly builders, purchasing exports, connectivity, rendering,
+motion checks and a unified release command remain planned modules. Historical
+scripts are starting material, not proof those APIs already exist.
 
 ## Known pitfalls from Solar Orbiter
 
