@@ -45,7 +45,7 @@ ordering export omits a part for manual addition.
 ## Implementation and tests
 
 Keep the lightweight core separate from optional rendering dependencies.
-Use uv sync --locked and the documented unittest command. Test relevant
+Use uv sync --locked, the documented ty check and unittest commands. Test relevant
 failure cases, quantity conservation and stable transforms; do not claim
 checks that are not implemented. Current tests validate only frozen fixture
 integrity/consistency and package import.

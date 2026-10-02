@@ -16,7 +16,8 @@ Track each dimension independently for the exact model revision:
 Use pass, fail, unknown and not-tested. Every result needs a model hash,
 scope, method and explicit exceptions. Never convert unknown into pass.
 
-The initial CI runs fixture integrity/consistency and package import only.
+CI runs type checking for source and tests, fixture integrity/consistency,
+package import and package builds. Type checking does not validate model geometry.
 The preserved historical reports are evidence from prior methods and scopes,
 not new validation performed by the package. In particular, three small joint
 contact flags required follow-up and exact 7798 geometry remains unavailable.

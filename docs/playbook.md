@@ -23,7 +23,7 @@
     quantity and document the exact validation status.
 12. Incorporate physical-build feedback as measurements for the next revision.
 
-Only environment setup, package import and frozen-fixture checks are executable
+Only environment setup, type checking, package import and frozen-fixture checks are executable
 in the initial scaffold. Modeling, exports, connectivity, rendering, motion
 checks and a unified release command are planned modules. Historical scripts
 are starting material, not proof that these package APIs already exist.

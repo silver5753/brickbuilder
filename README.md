@@ -14,6 +14,7 @@ Use Python 3.11 or 3.12 and uv:
 
 ```sh
 uv sync --locked
+uv run --locked ty check src tests --error-on-warning
 uv run --locked python -m unittest discover -s tests -v
 uv run --locked python -c "import brickbuilder; print(brickbuilder.__version__)"
 uv build
