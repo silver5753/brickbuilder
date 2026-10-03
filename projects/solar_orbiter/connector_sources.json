@@ -1,0 +1,651 @@
+{
+  "schema_version": 1,
+  "recorded_on": "2026-10-02",
+  "method": "reviewed nominal declarations; restricted frame primitive extraction",
+  "sources": {
+    "11211.dat": {
+      "sha256": "a88c76a8936395abe5554aa2273c92271cc3c595e800a6ecfb479d2a9670f532",
+      "header": [
+        "0 Author: Magnus Forsberg [MagFors]",
+        "0 !LDRAW_ORG Part UPDATE 2012-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/11211.dat"
+    },
+    "15100.dat": {
+      "sha256": "009edf5a2d86ee3d87345a27b646500efd66b6bb63437fbcb3ddce22218d4ebb",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Part UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/15100.dat"
+    },
+    "15712.dat": {
+      "sha256": "d038b496c5c172e56967e26266d82734447417b21c951ce116f20c77b3640007",
+      "header": [
+        "0 Author: Magnus Forsberg [MagFors]",
+        "0 !LDRAW_ORG Part UPDATE 2014-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/15712.dat"
+    },
+    "18654.dat": {
+      "sha256": "80a0c04eb2ac78eed9f0fa740cb332ce8d08f2c89c9839cbd9492e8b54d4474a",
+      "header": [
+        "0 Author: Owen Burgoyne [C3POwen]",
+        "0 !LDRAW_ORG Part UPDATE 2015-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/18654.dat"
+    },
+    "2412b.dat": {
+      "sha256": "a7e7b03fc76cad9d94eb7199721b929f95227b1f8a35add5b7c66ee1ba6dca57",
+      "header": [
+        "0 Author: Guy Vivan [guyvivan]",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/2412b.dat"
+    },
+    "2569.dat": {
+      "sha256": "91f4524315a2258b40913c15673ed787a14e5ccc26eecc336a763e4d7566d9f3",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2020-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/2569.dat"
+    },
+    "26603.dat": {
+      "sha256": "74bc4947791435f65463427b1a0c187ed5861256256698b45696d2148daa67eb",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Part UPDATE 2016-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/26603.dat"
+    },
+    "2780.dat": {
+      "sha256": "2628d30bcfa42b3a616da38b8020cbc2b1edb98b055329cfac56425cdc9a8277",
+      "header": [
+        "0 Author: Guy Vivan [guyvivan]",
+        "0 !LDRAW_ORG Part UPDATE 2009-02",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/2780.dat"
+    },
+    "3002.dat": {
+      "sha256": "02065cff45c9f5cbc52259757813d3ac66e013777b759bf35a6bb94c9cbf1681",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3002.dat"
+    },
+    "3003.dat": {
+      "sha256": "aed0ccd750126a58d38b012a4e8b16c172896339547c120ef67b69e1386f490d",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3003.dat"
+    },
+    "3004.dat": {
+      "sha256": "e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3004.dat"
+    },
+    "3005.dat": {
+      "sha256": "f86e5f3aed432cab8f5dffcf2e41a9f2ee8c3bd4dcad1732da9630837849a4f8",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3005.dat"
+    },
+    "3020.dat": {
+      "sha256": "d0613b566eea4c8ce5ece5c910cb065db75197b6f04a05b421fea03bacbda8d0",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2002-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3020.dat"
+    },
+    "3021.dat": {
+      "sha256": "bb670d4440ddc7bc3f9d66959a51ce28637896ab57962eb5e1795757a13c420b",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2002-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3021.dat"
+    },
+    "3022.dat": {
+      "sha256": "3570c6bb26d9f8f64b5f5cce11b0ed69c68fe987f40b1c4e9174edf3c39225d6",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2002-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3022.dat"
+    },
+    "3023.dat": {
+      "sha256": "8a5b45c78531f18c6cfeeb6a818cf13e51664112251a3b06f2295cd8b3399f13",
+      "header": [
+        "0 Author: Orion Pobursky [OrionP]",
+        "0 !LDRAW_ORG Part UPDATE 2023-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3023.dat"
+    },
+    "3024.dat": {
+      "sha256": "e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3024.dat"
+    },
+    "3031.dat": {
+      "sha256": "d93fe67abdb1b20622475116a75ebe0031f905ac55d270b76410621be999ed0d",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2002-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3031.dat"
+    },
+    "3032.dat": {
+      "sha256": "891b283eca7fb918bd40df1ca7eee498034d89424e81adacef908ddd1840d7bc",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2002-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3032.dat"
+    },
+    "3033.dat": {
+      "sha256": "fccb28156f2a418eb0e9dc4f73cf51da4f13c5f5dadaa76e5bb643273e8c2067",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3033.dat"
+    },
+    "30374.dat": {
+      "sha256": "45d72e623efabbb846475a19ace99d0673962624e21175a0ec23c27901d19af6",
+      "header": [
+        "0 Author: Steve Bliss [sbliss]",
+        "0 !LDRAW_ORG Part UPDATE 2018-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/30374.dat"
+    },
+    "3062b.dat": {
+      "sha256": "6e4dee790f36442fd7469114e75eb442b19ecffad0d9adc2d4487d339a197363",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3062b.dat"
+    },
+    "3068b.dat": {
+      "sha256": "38fb0405d499d8174e9e0ee2c20f3db5f4a32d1da2bff4ee2b478bb45c03b6c2",
+      "header": [
+        "0 Author: Damien Guichard [BrickCaster]",
+        "0 !LDRAW_ORG Part UPDATE 2004-04",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3068b.dat"
+    },
+    "32063.dat": {
+      "sha256": "5fd86025189ced9ab0273973134773be58f62c03d778f5c1bf3575af254f3406",
+      "header": [
+        "0 Author: Lutz Uhlmann [El-Lutzo]",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/32063.dat"
+    },
+    "32278.dat": {
+      "sha256": "259fd8c6ce0af5e98eb1790269db00058a5869e6d5e3586635f906f6ed49fb8e",
+      "header": [
+        "0 Author: Ishino Keiichiro",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/32278.dat"
+    },
+    "32316.dat": {
+      "sha256": "321a837bbef296bdff22a2619dc2832eb8f241e9444c753e3a32b466706f42e1",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Part UPDATE 2024-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/32316.dat"
+    },
+    "32523.dat": {
+      "sha256": "37d90eaee5ba21c0c20b25af1b299ae9a17ff945fdbcd3c3fe1d02039c22f3f7",
+      "header": [
+        "0 Author: Tim Gould [timgould]",
+        "0 !LDRAW_ORG Part UPDATE 2022-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/32523.dat"
+    },
+    "32524.dat": {
+      "sha256": "c9dbf5583b2e6f710b7974a0e196fbcae59839a9d8d6ac31d86b10f91675537f",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/32524.dat"
+    },
+    "32525.dat": {
+      "sha256": "69b648e7a811c56665f51ada3a01e4ee8b75bc025ea36f7c55766d229d3f6212",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/32525.dat"
+    },
+    "3666.dat": {
+      "sha256": "f4fc83d8c3fc1df32c1a217dc09775a99fad1ced348cffc5167f9c6a69aa9bca",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2023-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3666.dat"
+    },
+    "3700.dat": {
+      "sha256": "6cb6522c580754cf970dad0fae688bb78cb3253a7237038dad83965fe47cfec6",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2010-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3700.dat"
+    },
+    "3710.dat": {
+      "sha256": "1a2d17e3e35750ccf02a54c7aee0cf7485c1c8596492746fc798d341399a3a6e",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2023-06",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3710.dat"
+    },
+    "3713.dat": {
+      "sha256": "2b813f30e7a6843cbd330035763f6ef904eafc8e7b5395c98332d07e8dfa1c43",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2012-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3713.dat"
+    },
+    "3737.dat": {
+      "sha256": "8ce0e9b1f3d9231b19667664cb11ed60d364fecb496492c7b388be1a501d3a55",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2005-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3737.dat"
+    },
+    "3794b.dat": {
+      "sha256": "839a2f23443b9442a32c099afad7411750438ea6cd234ef0b9831722c7f4b16d",
+      "header": [
+        "0 Author: Magnus Forsberg [MagFors]",
+        "0 !LDRAW_ORG Part UPDATE 2011-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3794b.dat"
+    },
+    "3795.dat": {
+      "sha256": "f349335f7795872fba56ef768f03cf18bd1af7c2b9e97efae074141224476d3c",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3795.dat"
+    },
+    "3832.dat": {
+      "sha256": "4928810faf064116f14126735c7a273df15c662fe1d648991c3a3c4cc79b0d49",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3832.dat"
+    },
+    "3958.dat": {
+      "sha256": "9f64b46369f84ca4b172fd1a9e239cfd9bc17801d0999c38ef8847bf683e1dac",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2017-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/3958.dat"
+    },
+    "39794.dat": {
+      "sha256": "0a52455cac815a42f2674d7be7039ed4bb3f36f8a5d5f0dde181226decdf7c80",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Part UPDATE 2020-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/39794.dat"
+    },
+    "s/39790s01.dat": {
+      "sha256": "e14e52a1728ef78bf773beb890d4ca5a1e7552d17538a8f95b3c690aa5f9d099",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Subpart UPDATE 2024-04",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/s/39790s01.dat"
+    },
+    "s/39790s02.dat": {
+      "sha256": "046d8f169c905f027be904f65a3d51b45a6b61436710b06fa74fc3886cdcf748",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Subpart UPDATE 2023-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/s/39790s02.dat"
+    },
+    "4032a.dat": {
+      "sha256": "d50954e1cf811e6e78bcd4c69154bdf3bd2f16f9ecc671e5d0bbe21d5687c968",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/4032a.dat"
+    },
+    "41239.dat": {
+      "sha256": "ee7529dd38fa07826481ad6005a2e1db9b551e54e50b4c37deae7a60fa872cbc",
+      "header": [
+        "0 Author: Guy Vivan [guyvivan]",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/41239.dat"
+    },
+    "4274.dat": {
+      "sha256": "c421cee48c7c0233371144f5a256f7a4503f008318ff523b31e0b5a9d44d9704",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2020-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/4274.dat"
+    },
+    "43857.dat": {
+      "sha256": "438b9bc2954edc9f86486d67cc0cb4f0f66cc58141c1b803b5a535a7bde4da85",
+      "header": [
+        "0 Author: Donald Sutter [technog]",
+        "0 !LDRAW_ORG Part UPDATE 2005-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/43857.dat"
+    },
+    "44224.dat": {
+      "sha256": "c9783a9c8aebeeb04f226a9d50d12ae676d2ca53762236a86950eb6bdbcfb18b",
+      "header": [
+        "0 Author: Guy Vivan [guyvivan]",
+        "0 !LDRAW_ORG Part UPDATE 2024-02",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/44224.dat"
+    },
+    "44225.dat": {
+      "sha256": "b0851cbee52ff5fcbb242cf459eb47e9b948b06de47d4eb0748cab8deba942a6",
+      "header": [
+        "0 Author: Guy Vivan [guyvivan]",
+        "0 !LDRAW_ORG Part UPDATE 2024-02",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/44225.dat"
+    },
+    "44375a.dat": {
+      "sha256": "1f16590b037b5cda16c09a35e8efa61ca0ffda57ba747c108325d55d569082a4",
+      "header": [
+        "0 Author: Andy Westrate [westrate]",
+        "0 !LDRAW_ORG Part UPDATE 2012-02",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/44375a.dat"
+    },
+    "48092.dat": {
+      "sha256": "f66b2127a90eda3c2e800fc3c79d7b23521afe48d7ec808d4ecf416b1c33cb1c",
+      "header": [
+        "0 Author: Guy Vivan [guyvivan]",
+        "0 !LDRAW_ORG Part UPDATE 2022-01",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/48092.dat"
+    },
+    "50451.dat": {
+      "sha256": "20dbfef93d3caee71d632c518fac349dc8699b6787628bafe9cf5db320825997",
+      "header": [
+        "0 Author: Guy Vivan [guyvivan]",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/50451.dat"
+    },
+    "6141.dat": {
+      "sha256": "3b0f574fcdb9518618f3d22ab7f818ad62a6a3f93b053046fec7182037252b7d",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2015-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/6141.dat"
+    },
+    "64179.dat": {
+      "sha256": "7e8e131d8c7ca9387ba9f3b79d1fbd2f089c6d28b3f3b415bcbd1224e1629834",
+      "header": [
+        "0 Author: Santeri Piippo [arezey]",
+        "0 !LDRAW_ORG Part UPDATE 2012-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/64179.dat"
+    },
+    "s/64179s01.dat": {
+      "sha256": "bb17d1bb2edc234ab451f3045c3f4ab9f2aea371d886b9eaa9374cd5f3e8b666",
+      "header": [
+        "0 Author: Santeri Piippo [arezey]",
+        "0 !LDRAW_ORG Subpart UPDATE 2023-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/s/64179s01.dat"
+    },
+    "6536.dat": {
+      "sha256": "5e976f24305ab7a207d4c26f36f3151fb90b9fe56b4e513ba33e3ddf7f4c58b7",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2009-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/6536.dat"
+    },
+    "6558.dat": {
+      "sha256": "28d5dfb1009599f84edfae076be13eb648bbfae32cdba57b12b7d7829465057c",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/6558.dat"
+    },
+    "6636.dat": {
+      "sha256": "e4bd77135a542e0953fd9d6e08e050911ce920582f0e1020f02bedcd9cbee84d",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2009-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/6636.dat"
+    },
+    "69729.dat": {
+      "sha256": "2145aca5aa453d2a7ba512fb6be58ce7a77e9136fbbc137536aa759ef377ec61",
+      "header": [
+        "0 Author: Vincent Messenet [Cheenzo]",
+        "0 !LDRAW_ORG Part UPDATE 2020-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/69729.dat"
+    },
+    "7798.dat": {
+      "sha256": null,
+      "header": [],
+      "url": null
+    },
+    "87580.dat": {
+      "sha256": "9f1fee81902d00778bb6e91d6239d83ac6e3fca788954f30bbaab149abff6d54",
+      "header": [
+        "0 Author: Joerg Sommerer [Brickaneer]",
+        "0 !LDRAW_ORG Part UPDATE 2017-01",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/87580.dat"
+    },
+    "87994.dat": {
+      "sha256": "5e26cbe3131a553ca5012a5eb921bfebbd4a473e6d0e055e9bb28b8f4ce760a8",
+      "header": [
+        "0 Author: Chris Dee [cwdee]",
+        "0 !LDRAW_ORG Part UPDATE 2015-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/87994.dat"
+    },
+    "90498.dat": {
+      "sha256": "84827c92d9bedec854d7bc1fedb2211483d33b00758d55d2b5b5200f7eb56c7a",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Part UPDATE 2011-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/90498.dat"
+    },
+    "98138.dat": {
+      "sha256": "1d506f39ea2bf69757206009498025381bbf28d9fa0b79385a30f4c5fa37f111",
+      "header": [
+        "0 Author: Magnus Forsberg [MagFors]",
+        "0 !LDRAW_ORG Part UPDATE 2011-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/parts/98138.dat"
+    },
+    "confric5.dat": {
+      "sha256": "7dcf4e82e28f67d134051c1757206397ccdfa94d8660413a06a3baa9e4eb08dc",
+      "header": [
+        "0 Author: Donald Sutter [technog]",
+        "0 !LDRAW_ORG Primitive UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/confric5.dat"
+    },
+    "confric6.dat": {
+      "sha256": "fb020354feadb142f6372912867e691547b5b5742ec467478bfd7f8c8d08ecff",
+      "header": [
+        "0 Author: Donald Sutter [technog]",
+        "0 !LDRAW_ORG Primitive UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/confric6.dat"
+    },
+    "confric8.dat": {
+      "sha256": "6a4d715097282662a2147572f58862825265fd7c46ca20110df614cf027c8fa0",
+      "header": [
+        "0 Author: Donald Sutter [technog]",
+        "0 !LDRAW_ORG Primitive UPDATE 2009-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/confric8.dat"
+    },
+    "confric10.dat": {
+      "sha256": "096265a10a4723a081b0724055bb5a04a603bb07b22920f88f460ff7003b4e44",
+      "header": [
+        "0 Author: Philippe Hurbain [Philo]",
+        "0 !LDRAW_ORG Primitive UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/confric10.dat"
+    },
+    "connect.dat": {
+      "sha256": "fa572d5b7bcdb19ea2ba74cd1a98aca913e1e556001232e484611915adf83305",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/connect.dat"
+    },
+    "beamhole.dat": {
+      "sha256": "8622d704b75a6f81cdccf99e44f8e88a6b1df024d90e160ff18afb07c482f77b",
+      "header": [
+        "0 Author: Willy Tschager [Holly-Wood]",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/beamhole.dat"
+    },
+    "connhole.dat": {
+      "sha256": "577a734213f632d44646c02d5f9b0f7581df1572aff2f213791bc6172d623af4",
+      "header": [
+        "0 Author: Magnus Forsberg [MagFors]",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/connhole.dat"
+    },
+    "peghole.dat": {
+      "sha256": "90c6dba9e5bcdd63955b9a5208f377761850863be9ed26cac7cd2be61ab85c92",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Primitive UPDATE 2010-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/peghole.dat"
+    },
+    "bush0.dat": {
+      "sha256": "8f88836565c33393b76ff00c658aef26d16608db3a8eac5e4302b17978a0bc51",
+      "header": [
+        "0 Author: Willy Tschager [Holly-Wood]",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/bush0.dat"
+    },
+    "axle.dat": {
+      "sha256": "b80b9c23788080b58962c7cca4a641d584957afaf71a4031b1d3616721516f8e",
+      "header": [
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "url": "https://library.ldraw.org/library/official/p/axle.dat"
+    }
+  }
+}

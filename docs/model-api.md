@@ -131,7 +131,8 @@ and fail rather than flattening submodels or counting texture fallbacks twice.
 External dependency resolution supplies bounds; it does not flatten a bill of
 materials or treat subfile references as proven physical parts. Rendering,
 near-duplicate tolerances, collision/contact tests and
-connection legality remain future work. Legacy non-UTF-8 libraries require an
+complete connection legality remain future work. Scoped nominal attachment
+checks are available separately; see [connectivity](connectivity.md). Legacy non-UTF-8 libraries require an
 explicit conversion outside this API.
 
 Format references:

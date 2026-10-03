@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "57cd5a2e5bab4ad9cc0f601e997096dfe99f1e39f1f42c70115316a059bd9b76",
+  "profiles_sha256": "384b5ae9b6b49c6457ba2d3d7141dd069368279c2f24dd0b2fd8a06874d7e814",
+  "models": [
+    {
+      "source": "solar_orbiter_v15.ldr",
+      "source_sha256": "6da0f38625c5357af6984fd06e31bf89438a90a9f36a80a419b354630b07d035",
+      "model_sha256": "0ad206eed64c9e321f29a9840c3a4bffb04c5ba28b6c95da4351d8e9db7ff90b",
+      "status": "unknown",
+      "quantity": 966,
+      "root_component_quantity": 948,
+      "unsupported_quantity": 35,
+      "edge_quantity": 2762,
+      "disconnected_component_sizes": [
+        3,
+        2,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing_pin_segments": [
+        {
+          "instance_id": "import-1fee9c9ad67c3894a4b7b1241ad0a005fb493926bbb2378ccfaad74ac2cd4d69",
+          "reference": "6558.dat",
+          "connector": "pin-2",
+          "position_ldu": [
+            -320.0,
+            -60.0,
+            40.0
+          ]
+        },
+        {
+          "instance_id": "import-47bab4c1f3554c391f87066af84f659193872064f1ec46d682192f52d174126e",
+          "reference": "6558.dat",
+          "connector": "pin-0",
+          "position_ldu": [
+            -320.0,
+            60.0,
+            0.0
+          ]
+        },
+        {
+          "instance_id": "import-ceb13f22124b3d3fa9fcd2ca8c19d7d0fa53eafc930302b3c9473ca4e3b0cd0c",
+          "reference": "6558.dat",
+          "connector": "pin-2",
+          "position_ldu": [
+            320.0,
+            -60.0,
+            40.0
+          ]
+        },
+        {
+          "instance_id": "import-b8ca87ccebbc2db79bceb68f95dc856404917ca1435ce6d48fb1dfa226b5e85a",
+          "reference": "6558.dat",
+          "connector": "pin-0",
+          "position_ldu": [
+            320.0,
+            60.0,
+            0.0
+          ]
+        }
+      ],
+      "assemblies": [
+        {
+          "name": "antennas",
+          "quantity": 4,
+          "reachable": 3,
+          "unreachable_instance_ids": [
+            "import-ed598a4f52b686c853a6144eab95321114c5d23aa44f592a2625e049c0473d2d"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "arrays",
+          "quantity": 252,
+          "reachable": 252,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "body_detail",
+          "quantity": 9,
+          "reachable": 9,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "boom",
+          "quantity": 57,
+          "reachable": 52,
+          "unreachable_instance_ids": [
+            "import-0bb196d5ac833f6347966dc93e16e7ce1b3d14e3d6ad04e45d54de74ec4da11a",
+            "import-2eb89acb31f0c259801b9622efa22fc947165291ad3fcacfad33a4fcaf169118",
+            "import-33a4dcab972c9ccf2f8afad75277f1513d068fd1f07876bca3d6b5e9da57c814",
+            "import-6308c68c21b13228baba19200130830c67eefce01148ae3b640f01340472e799",
+            "import-718d7b1069b185e5ece9599f600972e17f0b51dc61dd8e7c2f236e73a3cc0ef6"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "boom_mount",
+          "quantity": 22,
+          "reachable": 22,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "chassis",
+          "quantity": 38,
+          "reachable": 38,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "cover_mounts",
+          "quantity": 32,
+          "reachable": 32,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "covers",
+          "quantity": 10,
+          "reachable": 10,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "dish",
+          "quantity": 20,
+          "reachable": 15,
+          "unreachable_instance_ids": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "his",
+          "quantity": 9,
+          "reachable": 9,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "instruments",
+          "quantity": 6,
+          "reachable": 6,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "lower_antennas",
+          "quantity": 16,
+          "reachable": 14,
+          "unreachable_instance_ids": [
+            "import-5cf81c81d022d3efdd2dcc556ff789e21a31212634fc07ee92530c37660d100c",
+            "import-8647d591187d07a63acf9449c4db6b5d1e1d5ec870c93d125de7896835f249f0"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "rear_panel",
+          "quantity": 62,
+          "reachable": 58,
+          "unreachable_instance_ids": [
+            "import-8253b0f5fced38c3dce28bfafbf91ed5047f62df4a6ef15648b7e7ee8cee0708",
+            "import-8a0522f5cba3035449c63e2f4bd32b24cc41f095f1c748a7e695629952c24175",
+            "import-b6ca52a3cb1f41a923b5c18a6fae65e2b0770df70ad9081bc777348ca20f16c6",
+            "import-dea3246a56ec12af5be53a6d40d546f4341d4ba2e0ee2577262867f3d5c19f65"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "shield",
+          "quantity": 115,
+          "reachable": 114,
+          "unreachable_instance_ids": [
+            "import-cb56c582bbd7cf0e3c8ec6cdde565de9fa6a0489fcd70c24306e8ac8962d49c3"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "shield_detail",
+          "quantity": 6,
+          "reachable": 6,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "side_equipment",
+          "quantity": 128,
+          "reachable": 128,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "stand",
+          "quantity": 46,
+          "reachable": 46,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "stand_cradle",
+          "quantity": 34,
+          "reachable": 34,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "wings",
+          "quantity": 100,
+          "reachable": 100,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        }
+      ],
+      "limitations": [
+        "Nominal seat/axis/engagement checks only; minimum overlap is an audit policy, not a strength measurement.",
+        "Round-hole axle edges allow rotation and do not establish angular restraint.",
+        "With unsupported interfaces, missing paths/hosts remain unknown and cannot pass."
+      ]
+    },
+    {
+      "source": "solar_orbiter_v15_articulated.ldr",
+      "source_sha256": "e1924acc75e6125d06ccce8bcbde5e3fe923fa2afa76ec264a857cb993aad3ce",
+      "model_sha256": "f95ca794645c4987f8889a6fdd28b5e34b8614dd57c7c46aea83fc7e5cee4e8e",
+      "status": "unknown",
+      "quantity": 966,
+      "root_component_quantity": 948,
+      "unsupported_quantity": 35,
+      "edge_quantity": 2762,
+      "disconnected_component_sizes": [
+        3,
+        2,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing_pin_segments": [
+        {
+          "instance_id": "import-a264d75244b5b80bc17f469fde9109a9a45b663b71dca965a6227e21b3aa30ca",
+          "reference": "6558.dat",
+          "connector": "pin-2",
+          "position_ldu": [
+            -320.0,
+            -44.6410162,
+            57.320508079999996
+          ]
+        },
+        {
+          "instance_id": "import-0e4dd88f2d231f54150f2618222acb447fdeb538b592b3abb6ce084ae91d3c1f",
+          "reference": "6558.dat",
+          "connector": "pin-0",
+          "position_ldu": [
+            -320.0,
+            39.2820323,
+            -37.320508079999996
+          ]
+        },
+        {
+          "instance_id": "import-d5afea7c6124b304e94acfc82ae89e2fa778dabe2a380d884695bc69165c0965",
+          "reference": "6558.dat",
+          "connector": "pin-2",
+          "position_ldu": [
+            320.0,
+            -64.6410162,
+            17.320508080000003
+          ]
+        },
+        {
+          "instance_id": "import-6ef1a6f3e4d1eff0f99d26e389c4e26a3b046684985df566e05b554a6db2545e",
+          "reference": "6558.dat",
+          "connector": "pin-0",
+          "position_ldu": [
+            320.0,
+            59.2820323,
+            42.679491920000004
+          ]
+        }
+      ],
+      "assemblies": [
+        {
+          "name": "antennas",
+          "quantity": 4,
+          "reachable": 3,
+          "unreachable_instance_ids": [
+            "import-ed598a4f52b686c853a6144eab95321114c5d23aa44f592a2625e049c0473d2d"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "arrays",
+          "quantity": 252,
+          "reachable": 252,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "body_detail",
+          "quantity": 9,
+          "reachable": 9,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "boom",
+          "quantity": 57,
+          "reachable": 52,
+          "unreachable_instance_ids": [
+            "import-0bb196d5ac833f6347966dc93e16e7ce1b3d14e3d6ad04e45d54de74ec4da11a",
+            "import-2eb89acb31f0c259801b9622efa22fc947165291ad3fcacfad33a4fcaf169118",
+            "import-33a4dcab972c9ccf2f8afad75277f1513d068fd1f07876bca3d6b5e9da57c814",
+            "import-6308c68c21b13228baba19200130830c67eefce01148ae3b640f01340472e799",
+            "import-718d7b1069b185e5ece9599f600972e17f0b51dc61dd8e7c2f236e73a3cc0ef6"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "boom_mount",
+          "quantity": 22,
+          "reachable": 22,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "chassis",
+          "quantity": 38,
+          "reachable": 38,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "cover_mounts",
+          "quantity": 32,
+          "reachable": 32,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "covers",
+          "quantity": 10,
+          "reachable": 10,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "dish",
+          "quantity": 20,
+          "reachable": 15,
+          "unreachable_instance_ids": [
+            "import-385a587a8dda792628442f38f7097b955aa44b55e4eba1366248020d55a7cd0f",
+            "import-6745d0e130652e903210e6f17a675b0930f5170d7094bd3b10708c4ed6109390",
+            "import-68501468e06ac09e1967928ca72c49a31d17eb84237324042181dad3b0b039e1",
+            "import-7a57ec7b3feae2d9fa27275a14354e65aba0d6864d697bb6aea36fa1b4767ad1",
+            "import-ff70bd4c414cc4bbcd5889ca64c3830a00a2814760f9349ac65da62d733c6786"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "his",
+          "quantity": 9,
+          "reachable": 9,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "instruments",
+          "quantity": 6,
+          "reachable": 6,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "lower_antennas",
+          "quantity": 16,
+          "reachable": 14,
+          "unreachable_instance_ids": [
+            "import-5cf81c81d022d3efdd2dcc556ff789e21a31212634fc07ee92530c37660d100c",
+            "import-8647d591187d07a63acf9449c4db6b5d1e1d5ec870c93d125de7896835f249f0"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "rear_panel",
+          "quantity": 62,
+          "reachable": 58,
+          "unreachable_instance_ids": [
+            "import-8253b0f5fced38c3dce28bfafbf91ed5047f62df4a6ef15648b7e7ee8cee0708",
+            "import-8a0522f5cba3035449c63e2f4bd32b24cc41f095f1c748a7e695629952c24175",
+            "import-b6ca52a3cb1f41a923b5c18a6fae65e2b0770df70ad9081bc777348ca20f16c6",
+            "import-dea3246a56ec12af5be53a6d40d546f4341d4ba2e0ee2577262867f3d5c19f65"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "shield",
+          "quantity": 115,
+          "reachable": 114,
+          "unreachable_instance_ids": [
+            "import-cb56c582bbd7cf0e3c8ec6cdde565de9fa6a0489fcd70c24306e8ac8962d49c3"
+          ],
+          "status": "unknown"
+        },
+        {
+          "name": "shield_detail",
+          "quantity": 6,
+          "reachable": 6,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "side_equipment",
+          "quantity": 128,
+          "reachable": 128,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "stand",
+          "quantity": 46,
+          "reachable": 46,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "stand_cradle",
+          "quantity": 34,
+          "reachable": 34,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        },
+        {
+          "name": "wings",
+          "quantity": 100,
+          "reachable": 100,
+          "unreachable_instance_ids": [],
+          "status": "pass"
+        }
+      ],
+      "limitations": [
+        "Nominal seat/axis/engagement checks only; minimum overlap is an audit policy, not a strength measurement.",
+        "Round-hole axle edges allow rotation and do not establish angular restraint.",
+        "With unsupported interfaces, missing paths/hosts remain unknown and cannot pass."
+      ]
+    }
+  ]
+}

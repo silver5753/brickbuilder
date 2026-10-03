@@ -52,6 +52,9 @@ models, transforms, LDraw round-trips, dependency failures and vertex bounds.
 Read docs/model-api.md before using the CAD APIs; MPD/TEXMAP are unsupported.
 Read docs/inventory-exports.md before sourcing. Tests also cover native quantity
 conservation, substitution deltas, ordering namespaces and rejected mappings.
+Read docs/connectivity.md before attachment work. Tests also cover scoped
+connector matching, pin collars/depth, axle clocking, occupancy and root paths.
+An unknown connection report exits 3 and must not be treated as a pass.
 
 Read the fixture manifest before using a baseline. JSON fixtures are stored
 as deterministic gzip streams; decompressed bytes are the original source

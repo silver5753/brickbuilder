@@ -7,6 +7,9 @@ import json
 from pathlib import Path
 import sys
 
+from .connectivity import inspect_connections
+from .connectivity.catalog import loads_catalog
+from .connectivity.profile import load_profile
 from .exporters import bundle, native_bundle, write_bundle
 from .exporters.rules import loads_rules
 from .geometry import GeometryLoader, duplicate_placements, inspect_geometry
@@ -205,6 +208,28 @@ def _roundtrip_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _connections_command(args: argparse.Namespace) -> int:
+    source = read_source(args.source)
+    payload = args.catalog.read_bytes()
+    catalog = loads_catalog(payload.decode("utf-8-sig"))
+    if bool(args.root) == bool(args.profile):
+        raise ValueError("Supply exactly one of --root or --profile")
+    profile = load_profile(args.profile, source) if args.profile else None
+    report = inspect_connections(
+        source.document.model,
+        catalog,
+        root=profile.root if profile else args.root,
+        assemblies=profile.assemblies if profile else None,
+    )
+    report.update(
+        source_sha256=source.sha256, catalog_sha256=sha256(payload).hexdigest()
+    )
+    if profile:
+        report.update(profile=profile.name, profile_sha256=profile.sha256)
+    _print(report)
+    return {"pass": 0, "fail": 1, "unknown": 3}[str(report["status"])]
+
+
 def _selection_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("source", type=Path, nargs="?")
     parser.add_argument("--selections", type=Path)
@@ -249,6 +274,16 @@ def _parser() -> argparse.ArgumentParser:
     export.add_argument("--rules", type=Path)
     export.add_argument("--allow-untested", action="store_true")
     export.set_defaults(handler=_export_command)
+    connections = commands.add_parser(
+        "connections", help="Check declared nominal interfaces and attachment paths"
+    )
+    connections.add_argument("source", type=Path)
+    connections.add_argument("--catalog", type=Path, required=True)
+    connections.add_argument("--root", help="Stable instance ID of the structure root")
+    connections.add_argument(
+        "--profile", type=Path, help="Checksummed project root/assembly bindings"
+    )
+    connections.set_defaults(handler=_connections_command)
     return parser
 
 

@@ -246,8 +246,8 @@ Do not copy historical migration scripts or generated audit JSONs into the activ
 
 Repository: https://github.com/silver5753/brickbuilder
 Project display name: Brick Builder. Python package and CLI name: `brickbuilder`.
-Milestones 1–3 are implemented within the scope recorded below. Connectivity and
-physical validation remain later work. See the [code review](review-milestones-1-3.md).
+Milestones 1–3 are implemented within the scope recorded below. Scoped nominal connectivity is implemented by milestone 4;
+physical validation remains later work. See the [code review](review-milestones-1-3.md).
 
 ### Commit 1 — `chore: establish Brick Builder project and preserve baseline`
 
@@ -330,7 +330,11 @@ contents below remain the milestone specification.
 
 ### Sequencing after these commits
 
-Commit 4 should port nominal connectivity and pin-engagement checks into reusable rules with valid/invalid fixtures and fail/unknown exit statuses. Rendering/stickers, geometric substitutions, collision/motion tooling and a unified release command follow. The first three commits intentionally remain independently reviewable; a scaffold or a round-trip test is not a declaration that a model is construction-ready.
+Milestone 4 now implements scoped nominal connectors, pin engagement/collars,
+axle clocking, seat occupancy and rooted graph checks with valid/invalid fixtures
+and fail/unknown exit statuses. Python 3.12 standardization is a separate
+preceding commit. See [connectivity](connectivity.md) for catalog scope and the
+current unknown baseline. Rendering/stickers, geometric substitutions, collision/motion tooling and a unified release command follow. The first three commits intentionally remain independently reviewable; a scaffold or a round-trip test is not a declaration that a model is construction-ready.
 
 The existing source files should be extracted selectively. Public-facing text uses “brick” and “Brick Builder”; source URLs, native part identifiers and required third-party license/attribution text retain their exact identities.
 

@@ -7,7 +7,7 @@ worked example and frozen regression baseline.
 The package includes typed part instances, rigid transforms, native LDraw
 round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
 Native inventories, quantity differences and separate purchasing export bundles
-are also implemented. Connectivity and rendering remain planned modules.
+are also implemented. Scoped nominal attachment checks are implemented; rendering remains planned.
 
 ## Setup and checks
 
@@ -15,7 +15,7 @@ Use Python 3.12 and uv:
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests --error-on-warning
+uv run --locked ty check src tests tools --error-on-warning
 uv run --locked python -m unittest discover -s tests -v
 uv run --locked python -c "import brickbuilder; print(brickbuilder.__version__)"
 uv build
@@ -43,6 +43,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Playbook](docs/playbook.md)
 - [Model API and inspection CLI](docs/model-api.md)
 - [Inventories and ordering exports](docs/inventory-exports.md)
+- [Connections and attachment checks](docs/connectivity.md)
 - [Workflow inventory and planned commits](docs/workflow-inventory.md)
 - [Milestones 1–3 code review](docs/review-milestones-1-3.md)
 - [Validation levels](docs/validation-levels.md)

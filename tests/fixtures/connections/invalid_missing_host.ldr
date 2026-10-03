@@ -1,0 +1,5 @@
+0 // Missing required right pin host
+0 !BRICKBUILDER INSTANCE {"id":"pin","group":null,"confidence":"unknown","note":null}
+1 0 0 0 0 1 0 0 0 1 0 0 0 1 2780.dat
+0 !BRICKBUILDER INSTANCE {"id":"left","group":null,"confidence":"unknown","note":null}
+1 71 -10 0 0 6.123233995736766e-17 1 0 -1 6.123233995736766e-17 0 0 0 1 18654.dat

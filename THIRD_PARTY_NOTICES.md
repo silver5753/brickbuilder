@@ -5,6 +5,10 @@ retain their own licenses; consult the locked packages' license information.
 
 The baseline files are project-generated part placements and inventories.
 They reference native LDraw part identifiers but include no LDraw part meshes.
+The nominal connector catalog contains reviewed dimension/interface declarations.
+Its source attribution, applicable license headers and source hashes are retained
+in projects/solar_orbiter/connector_sources.json; derived frame bore coordinates
+come from the named LDraw contributors. No source geometry is redistributed.
 LDraw geometry, if added or distributed later, must retain its authorship and
 applicable license files; do not strip attribution during terminology edits.
 
