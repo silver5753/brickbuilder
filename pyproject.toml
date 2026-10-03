@@ -22,4 +22,10 @@ packages = ["src/brickbuilder"]
 [dependency-groups]
 dev = [
     "ty>=0.0.84",
+    "pytest==9.0.2",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--import-mode=importlib", "--strict-markers", "--strict-config"]
+markers = ["render: requires the optional rendering dependencies"]

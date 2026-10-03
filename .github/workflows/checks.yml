@@ -18,7 +18,7 @@ jobs:
       - run: uv sync --locked --python "3.12"
       - name: Type check source, tests and preparation tools
         run: uv run --locked --python "3.12" ty check src tests tools --error-on-warning
-      - run: uv run --locked --python "3.12" python -m unittest discover -s tests -v
+      - run: uv run --locked --python "3.12" pytest -m 'not render' -q
       - run: uv run --locked --python "3.12" python -c "import brickbuilder; print(brickbuilder.__version__)"
       - name: Inspect native baseline
         run: uv run --locked --python "3.12" brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
@@ -38,4 +38,4 @@ jobs:
       - run: uv sync --locked --extra render
       - run: uv run --locked --extra render ty check src tests tools --error-on-warning
       - name: Synthetic image and print regressions
-        run: uv run --locked --extra render python -m unittest discover -s tests -p test_rendering.py -v
+        run: uv run --locked --extra render pytest tests/test_rendering.py -q

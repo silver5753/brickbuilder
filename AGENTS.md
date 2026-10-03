@@ -45,7 +45,8 @@ ordering export omits a part for manual addition.
 ## Implementation and tests
 
 Keep the lightweight core separate from optional rendering dependencies.
-Use uv sync --locked, the documented ty check and unittest commands. Test relevant
+Use uv sync --locked, the documented ty check and pytest commands; read
+docs/testing.md before changing tests. Test relevant
 failure cases, quantity conservation and stable transforms; do not claim
 checks that are not implemented. Current tests cover fixture integrity, typed
 models, transforms, LDraw round-trips, dependency failures and vertex bounds.

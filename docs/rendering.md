@@ -120,7 +120,8 @@ Tests cover nested geometry/colors, line-only dependencies, cycles, explicit
 missing-mesh envelopes, camera direction, true occlusion, repeatable image bytes,
 filtered selections, palette failures and print dimensions/pagination. A separate
 render CI job installs the optional extra and exercises pixel-level tests. The
-core job checks the dependency-free APIs and skips optional backend cases.
+core job checks the dependency-free APIs and deselects optional backend cases.
+Selecting rendering tests without the extra fails collection instead of skipping.
 
 The frozen native CAD and all baseline fixture hashes remain unchanged.
 Motion/collision review and a unified release bundle remain milestone 6.

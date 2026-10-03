@@ -17,13 +17,20 @@ Use Python 3.12 and uv:
 ```sh
 uv sync --locked
 uv run --locked ty check src tests tools --error-on-warning
-uv run --locked python -m unittest discover -s tests -v
+uv run --locked pytest -m 'not render' -q
 uv run --locked python -c "import brickbuilder; print(brickbuilder.__version__)"
 uv build
 ```
 
-The core has no runtime dependencies. Rendering will have a separately
-specified environment when that module is added.
+The core has no runtime dependencies. Tests use pytest from the locked development
+environment. Install the `render` extra for the complete suite:
+
+```sh
+uv sync --locked --extra render
+uv run --locked --extra render pytest -q
+```
+
+See [the testing guide](docs/testing.md) for fixtures, markers and coverage limits.
 
 ## Native model commands
 
