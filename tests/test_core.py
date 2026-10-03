@@ -68,40 +68,34 @@ def test_axis_alignment_including_antiparallel_and_poles():
         axis_x((0.0, 0.0, 0.0))
 
 
-@pytest.mark.parametrize(
-    "length,hole", [(80, (0.0, 0.0, 1.0)), (100, (60.0, 80.0, 0.0))], ids=["80", "100"]
-)
-def test_beam_real_length_and_hole_axis(length, hole):
+def test_beam_real_length_and_hole_axis():
     frame = beam_transform((0.0, 0.0, 0.0), (60.0, 80.0, 0.0), length_ldu=100)
     assert frame.point((0.0, 0.0, -50.0)) == pytest.approx((0, 0, 0), abs=1e-09, rel=0)
     assert frame.point((0.0, 0.0, 50.0)) == pytest.approx((60, 80, 0), abs=1e-09, rel=0)
     assert frame.point((0.0, 1.0, 0.0)) == pytest.approx((30, 40, 1), abs=1e-09, rel=0)
     assert is_rigid(frame.rotation)
-    with pytest.raises(ValueError):
-        beam_transform(
-            (0.0, 0.0, 0.0), (60.0, 80.0, 0.0), length_ldu=length, hole_axis=hole
-        )
+    for length, hole in [(80, (0.0, 0.0, 1.0)), (100, (60.0, 80.0, 0.0))]:
+        with pytest.raises(ValueError):
+            beam_transform(
+                (0.0, 0.0, 0.0), (60.0, 80.0, 0.0), length_ldu=length, hole_axis=hole
+            )
 
 
-@pytest.mark.parametrize(
-    "bad",
-    [
-        ((2.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)),
-        ((-1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)),
-        ((1.0, 0.5, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)),
-    ],
-    ids=["case-1", "case-2", "case-3"],
-)
-def test_nonfinite_and_nonrigid_rejected(bad):
+def test_nonfinite_and_nonrigid_rejected():
     with pytest.raises(ValueError):
         Transform((nan, 0.0, 0.0))
     with pytest.raises(ValueError):
         rotation("z", nan)
-    frame = Transform(rotation=bad)
-    with pytest.raises(ValueError):
-        PartInstance("bad", "test.dat", 0, frame)
-    with pytest.raises(ValueError):
-        frame.inverse()
+    for bad in [
+        ((2.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)),
+        ((-1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)),
+        ((1.0, 0.5, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0)),
+    ]:
+        frame = Transform(rotation=bad)
+        with pytest.raises(ValueError):
+            PartInstance("bad", "test.dat", 0, frame)
+        with pytest.raises(ValueError):
+            frame.inverse()
 
 
 def test_stable_identity_through_moves_and_file_edits():
@@ -124,17 +118,18 @@ def test_stable_identity_through_moves_and_file_edits():
     assert loads(dumps(restored.with_model(Model((edited,))))).model.parts[0] == edited
 
 
-@pytest.mark.parametrize(
-    "changes",
-    [dict(step=0), dict(colour=24), dict(colour=True), dict(instance_id="")],
-    ids=["case-1", "case-2", "case-3", "case-4"],
-)
-def test_duplicate_ids_and_invalid_fields(changes):
+def test_duplicate_ids_and_invalid_fields():
     part = PartInstance("id", "test.dat", 0)
     with pytest.raises(ValueError):
         Model((part, part))
-    with pytest.raises(ValueError):
-        replace(part, **changes)
+    for changes in [
+        dict(step=0),
+        dict(colour=24),
+        dict(colour=True),
+        dict(instance_id=""),
+    ]:
+        with pytest.raises(ValueError):
+            replace(part, **changes)
 
 
 def test_duplicate_placements_report_ids_without_deletion():
@@ -150,9 +145,6 @@ def test_all_baseline_variants_roundtrip_exact_parsed_values():
     for path in FIXTURE.glob("*.ldr"):
         document = load(path)
         assert loads(dumps(document)) == document
-        assert (
-            loads(dumps(document)).model.fingerprint() == document.model.fingerprint()
-        )
 
 
 def test_comments_steps_primitives_and_direct_colours():
@@ -266,7 +258,6 @@ def test_nested_scaled_primitive_then_rotated_part_exact_bounds(
     )
     library = PartLibrary((library_root,))
     report = inspect_geometry(Model((part,)), GeometryLoader(library))
-    assert report.bounds is not None
     bounds = report.bounds
     assert bounds is not None
     for actual, expected in zip(bounds.minimum, (5, 21, 30)):

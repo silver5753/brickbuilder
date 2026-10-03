@@ -71,12 +71,7 @@ def test_alternative_selections_independently_match_baseline_counts():
     ) == inventory(load_selection(PROJECT / "selections.json", "articulated")[0].model)
 
 
-@pytest.mark.parametrize(
-    "kwargs",
-    [dict(groups=frozenset({"unknown"})), dict(instance_ids=frozenset({"unknown"}))],
-    ids=["case-1", "case-2"],
-)
-def test_filters_intersect_and_preserve_named_frame_and_ids(kwargs):
+def test_filters_intersect_and_preserve_named_frame_and_ids():
     parts = (
         replace(model(("3001", 0)).parts[0], group="body"),
         PartInstance("second", "3001.dat", 71, group="wing"),
@@ -87,8 +82,12 @@ def test_filters_intersect_and_preserve_named_frame_and_ids(kwargs):
     )
     assert chosen.parts == (parts[1],)
     assert chosen.frame == "spacecraft"
-    with pytest.raises(ValueError):
-        select(source, **kwargs)
+    for kwargs in [
+        dict(groups=frozenset({"unknown"})),
+        dict(instance_ids=frozenset({"unknown"})),
+    ]:
+        with pytest.raises(ValueError):
+            select(source, **kwargs)
 
 
 def test_selection_hash_mismatch_and_unknown_name_fail(tmp_path):

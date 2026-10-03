@@ -36,22 +36,7 @@ def test_recorded_hashes():
         assert hashlib.sha256(source).hexdigest() == record["source_sha256"]
 
 
-@pytest.mark.parametrize(
-    "name,expected",
-    [
-        ("solar_orbiter_v15.ldr", 966),
-        ("solar_orbiter_v15_articulated.ldr", 966),
-        ("solar_orbiter_v15_spacecraft.ldr", 890),
-        ("solar_orbiter_v15_solar_module.ldr", 44),
-    ],
-    ids=[
-        "solar_orbiter_v15.ldr",
-        "solar_orbiter_v15_articulated.ldr",
-        "solar_orbiter_v15_spacecraft.ldr",
-        "solar_orbiter_v15_solar_module.ldr",
-    ],
-)
-def test_expected_counts(name, expected):
+def test_expected_counts():
     manifest = json.loads((FIXTURE / "manifest.json").read_text())
     assert manifest["counts"] == {
         "full": 966,
@@ -60,7 +45,13 @@ def test_expected_counts(name, expected):
         "ordering_import": 965,
         "manual_dish": 1,
     }
-    assert sum(ldraw_inventory(name).values()) == expected
+    for name, expected in [
+        ("solar_orbiter_v15.ldr", 966),
+        ("solar_orbiter_v15_articulated.ldr", 966),
+        ("solar_orbiter_v15_spacecraft.ldr", 890),
+        ("solar_orbiter_v15_solar_module.ldr", 44),
+    ]:
+        assert sum(ldraw_inventory(name).values()) == expected
 
 
 @pytest.mark.parametrize(
@@ -91,21 +82,9 @@ def test_bom_matches_complete_native_model():
     assert actual == ldraw_inventory("solar_orbiter_v15.ldr")
 
 
-def test_manual_dish_reconciliation():
-    counts = json.loads((FIXTURE / "manifest.json").read_text())["counts"]
-    assert counts["ordering_import"] + counts["manual_dish"] == counts["full"]
-    assert ldraw_inventory("solar_orbiter_v15.ldr")["44375a", 0] == 1
-
-
 def test_geometry_and_physical_unknowns_are_retained():
     manifest = json.loads((FIXTURE / "manifest.json").read_text())
     assert "7798" in manifest["exact_geometry_missing"]
     assert not manifest["physical_build_tested"]
     assert not manifest["authenticated_import_tested"]
     assert ldraw_inventory("solar_orbiter_v15.ldr")["7798", 0] == 1
-
-
-def test_package_import():
-    import brickbuilder
-
-    assert brickbuilder.__version__ == "0.1.0"

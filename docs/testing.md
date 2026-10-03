@@ -32,10 +32,13 @@ explicitly deselects them; render CI runs the entire rendering test module.
 - `test_rendering.py`: surfaces, cameras, occlusion, cosmetic selection and SVGs.
 - `test_jsonio.py`: strict nonfinite-number rejection.
 
-Review regressions live beside the behavior they protect. Every original test
-name and exception check is retained. Parametrized tables report independently
-selectable cases, so the collected count exceeds the old 120 unittest methods.
-Sequential assertions remain together when they describe one workflow.
+Review regressions live beside the behavior they protect. Parametrize cases when
+they test independent paths; use a local case table when parametrization would
+repeat the same setup and successful assertions. Keep distinct failure modes and
+the independent baseline parser. Saved connection fixtures are exercised by the
+CLI exit-code test rather than a second status-only test. Package import is
+already checked by CI, and real export reconciliation replaces redundant manual
+count arithmetic. Sequential assertions remain together for one workflow.
 
 Shared fixtures in `conftest.py` provide `tmp_path`-backed library files, a
 `capsys`-based CLI invoker, the immutable reviewed connector catalog, fresh pin

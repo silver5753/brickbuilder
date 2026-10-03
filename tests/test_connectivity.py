@@ -278,14 +278,7 @@ def test_components_and_assembly_paths_are_independent(check_connections):
     assert report["assemblies"][0]["status"] == "fail"
 
 
-@pytest.mark.parametrize(
-    "values",
-    [dict(position_ldu=nan), dict(position_ldu=-1), dict(axis_cosine=0.5)],
-    ids=["case-1", "case-2", "case-3"],
-)
-def test_invalid_root_bindings_and_tolerances(
-    catalog, check_connections, pin_model, values
-):
+def test_invalid_root_bindings_and_tolerances(catalog, check_connections, pin_model):
     model = pin_model()
     with pytest.raises(ValueError):
         inspect_connections(model, catalog, root="missing")
@@ -293,8 +286,13 @@ def test_invalid_root_bindings_and_tolerances(
         check_connections(model, assemblies={"x": ("absent",)})
     with pytest.raises(ValueError):
         check_connections(model, assemblies={"x": ("pin", "pin")})
-    with pytest.raises(ValueError):
-        Tolerances(**values)
+    for values in [
+        dict(position_ldu=nan),
+        dict(position_ldu=-1),
+        dict(axis_cosine=0.5),
+    ]:
+        with pytest.raises(ValueError):
+            Tolerances(**values)
 
 
 def test_catalog_validation():
@@ -371,15 +369,25 @@ def test_profiles_bind_hash_and_all_instances(tmp_path):
         load_profile(path, source)
 
 
-def test_cli_exit_codes_and_report_hashes(tmp_path, catalog, pin_model, invoke_cli):
+def test_cli_exit_codes_and_report_hashes(tmp_path, catalog, invoke_cli):
     cat = json.dumps(dict(schema_version=1, parts=[asdict(p) for p in catalog.parts]))
     d = tmp_path
     folder = Path(d)
     catalog = folder / "catalog.json"
     catalog.write_text(cat)
     for model, expected in [
-        (pin_model(), 0),
-        (Model(pin_model().parts[:2]), 1),
+        (
+            read_source(
+                ROOT / "tests/fixtures/connections/valid_pin_pair.ldr"
+            ).document.model,
+            0,
+        ),
+        (
+            read_source(
+                ROOT / "tests/fixtures/connections/invalid_missing_host.ldr"
+            ).document.model,
+            1,
+        ),
         (Model((part("a", "missing.dat"),)), 3),
     ]:
         source = folder / "model.ldr"
@@ -412,17 +420,6 @@ def test_multiple_bars_cannot_occupy_one_clip(check_connections):
     report = check_connections(model)
     assert report["status"] == "fail"
     assert report["occupancy_conflicts"]
-
-
-@pytest.mark.parametrize(
-    "filename,status",
-    [("valid_pin_pair.ldr", "pass"), ("invalid_missing_host.ldr", "fail")],
-    ids=["valid_pin_pair.ldr", "invalid_missing_host.ldr"],
-)
-def test_saved_success_and_failure_fixtures(catalog, filename, status):
-    source = read_source(ROOT / "tests/fixtures/connections" / filename)
-    report = inspect_connections(source.document.model, catalog, root="pin")
-    assert report["status"] == status
 
 
 @pytest.mark.parametrize(
