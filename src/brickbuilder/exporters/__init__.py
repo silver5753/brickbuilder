@@ -1,6 +1,7 @@
 """Ordering bundles with per-instance reconciliation and complete native CAD."""
 
 from collections import Counter
+from collections.abc import Mapping
 from dataclasses import asdict, dataclass
 from hashlib import sha256
 import json
@@ -211,7 +212,7 @@ def bundle(
     return files
 
 
-def write_bundle(destination: Path, files: dict[str, str]) -> None:
+def write_bundle(destination: Path, files: Mapping[str, str | bytes]) -> None:
     """Encode/validate first, then write once into an exclusively created directory."""
     if destination.exists() or destination.is_symlink():
         raise FileExistsError(f"Export destination already exists: {destination}")
@@ -221,7 +222,9 @@ def write_bundle(destination: Path, files: dict[str, str]) -> None:
     for name, content in files.items():
         if not name or Path(name).name != name or name in (".", "..") or "\\" in name:
             raise ValueError("Bundle filenames must be plain filenames")
-        payloads[name] = content.encode("utf-8")
+        payloads[name] = (
+            content.encode("utf-8") if isinstance(content, str) else content
+        )
     destination.mkdir()
     created: list[Path] = []
     try:

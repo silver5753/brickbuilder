@@ -29,9 +29,10 @@ LDraw round-trips and recursive vertex-bound inspection are executable. Read
 Native inventories, revision quantity differences, one-for-one substitution
 recipes and reconciled purchasing bundles are implemented; see
 [inventory/export instructions](inventory-exports.md). Spacecraft assembly
-builders, rendering, motion checks and a unified release command
+builders, motion checks and a unified release command
 remain planned modules. Scoped nominal attachment checks are implemented; see
-[connectivity instructions](connectivity.md). Historical
+[connectivity instructions](connectivity.md). CAD previews and custom print decals
+are implemented; see [rendering](rendering.md). Historical
 scripts are starting material, not proof those APIs already exist.
 
 ## Known pitfalls from Solar Orbiter

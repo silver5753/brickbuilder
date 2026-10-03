@@ -1,6 +1,8 @@
 """Small strict JSON boundary shared by configuration and native metadata."""
 
 import json
+from math import isfinite
+from .transforms import Vector, vector
 from pathlib import Path
 from typing import Any
 
@@ -45,3 +47,24 @@ def array(value: Any, context: str) -> list[Any]:
     if not isinstance(value, list):
         raise ValueError(f"{context} must be an array")
     return value
+
+
+def text(value: object, context: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{context} must be a nonempty string")
+    return value
+
+
+def number(value: object, context: str) -> float:
+    if (
+        isinstance(value, bool)
+        or not isinstance(value, (float, int))
+        or not isfinite(value)
+    ):
+        raise ValueError(f"{context} must be finite")
+    return float(value)
+
+
+def coordinates(value: object, context: str) -> Vector:
+    values = array(value, context)
+    return vector(number(v, context) for v in values)

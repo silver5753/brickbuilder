@@ -230,6 +230,65 @@ def _connections_command(args: argparse.Namespace) -> int:
     return {"pass": 0, "fail": 1, "unknown": 3}[str(report["status"])]
 
 
+def _render_command(args: argparse.Namespace) -> int:
+    from .rendering import render_bundle
+    from .rendering.config import load_config
+    from .rendering.stickers import load_stickers
+
+    source = read_source(args.source)
+    config, config_hash = load_config(args.config)
+    profile = load_profile(args.profile, source) if args.profile else None
+    stickers, sticker_hash = (
+        load_stickers(args.stickers) if args.stickers else (None, None)
+    )
+    provenance = {"config_sha256": config_hash}
+    if profile:
+        provenance["profile_sha256"] = profile.sha256
+    if sticker_hash:
+        provenance["stickers_sha256"] = sticker_hash
+    report = render_bundle(
+        source,
+        PartLibrary((args.library,), missing=_exceptions(args.exceptions)),
+        config,
+        args.palette,
+        args.destination,
+        bindings=profile.assemblies if profile else None,
+        stickers=stickers,
+        provenance=provenance,
+    )
+    _print(
+        dict(
+            destination=str(args.destination),
+            geometry_status=report["geometry_status"],
+            views=[v.name for v in config.views],
+        )
+    )
+    return 0
+
+
+def _stickers_command(args: argparse.Namespace) -> int:
+    from .rendering import sticker_bundle
+    from .rendering.stickers import load_stickers
+
+    source = read_source(args.source)
+    config, config_hash = load_stickers(args.config)
+    profile = load_profile(args.profile, source) if args.profile else None
+    provenance = {"config_sha256": config_hash}
+    if profile:
+        provenance["profile_sha256"] = profile.sha256
+    manifest = sticker_bundle(
+        source,
+        config,
+        args.destination,
+        bindings=profile.assemblies if profile else None,
+        provenance=provenance,
+    )
+    _print(
+        dict(destination=str(args.destination), cosmetic_only=manifest["cosmetic_only"])
+    )
+    return 0
+
+
 def _selection_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("source", type=Path, nargs="?")
     parser.add_argument("--selections", type=Path)
@@ -284,6 +343,25 @@ def _parser() -> argparse.ArgumentParser:
         "--profile", type=Path, help="Checksummed project root/assembly bindings"
     )
     connections.set_defaults(handler=_connections_command)
+    render = commands.add_parser(
+        "render", help="Render actual native CAD and separate optional print decals"
+    )
+    render.add_argument("source", type=Path)
+    for option in ("library", "palette", "config", "destination"):
+        render.add_argument("--" + option, type=Path, required=True)
+    render.add_argument("--profile", type=Path)
+    render.add_argument("--stickers", type=Path)
+    render.add_argument("--exceptions", type=Path)
+    render.set_defaults(handler=_render_command)
+    stickers = commands.add_parser(
+        "stickers",
+        help="Create dimensional SVG solar decals without rendering dependencies",
+    )
+    stickers.add_argument("source", type=Path)
+    stickers.add_argument("--config", type=Path, required=True)
+    stickers.add_argument("--destination", type=Path, required=True)
+    stickers.add_argument("--profile", type=Path)
+    stickers.set_defaults(handler=_stickers_command)
     return parser
 
 

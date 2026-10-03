@@ -7,7 +7,8 @@ worked example and frozen regression baseline.
 The package includes typed part instances, rigid transforms, native LDraw
 round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
 Native inventories, quantity differences and separate purchasing export bundles
-are also implemented. Scoped nominal attachment checks are implemented; rendering remains planned.
+are also implemented. Scoped nominal attachment checks, actual-CAD previews and dimensional solar
+sticker templates are implemented. Motion/collision review remains planned.
 
 ## Setup and checks
 
@@ -44,6 +45,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Model API and inspection CLI](docs/model-api.md)
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Connections and attachment checks](docs/connectivity.md)
+- [CAD previews and print stickers](docs/rendering.md)
 - [Workflow inventory and planned commits](docs/workflow-inventory.md)
 - [Milestones 1–3 code review](docs/review-milestones-1-3.md)
 - [Validation levels](docs/validation-levels.md)

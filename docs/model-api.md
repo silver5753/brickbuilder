@@ -129,10 +129,11 @@ is rejected. Unknown ordinary meta/comments remain verbatim.
 MPD (`FILE`/`NOFILE`), embedded binary data and TEXMAP are explicitly unsupported
 and fail rather than flattening submodels or counting texture fallbacks twice.
 External dependency resolution supplies bounds; it does not flatten a bill of
-materials or treat subfile references as proven physical parts. Rendering,
-near-duplicate tolerances, collision/contact tests and
+materials or treat subfile references as proven physical parts. Near-duplicate tolerances, collision/contact tests and
 complete connection legality remain future work. Scoped nominal attachment
-checks are available separately; see [connectivity](connectivity.md). Legacy non-UTF-8 libraries require an
+checks are available separately; see [connectivity](connectivity.md).
+Actual-CAD surface previews and separate print decals are available through
+[rendering](rendering.md). Legacy non-UTF-8 libraries require an
 explicit conversion outside this API.
 
 Format references:

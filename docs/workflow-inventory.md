@@ -334,7 +334,10 @@ Milestone 4 now implements scoped nominal connectors, pin engagement/collars,
 axle clocking, seat occupancy and rooted graph checks with valid/invalid fixtures
 and fail/unknown exit statuses. Python 3.12 standardization is a separate
 preceding commit. See [connectivity](connectivity.md) for catalog scope and the
-current unknown baseline. Rendering/stickers, geometric substitutions, collision/motion tooling and a unified release command follow. The first three commits intentionally remain independently reviewable; a scaffold or a round-trip test is not a declaration that a model is construction-ready.
+current unknown baseline. Milestone 5 implements the Python 3.12 CPU preview backend, camera profiles,
+provenance and separate dimensional SVG decals; see [rendering](rendering.md).
+Geometric substitutions, collision/motion tooling and a unified release command
+follow. The first three commits intentionally remain independently reviewable; a scaffold or a round-trip test is not a declaration that a model is construction-ready.
 
 The existing source files should be extracted selectively. Public-facing text uses “brick” and “Brick Builder”; source URLs, native part identifiers and required third-party license/attribution text retain their exact identities.
 

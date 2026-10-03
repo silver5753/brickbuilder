@@ -25,3 +25,17 @@ jobs:
       - name: Count spacecraft alternative
         run: uv run --locked --python "3.12" brickbuilder inventory --selections projects/solar_orbiter/selections.json --selection spacecraft
       - run: uv build --python "3.12"
+  rendering:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.11"
+      - run: uv sync --locked --extra render
+      - run: uv run --locked --extra render ty check src tests tools --error-on-warning
+      - name: Synthetic image and print regressions
+        run: uv run --locked --extra render python -m unittest discover -s tests -p test_rendering.py -v

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "groups": [
+    "arrays"
+  ],
+  "templates": [
+    {
+      "name": "solar_1x6",
+      "reference": "6636.dat",
+      "width_studs": 6,
+      "depth_studs": 1,
+      "inset_mm": 0.4,
+      "columns": 12,
+      "rows": 2
+    },
+    {
+      "name": "solar_2x6",
+      "reference": "69729.dat",
+      "width_studs": 6,
+      "depth_studs": 2,
+      "inset_mm": 0.4,
+      "columns": 12,
+      "rows": 4
+    }
+  ]
+}

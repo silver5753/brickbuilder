@@ -3,10 +3,17 @@
 from dataclasses import asdict, dataclass
 from hashlib import sha256
 import json
-from math import isfinite
 from pathlib import Path
 
-from ..jsonio import array, decode_json, object_fields, versioned
+from ..jsonio import (
+    array,
+    decode_json,
+    object_fields,
+    versioned,
+    text,
+    number,
+    coordinates,
+)
 from ..model import reference_name
 from ..transforms import Vector, unit, vector
 
@@ -25,27 +32,6 @@ KINDS = frozenset(
     }
 )
 SEGMENTS = frozenset({"pin", "round_hole", "axle", "cross_hole", "bar", "clip"})
-
-
-def text(value: object, context: str) -> str:
-    if not isinstance(value, str) or not value.strip():
-        raise ValueError(f"{context} must be a nonempty string")
-    return value
-
-
-def number(value: object, context: str) -> float:
-    if (
-        isinstance(value, bool)
-        or not isinstance(value, (float, int))
-        or not isfinite(value)
-    ):
-        raise ValueError(f"{context} must be finite")
-    return float(value)
-
-
-def coordinates(value: object, context: str) -> Vector:
-    values = array(value, context)
-    return vector(number(v, context) for v in values)
 
 
 @dataclass(frozen=True)

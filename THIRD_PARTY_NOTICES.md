@@ -21,3 +21,10 @@ modules are not runtime dependencies of this initial scaffold. Pin and
 attribute them when their functionality is ported.
 
 No distribution license for Brick Builder's original code has been selected.
+
+The optional CPU rendering extra uses NumPy, Pillow, Numba and llvmlite; their
+locked distributions retain their own license notices. The raster algorithm is
+ported from the project-generated historical preview rasterizer. Rendered
+surfaces use the caller-supplied LDraw library; preserve that library attribution
+when distributing previews. No external meshes, fonts, papers or photos are
+bundled by this milestone. Custom solar grid artwork is generated separately.

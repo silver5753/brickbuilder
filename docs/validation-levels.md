@@ -26,5 +26,8 @@ clocking, conflicts, graph paths and unsupported coverage; the spacecraft audit
 remains unknown. Full spacecraft geometry, connections,
 collisions and physical strength are not certified by these tests.
 The preserved historical reports are evidence from prior methods and scopes,
-not new validation performed by the package. In particular, three small joint
+not new validation performed by the package. Rendering tests establish
+surface/color expansion, camera/occlusion behavior, repeatable bytes in the same
+environment and nominal SVG print dimensions. They do not prove fit or printer
+calibration; declared mesh envelopes remain visible approximations. In particular, three small joint
 contact flags required follow-up and exact 7798 geometry remains unavailable.

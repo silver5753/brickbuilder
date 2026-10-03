@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "views": [
+    {
+      "name": "front",
+      "eye": [
+        0,
+        0,
+        -1
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    },
+    {
+      "name": "rear",
+      "eye": [
+        0,
+        0,
+        1
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    },
+    {
+      "name": "side",
+      "eye": [
+        1,
+        0,
+        0
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    },
+    {
+      "name": "hero",
+      "eye": [
+        -1,
+        -0.5,
+        -1.5
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    },
+    {
+      "name": "rear_hero",
+      "eye": [
+        1,
+        -0.5,
+        1.5
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    },
+    {
+      "name": "his_detail",
+      "eye": [
+        -0.8,
+        -0.4,
+        -1.4
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": [
+        "his",
+        "shield",
+        "chassis",
+        "instruments",
+        "shield_detail"
+      ]
+    },
+    {
+      "name": "boom_detail",
+      "eye": [
+        0.8,
+        -0.4,
+        1
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": [
+        "boom",
+        "boom_mount"
+      ]
+    },
+    {
+      "name": "rear_detail",
+      "eye": [
+        1,
+        -0.4,
+        1.8
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": [
+        "rear_panel",
+        "dish",
+        "body_detail"
+      ]
+    }
+  ],
+  "width": 1200,
+  "height": 900,
+  "padding": 0.08,
+  "envelopes": [
+    {
+      "reference": "7798.dat",
+      "minimum": [
+        -60,
+        0,
+        -60
+      ],
+      "maximum": [
+        60,
+        8,
+        60
+      ],
+      "reason": "Preview-only 6 x 6 tile envelope; exact underside mesh unavailable. No connection/fit inference."
+    }
+  ],
+  "supersampling": 2
+}

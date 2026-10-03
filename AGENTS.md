@@ -55,6 +55,9 @@ conservation, substitution deltas, ordering namespaces and rejected mappings.
 Read docs/connectivity.md before attachment work. Tests also cover scoped
 connector matching, pin collars/depth, axle clocking, occupancy and root paths.
 An unknown connection report exits 3 and must not be treated as a pass.
+Read docs/rendering.md before generating previews or stickers. Use the locked
+render extra only for PNG generation; SVG printing needs no optional modules.
+Keep decals and declared preview envelopes out of physical CAD/BOMs.
 
 Read the fixture manifest before using a baseline. JSON fixtures are stored
 as deterministic gzip streams; decompressed bytes are the original source
