@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: P1 complete (P1a and P1b).
-P2–P5 remain planned; P2a is next. Original reviewed code baseline: commit
+Updated: 4 October 2026. Status: P1 and P2a complete.
+P2b is next; P2b–P5 remain planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -38,9 +38,9 @@ the source of universal geometry, colour, region or view assumptions.
 | Rendering | Actual-CAD previews, explicit cameras, provenance and separate dimensional SVG decals | Generic artwork and build-step illustrations |
 | Workflow | Individual commands, source records and a substantial frozen spacecraft example | Validated new-project brief, part preparation, assembly creation and unified release |
 
-The current commands are `init`, `doctor`, `inspect`, `roundtrip`, `inventory`,
-`diff`, `export`, `connections`, `render` and `stickers`. P1b starter/preparation
-commands are implemented; build/release commands below remain proposals. MPD/TEXMAP support is outside this roadmap's
+The current commands are `init`, `doctor`, `parts`, `sources`, `reference-page`,
+`inspect`, `roundtrip`, `inventory`, `diff`, `export`, `connections`, `render` and
+`stickers`. P1b and P2a preparation commands are implemented; build/release commands below remain proposals. MPD/TEXMAP support is outside this roadmap's
 initial scope; preserve explicit format errors instead of implying support.
 
 ## Sequence and dependencies
@@ -116,7 +116,7 @@ claimed by the documentation-only slice.
 **Purpose:** Reduce the largest remaining manual burden: selecting parts and
 turning them into correctly placed, identifiable assemblies.
 
-**P2a: parts and evidence preparation**
+**P2a: parts and evidence preparation — complete, 4 October 2026**
 
 - Build a local index over a user-supplied geometry library: native identity,
   description/category, dependency availability and geometry bounds. Keep
@@ -352,7 +352,8 @@ set of nearly identical spacecraft snapshots.
 |---|---|---|---|
 | P1a | Complete, 4 October 2026 | Generic [agent instructions](../AGENTS.md), [playbook](playbook.md), [brief/checklist](design-brief.md), [project notes](../projects/solar_orbiter/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/docs/playbook.md) | Documentation and manual templates only; no new CLI or models |
 | P1b | Complete, 4 October 2026 | [Project format and CLI](projects.md), typed records, packaged starter, non-executing doctor; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/project.py) | Readiness only; no builder execution, source verification or model validation |
-| P2–P5 | Planned | Specifications above | Not implemented |
+| P2a | Complete, 4 October 2026 | [Parts and reference preparation](preparation.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/parts.py) | Supplied metadata/declarations; source meaning, stock and physical fit remain unverified |
+| P2b–P5 | Planned; P2b next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -378,7 +379,26 @@ listed planned parts. Existing historical YAML and frozen CAD remain unchanged.
 A fresh starter exits 3 until completed; its builder deliberately raises
 NotImplementedError. No runtime dependency or CI job was added.
 
-Next: implement P2a (parts/evidence preparation) when requested.
+P2a verification: ty passed and all 186 pytest cases passed, including seven
+installed-wheel e2e cases. Added coverage exercises measured/curated evidence
+separation, query filters and unknowns, project-selected connector subsets,
+invalid metadata, offline reuse after review-note changes, checksum tampering,
+acquisition errors and optional page-tool contracts. HTTP acquisition is mocked
+in tests; no live publisher availability is claimed. A real Poppler smoke run on
+a synthetic PDF produced a 300×200 crop, full-page text and edition/page/figure
+labels. Formatting and document link/anchor checks passed.
+
+P2a scope: index explicit project parts, a caller-selected list, or immediate
+library candidates; save hashes and copy supplied connector declarations without
+promotion. Colour, mapping and stock evidence remain separate references, not a
+live purchasing database. Explicit selected-source acquisition is offline by
+default and produces immutable cache entries plus dated failure/success receipts.
+PDF extraction is an optional Poppler adapter, not a core Python dependency.
+Historical connector recipes moved into the spacecraft project; historical
+assembly-binding recovery stays separate until P2b provides generated bindings.
+Frozen CAD, connector baselines and fixture hashes remain unchanged.
+
+Next: implement P2b (assembly API and the vehicle example) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

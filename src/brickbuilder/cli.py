@@ -305,6 +305,65 @@ def _doctor_command(args: argparse.Namespace) -> int:
     return {"pass": 0, "fail": 1, "unknown": 3}[report.status]
 
 
+def _parts_command(args: argparse.Namespace) -> int:
+    from .parts import build_index
+    from .project import load_project
+
+    if args.project is not None and args.part is not None:
+        raise ValueError("Use --project or --part, not both")
+    project = load_project(args.project) if args.project else None
+    library = args.library or (project.library if project else None)
+    if library is None:
+        raise ValueError("Supply --library or a project with a declared library")
+    references = project.parts if project else tuple(args.part) if args.part else None
+    index = build_index(
+        library, references, metadata_path=args.metadata, catalog_path=args.catalog
+    )
+    if project:
+        index.provenance["project_input_sha256"] = dict(project.input_hashes)
+    matches = index.search(
+        query=args.query,
+        function=args.function,
+        nominal_ldu=tuple(args.nominal_ldu) if args.nominal_ldu else None,
+        connector=args.connector,
+        unknown=args.unknown,
+    )
+    if args.destination:
+        index.write(args.destination)
+    report = index.report()
+    report["matches"] = [entry.reference for entry in matches]
+    _print(report)
+    return 1 if report["geometry_failures"] else 0
+
+
+def _sources_command(args: argparse.Namespace) -> int:
+    from .assets import prepare_sources
+    from .project import load_project
+
+    report = prepare_sources(
+        load_project(args.project), tuple(args.source), fetch=args.fetch
+    )
+    _print(report)
+    return {"pass": 0, "fail": 1, "unknown": 3}[report["status"]]
+
+
+def _reference_page_command(args: argparse.Namespace) -> int:
+    from .reference_pages import prepare_page
+
+    _print(
+        prepare_page(
+            args.source,
+            args.destination,
+            page=args.page,
+            edition=args.edition,
+            figure=args.figure,
+            dpi=args.dpi,
+            crop=tuple(args.crop) if args.crop else None,
+        )
+    )
+    return 0
+
+
 def _selection_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("source", type=Path, nargs="?")
     parser.add_argument("--selections", type=Path)
@@ -316,6 +375,58 @@ def _selection_args(parser: argparse.ArgumentParser) -> None:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="brickbuilder")
     commands = parser.add_subparsers(dest="command", required=True)
+    parts = commands.add_parser(
+        "parts", help="Index and search local part candidates and declared evidence"
+    )
+    parts.add_argument("--project", type=Path)
+    parts.add_argument("--library", type=Path)
+    parts.add_argument("--part", action="append")
+    parts.add_argument("--metadata", type=Path)
+    parts.add_argument("--catalog", type=Path)
+    parts.add_argument("--destination", type=Path)
+    parts.add_argument("--query")
+    parts.add_argument("--function")
+    parts.add_argument("--nominal-ldu", nargs=3, type=float, metavar=("X", "Y", "Z"))
+    parts.add_argument("--connector")
+    parts.add_argument(
+        "--unknown",
+        choices=[
+            "description",
+            "category",
+            "function",
+            "nominal",
+            "connectors",
+            "colour",
+            "mapping",
+            "stock",
+        ],
+    )
+    parts.set_defaults(handler=_parts_command)
+    sources = commands.add_parser(
+        "sources", help="Prepare explicitly selected references; offline by default"
+    )
+    sources.add_argument("project", type=Path)
+    sources.add_argument("--source", action="append", required=True)
+    sources.add_argument(
+        "--fetch",
+        action="store_true",
+        help="Read selected local files or HTTP(S) URLs missing from cache",
+    )
+    sources.set_defaults(handler=_sources_command)
+    page = commands.add_parser(
+        "reference-page",
+        help="Prepare a labelled PDF page/text/crop using optional Poppler",
+    )
+    page.add_argument("source", type=Path)
+    page.add_argument("--destination", type=Path, required=True)
+    page.add_argument("--page", type=int, required=True)
+    page.add_argument("--edition", required=True)
+    page.add_argument("--figure")
+    page.add_argument("--dpi", type=int, default=120)
+    page.add_argument(
+        "--crop", nargs=4, type=int, metavar=("X", "Y", "WIDTH", "HEIGHT")
+    )
+    page.set_defaults(handler=_reference_page_command)
     init = commands.add_parser(
         "init", help="Create a new project starter without overwriting files"
     )

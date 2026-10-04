@@ -62,3 +62,10 @@ tipping and live importer acceptance remain unverified.
 - Hollow geometry caused misleading collision flags in historical experiments.
   Review targeted contact rather than treating outer bounds as solid material.
 - Existing STEP groups are not illustrated, physically reviewed instructions.
+
+## Historical preparation code
+
+`legacy_connector_recipes.py` preserves the original fixed part lists, nominal
+recipes and 7798 missing-mesh exception. Use it only for an intentional historical
+reconstruction. New projects use the generic [parts preparation](../../docs/preparation.md)
+workflow with supplied evidence-bearing declarations and explicit selections.

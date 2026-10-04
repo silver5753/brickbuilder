@@ -123,10 +123,15 @@ adding unverified proximity edges.
 
 ```sh
 uv run --locked python tools/build_connection_profiles.py
-uv run --locked python tools/build_connector_catalog.py /path/to/reviewed/ldraw
+uv run --locked python projects/solar_orbiter/legacy_connector_recipes.py /path/to/reviewed/ldraw
 ```
 
-The first script checks frozen fixture hashes before importing historical labels.
+These commands are historical spacecraft recovery tools, not the default workflow
+for a new project. Use [parts preparation](preparation.md) and the generic
+`tools/build_connector_catalog.py PROJECT --catalog CATALOG --destination OUTPUT`
+to select supplied declarations and report coverage for a new project.
+
+The first historical script checks frozen fixture hashes before importing historical labels.
 The second uses explicit dimension recipes and restricted frame primitive
 extraction, records the supplied source hashes, and declares unsupported cases.
 Review source changes and resulting declarations before updating the recorded

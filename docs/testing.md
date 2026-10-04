@@ -32,6 +32,9 @@ module. A separate e2e job runs all installed-wheel workflows.
 - `test_connectivity.py`: mating interfaces, graph paths, unknowns and both poses.
 - `test_rendering.py`: surfaces, cameras, occlusion, cosmetic selection and SVGs.
 - `test_jsonio.py`: strict nonfinite-number rejection.
+- `test_preparation.py`: measured/curated/evidence separation, catalog selection,
+  offline cache integrity, acquisition failures and optional PDF tool contracts.
+- `e2e/test_preparation.py`: installed parts preparation and offline source reuse.
 - `test_project.py`: project schema, linked records, path boundaries and readiness diagnostics.
 - `e2e/test_projects.py`: installed starter resources, overwrite refusal, non-executing doctor,
   optional dependency failure and configuration diagnostics.
@@ -59,7 +62,7 @@ between repeated runs under the same environment, not across platforms.
 
 ## Scope
 
-Six end-to-end cases build one wheel and install it non-editably into isolated
+Seven end-to-end cases build one wheel and install it non-editably into isolated
 Python 3.12 environments outside the checkout. The core environment has no
 runtime dependencies, including no pytest or rendering packages. The render
 environment installs the exact dependencies exported from `uv.lock`, with hash
@@ -91,3 +94,10 @@ wheel, checks the packaged instructions and ignore rules, refuses overwrite,
 and confirms doctor does not execute a builder containing a deliberate runtime
 error. Missing requested rendering dependencies fail in the core-only environment;
 an incomplete brief remains unknown. No geometry library is downloaded.
+
+Preparation fixtures use a synthetic building part set and local reference bytes.
+The HTTP adapter is mocked for successful bytes and network/checksum failures;
+CI never downloads research assets. PDF adapter tests check optional-tool errors,
+page/crop arguments, labels and hashes with a stub process. A real Poppler smoke
+check was also run locally on a generated one-page PDF; it is not a mandatory CI
+dependency or evidence that all publisher PDFs render identically.

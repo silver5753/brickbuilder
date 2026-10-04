@@ -47,7 +47,9 @@ uv run --locked brickbuilder doctor projects/my_model
 The fresh starter intentionally returns exit 3 (unknown) until its brief and
 planned parts are filled in. Read [project setup](docs/projects.md) for the format
 and diagnostics. Doctor never executes project Python or certifies a model.
-Assembly helpers and unified build/release commands remain planned.
+Use [parts and reference preparation](docs/preparation.md) to search local geometry,
+review connector coverage and cache explicitly selected evidence. Assembly helpers
+and unified build/release commands remain planned.
 
 For an existing model, follow the [existing-CAD path](docs/playbook.md#existing-cad-or-project).
 Substitute your actual input path below; the output file must not already exist:
@@ -69,6 +71,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Playbook: new brief or existing CAD](docs/playbook.md)
 - [Design brief and acceptance checklist](docs/design-brief.md)
 - [Project format, init and doctor](docs/projects.md)
+- [Parts search and reference preparation](docs/preparation.md)
 - [Model API and inspection CLI](docs/model-api.md)
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Connections and attachment checks](docs/connectivity.md)

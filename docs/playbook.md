@@ -18,7 +18,8 @@ for the limits of each check.
 3. Define model axes, approximate size and named assemblies. Choose an initial
    structural approach and a small trial connection if an interface is uncertain.
 4. Restore the locked Python 3.12 environment using the [testing guide](testing.md).
-   Identify the external part library and planned parts, then run
+   Use [parts/reference preparation](preparation.md) to search an explicit library,
+   review connector coverage and cache selected references, then run
    `brickbuilder doctor projects/<project_name>`. Exit 3 is expected for an
    incomplete starter; follow its findings without treating readiness as model validation.
 5. Start a project-local Python builder with the [typed model API](model-api.md),
@@ -72,6 +73,7 @@ single automated pipeline.
 | Task | Current operation | Agent work still needed |
 |---|---|---|
 | Prepare a project | `init`, `doctor` ([project format](projects.md)) | Fill the brief, select parts and review/implement the builder |
+| Prepare parts/evidence | `parts`, `sources`, optional `reference-page` ([preparation](preparation.md)) | Review metadata/declarations and source meaning; no inferred connectors |
 | Create/edit CAD | Python Model/PartInstance/Transform and LDraw APIs | Part selection, assembly layout and placement logic |
 | Inspect and preserve identities | `inspect`, `roundtrip` ([model API](model-api.md)) | Supply library; review missing meshes and duplicate findings |
 | Count and compare | `inventory`, `diff` ([inventories](inventory-exports.md)) | Supply flattened physical parts and choose one selection |
@@ -80,7 +82,7 @@ single automated pipeline.
 | Print solar-pattern decals | `stickers` ([rendering](rendering.md)) | Select tiles, inspect sizes and physically calibrate printing |
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
-Parts search, reusable assembly builders,
+Reusable assembly builders,
 arbitrary artwork, illustrated instructions, geometric one-to-many substitutions,
 collision/motion checks and unified build/release commands remain planned.
 Historical scripts are research material, not additional supported package APIs.

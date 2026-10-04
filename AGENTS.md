@@ -63,6 +63,8 @@ and report conventions. Do not add a parallel modeling DSL or duplicate APIs.
 
 Read the relevant guide before changing or using a capability:
 
+- [Preparation](docs/preparation.md): local parts search, reviewed connector coverage,
+  explicit reference acquisition and optional page extraction; no inferred connectors.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
   MPD/TEXMAP remain unsupported.
 - [Inventory/export API](docs/inventory-exports.md): native quantities, substitutions
