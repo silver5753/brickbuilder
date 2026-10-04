@@ -289,16 +289,41 @@ def _stickers_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _release_exit(report: dict) -> int:
+    if report["status"] == "fail" or report.get("validation_status") == "fail":
+        return 1
+    return (
+        3
+        if report.get("label") == "draft"
+        or report.get("validation_status") == "unknown"
+        else 0
+    )
+
+
+def _verify_release_command(args: argparse.Namespace) -> int:
+    from .release_verify import verify_release
+
+    report = verify_release(args.directory)
+    _print(report)
+    return _release_exit(report)
+
+
 def _build_command(args: argparse.Namespace) -> int:
     from .execution import build_project
+    from .release import release_project
 
-    report = build_project(
-        args.project,
-        args.destination,
+    options: dict = dict(
         stages=tuple(args.stage) if args.stage is not None else None,
         library=args.library,
         palette=args.palette,
     )
+    if args.command == "release":
+        report = release_project(
+            args.project, args.destination, draft=args.draft, **options
+        )
+        _print(report)
+        return _release_exit(report)
+    report = build_project(args.project, args.destination, **options)
     _print(report)
     return {"pass": 0, "fail": 1, "unknown": 3}[report["status"]]
 
@@ -389,21 +414,33 @@ def _selection_args(parser: argparse.ArgumentParser) -> None:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="brickbuilder")
     commands = parser.add_subparsers(dest="command", required=True)
-    build = commands.add_parser(
-        "build",
-        help="Execute reviewed project Python once and generate a draft review bundle",
+    for command in ("build", "release"):
+        build = commands.add_parser(
+            command, help="Execute reviewed project Python and generate a new bundle"
+        )
+        build.add_argument("project", type=Path)
+        build.add_argument("--destination", type=Path, required=True)
+        build.add_argument(
+            "--stage",
+            action="append",
+            choices=["cad", "geometry", "connections", "render", "stickers", "orders"],
+            help="Repeat to override configured stages; CAD is always generated",
+        )
+        build.add_argument("--library", type=Path)
+        build.add_argument("--palette", type=Path)
+        if command == "release":
+            build.add_argument(
+                "--draft",
+                action="store_true",
+                help="Publish a labelled draft, retaining policy findings",
+            )
+        build.set_defaults(handler=_build_command)
+    verify = commands.add_parser(
+        "verify-release",
+        help="Check release integrity offline without executing project code",
     )
-    build.add_argument("project", type=Path)
-    build.add_argument("--destination", type=Path, required=True)
-    build.add_argument(
-        "--stage",
-        action="append",
-        choices=["cad", "geometry", "connections", "render", "stickers", "orders"],
-        help="Repeat to override configured stages; CAD is always generated",
-    )
-    build.add_argument("--library", type=Path)
-    build.add_argument("--palette", type=Path)
-    build.set_defaults(handler=_build_command)
+    verify.add_argument("directory", type=Path)
+    verify.set_defaults(handler=_verify_release_command)
     parts = commands.add_parser(
         "parts", help="Index and search local part candidates and declared evidence"
     )

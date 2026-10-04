@@ -66,6 +66,7 @@ Read the relevant guide before changing or using a capability:
 - [Preparation](docs/preparation.md): local parts search, reviewed connector coverage,
   explicit reference acquisition and optional page extraction; no inferred connectors.
 - [Generic tutorial](docs/tutorial.md): brief-to-model workflow using building and vehicle examples.
+- [Release packages](docs/releases.md): explicit policy, captured provenance, offline reconciliation and handoff.
 - [Project execution](docs/execution.md): reviewed Python, explicit stages, pose identity and draft summaries.
 - [Assembly authoring](docs/assembly.md): named parts, local frames, intended joints and generated bindings.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
@@ -87,7 +88,8 @@ project revision, with recorded differences, rather than modifying the baseline.
 
 Generate into a clean ignored output directory. Tie CAD, poses, BOMs, ordering
 files/manual additions, reports and renders to the same revision using the
-available reports. Unified release automation is planned; do not claim it ran.
+available reports. Use `release` with an explicit policy and `verify-release` for delivery;
+verified artifacts do not certify physical buildability.
 Include views of opposite sides and concealed attachments, plus the feature
 details required by the brief. Name the exact ordering file in the handoff.
 

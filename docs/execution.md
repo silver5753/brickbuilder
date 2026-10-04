@@ -3,7 +3,7 @@
 `brickbuilder build` executes reviewed project Python once and produces a draft
 review bundle from its immutable result. It reuses native serialization,
 inventories, connection checks, rendering, stickers and ordering exporters.
-`release` and offline release verification remain P3b work.
+Use [release packages](releases.md) for provenance snapshots, policy gates and offline verification.
 
 ## Run a project
 
@@ -25,7 +25,8 @@ Review the project's Python and imported helpers before running `build`. This is
 ordinary trusted Python execution with your process permissions, not a sandbox.
 The command imports the builder in a fresh private package, supports explicit
 relative imports such as `from .helpers import ...`, and calls `build(project)`
-exactly once. It does not add the project to `sys.path`; install third-party
+exactly once. Private helper imports compile current source, avoiding stale
+timestamp-based bytecode. It does not add the project to `sys.path`; install third-party
 helpers separately. Builder stdout is redirected to stderr so CLI stdout remains
 JSON. Doctor still never executes Python.
 
@@ -160,4 +161,4 @@ The summary leaves physical build, collision, insertion, motion, stock and impor
 acceptance untested. The per-stage reports retain their existing limitations.
 P3a captures the main builder and selected input records, not a complete dependency
 manifest of arbitrary Python imports, external assets or environment state.
-Comprehensive provenance and offline artifact verification belong to P3b.
+Use [release](releases.md) for local code/input snapshots, environment records and offline artifact verification.

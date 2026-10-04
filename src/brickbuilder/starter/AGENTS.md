@@ -23,7 +23,9 @@ verify source claims, certify attachments or demonstrate physical buildability.
 Use the package's inspect, connections, inventory and render commands on authored
 CAD as appropriate. Use brickbuilder.assembly for named parts, local frames,
 intended joints and generated bindings. Use brickbuilder build with explicit
-stages or a reviewed build.json. Verified release tooling is still planned.
+stages or a reviewed build.json. For delivery, add release.json with required
+software checks and declared builder data inputs; use release and verify-release.
+Artifact verification does not establish physical or visual acceptance.
 
 Keep generated outputs, downloaded assets and environment files ignored. Record
 exact revisions and independent validation statuses; never treat unknown as pass.

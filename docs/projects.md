@@ -215,4 +215,4 @@ code. Return a flattened Model of native physical-part instances with rigid
 placements and stable semantic IDs. Use the existing [model API](model-api.md)
 and [playbook](playbook.md) for the remaining manual steps. Use [assembly authoring](assembly.md) for new builders and generated bindings.
 [Project execution](execution.md) now runs reviewed builders and requested stages;
-verified release automation remains P3b work.
+see [release packages](releases.md) for policy gates, provenance and offline verification.

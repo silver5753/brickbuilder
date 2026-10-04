@@ -135,8 +135,9 @@ The practice folder is disposable; do not commit duplicated example projects.
 The build command writes a new directory containing `model.ldr`, native inventory,
 group alternatives, bindings, profiles and a combined connection report. It
 refuses an existing destination. It does not require a part library to serialize
-CAD or test supplied declarations. The summary records executed and skipped dimensions. Verified releases and
-offline artifact verification remain planned; a draft build does not provide them.
+CAD or test supplied declarations. The summary records executed and skipped
+dimensions. For delivery, add a [release policy](releases.md) and use `release`
+followed by `verify-release`; a draft build alone has no release manifest.
 
 ## 5. Review the exact revision
 

@@ -1,0 +1,148 @@
+"""Release integrity, policy boundaries and interrupted publication contracts."""
+
+import json
+from hashlib import sha256
+from pathlib import Path
+import shutil
+from unittest.mock import patch
+
+import pytest
+
+from brickbuilder.release import release_project
+from brickbuilder.release_verify import file_hashes, verify_release
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.fixture
+def project(tmp_path):
+    folder = tmp_path / "project"
+    shutil.copytree(
+        ROOT / "projects/building", folder, ignore=shutil.ignore_patterns("__pycache__")
+    )
+    return folder
+
+
+def refresh_manifest(folder):
+    """Deliberately rehash corrupt artifacts to test semantic checks, not only bytes."""
+    path = folder / "release_manifest.json"
+    manifest = json.loads(path.read_text())
+    hashes = file_hashes(folder)
+    del hashes["release_manifest.json"]
+    manifest["artifacts"] = hashes
+    manifest["build_report_sha256"] = hashes["build_report.json"]
+    path.write_text(json.dumps(manifest))
+
+
+@pytest.mark.parametrize(
+    "damage",
+    ["missing", "extra", "inventory", "source", "selection", "unsafe", "symlink"],
+)
+def test_offline_rejects_corrupt_artifacts(project, tmp_path, damage):
+    folder = tmp_path / "release"
+    release_project(project, folder, stages=("connections",))
+    if damage == "missing":
+        (folder / "model.ldr").unlink()
+    elif damage == "extra":
+        (folder / "old.png").write_bytes(b"stale image")
+    elif damage == "inventory":
+        path = folder / "inventory.json"
+        data = json.loads(path.read_text())
+        data[0]["quantity"] += 1
+        path.write_text(json.dumps(data))
+        refresh_manifest(folder)
+    elif damage == "source":
+        path = folder / "connections.json"
+        data = json.loads(path.read_text())
+        data["source_sha256"] = "0" * 64
+        path.write_text(json.dumps(data))
+        refresh_manifest(folder)
+    elif damage == "selection":
+        path = folder / "selections.json"
+        data = json.loads(path.read_text())
+        name = next(n for n in data["selections"] if n != "full")
+        data["selections"][name] = data["selections"]["full"]
+        path.write_text(json.dumps(data))
+        refresh_manifest(folder)
+    elif damage == "unsafe":
+        path = folder / "release_manifest.json"
+        data = json.loads(path.read_text())
+        data["artifacts"]["../outside"] = "0" * 64
+        path.write_text(json.dumps(data))
+    else:
+        path = folder / "inventory.json"
+        path.unlink()
+        path.symlink_to(project / "brief.json")
+    result = verify_release(folder)
+    assert result["status"] == "fail" and result["errors"]
+
+
+@pytest.mark.parametrize(
+    "state, status", [("skipped", "pass"), ("failed", "fail"), ("unknown", "unknown")]
+)
+def test_policy_drafts_and_existing_release(project, tmp_path, state, status):
+    folder = tmp_path / "release"
+    stages = ("cad",) if state == "skipped" else ("connections",)
+    if state == "failed":
+        path = project / "brief.json"
+        data = json.loads(path.read_text())
+        data["part_count_limit"] = 1
+        path.write_text(json.dumps(data))
+    if state == "unknown":
+        (project / "connectors.json").write_text('{"schema_version":1,"parts":[]}')
+    with pytest.raises(ValueError, match="Release policy not met"):
+        release_project(project, folder, stages=stages)
+    assert not folder.exists()
+    draft = release_project(project, folder, stages=stages, draft=True)
+    assert draft["validation_status"] == status
+    assert draft["status"] == "pass" and draft["label"] == "draft"
+    assert draft["policy_findings"]
+    before = file_hashes(folder)
+    with pytest.raises(FileExistsError):
+        release_project(project, folder)
+    assert file_hashes(folder) == before
+    # An edited label cannot promote an unmet policy even after rehashing files.
+    path = folder / "release_manifest.json"
+    manifest = json.loads(path.read_text())
+    manifest["label"] = "verified_artifacts"
+    path.write_text(json.dumps(manifest))
+    assert verify_release(folder)["status"] == "fail"
+
+
+def test_capture_helpers_and_reject_mutating_inputs(project, tmp_path):
+    (project / "helper.py").write_text("COLOUR = 71\n")
+    folder = tmp_path / "release"
+    release_project(project, folder, stages=("connections",))
+    manifest = json.loads((folder / "release_manifest.json").read_text())
+    assert (
+        manifest["inputs"]["helper.py"]
+        == sha256((project / "helper.py").read_bytes()).hexdigest()
+    )
+    shutil.rmtree(project)
+    assert verify_release(folder)["status"] == "pass"
+    # Recreate the captured project and make its builder alter a declared input.
+    shutil.copytree(folder / "provenance/project", project)
+    path = project / "build.py"
+    path.write_text(
+        path.read_text()
+        + '\noriginal_build = build\ndef build(project):\n    (project.root / "helper.py").write_text("changed")\n    return original_build(project)\n'
+    )
+    with pytest.raises(ValueError, match="changed during execution"):
+        release_project(project, tmp_path / "unstable", stages=("connections",))
+    assert not (tmp_path / "unstable").exists()
+
+
+def test_interrupted_publication_is_not_verified(project, tmp_path):
+    folder = tmp_path / "release"
+    original = shutil.copytree
+
+    def fail_publication(src, dst, **kwargs):
+        if Path(dst) == folder:
+            raise OSError("disk full")
+        return original(src, dst, **kwargs)
+
+    with patch("brickbuilder.release.shutil.copytree", side_effect=fail_publication):
+        with pytest.raises(OSError, match="disk full"):
+            release_project(project, folder, stages=("connections",))
+    assert (folder / "RELEASE_INCOMPLETE").exists()
+    assert verify_release(folder)["status"] == "fail"

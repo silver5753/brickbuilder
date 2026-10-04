@@ -2,6 +2,8 @@
 
 from dataclasses import asdict, replace
 import json
+import os
+import py_compile
 from unittest.mock import patch
 
 import pytest
@@ -62,11 +64,12 @@ def test_single_invocation_refresh_and_existing_destination(project, tmp_path, c
     with pytest.raises(FileExistsError):
         build_project(project, first)
     assert (project / "calls.txt").read_text() == "call\n"
-    (project / "build.py").write_text(
-        (project / "build.py")
-        .read_text()
-        .replace('"part.dat", COLOUR', '"part.dat", 14')
-    )
+    helper = project / "helper.py"
+    # Deliberately cache old code, then make a same-size, same-mtime edit.
+    py_compile.compile(str(helper), doraise=True)
+    stamp = helper.stat()
+    helper.write_text("COLOUR = 1\n")
+    os.utime(helper, ns=(stamp.st_atime_ns, stamp.st_mtime_ns))
     second = tmp_path / "second"
     updated = build_project(project, second)
     assert (

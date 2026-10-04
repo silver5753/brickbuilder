@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "required_checks": [
+    "placements",
+    "part_count",
+    "connections",
+    "requirement_bindings"
+  ],
+  "inputs": [
+    "geometry_review.json"
+  ]
+}

@@ -4,6 +4,8 @@ from contextlib import redirect_stdout
 from dataclasses import asdict, dataclass
 from hashlib import sha256
 import importlib.util
+from importlib.abc import MetaPathFinder
+from importlib.machinery import PathFinder, SourceFileLoader
 import json
 from pathlib import Path
 import shutil
@@ -103,6 +105,26 @@ def _stages(stages: tuple[str, ...]) -> None:
         raise ValueError("Choose unique stages from: " + ", ".join(sorted(STAGES)))
 
 
+class _ProjectSourceLoader(SourceFileLoader):
+    """Compile helper source directly: timestamp-based bytecode can be stale."""
+
+    def get_code(self, fullname):
+        return self.source_to_code(self.get_data(self.path), self.path)
+
+
+class _ProjectFinder(MetaPathFinder):
+    def __init__(self, prefix: str):
+        self.prefix = prefix
+
+    def find_spec(self, fullname, path=None, target=None):
+        if not fullname.startswith(self.prefix + "."):
+            return None
+        spec = PathFinder.find_spec(fullname, path, target)
+        if spec is not None and isinstance(spec.loader, SourceFileLoader):
+            spec.loader = _ProjectSourceLoader(fullname, spec.loader.path)
+        return spec
+
+
 def _invoke(project: Project) -> tuple[BuildResult, str]:
     """Run captured builder bytes in a fresh package; relative helper imports work.
 
@@ -118,6 +140,8 @@ def _invoke(project: Project) -> tuple[BuildResult, str]:
         raise ValueError(f"Cannot load builder: {project.builder}")
     module = importlib.util.module_from_spec(spec)
     sys.modules[name] = module
+    finder = _ProjectFinder(name)
+    sys.meta_path.insert(0, finder)
     try:
         with redirect_stdout(sys.stderr):
             exec(compile(payload, str(project.builder), "exec"), module.__dict__)
@@ -131,6 +155,7 @@ def _invoke(project: Project) -> tuple[BuildResult, str]:
             f"Builder {project.builder.name} failed: {type(exc).__name__}: {exc}"
         ) from exc
     finally:
+        sys.meta_path.remove(finder)
         for key in list(sys.modules):
             if key == name or key.startswith(name + "."):
                 del sys.modules[key]

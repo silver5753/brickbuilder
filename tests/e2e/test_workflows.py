@@ -386,7 +386,7 @@ def test_installed_render_with_profiles_decals_and_envelope(
 
 
 @pytest.mark.render
-def test_installed_build_optional_stages_and_poses(
+def test_installed_release_optional_stages_and_poses(
     installed_render, installed_core, inputs, tmp_path
 ):
     import shutil
@@ -413,7 +413,21 @@ def build(project):
             dict(
                 schema_version=1,
                 market="brickowl",
-                parts=[],
+                parts=[
+                    dict(
+                        part="absent",
+                        colour=None,
+                        target=None,
+                        manual=True,
+                        catalog_url=None,
+                        evidence=dict(
+                            status="untested",
+                            recorded_on="2026-10-04",
+                            note="Synthetic manual addition",
+                            source="test fixture",
+                        ),
+                    )
+                ],
                 colours=[],
                 rejected=[],
                 identity_fallback=dict(
@@ -441,14 +455,30 @@ def build(project):
                         rules="rules.json",
                         selection="arrays",
                         allow_untested=True,
-                    )
+                    ),
+                    dict(
+                        name="complete",
+                        rules="rules.json",
+                        selection="full",
+                        allow_untested=True,
+                    ),
                 ],
+            )
+        )
+    )
+    (project / "release.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                required_checks=["geometry", "orders"],
+                inputs=["seed.ldr"],
             )
         )
     )
     output = tmp_path / "built"
     args = [
-        "build",
+        "release",
+        "--draft",
         project,
         "--destination",
         output,
@@ -459,7 +489,16 @@ def build(project):
     ]
     assert "extra render" in installed_core.run(*args, expected=2).stderr
     assert not (project / "called.txt").exists() and not output.exists()
-    report = json.loads(installed_render.run(*args, expected=3).stdout)
+    release = json.loads(installed_render.run(*args, expected=3).stdout)
+    assert release["label"] == "draft" and release["validation_status"] == "unknown"
+    # Offline verification works in the core-only wheel without the project/library.
+    shutil.rmtree(project)
+    shutil.rmtree(inputs["library"])
+    verified = json.loads(
+        installed_core.run("verify-release", output, expected=3).stdout
+    )
+    assert verified["status"] == "pass" and verified["label"] == "draft"
+    report = read(output / "build_report.json")
     assert report["kind"] == "draft_build" and report["pose_identity_check"] == "pass"
     assert set(report["models"]) == {"default", "shifted"}
     for name, folder in (("default", output), ("shifted", output / "poses/shifted")):
@@ -481,7 +520,30 @@ def build(project):
         order = read(folder / "orders/tile_only/report.json")
         assert order["complete_quantity"] == order["imported_quantity"] == 1
         assert order["authenticated_import"] == "not_tested"
+        complete = read(folder / "orders/complete/report.json")
+        assert complete["complete_quantity"] == 2
+        assert complete["imported_quantity"] == complete["manual_quantity"] == 1
+        assert (
+            "orders/complete/brickowl_partial.ldr"
+            in (output / "HANDOFF.md").read_text()
+        )
     assert (
         report["models"]["default"]["source_sha256"]
         != report["models"]["shifted"]["source_sha256"]
+    )
+
+    # Rehash a tampered manual-addition file: reconciliation must still fail.
+    manual = output / "orders/complete/manual_additions.json"
+    value = read(manual)
+    value["quantity"] = 99
+    manual.write_text(json.dumps(value))
+    manifest_path = output / "release_manifest.json"
+    manifest = read(manifest_path)
+    manifest["artifacts"]["orders/complete/manual_additions.json"] = digest(manual)
+    manifest_path.write_text(json.dumps(manifest))
+    assert (
+        json.loads(installed_core.run("verify-release", output, expected=1).stdout)[
+            "status"
+        ]
+        == "fail"
     )

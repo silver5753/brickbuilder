@@ -53,7 +53,8 @@ review connector coverage and cache explicitly selected evidence. Use
 for new models. Follow the [from-description tutorial](docs/tutorial.md) through
 the executable [building example](projects/building/README.md) for a complete
 authoring/review walkthrough. Use [project execution](docs/execution.md) to run a
-reviewed builder once and generate a draft bundle; verified releases remain planned.
+reviewed builder once and generate a draft bundle. Use [release packages](docs/releases.md)
+for policy gates, provenance and offline verification.
 
 For an existing model, follow the [existing-CAD path](docs/playbook.md#existing-cad-or-project).
 Substitute your actual input path below; the output file must not already exist:
@@ -79,6 +80,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Tutorial: description to reviewed model](docs/tutorial.md)
 - [Building example](projects/building/README.md)
 - [Unified project execution](docs/execution.md)
+- [Release packages and offline verification](docs/releases.md)
 - [Assembly authoring and generated bindings](docs/assembly.md)
 - [Vehicle example](projects/vehicle/README.md)
 - [Model API and inspection CLI](docs/model-api.md)

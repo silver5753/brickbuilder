@@ -72,13 +72,14 @@ Do not carry a previous report's status forward after its source hash changes.
 ## What can run today
 
 Use `uv run --locked brickbuilder <command> --help` for arguments and the linked
-guides for contracts. The following table describes shipped operations, not a
-verified release pipeline. The build command orchestrates the supported stages.
+guides for contracts. Build orchestrates supported stages; release adds policy
+gates and offline artifact reconciliation. Neither certifies physical assembly.
 
 | Task | Current operation | Agent work still needed |
 |---|---|---|
 | Prepare a project | `init`, `doctor` ([project format](projects.md)) | Fill the brief, select parts and review/implement the builder |
 | Prepare parts/evidence | `parts`, `sources`, optional `reference-page` ([preparation](preparation.md)) | Review metadata/declarations and source meaning; no inferred connectors |
+| Package a revision | `release`, `verify-release` ([releases](releases.md)) | Set required software checks, declare builder inputs and inspect the handoff |
 | Execute a project | `build` ([execution](execution.md)) | Review Python, configure stages/views and interpret draft findings |
 | Create/edit CAD | [Assembly authoring](assembly.md), Model/PartInstance/Transform and LDraw APIs | Part selection, assembly layout, reviewed ports and placement logic |
 | Inspect and preserve identities | `inspect`, `roundtrip` ([model API](model-api.md)) | Supply library; review missing meshes and duplicate findings |
@@ -89,7 +90,7 @@ verified release pipeline. The build command orchestrates the supported stages.
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
 Arbitrary artwork, illustrated instructions, geometric one-to-many substitutions,
-collision/motion checks and verified release commands remain planned.
+and collision/motion checks remain planned.
 Historical scripts are research material, not additional supported package APIs.
 
 ## Review and repair
@@ -113,8 +114,8 @@ Historical scripts are research material, not additional supported package APIs.
 ## Deliver the requested revision
 
 Use a new ignored output directory. Run `build` for a draft bundle from one
-builder result, or use individual commands for targeted review. Full release
-provenance and offline verification remain future work.
+builder result, or use individual commands for targeted review. Use [release](releases.md)
+with an explicit policy to package delivery and `verify-release` to check it offline.
 Verify source/model hashes agree across outputs and record any artifact without
 automated provenance as manually generated. Do not mix images from an old revision.
 

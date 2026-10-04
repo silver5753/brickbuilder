@@ -4,6 +4,7 @@ Track each dimension independently for the exact model revision:
 
 | Dimension | Can establish | Cannot establish |
 |---|---|---|
+| Release integrity | Checksums, source binding, quantities and declared software policy | Authenticity, visual acceptance or physical buildability |
 | Fixture integrity | Bytes and counts match the frozen reference | Geometric or physical correctness |
 | Part/transform checks | Available geometry and rigid placements | Legal, strong connections |
 | Nominal connections | Matched interfaces and chassis paths | Insertion access, clutch or stiffness |

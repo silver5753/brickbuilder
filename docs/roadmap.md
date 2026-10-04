@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: P1, P2 and P3a complete.
-P3b is next; P3b–P5 remain planned. Original reviewed code baseline: commit
+Updated: 4 October 2026. Status: P1–P3 complete.
+P4a is next; P4–P5 remain planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -40,7 +40,8 @@ the source of universal geometry, colour, region or view assumptions.
 
 The current commands are `init`, `doctor`, `parts`, `sources`, `reference-page`,
 `inspect`, `roundtrip`, `inventory`, `diff`, `export`, `connections`, `render` and
-`stickers`, plus `build`. Project execution is implemented; release remains proposed. MPD/TEXMAP support is outside this roadmap's
+`stickers`, `build`, `release` and `verify-release`. Execution and release
+verification are implemented. MPD/TEXMAP support is outside this roadmap's
 initial scope; preserve explicit format errors instead of implying support.
 
 ## Sequence and dependencies
@@ -202,9 +203,9 @@ repeatable route from project inputs to a reviewable deliverable.
 - Generate required views and requirement coverage from project configuration;
   no universal shield, wings, instrument or spacecraft camera defaults.
 
-**P3b: release and provenance**
+**P3b: release and provenance — complete, 4 October 2026**
 
-- Proposed `brickbuilder release <project>`: create a new output directory using
+- Implemented `brickbuilder release <project>`: create a new output directory using
   the same execution path; publish it only after outputs and manifest reconcile.
   Preserve prior releases and leave failures clearly incomplete.
 - Record source/model/config hashes, builder and package versions, Python and
@@ -356,7 +357,8 @@ set of nearly identical spacecraft snapshots.
 | P2b | Complete, 4 October 2026 | [Assembly API](assembly.md), [vehicle example](../projects/vehicle/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py) | Nominal interfaces only; no physical build, collision, motion or release certification |
 | P2c | Complete, 4 October 2026 | [Building example](../projects/building/README.md), [generic tutorial](tutorial.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/projects/building/build.py) | Nominal and visual review; physical trial, collision, strength and automatic acceptance remain untested |
 | P3a | Complete, 4 October 2026 | [Unified execution](execution.md), shared example builders; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/execution.py) | Draft outputs; full release manifest, physical testing and acceptance remain unverified |
-| P3b–P5 | Planned; P3b next | Specifications above | Not implemented |
+| P3b | Complete, 4 October 2026 | [Release and offline verification](releases.md), example policies; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/release.py) | Artifact consistency and software policy only; no physical/visual acceptance or hermetic Python execution |
+| P4–P5 | Planned; P4a next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -466,14 +468,50 @@ certificate. Input/main-builder hashes and draft summaries are provided; complet
 imported-code/dependency provenance and release reconciliation remain P3b work.
 No frozen fixture or dependency changes were needed.
 
-Next: implement P3b (release manifests and verification) when requested.
+P3b verification: ty and all 218 pytest cases passed, with the same ten e2e
+workflows extended instead of duplicated. Both unrelated examples now release
+and verify through the installed core wheel. The optional-output workflow creates
+a labelled draft with two poses, geometry uncertainty, images, decals, selected
+orders and mixed import/manual quantities; offline verification succeeds in the
+core-only wheel after deleting its original project and geometry library.
+Tampered manual quantities fail even after rehashing the artifact. Focused cases
+cover missing/extra files, inventory/source/selection inconsistencies, unsafe
+paths, symlinks, policy failures/unknowns, changing inputs and interrupted copying.
+A same-size/same-mtime helper edit with deliberately stale bytecode is honored:
+private project helper imports now compile source directly.
+
+P3b scope: explicit release policies gate required software checks per pose;
+--draft preserves findings without promotion. Captured project/local Python and
+declared data inputs, environment/tool versions and source hashes, evidence dates,
+complete artifact hashes and a generated handoff make the package inspectable.
+Existing destinations are preserved; staged reconciliation precedes publication,
+and incomplete copying leaves a marker. Offline checks reconcile CAD, selections,
+BOMs, source-bound reports, configuration/coverage and regenerated order/manual
+outputs. Physical build, stock and importer acceptance remain separate untested
+fields. Checksums are not signatures; arbitrary undeclared Python I/O is not
+traced, and external libraries/assets are recorded by stage hashes rather than
+redistributed. The publication protocol is marked copying, not an atomic rename.
+
+P3 usability rehearsal: initialized a third subject, a small three-part display
+bench, from the starter in ignored output. Authored two 3004 supports and a 3009
+seat with semantic IDs and one requirement, reusing reviewed connector data.
+The normal release passed placement, count, nominal connectivity and requirement
+binding gates; offline verification passed. No core edit, subject-specific helper
+or prior spacecraft artifact was needed. This is a minimal authoring/release
+rehearsal, not a visually reviewed or physically tested finished set. Remaining
+agent work is explicit: choose/review real part interfaces, author placements,
+configure useful views, declare builder data and assess appearance. Keep P4
+focused on artwork and assembly illustrations rather than speculative layout
+solvers; retain P5's sourcing and collision limits until supported evidence exists.
+
+Next: implement P4a (generic artwork) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax
 clearly marked until it exists. Update README/API documentation in the same
 implementation commit so future agents have one consistent entry path.
 
-At the end of P3, perform a usability review: can a fresh agent build a third,
+P3 usability review above addresses: can a fresh agent build a third,
 unrelated small subject using only the documented workflow and project-local
 code? Record every missing helper, undocumented step and required core edit.
 Use that evidence to adjust P4–P5 scope before expanding the framework further.

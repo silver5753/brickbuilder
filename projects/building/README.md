@@ -125,3 +125,18 @@ nominal declarations and a CAD visual review, not a physical trial or material
 collision test. Roof stiffness, insertion access, clutch, strength and actual
 assembly remain untested. The nominal doorway height is measured from the base's
 seating plane; studs protrude into the floor area. No hinged door is claimed.
+
+## Release and verify
+
+`release.json` requires placements, part count, connections and requirement
+bindings to pass for every pose. Its explicit inputs retain geometry review notes.
+
+```sh
+uv run --locked brickbuilder release projects/building --stage connections \
+  --destination output/building-release
+uv run --locked brickbuilder verify-release output/building-release
+```
+
+Omit the stage override and supply the render extra/library for configured views.
+Read [release scope](../../docs/releases.md): verified artifacts are not physical
+certification, and review images still need visual acceptance.

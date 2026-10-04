@@ -23,5 +23,11 @@ https://github.com/silver5753/brickbuilder/blob/main/docs/projects.md
 Use Python 3.12. With a repository checkout use `uv run --locked brickbuilder`;
 with an installed wheel use `brickbuilder`. PNG previews require the optional
 render extra; core preparation does not. Build executes trusted project Python;
-verified release tooling remains planned.
+use release and verify-release with an explicit policy for delivery.
 https://github.com/silver5753/brickbuilder/blob/main/docs/execution.md
+
+For delivery, add an explicit `release.json` policy and declare builder data inputs.
+Use `brickbuilder release <project> --destination <new-directory>` followed by
+`brickbuilder verify-release <directory>`. Use `--draft` to retain failed/unknown
+checks visibly. Read the repository's `docs/releases.md`; artifact verification
+is separate from physical and visual acceptance.

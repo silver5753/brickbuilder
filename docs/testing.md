@@ -105,3 +105,11 @@ CI never downloads research assets. PDF adapter tests check optional-tool errors
 page/crop arguments, labels and hashes with a stub process. A real Poppler smoke
 check was also run locally on a generated one-page PDF; it is not a mandatory CI
 dependency or evidence that all publisher PDFs render identically.
+
+Release coverage extends the existing example and optional-output workflows,
+rather than adding duplicate e2e builds. Both examples publish policy-checked
+packages. The synthetic pose package verifies offline in a core-only installation
+after its project and geometry library are removed, including mixed import/manual
+orders. Unit tests cover missing/extra files, semantic inconsistencies after
+rehashing, unsafe paths, symlinks, input changes, draft status propagation and
+interrupted publication. No project code runs during offline verification.
