@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: P1 in progress; P1a documentation complete.
-P1b and P2–P5 remain planned. Reviewed code baseline: commit
+Updated: 4 October 2026. Status: P1 complete (P1a and P1b).
+P2–P5 remain planned; P2a is next. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -38,9 +38,9 @@ the source of universal geometry, colour, region or view assumptions.
 | Rendering | Actual-CAD previews, explicit cameras, provenance and separate dimensional SVG decals | Generic artwork and build-step illustrations |
 | Workflow | Individual commands, source records and a substantial frozen spacecraft example | Validated new-project brief, part preparation, assembly creation and unified release |
 
-The current commands are `inspect`, `roundtrip`, `inventory`, `diff`, `export`,
-`connections`, `render` and `stickers`. All new command names below are proposals,
-not commands that can already be run. MPD/TEXMAP support is outside this roadmap's
+The current commands are `init`, `doctor`, `inspect`, `roundtrip`, `inventory`,
+`diff`, `export`, `connections`, `render` and `stickers`. P1b starter/preparation
+commands are implemented; build/release commands below remain proposals. MPD/TEXMAP support is outside this roadmap's
 initial scope; preserve explicit format errors instead of implying support.
 
 ## Sequence and dependencies
@@ -76,7 +76,7 @@ a clear starting point for any subject.
 - Keep public prose in “brick” terminology; preserve technical identifiers,
   source URLs and required third-party attribution.
 
-**P1b: project contract and starter commands — next, planned**
+**P1b: project contract and starter commands — complete, 4 October 2026**
 
 - Define a small, versioned project schema. Prefer strict JSON, matching existing
   configuration loaders, and Python dataclasses over a new configuration DSL.
@@ -94,8 +94,8 @@ a clear starting point for any subject.
   decision records, a minimal `build.py`, and project-specific instructions.
   Define one typed builder entry point; document project Python as executable
   code that must be reviewed before running an unfamiliar project.
-- Proposed `brickbuilder init`: create the starter without overwriting existing
-  files. Proposed `brickbuilder doctor`: check schema, declared paths, Python,
+- Implemented `brickbuilder init`: create the starter without overwriting existing
+  files. Implemented `brickbuilder doctor`: check schema, declared paths, Python,
   optional dependencies and geometry readiness with actionable diagnostics.
   Doctor must work before a completed model exists and must not certify a model.
 - Keep generated output and downloaded caches ignored. Ship templates as package
@@ -351,7 +351,7 @@ set of nearly identical spacecraft snapshots.
 | Slice | Status | Shipped entry points / evidence | Remaining limits |
 |---|---|---|---|
 | P1a | Complete, 4 October 2026 | Generic [agent instructions](../AGENTS.md), [playbook](playbook.md), [brief/checklist](design-brief.md), [project notes](../projects/solar_orbiter/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/docs/playbook.md) | Documentation and manual templates only; no new CLI or models |
-| P1b | Planned; next slice | Project contract, packaged starter, init and doctor | Not implemented |
+| P1b | Complete, 4 October 2026 | [Project format and CLI](projects.md), typed records, packaged starter, non-executing doctor; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/project.py) | Readiness only; no builder execution, source verification or model validation |
 | P2–P5 | Planned | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
@@ -361,8 +361,24 @@ structural task, missing evidence and acceptance methods without using spacecraf
 files. These are documentation walkthroughs, not generated or physically tested
 models. Runtime tests were not rerun for this documentation-only change.
 
-Next: implement P1b when requested. Do not mark all of P1 complete until its
-validated schema, packaged starter and commands meet the acceptance criteria.
+P1b verification: ty passed for source, tests and tools; the complete pytest suite
+passed all 176 cases, including six installed-wheel e2e cases. New coverage checks
+strict fields and linked IDs, duplicate JSON/records, path traversal and symlink
+escapes, missing/empty recursive geometry, source-state uncertainty, input hashes,
+packaged starter files, overwrite refusal and missing optional rendering modules.
+A builder containing a deliberate runtime error is never imported by doctor.
+The vehicle fixture exercises filled records; the building e2e starts blank.
+Documentation links/anchors, examples and formatting were checked.
+
+P1b scope: JSON version 1 records preserve null/unknown choices, separate source
+and decision evidence, and derive acceptance entries from the requirement list.
+Doctor checks declared local input readiness; its schema/source statuses do not
+verify evidence or executable code. Geometry scope is limited to explicitly
+listed planned parts. Existing historical YAML and frozen CAD remain unchanged.
+A fresh starter exits 3 until completed; its builder deliberately raises
+NotImplementedError. No runtime dependency or CI job was added.
+
+Next: implement P2a (parts/evidence preparation) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

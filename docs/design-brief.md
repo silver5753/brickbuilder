@@ -1,8 +1,10 @@
 # Design brief and acceptance checklist
 
-Use this manual template in `projects/<project_name>/brief.md` for a new design,
-or map an existing project's records to the same concepts without duplicating
-its requirements. A validated schema and generated checklist are planned in P1b.
+For new designs, use the [validated project format](projects.md): `init` creates
+brief.json, and `doctor` derives acceptance entries from its requirements. This
+guide explains how to fill those records. For an existing project, map its records
+to the same concepts without duplicating requirements; the manual table below is
+also useful for reviewing historical records.
 The vehicle and building entries below are documentation examples, not shipped
 models or evidence of completed checks.
 
@@ -33,9 +35,9 @@ user-accepted compromise. Do not claim approval that was never given.
 
 ## Trace each requirement to a check
 
-Keep one row per independently reviewable requirement. This table is the manual
-requirement record; reference its IDs from decisions, views and reports rather
-than maintaining a second copy of the requirement text. Split a feature into
+Keep one row per independently reviewable requirement. For new projects,
+brief.json.requirements is the single requirement record; reference its IDs from
+decisions, views and reports rather than maintaining a second copy of the text. Split a feature into
 multiple rows when its appearance, nominal connection and physical behaviour
 need different validation methods.
 

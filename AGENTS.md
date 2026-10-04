@@ -8,7 +8,8 @@ and the relevant project's requirements, sources and notes. Current user
 instructions take precedence. Implement the requested slice and update its
 roadmap status, verification and remaining limits when complete.
 
-For a new design, follow the playbook's new-brief path. A previous model or release
+For a new design, use [project setup](docs/projects.md) and the playbook's new-brief
+path. Doctor checks inputs without executing project code. A previous model or release
 is not required. For an existing model, establish its exact revision and known
 limits before editing. Ask only for consequential missing preferences; record
 reasonable assumptions and continue authorized reversible work.

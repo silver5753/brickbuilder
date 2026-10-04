@@ -32,6 +32,9 @@ module. A separate e2e job runs all installed-wheel workflows.
 - `test_connectivity.py`: mating interfaces, graph paths, unknowns and both poses.
 - `test_rendering.py`: surfaces, cameras, occlusion, cosmetic selection and SVGs.
 - `test_jsonio.py`: strict nonfinite-number rejection.
+- `test_project.py`: project schema, linked records, path boundaries and readiness diagnostics.
+- `e2e/test_projects.py`: installed starter resources, overwrite refusal, non-executing doctor,
+  optional dependency failure and configuration diagnostics.
 - `e2e/test_workflows.py`: core-only wheel installation, both spacecraft poses,
   subprocess failure contracts and a combined render/profile/sticker workflow.
 
@@ -56,7 +59,7 @@ between repeated runs under the same environment, not across platforms.
 
 ## Scope
 
-Five end-to-end cases build one wheel and install it non-editably into isolated
+Six end-to-end cases build one wheel and install it non-editably into isolated
 Python 3.12 environments outside the checkout. The core environment has no
 runtime dependencies, including no pytest or rendering packages. The render
 environment installs the exact dependencies exported from `uv.lock`, with hash
@@ -82,3 +85,9 @@ Marketplace acceptance, physical fit, printer calibration and structural
 strength remain untested. A full spacecraft render using externally sourced
 meshes remains outside CI; the synthetic library is the reproducible substitute
 for testing the rendering pipeline, not a substitute for spacecraft geometry.
+
+The project workflow also creates a blank building project from the installed
+wheel, checks the packaged instructions and ignore rules, refuses overwrite,
+and confirms doctor does not execute a builder containing a deliberate runtime
+error. Missing requested rendering dependencies fail in the core-only environment;
+an incomplete brief remains unknown. No geometry library is downloaded.

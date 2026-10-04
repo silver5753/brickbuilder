@@ -289,6 +289,22 @@ def _stickers_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _init_command(args: argparse.Namespace) -> int:
+    from .project_setup import init_project
+
+    created = init_project(args.destination, name=args.name)
+    _print(dict(destination=str(args.destination), files=created))
+    return 0
+
+
+def _doctor_command(args: argparse.Namespace) -> int:
+    from .project_setup import doctor
+
+    report = doctor(args.project, library=args.library)
+    _print(asdict(report))
+    return {"pass": 0, "fail": 1, "unknown": 3}[report.status]
+
+
 def _selection_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("source", type=Path, nargs="?")
     parser.add_argument("--selections", type=Path)
@@ -300,6 +316,24 @@ def _selection_args(parser: argparse.ArgumentParser) -> None:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="brickbuilder")
     commands = parser.add_subparsers(dest="command", required=True)
+    init = commands.add_parser(
+        "init", help="Create a new project starter without overwriting files"
+    )
+    init.add_argument("destination", type=Path)
+    init.add_argument(
+        "--name", help="Project identifier (defaults to destination directory name)"
+    )
+    init.set_defaults(handler=_init_command)
+    doctor = commands.add_parser(
+        "doctor", help="Check declared project inputs without executing its builder"
+    )
+    doctor.add_argument("project", type=Path)
+    doctor.add_argument(
+        "--library",
+        type=Path,
+        help="Override the declared geometry library for this check",
+    )
+    doctor.set_defaults(handler=_doctor_command)
     inspect = commands.add_parser(
         "inspect", help="Inspect rigid placements and optional vertex bounds"
     )

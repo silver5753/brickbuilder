@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "subject": null,
+  "dimensions": null,
+  "scale": null,
+  "part_count_limit": null,
+  "budget": null,
+  "construction_style": null,
+  "sticker_policy": "unknown",
+  "sourcing_region": null,
+  "condition": null,
+  "owned_parts": null,
+  "axes": null,
+  "deliverables": ["cad", "inventory"],
+  "requirements": []
+}

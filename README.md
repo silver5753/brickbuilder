@@ -37,9 +37,17 @@ See [the testing guide](docs/testing.md) for fixtures, markers and coverage limi
 ## Starting a design
 
 For a new description, follow the [new-brief path](docs/playbook.md#new-user-description).
-Record requirements and decisions in a project folder, then author CAD with the
-current Python API or a supported flattened LDraw file. Project initialization,
-assembly helpers and unified build/release commands remain planned.
+Create the packaged starter and check its inputs:
+
+```sh
+uv run --locked brickbuilder init projects/my_model
+uv run --locked brickbuilder doctor projects/my_model
+```
+
+The fresh starter intentionally returns exit 3 (unknown) until its brief and
+planned parts are filled in. Read [project setup](docs/projects.md) for the format
+and diagnostics. Doctor never executes project Python or certifies a model.
+Assembly helpers and unified build/release commands remain planned.
 
 For an existing model, follow the [existing-CAD path](docs/playbook.md#existing-cad-or-project).
 Substitute your actual input path below; the output file must not already exist:
@@ -60,6 +68,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Agent instructions](AGENTS.md)
 - [Playbook: new brief or existing CAD](docs/playbook.md)
 - [Design brief and acceptance checklist](docs/design-brief.md)
+- [Project format, init and doctor](docs/projects.md)
 - [Model API and inspection CLI](docs/model-api.md)
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Connections and attachment checks](docs/connectivity.md)
