@@ -18,7 +18,7 @@ jobs:
       - run: uv sync --locked --python "3.12"
       - name: Type check source, tests and preparation tools
         run: uv run --locked --python "3.12" ty check src tests tools --error-on-warning
-      - run: uv run --locked --python "3.12" pytest -m 'not render' -q
+      - run: uv run --locked --python "3.12" pytest -m 'not render and not e2e' -q
       - run: uv run --locked --python "3.12" python -c "import brickbuilder; print(brickbuilder.__version__)"
       - name: Inspect native baseline
         run: uv run --locked --python "3.12" brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
@@ -39,3 +39,16 @@ jobs:
       - run: uv run --locked --extra render ty check src tests tools --error-on-warning
       - name: Synthetic image and print regressions
         run: uv run --locked --extra render pytest tests/test_rendering.py -q
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.11"
+      - run: uv sync --locked --extra render
+      - name: Installed-wheel process workflows
+        run: uv run --locked --extra render pytest tests/e2e -q

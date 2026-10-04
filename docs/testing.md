@@ -17,9 +17,10 @@ uv run --locked --extra render pytest -q
 
 Pytest is a development dependency, not a core runtime dependency. Configuration
 uses importlib mode, explicit test paths and strict marker/config checks. The
-registered `render` marker identifies the six optional backend tests. Selecting
+registered `render` marker identifies tests needing optional rendering dependencies. Selecting
 any of them without the rendering dependencies fails collection. Core CI
-explicitly deselects them; render CI runs the entire rendering test module.
+explicitly deselects them and the `e2e` tests; render CI runs the rendering test
+module. A separate e2e job runs all installed-wheel workflows.
 
 ## Organization
 
@@ -31,6 +32,8 @@ explicitly deselects them; render CI runs the entire rendering test module.
 - `test_connectivity.py`: mating interfaces, graph paths, unknowns and both poses.
 - `test_rendering.py`: surfaces, cameras, occlusion, cosmetic selection and SVGs.
 - `test_jsonio.py`: strict nonfinite-number rejection.
+- `e2e/test_workflows.py`: core-only wheel installation, both spacecraft poses,
+  subprocess failure contracts and a combined render/profile/sticker workflow.
 
 Review regressions live beside the behavior they protect. Parametrize cases when
 they test independent paths; use a local case table when parametrization would
@@ -53,8 +56,29 @@ between repeated runs under the same environment, not across platforms.
 
 ## Scope
 
-These tests exercise APIs and in-process CLI handlers. Installed-wheel subprocess
-tests and workflows combining profiles, decals and export/report manifests are
-planned follow-up coverage. Marketplace acceptance, physical fit, printer
-calibration and structural strength remain untested; an expected `unknown`
-connection report is not a physical-build pass.
+Five end-to-end cases build one wheel and install it non-editably into isolated
+Python 3.12 environments outside the checkout. The core environment has no
+runtime dependencies, including no pytest or rendering packages. The render
+environment installs the exact dependencies exported from `uv.lock`, with hash
+verification. Subprocesses invoke the installed console script, clear Python path
+overrides, use timeouts and check exit codes/stdout/stderr. Package origin is
+verified inside each installation.
+
+```sh
+uv run --locked pytest tests/e2e -m 'not render' -q
+uv run --locked --extra render pytest tests/e2e -q
+```
+
+The pose workflows bind inventories, both ordering formats, nominal connection
+reports and 42 print labels to consistent model/source fingerprints. They retain
+the expected connection exit code 3 (`unknown`). The synthetic rendering workflow
+combines camera views, exact profile bindings, cosmetic artwork, missing-mesh
+envelopes and PNG/SVG output hashes without fetching an external geometry library.
+It checks visible artwork, preserves physical quantities and uses no golden PNG.
+The failure workflow checks bad arguments, stale profiles, rejected mappings,
+malformed native input and existing-output preservation.
+
+Marketplace acceptance, physical fit, printer calibration and structural
+strength remain untested. A full spacecraft render using externally sourced
+meshes remains outside CI; the synthetic library is the reproducible substitute
+for testing the rendering pipeline, not a substitute for spacecraft geometry.

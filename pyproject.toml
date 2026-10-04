@@ -28,4 +28,7 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = ["--import-mode=importlib", "--strict-markers", "--strict-config"]
-markers = ["render: requires the optional rendering dependencies"]
+markers = [
+    "render: requires the optional rendering dependencies",
+    "e2e: exercises an installed wheel through subprocesses",
+]
