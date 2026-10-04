@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-04",
+  "source": "https://library.ldraw.org/",
+  "scope": "Nominal conventional interfaces reviewed from native meshes; no physical measurements, collision or insertion-access tests. No geometry redistributed.",
+  "parts": [
+    {
+      "reference": "3034.dat",
+      "sha256": "035f4ac31ecad8943fd0ac6baa155c6ff38c75a4d8ef1083fb2afa48b166a845",
+      "header": [
+        "0 Plate  2 x  8",
+        "0 Name: 3034.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -80.0,
+          -4.0,
+          -20.0
+        ],
+        "maximum": [
+          80.0,
+          8.0,
+          20.0
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Reviewed conventional stud grid and underside seating plane in native geometry."
+    },
+    {
+      "reference": "3700.dat",
+      "sha256": "6cb6522c580754cf970dad0fae688bb78cb3253a7237038dad83965fe47cfec6",
+      "header": [
+        "0 Technic Brick  1 x  2 with Hole",
+        "0 Name: 3700.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2010-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -20.0,
+          -4.0,
+          -10.0
+        ],
+        "maximum": [
+          20.0,
+          24.0,
+          10.0
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Reviewed conventional stud grid and underside seating plane in native geometry. Round bore from peghole placements at (0,10,+/-10)."
+    },
+    {
+      "reference": "3003.dat",
+      "sha256": "aed0ccd750126a58d38b012a4e8b16c172896339547c120ef67b69e1386f490d",
+      "header": [
+        "0 Brick  2 x  2",
+        "0 Name: 3003.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -20.0,
+          -4.0,
+          -20.0
+        ],
+        "maximum": [
+          20.0,
+          24.0,
+          20.0
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Reviewed conventional stud grid and underside seating plane in native geometry."
+    },
+    {
+      "reference": "3022.dat",
+      "sha256": "3570c6bb26d9f8f64b5f5cce11b0ed69c68fe987f40b1c4e9174edf3c39225d6",
+      "header": [
+        "0 Plate  2 x  2",
+        "0 Name: 3022.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2002-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -20.0,
+          -4.0,
+          -20.0
+        ],
+        "maximum": [
+          20.0,
+          8.0,
+          20.0
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Reviewed conventional stud grid and underside seating plane in native geometry."
+    },
+    {
+      "reference": "3707.dat",
+      "sha256": "2fe75096481c1428033ea7e561eb9413c6a93121c6acec9a631831465979a87d",
+      "header": [
+        "0 Technic Axle  8",
+        "0 Name: 3707.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2005-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -80.0,
+          -6.0,
+          -6.0
+        ],
+        "maximum": [
+          80.0,
+          6.0,
+          6.0
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Axle primitive spans X=-80..80; cross roll axis Y."
+    },
+    {
+      "reference": "3713.dat",
+      "sha256": "2b813f30e7a6843cbd330035763f6ef904eafc8e7b5395c98332d07e8dfa1c43",
+      "header": [
+        "0 Technic Bush with Two Flanges",
+        "0 Name: 3713.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2012-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -9.0,
+          -9.0,
+          -10.0
+        ],
+        "maximum": [
+          9.0,
+          9.0,
+          10.0
+        ]
+      },
+      "empty_dependencies": [
+        "1-16chrd.dat",
+        "empty.dat"
+      ],
+      "note": "bush.dat/bush0.dat cross profile along Z=-10..10; roll Y. Flanges are not extra attachment ports."
+    },
+    {
+      "reference": "4288.dat",
+      "sha256": "5ef12f55faedacf53f85c7716ebb4fc7fb24113d27114be396b4765bded17747",
+      "header": [
+        "0 Wheel 13 x 20 Solid Rubber with Axle Hole",
+        "0 Name: 4288.dat",
+        "0 Author: John Van Zwieten [jvan]",
+        "0 !LDRAW_ORG Part UPDATE 2022-02",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -25.000098045999998,
+          -24.950776620000003,
+          -17.0
+        ],
+        "maximum": [
+          25.000098045999998,
+          24.950776620000003,
+          16.25
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Four axlehol6.dat teeth scale Y into Z=-16.25..0. Positive-Z recess is round, so do not claim a full-width cross seat."
+    }
+  ],
+  "interface_sources": [
+    {
+      "reference": "p/axle.dat",
+      "sha256": "b80b9c23788080b58962c7cca4a641d584957afaf71a4031b1d3616721516f8e",
+      "header": [
+        "0 Technic Axle",
+        "0 Name: axle.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ]
+    },
+    {
+      "reference": "p/bush.dat",
+      "sha256": "1a0a36c0bf653cc22db692447cfb959c478ec10aa28b9e9ee18f111c79f6d545",
+      "header": [
+        "0 Technic Bush without Base Collar",
+        "0 Name: bush.dat",
+        "0 Author: Willy Tschager [Holly-Wood]",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ]
+    },
+    {
+      "reference": "p/bush0.dat",
+      "sha256": "8f88836565c33393b76ff00c658aef26d16608db3a8eac5e4302b17978a0bc51",
+      "header": [
+        "0 Technic Bush without Collars",
+        "0 Name: bush0.dat",
+        "0 Author: Willy Tschager [Holly-Wood]",
+        "0 !LDRAW_ORG Primitive UPDATE 2024-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ]
+    },
+    {
+      "reference": "p/axlehol6.dat",
+      "sha256": "e7d0115c0eaab5acfb54d9b4d034bbf938d8d44d3be830aae73b091e1d1ce774",
+      "header": [
+        "0 Technic Axle Hole Tooth",
+        "0 Name: axlehol6.dat",
+        "0 Author: Steve Bliss [sbliss]",
+        "0 !LDRAW_ORG Primitive UPDATE 2022-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ]
+    },
+    {
+      "reference": "p/peghole.dat",
+      "sha256": "90c6dba9e5bcdd63955b9a5208f377761850863be9ed26cac7cd2be61ab85c92",
+      "header": [
+        "0 Peg Hole End",
+        "0 Name: peghole.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Primitive UPDATE 2010-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ]
+    },
+    {
+      "reference": "p/stud.dat",
+      "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+      "header": [
+        "0 Stud",
+        "0 Name: stud.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Primitive UPDATE 2012-01",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ]
+    },
+    {
+      "reference": "p/stud2.dat",
+      "sha256": "5ed3702c7d7000bfac2906f12b74ae312c59194a8e3b504952820c826b51c810",
+      "header": [
+        "0 Stud Open",
+        "0 Name: stud2.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Primitive UPDATE 2009-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ]
+    }
+  ]
+}

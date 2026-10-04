@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "S1",
+      "location": "geometry_review.json",
+      "kind": "other",
+      "edition": "Local native headers recorded per part, reviewed 2026-10-04",
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": "7de0f42ec033fb8d52e8b49cc380c05dc0343340f4dfe6e5521c4a45c9450989",
+      "confidence": "medium",
+      "note": "Original generic demonstration. Geometry sources establish nominal interfaces, not resemblance to any real car, stock or physical buildability."
+    }
+  ]
+}

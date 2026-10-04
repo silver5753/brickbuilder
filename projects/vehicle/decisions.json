@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "decisions": [
+    {
+      "id": "D1",
+      "requirement_ids": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "recorded_on": "2026-10-04",
+      "kind": "assumption",
+      "choice": "Small exposed-wheel runabout with solid rubber axle-hole wheels and a block cab",
+      "reason": "Demonstrate non-spacecraft composition with seven real part types and no unsupported tire/rim interface. Wide track and short body are intentional stylization.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ]
+}

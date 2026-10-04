@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "name": "vehicle",
+  "builder": "build.py",
+  "brief": "brief.json",
+  "sources": "sources.json",
+  "decisions": "decisions.json",
+  "library": null,
+  "parts": [
+    "3003.dat",
+    "3022.dat",
+    "3034.dat",
+    "3700.dat",
+    "3707.dat",
+    "3713.dat",
+    "4288.dat"
+  ]
+}

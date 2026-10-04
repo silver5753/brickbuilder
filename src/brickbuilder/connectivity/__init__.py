@@ -5,9 +5,9 @@ from dataclasses import dataclass
 from math import floor, sqrt
 from itertools import product
 
-from ..model import Model, reference_name
+from ..model import Model, PartInstance, reference_name
 from ..transforms import Vector, apply, dot, subtract, vector
-from .catalog import Catalog, Connector, number
+from .catalog import Catalog, Connector, PartConnectors, number
 
 
 @dataclass(frozen=True)
@@ -65,7 +65,26 @@ def _ordered(a: Port, b: Port) -> tuple[Port, Port]:
     return a, b
 
 
-def _match(a: Port, b: Port, tolerance: Tolerances) -> Match | None:
+def world_ports(part: PartInstance, declaration: PartConnectors) -> tuple[Port, ...]:
+    """Place reviewed local connectors in the same frame as a physical instance."""
+    if reference_name(part.reference) != declaration.reference:
+        raise ValueError("Connector declaration does not match the native part")
+    return tuple(
+        Port(
+            part.instance_id,
+            c,
+            part.transform.point(c.position),
+            apply(part.transform.rotation, c.axis),
+            apply(part.transform.rotation, c.roll_axis) if c.roll_axis else None,
+        )
+        for c in declaration.connectors
+    )
+
+
+def match_ports(a: Port, b: Port, tolerance: Tolerances = Tolerances()) -> Match | None:
+    """Check one declared pair; this does not check occupancy or rooted paths."""
+    if a.instance_id == b.instance_id:
+        return None
     a, b = _ordered(a, b)
     pair = a.connector.kind, b.connector.kind
     delta = subtract(b.position, a.position)
@@ -212,18 +231,7 @@ def inspect_connections(
                 )
             )
         if declaration:
-            for connector in declaration.connectors:
-                ports.append(
-                    Port(
-                        part.instance_id,
-                        connector,
-                        part.transform.point(connector.position),
-                        apply(part.transform.rotation, connector.axis),
-                        apply(part.transform.rotation, connector.roll_axis)
-                        if connector.roll_axis
-                        else None,
-                    )
-                )
+            ports.extend(world_ports(part, declaration))
     # Compare compatible families only. No part bounds or proximity invents an edge.
     by_kind: dict[str, list[Port]] = defaultdict(list)
     for port in ports:
@@ -247,7 +255,7 @@ def inspect_connections(
                 candidates = by_kind[female]
             for b in candidates:
                 if a.instance_id != b.instance_id:
-                    match = _match(a, b, tolerances)
+                    match = match_ports(a, b, tolerances)
                     if match:
                         matches.append(match)
     graph: dict[str, set[str]] = defaultdict(set)

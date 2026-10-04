@@ -28,3 +28,8 @@ ported from the project-generated historical preview rasterizer. Rendered
 surfaces use the caller-supplied LDraw library; preserve that library attribution
 when distributing previews. No external meshes, fonts, papers or photos are
 bundled by this milestone. Custom solar grid artwork is generated separately.
+
+The vehicle example records native geometry attribution, license headers and
+source hashes in projects/vehicle/geometry_review.json. Its small connector
+catalog records nominal interfaces reviewed from those sources. Geometry is
+not redistributed; preserve the recorded LDraw contributor attribution.

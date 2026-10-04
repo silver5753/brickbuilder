@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: P1 and P2a complete.
-P2b is next; P2b–P5 remain planned. Original reviewed code baseline: commit
+Updated: 4 October 2026. Status: P1, P2a and P2b complete.
+P2c is next; P2c–P5 remain planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -135,7 +135,7 @@ turning them into correctly placed, identifiable assemblies.
 - Start with the parts needed for the two examples. Do not attempt an exhaustive
   global parts catalog or automatic connector inference in this phase.
 
-**P2b: assembly API and vehicle**
+**P2b: assembly API and vehicle — complete, 4 October 2026**
 
 - Add ordinary Python assembly composition with local frames, named attachment
   ports, semantic part IDs, groups, intended connections and requirement links.
@@ -353,7 +353,8 @@ set of nearly identical spacecraft snapshots.
 | P1a | Complete, 4 October 2026 | Generic [agent instructions](../AGENTS.md), [playbook](playbook.md), [brief/checklist](design-brief.md), [project notes](../projects/solar_orbiter/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/docs/playbook.md) | Documentation and manual templates only; no new CLI or models |
 | P1b | Complete, 4 October 2026 | [Project format and CLI](projects.md), typed records, packaged starter, non-executing doctor; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/project.py) | Readiness only; no builder execution, source verification or model validation |
 | P2a | Complete, 4 October 2026 | [Parts and reference preparation](preparation.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/parts.py) | Supplied metadata/declarations; source meaning, stock and physical fit remain unverified |
-| P2b–P5 | Planned; P2b next | Specifications above | Not implemented |
+| P2b | Complete, 4 October 2026 | [Assembly API](assembly.md), [vehicle example](../projects/vehicle/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py) | Nominal interfaces only; no physical build, collision, motion or release certification |
+| P2c–P5 | Planned; P2c next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -398,7 +399,28 @@ Historical connector recipes moved into the spacecraft project; historical
 assembly-binding recovery stays separate until P2b provides generated bindings.
 Frozen CAD, connector baselines and fixture hashes remain unchanged.
 
-Next: implement P2b (assembly API and the vehicle example) when requested.
+P2b verification: ty passed for source, tests, tools and the executable vehicle
+builder; all 196 pytest cases passed, including eight installed-wheel e2e cases.
+Focused coverage checks semantic identity, nested frames, port-frame rotation,
+explicit alignment, intended mismatches even with a connected nominal graph,
+unknown coverage, invalid names/placements and source-bound profile/selection
+round trips. The installed-core workflow builds the 19-part vehicle, checks all
+24 intended joints and complete nominal coverage, inspects group inventory and
+rebuilds a different colour/wheelbase with the same semantic bindings.
+
+P2b scope: assemblies flatten to the existing Model and LDraw types. Public
+port matching reuses the existing connection checker; intent never adds an edge.
+The vehicle's seven native part types and relevant interface primitives were
+reviewed in a real local geometry library, with hashes/attribution retained.
+Front, rear and underside surface renders were generated and visually inspected
+without mesh envelopes. Generated previews/dependency libraries remain ignored.
+No live stock, physical fit, strength, insertion or motion tests are claimed.
+Stacked-body and supported-axle helpers stay project-local until reused; unused
+pinned-beam abstractions were not added. Requirement bindings are traceability,
+not automatic acceptance. Unified execution/release remains P3 work; frozen
+spacecraft files and UUID creation are unchanged.
+
+Next: implement P2c (the building example and generic authoring tutorial) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

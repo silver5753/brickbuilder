@@ -25,7 +25,8 @@ for the limits of each check.
 5. Start a project-local Python builder with the [typed model API](model-api.md),
    or author a supported flattened LDraw file. Review the Python before running
    it; the starter intentionally raises NotImplementedError until authored.
-   Reusable assembly authoring and a unified `build` command are still planned.
+   Use [assembly authoring](assembly.md) for local frames, named identities and
+   generated bindings; see the [vehicle](../projects/vehicle/README.md). A unified `build` command remains planned.
 
 There is no requirement to load a previous release or the frozen spacecraft
 baseline to start a new design. A blank brief is a valid starting point.
@@ -74,7 +75,7 @@ single automated pipeline.
 |---|---|---|
 | Prepare a project | `init`, `doctor` ([project format](projects.md)) | Fill the brief, select parts and review/implement the builder |
 | Prepare parts/evidence | `parts`, `sources`, optional `reference-page` ([preparation](preparation.md)) | Review metadata/declarations and source meaning; no inferred connectors |
-| Create/edit CAD | Python Model/PartInstance/Transform and LDraw APIs | Part selection, assembly layout and placement logic |
+| Create/edit CAD | [Assembly authoring](assembly.md), Model/PartInstance/Transform and LDraw APIs | Part selection, assembly layout, reviewed ports and placement logic |
 | Inspect and preserve identities | `inspect`, `roundtrip` ([model API](model-api.md)) | Supply library; review missing meshes and duplicate findings |
 | Count and compare | `inventory`, `diff` ([inventories](inventory-exports.md)) | Supply flattened physical parts and choose one selection |
 | Check attachments | `connections` ([connections](connectivity.md)) | Reviewed catalog and explicit root or source-bound profile |
@@ -82,8 +83,7 @@ single automated pipeline.
 | Print solar-pattern decals | `stickers` ([rendering](rendering.md)) | Select tiles, inspect sizes and physically calibrate printing |
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
-Reusable assembly builders,
-arbitrary artwork, illustrated instructions, geometric one-to-many substitutions,
+Arbitrary artwork, illustrated instructions, geometric one-to-many substitutions,
 collision/motion checks and unified build/release commands remain planned.
 Historical scripts are research material, not additional supported package APIs.
 

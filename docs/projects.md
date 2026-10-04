@@ -213,5 +213,5 @@ The starter builder raises `NotImplementedError` until authored. Review unfamili
 Python before importing/calling it; doctor does not sandbox or vet executable
 code. Return a flattened Model of native physical-part instances with rigid
 placements and stable semantic IDs. Use the existing [model API](model-api.md)
-and [playbook](playbook.md) for the remaining manual steps. P2 supplies reusable
-assembly authoring; P3 supplies unified execution and release automation.
+and [playbook](playbook.md) for the remaining manual steps. Use [assembly authoring](assembly.md) for new builders and generated bindings.
+P3 will supply unified execution and release automation.

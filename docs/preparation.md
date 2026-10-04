@@ -121,7 +121,7 @@ project manifest; it does not reconstruct historical assemblies. The old fixed
 part lists and missing-mesh exception now live in
 [legacy spacecraft recipes](../projects/solar_orbiter/legacy_connector_recipes.py).
 `tools/build_connection_profiles.py` remains a frozen-baseline recovery utility;
-new assembly-generated bindings arrive in P2b. Do not use recovery scripts as a
+new authoring uses [assembly-generated bindings](assembly.md). Do not use recovery scripts as a
 new-project authoring pipeline.
 
 ## Retrieve only explicitly selected references

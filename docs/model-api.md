@@ -58,7 +58,8 @@ beam's local Z length axis and projected local Y hole axis. Its required
 than stretch the beam. Parallel hole/length axes and zero-length directions fail.
 No part length catalogue is supplied by this commit.
 
-New instances use UUIDs. Imported files lacking metadata get deterministic IDs
+`PartInstance.create` uses UUIDs. [Assembly authoring](assembly.md) supplies
+deterministic semantic paths for newly generated models. Imported files lacking metadata get deterministic IDs
 from native reference, colour and placement; an occurrence suffix distinguishes
 otherwise identical duplicates. This is not a list index. Adding comments or
 unrelated parts does not change IDs. Editing an unannotated source's placements

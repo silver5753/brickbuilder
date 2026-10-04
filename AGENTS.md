@@ -35,7 +35,7 @@ compromises explicitly instead of silently dropping visual or functional detail.
 - Use rigid rotations: orthogonal with determinant +1; never stretch parts.
 - Keep native part/colour identifiers separate from marketplace identifiers.
 - Preserve instance IDs through edits; do not use list indices as identities.
-  New API instances currently use UUIDs; deterministic authoring IDs are planned.
+  Use semantic paths with the assembly API for new authoring; UUID creation remains available.
 - Keep cosmetic stickers and render-only geometry outside physical CAD/BOMs.
 
 ## Evidence and checks
@@ -65,6 +65,7 @@ Read the relevant guide before changing or using a capability:
 
 - [Preparation](docs/preparation.md): local parts search, reviewed connector coverage,
   explicit reference acquisition and optional page extraction; no inferred connectors.
+- [Assembly authoring](docs/assembly.md): named parts, local frames, intended joints and generated bindings.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
   MPD/TEXMAP remain unsupported.
 - [Inventory/export API](docs/inventory-exports.md): native quantities, substitutions

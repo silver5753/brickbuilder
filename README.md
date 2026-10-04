@@ -18,7 +18,7 @@ Use Python 3.12 and uv:
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests tools --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle/build.py --error-on-warning
 uv run --locked pytest -m 'not render' -q
 uv run --locked python -c "import brickbuilder; print(brickbuilder.__version__)"
 uv build
@@ -48,8 +48,9 @@ The fresh starter intentionally returns exit 3 (unknown) until its brief and
 planned parts are filled in. Read [project setup](docs/projects.md) for the format
 and diagnostics. Doctor never executes project Python or certifies a model.
 Use [parts and reference preparation](docs/preparation.md) to search local geometry,
-review connector coverage and cache explicitly selected evidence. Assembly helpers
-and unified build/release commands remain planned.
+review connector coverage and cache explicitly selected evidence. Use
+[assembly authoring](docs/assembly.md) and the executable [vehicle example](projects/vehicle/README.md)
+for new models. Unified build/release commands remain planned.
 
 For an existing model, follow the [existing-CAD path](docs/playbook.md#existing-cad-or-project).
 Substitute your actual input path below; the output file must not already exist:
@@ -72,6 +73,8 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Design brief and acceptance checklist](docs/design-brief.md)
 - [Project format, init and doctor](docs/projects.md)
 - [Parts search and reference preparation](docs/preparation.md)
+- [Assembly authoring and generated bindings](docs/assembly.md)
+- [Vehicle example](projects/vehicle/README.md)
 - [Model API and inspection CLI](docs/model-api.md)
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Connections and attachment checks](docs/connectivity.md)
@@ -92,7 +95,8 @@ and unresolved connection/geometry findings are in the
 [project notes](projects/solar_orbiter/README.md). Its frozen files must stay
 unchanged. The vehicle and building planning examples in the
 [brief guide](docs/design-brief.md#worked-planning-examples) illustrate the generic
-workflow; executable example models are planned in P2.
+workflow. The [vehicle](projects/vehicle/README.md) is executable; the building
+example and end-to-end tutorial are next in P2c.
 
 ## Next implementation phases
 

@@ -20,7 +20,8 @@ semantic instance IDs across rebuilds. The starter deliberately has no design.
 Run brickbuilder doctor . for input readiness. It does not run the builder,
 verify source claims, certify attachments or demonstrate physical buildability.
 Use the package's inspect, connections, inventory and render commands on authored
-CAD as appropriate. Unified build/release and assembly helpers are still planned.
+CAD as appropriate. Use brickbuilder.assembly for named parts, local frames,
+intended joints and generated bindings. Unified build/release is still planned.
 
 Keep generated outputs, downloaded assets and environment files ignored. Record
 exact revisions and independent validation statuses; never treat unknown as pass.

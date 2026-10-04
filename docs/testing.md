@@ -4,7 +4,7 @@ Use Python 3.12 and the locked development environment:
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests tools --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle/build.py --error-on-warning
 uv run --locked pytest -m 'not render' -q
 ```
 
@@ -32,6 +32,8 @@ module. A separate e2e job runs all installed-wheel workflows.
 - `test_connectivity.py`: mating interfaces, graph paths, unknowns and both poses.
 - `test_rendering.py`: surfaces, cameras, occlusion, cosmetic selection and SVGs.
 - `test_jsonio.py`: strict nonfinite-number rejection.
+- `test_assembly.py`: semantic identity, rigid port frames, intended-pair diagnostics and generated bindings.
+- `e2e/test_vehicle.py`: installed authoring, full/group inventories, profile coverage and a parameterized second build.
 - `test_preparation.py`: measured/curated/evidence separation, catalog selection,
   offline cache integrity, acquisition failures and optional PDF tool contracts.
 - `e2e/test_preparation.py`: installed parts preparation and offline source reuse.
@@ -62,7 +64,7 @@ between repeated runs under the same environment, not across platforms.
 
 ## Scope
 
-Seven end-to-end cases build one wheel and install it non-editably into isolated
+Eight end-to-end cases build one wheel and install it non-editably into isolated
 Python 3.12 environments outside the checkout. The core environment has no
 runtime dependencies, including no pytest or rendering packages. The render
 environment installs the exact dependencies exported from `uv.lock`, with hash

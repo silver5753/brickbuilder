@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "subject": "Small original toy runabout with exposed wheels",
+  "dimensions": "Approximately 68 x 64 x 41 mm, including axle-end bushes and roof studs",
+  "scale": "Stylized; not a scale replica",
+  "part_count_limit": 25,
+  "budget": null,
+  "construction_style": "Studded body on two supported Technic axles",
+  "sticker_policy": "forbidden",
+  "sourcing_region": null,
+  "condition": null,
+  "owned_parts": null,
+  "axes": "+X front, -Y up, +Z right; LDraw units",
+  "deliverables": [
+    "cad",
+    "inventory",
+    "preview"
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "One connected chassis supporting two axles and four wheels",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "vehicle",
+        "vehicle/front_axle",
+        "vehicle/rear_axle"
+      ],
+      "views": [
+        "underside"
+      ],
+      "validation": "Complete declared nominal connections and intended pairs; physical trial remains required"
+    },
+    {
+      "id": "R2",
+      "text": "Distinct bonnet, cab and supported roof; opposite-side views",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "vehicle/body"
+      ],
+      "views": [
+        "front",
+        "rear"
+      ],
+      "validation": "CAD visual review and declared stud seating"
+    },
+    {
+      "id": "R3",
+      "text": "Axles may rotate in their supports",
+      "priority": "prefer",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "vehicle/front_axle",
+        "vehicle/rear_axle"
+      ],
+      "views": [
+        "underside"
+      ],
+      "validation": "Round-hole interface declaration; movement and clearance not tested"
+    }
+  ]
+}
