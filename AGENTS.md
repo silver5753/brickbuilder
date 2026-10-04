@@ -2,7 +2,7 @@
 
 ## Read before changing the project
 
-Read README.md, docs/playbook.md, docs/validation-levels.md and the relevant
+Read README.md, docs/roadmap.md, docs/playbook.md, docs/validation-levels.md and the relevant
 project requirements/source records. Requirements from the current user
 conversation take precedence. Implement only the requested milestone and
 keep the frozen baseline untouched while extracting reusable code.

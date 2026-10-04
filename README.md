@@ -53,7 +53,8 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Connections and attachment checks](docs/connectivity.md)
 - [CAD previews and print stickers](docs/rendering.md)
-- [Workflow inventory and planned commits](docs/workflow-inventory.md)
+- [Current implementation roadmap](docs/roadmap.md)
+- [Historical workflow inventory](docs/workflow-inventory.md)
 - [Milestones 1–3 code review](docs/review-milestones-1-3.md)
 - [Validation levels](docs/validation-levels.md)
 - [Solar Orbiter requirements](projects/solar_orbiter/requirements.yaml)
@@ -78,9 +79,16 @@ Nominal connection checks are documented, but physical strength, sag,
 joint grip and stability remain untested. Exact geometry for part 7798 was
 unavailable; its native identity remains preserved.
 
-## Planned next commits
+## Next implementation phases
 
-1. Connectivity rules with valid/invalid fixtures and explicit unknowns.
+See the [detailed roadmap](docs/roadmap.md) for deliverables, dependencies,
+acceptance criteria and proposed commit slices:
+
+1. Generic agent workflow and project starter.
+2. Parts preparation, assembly authoring and vehicle/building examples.
+3. Unified project execution and reproducible releases.
+4. Generic artwork and illustrated building instructions.
+5. Geometric substitutions, sourcing and collision/motion diagnostics.
 
 Generated renders, releases and fetched reference assets belong outside
 source-controlled code. The committed baseline fixture directory is the

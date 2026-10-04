@@ -1,0 +1,362 @@
+# Brick Builder implementation roadmap
+
+Updated: 4 October 2026. Status: planned; implementation of the five phases below
+has not started. Reviewed baseline: commit
+`ecf01adc9944e4570004f1a7227b1c8366e23b57`.
+
+This is the current forward plan. The [workflow inventory](workflow-inventory.md)
+preserves the original project history and extraction plan; its “Implemented”
+labels sometimes describe historical scripts rather than shipped package APIs.
+Use this roadmap for sequencing new work, and the API documentation for what
+works today. Current user instructions take precedence over this plan.
+
+## Goal and success criteria
+
+An agent should be able to take a user description, record constraints, research
+references, choose real parts, construct a model, inspect it and deliver a
+reproducible review package using documented tools. It should not need to invent
+a new modeling framework, reconstruct old conversations or modify the core for
+each subject.
+
+The agent remains responsible for interpreting the brief and judging visual
+quality. Code should manage identities, placement, evidence, checks and outputs.
+Neither a polished render nor a connected graph proves physical buildability.
+
+We will judge progress by completing two unrelated new projects—a small wheeled
+vehicle and a small building—from briefs through the same documented workflow.
+Solar Orbiter remains a frozen regression example, not the default design or
+the source of universal geometry, colour, region or view assumptions.
+
+## Starting point
+
+| Area | Shipped scope | Remaining gap |
+|---|---|---|
+| Environment | Python 3.12, uv lock, ty, pytest and installed-wheel e2e CI | Preserve these boundaries as features grow |
+| CAD | Typed flat models, rigid transforms, single-file LDraw, dependency resolution, bounds and duplicate diagnostics | Authoring assemblies and stable identities across generated rebuilds |
+| Inventory | Native counts, selections, deltas, one-for-one identity/colour substitutions and reconciled marketplace exports | Geometric replacements and stock/cost planning |
+| Connections | Declared connector matching, engagement, occupancy and rooted paths | Broader evidence-backed catalog, generated bindings and actionable authoring feedback |
+| Rendering | Actual-CAD previews, explicit cameras, provenance and separate dimensional SVG decals | Generic artwork and build-step illustrations |
+| Workflow | Individual commands, source records and a substantial frozen spacecraft example | Validated new-project brief, part preparation, assembly creation and unified release |
+
+The current commands are `inspect`, `roundtrip`, `inventory`, `diff`, `export`,
+`connections`, `render` and `stickers`. All new command names below are proposals,
+not commands that can already be run. MPD/TEXMAP support is outside this roadmap's
+initial scope; preserve explicit format errors instead of implying support.
+
+## Sequence and dependencies
+
+| Phase | Outcome | Depends on | Proposed commit slices |
+|---|---|---|---|
+| P1 | Generic agent workflow and new-project starter | Current core | P1a instructions; P1b schema, init and doctor |
+| P2 | Parts preparation and assembly authoring, demonstrated on two subjects | P1 | P2a parts index; P2b assembly API and vehicle; P2c building and tutorial |
+| P3 | One reproducible project execution and release path | P1–P2 | P3a orchestration; P3b manifests and release verification |
+| P4 | Illustrated building instructions and generic artwork | P2–P3 | P4a artwork; P4b step plans and illustrations |
+| P5 | Geometric substitutions, sourcing and collision/motion review | P2–P3; P4 for refreshed instructions | P5a replacements; P5b sourcing; P5c collision and motion diagnostics |
+
+These are reviewable slices, not a promise to fit each feature into one large
+commit. Split a slice when needed, keeping each commit usable. Detailed motion
+analysis follows authoring and release work because agents first need a reliable
+way to create and inspect an ordinary new model.
+
+## P1 — Generic workflow and starter project
+
+**Purpose:** Remove dependence on the spacecraft conversation and give an agent
+a clear starting point for any subject.
+
+**P1a: documentation and scope**
+
+- Rewrite the playbook with separate entry paths for a new brief and an existing
+  CAD model. Reading a previous release must be optional for a new project.
+- Change root instructions to `projects/<project_name>/`; move spacecraft axes,
+  named instruments and regional sourcing details into its own project notes.
+- Explain the loop: brief → evidence → structure → details → checks → visual
+  review → sourcing → delivery. State which actions are executable today.
+- Add an acceptance checklist linking each requested feature to an assembly,
+  evidence record, required view and appropriate validation method.
+- Keep public prose in “brick” terminology; preserve technical identifiers,
+  source URLs and required third-party attribution.
+
+**P1b: project contract and starter commands**
+
+- Define a small, versioned project schema. Prefer strict JSON, matching existing
+  configuration loaders, and Python dataclasses over a new configuration DSL.
+  Do not force an unrelated migration of historical YAML records.
+- Capture subject, target dimensions/scale, part-count or budget preferences,
+  appearance priorities, moving features, build style, sticker policy, sourcing
+  constraints and requested deliverables. Distinguish hard constraints,
+  preferences, assumptions and accepted compromises; allow unknown values.
+- Record references with URL/local identity, retrieval status, checksum where
+  available, source type, edition, figure/page distinction and confidence.
+- Add a decisions ledger with stable requirement IDs and reasons for changes.
+  Derive acceptance reporting from these IDs rather than duplicating requirements
+  in a second manually maintained checklist.
+- Provide a packaged starter containing a project manifest, brief, source and
+  decision records, a minimal `build.py`, and project-specific instructions.
+  Define one typed builder entry point; document project Python as executable
+  code that must be reviewed before running an unfamiliar project.
+- Proposed `brickbuilder init`: create the starter without overwriting existing
+  files. Proposed `brickbuilder doctor`: check schema, declared paths, Python,
+  optional dependencies and geometry readiness with actionable diagnostics.
+  Doctor must work before a completed model exists and must not certify a model.
+- Keep generated output and downloaded caches ignored. Ship templates as package
+  resources so initialization works from an installed wheel outside the checkout.
+
+**Done when:** An agent can initialize a vehicle or building project, record its
+brief and assumptions, and identify the next action without reading Solar
+Orbiter files. Invalid configuration reports a specific field/path. An incomplete
+brief or missing geometry is visible, never silently filled with spacecraft defaults.
+
+**Verification:** Extend installed-wheel coverage for initialization and doctor;
+cover overwrite protection and malformed required fields. Review the starter
+instructions against both example briefs. No runtime modeling features are
+claimed by the documentation-only slice.
+
+## P2 — Parts preparation and reusable assembly authoring
+
+**Purpose:** Reduce the largest remaining manual burden: selecting parts and
+turning them into correctly placed, identifiable assemblies.
+
+**P2a: parts and evidence preparation**
+
+- Build a local index over a user-supplied geometry library: native identity,
+  description/category, dependency availability and geometry bounds. Keep
+  curated dimensions and connector declarations distinct from measured bounds.
+- Add queries by function, nominal dimensions and supported connection family.
+  Unknown metadata must be searchable as unknown, not guessed from filenames.
+- Track colour-production evidence, marketplace mappings, mesh availability and
+  stock observations separately. Existing geometry does not prove stock.
+- Generalize preparation tools that currently hard-code spacecraft part lists
+  and its missing-mesh exception. Let a project's selected parts drive coverage
+  reports; require reviewed evidence before promoting connector declarations.
+- Add a small asset-preparation utility with explicit requested sources, cached
+  checksums, retrieval/failure records and offline reuse. Do not bundle entire
+  libraries, papers or photos by default. Use optional tools for PDF text/page
+  extraction and labelled crops; keep edition and page mappings in source records.
+- Start with the parts needed for the two examples. Do not attempt an exhaustive
+  global parts catalog or automatic connector inference in this phase.
+
+**P2b: assembly API and vehicle**
+
+- Add ordinary Python assembly composition with local frames, named attachment
+  ports, semantic part IDs, groups, intended connections and requirement links.
+  Flatten to the existing Model/LDraw representation at the output boundary.
+- Generate deterministic IDs such as `vehicle/front_axle/left_wheel`; preserve
+  them across repeat builds and unrelated edits. Existing UUID-based creation
+  remains available; do not renumber frozen imported models.
+- Add explicit rigid attachment/alignment helpers that reuse current transforms
+  and connector conventions. Do not stretch parts or silently snap arbitrary
+  geometry into place. Avoid a general constraint solver initially.
+- Extract a small set of demonstrated helpers: stacked plates/panels, supported
+  axle mounts and pinned beam connections. Introduce helpers when examples need
+  them, not a speculative framework with many empty abstractions.
+- Generate selections, assembly bindings and connection profiles from the same
+  authoring result. Bind file hashes after CAD serialization, avoiding a circular
+  dependency between model generation and source-bound profiles.
+- Make diagnostics name assembly/part/port, expected relationship and measured
+  mismatch where available. An intended connection is an assertion to check,
+  never evidence that the pieces actually mate.
+- Build a small vehicle with a chassis, supported wheel axles and body details.
+  Document its dimensions and supported connector coverage. Rotation may be
+  demonstrated as a pose; clearance/holding behaviour remains untested here.
+
+**P2c: building and generic tutorial**
+
+- Build a small building with a base, interlocking walls, an opening and a
+  supported roof. Keep every decorative part attached or explicitly identify
+  it as a separate loose assembly in the brief.
+- Reuse the same project contract and composition API; parameterize dimensions
+  or colours to prove this is an authoring example rather than a fixed CAD import.
+- Write the default tutorial from a blank brief through part selection,
+  attachment checks and front/rear/detail review. Use these examples in primary
+  documentation; keep spacecraft-specific recipes in its project directory.
+
+**Done when:** Both examples rebuild with stable identities, have complete native
+inventories and pass the declared nominal connection scope without project-specific
+branches in core code. Unsupported coverage blocks a blanket connection-pass
+claim. The examples expose genuinely different construction needs.
+
+**Verification:** Add focused tests for identity stability, frame composition,
+port mismatch and generated profile coverage. Add one compact workflow test per
+example and reuse existing e2e infrastructure. Synthetic geometry can test the
+pipeline in CI, but review real-part geometry before presenting example renders
+as construction evidence. Record any unresolved fit or physical-test limitations.
+
+## P3 — Unified project execution and reproducible release
+
+**Purpose:** Replace manual command sequences and stale output folders with one
+repeatable route from project inputs to a reviewable deliverable.
+
+**P3a: execution**
+
+- Proposed `brickbuilder build <project>`: load the project contract, invoke its
+  builder once, then call existing APIs for native CAD, selected inventories,
+  connection reports, configured views, decals and ordering exports. Do not
+  duplicate algorithms or compose brittle shell command strings.
+- Support explicit stages and optional outputs. Missing render dependencies
+  should explain how to install them; a core-only build should remain useful.
+- Produce an immutable result shared by checks and outputs. Verify alternate
+  poses retain the same identities and inventory unless the project explicitly
+  defines a different model/selection.
+- Invalidate derived profiles and reports after geometry/identity edits. Surface
+  failures, unknowns and not-tested dimensions independently in a review summary.
+- Generate required views and requirement coverage from project configuration;
+  no universal shield, wings, instrument or spacecraft camera defaults.
+
+**P3b: release and provenance**
+
+- Proposed `brickbuilder release <project>`: create a new output directory using
+  the same execution path; publish it only after outputs and manifest reconcile.
+  Preserve prior releases and leave failures clearly incomplete.
+- Record source/model/config hashes, builder and package versions, Python and
+  dependency versions, geometry dependency hashes, evidence dates, output hashes,
+  selection/pose identities, validation scope and limitations.
+- Include complete native CAD, BOMs, requested order files/manual additions,
+  reports, review images and generated handoff notes. Clearly name the ordering
+  file and distinguish alternative selections from quantities to combine.
+- Add offline release verification for checksums, missing artifacts, shared model
+  provenance and complete/order/manual quantity reconciliation.
+- Allow clearly labelled draft review packages with unknowns or failed checks.
+  Do not label them verified releases. Define required checks in project policy;
+  never allow policy to relabel unknown as pass. Physical-build status stays a
+  separate field even when all software checks pass.
+
+**Done when:** Each new example goes from its project directory to a complete
+review bundle with one command and no hand-edited generated files. Changing the
+model cannot leave an apparently current report or image in the next release.
+
+**Verification:** Extend the example e2e flows through release verification.
+Check stale/tampered artifacts, quantity reconciliation, unknown/fail propagation
+and preservation of an existing release. Compare semantic outputs and hashes;
+require identical rendered bytes only within the documented same-environment
+scope. Keep machine/timestamp metadata separate from reproducible content.
+
+## P4 — Generic artwork and illustrated building instructions
+
+**Purpose:** Make a release useful for assembling and finishing a model, beyond
+viewing CAD or buying parts.
+
+**P4a: artwork**
+
+- Separate decal placement/physical size from artwork content. Support configured
+  colours, simple patterns, labels and local SVG artwork; solar cells become one
+  project-selected pattern rather than the universal implementation.
+- Preserve one decal per target tile, measured insets, quantity mapping and print
+  calibration. Do not bridge seams without an explicit project decision.
+- Produce printable sheets and the same artwork in review renders. Record font
+  and asset dependencies/attribution; keep cosmetic objects out of CAD/BOMs.
+- Make optional PDF/image tooling an extra rather than a core runtime dependency.
+
+**P4b: assembly steps**
+
+- Define an explicit step plan referencing semantic instances and subassemblies,
+  with prerequisites, orientation, added-part lists and callouts. Existing LDraw
+  STEP groups alone are not a practical instruction sequence.
+- Generate accumulated-model views, highlight additions, and permit manual
+  camera/orientation overrides for obscured connections and mirrored parts.
+- Validate every physical part appears exactly once in the assembly plan,
+  prerequisites have no cycles, and step totals match the chosen model inventory.
+  Reused subassembly instructions must account for every physical copy.
+- Flag insertion/access questions for review. Start with authored step sequences;
+  do not promise automatic discovery of a feasible construction order.
+- Deliver a navigable instruction set with optional PDF export, plus a physical
+  build feedback form linked to steps, parts and the exact revision.
+
+**Done when:** Both new examples have readable illustrated instructions and at
+least one non-solar artwork example. A reviewer can trace each step back to CAD
+and identify untested access/fit assumptions. Record a real trial build when
+available; do not claim one from automated step checks.
+
+**Verification:** Check step coverage, dependency errors, decal dimensions/counts
+and inventory separation. Visually review representative pages and connection
+close-ups. Reuse release provenance rather than inventing a second manifest.
+
+## P5 — Substitutions, sourcing and collision/motion diagnostics
+
+**Purpose:** Make revisions practical under real purchasing constraints and
+identify geometric risks without overstating physical certainty.
+
+**P5a: geometric replacements**
+
+- Extend one-for-one substitutions to explicit assembly recipes, starting with
+  a large tile replaced by smaller tiles and a supported mount alternative.
+- Declare matched instances, removed/added parts, local transforms, exposed
+  ports, backing/support requirements and expected footprint changes.
+- Preview the geometry and quantity delta before application. Apply recipes
+  atomically, preserve unaffected IDs, and give replacement parts stable IDs.
+- Regenerate all affected profiles, checks, renders, decals, steps and orders.
+  Equal area or the same silhouette is not proof of equivalent attachment.
+
+**P5b: sourcing**
+
+- Accept dated stock/price snapshots and owned-parts inventories. Treat country,
+  seller, condition, currency, quantities and budget as project inputs.
+- Separate catalog identity, produced colours, stock and importer acceptance.
+  Preserve accepted/rejected/untested mapping evidence and observation dates.
+- Rank feasible options using available price/quantity data, with shipping,
+  minimum order and freshness limits explicit when unknown. Do not claim the
+  cheapest complete purchase when data is incomplete.
+- Start with offline user-provided data; keep future service adapters outside
+  the geometry core. Purchasing and messages to sellers are not automatic build
+  steps. No default assumption of Israeli sourcing.
+
+**P5c: collision and motion**
+
+- Add conservative broad-phase candidate detection, then supported targeted
+  geometry/contact checks. Bounds overlap alone must never mean material collision.
+- Declare joints with local frames, permitted poses/limits and moving assemblies.
+  Sample specified motions and report tested intervals, resolution and geometry
+  limitations; discrete samples do not establish continuous clearance.
+- Distinguish expected mating contact, interference, uncertain hollow geometry
+  and missing meshes. Scope reviewed exceptions to exact pairs/revisions with
+  reasons, not blanket suppression of an assembly.
+- Produce isolated diagnostic views. Reuse the vehicle or a small hinge fixture
+  before applying the feature to the spacecraft's dish and boom.
+- Keep force, sag, clutch, stability and insertion access separate from nominal
+  geometry. Record measured physical feedback instead of invented material data.
+
+**Done when:** An unavailable part can be replaced through an auditable recipe,
+with revised quantities and connection checks; a dated sourcing report explains
+remaining shortages; motion diagnostics report both tested clearance and their
+limits. Each capability also works on a non-spacecraft example.
+
+**Verification:** Test attachment-changing substitutions, unmet support needs,
+rollback and quantity changes; sourcing shortages and stale/missing data; known
+interference, intentional mating contact, a hollow part and an unsupported mesh.
+Use focused fixtures and the existing example flows rather than another large
+set of nearly identical spacecraft snapshots.
+
+## Guardrails for every implementation slice
+
+1. Keep subject, region, colours, units-to-subject axis mappings and special
+   exceptions in project data. Core code should not branch on a project name.
+2. Reuse current transforms, loaders, exporters and report conventions. Add typed
+   interfaces where needed; avoid parallel model schemas and a new modeling DSL.
+3. Use Python 3.12 only, uv, ty and pytest. Preserve the dependency-free core and
+   optional rendering boundary. Run relevant checks, then stop redundant testing.
+4. Keep frozen fixtures unchanged. Compatibility adapters must be explicit and
+   documented; changing a baseline is a separate intentional design revision.
+5. Tie findings to semantic instances, evidence and exact revisions. Never hide
+   unsupported coverage or upgrade unknown to pass to satisfy a milestone.
+6. Demonstrate reusable features on an unrelated subject. A project-specific
+   helper may stay local until a second use justifies extraction.
+7. Give the agent actionable defaults and diagnostics; ask the user only for
+   consequential missing preferences. Record reasonable assumptions and avoid
+   adding approval gates for routine reversible work.
+8. Keep tests about contracts, meaningful errors and complete workflows. Reuse
+   fixtures/parametrization; do not test every trivial wrapper or duplicate an
+   implementation in its test.
+
+## Tracking and handoff
+
+All five phases currently have status **planned**. This document commits a plan,
+not their implementation. Begin with P1a when implementation is requested.
+
+For each completed slice, update this file with its status, commit link, shipped
+entry points, verification performed and remaining limits. Keep proposed syntax
+clearly marked until it exists. Update README/API documentation in the same
+implementation commit so future agents have one consistent entry path.
+
+At the end of P3, perform a usability review: can a fresh agent build a third,
+unrelated small subject using only the documented workflow and project-local
+code? Record every missing helper, undocumented step and required core edit.
+Use that evidence to adjust P4–P5 scope before expanding the framework further.
