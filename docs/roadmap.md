@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: P1, P2a and P2b complete.
-P2c is next; P2c–P5 remain planned. Original reviewed code baseline: commit
+Updated: 4 October 2026. Status: P1 and P2 complete.
+P3a is next; P3–P5 remain planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -159,7 +159,7 @@ turning them into correctly placed, identifiable assemblies.
   Document its dimensions and supported connector coverage. Rotation may be
   demonstrated as a pose; clearance/holding behaviour remains untested here.
 
-**P2c: building and generic tutorial**
+**P2c: building and generic tutorial — complete, 4 October 2026**
 
 - Build a small building with a base, interlocking walls, an opening and a
   supported roof. Keep every decorative part attached or explicitly identify
@@ -354,7 +354,8 @@ set of nearly identical spacecraft snapshots.
 | P1b | Complete, 4 October 2026 | [Project format and CLI](projects.md), typed records, packaged starter, non-executing doctor; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/project.py) | Readiness only; no builder execution, source verification or model validation |
 | P2a | Complete, 4 October 2026 | [Parts and reference preparation](preparation.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/parts.py) | Supplied metadata/declarations; source meaning, stock and physical fit remain unverified |
 | P2b | Complete, 4 October 2026 | [Assembly API](assembly.md), [vehicle example](../projects/vehicle/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py) | Nominal interfaces only; no physical build, collision, motion or release certification |
-| P2c–P5 | Planned; P2c next | Specifications above | Not implemented |
+| P2c | Complete, 4 October 2026 | [Building example](../projects/building/README.md), [generic tutorial](tutorial.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/projects/building/build.py) | Nominal and visual review; physical trial, collision, strength and automatic acceptance remain untested |
+| P3–P5 | Planned; P3a next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -420,7 +421,32 @@ pinned-beam abstractions were not added. Requirement bindings are traceability,
 not automatic acceptance. Unified execution/release remains P3 work; frozen
 spacecraft files and UUID creation are unchanged.
 
-Next: implement P2c (the building example and generic authoring tutorial) when requested.
+P2c verification: ty passed for source, tests, tools and both example builders;
+all 197 pytest cases passed, including nine installed-wheel e2e cases. One new
+building workflow checks complete nominal coverage, both lintel supports,
+staggered corner bonds, generated profile/BOM selections, repeatable default CAD,
+and preserved existing IDs through a taller, differently coloured revision.
+The default has 23 parts and 92 intended bearings; the taller version has 34
+parts and 128 bearings. Formatting, lint and relative documentation links passed.
+
+P2c scope: the building uses the existing assembly API with no core changes.
+Its base, alternating wall courses, doorway, supported lintel and overhanging roof
+use five reviewed native part types. Actual mesh headers/hashes and nominal
+metadata are recorded; real front/rear/underside and filtered detail views were
+rendered and inspected without approximation envelopes. A doorway camera was
+adjusted to reveal depth against the rear wall. No images or geometry libraries
+are added to source control. Physical build, collision, strength, insertion and
+stock remain untested. Both unrelated examples now meet P2's scoped authoring
+criteria, without a subject-name branch in core code.
+
+The tutorial starts from a blank brief and includes a runnable starter rehearsal,
+part preparation, authoring, exact-source connection review, visual inspection,
+and revision/handoff guidance. A fresh-folder rehearsal reproduced the reviewed
+CAD; the documented local parts query and doctor readiness check succeeded.
+Requirement links remain traceability rather than automatic acceptance. Unified
+execution and release verification are explicitly still P3 work.
+
+Next: implement P3a (unified project execution) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

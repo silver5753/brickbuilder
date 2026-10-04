@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "parts": [
+    {
+      "reference": "3033.dat",
+      "functions": [
+        "base",
+        "roof"
+      ],
+      "nominal_ldu": [
+        200,
+        8,
+        120
+      ],
+      "evidence": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=8. Conventional stud/underside interfaces only.",
+      "recorded_on": "2026-10-04",
+      "colour_evidence": [],
+      "mapping_evidence": [],
+      "stock_evidence": []
+    },
+    {
+      "reference": "3004.dat",
+      "functions": [
+        "wall",
+        "lintel"
+      ],
+      "nominal_ldu": [
+        40,
+        24,
+        20
+      ],
+      "evidence": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "recorded_on": "2026-10-04",
+      "colour_evidence": [],
+      "mapping_evidence": [],
+      "stock_evidence": []
+    },
+    {
+      "reference": "3622.dat",
+      "functions": [
+        "wall",
+        "lintel"
+      ],
+      "nominal_ldu": [
+        60,
+        24,
+        20
+      ],
+      "evidence": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "recorded_on": "2026-10-04",
+      "colour_evidence": [],
+      "mapping_evidence": [],
+      "stock_evidence": []
+    },
+    {
+      "reference": "3010.dat",
+      "functions": [
+        "wall",
+        "lintel"
+      ],
+      "nominal_ldu": [
+        80,
+        24,
+        20
+      ],
+      "evidence": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "recorded_on": "2026-10-04",
+      "colour_evidence": [],
+      "mapping_evidence": [],
+      "stock_evidence": []
+    },
+    {
+      "reference": "3009.dat",
+      "functions": [
+        "wall",
+        "lintel"
+      ],
+      "nominal_ldu": [
+        120,
+        24,
+        20
+      ],
+      "evidence": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "recorded_on": "2026-10-04",
+      "colour_evidence": [],
+      "mapping_evidence": [],
+      "stock_evidence": []
+    }
+  ]
+}

@@ -33,3 +33,7 @@ The vehicle example records native geometry attribution, license headers and
 source hashes in projects/vehicle/geometry_review.json. Its small connector
 catalog records nominal interfaces reviewed from those sources. Geometry is
 not redistributed; preserve the recorded LDraw contributor attribution.
+
+The building example likewise retains native part headers, source hashes and
+reviewed nominal seating evidence in projects/building/geometry_review.json.
+No LDraw geometry is bundled with that example.

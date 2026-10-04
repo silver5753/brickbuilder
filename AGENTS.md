@@ -65,6 +65,7 @@ Read the relevant guide before changing or using a capability:
 
 - [Preparation](docs/preparation.md): local parts search, reviewed connector coverage,
   explicit reference acquisition and optional page extraction; no inferred connectors.
+- [Generic tutorial](docs/tutorial.md): brief-to-model workflow using building and vehicle examples.
 - [Assembly authoring](docs/assembly.md): named parts, local frames, intended joints and generated bindings.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
   MPD/TEXMAP remain unsupported.

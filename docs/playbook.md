@@ -28,6 +28,10 @@ for the limits of each check.
    Use [assembly authoring](assembly.md) for local frames, named identities and
    generated bindings; see the [vehicle](../projects/vehicle/README.md). A unified `build` command remains planned.
 
+For a runnable rehearsal, follow the [generic tutorial](tutorial.md) and the
+[building example](../projects/building/README.md). Its wall/roof choices are
+project-local; the vehicle exercises different interfaces through the same API.
+
 There is no requirement to load a previous release or the frozen spacecraft
 baseline to start a new design. A blank brief is a valid starting point.
 

@@ -2,7 +2,9 @@
 
 Compose ordinary Python `Assembly` objects containing existing `PartInstance`
 objects and child assemblies. The executable [vehicle example](../projects/vehicle/README.md)
-uses this API without spacecraft-specific code. The project contract remains
+and [building example](../projects/building/README.md) use this API without
+subject-specific core code. Follow the [tutorial](tutorial.md) for the complete
+brief-to-review workflow. The project contract remains
 `build(project: Project) -> Model`; a project can expose a richer `author()` result
 for its own review script. Unified execution/release commands are still P3 work.
 

@@ -1,0 +1,2895 @@
+{
+  "schema_version": 1,
+  "parts": [
+    {
+      "reference": "3033.dat",
+      "connectors": [
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -90.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_0_1",
+          "kind": "stud",
+          "position": [
+            -90.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_0_2",
+          "kind": "stud",
+          "position": [
+            -90.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_0_3",
+          "kind": "stud",
+          "position": [
+            -90.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_0_4",
+          "kind": "stud",
+          "position": [
+            -90.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_0_5",
+          "kind": "stud",
+          "position": [
+            -90.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_1",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_2",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_3",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_4",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_5",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_0",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_1",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_2",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_3",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_4",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_5",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_0",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_1",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_2",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_3",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_4",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_5",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_4_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_4_1",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_4_2",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_4_3",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_4_4",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_4_5",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_5_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_5_1",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_5_2",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_5_3",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_5_4",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_5_5",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_6_0",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_6_1",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_6_2",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_6_3",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_6_4",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_6_5",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_7_0",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_7_1",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_7_2",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_7_3",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_7_4",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_7_5",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_8_0",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_8_1",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_8_2",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_8_3",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_8_4",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_8_5",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_9_0",
+          "kind": "stud",
+          "position": [
+            90.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_9_1",
+          "kind": "stud",
+          "position": [
+            90.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_9_2",
+          "kind": "stud",
+          "position": [
+            90.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_9_3",
+          "kind": "stud",
+          "position": [
+            90.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_9_4",
+          "kind": "stud",
+          "position": [
+            90.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_9_5",
+          "kind": "stud",
+          "position": [
+            90.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -90.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_1",
+          "kind": "socket",
+          "position": [
+            -90.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_2",
+          "kind": "socket",
+          "position": [
+            -90.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_3",
+          "kind": "socket",
+          "position": [
+            -90.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_4",
+          "kind": "socket",
+          "position": [
+            -90.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_5",
+          "kind": "socket",
+          "position": [
+            -90.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_1",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_2",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_3",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_4",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_5",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_0",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_1",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_2",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_3",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_4",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_5",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_0",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_1",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_2",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_3",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_4",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_5",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_4_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_4_1",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_4_2",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_4_3",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_4_4",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_4_5",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_5_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_5_1",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_5_2",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_5_3",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_5_4",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_5_5",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_6_0",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_6_1",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_6_2",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_6_3",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_6_4",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_6_5",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_7_0",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_7_1",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_7_2",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_7_3",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_7_4",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_7_5",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_8_0",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_8_1",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_8_2",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_8_3",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_8_4",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_8_5",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_9_0",
+          "kind": "socket",
+          "position": [
+            90.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_9_1",
+          "kind": "socket",
+          "position": [
+            90.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_9_2",
+          "kind": "socket",
+          "position": [
+            90.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_9_3",
+          "kind": "socket",
+          "position": [
+            90.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_9_4",
+          "kind": "socket",
+          "position": [
+            90.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_9_5",
+          "kind": "socket",
+          "position": [
+            90.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        }
+      ],
+      "complete": true,
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=8. Conventional stud/underside interfaces only.",
+      "limitations": []
+    },
+    {
+      "reference": "3004.dat",
+      "connectors": [
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        }
+      ],
+      "complete": true,
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "limitations": []
+    },
+    {
+      "reference": "3622.dat",
+      "connectors": [
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -20.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_0",
+          "kind": "stud",
+          "position": [
+            20.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -20.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            0.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_0",
+          "kind": "socket",
+          "position": [
+            20.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        }
+      ],
+      "complete": true,
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "limitations": []
+    },
+    {
+      "reference": "3010.dat",
+      "connectors": [
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_0",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_0",
+          "kind": "socket",
+          "position": [
+            30.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        }
+      ],
+      "complete": true,
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "limitations": []
+    },
+    {
+      "reference": "3009.dat",
+      "connectors": [
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_2_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_3_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_4_0",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "stud_5_0",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_2_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_3_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_4_0",
+          "kind": "socket",
+          "position": [
+            30.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_5_0",
+          "kind": "socket",
+          "position": [
+            50.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        }
+      ],
+      "complete": true,
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "limitations": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "name": "building",
+  "builder": "build.py",
+  "brief": "brief.json",
+  "sources": "sources.json",
+  "decisions": "decisions.json",
+  "library": null,
+  "parts": [
+    "3004.dat",
+    "3009.dat",
+    "3010.dat",
+    "3033.dat",
+    "3622.dat"
+  ]
+}

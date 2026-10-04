@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-04",
+  "source": "https://library.ldraw.org/",
+  "scope": "Native geometry review of conventional stud grid and underside seating; not physical fit, strength or collision certification. No geometry redistributed.",
+  "parts": [
+    {
+      "reference": "3033.dat",
+      "sha256": "fccb28156f2a418eb0e9dc4f73cf51da4f13c5f5dadaa76e5bb643273e8c2067",
+      "header": [
+        "0 Plate  6 x 10",
+        "0 Name: 3033.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -100.0,
+          -4.0,
+          -60.0
+        ],
+        "maximum": [
+          100.0,
+          8.0,
+          60.0
+        ]
+      },
+      "missing_dependencies": [],
+      "empty_dependencies": [],
+      "note": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=8. Conventional stud/underside interfaces only."
+    },
+    {
+      "reference": "3004.dat",
+      "sha256": "e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203",
+      "header": [
+        "0 Brick  1 x  2",
+        "0 Name: 3004.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2022-05",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -20.0,
+          -4.0,
+          -10.0
+        ],
+        "maximum": [
+          20.0,
+          24.0,
+          10.0
+        ]
+      },
+      "missing_dependencies": [],
+      "empty_dependencies": [],
+      "note": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only."
+    },
+    {
+      "reference": "3622.dat",
+      "sha256": "9317bcec4fbcddbd38ed3972d25ea95d685101904f3ed86c7e769a9f356245d8",
+      "header": [
+        "0 Brick  1 x  3",
+        "0 Name: 3622.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2004-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -30.0,
+          -4.0,
+          -10.0
+        ],
+        "maximum": [
+          30.0,
+          24.0,
+          10.0
+        ]
+      },
+      "missing_dependencies": [],
+      "empty_dependencies": [],
+      "note": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only."
+    },
+    {
+      "reference": "3010.dat",
+      "sha256": "7871b27a3a1184031a2e162d3324f9ded39a0fe10fc43ad0daf6060a4b1ec4fd",
+      "header": [
+        "0 Brick  1 x  4",
+        "0 Name: 3010.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -40.0,
+          -4.0,
+          -10.0
+        ],
+        "maximum": [
+          40.0,
+          24.0,
+          10.0
+        ]
+      },
+      "missing_dependencies": [],
+      "empty_dependencies": [],
+      "note": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only."
+    },
+    {
+      "reference": "3009.dat",
+      "sha256": "950a186800b17a778e6c4b91420b1846df98c2bdbac8a551cfe7f74ddc831a3e",
+      "header": [
+        "0 Brick  1 x  6",
+        "0 Name: 3009.dat",
+        "0 Author: James Jessiman",
+        "0 !LDRAW_ORG Part UPDATE 2003-03",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -60.0,
+          -4.0,
+          -10.0
+        ],
+        "maximum": [
+          60.0,
+          24.0,
+          10.0
+        ]
+      },
+      "missing_dependencies": [],
+      "empty_dependencies": [],
+      "note": "Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only."
+    }
+  ]
+}

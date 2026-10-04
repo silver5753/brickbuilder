@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "subject": "Original small entrance shelter with a doorway and flat roof",
+  "dimensions": "Default envelope 80 x 48 x 46.4 mm; doorway 16 x 28.8 mm",
+  "scale": "Stylized tabletop miniature; no real building reproduced",
+  "part_count_limit": 40,
+  "budget": null,
+  "construction_style": "Conventional studded masonry with alternating corner bonds",
+  "sticker_policy": "forbidden",
+  "sourcing_region": null,
+  "condition": null,
+  "owned_parts": null,
+  "axes": "+X right, -Y up, -Z front; LDraw units",
+  "deliverables": [
+    "cad",
+    "inventory",
+    "preview"
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "A single supporting base with every part connected",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "building/foundation"
+      ],
+      "views": [
+        "underside"
+      ],
+      "validation": "Declared nominal root paths for every instance"
+    },
+    {
+      "id": "R2",
+      "text": "Interlocking walls with alternating corner bonds and rear seams",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "building/course_1",
+        "building/course_2",
+        "building/course_3"
+      ],
+      "views": [
+        "wall_detail",
+        "rear"
+      ],
+      "validation": "Inspect two staggered courses and the declared bearings across their seams"
+    },
+    {
+      "id": "R3",
+      "text": "Keep a two-stud-wide doorway with a lintel bearing on both sides",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "building/cap",
+        "building/course_3"
+      ],
+      "views": [
+        "front",
+        "door_detail",
+        "lintel_detail"
+      ],
+      "validation": "Nominal bearing pairs on both jambs; visually inspect empty doorway; no collision certificate"
+    },
+    {
+      "id": "R4",
+      "text": "Seat an overhanging roof on the wall cap",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "building/cap",
+        "building/roof"
+      ],
+      "views": [
+        "front",
+        "underside"
+      ],
+      "validation": "Declared stud seating on all four wall runs; span strength remains physically untested"
+    }
+  ]
+}

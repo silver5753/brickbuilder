@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "S1",
+      "location": "geometry_review.json",
+      "kind": "other",
+      "edition": "Local native mesh headers recorded per part; reviewed 2026-10-04",
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": "7f485f68605e00ed468548bac83e265a66cd23acf57697a9659ff8812d5fc16d",
+      "confidence": "medium",
+      "note": "Original generic design; native meshes support interface review, not real-building resemblance, current stock or physical testing."
+    }
+  ]
+}
