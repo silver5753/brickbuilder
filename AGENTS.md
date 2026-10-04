@@ -1,82 +1,93 @@
 # Agent instructions
 
-## Read before changing the project
+## Start with the task
 
-Read README.md, docs/roadmap.md, docs/playbook.md, docs/validation-levels.md and the relevant
-project requirements/source records. Requirements from the current user
-conversation take precedence. Implement only the requested milestone and
-keep the frozen baseline untouched while extracting reusable code.
+Read [README.md](README.md), [the roadmap](docs/roadmap.md),
+[the playbook](docs/playbook.md), [validation levels](docs/validation-levels.md)
+and the relevant project's requirements, sources and notes. Current user
+instructions take precedence. Implement the requested slice and update its
+roadmap status, verification and remaining limits when complete.
+
+For a new design, follow the playbook's new-brief path. A previous model or release
+is not required. For an existing model, establish its exact revision and known
+limits before editing. Ask only for consequential missing preferences; record
+reasonable assumptions and continue authorized reversible work.
 
 ## Names and scope
 
-Use Brick Builder in project prose and brickbuilder for Python package names.
+Use Brick Builder in prose and brickbuilder for the Python package and CLI.
 Preserve technical part identities, source URLs and third-party attribution.
-The generic toolkit must not assume spacecraft geometry or Israeli sourcing.
-Keep project-specific choices in projects/solar_orbiter/.
+Keep subject, dimensions, colours, sourcing region, axes and special exceptions
+in `projects/<project_name>/`. Core code must not branch on a project name.
+Demonstrate reusable features on unrelated subjects; keep one-off helpers local
+until reuse justifies extraction. The default workflow starts from a user brief.
+
+Use the [design brief and acceptance checklist](docs/design-brief.md) to connect
+requested features to evidence, assemblies, views and checks. Record approved
+compromises explicitly instead of silently dropping visual or functional detail.
 
 ## Coordinates and identities
 
 - LDraw units: 20 per stud, 8 per plate height, 1 unit = 0.4 mm.
-- Solar Orbiter model X spans the wings; Y points down; -Z faces the Sun.
-- Model axes are not automatically the spacecraft paper's axes.
-- Matrices are rigid rotations: orthogonal with determinant +1; never stretch parts.
-- Native part/colour identifiers are distinct from marketplace identifiers.
-- Introduce stable instance IDs; do not use list indices as long-term identities.
-- Keep cosmetic stickers and render-only geometry out of the physical inventory.
+- Declare each project's model axes, front/up directions and reference-to-model
+  mapping before placement. Camera left/right depends on the selected view.
+- Use rigid rotations: orthogonal with determinant +1; never stretch parts.
+- Keep native part/colour identifiers separate from marketplace identifiers.
+- Preserve instance IDs through edits; do not use list indices as identities.
+  New API instances currently use UUIDs; deterministic authoring IDs are planned.
+- Keep cosmetic stickers and render-only geometry outside physical CAD/BOMs.
 
 ## Evidence and checks
 
-Read the user's sources and their figure captions. Record whether a figure is
-flight exterior, cutaway, schematic, ground hardware or an aesthetic concept.
-Keep PDF page numbers and published figure numbers separate. Record edition,
-source URL, retrieval status and confidence. Never infer engineering dimensions
-from labels in generated concept imagery.
+Read supplied sources and figure captions. Distinguish photographs of the actual
+subject from prototypes, cutaways, schematics, construction references and
+aesthetic concepts. Record source/edition, retrieval status, confidence and
+figure numbers separately from PDF page numbers. Generated concepts can guide
+appearance but cannot prove dimensions, real part identities or connections.
 
-Every audit must name its exact model hash, scope and limitations. A successful
-process exit or a connection graph is not a physical-build certificate.
-Distinguish pass, fail, unknown and not-tested. Unexpected disconnections
-must fail an automated check; unsupported geometry must remain visible.
+Every audit must identify its model hash, scope and limitations. Track pass,
+fail, unknown and not-tested independently for each validation dimension.
+Definite connection failures must fail; unsupported interfaces remain unknown.
+A process exit, render or connected graph is not a physical-build certificate.
 
-A part existing in a catalogue does not prove colour production, current stock
-or importer acceptance. Store accepted, rejected and untested mappings
-separately, with dated evidence. Native models remain complete even if an
-ordering export omits a part for manual addition.
+A catalogue entry does not prove colour production, current stock or importer
+acceptance. Keep dated accepted, rejected and untested mapping evidence separate.
+Native models stay complete when ordering exports omit manual-addition items.
 
 ## Implementation and tests
 
-Keep the lightweight core separate from optional rendering dependencies.
-Use uv sync --locked, the documented ty check and pytest commands; read
-docs/testing.md before changing tests. Test relevant
-failure cases, quantity conservation and stable transforms; do not claim
-checks that are not implemented. Current tests cover fixture integrity, typed
-models, transforms, LDraw round-trips, dependency failures and vertex bounds.
-Read docs/model-api.md before using the CAD APIs; MPD/TEXMAP are unsupported.
-Read docs/inventory-exports.md before sourcing. Tests also cover native quantity
-conservation, substitution deltas, ordering namespaces and rejected mappings.
-Read docs/connectivity.md before attachment work. Tests also cover scoped
-connector matching, pin collars/depth, axle clocking, occupancy and root paths.
-An unknown connection report exits 3 and must not be treated as a pass.
-Read docs/rendering.md before generating previews or stickers. Use the locked
-render extra only for PNG generation; SVG printing needs no optional modules.
-Keep decals and declared preview envelopes out of physical CAD/BOMs.
+Use Python 3.12 only, uv, ty and pytest. Keep the dependency-free core separate
+from optional rendering dependencies. Reuse existing models, transforms, loaders
+and report conventions. Do not add a parallel modeling DSL or duplicate APIs.
 
-Read the fixture manifest before using a baseline. JSON fixtures are stored
-as deterministic gzip streams; decompressed bytes are the original source
-bytes. Updating the baseline requires an intentional new revision and record
-of its differences, not silently accepting a refactor regression.
+Read the relevant guide before changing or using a capability:
 
-## Releases and handoff
+- [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
+  MPD/TEXMAP remain unsupported.
+- [Inventory/export API](docs/inventory-exports.md): native quantities, substitutions
+  and separate ordering namespaces.
+- [Connections](docs/connectivity.md): declared interfaces, coverage and root paths;
+  an unknown connection report exits 3 and is not a pass.
+- [Rendering](docs/rendering.md): actual-CAD PNG previews and separate SVG decals;
+  artwork is currently solar-cell-specific, not an arbitrary artwork engine.
+- [Testing](docs/testing.md): locked setup, ty, pytest markers and installed-wheel
+  coverage. Test meaningful contracts and failures; avoid redundant cases.
 
-Generate into a clean ignored output directory. A future release manifest
-must bind native CAD, poses, BOM, ordering/manual additions, reports and
-renders to the same model and dependency versions. Include front/rear views
-and requested instrument details when rendering is implemented.
+Use a frozen fixture only when relevant to the change. Read its manifest first;
+never update hashes to make a refactor pass. A design revision belongs in a new
+project revision, with recorded differences, rather than modifying the baseline.
 
-Never commit local secrets, upload receipts, virtualenvs, full scratch trees
-or fetched dependency libraries. Preserve required third-party licensing.
-Do not redistribute papers, manuals or images simply because they were
-available during research. No project distribution license has been selected.
+## Delivery and handoff
 
-For physical failures, record measured evidence and target the affected mount,
-splice or support. Do not invent material stiffness, clutch force, masses or
-safe tipping margins.
+Generate into a clean ignored output directory. Tie CAD, poses, BOMs, ordering
+files/manual additions, reports and renders to the same revision using the
+available reports. Unified release automation is planned; do not claim it ran.
+Include views of opposite sides and concealed attachments, plus the feature
+details required by the brief. Name the exact ordering file in the handoff.
+
+Do not commit secrets, upload receipts, virtualenvs, scratch trees or fetched
+dependency libraries. Preserve licenses/attribution; reference availability does
+not grant redistribution rights. No project distribution license is selected.
+
+For physical failures, record measured evidence tied to the affected instances
+and revision. Do not invent stiffness, clutch force, masses or tipping margins.

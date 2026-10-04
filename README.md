@@ -1,8 +1,10 @@
 # Brick Builder
 
 Brick Builder prepares reusable tools and an agent playbook for designing,
-checking, rendering and sourcing brick models. Solar Orbiter is the first
-worked example and frozen regression baseline.
+checking, rendering and sourcing brick models from user descriptions. Start with
+[the agent playbook](docs/playbook.md) and [a design brief](docs/design-brief.md).
+Solar Orbiter is a frozen regression example; new projects define their own
+subject, structure, coordinates and sourcing constraints.
 
 The package includes typed part instances, rigid transforms, native LDraw
 round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
@@ -32,12 +34,20 @@ uv run --locked --extra render pytest -q
 
 See [the testing guide](docs/testing.md) for fixtures, markers and coverage limits.
 
-## Native model commands
+## Starting a design
+
+For a new description, follow the [new-brief path](docs/playbook.md#new-user-description).
+Record requirements and decisions in a project folder, then author CAD with the
+current Python API or a supported flattened LDraw file. Project initialization,
+assembly helpers and unified build/release commands remain planned.
+
+For an existing model, follow the [existing-CAD path](docs/playbook.md#existing-cad-or-project).
+Substitute your actual input path below; the output file must not already exist:
 
 ```sh
-uv run --locked brickbuilder inspect tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
+uv run --locked brickbuilder inspect path/to/model.ldr
 mkdir -p output
-uv run --locked brickbuilder roundtrip tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr output/solar_orbiter.ldr
+uv run --locked brickbuilder roundtrip path/to/model.ldr output/working.ldr
 ```
 
 Inspection without a supplied geometry library reports geometry as not tested.
@@ -48,7 +58,8 @@ and add stable instance metadata; the baseline files stay unchanged.
 ## Start here
 
 - [Agent instructions](AGENTS.md)
-- [Playbook](docs/playbook.md)
+- [Playbook: new brief or existing CAD](docs/playbook.md)
+- [Design brief and acceptance checklist](docs/design-brief.md)
 - [Model API and inspection CLI](docs/model-api.md)
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Connections and attachment checks](docs/connectivity.md)
@@ -57,27 +68,19 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Historical workflow inventory](docs/workflow-inventory.md)
 - [Milestones 1–3 code review](docs/review-milestones-1-3.md)
 - [Validation levels](docs/validation-levels.md)
-- [Solar Orbiter requirements](projects/solar_orbiter/requirements.yaml)
-- [Reference sources](projects/solar_orbiter/sources.yaml)
+- [Solar Orbiter project notes and requirements](projects/solar_orbiter/README.md)
 - [Frozen v15 baseline](tests/fixtures/solar_orbiter_v15/README.md)
 - [Third-party notices](THIRD_PARTY_NOTICES.md)
 
-## Baseline status
+## Regression example
 
-Solar Orbiter v15 contains 966 parts with its stand, 890 in the spacecraft
-selection and 44 in the isolated solar module. Those are alternative
-selections, not quantities to combine. Normal and articulated full-model
-poses use the same inventory.
-
-The previous ordering workflow omitted one black dish from the import file:
-965 import entries plus one manual addition reconcile to 966. No authenticated importer
-acceptance or purchasing operation is tested. Ordering exports preserve explicit
-mapping uncertainty and manual additions.
-
-The model is an unbuilt Technic/System hybrid with custom solar stickers.
-Nominal connection checks are documented, but physical strength, sag,
-joint grip and stability remain untested. Exact geometry for part 7798 was
-unavailable; its native identity remains preserved.
+The unbuilt Solar Orbiter v15 design is preserved for regression testing.
+Its counts, coordinate conventions, instrument requirements, regional sourcing
+and unresolved connection/geometry findings are in the
+[project notes](projects/solar_orbiter/README.md). Its frozen files must stay
+unchanged. The vehicle and building planning examples in the
+[brief guide](docs/design-brief.md#worked-planning-examples) illustrate the generic
+workflow; executable example models are planned in P2.
 
 ## Next implementation phases
 

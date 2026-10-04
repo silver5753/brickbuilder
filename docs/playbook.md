@@ -1,48 +1,121 @@
-# Brick Builder playbook
+# Brick Builder agent playbook
 
-1. Read requirements, source records, validation exceptions and the latest
-   release manifest. Establish which work the user has authorized.
-2. Restore the locked core environment and verify the frozen baseline.
-   Fetch external geometry/reference data only through a dated source record.
-3. Review the reference evidence and visual priorities. Resolve coordinate
-   conventions before placing parts.
-4. Build the structure and appendage interfaces before decorative surfaces.
-5. Generate native CAD, alternate poses and isolated trial modules from one
-   source model. Preserve native identities.
-6. Check part resolution, rigid transforms, duplicates, connection paths,
-   pin engagement and assembly invariants. Record unsupported features.
-7. Inspect candidate collisions and sweep movable joints when tooling exists.
-   Hollow geometry and intended mating contacts require targeted review.
-8. Generate inventories, apply sourcing constraints and substitutions, then
-   rerun every check affected by changed geometry or identities.
-9. Render the actual CAD in required views. Inspect the rear and mounts as
-   well as the primary presentation view. Label preview approximations.
-10. Generate tile-specific sticker artwork, ordering files, manual-addition
-    manifests and revision differences.
-11. Produce a clean release tied to source/dependency hashes. Reconcile every
-    quantity and document the exact validation status.
-12. Incorporate physical-build feedback as measurements for the next revision.
+Use this workflow for any subject. Keep project choices in
+`projects/<project_name>/`; the toolkit supplies reusable operations. Read the
+[roadmap](roadmap.md) for future work and [validation levels](validation-levels.md)
+for the limits of each check.
 
-Environment setup, type checking, fixture checks, typed model transforms,
-LDraw round-trips and recursive vertex-bound inspection are executable. Read
-[the model API](model-api.md) for supported formats and explicit unknowns.
-Native inventories, revision quantity differences, one-for-one substitution
-recipes and reconciled purchasing bundles are implemented; see
-[inventory/export instructions](inventory-exports.md). Spacecraft assembly
-builders, motion checks and a unified release command
-remain planned modules. Scoped nominal attachment checks are implemented; see
-[connectivity instructions](connectivity.md). CAD previews and custom print decals
-are implemented; see [rendering](rendering.md). Historical
-scripts are starting material, not proof those APIs already exist.
+## Choose the starting path
 
-## Known pitfalls from Solar Orbiter
+### New user description
 
-- Preserve visual requirements; a simplified prototype lost approved details.
-- A group-connected assembly may still float relative to the chassis.
-- Revisions invalidate earlier audits and can leave stale renders or counts.
-- A catalogue alias is not necessarily accepted by a marketplace importer.
-- Keep partial import files separate from complete native CAD.
-- The original collision sampler could classify an empty bore as solid.
-- STEP markers group assemblies; they are not complete building instructions.
-- The large shield tile has known catalogue identity but unverified exact mesh.
-- Joint strength, sag and tipping cannot be proved by nominal CAD alignment.
+1. Create a project folder and record the [brief and acceptance checklist](design-brief.md).
+   Capture hard constraints, preferences, assumptions and requested deliverables.
+   Ask only when a missing choice would materially change the design.
+2. Read the user's supplied references. Record their identities and what each
+   establishes; separate construction examples from subject appearance evidence.
+3. Define model axes, approximate size and named assemblies. Choose an initial
+   structural approach and a small trial connection if an interface is uncertain.
+4. Restore the locked Python 3.12 environment using the [testing guide](testing.md).
+   Identify the external part library and the parts needed for this project.
+5. Start a project-local Python builder with the [typed model API](model-api.md),
+   or author a supported flattened LDraw file. Reusable assembly authoring and a
+   packaged starter are still planned; do not copy spacecraft geometry or assume
+   `init`, `doctor` or `build` commands exist.
+
+There is no requirement to load a previous release or the frozen spacecraft
+baseline to start a new design. A blank brief is a valid starting point.
+
+### Existing CAD or project
+
+1. Read its requirements, decisions and project notes. Identify the exact source
+   file/revision and any prior reports or release manifest that actually exist.
+   Missing history is a recorded gap, not a reason to invent earlier approvals.
+2. Preserve the input and inspect it with `brickbuilder inspect`. Review native
+   IDs, units, transforms and format errors before applying changes. MPD/TEXMAP
+   require explicit external preparation; the current parser rejects them.
+3. Use `brickbuilder roundtrip` to create an annotated working copy where needed;
+   preserve attribution and stable IDs. Keep frozen fixtures unchanged.
+4. Map requested changes into the brief/checklist. Review library dependencies,
+   connector coverage and sourcing evidence rather than inheriting old pass claims.
+5. Continue below from the earliest stage affected by the change. For fixture or
+   core changes, run the relevant regressions; not every new design needs a full
+   spacecraft audit.
+
+## Iterate from brief to delivery
+
+| Stage | Agent action | Evidence to keep |
+|---|---|---|
+| Brief | Separate must-haves from preferences; define size, features and deliverables | Stable requirement IDs, assumptions and accepted compromises |
+| Evidence | Read references/captions; establish proportions and coordinate mapping | Source records, measured ratios and uncertainty |
+| Structure | Choose real parts; construct supports and attachment interfaces first | Native IDs, local frames, assemblies and intended connections |
+| Details | Add surfaces and recognizable features without losing approved priorities | Requirement-to-assembly links and cosmetic/physical distinction |
+| Checks | Inspect geometry and run declared connection checks | Exact hashes, coverage, failures and unsupported cases |
+| Visual review | Render actual CAD, inspect opposite sides and hidden mounts | Required views and feature-by-feature findings |
+| Sourcing | Generate BOMs; compare dated availability and propose substitutions | Mapping evidence, shortages, exact quantity/identity deltas |
+| Delivery | Rebuild affected outputs, reconcile orders and explain limitations | Complete native CAD, selected outputs and current review checklist |
+
+The loop is iterative. A geometry substitution returns to structural checks and
+visual review; a changed brief updates acceptance criteria. A pose change must
+preserve physical identities and inventory unless it defines a different model.
+Do not carry a previous report's status forward after its source hash changes.
+
+## What can run today
+
+Use `uv run --locked brickbuilder <command> --help` for arguments and the linked
+guides for contracts. The following table describes shipped operations, not a
+single automated pipeline.
+
+| Task | Current operation | Agent work still needed |
+|---|---|---|
+| Create/edit CAD | Python Model/PartInstance/Transform and LDraw APIs | Part selection, assembly layout and placement logic |
+| Inspect and preserve identities | `inspect`, `roundtrip` ([model API](model-api.md)) | Supply library; review missing meshes and duplicate findings |
+| Count and compare | `inventory`, `diff` ([inventories](inventory-exports.md)) | Supply flattened physical parts and choose one selection |
+| Check attachments | `connections` ([connections](connectivity.md)) | Reviewed catalog and explicit root or source-bound profile |
+| Preview CAD | `render` with optional render extra ([rendering](rendering.md)) | Configure project cameras/palette/library and inspect the images |
+| Print solar-pattern decals | `stickers` ([rendering](rendering.md)) | Select tiles, inspect sizes and physically calibrate printing |
+| Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
+
+Project initialization/doctor, parts search, reusable assembly builders,
+arbitrary artwork, illustrated instructions, geometric one-to-many substitutions,
+collision/motion checks and unified build/release commands remain planned.
+Historical scripts are research material, not additional supported package APIs.
+
+## Review and repair
+
+- Choose a connection root belonging to the actual supporting structure. Check
+  paths for every intended attached part, not only connections inside each group.
+  Deliberately loose components need explicit scope and separate review.
+- Distinguish a definite mismatch from missing connector declarations. Do not add
+  unverified proximity edges to make a graph pass. `connections` exit 3 is unknown;
+  read status fields for other commands even when they exit successfully.
+- Compare proportions and distinctive features to recorded sources. Use concept
+  images for aesthetic intent, and actual CAD views to assess the implemented model.
+- Inspect the reverse side, underside and concealed attachments where relevant.
+  A filtered detail view helps locate a mount; also inspect it in the full model.
+- Review motion and insertion access manually until suitable tooling exists.
+  Bounding-box overlap is not material interference; an empty bore is not solid.
+  Record untested fit, strength and joint holding behaviour separately.
+- Refresh geometry/checks after native ID replacements. Ordering aliases change
+  export identities only and must not be used to silently edit physical CAD.
+
+## Deliver the requested revision
+
+Use a new ignored output directory. Today, run individual commands and assemble
+the handoff manually from their reports; a unified manifest is future work.
+Verify source/model hashes agree across outputs and record any artifact without
+automated provenance as manually generated. Do not mix images from an old revision.
+
+Include the complete native model, selected BOM, required review views, current
+acceptance checklist and applicable reports. Add decals or ordering bundles only
+when requested. Name the exact marketplace file to import and all manual additions;
+reconcile them with the native inventory. Alternative selections are separate
+orders, not quantities to combine. Existing STEP markers are not full building
+instructions.
+
+Report each validation dimension honestly. If physical assembly has not happened,
+say so even when nominal checks pass. Incorporate trial-build observations with
+revision, affected instances, measurements and a targeted next repair.
+
+The [Solar Orbiter project notes](../projects/solar_orbiter/README.md) retain its
+specific coordinates, instruments, sourcing constraints and historical pitfalls.

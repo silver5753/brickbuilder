@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: planned; implementation of the five phases below
-has not started. Reviewed baseline: commit
+Updated: 4 October 2026. Status: P1 in progress; P1a documentation complete.
+P1b and P2–P5 remain planned. Reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -63,7 +63,7 @@ way to create and inspect an ordinary new model.
 **Purpose:** Remove dependence on the spacecraft conversation and give an agent
 a clear starting point for any subject.
 
-**P1a: documentation and scope**
+**P1a: documentation and scope — complete, 4 October 2026**
 
 - Rewrite the playbook with separate entry paths for a new brief and an existing
   CAD model. Reading a previous release must be optional for a new project.
@@ -76,7 +76,7 @@ a clear starting point for any subject.
 - Keep public prose in “brick” terminology; preserve technical identifiers,
   source URLs and required third-party attribution.
 
-**P1b: project contract and starter commands**
+**P1b: project contract and starter commands — next, planned**
 
 - Define a small, versioned project schema. Prefer strict JSON, matching existing
   configuration loaders, and Python dataclasses over a new configuration DSL.
@@ -348,8 +348,21 @@ set of nearly identical spacecraft snapshots.
 
 ## Tracking and handoff
 
-All five phases currently have status **planned**. This document commits a plan,
-not their implementation. Begin with P1a when implementation is requested.
+| Slice | Status | Shipped entry points / evidence | Remaining limits |
+|---|---|---|---|
+| P1a | Complete, 4 October 2026 | Generic [agent instructions](../AGENTS.md), [playbook](playbook.md), [brief/checklist](design-brief.md), [project notes](../projects/solar_orbiter/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/docs/playbook.md) | Documentation and manual templates only; no new CLI or models |
+| P1b | Planned; next slice | Project contract, packaged starter, init and doctor | Not implemented |
+| P2–P5 | Planned | Specifications above | Not implemented |
+
+P1a verification: checked relative document links and heading anchors, whitespace
+and current-command descriptions against the API guides/CLI. Walked the new-brief
+path through vehicle and building planning examples: both identify their first
+structural task, missing evidence and acceptance methods without using spacecraft
+files. These are documentation walkthroughs, not generated or physically tested
+models. Runtime tests were not rerun for this documentation-only change.
+
+Next: implement P1b when requested. Do not mark all of P1 complete until its
+validated schema, packaged starter and commands meet the acceptance criteria.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax
