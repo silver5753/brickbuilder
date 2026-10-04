@@ -10,6 +10,8 @@ from typing import Any, Protocol
 
 from .jsonio import array, decode_json, number, object_fields, text, versioned
 from .model import Model, reference_name
+from .assembly import AuthoredModel
+from .build_result import BuildResult
 
 
 @dataclass(frozen=True)
@@ -91,7 +93,7 @@ class Project:
 class Builder(Protocol):
     """Project-local build.py entry point, called only after explicit code review."""
 
-    def __call__(self, project: Project) -> Model: ...
+    def __call__(self, project: Project) -> Model | AuthoredModel | BuildResult: ...
 
 
 def _optional(value: object, context: str) -> str | None:

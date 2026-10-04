@@ -184,9 +184,7 @@ class AuthoredModel:
     def groups(self) -> dict[str, tuple[str, ...]]:
         groups: dict[str, list[str]] = defaultdict(list)
         for part in self.model.parts:
-            if part.group is None:
-                raise ValueError("Authored parts require an assembly group")
-            groups[part.group].append(part.instance_id)
+            groups[part.group or "ungrouped"].append(part.instance_id)
         return {group: tuple(ids) for group, ids in sorted(groups.items())}
 
     def ports(self, catalog: Catalog) -> dict[Endpoint, Port]:
@@ -293,7 +291,11 @@ def alignment(
 
 
 def authoring_bundle(
-    authored: AuthoredModel, catalog: Catalog, *, root: str, title: str
+    authored: AuthoredModel,
+    catalog: Catalog | None = None,
+    *,
+    root: str | None = None,
+    title: str,
 ) -> dict[str, str]:
     """CAD, BOM, bindings and checks from one result; not a P3 release manifest.
 
@@ -315,7 +317,20 @@ def authoring_bundle(
             "path": filename,
             "sha256": sha256(files[filename].encode()).hexdigest(),
         }
-    report = authored.review(catalog, root=root)
+    if root is not None and root not in {p.instance_id for p in authored.model.parts}:
+        raise ValueError("Connection root must name a model instance")
+    if catalog is not None and root is None:
+        raise ValueError("Connection review requires a root")
+    report = (
+        authored.review(catalog, root=root)
+        if catalog is not None and root is not None
+        else {
+            "schema_version": 1,
+            "status": "not_tested",
+            "model_sha256": authored.model.fingerprint(),
+            "reason": "Connection stage not requested",
+        }
+    )
     report["source_sha256"] = digest
     payloads = {
         "connection_profiles.json": {
@@ -339,6 +354,17 @@ def authoring_bundle(
         },
         "connections.json": report,
         "inventory.json": [asdict(q) for q in inventory(authored.model)],
+    }
+    if root is None:
+        del payloads["connection_profiles.json"]
+    payloads["selected_inventories.json"] = {
+        group: [
+            asdict(q)
+            for q in inventory(
+                Model(tuple(p for p in authored.model.parts if p.instance_id in ids))
+            )
+        ]
+        for group, ids in groups.items()
     }
     files.update(
         {

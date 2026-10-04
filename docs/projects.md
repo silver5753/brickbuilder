@@ -207,11 +207,12 @@ and unified orchestration arrive in later phases.
 - `brickbuilder.project_setup.init_project(destination, name=None)`: safe starter creation.
 - `brickbuilder.project_setup.doctor(directory, library=None) -> ReadinessReport`:
   preparation diagnostics; serialize with `dataclasses.asdict` if needed.
-- `brickbuilder.project.Builder`: protocol for `build(project: Project) -> Model`.
+- `brickbuilder.project.Builder`: protocol for `build(project)` returning Model, AuthoredModel or BuildResult.
 
 The starter builder raises `NotImplementedError` until authored. Review unfamiliar
 Python before importing/calling it; doctor does not sandbox or vet executable
 code. Return a flattened Model of native physical-part instances with rigid
 placements and stable semantic IDs. Use the existing [model API](model-api.md)
 and [playbook](playbook.md) for the remaining manual steps. Use [assembly authoring](assembly.md) for new builders and generated bindings.
-P3 will supply unified execution and release automation.
+[Project execution](execution.md) now runs reviewed builders and requested stages;
+verified release automation remains P3b work.

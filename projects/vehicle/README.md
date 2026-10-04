@@ -6,6 +6,22 @@ It demonstrates [assembly authoring](../../docs/assembly.md) on a non-spacecraft
 subject. Its wide track and tall cab are intentional toy proportions, not a
 claim to reproduce a particular car. Read the brief, source and decision records.
 
+## Unified execution
+
+`build.json` configures connections and rendering for the shared command:
+
+```sh
+uv run --locked brickbuilder build projects/vehicle --stage connections \
+  --destination output/vehicle-core
+uv run --locked --extra render brickbuilder build projects/vehicle \
+  --library /path/to/ldraw --destination output/vehicle-review
+```
+
+CAD, native/group inventories, refreshed profiles and the draft build summary
+come from one builder call. The second command also generates configured views.
+Read [execution](../../docs/execution.md) for statuses, optional stages and limits.
+The project-local script below remains useful for its explicit design variants.
+
 ## Build and inspect
 
 Review `build.py` before executing. From the repository root:
@@ -37,8 +53,8 @@ uv run --locked python projects/vehicle/build.py output/vehicle-short \
 
 Wheelbases 80 and 120 LDU keep supports on the chassis stud grid. Other values
 are rejected rather than stretching parts. Body colour is a native colour ID;
-production and stock are not inferred. The shared `build(project)` entry point
-returns the default flattened `Model`; `author(project, ...)` retains bindings.
+production and stock are not inferred. The shared `build(project)` entry point returns the default `AuthoredModel`,
+retaining bindings and intended joints; `author(project, ...)` supports variants.
 
 ## Review views
 

@@ -17,11 +17,14 @@ def test_installed_vehicle_authoring(installed_core, tmp_path):
         ROOT / "projects/vehicle", project, ignore=shutil.ignore_patterns("__pycache__")
     )
     bundle = tmp_path / "bundle"
-    checked(
-        [str(installed_core.python), str(project / "build.py"), str(bundle)],
-        cwd=tmp_path,
-        env=installed_core.env,
+    execution = json.loads(
+        installed_core.run(
+            "build", project, "--stage", "connections", "--destination", bundle
+        ).stdout
     )
+    assert execution["status"] == "pass"
+    assert execution["models"]["default"]["checks"]["render"] == "not_tested"
+
     native = bundle / "model.ldr"
     report = json.loads((bundle / "connections.json").read_text())
     assert report["status"] == "pass"

@@ -4,9 +4,9 @@ Compose ordinary Python `Assembly` objects containing existing `PartInstance`
 objects and child assemblies. The executable [vehicle example](../projects/vehicle/README.md)
 and [building example](../projects/building/README.md) use this API without
 subject-specific core code. Follow the [tutorial](tutorial.md) for the complete
-brief-to-review workflow. The project contract remains
-`build(project: Project) -> Model`; a project can expose a richer `author()` result
-for its own review script. Unified execution/release commands are still P3 work.
+brief-to-review workflow. [Project execution](execution.md) accepts a Model,
+AuthoredModel or BuildResult from `build(project)`. Returning AuthoredModel retains
+intended joints and requirement links. Verified release tooling remains P3b work.
 
 ## Composition and identity
 
@@ -94,8 +94,9 @@ and physical assembly stay separate and untested.
 An assembly's `requirements=("R1",)` links that requirement to all descendant
 parts. The result retains these links separately from the partitioned groups.
 Use IDs from the project brief; links are traceability, not acceptance evidence.
-The current authoring API does not validate links against a `Project` or decide
-whether the requirement text has been fulfilled. That orchestration remains P3.
+The authoring API alone does not validate links against a Project. The build
+command checks those links and configured views, but does not decide whether
+the requirement text has been fulfilled.
 
 ## Generated files
 
@@ -111,6 +112,7 @@ write_bundle(destination, files)  # New directory; parent must exist.
 |---|---|
 | `model.ldr` | Complete flattened physical model with semantic IDs |
 | `inventory.json` | Complete native part/colour quantities |
+| `selected_inventories.json` | Separate group quantities; alternatives, not additional orders |
 | `connection_profiles.json` | Source-bound root and partitioned group bindings |
 | `selections.json` | Full model and separate group alternatives, each with exact hash |
 | `assembly-<hash>.ldr` | Group selections; look up names through `selections.json` |
@@ -122,4 +124,5 @@ through `write_bundle`; manually rewriting line endings invalidates bindings.
 Generate again after changes; stale profiles are rejected by existing commands.
 Full/group selections overlap and must not be combined into one purchase order.
 Bundles may carry fail/unknown reports for review: output creation is not a pass.
-These are authoring outputs, not the unified provenance/release format planned in P3.
+These outputs are also used by the build command. Comprehensive release
+provenance and offline verification remain P3b work.

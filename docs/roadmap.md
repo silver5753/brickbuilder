@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: P1 and P2 complete.
-P3a is next; P3–P5 remain planned. Original reviewed code baseline: commit
+Updated: 4 October 2026. Status: P1, P2 and P3a complete.
+P3b is next; P3b–P5 remain planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -40,7 +40,7 @@ the source of universal geometry, colour, region or view assumptions.
 
 The current commands are `init`, `doctor`, `parts`, `sources`, `reference-page`,
 `inspect`, `roundtrip`, `inventory`, `diff`, `export`, `connections`, `render` and
-`stickers`. P1b and P2a preparation commands are implemented; build/release commands below remain proposals. MPD/TEXMAP support is outside this roadmap's
+`stickers`, plus `build`. Project execution is implemented; release remains proposed. MPD/TEXMAP support is outside this roadmap's
 initial scope; preserve explicit format errors instead of implying support.
 
 ## Sequence and dependencies
@@ -186,9 +186,9 @@ as construction evidence. Record any unresolved fit or physical-test limitations
 **Purpose:** Replace manual command sequences and stale output folders with one
 repeatable route from project inputs to a reviewable deliverable.
 
-**P3a: execution**
+**P3a: execution — complete, 4 October 2026**
 
-- Proposed `brickbuilder build <project>`: load the project contract, invoke its
+- Implemented `brickbuilder build <project>`: load the project contract, invoke its
   builder once, then call existing APIs for native CAD, selected inventories,
   connection reports, configured views, decals and ordering exports. Do not
   duplicate algorithms or compose brittle shell command strings.
@@ -355,7 +355,8 @@ set of nearly identical spacecraft snapshots.
 | P2a | Complete, 4 October 2026 | [Parts and reference preparation](preparation.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/parts.py) | Supplied metadata/declarations; source meaning, stock and physical fit remain unverified |
 | P2b | Complete, 4 October 2026 | [Assembly API](assembly.md), [vehicle example](../projects/vehicle/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py) | Nominal interfaces only; no physical build, collision, motion or release certification |
 | P2c | Complete, 4 October 2026 | [Building example](../projects/building/README.md), [generic tutorial](tutorial.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/projects/building/build.py) | Nominal and visual review; physical trial, collision, strength and automatic acceptance remain untested |
-| P3–P5 | Planned; P3a next | Specifications above | Not implemented |
+| P3a | Complete, 4 October 2026 | [Unified execution](execution.md), shared example builders; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/execution.py) | Draft outputs; full release manifest, physical testing and acceptance remain unverified |
+| P3b–P5 | Planned; P3b next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -446,7 +447,26 @@ CAD; the documented local parts query and doctor readiness check succeeded.
 Requirement links remain traceability rather than automatic acceptance. Unified
 execution and release verification are explicitly still P3 work.
 
-Next: implement P3a (unified project execution) when requested.
+P3a verification: ty passed for source, tests, tools and both example builders;
+all 206 pytest cases passed, including ten installed-wheel e2e cases. Tests cover
+single builder invocation, immutable pose identities, refreshed source hashes,
+optional outputs, missing geometry/dependencies, requirement binding failures,
+connection statuses and incomplete publication. Both unrelated examples ran
+through the shared command with their real local geometry library: 19 vehicle
+parts and 23 building parts, resolved renders and passing nominal connections.
+Their model fingerprints match the previously reviewed geometry.
+
+P3a scope: one reviewed Python invocation produces CAD, native/group inventories,
+source-bound profiles, configured renders, decals and selected ordering exports.
+Required assembly/view bindings are checked, while acceptance remains not-tested.
+Named poses conserve instance IDs, native parts and colours; design variants are
+separate builds. Existing destinations are refused and failed publication leaves
+an incomplete marker. This is trusted Python execution, not a sandbox or physical
+certificate. Input/main-builder hashes and draft summaries are provided; complete
+imported-code/dependency provenance and release reconciliation remain P3b work.
+No frozen fixture or dependency changes were needed.
+
+Next: implement P3b (release manifests and verification) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

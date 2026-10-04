@@ -12,7 +12,7 @@ from brickbuilder.assembly import (
 )
 from brickbuilder.connectivity.catalog import load_catalog
 from brickbuilder.exporters import write_bundle
-from brickbuilder.model import Model, PartInstance
+from brickbuilder.model import PartInstance
 from brickbuilder.project import Project, load_project
 from brickbuilder.transforms import Transform, rotation
 
@@ -137,8 +137,8 @@ def author(
     ).flatten()
 
 
-def build(project: Project) -> Model:
-    return author(project).model
+def build(project: Project) -> AuthoredModel:
+    return author(project)
 
 
 if __name__ == "__main__":

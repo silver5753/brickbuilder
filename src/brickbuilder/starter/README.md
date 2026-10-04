@@ -8,10 +8,12 @@
    its findings identify the next inputs to record. Nothing is fetched or built.
 4. Review and implement build.py using the typed Model/PartInstance/Transform APIs.
    It currently raises NotImplementedError. No spacecraft defaults are supplied.
-5. Use existing CAD/check/render/export commands on the authored model, keeping
-   outputs under output/ and preserving the input evidence.
+5. Add optional build.json stage settings (see the execution guide), then run
+   `brickbuilder build . --destination output/review`. Create output/ first.
+   Without build.json only CAD/inventory and basic checks run.
 
-The builder contract is `build(project: Project) -> Model`. Load configuration
+The builder can return Model, AuthoredModel or BuildResult. Return AuthoredModel
+to retain intended joints and requirement links. Load configuration
 with `brickbuilder.project.load_project(Path("."))`. Import/call the builder only
 once you have reviewed its Python code. Doctor never imports it.
 
@@ -20,4 +22,6 @@ https://github.com/silver5753/brickbuilder/blob/main/docs/projects.md
 
 Use Python 3.12. With a repository checkout use `uv run --locked brickbuilder`;
 with an installed wheel use `brickbuilder`. PNG previews require the optional
-render extra; core preparation does not. A single build/release command is planned.
+render extra; core preparation does not. Build executes trusted project Python;
+verified release tooling remains planned.
+https://github.com/silver5753/brickbuilder/blob/main/docs/execution.md

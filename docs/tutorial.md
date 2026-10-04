@@ -79,8 +79,9 @@ unknown coverage until that specific interface is reviewed.
 Read [the assembly API](assembly.md). Use `PartInstance` for native identities and
 rigid placement, `Assembly` for local frames and semantic names, `Connection` for
 expected joints, and requirement links for traceability. Flatten only at the
-output boundary. Keep `build(project: Project) -> Model` as the common contract;
-a richer local `author(project)` can retain bindings for the project runner.
+output boundary. Return AuthoredModel from `build(project)` to retain intended
+joints and requirement links; plain Model results remain supported. See
+[execution](execution.md) for the BuildResult pose contract.
 
 For the shelter, the recipe is:
 
@@ -116,11 +117,12 @@ source = Path("projects/building")
 target = Path("projects/practice_shelter")
 for name in (
     "project.json", "brief.json", "sources.json", "decisions.json", "build.py",
-    "connectors.json", "geometry_review.json", "parts_metadata.json", "render_config.json",
+    "connectors.json", "geometry_review.json", "parts_metadata.json", "render_config.json", "build.json",
 ):
     copy2(source / name, target / name)
 PY
-uv run --locked python projects/practice_shelter/build.py output/practice-shelter
+uv run --locked brickbuilder build projects/practice_shelter --stage connections \
+  --destination output/practice-shelter
 ```
 
 This deliberately replaces the blank starter's model inputs with the reviewed
@@ -130,11 +132,11 @@ Review copied Python before executing. For a genuinely new subject, write its ow
 brief, assemblies and runner; do not merely rename the shelter and call it done.
 The practice folder is disposable; do not commit duplicated example projects.
 
-The runner writes a new directory containing `model.ldr`, native inventory,
+The build command writes a new directory containing `model.ldr`, native inventory,
 group alternatives, bindings, profiles and a combined connection report. It
 refuses an existing destination. It does not require a part library to serialize
-CAD or test supplied declarations. Unified `brickbuilder build/release` commands
-are planned; do not claim the current runner implements release verification.
+CAD or test supplied declarations. The summary records executed and skipped dimensions. Verified releases and
+offline artifact verification remain planned; a draft build does not provide them.
 
 ## 5. Review the exact revision
 

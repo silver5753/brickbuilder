@@ -1,4 +1,4 @@
-"""Five process workflows cover packaging, project integration and failure contracts."""
+"""Installed process workflows cover packaging, project integration and failure contracts."""
 
 import json
 import struct
@@ -383,3 +383,105 @@ def test_installed_render_with_profiles_decals_and_envelope(
     )
     assert inventory["quantity"] == 2
     assert inputs["model.ldr"].read_bytes() == before
+
+
+@pytest.mark.render
+def test_installed_build_optional_stages_and_poses(
+    installed_render, installed_core, inputs, tmp_path
+):
+    import shutil
+
+    project = tmp_path / "project"
+    installed_core.run("init", project)
+    for name in ("render.json", "stickers.json", "exceptions.json"):
+        shutil.copy2(inputs[name], project / name)
+    shutil.copy2(inputs["model.ldr"], project / "seed.ldr")
+    (project / "build.py").write_text("""from dataclasses import replace
+from brickbuilder.build_result import BuildResult
+from brickbuilder.ldraw import read_source
+from brickbuilder.model import Model
+from brickbuilder.transforms import Transform
+
+def build(project):
+    (project.root / "called.txt").write_text("called once")
+    model = read_source(project.root / "seed.ldr").document.model
+    model = Model(tuple(replace(p, group="arrays" if p.instance_id == "tile" else "shield") for p in model.parts))
+    return BuildResult(model, (("shifted", model.moved(Transform((20, 0, 0)))),))
+""")
+    (project / "rules.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                market="brickowl",
+                parts=[],
+                colours=[],
+                rejected=[],
+                identity_fallback=dict(
+                    status="untested",
+                    recorded_on="2026-10-04",
+                    note="Synthetic test only",
+                    source="test fixture",
+                ),
+            )
+        )
+    )
+    (project / "build.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                stages=["geometry", "render", "stickers", "orders"],
+                root="tile",
+                catalog=None,
+                render="render.json",
+                stickers="stickers.json",
+                exceptions="exceptions.json",
+                orders=[
+                    dict(
+                        name="tile_only",
+                        rules="rules.json",
+                        selection="arrays",
+                        allow_untested=True,
+                    )
+                ],
+            )
+        )
+    )
+    output = tmp_path / "built"
+    args = [
+        "build",
+        project,
+        "--destination",
+        output,
+        "--library",
+        inputs["library"],
+        "--palette",
+        inputs["palette.ldr"],
+    ]
+    assert "extra render" in installed_core.run(*args, expected=2).stderr
+    assert not (project / "called.txt").exists() and not output.exists()
+    report = json.loads(installed_render.run(*args, expected=3).stdout)
+    assert report["kind"] == "draft_build" and report["pose_identity_check"] == "pass"
+    assert set(report["models"]) == {"default", "shifted"}
+    for name, folder in (("default", output), ("shifted", output / "poses/shifted")):
+        model = report["models"][name]
+        assert model["quantity"] == 2 and model["checks"]["geometry"] == "unknown"
+        assert model["checks"]["connections"] == "not_tested"
+        source_hash = digest(folder / "model.ldr")
+        assert model["source_sha256"] == source_hash
+        assert (
+            read(folder / "connection_profiles.json")["profiles"][0]["source_sha256"]
+            == source_hash
+        )
+        rendered = read(folder / "render/render_report.json")
+        assert rendered["source_sha256"] == source_hash
+        assert rendered["geometry_status"] == "approximate"
+        hashes(folder / "render", rendered)
+        decals = read(folder / "stickers/stickers.json")
+        assert decals["source_sha256"] == source_hash and len(decals["instances"]) == 1
+        order = read(folder / "orders/tile_only/report.json")
+        assert order["complete_quantity"] == order["imported_quantity"] == 1
+        assert order["authenticated_import"] == "not_tested"
+    assert (
+        report["models"]["default"]["source_sha256"]
+        != report["models"]["shifted"]["source_sha256"]
+    )

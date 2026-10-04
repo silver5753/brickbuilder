@@ -14,7 +14,7 @@ from brickbuilder.assembly import (
 )
 from brickbuilder.connectivity.catalog import Catalog, load_catalog
 from brickbuilder.exporters import write_bundle
-from brickbuilder.model import Model, PartInstance
+from brickbuilder.model import PartInstance
 from brickbuilder.project import Project, load_project
 from brickbuilder.transforms import Transform, rotation
 
@@ -158,9 +158,9 @@ def author(
     ).flatten()
 
 
-def build(project: Project) -> Model:
-    """The shared project builder contract remains Model-returning."""
-    return author(project).model
+def build(project: Project) -> AuthoredModel:
+    """Keep intended joints and requirement links for unified execution."""
+    return author(project)
 
 
 if __name__ == "__main__":

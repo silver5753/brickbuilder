@@ -26,7 +26,7 @@ for the limits of each check.
    or author a supported flattened LDraw file. Review the Python before running
    it; the starter intentionally raises NotImplementedError until authored.
    Use [assembly authoring](assembly.md) for local frames, named identities and
-   generated bindings; see the [vehicle](../projects/vehicle/README.md). A unified `build` command remains planned.
+   generated bindings; see the [vehicle](../projects/vehicle/README.md). Use [project execution](execution.md) to generate a draft review bundle.
 
 For a runnable rehearsal, follow the [generic tutorial](tutorial.md) and the
 [building example](../projects/building/README.md). Its wall/roof choices are
@@ -73,12 +73,13 @@ Do not carry a previous report's status forward after its source hash changes.
 
 Use `uv run --locked brickbuilder <command> --help` for arguments and the linked
 guides for contracts. The following table describes shipped operations, not a
-single automated pipeline.
+verified release pipeline. The build command orchestrates the supported stages.
 
 | Task | Current operation | Agent work still needed |
 |---|---|---|
 | Prepare a project | `init`, `doctor` ([project format](projects.md)) | Fill the brief, select parts and review/implement the builder |
 | Prepare parts/evidence | `parts`, `sources`, optional `reference-page` ([preparation](preparation.md)) | Review metadata/declarations and source meaning; no inferred connectors |
+| Execute a project | `build` ([execution](execution.md)) | Review Python, configure stages/views and interpret draft findings |
 | Create/edit CAD | [Assembly authoring](assembly.md), Model/PartInstance/Transform and LDraw APIs | Part selection, assembly layout, reviewed ports and placement logic |
 | Inspect and preserve identities | `inspect`, `roundtrip` ([model API](model-api.md)) | Supply library; review missing meshes and duplicate findings |
 | Count and compare | `inventory`, `diff` ([inventories](inventory-exports.md)) | Supply flattened physical parts and choose one selection |
@@ -88,7 +89,7 @@ single automated pipeline.
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
 Arbitrary artwork, illustrated instructions, geometric one-to-many substitutions,
-collision/motion checks and unified build/release commands remain planned.
+collision/motion checks and verified release commands remain planned.
 Historical scripts are research material, not additional supported package APIs.
 
 ## Review and repair
@@ -111,8 +112,9 @@ Historical scripts are research material, not additional supported package APIs.
 
 ## Deliver the requested revision
 
-Use a new ignored output directory. Today, run individual commands and assemble
-the handoff manually from their reports; a unified manifest is future work.
+Use a new ignored output directory. Run `build` for a draft bundle from one
+builder result, or use individual commands for targeted review. Full release
+provenance and offline verification remain future work.
 Verify source/model hashes agree across outputs and record any artifact without
 automated provenance as manually generated. Do not mix images from an old revision.
 

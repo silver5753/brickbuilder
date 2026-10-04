@@ -289,6 +289,20 @@ def _stickers_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _build_command(args: argparse.Namespace) -> int:
+    from .execution import build_project
+
+    report = build_project(
+        args.project,
+        args.destination,
+        stages=tuple(args.stage) if args.stage is not None else None,
+        library=args.library,
+        palette=args.palette,
+    )
+    _print(report)
+    return {"pass": 0, "fail": 1, "unknown": 3}[report["status"]]
+
+
 def _init_command(args: argparse.Namespace) -> int:
     from .project_setup import init_project
 
@@ -375,6 +389,21 @@ def _selection_args(parser: argparse.ArgumentParser) -> None:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="brickbuilder")
     commands = parser.add_subparsers(dest="command", required=True)
+    build = commands.add_parser(
+        "build",
+        help="Execute reviewed project Python once and generate a draft review bundle",
+    )
+    build.add_argument("project", type=Path)
+    build.add_argument("--destination", type=Path, required=True)
+    build.add_argument(
+        "--stage",
+        action="append",
+        choices=["cad", "geometry", "connections", "render", "stickers", "orders"],
+        help="Repeat to override configured stages; CAD is always generated",
+    )
+    build.add_argument("--library", type=Path)
+    build.add_argument("--palette", type=Path)
+    build.set_defaults(handler=_build_command)
     parts = commands.add_parser(
         "parts", help="Index and search local part candidates and declared evidence"
     )

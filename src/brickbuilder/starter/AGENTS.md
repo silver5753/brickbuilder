@@ -13,15 +13,17 @@ Read supplied references and captions. Record retrieval status and confidence;
 keep PDF page and figure numbers separate. Concept images do not prove real
 parts, dimensions or connections. Unknowns should remain explicit.
 
-Review build.py before executing it. Its build(project: Project) -> Model entry
-point must return flattened real-part instances with rigid transforms. Preserve
+Review build.py before executing it. Its build(project) entry point returns
+Model, AuthoredModel or BuildResult containing flattened real-part instances with
+rigid transforms. Prefer AuthoredModel to retain intended joints and links. Preserve
 semantic instance IDs across rebuilds. The starter deliberately has no design.
 
 Run brickbuilder doctor . for input readiness. It does not run the builder,
 verify source claims, certify attachments or demonstrate physical buildability.
 Use the package's inspect, connections, inventory and render commands on authored
 CAD as appropriate. Use brickbuilder.assembly for named parts, local frames,
-intended joints and generated bindings. Unified build/release is still planned.
+intended joints and generated bindings. Use brickbuilder build with explicit
+stages or a reviewed build.json. Verified release tooling is still planned.
 
 Keep generated outputs, downloaded assets and environment files ignored. Record
 exact revisions and independent validation statuses; never treat unknown as pass.

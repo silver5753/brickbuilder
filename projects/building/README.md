@@ -9,6 +9,22 @@ Read `brief.json`, `sources.json`, `decisions.json` and `build.py` before execut
 The [generic tutorial](../../docs/tutorial.md) explains the workflow from a blank
 brief and how to adapt it to other subjects.
 
+## Unified execution
+
+`build.json` configures connections and rendering for the shared command:
+
+```sh
+uv run --locked brickbuilder build projects/building --stage connections \
+  --destination output/building-core
+uv run --locked --extra render brickbuilder build projects/building \
+  --library /path/to/ldraw --destination output/building-review
+```
+
+CAD, native/group inventories, refreshed profiles and the draft build summary
+come from one builder call. The second command also generates configured views.
+Read [execution](../../docs/execution.md) for statuses, optional stages and limits.
+The project-local script below remains useful for its explicit design variants.
+
 ## Run
 
 From the repository root, with an existing output parent:

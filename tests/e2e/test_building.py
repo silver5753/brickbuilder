@@ -19,11 +19,14 @@ def test_installed_building_authoring(installed_core, tmp_path):
         ignore=shutil.ignore_patterns("__pycache__"),
     )
     bundle = tmp_path / "default"
-    checked(
-        [str(installed_core.python), str(project / "build.py"), str(bundle)],
-        cwd=tmp_path,
-        env=installed_core.env,
+    execution = json.loads(
+        installed_core.run(
+            "build", project, "--stage", "connections", "--destination", bundle
+        ).stdout
     )
+    assert execution["status"] == "pass"
+    assert execution["models"]["default"]["checks"]["render"] == "not_tested"
+
     report = json.loads((bundle / "connections.json").read_text())
     assert report["status"] == "pass"
     assert (
@@ -115,9 +118,8 @@ def test_installed_building_authoring(installed_core, tmp_path):
         == before["building/roof/plate"].transform.position[1] - 48
     )
     repeat = tmp_path / "repeat"
-    checked(
-        [str(installed_core.python), str(project / "build.py"), str(repeat)],
-        cwd=tmp_path,
-        env=installed_core.env,
+    installed_core.run(
+        "build", project, "--stage", "connections", "--destination", repeat
     )
+
     assert (repeat / "model.ldr").read_bytes() == (bundle / "model.ldr").read_bytes()
