@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 4 October 2026. Status: P1–P3 complete.
-P4a is next; P4–P5 remain planned. Original reviewed code baseline: commit
+Updated: 5 October 2026. Status: P1–P3 and P4a complete.
+P4b is next; P4b–P5 remain planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -236,16 +236,25 @@ scope. Keep machine/timestamp metadata separate from reproducible content.
 **Purpose:** Make a release useful for assembling and finishing a model, beyond
 viewing CAD or buying parts.
 
-**P4a: artwork**
+**P4a: importing agent-created artwork — complete, 5 October 2026**
 
-- Separate decal placement/physical size from artwork content. Support configured
-  colours, simple patterns, labels and local SVG artwork; solar cells become one
-  project-selected pattern rather than the universal implementation.
-- Preserve one decal per target tile, measured insets, quantity mapping and print
-  calibration. Do not bridge seams without an explicit project decision.
-- Produce printable sheets and the same artwork in review renders. Record font
-  and asset dependencies/attribution; keep cosmetic objects out of CAD/BOMs.
-- Make optional PDF/image tooling an extra rather than a core runtime dependency.
+Scope revised with the user: the using agent creates artwork with its own tools.
+The repository handles importing, placement, printing, preview and provenance;
+it does not prepare a design collection or build a font/pattern generator.
+
+- Import finished single-frame PNGs, with explicit background and attribution.
+  The agent exports vector/text originals externally; direct SVG interpretation
+  and font rendering are outside this slice. Keep the legacy solar format.
+- Separate a part-local rigid placement and nominal rectangular size from artwork.
+  Bind exact semantic instances, require matching native parts and one decal per
+  instance; preserve measured insets, quantity mapping and print calibration.
+- Embed the same normalized image in printable SVG sheets and depth-tested CAD
+  preview textures. Preserve aspect ratio and report effective print resolution.
+- Include original/normalized image hashes, attribution and decoder version in
+  reports; capture original image inputs automatically in releases. Keep all
+  cosmetic content out of native CAD and inventories.
+- Keep PNG decoding optional (`artwork` extra); the render extra already supplies
+  it. Existing solar printing and offline release verification stay core-only.
 
 **P4b: assembly steps**
 
@@ -358,7 +367,8 @@ set of nearly identical spacecraft snapshots.
 | P2c | Complete, 4 October 2026 | [Building example](../projects/building/README.md), [generic tutorial](tutorial.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/projects/building/build.py) | Nominal and visual review; physical trial, collision, strength and automatic acceptance remain untested |
 | P3a | Complete, 4 October 2026 | [Unified execution](execution.md), shared example builders; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/execution.py) | Draft outputs; full release manifest, physical testing and acceptance remain unverified |
 | P3b | Complete, 4 October 2026 | [Release and offline verification](releases.md), example policies; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/release.py) | Artifact consistency and software policy only; no physical/visual acceptance or hermetic Python execution |
-| P4–P5 | Planned; P4a next | Specifications above | Not implemented |
+| P4a | Complete, 5 October 2026 | [Imported artwork](artwork.md), building PNG/placement example; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/artwork.py) | Finished PNGs and flat rectangular labels; no graphic/font generation, curved wrapping, colour proof or physical print validation |
+| P4b–P5 | Planned; P4b next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -504,7 +514,32 @@ configure useful views, declare builder data and assess appearance. Keep P4
 focused on artwork and assembly illustrations rather than speculative layout
 solvers; retain P5's sourcing and collision limits until supported evidence exists.
 
-Next: implement P4a (generic artwork) when requested.
+P4a verification: ty, Ruff and all 225 pytest cases passed. Seven focused cases
+cover size/aspect fit, alpha flattening, exact IDs, duplicate/mismatched targets,
+unsafe or corrupt imports, rigid frames, texture sampling, depth occlusion and
+front-face left/right orientation. The existing optional-output e2e now imports a
+PNG into both poses and verifies the complete release in the core-only wheel after
+removing the original project/library. No duplicate e2e workflow was added.
+
+P4a visual review: generated a real-library building release with a single
+wayfinding label on its front lintel. Reviewed the door-detail PNG and exported
+its A4 SVG sheet through Inkscape to inspect image embedding, arrow direction,
+label size/cut frame and calibration line. This caught and corrected a front-frame
+orientation and SVG image-link compatibility issue before delivery. Print-only
+execution succeeded with the artwork extra. The physical CAD remains the same
+23-part model; no live printer, adhesion or surface-fit test is claimed.
+
+P4a limits: normalized RGB PNG transport, centered aspect-preserving fit,
+opaque background and nearest-neighbor orthographic texture sampling with flat
+lighting. Agents prepare artwork and record original source/font rights; the
+repository does not authenticate those records or interpret SVG/fonts. Local
+surface frames are reviewed declarations, not automatically inferred attachment
+surfaces. Original vector assets can be declared release inputs. No core runtime
+dependency was added; the new extra reuses pinned Pillow. Frozen fixtures are
+unchanged. The one small original arrow image is a workflow input, not a reusable
+design catalog.
+
+Next: implement P4b (explicit assembly steps and illustrations) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

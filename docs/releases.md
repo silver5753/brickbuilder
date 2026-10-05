@@ -73,7 +73,8 @@ The package adds these files to the ordinary build outputs:
   manual additions and policy findings.
 
 List project-local data files read by the builder in `inputs`, including a seed
-CAD file, custom metadata or a local lockfile if relevant. Paths cannot escape the
+CAD file, custom metadata or a local lockfile if relevant. Imported PNG artwork
+referenced by the sticker config is captured automatically; see [artwork](artwork.md). Paths cannot escape the
 project and symlinks are rejected. All local `.py` files are captured conservatively;
 keep dependency environments outside the project directory. Release destinations
 inside the project are refused to avoid capturing prior output as source.

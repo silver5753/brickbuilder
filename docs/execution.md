@@ -65,7 +65,7 @@ connection root or render setup. The starter remains deliberately unimplemented.
 | `connections` | Requires catalog/root; checks nominal interfaces and supplied intended joints |
 | `geometry` | Requires explicit library; recursive vertex bounds/dependency coverage, not collision |
 | `render` | Requires render config, library and palette; generates configured views |
-| `stickers` | Requires sticker config; generates current solar-pattern SVG templates/sheets |
+| `stickers` | Requires sticker config; generates configured imported-artwork or legacy solar SVG templates/sheets |
 | `orders` | Requires named jobs and explicit rules; reconciled exports, never a purchase |
 
 Use `--library` or `project.json.library`. `--palette` overrides the default
@@ -74,7 +74,8 @@ use the existing missing-reference map; approximations and unknowns remain visib
 Render config is parsed even when rendering is skipped, to check required view
 names. A configured sticker file is also used as the render overlay when rendering
 is selected; the separate stickers stage can additionally write its own bundle.
-This does not add generic artwork beyond the existing solar-pattern renderer.
+See [importing artwork](artwork.md) for finished PNGs and exact-instance placement;
+legacy solar configs remain supported.
 
 Each ordering job has this form:
 

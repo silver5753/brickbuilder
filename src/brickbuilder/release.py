@@ -12,6 +12,7 @@ from tempfile import TemporaryDirectory
 from .execution import build_project, load_build_config, _json
 from .jsonio import read_json
 from .project import load_project, project_path
+from .rendering.stickers import artwork_dependencies
 from .release_verify import verify_release, policy_findings, file_hashes, load_policy
 
 
@@ -33,6 +34,8 @@ def _inputs(directory: Path, policy: dict) -> dict[str, bytes]:
         if p
     )
     paths.update(job.rules for job in settings.orders)
+    if settings.stickers is not None:
+        paths.update(artwork_dependencies(settings.stickers))
     # Include local helper code, even imports subsequently removed from sys.modules.
     paths.update(project.root.rglob("*.py"))
     paths.update(

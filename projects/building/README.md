@@ -140,3 +140,16 @@ uv run --locked brickbuilder verify-release output/building-release
 Omit the stage override and supply the render extra/library for configured views.
 Read [release scope](../../docs/releases.md): verified artifacts are not physical
 certification, and review images still need visual acceptance.
+
+## Imported artwork example
+
+`stickers.json` attaches the small `artwork/wayfinding.png` workflow fixture only
+to `building/cap/lintel`. The original geometric image contains no fonts or
+third-party assets. It is a demonstration input, not an artwork generator or
+required visual style for future projects. Native CAD and quantities are unchanged.
+
+The default build/release now generates a front-facing preview and a 47.2 × 7.2 mm
+printable label with calibration marks. The frame is native part-local; it moves
+with that part in poses. See [artwork placement](../../docs/artwork.md). Required
+release checks are unchanged; image inspection and physical label fit remain
+separate reviews.

@@ -38,7 +38,7 @@ jobs:
       - run: uv sync --locked --extra render
       - run: uv run --locked --extra render ty check src tests tools projects/vehicle/build.py projects/building/build.py --error-on-warning
       - name: Synthetic image and print regressions
-        run: uv run --locked --extra render pytest tests/test_rendering.py -q
+        run: uv run --locked --extra render pytest tests/test_rendering.py tests/test_artwork.py -q
   e2e:
     runs-on: ubuntu-latest
     steps:

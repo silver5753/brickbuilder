@@ -87,6 +87,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Inventories and ordering exports](docs/inventory-exports.md)
 - [Connections and attachment checks](docs/connectivity.md)
 - [CAD previews and print stickers](docs/rendering.md)
+- [Import agent-created artwork](docs/artwork.md)
 - [Current implementation roadmap](docs/roadmap.md)
 - [Historical workflow inventory](docs/workflow-inventory.md)
 - [Milestones 1–3 code review](docs/review-milestones-1-3.md)

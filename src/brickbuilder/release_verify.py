@@ -1,6 +1,8 @@
 """Offline artifact reconciliation. Never import project code or fetch geometry."""
 
+from base64 import b64decode
 from dataclasses import asdict
+import xml.etree.ElementTree as ET
 from hashlib import sha256
 from pathlib import Path, PurePosixPath
 import re
@@ -17,6 +19,7 @@ from .ldraw import read_source
 from .model import reference_name
 from .project import load_project, project_path
 from .rendering.config import load_config
+from .rendering.artwork import artwork_path
 
 
 CHECKS = frozenset(
@@ -107,6 +110,54 @@ def _linked_report(path: Path, source_hash: str, model_hash: str) -> dict:
             f"{path.name}/{name} checksum",
         )
     return report
+
+
+def _artwork_provenance(folder: Path, config: Path, report: dict) -> None:
+    data = read_json(config)
+    if data["schema_version"] != 2:
+        return
+    actual = {row["name"]: row for row in report["templates"]}
+    _equal(set(actual), {row["name"] for row in data["templates"]}, "Artwork templates")
+    for template in data["templates"]:
+        recorded = actual[template["name"]]
+        path, asset = artwork_path(config, template["artwork"])
+        artwork = recorded["artwork"]
+        _equal(
+            artwork["source_sha256"],
+            sha256(path.read_bytes()).hexdigest(),
+            "Artwork source",
+        )
+        for key, expected in (
+            ("source", asset["path"]),
+            ("attribution", asset["attribution"]),
+            ("background", asset["background"].lower()),
+        ):
+            _equal(artwork[key], expected, "Artwork " + key)
+        for key in (
+            "reference",
+            "width_studs",
+            "depth_studs",
+            "inset_mm",
+            "instance_ids",
+            "placement",
+        ):
+            _equal(
+                recorded[key],
+                reference_name(template[key]) if key == "reference" else template[key],
+                "Artwork " + key,
+            )
+        svg = ET.parse(_path(folder, template["name"] + ".svg"))
+        images = svg.findall("{http://www.w3.org/2000/svg}image")
+        _equal(len(images), 1, "Embedded artwork quantity")
+        uri = images[0].get("{http://www.w3.org/1999/xlink}href", "")
+        prefix = "data:image/png;base64,"
+        if not uri.startswith(prefix):
+            raise ValueError("Artwork must embed its PNG")
+        _equal(
+            sha256(b64decode(uri[len(prefix) :], validate=True)).hexdigest(),
+            artwork["normalized_png_sha256"],
+            "Embedded artwork hash",
+        )
 
 
 def _reconcile(root: Path, manifest: dict) -> dict:
@@ -232,6 +283,14 @@ def _reconcile(root: Path, manifest: dict) -> dict:
             _linked_report(
                 folder / "render/stickers.json", source.sha256, model.fingerprint()
             )
+        if settings.stickers is not None:
+            for asset_folder in (folder / "render", folder / "stickers"):
+                if (asset_folder / "stickers.json").exists():
+                    _artwork_provenance(
+                        asset_folder,
+                        settings.stickers,
+                        read_json(asset_folder / "stickers.json"),
+                    )
         if "orders" in stages:
             _equal(
                 {p.name for p in (folder / "orders").iterdir()},
@@ -379,5 +438,12 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
             physical_build="not_tested",
             errors=[],
         )
-    except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
+    except (
+        OSError,
+        ValueError,
+        KeyError,
+        TypeError,
+        AttributeError,
+        ET.ParseError,
+    ) as exc:
         return dict(status="fail", errors=[str(exc)], physical_build="not_tested")

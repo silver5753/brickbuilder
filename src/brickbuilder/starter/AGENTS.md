@@ -30,3 +30,9 @@ Artifact verification does not establish physical or visual acceptance.
 Keep generated outputs, downloaded assets and environment files ignored. Record
 exact revisions and independent validation statuses; never treat unknown as pass.
 Review opposite sides and concealed attachments, not just the presentation view.
+
+Create artwork with your preferred tools and export finished PNGs. Use sticker
+config version 2 to bind each decal to exact native instance IDs and a reviewed
+part-local frame. Record attribution; keep original vector/font sources as declared
+release inputs when needed. Do not build a project-specific pattern or font engine
+into core code. See docs/artwork.md in the repository for sizes and print calibration.

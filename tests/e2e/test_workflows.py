@@ -396,6 +396,20 @@ def test_installed_release_optional_stages_and_poses(
     for name in ("render.json", "stickers.json", "exceptions.json"):
         shutil.copy2(inputs[name], project / name)
     shutil.copy2(inputs["model.ldr"], project / "seed.ldr")
+    shutil.copy2(
+        ROOT / "projects/building/artwork/wayfinding.png", project / "badge.png"
+    )
+    imported = read(ROOT / "projects/building/stickers.json")
+    imported["groups"] = ["arrays"]
+    template = imported["templates"][0]
+    template.update(
+        name="badge",
+        reference="6636.dat",
+        instance_ids=["tile"],
+        placement=dict(position=[0, 0, 0], rotation=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]),
+    )
+    template["artwork"]["path"] = "badge.png"
+    (project / "stickers.json").write_text(json.dumps(imported))
     (project / "build.py").write_text("""from dataclasses import replace
 from brickbuilder.build_result import BuildResult
 from brickbuilder.ldraw import read_source
@@ -498,6 +512,10 @@ def build(project):
         installed_core.run("verify-release", output, expected=3).stdout
     )
     assert verified["status"] == "pass" and verified["label"] == "draft"
+    assert (output / "provenance/project/badge.png").is_file()
+    assert read(output / "stickers/stickers.json")["templates"][0]["artwork"][
+        "source_sha256"
+    ] == digest(output / "provenance/project/badge.png")
     report = read(output / "build_report.json")
     assert report["kind"] == "draft_build" and report["pose_identity_check"] == "pass"
     assert set(report["models"]) == {"default", "shifted"}

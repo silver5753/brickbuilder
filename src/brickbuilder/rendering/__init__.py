@@ -39,12 +39,25 @@ def sticker_selection(
     source: SourceDocument, config: StickerConfig, bindings: dict[str, tuple[str, ...]]
 ) -> tuple[dict[str, Sticker], dict[str, int]]:
     ids = select_ids(source, config.groups, bindings)
-    templates = {s.reference: s for s in config.templates}
-    selected = {
-        p.instance_id: templates[reference_name(p.reference)]
-        for p in source.document.model.parts
-        if p.instance_id in ids and reference_name(p.reference) in templates
-    }
+    selected = {}
+    for sticker in config.templates:
+        explicit = set(sticker.instance_ids)
+        if explicit - ids:
+            raise ValueError("Sticker instance IDs must exist in the selected groups")
+        for part in source.document.model.parts:
+            if part.instance_id not in ids or (
+                explicit and part.instance_id not in explicit
+            ):
+                continue
+            if reference_name(part.reference) != sticker.reference:
+                if explicit:
+                    raise ValueError("Sticker instance native reference mismatch")
+                continue
+            if part.instance_id in selected:
+                raise ValueError(
+                    "More than one decal targets the same physical instance"
+                )
+            selected[part.instance_id] = sticker
     if not selected:
         raise ValueError("No declared sticker tiles match the selected physical model")
     quantities = {
@@ -120,6 +133,7 @@ def _decal(sticker: Sticker) -> Mesh:
         h /= 0.4
         y = -0.15 - layer * 0.002
         vertices = ((x, y, z), (x + w, y, z), (x + w, y, z + h), (x, y, z + h))
+        vertices = tuple(sticker.placement.point(v) for v in vertices)
         faces.append(Face(vertices, 0x2000000 | int(colour[1:], 16)))
     return Mesh(tuple(faces))
 
@@ -139,7 +153,12 @@ def _arrays(mesh: Mesh, colours: dict[int, tuple[int, int, int]]) -> tuple[Any, 
 
 
 def _png(
-    vertices: Any, colours: Any, view: View, config: RenderConfig, approximate: bool
+    vertices: Any,
+    colours: Any,
+    view: View,
+    config: RenderConfig,
+    approximate: bool,
+    textures: Any = None,
 ) -> tuple[bytes, dict[str, object]]:
     np, Image, _ = modules()
     right = unit(cross(view.up, view.eye))
@@ -166,7 +185,13 @@ def _png(
     factor = config.supersampling
     pixels[:, :, :2] *= factor
     image = Image.fromarray(
-        raster(pixels, shaded, config.width * factor, config.height * factor)
+        raster(
+            pixels,
+            shaded,
+            config.width * factor,
+            config.height * factor,
+            textures=(*textures, shading) if textures is not None else None,
+        )
     )
     if factor > 1:
         image = image.resize((config.width, config.height), Image.Resampling.LANCZOS)
@@ -229,6 +254,19 @@ def render_bundle(
     print_payloads, decal_selection = (
         sticker_files(source, stickers, bindings, provenance) if stickers else ({}, {})
     )
+    imported = {s.name: s for s in decal_selection.values() if s.image is not None}
+    texture_indices = {name: i for i, name in enumerate(imported)}
+    texture_pixels = []
+    texture_meta = []
+    offset = 0
+    for sticker in imported.values():
+        assert sticker.image is not None
+        image = modules()[1].open(BytesIO(sticker.image.png))
+        texture_pixels.append(np.asarray(image, dtype=np.uint8).reshape(-1, 3))
+        texture_meta.append((offset, sticker.image.width_px, sticker.image.height_px))
+        offset += sticker.image.width_px * sticker.image.height_px
+    atlas = np.concatenate(texture_pixels) if imported else None
+    meta = np.asarray(texture_meta, dtype=np.int64)
     scenes = {}
     approximations = {}
     array_cache = {}
@@ -254,7 +292,43 @@ def render_bundle(
             ).T + np.asarray(part.transform.position)
             world = np.concatenate((world, decal_vertices))
             values = np.concatenate((values, decal_colours))
-        scenes[part.instance_id] = (world, values)
+        uv = np.zeros((len(world), 3, 2))
+        texture_ids = np.full(len(world), -1, dtype=np.int64)
+        sticker = decal_selection.get(part.instance_id)
+        if sticker is not None and sticker.image is not None:
+            x, z, w, h = sticker.image.fitted(sticker.width_mm, sticker.height_mm)
+            corners = tuple(
+                sticker.placement.point(
+                    (
+                        (px - sticker.width_mm / 2) / 0.4,
+                        -0.154,
+                        -(pz - sticker.height_mm / 2) / 0.4,
+                    )
+                )
+                for px, pz in ((x, z), (x + w, z), (x + w, z + h), (x, z + h))
+            )
+            triangle_indices = ((0, 1, 2), (0, 2, 3))
+            vertices = np.asarray(
+                [[corners[i] for i in row] for row in triangle_indices]
+            )
+            vertices = vertices @ np.asarray(part.transform.rotation).T + np.asarray(
+                part.transform.position
+            )
+            world = np.concatenate((world, vertices))
+            values = np.concatenate((values, np.zeros((2, 3), dtype=np.uint8)))
+            uv_corners = ((0, 0), (1, 0), (1, 1), (0, 1))
+            uv = np.concatenate(
+                (
+                    uv,
+                    np.asarray(
+                        [[uv_corners[i] for i in row] for row in triangle_indices]
+                    ),
+                )
+            )
+            texture_ids = np.concatenate(
+                (texture_ids, np.full(2, texture_indices[sticker.name], dtype=np.int64))
+            )
+        scenes[part.instance_id] = (world, values, uv, texture_ids)
         if missing:
             approximations[part.instance_id] = list(missing)
     inline = []
@@ -278,13 +352,31 @@ def render_bundle(
                 raise ValueError(
                     "Inline surfaces cannot be assigned to a group-filtered view"
                 )
-            chunks.append(inline_arrays)
+            chunks.append(
+                (
+                    *inline_arrays,
+                    np.zeros((len(inline_arrays[0]), 3, 2)),
+                    np.full(len(inline_arrays[0]), -1, dtype=np.int64),
+                )
+            )
         if not chunks:
             raise ValueError("Cannot render an empty selection")
         vertices = np.concatenate([x[0] for x in chunks])
         values = np.concatenate([x[1] for x in chunks])
         data, camera = _png(
-            vertices, values, view, config, bool(ids & approximations.keys())
+            vertices,
+            values,
+            view,
+            config,
+            bool(ids & approximations.keys()),
+            textures=(
+                np.concatenate([x[2] for x in chunks]),
+                np.concatenate([x[3] for x in chunks]),
+                atlas,
+                meta,
+            )
+            if imported
+            else None,
         )
         filename = view.name + ".png"
         files[filename] = data
@@ -303,7 +395,10 @@ def render_bundle(
     files.update(print_payloads)
     report: dict[str, object] = dict(
         schema_version=1,
-        renderer="serial_cpu_zbuffer_v1",
+        renderer="serial_cpu_zbuffer_v2" if imported else "serial_cpu_zbuffer_v1",
+        artwork_sampling="opaque PNG, nearest-neighbor UV sampling, flat shading"
+        if imported
+        else None,
         renderer_source_sha256={
             path.name: sha256(path.read_bytes()).hexdigest()
             for path in sorted(Path(__file__).parent.glob("*.py"))

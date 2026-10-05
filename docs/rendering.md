@@ -1,4 +1,4 @@
-# Actual-CAD previews and custom solar stickers
+# Actual-CAD previews and print decals
 
 Milestone 5 ports the historical depth-buffer preview renderer into a reusable
 Python 3.12 API and CLI. The core keeps zero runtime dependencies. Rendering
@@ -7,7 +7,11 @@ uses the separately locked `render` extra: NumPy 2.2.6, Pillow 11.3.0, Numba
 not the backend for this milestone. Photorealistic studio rendering remains a
 possible additional backend.
 
-## Render the spacecraft
+For agent-created PNG artwork, exact instance placement and a generic building
+example, read [importing artwork](artwork.md). Legacy solar decals below remain
+supported unchanged; they are not the default for new subjects.
+
+## Legacy spacecraft rendering
 
 ```sh
 uv sync --locked --extra render
@@ -124,4 +128,5 @@ core job checks the dependency-free APIs and deselects optional backend cases.
 Selecting rendering tests without the extra fails collection instead of skipping.
 
 The frozen native CAD and all baseline fixture hashes remain unchanged.
-Motion/collision review and a unified release bundle remain milestone 6.
+Use [release packages](releases.md) for provenance and offline verification.
+Motion/collision review remains future work.

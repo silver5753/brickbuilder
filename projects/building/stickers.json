@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "groups": [
+    "building/cap"
+  ],
+  "templates": [
+    {
+      "name": "wayfinding",
+      "reference": "3009.dat",
+      "width_studs": 6,
+      "depth_studs": 1,
+      "inset_mm": 0.4,
+      "instance_ids": [
+        "building/cap/lintel"
+      ],
+      "placement": {
+        "position": [
+          0,
+          12,
+          -10
+        ],
+        "rotation": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "artwork": {
+        "path": "artwork/wayfinding.png",
+        "attribution": "Original geometric wayfinding test image for Brick Builder; no fonts or third-party assets.",
+        "background": "#12385b"
+      }
+    }
+  ]
+}

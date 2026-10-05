@@ -2,12 +2,13 @@
   "schema_version": 1,
   "stages": [
     "connections",
-    "render"
+    "render",
+    "stickers"
   ],
   "root": "building/foundation/plate",
   "catalog": "connectors.json",
   "render": "render_config.json",
-  "stickers": null,
+  "stickers": "stickers.json",
   "exceptions": null,
   "orders": []
 }

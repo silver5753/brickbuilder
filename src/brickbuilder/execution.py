@@ -262,6 +262,12 @@ def build_project(
     if settings.stickers is not None and enabled & {"render", "stickers"}:
         sticker_config, digest = load_stickers(settings.stickers)
         hashes[settings.stickers.relative_to(project.root).as_posix()] = digest
+        for template in sticker_config.templates:
+            if template.image is not None:
+                asset = settings.stickers.parent / template.image.source
+                hashes[asset.relative_to(project.root).as_posix()] = (
+                    template.image.source_sha256
+                )
     if "stickers" in enabled and sticker_config is None:
         raise ValueError("Sticker stage requires build.json stickers")
     if "render" in enabled:

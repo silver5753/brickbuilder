@@ -1,4 +1,4 @@
-"""Dimensional SVG solar decals, kept outside physical CAD and BOMs."""
+"""Dimensional SVG sheets for imported artwork and legacy solar decals, kept outside physical CAD and BOMs."""
 
 from dataclasses import asdict, dataclass
 from hashlib import sha256
@@ -7,9 +7,11 @@ import json
 from pathlib import Path
 import re
 
-from ..jsonio import array, decode_json, object_fields, versioned
+from ..jsonio import array, decode_json, object_fields
 from ..model import reference_name
 from ..jsonio import number, text
+from ..transforms import Transform, is_rigid
+from .artwork import Artwork, load_artwork, artwork_path
 
 BLUE = "#12385b"
 GRID = "#c8ac64"
@@ -24,10 +26,20 @@ class Sticker:
     inset_mm: float = 0.4
     columns: int = 12
     rows: int = 4
+    image: Artwork | None = None
+    placement: Transform = Transform()
+    instance_ids: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if not re.fullmatch("[a-z][a-z0-9_]*", self.name):
             raise ValueError("Sticker names must be safe lowercase identifiers")
+        object.__setattr__(self, "instance_ids", tuple(self.instance_ids))
+        for instance_id in self.instance_ids:
+            text(instance_id, "Sticker instance ID")
+        if len(set(self.instance_ids)) != len(self.instance_ids):
+            raise ValueError("Duplicate sticker instance IDs")
+        if not is_rigid(self.placement.rotation):
+            raise ValueError("Sticker placement must be rigid")
         ref = reference_name(self.reference)
         if "/" in ref or not ref.endswith(".dat"):
             raise ValueError("Sticker requires a plain native .dat identity")
@@ -49,6 +61,8 @@ class Sticker:
     def rectangles(self) -> list[tuple[float, float, float, float, str]]:
         """Same artwork rectangles drive SVG printing and render-only surfaces."""
         w, h = self.width_mm, self.height_mm
+        if self.image is not None:
+            return [(0.0, 0.0, w, h, self.image.background)]
         result = [(0.0, 0.0, w, h, BLUE)]
         stroke = 0.06
         for i in range(self.columns + 1):
@@ -60,6 +74,8 @@ class Sticker:
         return result
 
     def artwork(self) -> str:
+        if self.image is not None:
+            return self.image.svg(self.width_mm, self.height_mm)
         return "".join(
             f'<rect x="{x:.4f}" y="{y:.4f}" width="{w:.4f}" height="{h:.4f}" fill="{colour}"/>'
             for x, y, w, h, colour in self.rectangles()
@@ -82,28 +98,36 @@ class StickerConfig:
     def __post_init__(self) -> None:
         object.__setattr__(self, "templates", tuple(self.templates))
         object.__setattr__(self, "groups", tuple(self.groups))
-        if (
-            not self.templates
-            or len({s.name for s in self.templates}) != len(self.templates)
-            or len({s.reference for s in self.templates}) != len(self.templates)
+        if not self.templates or len({s.name for s in self.templates}) != len(
+            self.templates
         ):
-            raise ValueError("Sticker templates require unique names/references")
+            raise ValueError("Sticker templates require unique names")
         if not self.groups or len(set(self.groups)) != len(self.groups):
             raise ValueError("Sticker groups must be explicit and unique")
         for group in self.groups:
             text(group, "Sticker group")
 
 
-def load_stickers(path: Path) -> tuple[StickerConfig, str]:
+def _config_data(path: Path) -> tuple[dict, bytes]:
     payload = path.read_bytes()
-    data = versioned(
+    data = object_fields(
         decode_json(payload.decode("utf-8-sig")),
-        {"templates", "groups"},
+        {"schema_version", "templates", "groups"},
         "sticker config",
     )
-    templates = []
+    if type(data["schema_version"]) is not int or data["schema_version"] not in (1, 2):
+        raise ValueError("Unsupported sticker config schema version")
+    return data, payload
+
+
+def artwork_dependencies(path: Path) -> tuple[Path, ...]:
+    """Read explicit asset paths for provenance without decoding images."""
+    data, _ = _config_data(path)
+    if data["schema_version"] == 1:
+        return ()
+    result = []
     for raw in array(data["templates"], "Templates"):
-        s = object_fields(
+        template = object_fields(
             raw,
             {
                 "name",
@@ -111,13 +135,34 @@ def load_stickers(path: Path) -> tuple[StickerConfig, str]:
                 "width_studs",
                 "depth_studs",
                 "inset_mm",
-                "columns",
-                "rows",
+                "artwork",
+                "placement",
+                "instance_ids",
             },
             "sticker template",
         )
-        templates.append(
-            Sticker(
+        result.append(artwork_path(path, template["artwork"])[0])
+    return tuple(result)
+
+
+def load_stickers(path: Path) -> tuple[StickerConfig, str]:
+    data, payload = _config_data(path)
+    templates = []
+    common = {"name", "reference", "width_studs", "depth_studs", "inset_mm"}
+    for raw in array(data["templates"], "Templates"):
+        legacy = data["schema_version"] == 1
+        s = object_fields(
+            raw,
+            common
+            | (
+                {"columns", "rows"}
+                if legacy
+                else {"artwork", "placement", "instance_ids"}
+            ),
+            "sticker template",
+        )
+        if legacy:
+            sticker = Sticker(
                 text(s["name"], "Sticker name"),
                 text(s["reference"], "Reference"),
                 s["width_studs"],
@@ -126,10 +171,51 @@ def load_stickers(path: Path) -> tuple[StickerConfig, str]:
                 s["columns"],
                 s["rows"],
             )
-        )
+        else:
+            placement = object_fields(
+                s["placement"], {"position", "rotation"}, "sticker placement"
+            )
+            ids = tuple(array(s["instance_ids"], "Sticker instance IDs"))
+            if not ids:
+                raise ValueError("Imported artwork requires explicit instance IDs")
+            sticker = Sticker(
+                text(s["name"], "Sticker name"),
+                text(s["reference"], "Reference"),
+                s["width_studs"],
+                s["depth_studs"],
+                number(s["inset_mm"], "Inset"),
+                image=load_artwork(path, s["artwork"]),
+                placement=Transform(placement["position"], placement["rotation"]),
+                instance_ids=ids,
+            )
+        templates.append(sticker)
     return StickerConfig(
         tuple(templates), tuple(array(data["groups"], "Sticker groups"))
     ), sha256(payload).hexdigest()
+
+
+def _record(sticker: Sticker) -> dict:
+    result = {
+        key: getattr(sticker, key)
+        for key in (
+            "name",
+            "reference",
+            "width_studs",
+            "depth_studs",
+            "inset_mm",
+            "columns",
+            "rows",
+        )
+    }
+    if sticker.image is not None:
+        result.pop("columns")
+        result.pop("rows")
+        result.update(
+            artwork=sticker.image.record(sticker.width_mm, sticker.height_mm),
+            placement=asdict(sticker.placement),
+            instance_ids=list(sticker.instance_ids),
+        )
+    return result
 
 
 def print_files(
@@ -188,7 +274,7 @@ def print_files(
     for index, contents in enumerate(sheets, 1):
         files[f"stickers_a4_{index}.svg"] = (
             '<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297">'
-            '<rect width="210" height="297" fill="white"/><text x="10" y="12" font-size="3">Custom solar decals — print at 100%, no fit-to-page</text>'
+            '<rect width="210" height="297" fill="white"/><text x="10" y="12" font-size="3">Custom decals — print at 100%, no fit-to-page</text>'
             '<path d="M10 278 H60 M10 276 V280 M60 276 V280" stroke="black" stroke-width="0.2"/>'
             '<text x="10" y="285" font-size="2.5">Check this line measures exactly 50 mm before cutting</text>'
             + "".join(contents)
@@ -205,7 +291,7 @@ def print_files(
         page_count=len(sheets),
         templates=[
             dict(
-                **asdict(s),
+                **_record(s),
                 width_mm=s.width_mm,
                 height_mm=s.height_mm,
                 quantity=quantities.get(s.name, 0),

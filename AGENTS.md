@@ -76,7 +76,8 @@ Read the relevant guide before changing or using a capability:
 - [Connections](docs/connectivity.md): declared interfaces, coverage and root paths;
   an unknown connection report exits 3 and is not a pass.
 - [Rendering](docs/rendering.md): actual-CAD PNG previews and separate SVG decals;
-  artwork is currently solar-cell-specific, not an arbitrary artwork engine.
+  use [imported artwork](docs/artwork.md) for finished agent-created PNGs. Create
+  graphics externally; do not add a pattern/font engine for a project.
 - [Testing](docs/testing.md): locked setup, ty, pytest markers and installed-wheel
   coverage. Test meaningful contracts and failures; avoid redundant cases.
 

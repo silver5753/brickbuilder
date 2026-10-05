@@ -8,6 +8,9 @@ version = "0.1.0"
 source = { editable = "." }
 
 [package.optional-dependencies]
+artwork = [
+    { name = "pillow" },
+]
 render = [
     { name = "numba" },
     { name = "numpy" },
@@ -24,9 +27,10 @@ dev = [
 requires-dist = [
     { name = "numba", marker = "extra == 'render'", specifier = "==0.61.2" },
     { name = "numpy", marker = "extra == 'render'", specifier = "==2.2.6" },
+    { name = "pillow", marker = "extra == 'artwork'", specifier = "==11.3.0" },
     { name = "pillow", marker = "extra == 'render'", specifier = "==11.3.0" },
 ]
-provides-extras = ["render"]
+provides-extras = ["artwork", "render"]
 
 [package.metadata.requires-dev]
 dev = [

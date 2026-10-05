@@ -113,3 +113,10 @@ after its project and geometry library are removed, including mixed import/manua
 orders. Unit tests cover missing/extra files, semantic inconsistencies after
 rehashing, unsafe paths, symlinks, input changes, draft status propagation and
 interrupted publication. No project code runs during offline verification.
+
+Imported artwork tests use a small deterministic PNG, not a generated design
+collection. They cover physical size, aspect fit, alpha flattening, exact target
+IDs, invalid inputs, front-face orientation, texture UV sampling and native-depth
+occlusion. The existing optional-release e2e uses imported artwork and verifies
+the package in the core-only wheel after the original files are removed. CI runs
+these pixel tests in the render job; core imports still require no runtime packages.

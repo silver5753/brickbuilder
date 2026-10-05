@@ -86,10 +86,10 @@ gates and offline artifact reconciliation. Neither certifies physical assembly.
 | Count and compare | `inventory`, `diff` ([inventories](inventory-exports.md)) | Supply flattened physical parts and choose one selection |
 | Check attachments | `connections` ([connections](connectivity.md)) | Reviewed catalog and explicit root or source-bound profile |
 | Preview CAD | `render` with optional render extra ([rendering](rendering.md)) | Configure project cameras/palette/library and inspect the images |
-| Print solar-pattern decals | `stickers` ([rendering](rendering.md)) | Select tiles, inspect sizes and physically calibrate printing |
+| Attach and print artwork | `stickers` ([artwork](artwork.md)) | Create finished PNGs, choose exact instances/local frames, inspect sizes and calibrate printing |
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
-Arbitrary artwork, illustrated instructions, geometric one-to-many substitutions,
+Illustrated instructions, geometric one-to-many substitutions,
 and collision/motion checks remain planned.
 Historical scripts are research material, not additional supported package APIs.
 
