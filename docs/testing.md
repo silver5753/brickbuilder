@@ -120,3 +120,8 @@ IDs, invalid inputs, front-face orientation, texture UV sampling and native-dept
 occlusion. The existing optional-release e2e uses imported artwork and verifies
 the package in the core-only wheel after the original files are removed. CI runs
 these pixel tests in the render job; core imports still require no runtime packages.
+
+Instruction tests cover exact physical-copy coverage, group expansion, duplicate/
+missing IDs, prerequisite cycles/forward references, future callouts and required
+overviews. The existing optional-output e2e now renders two-step pose instructions
+and verifies them offline; resealed incorrect step quantities still fail.

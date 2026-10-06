@@ -1,0 +1,330 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "id": "chassis",
+      "title": "Start with the chassis plate",
+      "add": [
+        "vehicle/chassis"
+      ],
+      "assemblies": [],
+      "requires": [],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            1,
+            -1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Check stud seating and access by physical trial; no insertion test has been performed."
+    },
+    {
+      "id": "supports",
+      "title": "Attach the four axle supports underneath",
+      "add": [
+        "vehicle/front_axle/left_support",
+        "vehicle/front_axle/right_support",
+        "vehicle/rear_axle/left_support",
+        "vehicle/rear_axle/right_support"
+      ],
+      "assemblies": [],
+      "requires": [
+        "chassis"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            1,
+            -1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Keep axle holes aligned. The model is shown from underneath; physically support it while inserting shafts."
+    },
+    {
+      "id": "front_shaft",
+      "title": "Front: Slide the shaft through both supports",
+      "add": [
+        "vehicle/front_axle/shaft"
+      ],
+      "assemblies": [],
+      "requires": [
+        "supports"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            0.8,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Review insertion direction and shaft engagement. Leave axial play; do not clamp the wheels tightly. Rotation, friction and access need a physical trial."
+    },
+    {
+      "id": "front_wheels",
+      "title": "Front: Fit both wheels",
+      "add": [
+        "vehicle/front_axle/left_wheel",
+        "vehicle/front_axle/right_wheel"
+      ],
+      "assemblies": [],
+      "requires": [
+        "front_shaft"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            0.8,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Review insertion direction and shaft engagement. Leave axial play; do not clamp the wheels tightly. Rotation, friction and access need a physical trial."
+    },
+    {
+      "id": "front_retainers",
+      "title": "Front: Fit the outer retainers",
+      "add": [
+        "vehicle/front_axle/left_bush",
+        "vehicle/front_axle/right_bush"
+      ],
+      "assemblies": [],
+      "requires": [
+        "front_wheels"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            0.8,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Review insertion direction and shaft engagement. Leave axial play; do not clamp the wheels tightly. Rotation, friction and access need a physical trial."
+    },
+    {
+      "id": "rear_shaft",
+      "title": "Rear: Slide the shaft through both supports",
+      "add": [
+        "vehicle/rear_axle/shaft"
+      ],
+      "assemblies": [],
+      "requires": [
+        "front_retainers"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            0.8,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Review insertion direction and shaft engagement. Leave axial play; do not clamp the wheels tightly. Rotation, friction and access need a physical trial."
+    },
+    {
+      "id": "rear_wheels",
+      "title": "Rear: Fit both wheels",
+      "add": [
+        "vehicle/rear_axle/left_wheel",
+        "vehicle/rear_axle/right_wheel"
+      ],
+      "assemblies": [],
+      "requires": [
+        "rear_shaft"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            0.8,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Review insertion direction and shaft engagement. Leave axial play; do not clamp the wheels tightly. Rotation, friction and access need a physical trial."
+    },
+    {
+      "id": "rear_retainers",
+      "title": "Rear: Fit the outer retainers",
+      "add": [
+        "vehicle/rear_axle/left_bush",
+        "vehicle/rear_axle/right_bush"
+      ],
+      "assemblies": [],
+      "requires": [
+        "rear_wheels"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            0.8,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Review insertion direction and shaft engagement. Leave axial play; do not clamp the wheels tightly. Rotation, friction and access need a physical trial."
+    },
+    {
+      "id": "lower_body",
+      "title": "Turn upright and build the lower body",
+      "add": [
+        "vehicle/body/hood",
+        "vehicle/body/cabin/base/brick"
+      ],
+      "assemblies": [],
+      "requires": [
+        "rear_retainers"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Turn the chassis upright and support it before pressing the body onto its studs."
+    },
+    {
+      "id": "cab",
+      "title": "Stack the cab",
+      "add": [],
+      "assemblies": [
+        "vehicle/body/cabin/cab"
+      ],
+      "requires": [
+        "lower_body"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Check stud seating and access by physical trial; no insertion test has been performed."
+    },
+    {
+      "id": "roof",
+      "title": "Seat the roof",
+      "add": [],
+      "assemblies": [
+        "vehicle/body/roof"
+      ],
+      "requires": [
+        "cab"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Check stud seating and access by physical trial; no insertion test has been performed."
+    }
+  ]
+}

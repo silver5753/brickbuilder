@@ -30,7 +30,7 @@ Put `release.json` beside `project.json`:
 
 Both fields are required. `required_checks` is a nonempty unique list drawn from
 `placements`, `part_count`, `connections`, `geometry`, `render`, `render_geometry`,
-`stickers`, `orders` and `requirement_bindings`. Every required check must pass for
+`stickers`, `orders`, `instructions`, `instructions_geometry` and `requirement_bindings`. Every required check must pass for
 every pose. Any selected check's failure or unknown also blocks a normal release,
 even if it is not listed. Untested required checks block it too. Policy never
 converts unknown into pass. Both examples use the policy above; add `render` and
@@ -125,3 +125,7 @@ Deliver the whole package and the manifest hash. Name the exact ordering file
 from `HANDOFF.md`; include every manual addition. Native CAD remains complete.
 Keep physical trial observations and visual acceptance as separately recorded
 work tied to this revision. Software verification must not imply either occurred.
+
+The optional [instruction stage](instructions.md) captures steps.json and includes
+accumulated CAD, images and a feedback template. Offline verification reconciles
+step coverage, quantities and source bindings without rendering or proving access.

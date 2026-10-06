@@ -237,6 +237,7 @@ def render_bundle(
     bindings: dict[str, tuple[str, ...]] | None = None,
     stickers: StickerConfig | None = None,
     provenance: dict[str, str] | None = None,
+    highlight_ids: frozenset[str] | None = None,
 ) -> dict[str, object]:
     """Prepare complete image/print payloads before writing a new output directory."""
     np, _, _ = modules()
@@ -249,6 +250,10 @@ def render_bundle(
         view.name: select_ids(source, view.groups, bindings) for view in config.views
     }
     rendered_ids = set().union(*selections.values())
+    if highlight_ids is not None and highlight_ids - {
+        p.instance_id for p in source.document.model.parts
+    }:
+        raise ValueError("Highlight IDs must exist in the model")
     colours, palette_hash = palette(palette_path)
     loader = MeshLoader(library, dict(config.envelopes))
     print_payloads, decal_selection = (
@@ -327,6 +332,13 @@ def render_bundle(
             )
             texture_ids = np.concatenate(
                 (texture_ids, np.full(2, texture_indices[sticker.name], dtype=np.int64))
+            )
+        if highlight_ids is not None:
+            values = np.full_like(
+                values,
+                (245, 175, 35)
+                if part.instance_id in highlight_ids
+                else (165, 170, 175),
             )
         scenes[part.instance_id] = (world, values, uv, texture_ids)
         if missing:
@@ -420,6 +432,7 @@ def render_bundle(
             platform=platform.platform(),
             **environment(),
         ),
+        highlight_ids=sorted(highlight_ids) if highlight_ids is not None else None,
         physical_quantity=len(source.document.model.parts),
         rendered_instance_quantity=len(rendered_ids),
         not_rendered_instance_ids=sorted(

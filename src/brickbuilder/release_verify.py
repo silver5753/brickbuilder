@@ -1,11 +1,12 @@
 """Offline artifact reconciliation. Never import project code or fetch geometry."""
 
 from base64 import b64decode
-from dataclasses import asdict
+from dataclasses import asdict, replace
 import xml.etree.ElementTree as ET
 from hashlib import sha256
 from pathlib import Path, PurePosixPath
 import re
+import json
 
 from .assembly import AuthoredModel
 from .build_result import BuildResult
@@ -33,6 +34,8 @@ CHECKS = frozenset(
         "stickers",
         "orders",
         "requirement_bindings",
+        "instructions",
+        "instructions_geometry",
     }
 )
 
@@ -158,6 +161,66 @@ def _artwork_provenance(folder: Path, config: Path, report: dict) -> None:
             artwork["normalized_png_sha256"],
             "Embedded artwork hash",
         )
+
+
+def _instruction_provenance(folder: Path, source, plan_path: Path, config) -> dict:
+    from .instructions import load_steps, step_records
+
+    plan = load_steps(plan_path.read_bytes())
+    report = _linked_report(
+        folder / "instructions.json", source.sha256, source.document.model.fingerprint()
+    )
+    _equal(report["plan_sha256"], plan.sha256, "Instruction plan hash")
+    expected = step_records(source.document.model, plan)
+    _equal(len(report["steps"]), len(expected), "Instruction step count")
+    statuses = []
+    for step, row, actual in zip(plan.steps, expected, report["steps"]):
+        for key, value in row.items():
+            # JSON normalizes dataclass tuples to lists.
+            _equal(actual[key], json.loads(json.dumps(value)), "Instruction " + key)
+        partial = read_source(folder / step.id / "model.ldr")
+        _equal(
+            partial.document.model.parts,
+            tuple(
+                p
+                for p in source.document.model.parts
+                if p.instance_id in row["accumulated_ids"]
+            ),
+            "Accumulated physical model",
+        )
+        _equal(actual["source_sha256"], partial.sha256, "Step source")
+        _equal(
+            actual["model_sha256"], partial.document.model.fingerprint(), "Step model"
+        )
+        rendered = _linked_report(
+            folder / step.id / "views/render_report.json",
+            partial.sha256,
+            partial.document.model.fingerprint(),
+        )
+        _equal(rendered["highlight_ids"], row["added_ids"], "Step highlighting")
+        _equal(
+            rendered["config_fingerprint"],
+            replace(config, views=step.views).fingerprint(),
+            "Step camera config",
+        )
+        _equal(actual["geometry_status"], rendered["geometry_status"], "Step geometry")
+        _equal(
+            rendered["provenance"]["parent_source_sha256"],
+            source.sha256,
+            "Instruction parent source",
+        )
+        _equal(
+            rendered["provenance"]["steps_sha256"], plan.sha256, "Step plan provenance"
+        )
+        statuses.append(rendered["geometry_status"])
+    _equal(report["quantity"], len(source.document.model.parts), "Instruction quantity")
+    _equal(report["coverage"], "pass", "Instruction coverage")
+    _equal(
+        report["geometry_status"],
+        "resolved" if all(s == "resolved" for s in statuses) else "approximate",
+        "Instruction geometry summary",
+    )
+    return report
 
 
 def _reconcile(root: Path, manifest: dict) -> dict:
@@ -344,6 +407,16 @@ def _reconcile(root: Path, manifest: dict) -> dict:
             "stickers": "pass" if "stickers" in stages else "not_tested",
             "orders": "pass" if "orders" in stages else "not_tested",
         }
+        if "instructions" in stages:
+            if render_config is None:
+                raise ValueError("Instructions require captured render settings")
+            instructions = _instruction_provenance(
+                folder / "instructions", source, snapshot / "steps.json", render_config
+            )
+            expected_checks["instructions"] = "pass"
+            expected_checks["instructions_geometry"] = (
+                "pass" if instructions["geometry_status"] == "resolved" else "unknown"
+            )
         if "render" in stages:
             expected_checks["render_geometry"] = (
                 "pass"

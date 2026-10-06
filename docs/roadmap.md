@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 5 October 2026. Status: P1–P3 and P4a complete.
-P4b is next; P4b–P5 remain planned. Original reviewed code baseline: commit
+Updated: 6 October 2026. Status: P1–P4 complete.
+P5a is next; P5 remains planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -256,7 +256,7 @@ it does not prepare a design collection or build a font/pattern generator.
 - Keep PNG decoding optional (`artwork` extra); the render extra already supplies
   it. Existing solar printing and offline release verification stay core-only.
 
-**P4b: assembly steps**
+**P4b: assembly steps — complete, 6 October 2026**
 
 - Define an explicit step plan referencing semantic instances and subassemblies,
   with prerequisites, orientation, added-part lists and callouts. Existing LDraw
@@ -368,7 +368,8 @@ set of nearly identical spacecraft snapshots.
 | P3a | Complete, 4 October 2026 | [Unified execution](execution.md), shared example builders; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/execution.py) | Draft outputs; full release manifest, physical testing and acceptance remain unverified |
 | P3b | Complete, 4 October 2026 | [Release and offline verification](releases.md), example policies; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/release.py) | Artifact consistency and software policy only; no physical/visual acceptance or hermetic Python execution |
 | P4a | Complete, 5 October 2026 | [Imported artwork](artwork.md), building PNG/placement example; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/artwork.py) | Finished PNGs and flat rectangular labels; no graphic/font generation, curved wrapping, colour proof or physical print validation |
-| P4b–P5 | Planned; P4b next | Specifications above | Not implemented |
+| P4b | Complete, 6 October 2026 | [Authored instructions](instructions.md), vehicle/building step plans; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/instructions.py) | Authored order and views; insertion access and physical assembly remain untested |
+| P5 | Planned; P5a next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -539,7 +540,33 @@ dependency was added; the new extra reuses pinned Pillow. Frozen fixtures are
 unchanged. The one small original arrow image is a workflow input, not a reusable
 design catalog.
 
-Next: implement P4b (explicit assembly steps and illustrations) when requested.
+P4b verification: Ruff, ty and all 232 pytest cases passed. Seven focused
+cases check repeated physical copies, complete/unique coverage, unknown groups,
+prerequisite order/cycles, future callouts and mandatory overview views. The
+existing optional-output e2e now builds illustrated steps for both poses and
+verifies them in an installed core-only wheel after removing the source project
+and geometry library. A tampered step inventory fails semantic reconciliation
+even when its artifact hash is updated; no duplicate e2e workflow was added.
+
+P4b scope: project-local `steps.json` supplies semantic instances/assemblies,
+prerequisites, cameras, callouts and explicit access notes. The `instructions`
+build/release stage writes accumulated native CAD, highlighted PNGs, per-step
+inventories, navigable print-styled HTML and revision-bound physical feedback.
+Captured plans and reports reuse release provenance and offline verification.
+Every physical instance is accounted for once, including repeated assemblies.
+No runtime dependency or physical CAD change was required.
+
+Both examples were released with real local geometry and passing nominal
+connection checks: 11 vehicle steps over 19 parts and six building steps over
+23 parts. Representative underside/axle, lintel-bearing and completed-vehicle
+illustrations were visually inspected. New additions are gold and prior parts
+grey only in illustrations; native colours remain in CAD and inventories.
+Artwork is omitted from structural step views. Optional PDF delivery uses the
+browser's Print / Save as PDF; browser pagination and physical builds were not
+tested. Authored order, access notes and connection checks do not prove a feasible
+insertion sequence, strength or clutch fit. Generated review bundles remain ignored.
+
+Next: implement P5a (explicit geometric replacement recipes) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

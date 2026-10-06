@@ -33,6 +33,8 @@ def _inputs(directory: Path, policy: dict) -> dict[str, bytes]:
         )
         if p
     )
+    if (project.root / "steps.json").exists():
+        paths.add(project.root / "steps.json")
     paths.update(job.rules for job in settings.orders)
     if settings.stickers is not None:
         paths.update(artwork_dependencies(settings.stickers))
@@ -181,6 +183,10 @@ def _handoff(folder: Path, summary: dict, label: str, findings: list[str]) -> st
         lines.append(
             f"- {name}: `{prefix}model.ldr`, `{prefix}inventory.json`; {report['quantity']} physical parts; checks {report['status']}."
         )
+        if (folder / prefix / "instructions/index.html").exists():
+            lines.append(
+                f"  - Illustrated instructions: `{prefix}instructions/index.html`; physical trial form: `{prefix}instructions/feedback.json`."
+            )
         for path in sorted((folder / prefix / "orders").glob("*/report.json")):
             order = read_json(path)
             parent = path.parent.relative_to(folder).as_posix()

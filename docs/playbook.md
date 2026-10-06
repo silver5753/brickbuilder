@@ -86,11 +86,11 @@ gates and offline artifact reconciliation. Neither certifies physical assembly.
 | Count and compare | `inventory`, `diff` ([inventories](inventory-exports.md)) | Supply flattened physical parts and choose one selection |
 | Check attachments | `connections` ([connections](connectivity.md)) | Reviewed catalog and explicit root or source-bound profile |
 | Preview CAD | `render` with optional render extra ([rendering](rendering.md)) | Configure project cameras/palette/library and inspect the images |
+| Explain assembly | `build/release --stage instructions` ([instructions](instructions.md)) | Author sequence, views and access notes; inspect images and conduct physical trials |
 | Attach and print artwork | `stickers` ([artwork](artwork.md)) | Create finished PNGs, choose exact instances/local frames, inspect sizes and calibrate printing |
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
-Illustrated instructions, geometric one-to-many substitutions,
-and collision/motion checks remain planned.
+Geometric one-to-many substitutions and collision/motion checks remain planned.
 Historical scripts are research material, not additional supported package APIs.
 
 ## Review and repair
@@ -123,8 +123,8 @@ Include the complete native model, selected BOM, required review views, current
 acceptance checklist and applicable reports. Add decals or ordering bundles only
 when requested. Name the exact marketplace file to import and all manual additions;
 reconcile them with the native inventory. Alternative selections are separate
-orders, not quantities to combine. Existing STEP markers are not full building
-instructions.
+orders, not quantities to combine. Use [authored step plans](instructions.md) for illustrated instructions; existing
+STEP markers alone do not define them.
 
 Report each validation dimension honestly. If physical assembly has not happened,
 say so even when nominal checks pass. Incorporate trial-build observations with

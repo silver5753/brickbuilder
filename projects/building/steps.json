@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "id": "foundation",
+      "title": "Place the foundation",
+      "add": [],
+      "assemblies": [
+        "building/foundation"
+      ],
+      "requires": [],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Keep the doorway clear. Press on supporting walls, not the unsupported middle of the lintel. Confirm seating in a real trial."
+    },
+    {
+      "id": "course_one",
+      "title": "Build the first wall course",
+      "add": [],
+      "assemblies": [
+        "building/course_1"
+      ],
+      "requires": [
+        "foundation"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Keep the doorway clear. Press on supporting walls, not the unsupported middle of the lintel. Confirm seating in a real trial."
+    },
+    {
+      "id": "course_two",
+      "title": "Cross the corner joints with the second course",
+      "add": [],
+      "assemblies": [
+        "building/course_2"
+      ],
+      "requires": [
+        "course_one"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Keep the doorway clear. Press on supporting walls, not the unsupported middle of the lintel. Confirm seating in a real trial."
+    },
+    {
+      "id": "course_three",
+      "title": "Add the third wall course",
+      "add": [],
+      "assemblies": [
+        "building/course_3"
+      ],
+      "requires": [
+        "course_two"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Keep the doorway clear. Press on supporting walls, not the unsupported middle of the lintel. Confirm seating in a real trial."
+    },
+    {
+      "id": "cap",
+      "title": "Seat the doorway lintel and finish the wall cap",
+      "add": [],
+      "assemblies": [
+        "building/cap"
+      ],
+      "requires": [
+        "course_three"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "bearing_detail",
+          "eye": [
+            0.7,
+            -1,
+            -1.3
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": [
+            "building/course_3",
+            "building/cap"
+          ]
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Seat both lintel ends on the front jambs; do not bridge unsupported ends.",
+          "instances": [
+            "building/cap/lintel",
+            "building/course_3/front_left",
+            "building/course_3/front_right"
+          ]
+        }
+      ],
+      "access_review": "Keep the doorway clear. Press on supporting walls, not the unsupported middle of the lintel. Confirm seating in a real trial."
+    },
+    {
+      "id": "roof",
+      "title": "Attach the roof",
+      "add": [],
+      "assemblies": [
+        "building/roof"
+      ],
+      "requires": [
+        "cap"
+      ],
+      "views": [
+        {
+          "name": "assembly",
+          "eye": [
+            1,
+            -0.6,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [],
+      "access_review": "Keep the doorway clear. Press on supporting walls, not the unsupported middle of the lintel. Confirm seating in a real trial."
+    }
+  ]
+}

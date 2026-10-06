@@ -66,6 +66,7 @@ connection root or render setup. The starter remains deliberately unimplemented.
 | `geometry` | Requires explicit library; recursive vertex bounds/dependency coverage, not collision |
 | `render` | Requires render config, library and palette; generates configured views |
 | `stickers` | Requires sticker config; generates configured imported-artwork or legacy solar SVG templates/sheets |
+| `instructions` | Requires project-root steps.json, render config/library/palette; accumulated CAD, highlights and offline HTML |
 | `orders` | Requires named jobs and explicit rules; reconciled exports, never a purchase |
 
 Use `--library` or `project.json.library`. `--palette` overrides the default
@@ -163,3 +164,5 @@ acceptance untested. The per-stage reports retain their existing limitations.
 P3a captures the main builder and selected input records, not a complete dependency
 manifest of arbitrary Python imports, external assets or environment state.
 Use [release](releases.md) for local code/input snapshots, environment records and offline artifact verification.
+
+Use [assembly instructions](instructions.md) for authored step plans, coverage checks and optional browser PDF export.

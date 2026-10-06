@@ -68,6 +68,7 @@ Read the relevant guide before changing or using a capability:
 - [Generic tutorial](docs/tutorial.md): brief-to-model workflow using building and vehicle examples.
 - [Release packages](docs/releases.md): explicit policy, captured provenance, offline reconciliation and handoff.
 - [Project execution](docs/execution.md): reviewed Python, explicit stages, pose identity and draft summaries.
+- [Assembly instructions](docs/instructions.md): authored step coverage, cameras, illustrations and trial feedback; no automatic insertion-order proof.
 - [Assembly authoring](docs/assembly.md): named parts, local frames, intended joints and generated bindings.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
   MPD/TEXMAP remain unsupported.

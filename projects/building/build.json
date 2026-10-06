@@ -3,7 +3,8 @@
   "stages": [
     "connections",
     "render",
-    "stickers"
+    "stickers",
+    "instructions"
   ],
   "root": "building/foundation/plate",
   "catalog": "connectors.json",

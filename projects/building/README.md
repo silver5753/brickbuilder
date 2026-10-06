@@ -153,3 +153,12 @@ printable label with calibration marks. The frame is native part-local; it moves
 with that part in poses. See [artwork placement](../../docs/artwork.md). Required
 release checks are unchanged; image inspection and physical label fit remain
 separate reviews.
+
+## Illustrated assembly sequence
+
+The authored `steps.json` is included by the default instruction stage. Open
+`instructions/index.html` in the generated bundle for step navigation, gold
+additions/grey prior parts, native part tables, access notes and a trial feedback
+template. Use browser Print / Save as PDF if needed and inspect pagination.
+Read [instruction scope](../../docs/instructions.md): coverage is checked, while
+insertion feasibility, fit and physical assembly remain untested.

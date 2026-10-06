@@ -9,8 +9,8 @@ subject, structure, coordinates and sourcing constraints.
 The package includes typed part instances, rigid transforms, native LDraw
 round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
 Native inventories, quantity differences and separate purchasing export bundles
-are also implemented. Scoped nominal attachment checks, actual-CAD previews and dimensional solar
-sticker templates are implemented. Motion/collision review remains planned.
+are also implemented. Scoped nominal attachment checks, actual-CAD previews, imported artwork and
+authored assembly instructions are implemented. Motion/collision review remains planned.
 
 ## Setup and checks
 
@@ -88,6 +88,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Connections and attachment checks](docs/connectivity.md)
 - [CAD previews and print stickers](docs/rendering.md)
 - [Import agent-created artwork](docs/artwork.md)
+- [Authored assembly instructions](docs/instructions.md)
 - [Current implementation roadmap](docs/roadmap.md)
 - [Historical workflow inventory](docs/workflow-inventory.md)
 - [Milestones 1–3 code review](docs/review-milestones-1-3.md)

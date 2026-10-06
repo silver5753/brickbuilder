@@ -36,3 +36,8 @@ config version 2 to bind each decal to exact native instance IDs and a reviewed
 part-local frame. Record attribution; keep original vector/font sources as declared
 release inputs when needed. Do not build a project-specific pattern or font engine
 into core code. See docs/artwork.md in the repository for sizes and print calibration.
+
+For build instructions, author steps.json with exact additions/groups, prerequisites,
+camera views, callouts and access notes. Run the instructions stage and inspect the
+images. Complete step coverage is not proof of a feasible insertion order; keep
+physical trial observations separate and tied to the revision. See docs/instructions.md.

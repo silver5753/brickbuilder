@@ -25,7 +25,9 @@ from .project import Project, load_project, project_path
 from .rendering.config import RenderConfig, load_config
 from .rendering.stickers import load_stickers
 
-STAGES = frozenset({"cad", "geometry", "connections", "render", "stickers", "orders"})
+STAGES = frozenset(
+    {"cad", "geometry", "connections", "render", "stickers", "orders", "instructions"}
+)
 
 
 @dataclass(frozen=True)
@@ -270,7 +272,7 @@ def build_project(
                 )
     if "stickers" in enabled and sticker_config is None:
         raise ValueError("Sticker stage requires build.json stickers")
-    if "render" in enabled:
+    if enabled & {"render", "instructions"}:
         from .rendering.backend import modules
 
         if render_config is None:
@@ -284,7 +286,11 @@ def build_project(
     if "geometry" in enabled and selected_library is None:
         raise ValueError("Geometry stage requires --library or project.json.library")
     exceptions = {}
-    if settings.exceptions is not None and enabled & {"geometry", "render"}:
+    if settings.exceptions is not None and enabled & {
+        "geometry",
+        "render",
+        "instructions",
+    }:
         exceptions = decode_json(snapshot(settings.exceptions).decode("utf-8-sig"))
         if not isinstance(exceptions, dict) or any(
             not isinstance(v, str) for v in exceptions.values()
@@ -298,6 +304,13 @@ def build_project(
             (job, loads_rules(snapshot(job.rules).decode("utf-8-sig")))
             for job in settings.orders
         ]
+    plan = None
+    if "instructions" in enabled:
+        from .instructions import load_steps
+
+        plan = load_steps(
+            snapshot(project_path(project.root, "steps.json", "Step plan"))
+        )
     result, builder_hash = _invoke(project)
     hashes[project.builder.relative_to(project.root).as_posix()] = builder_hash
     reviews: dict[str, dict] = {}
@@ -406,6 +419,30 @@ def build_project(
                 files["report.json"] = json.dumps(order_report, indent=2) + "\n"
                 write_bundle(folder / "orders" / job.name, files)
             checks["orders"] = "pass" if orders else "not_tested"
+            if plan is not None:
+                from .instructions import instruction_bundle
+
+                assert (
+                    selected_library is not None
+                    and palette is not None
+                    and render_config is not None
+                )
+                instructions = instruction_bundle(
+                    source,
+                    plan,
+                    render_config,
+                    selected_library,
+                    palette,
+                    folder / "instructions",
+                    exceptions=exceptions,
+                    provenance=hashes,
+                )
+                checks["instructions"] = "pass"
+                checks["instructions_geometry"] = (
+                    "pass"
+                    if instructions["geometry_status"] == "resolved"
+                    else "unknown"
+                )
             coverage = _coverage(project, model, render_config, generated)
             checks["requirement_bindings"] = (
                 _status([r["binding_status"] for r in coverage])

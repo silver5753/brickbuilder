@@ -457,7 +457,7 @@ def build(project):
         json.dumps(
             dict(
                 schema_version=1,
-                stages=["geometry", "render", "stickers", "orders"],
+                stages=["geometry", "render", "stickers", "orders", "instructions"],
                 root="tile",
                 catalog=None,
                 render="render.json",
@@ -476,6 +476,31 @@ def build(project):
                         selection="full",
                         allow_untested=True,
                     ),
+                ],
+            )
+        )
+    )
+    (project / "steps.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                steps=[
+                    dict(
+                        id=name,
+                        title=name,
+                        add=[instance],
+                        assemblies=[],
+                        requires=requires,
+                        views=[
+                            dict(name="front", eye=[0, 0, -1], up=[0, -1, 0], groups=[])
+                        ],
+                        callouts=[],
+                        access_review="Synthetic example; physical access untested.",
+                    )
+                    for name, instance, requires in (
+                        ("tile", "tile", []),
+                        ("shield", "shield", ["tile"]),
+                    )
                 ],
             )
         )
@@ -523,6 +548,16 @@ def build(project):
         model = report["models"][name]
         assert model["quantity"] == 2 and model["checks"]["geometry"] == "unknown"
         assert model["checks"]["connections"] == "not_tested"
+        steps = read(folder / "instructions/instructions.json")
+        assert steps["quantity"] == 2 and steps["coverage"] == "pass"
+        assert steps["geometry_status"] == "approximate"
+        assert steps["steps"][0]["added_ids"] == ["tile"]
+        assert steps["steps"][1]["accumulated_ids"] == ["shield", "tile"]
+        assert (folder / "instructions/index.html").is_file()
+        assert read(folder / "instructions/tile/views/render_report.json")[
+            "highlight_ids"
+        ] == ["tile"]
+
         source_hash = digest(folder / "model.ldr")
         assert model["source_sha256"] == source_hash
         assert (
@@ -549,6 +584,26 @@ def build(project):
         report["models"]["default"]["source_sha256"]
         != report["models"]["shifted"]["source_sha256"]
     )
+
+    # A step report with wrong quantities must fail even after resealing its hash.
+    step_path = output / "instructions/instructions.json"
+    original = step_path.read_bytes()
+    step_report = read(step_path)
+    step_report["steps"][0]["inventory"][0]["quantity"] += 1
+    step_path.write_text(json.dumps(step_report))
+    manifest_path = output / "release_manifest.json"
+    manifest = read(manifest_path)
+    manifest["artifacts"]["instructions/instructions.json"] = digest(step_path)
+    manifest_path.write_text(json.dumps(manifest))
+    assert (
+        json.loads(installed_core.run("verify-release", output, expected=1).stdout)[
+            "status"
+        ]
+        == "fail"
+    )
+    step_path.write_bytes(original)
+    manifest["artifacts"]["instructions/instructions.json"] = digest(step_path)
+    manifest_path.write_text(json.dumps(manifest))
 
     # Rehash a tampered manual-addition file: reconciliation must still fail.
     manual = output / "orders/complete/manual_additions.json"

@@ -126,3 +126,12 @@ uv run --locked brickbuilder verify-release output/vehicle-release
 Omit the stage override and supply the render extra/library for configured views.
 Read [release scope](../../docs/releases.md): verified artifacts are not physical
 certification, and review images still need visual acceptance.
+
+## Illustrated assembly sequence
+
+The authored `steps.json` is included by the default instruction stage. Open
+`instructions/index.html` in the generated bundle for step navigation, gold
+additions/grey prior parts, native part tables, access notes and a trial feedback
+template. Use browser Print / Save as PDF if needed and inspect pagination.
+Read [instruction scope](../../docs/instructions.md): coverage is checked, while
+insertion feasibility, fit and physical assembly remain untested.

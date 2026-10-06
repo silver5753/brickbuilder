@@ -423,7 +423,15 @@ def _parser() -> argparse.ArgumentParser:
         build.add_argument(
             "--stage",
             action="append",
-            choices=["cad", "geometry", "connections", "render", "stickers", "orders"],
+            choices=[
+                "cad",
+                "geometry",
+                "connections",
+                "render",
+                "stickers",
+                "orders",
+                "instructions",
+            ],
             help="Repeat to override configured stages; CAD is always generated",
         )
         build.add_argument("--library", type=Path)

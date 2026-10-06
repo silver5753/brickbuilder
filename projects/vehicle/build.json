@@ -2,7 +2,8 @@
   "schema_version": 1,
   "stages": [
     "connections",
-    "render"
+    "render",
+    "instructions"
   ],
   "root": "vehicle/chassis",
   "catalog": "connectors.json",
