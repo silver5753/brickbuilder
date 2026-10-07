@@ -1132,6 +1132,136 @@
       "complete": true,
       "evidence": "Reviewed 2026-10-04; geometry_review.json records native source SHA-256 and headers. Four axlehol6.dat teeth scale Y into Z=-16.25..0. Positive-Z recess is round, so do not claim a full-width cross seat.",
       "limitations": []
+    },
+    {
+      "reference": "3068b.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10,
+            8,
+            -10
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "length": 0,
+          "minimum_engagement": 0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_0_1",
+          "kind": "socket",
+          "position": [
+            -10,
+            8,
+            10
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "length": 0,
+          "minimum_engagement": 0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10,
+            8,
+            -10
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "length": 0,
+          "minimum_engagement": 0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_1",
+          "kind": "socket",
+          "position": [
+            10,
+            8,
+            10
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "length": 0,
+          "minimum_engagement": 0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        }
+      ],
+      "complete": true,
+      "evidence": "Reviewed 2026-10-07; geometry_review.json records headers and hashes. Tile underside cavity walls, groove and 8 LDU seating plane reviewed; conventional two-stud-length socket grid, no top studs.",
+      "limitations": []
+    },
+    {
+      "reference": "3069b.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10,
+            8,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "length": 0,
+          "minimum_engagement": 0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10,
+            8,
+            0
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "length": 0,
+          "minimum_engagement": 0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null
+        }
+      ],
+      "complete": true,
+      "evidence": "Reviewed 2026-10-07; geometry_review.json records headers and hashes. Tile underside cavity walls, groove and 8 LDU seating plane reviewed; conventional two-stud-length socket grid, no top studs.",
+      "limitations": []
     }
   ]
 }

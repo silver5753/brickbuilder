@@ -155,6 +155,8 @@ IDs, with an affected-ID list and exact native quantity delta. Equivalent-ID
 edits reset geometry confidence to unknown and require revalidation; the word
 "equivalent" records the recipe's intent, not proof of geometric equivalence.
 No recipe is automatically applied to the frozen spacecraft model.
+For one-to-many physical changes, use [geometric replacement recipes](replacements.md),
+which carry new assemblies, connector mappings and explicit support requirements.
 
 References:
 

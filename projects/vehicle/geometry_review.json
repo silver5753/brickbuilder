@@ -181,6 +181,66 @@
       },
       "empty_dependencies": [],
       "note": "Four axlehol6.dat teeth scale Y into Z=-16.25..0. Positive-Z recess is round, so do not claim a full-width cross seat."
+    },
+    {
+      "reference": "3068b.dat",
+      "sha256": "38fb0405d499d8174e9e0ee2c20f3db5f4a32d1da2bff4ee2b478bb45c03b6c2",
+      "header": [
+        "0 Tile  2 x  2 with Groove",
+        "0 Name: 3068b.dat",
+        "0 Author: Damien Guichard [BrickCaster]",
+        "0 !LDRAW_ORG Part UPDATE 2004-04",
+        "0 !LICENSE Licensed under CC BY 2.0 and CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -20.0,
+          0.0,
+          -20.0
+        ],
+        "maximum": [
+          20.0,
+          8.0,
+          20.0
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Reviewed tile underside cavity, nominal socket grid and seating plane at Y=8; no top studs. No physical clutch test.",
+      "reviewed_on": "2026-10-07",
+      "reviewed_files": {
+        "parts/3068b.dat": "38fb0405d499d8174e9e0ee2c20f3db5f4a32d1da2bff4ee2b478bb45c03b6c2",
+        "parts/s/3068bs01.dat": "b49ecb2e8e57d8ae4a64aa5e71713d769c2a5dc91f4611fbd3157fbc30a4c6c3"
+      }
+    },
+    {
+      "reference": "3069b.dat",
+      "sha256": "3c85297efc2e4e24c321061d66fec8f176bb37c6273b8a85b27235daf92610b0",
+      "header": [
+        "0 Tile  1 x  2 with Groove",
+        "0 Name: 3069b.dat",
+        "0 Author: Santeri Piippo [arezey]",
+        "0 !LDRAW_ORG Part UPDATE 2010-02",
+        "0 !LICENSE Licensed under CC BY 4.0 : see CAreadme.txt"
+      ],
+      "bounds": {
+        "minimum": [
+          -20.0,
+          0.0,
+          -10.0
+        ],
+        "maximum": [
+          20.0,
+          8.0,
+          10.0
+        ]
+      },
+      "empty_dependencies": [],
+      "note": "Reviewed tile underside cavity, nominal socket grid and seating plane at Y=8; no top studs. No physical clutch test.",
+      "reviewed_on": "2026-10-07",
+      "reviewed_files": {
+        "parts/3069b.dat": "3c85297efc2e4e24c321061d66fec8f176bb37c6273b8a85b27235daf92610b0",
+        "parts/s/3069bs01.dat": "e910d77b65118a7fc941e846f05b46d8c5a7aa3cf5706d5479533a35423c9498"
+      }
     }
   ],
   "interface_sources": [

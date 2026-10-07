@@ -41,3 +41,8 @@ For build instructions, author steps.json with exact additions/groups, prerequis
 camera views, callouts and access notes. Run the instructions stage and inspect the
 images. Complete step coverage is not proof of a feasible insertion order; keep
 physical trial observations separate and tied to the revision. See docs/instructions.md.
+
+For a physical part substitution, use `brickbuilder.replacements` and the root
+replacement guide. Declare exact old parts, a locally framed replacement assembly,
+new IDs, port mappings and required retained backing. Review the preview before
+applying it, update authored steps/artwork, and regenerate a new release.

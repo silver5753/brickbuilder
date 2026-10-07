@@ -90,7 +90,8 @@ gates and offline artifact reconciliation. Neither certifies physical assembly.
 | Attach and print artwork | `stickers` ([artwork](artwork.md)) | Create finished PNGs, choose exact instances/local frames, inspect sizes and calibrate printing |
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
-Geometric one-to-many substitutions and collision/motion checks remain planned.
+Use [geometric replacement recipes](replacements.md) for explicit one-to-many
+assembly alternatives and support checks. Collision/motion checks remain planned.
 Historical scripts are research material, not additional supported package APIs.
 
 ## Review and repair

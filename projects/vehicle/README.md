@@ -135,3 +135,13 @@ additions/grey prior parts, native part tables, access notes and a trial feedbac
 template. Use browser Print / Save as PDF if needed and inspect pagination.
 Read [instruction scope](../../docs/instructions.md): coverage is checked, while
 insertion feasibility, fit and physical assembly remain untested.
+
+## Optional replacement rehearsal
+
+[alternatives.py](alternatives.py) prepares a separate tile-roof revision and
+exercises two explicit recipes: a 2 x 2 roof tile split into two 1 x 2 tiles, and
+a cab-support brick replaced by three 2 x 2 plates. It preserves cab backing,
+checks every declared joint and proposes updated instruction IDs/access notes.
+See [replacement recipes](../../docs/replacements.md) for commands and limits.
+The default 19-part vehicle is unchanged; the alternative has 22 parts. The two
+additional tile declarations in connectors.json are only used by the rehearsal.

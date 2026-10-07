@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 6 October 2026. Status: P1–P4 complete.
-P5a is next; P5 remains planned. Original reviewed code baseline: commit
+Updated: 7 October 2026. Status: P1–P4 and P5a complete.
+P5b is next; P5b–P5c remain planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -285,7 +285,7 @@ close-ups. Reuse release provenance rather than inventing a second manifest.
 **Purpose:** Make revisions practical under real purchasing constraints and
 identify geometric risks without overstating physical certainty.
 
-**P5a: geometric replacements**
+**P5a: geometric replacements — complete, 7 October 2026**
 
 - Extend one-for-one substitutions to explicit assembly recipes, starting with
   a large tile replaced by smaller tiles and a supported mount alternative.
@@ -369,7 +369,8 @@ set of nearly identical spacecraft snapshots.
 | P3b | Complete, 4 October 2026 | [Release and offline verification](releases.md), example policies; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/release.py) | Artifact consistency and software policy only; no physical/visual acceptance or hermetic Python execution |
 | P4a | Complete, 5 October 2026 | [Imported artwork](artwork.md), building PNG/placement example; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/artwork.py) | Finished PNGs and flat rectangular labels; no graphic/font generation, curved wrapping, colour proof or physical print validation |
 | P4b | Complete, 6 October 2026 | [Authored instructions](instructions.md), vehicle/building step plans; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/instructions.py) | Authored order and views; insertion access and physical assembly remain untested |
-| P5 | Planned; P5a next | Specifications above | Not implemented |
+| P5a | Complete, 7 October 2026 | [Replacement recipes](replacements.md), optional vehicle rehearsal; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/replacements.py) | Explicit authored alternatives and nominal support checks; footprint equivalence and physical build remain untested |
+| P5b–P5c | Planned; P5b next | Specifications above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -566,7 +567,50 @@ browser's Print / Save as PDF; browser pagination and physical builds were not
 tested. Authored order, access notes and connection checks do not prove a feasible
 insertion sequence, strength or clutch fit. Generated review bundles remain ignored.
 
-Next: implement P5a (explicit geometric replacement recipes) when requested.
+P5a verification: all 241 pytest cases passed; ty and Ruff passed. Eight focused
+cases cover stale expected parts and authored metadata, ID collisions, missing
+successors/exposed endpoint mappings/backing, failed/unknown connection gates,
+rotated support frames, alias/requirement preservation, step migration and missing
+geometry. One new installed-wheel workflow prepares a replacement project and
+regenerates connections, renders, imported labels, instructions and complete
+orders. The core-only wheel verifies the package after its project and synthetic
+geometry library are removed. CI now type-checks both complete example directories.
+
+P5a scope: `ReplacementRecipe` reuses Assembly/PartInstance/Transform rather than
+introducing another modeling language. Immutable previews hold exact removed
+instances, candidate CAD, native quantity deltas, successor and endpoint mappings,
+required retained supports, exposed aliases, retired internal joints, catalog/model
+hashes and optional bounds/dependency evidence. Applying a stale preview or a known
+connection failure raises without mutation; unknowns need an explicit override.
+Requirements transfer through declared successors. New physical parts have new
+stable IDs; unaffected instances stay unchanged. No dependencies were added.
+
+The project-local rehearsal starts from a 19-part tile-roof vehicle, splits one
+2 x 2 tile into two 1 x 2 tiles and replaces a cab-support brick with three plates.
+It writes a separate 22-part project, preview receipts and 13 authored steps,
+retaining the original default vehicle. Real tile underside geometry and seating
+planes were reviewed and hashes recorded. A real-library release passed nominal
+connections and artifact verification; front and support-step illustrations were
+inspected. Visual review led to separate middle/top plate steps so additions
+remain legible. Physical trial, insertion, clutch and load capacity remain untested.
+
+Changed-part geometry resolves fully and measured available-geometry overall
+bounds are unchanged. The complete bounds report retains uncertainty from empty
+wheel helper files (`1-16chrd.dat`, `empty.dat`); no exception hides this finding.
+The expected footprint is authored guidance, not an automatic equivalence gate.
+Port presence and a root path do not establish sufficient support for a load.
+Only authored external intent is preserved; undocumented support requirements
+must be added by the agent. Replacements with no retained backing are outside
+this initial supported recipe scope.
+
+Step migration expands explicit part/callout IDs and validates coverage; internal
+order, access notes and camera review remain authored. Artwork resizing and seam
+choices remain agent work. Fresh build/release stages regenerate profiles,
+checks, renders, decals, steps and orders after those input changes. Captured
+preview reports are evidence inputs, not independently replayed by offline
+verification. Frozen spacecraft fixtures remain unchanged.
+
+Next: implement P5b (dated stock snapshots and sourcing comparisons) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

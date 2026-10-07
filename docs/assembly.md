@@ -6,7 +6,7 @@ and [building example](../projects/building/README.md) use this API without
 subject-specific core code. Follow the [tutorial](tutorial.md) for the complete
 brief-to-review workflow. [Project execution](execution.md) accepts a Model,
 AuthoredModel or BuildResult from `build(project)`. Returning AuthoredModel retains
-intended joints and requirement links. Verified release tooling remains P3b work.
+intended joints and requirement links. Use [release packages](releases.md) for verified artifact delivery.
 
 ## Composition and identity
 
@@ -124,5 +124,8 @@ through `write_bundle`; manually rewriting line endings invalidates bindings.
 Generate again after changes; stale profiles are rejected by existing commands.
 Full/group selections overlap and must not be combined into one purchase order.
 Bundles may carry fail/unknown reports for review: output creation is not a pass.
-These outputs are also used by the build command. Comprehensive release
-provenance and offline verification remain P3b work.
+These outputs are also used by the build command. Use [release packages](releases.md) for complete project provenance and offline verification.
+
+For physical assembly alternatives, use [replacement recipes](replacements.md)
+to preview native quantity/geometry changes, remap exposed endpoints and retain
+backing requirements. Return the applied AuthoredModel through the normal builder.

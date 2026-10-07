@@ -10,7 +10,7 @@ The package includes typed part instances, rigid transforms, native LDraw
 round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
 Native inventories, quantity differences and separate purchasing export bundles
 are also implemented. Scoped nominal attachment checks, actual-CAD previews, imported artwork and
-authored assembly instructions are implemented. Motion/collision review remains planned.
+authored assembly instructions and explicit geometric replacements are implemented. Motion/collision review remains planned.
 
 ## Setup and checks
 
@@ -18,7 +18,7 @@ Use Python 3.12 and uv:
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests tools projects/vehicle/build.py projects/building/build.py --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle projects/building --error-on-warning
 uv run --locked pytest -m 'not render' -q
 uv run --locked python -c "import brickbuilder; print(brickbuilder.__version__)"
 uv build
@@ -55,6 +55,8 @@ the executable [building example](projects/building/README.md) for a complete
 authoring/review walkthrough. Use [project execution](docs/execution.md) to run a
 reviewed builder once and generate a draft bundle. Use [release packages](docs/releases.md)
 for policy gates, provenance and offline verification.
+Use [geometric replacement recipes](docs/replacements.md) to preview a physical
+assembly alternative, retain support requirements and regenerate the affected outputs.
 
 For an existing model, follow the [existing-CAD path](docs/playbook.md#existing-cad-or-project).
 Substitute your actual input path below; the output file must not already exist:
