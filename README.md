@@ -11,7 +11,8 @@ round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures
 It also includes native inventories, ordering exports, nominal connection checks,
 actual-CAD previews, imported artwork, authored assembly instructions and explicit
 geometric replacements. [Offline sourcing comparisons](docs/sourcing.md) account
-for dated stock, owned parts and recorded costs. Motion/collision review remains planned.
+for dated stock, owned parts and recorded costs. [Scoped collision and sampled motion
+diagnostics](docs/collisions.md) distinguish tested material from unresolved geometry.
 
 ## Setup and checks
 
@@ -92,6 +93,7 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [CAD previews and print stickers](docs/rendering.md)
 - [Import agent-created artwork](docs/artwork.md)
 - [Authored assembly instructions](docs/instructions.md)
+- [Collision and sampled motion diagnostics](docs/collisions.md)
 - [Current implementation roadmap](docs/roadmap.md)
 - [Historical workflow inventory](docs/workflow-inventory.md)
 - [Milestones 1–3 code review](docs/review-milestones-1-3.md)

@@ -8,8 +8,8 @@ Track each dimension independently for the exact model revision:
 | Fixture integrity | Bytes and counts match the frozen reference | Geometric or physical correctness |
 | Part/transform checks | Available geometry and rigid placements | Legal, strong connections |
 | Nominal connections | Matched interfaces and chassis paths | Insertion access, clutch or stiffness |
-| Collision diagnostics | Candidate surface/material interference | Physical fit or complete clearance certification |
-| Pose/motion checks | Clearance in tested configurations | Untested positions or joint holding torque |
+| Collision diagnostics | Bounds separation and reviewed material-box interference; unknowns retained | Automatic mesh solidity, physical fit or complete clearance certification |
+| Pose/motion checks | Pair diagnostics at explicit rigid-joint samples | Continuous clearance, mechanical joint feasibility or holding torque |
 | Catalogue checks | Recorded identities/colour production | Current stock or importer acceptance |
 | Import test | Acceptance in the tested importer/session | Inventory availability or buildability |
 | Physical test | Observed assembly behaviour | Untested loads/conditions |
@@ -32,3 +32,11 @@ surface/color expansion, camera/occlusion behavior, repeatable bytes in the same
 environment and nominal SVG print dimensions. They do not prove fit or printer
 calibration; declared mesh envelopes remain visible approximations. In particular, three small joint
 contact flags required follow-up and exact 7798 geometry remains unavailable.
+
+The [collision guide](collisions.md) defines the supported material declarations,
+exact-pose contact reviews and sampled-joint scope. A pass can depend on authored
+full-material coverage; the toolkit cannot verify that claim from an arbitrary
+mesh. Missing/empty dependencies and unreviewed hollow geometry remain unknown.
+Analytical fixture tests validate the algorithms; the vehicle rehearsal does not
+certify real-part clearance. Collision reports are standalone evidence, not a
+release policy gate.

@@ -1,180 +1,86 @@
-# Inventories, revision differences and purchasing exports
+# Testing and type checking
 
-Commit 3 adds native quantity accounting and separate ordering bundles. It does
-not modify the Solar Orbiter baseline or test an authenticated importer.
-
-## Inventory and alternative selections
+Use Python 3.12 and the locked uv environment. The core package has no runtime
+dependencies; rendering is an optional extra. Keep those boundaries testable.
 
 ```sh
-uv run --locked brickbuilder inventory tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr
-uv run --locked brickbuilder inventory --selections projects/solar_orbiter/selections.json --selection spacecraft
-uv run --locked brickbuilder inventory --selections projects/solar_orbiter/selections.json --selection solar_module
-uv run --locked brickbuilder diff tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr tests/fixtures/solar_orbiter_v15/solar_orbiter_v15_articulated.ldr
+uv sync --locked
+uv run --locked ty check src tests tools projects/vehicle projects/building --error-on-warning
+uv run --locked pytest -m 'not render' -q
+uv build
 ```
 
-The selection manifest chooses exactly one checksummed source file. `full`
-(966), `spacecraft` (890), `solar_module` (44), and `articulated` (966) are
-alternative inputs. Never add their inventories together. `read_selection`
-returns a source snapshot whose hash is checked against that manifest; parsing
-and hashing use the same bytes. `load_selection` retains its document/path
-convenience return value. `inventory` reports
-native part and colour namespaces, source-file and typed-model hashes, total
-quantity and sorted rows. `diff` reports signed changes for each native
-part/colour pair; pure pose changes produce no quantity differences. Its
-`before_source_sha256` / `after_source_sha256` fields identify input bytes;
-`before_model_sha256` / `after_model_sha256` identify typed models.
-
-The Python API offers `inventory(model)`, `difference(before, after)` and
-`select(model, groups=..., instance_ids=...)`. CLI `--group` and `--instance-id`
-filters can be repeated, intersect when combined and fail for unknown names.
-Group filters require annotated group metadata; the historical baseline's
-free-text comments are not treated as machine-readable assembly groups.
-Filtering selects part instances while retaining source comments, attribution,
-STEP markers and non-part raw records.
-
-These APIs require a flattened physical-part model: plain native `.dat`
-references and explicit LDraw colours. They reject `.ldr` submodels, paths and
-inherited colour 16. A `.dat` suffix alone is not proof that a reference denotes
-a physical part; the caller must supply the flattened model. Dependency meshes,
-inline primitives, stickers and rendering overlays are not counted as bricks.
-
-## Clean export bundles
+For the full suite, including actual-CAD image workflows:
 
 ```sh
-mkdir -p output
-uv run --locked brickbuilder export --selections projects/solar_orbiter/selections.json --selection full --destination output/native-order
-uv run --locked brickbuilder export --selections projects/solar_orbiter/selections.json --selection full --format brickowl --rules projects/solar_orbiter/brickowl_rules.json --allow-untested --destination output/brickowl-order
-uv run --locked brickbuilder export --selections projects/solar_orbiter/selections.json --selection spacecraft --format bricklink --rules projects/solar_orbiter/bricklink_rules.json --allow-untested --destination output/bricklink-order
+uv sync --locked --extra render
+uv run --locked --extra render ty check src tests tools projects/vehicle projects/building --error-on-warning
+uv run --locked --extra render pytest -q
+uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building
 ```
 
-The destination must be new and its parent must exist. All model/mapping checks
-and UTF-8 file payloads are prepared before writing. Files are written once;
-a partial I/O failure removes files created by that run. Existing directories and files are
-refused, so a failed run cannot silently reuse an old inventory/report. The
-bundle has these files:
+Ruff is a supplementary pinned check, not a core runtime dependency. Read the CI
+workflow for its exact gates. Missing optional render packages fail render-marked
+collection rather than silently skipping the image tests.
 
-| File | Purpose |
-|---|---|
-| `native.ldr` | Complete selected native CAD, including the dish and native identities |
-| `inventory.json` | Complete native part/colour quantities |
-| `brickowl_partial.ldr` | Ordering-only candidate aliases; native LDraw colours; manual items omitted |
-| `bricklink_wanted.xml` | Aggregated candidate catalog IDs and explicitly mapped BrickLink colour IDs |
-| `manual_additions.json` | Every omitted native instance, native colour, reason and optional catalog URL |
-| `report.json` | Source/model/rule hashes, per-instance mapping evidence, reconciliation, generated-file hashes and limitations |
+## Focus tests on contracts
 
-Only the requested ordering format is produced. Native-only bundles omit
-ordering/manual files. If every item needs manual addition, no empty ordering
-file is emitted; `ordering_file` is null in the report. A bundle is not a full
-rendered/build-instruction release.
+Use pytest fixtures for reusable setup and parametrization for genuinely parallel
+cases. Consolidate redundant cases instead of testing every wrapper or repeating
+implementation logic in expected values. Add tests for meaningful behavior,
+quantity/identity conservation and regressions; prefer extending an existing
+workflow when the inputs and contract are shared.
 
-For the preserved v15 BrickOwl profile, upload `brickowl_partial.ldr` and add
-every item in `manual_additions.json` separately. Native CAD is for editing and
-review. The partial LDraw file deliberately has no per-instance metadata, which
-keeps it compact; its report retains the source instance IDs. It is not a
-buildable model and must not replace native CAD.
+Useful targeted commands:
 
-The full selection reconciles to 965 imported instances plus one manual dish;
-the spacecraft selection reconciles to 889 plus one; the solar module has all
-44 instances in its ordering file. Reconciliation checks native identities and
-instance IDs, not just total counts. Native output is reparsed for semantic
-equality, and serialized ordering output is reparsed to verify target part/colour
-quantities before the report marks reconciliation as passed. XML combines mappings that reach the same
-catalog part/colour pair and uses `ITEMTYPE`, `ITEMID`, `COLOR` and `MINQTY`, with
-no XML declaration. Live importer acceptance and current stock remain untested.
-
-## Mapping rules and evidence
-
-JSON files use schema version 1 and separate `brickowl`/`bricklink` profiles.
-Each part rule has a native `part`, optional native `colour`, candidate `target`,
-`manual` flag, optional `catalog_url` and an `evidence` object. Evidence records
-`status` (`accepted`, `rejected`, `untested`), `recorded_on`, `note` and `source`.
-Specific part/colour rules override generic rules. Duplicate JSON fields,
-duplicate mapping keys and non-finite JSON values fail. Rule hashes identify the
-same byte snapshot used to parse the rules.
-
-BrickOwl LDraw imports retain LDraw colour IDs. BrickLink XML requires an explicit
-native-to-catalog colour table; there is no identity fallback for colours. The
-seven v15 colour correspondences are recorded against the LDraw definitions and
-BrickLink colour guide. Accepted colour correspondence does not establish that
-any particular part was produced in that colour or that an importer accepts it.
-
-The archived aliases 90498 → 4974, 4032a → 4032 and 6141 → 4073 are preserved as
-untested candidates. BrickLink has separately marked candidate suffix mappings.
-Unenumerated native-ID pass-through also remains untested. `--allow-untested`
-allows generating review candidates with these rules; it never upgrades their
-status or bypasses a rejection. Without that option, untested import mappings
-fail before writing. Manual items may remain uncertain because they are not
-submitted to an importer.
-
-The rejection table blocks every target/native-colour pair reported rejected
-in the Solar Orbiter conversation, including obsolete printed solar tiles,
-hose IDs and both attempted dish aliases. The structured regression fixture
-records 14 distinct failures. Its date is the consolidation date, not an
-invented date for the original attempt. These are BrickOwl observations and
-are not silently generalized to BrickLink.
-
-The native dish remains 44375a/0. Its candidate aliases 44375/0 and 35327/0 stay
-rejected for BrickOwl. A catalog URL in a manual record is evidence/context,
-not importer acceptance, stock availability or an automated purchase.
-
-Python `bundle(document, rules, source_sha256=..., allow_untested=...)` generates
-strings without mutating the source. Reports contain a semantic rules fingerprint;
-CLI reports additionally bind the exact JSON rule-file SHA-256. API callers are
-responsible for supplying the actual source-file checksum. `write_bundle`
-writes only into a new directory. Exit 2 means invalid configuration, unresolved
-mapping or I/O failure; success means the bundle was generated and reconciled.
-
-## One-for-one substitution recipes
-
-Substitutions edit native CAD; catalog aliases only edit ordering output. Keep
-these operations separate. `Substitution` supports `equivalent_id` (ID changes,
-colour unchanged) and `colour_change` (colour changes, ID unchanged). Each recipe
-needs a unique recipe ID, exact native source/target pair and evidence string.
-
-```json
-{
-  "schema_version": 1,
-  "recipes": [
-    {
-      "recipe_id": "grey-surface",
-      "source": {"part": "3068b", "colour": 0},
-      "target": {"part": "3068b", "colour": 71},
-      "kind": "colour_change",
-      "evidence": "User-approved sourcing change; recheck availability"
-    }
-  ]
-}
+```sh
+uv run --locked pytest tests/test_collisions.py -q
+uv run --locked --extra render pytest tests/e2e/test_workflows.py -q
+uv run --locked --extra render pytest -m e2e -q
 ```
 
-Use `load_substitutions(path)` and `substitute(model, recipes)` from
-`brickbuilder.inventory.substitutions`. Application is simultaneous, with no
-cascading through other targets. Absent sources, duplicate recipe IDs,
-conflicting source keys, mixed ID-and-colour edits and one-to-many replacements
-fail. Results preserve quantity, transforms, group/step assignments and stable
-IDs, with an affected-ID list and exact native quantity delta. Equivalent-ID
-edits reset geometry confidence to unknown and require revalidation; the word
-"equivalent" records the recipe's intent, not proof of geometric equivalence.
-No recipe is automatically applied to the frozen spacecraft model.
-For one-to-many physical changes, use [geometric replacement recipes](replacements.md),
-which carry new assemblies, connector mappings and explicit support requirements.
+Use `render` on tests requiring the optional renderer and `e2e` on installed-process
+workflows. Both markers are registered in pyproject.toml. Do not add conditional
+skips that let a required CI capability disappear unnoticed.
 
-References:
+## Installed-wheel coverage
 
-- [BrickLink wanted-list XML](https://www.bricklink.com/help.asp?helpID=207&q=xml)
-- [BrickLink colour guide](https://www.bricklink.com/catalogColors.asp)
-- [LDraw colour definitions](https://www.ldraw.org/article/547.html)
+`tests/e2e/conftest.py` builds one wheel per test session. It installs the wheel
+non-editably into isolated core-only and render environments, verifies package
+origin and runs commands outside the repository. The core installation uses no
+runtime dependencies. This catches packaging, entry-point and accidental checkout
+imports that an editable development install can hide.
 
-Replacement tests cover exact old-instance matching, new identity collisions,
-missing endpoint/successor/backing declarations, stale authored metadata,
-known-failed and unknown connection gates, rotated support frames, transferred
-aliases/requirements, step migration and missing geometry. A single additional
-installed-wheel workflow prepares the optional vehicle revision and regenerates
-connections, renders, imported labels, instructions and complete ordering output.
-It verifies offline using the core wheel after removing the source and synthetic
-geometry. This checks revision propagation; neither stock nor physical fit is tested.
+The workflows cover starter readiness, local parts/reference preparation, native
+round-trips and exports, connection profiles, previews/artwork, vehicle/building
+releases, authored instructions, replacements, sourcing and sampled collision
+bundles. They exercise source/config hashes, overwrite refusal, status exits,
+output reconciliation and offline release verification. Collision tests render
+isolated pairs with the installed renderer; this does not upgrade missing geometry.
 
-Sourcing tests cover owned-stock conservation, shipping-aware basket ranking,
-minimum orders, budgets, eligibility/freshness boundaries, unknown terms and
-ambiguous/invalid inputs. The existing installed-core vehicle workflow now checks
-the sourcing CLI, exact input-byte capture, source hashes, overwrite refusal and
-shortage exit status. Tests use fictional Canadian data and make no network calls.
+## Evidence and limits
+
+Synthetic libraries keep automated tests small, deterministic and independent of
+network access to geometry libraries. Their shapes are algorithm fixtures, not
+real-part fit evidence. LDraw test libraries and optional render dependencies are
+separate from fetched real geometry used in manual review.
+
+Analytical collision fixtures cover material penetration, reviewed contact,
+uncertain hollow/unsupported geometry and separation requiring an edge-cross-edge
+axis. Joint tests cover local frames, limits, exact pose reviews and stable part
+identities. No test result proves clearance between untested samples.
+
+Replacement tests cover exact old instances, successor/endpoint mappings, required
+backing, stale or failed previews, quantity changes and regenerated release outputs.
+Sourcing tests use fictional dated data and check eligibility, shortages, costs
+and unknown terms; no purchase or marketplace request occurs.
+
+Frozen spacecraft fixtures protect historical bytes and counts. Read their
+manifest before changing fixture-dependent code, and never update hashes merely
+to make a refactor pass. New designs belong in separate project revisions.
+
+Record a real-library rehearsal and visual inspection separately when a change
+affects geometry or views. Keep generated bundles ignored. Passing tests, ty,
+nominal connections or release integrity does not establish physical assembly,
+clutch, strength, continuous motion, live stock or authenticated importer acceptance.
+See [validation levels](validation-levels.md) for the separate dimensions.

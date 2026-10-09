@@ -620,3 +620,81 @@ def build(project):
         ]
         == "fail"
     )
+
+
+@pytest.mark.render
+def test_installed_motion_diagnostics_and_isolated_views(
+    installed_core, installed_render, inputs, tmp_path
+):
+    native = inputs["model.ldr"]
+    inspection = json.loads(installed_core.run("inspect", native).stdout)
+    config = tmp_path / "motion.json"
+    config.write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                model_sha256=inspection["model_sha256"],
+                tolerance_ldu=0.01,
+                materials=[],
+                expected_contacts=[],
+                joint=dict(
+                    name="fixture_arm",
+                    anchor_id="tile",
+                    frame=dict(
+                        position=[0, 0, 0], rotation=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+                    ),
+                    axis="y",
+                    moving_ids=["shield"],
+                    limits_degrees=[0, 90],
+                    samples_degrees=[0, 45, 90],
+                ),
+            )
+        )
+    )
+    destination = tmp_path / "motion"
+    args = [
+        "collisions",
+        native,
+        "--config",
+        config,
+        "--library",
+        inputs["library"],
+        "--exceptions",
+        inputs["exceptions.json"],
+        "--destination",
+        destination,
+        "--max-pairs",
+        "1",
+    ]
+    report = json.loads(installed_core.run(*args, expected=3).stdout)
+    assert report == read(destination / "collisions.json")
+    assert report["source_sha256"] == digest(native)
+    assert report["config_sha256"] == digest(destination / "config.json")
+    assert report["diagnostics"]["omitted_pair_views"] == 2
+    hashes(destination, report["diagnostics"])
+    assert "already exists" in installed_core.run(*args, expected=2).stderr
+    # Render the isolated pair with existing rendering APIs and explicit missing-mesh envelope.
+    render_config = read(inputs["render.json"])
+    render_config["views"] = [v for v in render_config["views"] if not v["groups"]]
+    inputs["render.json"].write_text(json.dumps(render_config))
+    views = tmp_path / "diagnostic-views"
+    installed_render.run(
+        "render",
+        destination / "pair-000.ldr",
+        "--library",
+        inputs["library"],
+        "--palette",
+        inputs["palette.ldr"],
+        "--config",
+        inputs["render.json"],
+        "--exceptions",
+        inputs["exceptions.json"],
+        "--destination",
+        views,
+    )
+    assert (views / "front.png").is_file() and (views / "rear.png").is_file()
+    assert report["poses"][0]["pairs"][0]["classification"] == "unresolved_geometry"
+    stale = read(config)
+    stale["model_sha256"] = "stale"
+    config.write_text(json.dumps(stale))
+    assert "Stale collision" in installed_core.run(*args, expected=2).stderr

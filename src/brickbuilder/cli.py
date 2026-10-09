@@ -403,6 +403,23 @@ def _reference_page_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _collisions_command(args: argparse.Namespace) -> int:
+    from .collisions import diagnose
+
+    source = read_source(args.source)
+    payload = args.config.read_bytes()
+    result = diagnose(
+        source,
+        PartLibrary((args.library,), missing=_exceptions(args.exceptions)),
+        payload,
+    )
+    files = result.bundle(max_pairs=args.max_pairs)
+    if args.destination:
+        write_bundle(args.destination, {**files, "config.json": payload})
+    _print(json.loads(files["collisions.json"]))
+    return {"pass": 0, "fail": 1, "unknown": 3}[result.report["status"]]
+
+
 def _sourcing_command(args: argparse.Namespace) -> int:
     from .sourcing import compare_sourcing, load_snapshot
 
@@ -556,6 +573,16 @@ def _parser() -> argparse.ArgumentParser:
     )
     _selection_args(inv)
     inv.set_defaults(handler=_inventory_command)
+    collisions = commands.add_parser(
+        "collisions", help="Scoped material and sampled rigid-motion diagnostics"
+    )
+    collisions.add_argument("source", type=Path)
+    collisions.add_argument("--config", type=Path, required=True)
+    collisions.add_argument("--library", type=Path, required=True)
+    collisions.add_argument("--exceptions", type=Path)
+    collisions.add_argument("--destination", type=Path)
+    collisions.add_argument("--max-pairs", type=int, default=20)
+    collisions.set_defaults(handler=_collisions_command)
     sourcing = commands.add_parser(
         "sourcing", help="Compare dated offline stock against one native inventory"
     )

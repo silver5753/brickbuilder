@@ -152,3 +152,12 @@ additional tile declarations in connectors.json are only used by the rehearsal.
 chassis and known versus unknown shipping in CAD currency. Every seller and price
 is fictional. Run it against the default 19-part model with the
 [sourcing command](../../docs/sourcing.md); do not use it as purchase evidence.
+
+## Sampled front-axle review
+
+Use [the collision/motion guide](../../docs/collisions.md) and the project-local
+`motion.py` helper to prepare hash-bound samples at 0, 45 and 90 degrees. The shaft,
+both wheels and bushes rotate together about the front supports. This is a
+kinematic hypothesis; bearing fit, rolling contact and holding forces are untested.
+The default design is unchanged. No material solids or expected-contact exceptions
+are invented for the example, so hollow-interface candidates remain unknown.

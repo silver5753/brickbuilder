@@ -51,3 +51,9 @@ For purchasing preparation, run `brickbuilder sourcing` on the current CAD with
 an explicit dated snapshot. Use the sourcing guide; record destination, currency,
 condition and unknown shipping/minimum costs. Never infer live stock or buy parts
 from a passing offline comparison.
+
+For collision/motion review, use `brickbuilder collisions` and docs/collisions.md.
+Start with unknown material coverage. Author a local joint frame and explicit
+moving IDs; never fill hollow parts with bounding-box solids. Scope contact
+reviews to exact pairs/poses. Inspect emitted isolated CAD in the existing renderer;
+sampled clearance and nominal connections do not prove physical motion.

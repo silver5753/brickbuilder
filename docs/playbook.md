@@ -85,6 +85,7 @@ gates and offline artifact reconciliation. Neither certifies physical assembly.
 | Inspect and preserve identities | `inspect`, `roundtrip` ([model API](model-api.md)) | Supply library; review missing meshes and duplicate findings |
 | Count and compare | `inventory`, `diff` ([inventories](inventory-exports.md)) | Supply flattened physical parts and choose one selection |
 | Check attachments | `connections` ([connections](connectivity.md)) | Reviewed catalog and explicit root or source-bound profile |
+| Inspect collisions/motion | `collisions` ([guide](collisions.md)) | Local joint frames, complete moving IDs, reviewed material evidence and interpretation of unknowns |
 | Preview CAD | `render` with optional render extra ([rendering](rendering.md)) | Configure project cameras/palette/library and inspect the images |
 | Explain assembly | `build/release --stage instructions` ([instructions](instructions.md)) | Author sequence, views and access notes; inspect images and conduct physical trials |
 | Attach and print artwork | `stickers` ([artwork](artwork.md)) | Create finished PNGs, choose exact instances/local frames, inspect sizes and calibrate printing |
@@ -92,7 +93,8 @@ gates and offline artifact reconciliation. Neither certifies physical assembly.
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
 Use [geometric replacement recipes](replacements.md) for explicit one-to-many
-assembly alternatives and support checks. Collision/motion checks remain planned.
+assembly alternatives and support checks. Use [collision diagnostics](collisions.md)
+for scoped pair review and explicit joint samples.
 Historical scripts are research material, not additional supported package APIs.
 
 ## Review and repair
@@ -107,8 +109,9 @@ Historical scripts are research material, not additional supported package APIs.
   images for aesthetic intent, and actual CAD views to assess the implemented model.
 - Inspect the reverse side, underside and concealed attachments where relevant.
   A filtered detail view helps locate a mount; also inspect it in the full model.
-- Review motion and insertion access manually until suitable tooling exists.
-  Bounding-box overlap is not material interference; an empty bore is not solid.
+- Review explicit joint samples with `collisions`; inspect gaps between samples
+  and insertion access separately. Bounding-box overlap is not material interference;
+  an empty bore is not solid.
   Record untested fit, strength and joint holding behaviour separately.
 - Refresh geometry/checks after native ID replacements. Ordering aliases change
   export identities only and must not be used to silently edit physical CAD.

@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 9 October 2026. Status: P1–P4 and P5a–P5b complete.
-P5c is next and remains planned. Original reviewed code baseline: commit
+Updated: 9 October 2026. Status: P1–P5 complete within the scoped limits below.
+No further implementation slice is scheduled. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -40,7 +40,7 @@ the source of universal geometry, colour, region or view assumptions.
 
 The current commands are `init`, `doctor`, `parts`, `sources`, `reference-page`,
 `inspect`, `roundtrip`, `inventory`, `diff`, `export`, `connections`, `render` and
-`stickers`, `build`, `release` and `verify-release`. Execution and release
+`stickers`, `sourcing`, `collisions`, `build`, `release` and `verify-release`. Execution and release
 verification are implemented. MPD/TEXMAP support is outside this roadmap's
 initial scope; preserve explicit format errors instead of implying support.
 
@@ -309,7 +309,7 @@ identify geometric risks without overstating physical certainty.
   the geometry core. Purchasing and messages to sellers are not automatic build
   steps. No default assumption of Israeli sourcing.
 
-**P5c: collision and motion**
+**P5c: collision and motion — complete, 9 October 2026**
 
 - Add conservative broad-phase candidate detection, then supported targeted
   geometry/contact checks. Bounds overlap alone must never mean material collision.
@@ -371,7 +371,7 @@ set of nearly identical spacecraft snapshots.
 | P4b | Complete, 6 October 2026 | [Authored instructions](instructions.md), vehicle/building step plans; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/instructions.py) | Authored order and views; insertion access and physical assembly remain untested |
 | P5a | Complete, 7 October 2026 | [Replacement recipes](replacements.md), optional vehicle rehearsal; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/replacements.py) | Explicit authored alternatives and nominal support checks; footprint equivalence and physical build remain untested |
 | P5b | Complete, 9 October 2026 | [Offline sourcing](sourcing.md), `sourcing` CLI and fictional vehicle snapshot; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/sourcing.py) | Dated offline comparisons; no live stock, purchase, FX or global cart optimization |
-| P5c | Planned; next | Specification above | Not implemented |
+| P5c | Complete, 9 October 2026 | [Collision/motion guide](collisions.md), `collisions` CLI and vehicle axle rehearsal; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/collisions.py) | Reviewed material boxes and one sampled revolute joint; no arbitrary mesh solids, continuous clearance or physical simulation |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -646,7 +646,52 @@ comparison, not a release policy gate; snapshots/reports can be captured as expl
 release inputs without converting stock or importer acceptance to a live pass.
 No marketplace request, purchase or seller message is performed.
 
-Next: implement P5c (scoped collision and motion diagnostics) when requested.
+P5c verification: all 280 pytest cases passed; ty and Ruff passed. Sixteen focused
+analytical cases cover interference, contact reviews that cannot suppress failures,
+rotated separation requiring a cross-product axis, partial material coverage,
+hollow/empty/missing geometry, stale model/dependency evidence, local joint frames,
+limits and identity preservation. One installed-wheel workflow exercises the
+core-only diagnostic CLI, captured hashes/configuration, overwrite/stale-input
+refusal and optional-render isolated views. After final view-priority changes,
+the 23 affected algorithm/installed workflows and ty/Ruff passed again.
+
+P5c scope: `diagnose` and `collisions` reuse Model/Transform, recursive geometry,
+existing CAD export and rendering. All instance pairs are checked per explicit
+pose. Complete disjoint vertex bounds can establish scoped separation; overlapping
+bounds alone remain unknown. A targeted 15-axis oriented-box test supports reviewed
+part-local material regions, bound to transitive dependency bytes and evidence.
+Full material coverage is an authored claim, not inferred or verified mesh solidity.
+Partial regions can detect interference but cannot establish complete clearance.
+Expected contact reviews name exact pairs and pose hashes; they cannot suppress
+penetration or unsupported/hollow geometry. No runtime dependency was added.
+
+One revolute joint is sampled relative to a stationary anchor's local rigid frame.
+Explicit moving IDs preserve identities, quantities and their relative geometry.
+Reports retain limits, sampled span, angle gaps, per-pose hashes, missing geometry,
+source/config/dependency evidence and independent physical not-tested dimensions.
+The bundle includes full poses and bounded isolated-pair CAD with checksums and
+omitted-view counts; failures are prioritized. The existing renderer produces PNGs.
+This remains a standalone review operation, not a new release gate or continuous
+collision/kinematic solver. Multi-joint coupling and physical insertion, holding
+force, sag, clutch and stability are untested.
+
+The real-library 19-part vehicle rehearsal rotates the front shaft, wheels and
+bushes together at 0, 45 and 90 degrees. Each pose checks 171 pairs: 87 have separated
+bounds, 18 need material/hollow-interface review, and 66 include unresolved geometry.
+Empty helper dependencies (`1-16chrd.dat`, `empty.dat`) in four bushes remain visible;
+no declaration hides them. Overall status is unknown. Underside/full-pose and isolated
+shaft/support views were inspected. Geometry rendering can succeed even while the
+stricter completeness diagnostic remains unknown. Default vehicle and frozen
+spacecraft designs stay unchanged. Generated bundles remain ignored.
+
+Agent, starter, playbook and validation instructions now link the shipped scope.
+The testing guide was also repaired: its body had duplicated the inventory guide;
+it now describes locked setup, pytest markers, wheel isolation and evidence limits.
+
+Next: the planned P1–P5 slices are complete. A useful follow-up is a fresh-agent
+usability pass on a third unrelated brief and measured physical trial feedback.
+Use those findings to propose the next work; no additional phase is pre-authorized
+or implied by completion of the software roadmap.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

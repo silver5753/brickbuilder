@@ -70,6 +70,7 @@ Read the relevant guide before changing or using a capability:
 - [Project execution](docs/execution.md): reviewed Python, explicit stages, pose identity and draft summaries.
 - [Assembly instructions](docs/instructions.md): authored step coverage, cameras, illustrations and trial feedback; no automatic insertion-order proof.
 - [Offline sourcing](docs/sourcing.md): dated stock/owned snapshots, scoped basket comparisons and explicit unknown costs; no purchasing or global-optimum claim.
+- [Collision/motion diagnostics](docs/collisions.md): exact poses, reviewed material regions and isolated candidate views; no inferred solid volumes or continuous-clearance proof.
 - [Geometric replacements](docs/replacements.md): explicit assembly recipes, retained supports, immutable previews and regenerated outputs; no automatic fit equivalence.
 - [Assembly authoring](docs/assembly.md): named parts, local frames, intended joints and generated bindings.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
