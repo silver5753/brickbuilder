@@ -163,3 +163,7 @@ References:
 - [BrickLink wanted-list XML](https://www.bricklink.com/help.asp?helpID=207&q=xml)
 - [BrickLink colour guide](https://www.bricklink.com/catalogColors.asp)
 - [LDraw colour definitions](https://www.ldraw.org/article/547.html)
+
+Use [offline sourcing](sourcing.md) to compare native demand with dated stock and
+owned parts. It preserves mapping/production/importer evidence separately and
+never changes CAD or ordering aliases.

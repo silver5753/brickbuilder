@@ -74,6 +74,45 @@ def test_installed_vehicle_authoring(installed_core, tmp_path):
         ).stdout
     )
     assert selected["quantity"] == 7
+    sourcing = tmp_path / "sourcing"
+    snapshot = project / "sourcing.example.json"
+    # Preserve the exact captured bytes, including a legal UTF-8 BOM.
+    snapshot.write_bytes(b"\xef\xbb\xbf" + snapshot.read_bytes())
+    quote = json.loads(
+        installed_core.run(
+            "sourcing", native, "--snapshot", snapshot, "--destination", sourcing
+        ).stdout
+    )
+    assert quote["source_sha256"] == sha256(native.read_bytes()).hexdigest()
+    assert (
+        quote["snapshot_sha256"]
+        == sha256((sourcing / "snapshot.json").read_bytes()).hexdigest()
+    )
+    assert sum(row["to_buy"] for row in quote["needs"]) == 18
+    assert quote["candidates"][0]["name"] == "seller:example-b"
+    assert quote["candidates"][0]["complete_total"] == "4.20"
+    assert quote["live_stock"] == "not_tested"
+    assert (
+        "already exists"
+        in installed_core.run(
+            "sourcing",
+            native,
+            "--snapshot",
+            snapshot,
+            "--destination",
+            sourcing,
+            expected=2,
+        ).stderr
+    )
+    changed = json.loads(snapshot.read_text(encoding="utf-8-sig"))
+    changed["offers"] = []
+    snapshot.write_text(json.dumps(changed))
+    short = json.loads(
+        installed_core.run(
+            "sourcing", native, "--snapshot", snapshot, expected=1
+        ).stdout
+    )
+    assert sum(row["shortage"] for row in short["needs"]) == 18
     alternative = tmp_path / "alternative"
     checked(
         [

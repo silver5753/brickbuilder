@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "as_of": "2026-10-07",
+    "max_age_days": 7,
+    "destination": "CA",
+    "seller_countries": [],
+    "conditions": [
+      "new"
+    ],
+    "currency": "CAD",
+    "budget": "10.00"
+  },
+  "sellers": [
+    {
+      "id": "example-a",
+      "country": "CA",
+      "currency": "CAD",
+      "ships_to": [
+        "CA"
+      ],
+      "shipping": null,
+      "minimum_order": "0",
+      "observed_on": "2026-10-07",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation."
+    },
+    {
+      "id": "example-b",
+      "country": "CA",
+      "currency": "CAD",
+      "ships_to": [
+        "CA"
+      ],
+      "shipping": "1.50",
+      "minimum_order": "2.00",
+      "observed_on": "2026-10-07",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation."
+    }
+  ],
+  "offers": [
+    {
+      "seller": "example-a",
+      "lot": "3003-1",
+      "native": {
+        "part": "3003",
+        "colour": 1
+      },
+      "condition": "new",
+      "quantity": 1,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3003",
+      "catalog_colour": "fixture-1",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-a",
+      "lot": "3003-4",
+      "native": {
+        "part": "3003",
+        "colour": 4
+      },
+      "condition": "new",
+      "quantity": 2,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3003",
+      "catalog_colour": "fixture-4",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-a",
+      "lot": "3022-71",
+      "native": {
+        "part": "3022",
+        "colour": 71
+      },
+      "condition": "new",
+      "quantity": 1,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3022",
+      "catalog_colour": "fixture-71",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-a",
+      "lot": "3034-0",
+      "native": {
+        "part": "3034",
+        "colour": 0
+      },
+      "condition": "new",
+      "quantity": 1,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3034",
+      "catalog_colour": "fixture-0",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-a",
+      "lot": "3700-71",
+      "native": {
+        "part": "3700",
+        "colour": 71
+      },
+      "condition": "new",
+      "quantity": 4,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3700",
+      "catalog_colour": "fixture-71",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-a",
+      "lot": "3707-0",
+      "native": {
+        "part": "3707",
+        "colour": 0
+      },
+      "condition": "new",
+      "quantity": 2,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3707",
+      "catalog_colour": "fixture-0",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-a",
+      "lot": "3713-71",
+      "native": {
+        "part": "3713",
+        "colour": 71
+      },
+      "condition": "new",
+      "quantity": 4,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3713",
+      "catalog_colour": "fixture-71",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-a",
+      "lot": "4288-0",
+      "native": {
+        "part": "4288",
+        "colour": 0
+      },
+      "condition": "new",
+      "quantity": 4,
+      "unit_price": "0.10",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-4288",
+      "catalog_colour": "fixture-0",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "3003-1",
+      "native": {
+        "part": "3003",
+        "colour": 1
+      },
+      "condition": "new",
+      "quantity": 1,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3003",
+      "catalog_colour": "fixture-1",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "3003-4",
+      "native": {
+        "part": "3003",
+        "colour": 4
+      },
+      "condition": "new",
+      "quantity": 2,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3003",
+      "catalog_colour": "fixture-4",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "3022-71",
+      "native": {
+        "part": "3022",
+        "colour": 71
+      },
+      "condition": "new",
+      "quantity": 1,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3022",
+      "catalog_colour": "fixture-71",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "3034-0",
+      "native": {
+        "part": "3034",
+        "colour": 0
+      },
+      "condition": "new",
+      "quantity": 1,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3034",
+      "catalog_colour": "fixture-0",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "3700-71",
+      "native": {
+        "part": "3700",
+        "colour": 71
+      },
+      "condition": "new",
+      "quantity": 4,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3700",
+      "catalog_colour": "fixture-71",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "3707-0",
+      "native": {
+        "part": "3707",
+        "colour": 0
+      },
+      "condition": "new",
+      "quantity": 2,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3707",
+      "catalog_colour": "fixture-0",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "3713-71",
+      "native": {
+        "part": "3713",
+        "colour": 71
+      },
+      "condition": "new",
+      "quantity": 4,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-3713",
+      "catalog_colour": "fixture-71",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    },
+    {
+      "seller": "example-b",
+      "lot": "4288-0",
+      "native": {
+        "part": "4288",
+        "colour": 0
+      },
+      "condition": "new",
+      "quantity": 4,
+      "unit_price": "0.15",
+      "observed_on": "2026-10-07",
+      "market": "example",
+      "catalog_part": "fixture-4288",
+      "catalog_colour": "fixture-0",
+      "source": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+      "mapping": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "production": {
+        "status": "accepted",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      },
+      "importer": {
+        "status": "untested",
+        "recorded_on": "2026-10-07",
+        "note": "Synthetic demonstration only; not a real seller, catalog validation or stock observation.",
+        "source": "Brick Builder fictional sourcing example"
+      }
+    }
+  ],
+  "owned": [
+    {
+      "native": {
+        "part": "3034",
+        "colour": 0
+      },
+      "condition": "new",
+      "quantity": 1,
+      "observed_on": "2026-10-07",
+      "source": "Fictional owned chassis for demonstration"
+    }
+  ]
+}

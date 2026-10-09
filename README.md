@@ -8,9 +8,10 @@ subject, structure, coordinates and sourcing constraints.
 
 The package includes typed part instances, rigid transforms, native LDraw
 round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
-Native inventories, quantity differences and separate purchasing export bundles
-are also implemented. Scoped nominal attachment checks, actual-CAD previews, imported artwork and
-authored assembly instructions and explicit geometric replacements are implemented. Motion/collision review remains planned.
+It also includes native inventories, ordering exports, nominal connection checks,
+actual-CAD previews, imported artwork, authored assembly instructions and explicit
+geometric replacements. [Offline sourcing comparisons](docs/sourcing.md) account
+for dated stock, owned parts and recorded costs. Motion/collision review remains planned.
 
 ## Setup and checks
 

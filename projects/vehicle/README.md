@@ -145,3 +145,10 @@ checks every declared joint and proposes updated instruction IDs/access notes.
 See [replacement recipes](../../docs/replacements.md) for commands and limits.
 The default 19-part vehicle is unchanged; the alternative has 22 parts. The two
 additional tile declarations in connectors.json are only used by the rehearsal.
+
+## Fictional sourcing example
+
+[sourcing.example.json](sourcing.example.json) demonstrates dated stock, an owned
+chassis and known versus unknown shipping in CAD currency. Every seller and price
+is fictional. Run it against the default 19-part model with the
+[sourcing command](../../docs/sourcing.md); do not use it as purchase evidence.

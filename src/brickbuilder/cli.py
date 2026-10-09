@@ -403,6 +403,25 @@ def _reference_page_command(args: argparse.Namespace) -> int:
     return 0
 
 
+def _sourcing_command(args: argparse.Namespace) -> int:
+    from .sourcing import compare_sourcing, load_snapshot
+
+    source = _selected(args)
+    payload = args.snapshot.read_bytes()
+    report = compare_sourcing(source.document.model, load_snapshot(payload))
+    report["source_sha256"] = source.sha256
+    if args.destination:
+        write_bundle(
+            args.destination,
+            {
+                "sourcing.json": json.dumps(report, indent=2, allow_nan=False) + "\n",
+                "snapshot.json": payload,
+            },
+        )
+    _print(report)
+    return {"pass": 0, "fail": 1, "unknown": 3}[report["status"]]
+
+
 def _selection_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("source", type=Path, nargs="?")
     parser.add_argument("--selections", type=Path)
@@ -537,6 +556,13 @@ def _parser() -> argparse.ArgumentParser:
     )
     _selection_args(inv)
     inv.set_defaults(handler=_inventory_command)
+    sourcing = commands.add_parser(
+        "sourcing", help="Compare dated offline stock against one native inventory"
+    )
+    _selection_args(sourcing)
+    sourcing.add_argument("--snapshot", type=Path, required=True)
+    sourcing.add_argument("--destination", type=Path)
+    sourcing.set_defaults(handler=_sourcing_command)
     delta = commands.add_parser("diff", help="Native part/colour quantity differences")
     delta.add_argument("before", type=Path)
     delta.add_argument("after", type=Path)

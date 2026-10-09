@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 7 October 2026. Status: P1–P4 and P5a complete.
-P5b is next; P5b–P5c remain planned. Original reviewed code baseline: commit
+Updated: 9 October 2026. Status: P1–P4 and P5a–P5b complete.
+P5c is next and remains planned. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -296,7 +296,7 @@ identify geometric risks without overstating physical certainty.
 - Regenerate all affected profiles, checks, renders, decals, steps and orders.
   Equal area or the same silhouette is not proof of equivalent attachment.
 
-**P5b: sourcing**
+**P5b: sourcing — complete, 9 October 2026**
 
 - Accept dated stock/price snapshots and owned-parts inventories. Treat country,
   seller, condition, currency, quantities and budget as project inputs.
@@ -370,7 +370,8 @@ set of nearly identical spacecraft snapshots.
 | P4a | Complete, 5 October 2026 | [Imported artwork](artwork.md), building PNG/placement example; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/artwork.py) | Finished PNGs and flat rectangular labels; no graphic/font generation, curved wrapping, colour proof or physical print validation |
 | P4b | Complete, 6 October 2026 | [Authored instructions](instructions.md), vehicle/building step plans; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/instructions.py) | Authored order and views; insertion access and physical assembly remain untested |
 | P5a | Complete, 7 October 2026 | [Replacement recipes](replacements.md), optional vehicle rehearsal; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/replacements.py) | Explicit authored alternatives and nominal support checks; footprint equivalence and physical build remain untested |
-| P5b–P5c | Planned; P5b next | Specifications above | Not implemented |
+| P5b | Complete, 9 October 2026 | [Offline sourcing](sourcing.md), `sourcing` CLI and fictional vehicle snapshot; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/sourcing.py) | Dated offline comparisons; no live stock, purchase, FX or global cart optimization |
+| P5c | Planned; next | Specification above | Not implemented |
 
 P1a verification: checked relative document links and heading anchors, whitespace
 and current-command descriptions against the API guides/CLI. Walked the new-brief
@@ -610,7 +611,42 @@ checks, renders, decals, steps and orders after those input changes. Captured
 preview reports are evidence inputs, not independently replayed by offline
 verification. Frozen spacecraft fixtures remain unchanged.
 
-Next: implement P5b (dated stock snapshots and sourcing comparisons) when requested.
+P5b verification: all 263 pytest cases passed; ty and Ruff passed. Twenty-two
+focused cases cover owned-demand conservation, exact decimal costs, shipping-aware
+ranking, stock/evidence eligibility, freshness boundaries, minimum orders, budgets,
+unknown prices/terms and invalid or ambiguous snapshots. The existing installed-core
+vehicle workflow now exercises the sourcing CLI, source hashes, exact snapshot
+byte capture including a UTF-8 BOM, overwrite refusal and shortage exit status.
+No duplicate e2e workflow or runtime dependency was added.
+
+P5b scope: strict dated snapshots carry policy, sellers, lots and owned quantities.
+Native mappings, colour production, stock observations and importer acceptance
+remain separate evidence records. The `sourcing` command supports a native model
+or existing selection, subtracts usable owned parts, reports per-identity shortages
+and evaluates single-seller baskets plus one deterministic unit-price greedy split.
+Reports preserve evidence, input/model/source hashes, allocated quantities,
+minimum-order gaps, unknown costs and budget findings. Money uses decimal strings;
+no currency conversion, silent zero shipping or minimum-order filler is invented.
+
+A fictional Canadian/CAD vehicle snapshot demonstrates generic sourcing without
+regional defaults: one owned chassis leaves 18 parts; the complete known-cost
+seller basket is CAD 4.20, while the cheaper-unit seller has unknown shipping.
+This is synthetic workflow evidence, not a real purchase recommendation. Snapshots
+use an explicit as-of date, so later runs remain reproducible. Stale/future stock,
+unsupported conditions/currencies/destinations and unaccepted mappings cannot hide
+shortages. Unknown production or delivery/cost terms prevent a candidate pass.
+
+Limits: the heuristic can miss a feasible or cheaper mixed basket. Candidate status
+and totals are scoped to supplied observations, never live availability or the
+cheapest complete purchase. Shipping is a supplied flat destination quote; taxes,
+lot multiples, tiered shipping and discounts are not inferred. Separate source
+records can still describe the same cross-listed stock unless the agent resolves
+that ambiguity. Owned stock is not reserved. Sourcing remains a standalone
+comparison, not a release policy gate; snapshots/reports can be captured as explicit
+release inputs without converting stock or importer acceptance to a live pass.
+No marketplace request, purchase or seller message is performed.
+
+Next: implement P5c (scoped collision and motion diagnostics) when requested.
 
 For each completed slice, update this file with its status, commit link, shipped
 entry points, verification performed and remaining limits. Keep proposed syntax

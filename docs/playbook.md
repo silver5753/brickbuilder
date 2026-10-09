@@ -88,6 +88,7 @@ gates and offline artifact reconciliation. Neither certifies physical assembly.
 | Preview CAD | `render` with optional render extra ([rendering](rendering.md)) | Configure project cameras/palette/library and inspect the images |
 | Explain assembly | `build/release --stage instructions` ([instructions](instructions.md)) | Author sequence, views and access notes; inspect images and conduct physical trials |
 | Attach and print artwork | `stickers` ([artwork](artwork.md)) | Create finished PNGs, choose exact instances/local frames, inspect sizes and calibrate printing |
+| Compare sourcing | `sourcing` ([guide](sourcing.md)) | Dated lots, owned quantities, currency/condition/delivery constraints and unknown costs |
 | Prepare orders | `export` ([exports](inventory-exports.md)) | Dated marketplace mappings; verify importer acceptance separately |
 
 Use [geometric replacement recipes](replacements.md) for explicit one-to-many

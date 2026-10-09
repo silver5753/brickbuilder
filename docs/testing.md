@@ -172,3 +172,9 @@ installed-wheel workflow prepares the optional vehicle revision and regenerates
 connections, renders, imported labels, instructions and complete ordering output.
 It verifies offline using the core wheel after removing the source and synthetic
 geometry. This checks revision propagation; neither stock nor physical fit is tested.
+
+Sourcing tests cover owned-stock conservation, shipping-aware basket ranking,
+minimum orders, budgets, eligibility/freshness boundaries, unknown terms and
+ambiguous/invalid inputs. The existing installed-core vehicle workflow now checks
+the sourcing CLI, exact input-byte capture, source hashes, overwrite refusal and
+shortage exit status. Tests use fictional Canadian data and make no network calls.

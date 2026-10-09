@@ -46,3 +46,8 @@ For a physical part substitution, use `brickbuilder.replacements` and the root
 replacement guide. Declare exact old parts, a locally framed replacement assembly,
 new IDs, port mappings and required retained backing. Review the preview before
 applying it, update authored steps/artwork, and regenerate a new release.
+
+For purchasing preparation, run `brickbuilder sourcing` on the current CAD with
+an explicit dated snapshot. Use the sourcing guide; record destination, currency,
+condition and unknown shipping/minimum costs. Never infer live stock or buy parts
+from a passing offline comparison.
