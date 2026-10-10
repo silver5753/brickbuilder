@@ -302,9 +302,13 @@ def authoring_bundle(
     Full/group selections are alternatives, not quantities to add together.
     Exact UTF-8 serialization precedes source-bound profile/selection hashes.
     """
+    groups = authored.groups()
+    if "full" in groups:
+        raise ValueError(
+            "Group name 'full' is reserved for the complete model selection"
+        )
     files = {"model.ldr": dumps(from_model(authored.model, title=title))}
     digest = sha256(files["model.ldr"].encode()).hexdigest()
-    groups = authored.groups()
     selections = {"full": {"path": "model.ldr", "sha256": digest}}
     for group, ids in groups.items():
         filename = f"assembly-{sha256(group.encode()).hexdigest()}.ldr"

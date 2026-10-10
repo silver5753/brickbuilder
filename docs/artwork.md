@@ -59,6 +59,10 @@ its directory, and must identify a PNG. Attribution is an explicit record suppli
 by the agent, not a license verification. Use it to identify the creator/source,
 rights and any fonts used to prepare the image.
 
+Template names must be safe lowercase identifiers. Names matching
+`stickers_a4_<number>` are reserved for generated print sheets and are rejected
+for both imported artwork and legacy templates, preventing filename collisions.
+
 Each instance ID must exist in the selected groups and have the declared native
 part reference. A part can receive only one decal in this version. Different
 instances of the same part can use different templates. Missing IDs, wrong native

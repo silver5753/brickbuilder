@@ -33,6 +33,10 @@ class Sticker:
     def __post_init__(self) -> None:
         if not re.fullmatch("[a-z][a-z0-9_]*", self.name):
             raise ValueError("Sticker names must be safe lowercase identifiers")
+        if re.fullmatch(r"stickers_a4_[0-9]+", self.name):
+            raise ValueError(
+                "Sticker names stickers_a4_<number> are reserved for generated A4 sheets"
+            )
         object.__setattr__(self, "instance_ids", tuple(self.instance_ids))
         for instance_id in self.instance_ids:
             text(instance_id, "Sticker instance ID")

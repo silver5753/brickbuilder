@@ -106,6 +106,10 @@ claimed. Large quantities paginate without crossing the print area. Standalone
 SVGs support editing or import into a vector/print application; PDF conversion
 is outside this milestone.
 
+Template names matching `stickers_a4_<number>` are reserved for generated sheets.
+Both legacy and imported-artwork templates reject these names before output
+generation; existing template and sheet filenames otherwise stay unchanged.
+
 `stickers.json` records sheet positions, dimensions, exact template quantities,
 selected instance IDs, provenance and SVG hashes. Selection requires declared
 groups as well as native tile IDs, so an unrelated 1x6 tile does not get a solar

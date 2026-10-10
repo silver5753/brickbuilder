@@ -163,6 +163,9 @@ def test_bundle_hashes_partition_and_selections(stacked, tmp_path):
     assert report["status"] == "pass"
     assert report["source_sha256"] == source.sha256
     assert report["nominal"]["physical_strength"] == "not_tested"
+    assert (
+        read_selection(folder / "selections.json", "full").document.model == result.model
+    )
     selection = read_selection(folder / "selections.json", "sample/cap")
     assert len(selection.document.model.parts) == 1
     with pytest.raises(FileExistsError):
@@ -174,6 +177,14 @@ def test_bundle_hashes_partition_and_selections(stacked, tmp_path):
         load_profile(
             folder / "connection_profiles.json", read_source(folder / "model.ldr")
         )
+
+
+def test_bundle_rejects_group_shadowing_full_selection(stacked):
+    assembly, _ = stacked
+    result = replace(assembly, name="full").flatten()
+    assert set(result.groups()) == {"full", "full/cap"}
+    with pytest.raises(ValueError, match="Group name 'full' is reserved"):
+        authoring_bundle(result, title="Two parts")
 
 
 @pytest.mark.parametrize("case", ["duplicate", "path", "missing", "group", "nonrigid"])

@@ -154,6 +154,12 @@ def test_sticker_dimensions_xml_and_calibration():
     assert manifest["cosmetic_only"]
 
 
+@pytest.mark.parametrize("name", ["stickers_a4_1", "stickers_a4_12"])
+def test_sticker_names_cannot_shadow_generated_sheets(name):
+    with pytest.raises(ValueError, match="reserved for generated A4 sheets"):
+        Sticker(name, "6636.dat", 6, 1)
+
+
 def test_multi_page_print_layout():
     config = StickerConfig((Sticker("small", "6636.dat", 6, 1),), ("arrays",))
     files = print_files(config, {"small": 400}, source_sha256="x", model_sha256="y")

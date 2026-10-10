@@ -123,6 +123,9 @@ Hashes are computed after exact UTF-8 CAD serialization. Write the returned byte
 through `write_bundle`; manually rewriting line endings invalidates bindings.
 Generate again after changes; stale profiles are rejected by existing commands.
 Full/group selections overlap and must not be combined into one purchase order.
+The exact group name `full` is reserved for the complete model selection;
+bundle generation rejects it instead of replacing that selection. Other group
+names, including nested paths such as `vehicle/full`, remain available.
 Bundles may carry fail/unknown reports for review: output creation is not a pass.
 These outputs are also used by the build command. Use [release packages](releases.md) for complete project provenance and offline verification.
 

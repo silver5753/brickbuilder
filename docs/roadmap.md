@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
-Updated: 9 October 2026. Status: P1–P5 complete within the scoped limits below.
-No further implementation slice is scheduled. Original reviewed code baseline: commit
+Updated: 10 October 2026. Status: P1–P5 complete within the scoped limits below;
+post-review C1 namespace protection is complete. Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -9,6 +9,30 @@ preserves the original project history and extraction plan; its “Implemented�
 labels sometimes describe historical scripts rather than shipped package APIs.
 Use this roadmap for sequencing new work, and the API documentation for what
 works today. Current user instructions take precedence over this plan.
+
+## Post-review C1 — Protect generated namespaces
+
+**Complete, 10 October 2026.** Review baseline:
+`379c90499d7d7ce9effb5caea16d3199180d1675`.
+
+- Reject the exact group name `full` when creating authoring/build bundles, before
+  it can replace the complete-model selection with a partial group selection.
+  Nested group paths such as `vehicle/full` remain valid.
+- Reserve sticker template names matching `stickers_a4_<number>` for generated
+  A4 sheets. Shared template validation covers legacy and imported artwork, so
+  neither can overwrite its standalone SVG with a sheet.
+- Document these restrictions in the assembly, artwork and rendering guides.
+  Existing valid output filenames and schemas remain unchanged.
+- Verification: three regression cases failed against the reviewed baseline and
+  passed after the fixes. All 30 assembly/rendering tests passed; the complete
+  render-extra suite passed **283 tests**, including installed-wheel workflows.
+  The prescribed ty check passed with warnings treated as errors.
+- Scope: reserved-name protection only. Replacement ordering, placement checks,
+  brief/release reconciliation and the other review proposals remain future work.
+  Frozen fixtures and physical design data are unchanged.
+
+Implementation history: [assembly selections](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py)
+and [sticker output names](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/stickers.py).
 
 ## Goal and success criteria
 
@@ -688,7 +712,8 @@ Agent, starter, playbook and validation instructions now link the shipped scope.
 The testing guide was also repaired: its body had duplicated the inventory guide;
 it now describes locked setup, pytest markers, wheel isolation and evidence limits.
 
-Next: the planned P1–P5 slices are complete. A useful follow-up is a fresh-agent
+The planned P1–P5 slices are complete; post-review C1 is recorded above.
+A useful follow-up is a fresh-agent
 usability pass on a third unrelated brief and measured physical trial feedback.
 Use those findings to propose the next work; no additional phase is pre-authorized
 or implied by completion of the software roadmap.
