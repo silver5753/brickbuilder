@@ -19,6 +19,7 @@ from .connectivity.catalog import loads_catalog
 from .exporters import bundle as order_bundle, write_bundle
 from .exporters.rules import loads_rules
 from .geometry import GeometryLoader, duplicate_placements, inspect_geometry
+from .delivery import validate_decoration
 from .jsonio import array, decode_json, text, versioned, object_fields
 from .ldraw import PartLibrary, read_source
 from .project import Project, load_project, project_path
@@ -241,6 +242,7 @@ def build_project(
     selected = settings.stages if stages is None else tuple(stages)
     _stages(selected)
     enabled = set(selected)
+    validate_decoration(project.brief, enabled, settings.stickers is not None)
     selected_library = library or project.library
     hashes = dict(project.input_hashes)
     if settings.sha256:

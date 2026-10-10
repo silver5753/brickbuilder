@@ -12,7 +12,7 @@ Add `instructions` to `build.json.stages`, or request it explicitly:
 ```sh
 mkdir -p output
 uv run --locked --extra render brickbuilder release projects/vehicle \
-  --stage connections --stage instructions --library /path/to/ldraw \
+  --stage connections --stage render --stage instructions --library /path/to/ldraw \
   --destination output/vehicle-instructions
 uv run --locked brickbuilder verify-release output/vehicle-instructions
 ```

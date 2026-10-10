@@ -7,13 +7,14 @@ It never imports the captured builder, fetches assets or needs a geometry librar
 
 ```sh
 mkdir -p output
-uv run --locked brickbuilder release projects/building --stage connections \
+uv run --locked brickbuilder release projects/building --stage connections --draft \
   --destination output/building-release
 uv run --locked brickbuilder verify-release output/building-release
 ```
 
-Omit the stage override and supply the render extra/library to include the
-example's configured images. Nothing places orders or verifies current stock.
+This connections-only package is a draft because the brief also requests previews
+and named views; both commands return exit 3. Omit the stage override and supply
+the render extra/library for a complete delivery. Nothing places orders or verifies current stock.
 Read project Python and imported helpers before running release, just as for build.
 
 ## Choose an explicit policy
@@ -41,6 +42,21 @@ software check policy reconcile. This does **not** mean the design is physically
 buildable, visually accepted, collision-free or available to buy. Required views
 being generated is separate from judging their contents.
 
+Every normal release must also deliver the brief's requested artifacts and named
+requirement views for every pose, even when `required_checks` omits their stages.
+CAD and inventory are always generated. `preview` requires the render stage;
+`instructions`, `stickers` and `orders` require their corresponding stages. Step
+illustrations do not substitute for the brief's named overall/detail views.
+Offline verification reconciles these findings with captured brief/configuration,
+stage reports and checksummed view images; it does not trust a configured view
+name as evidence that an image was delivered.
+
+Contradictory sticker requests fail before builder execution: a `forbidden` brief
+cannot request sticker deliverables or run sticker generation or render overlays,
+including in a draft. An unused sticker configuration is permitted. If sticker
+permission is `unknown`, a package requesting or using stickers can only be a
+draft. A normal package requires an explicit `allowed` policy for that use.
+
 Use `--draft` to retain a package whose checks are failed, unknown or incomplete:
 
 ```sh
@@ -51,6 +67,15 @@ uv run --locked brickbuilder release projects/building --stage cad --draft \
 An explicit draft always stays labelled `draft`, even if its checks pass. Offline
 verification can report artifact `status: pass` alongside a failed/unknown
 `validation_status` and unmet `policy_findings`. Read them separately.
+
+Partial deliveries use `--draft`; stage overrides never silently narrow the brief.
+A partial package may have `validation_status: pass` for selected build checks
+while `policy_findings` lists undelivered artifacts/views or unresolved sticker
+permission. These findings appear in the manifest and handoff. To change the
+requested scope or a hard constraint, record the accepted compromise in
+`decisions.json` and revise the brief explicitly; decision prose is not an automatic
+waiver. Budget, stock, sourcing region/condition and subjective feature acceptance
+remain separate evidence reviews, not newly certified release checks.
 
 | Exit | Meaning for release / verify-release |
 |---|---|

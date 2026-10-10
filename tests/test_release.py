@@ -20,6 +20,13 @@ def project(tmp_path):
     shutil.copytree(
         ROOT / "projects/building", folder, ignore=shutil.ignore_patterns("__pycache__")
     )
+    # These core-only release fixtures explicitly request CAD and inventory.
+    path = folder / "brief.json"
+    brief = json.loads(path.read_text())
+    brief["deliverables"] = ["cad", "inventory"]
+    for requirement in brief["requirements"]:
+        requirement["views"] = []
+    path.write_text(json.dumps(brief))
     return folder
 
 
@@ -157,6 +164,80 @@ def build(project):
         report_path.write_text(json.dumps(report))
         refresh_manifest(folder)
         assert verify_release(folder)["status"] == "fail"
+
+
+@pytest.mark.parametrize(
+    "missing", ["preview", "instructions", "stickers", "orders", "view"]
+)
+def test_brief_delivery_cannot_be_silently_omitted(project, tmp_path, missing):
+    path = project / "brief.json"
+    brief = json.loads(path.read_text())
+    if missing == "view":
+        brief["requirements"][0]["views"] = ["underside"]
+    else:
+        brief["deliverables"].append(missing)
+    brief["sticker_policy"] = "allowed"
+    path.write_text(json.dumps(brief))
+    folder = tmp_path / "release"
+    with pytest.raises(ValueError, match="Release policy not met"):
+        release_project(project, folder, stages=("connections",))
+    assert not folder.exists()
+    draft = release_project(project, folder, stages=("connections",), draft=True)
+    assert draft["validation_status"] == "pass"  # Selected checks still pass.
+    assert any(
+        ("underside" if missing == "view" else missing) in f
+        for f in draft["policy_findings"]
+    )
+    assert verify_release(folder)["policy_findings"] == draft["policy_findings"]
+    manifest_path = folder / "release_manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest.update(label="verified_artifacts", policy_findings=[])
+    manifest_path.write_text(json.dumps(manifest))
+    assert verify_release(folder)["status"] == "fail"
+
+
+@pytest.mark.render
+@pytest.mark.parametrize("permission", ["allowed", "unknown"])
+def test_sticker_permission_is_required_for_complete_delivery(
+    project, tmp_path, permission
+):
+    path = project / "brief.json"
+    brief = json.loads(path.read_text())
+    brief.update(
+        sticker_policy=permission, deliverables=["cad", "inventory", "stickers"]
+    )
+    path.write_text(json.dumps(brief))
+    path = project / "build.json"
+    config = json.loads(path.read_text())
+    config["stickers"] = "stickers.json"
+    path.write_text(json.dumps(config))
+    folder = tmp_path / "release"
+    if permission == "unknown":
+        with pytest.raises(ValueError, match="Sticker permission is unknown"):
+            release_project(project, folder, stages=("connections", "stickers"))
+    result = release_project(
+        project,
+        folder,
+        stages=("connections", "stickers"),
+        draft=permission == "unknown",
+    )
+    assert bool(result["policy_findings"]) == (permission == "unknown")
+    assert verify_release(folder)["status"] == "pass"
+    # Reconcile permission from captured inputs even if the build summary is unchanged.
+    captured = folder / "provenance/project/brief.json"
+    brief["sticker_policy"] = "forbidden"
+    captured.write_text(json.dumps(brief))
+    digest = sha256(captured.read_bytes()).hexdigest()
+    path = folder / "release_manifest.json"
+    manifest = json.loads(path.read_text())
+    manifest["inputs"]["brief.json"] = digest
+    path.write_text(json.dumps(manifest))
+    path = folder / "build_report.json"
+    summary = json.loads(path.read_text())
+    summary["input_sha256"]["brief.json"] = digest
+    path.write_text(json.dumps(summary))
+    refresh_manifest(folder)
+    assert any("forbidden" in error for error in verify_release(folder)["errors"])
 
 
 def test_capture_helpers_and_reject_mutating_inputs(project, tmp_path):

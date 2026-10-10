@@ -10,6 +10,7 @@ import json
 
 from .assembly import AuthoredModel
 from .build_result import BuildResult
+from .delivery import delivery_findings, validate_decoration
 from .execution import load_build_config, STAGES, _coverage, _status
 from .exporters import bundle as order_bundle
 from .exporters.rules import loads_rules
@@ -18,7 +19,7 @@ from .inventory import inventory
 from .jsonio import array, decode_json, read_json, text, versioned
 from .ldraw import read_source
 from .model import reference_name
-from .project import load_project, project_path
+from .project import Brief, load_project, project_path
 from .rendering.config import load_config
 from .rendering.artwork import artwork_path
 
@@ -84,7 +85,9 @@ def file_hashes(root: Path, *, suffix: str | None = None) -> dict[str, str]:
     return result
 
 
-def policy_findings(summary: dict, policy: dict) -> list[str]:
+def policy_findings(
+    summary: dict, policy: dict, brief: Brief, *, stickers: bool
+) -> list[str]:
     findings = []
     if summary["status"] != "pass":
         findings.append(f"Build status is {summary['status']}")
@@ -93,7 +96,7 @@ def policy_findings(summary: dict, policy: dict) -> list[str]:
             status = model["checks"].get(check, "not_tested")
             if status != "pass":
                 findings.append(f"{name}: required {check} is {status}")
-    return findings
+    return findings + delivery_findings(brief, summary, stickers=stickers)
 
 
 def _equal(actual: object, expected: object, context: str) -> None:
@@ -248,6 +251,7 @@ def _reconcile(root: Path, manifest: dict) -> dict:
     stages = set(summary["stages"])
     if "cad" not in stages or stages - STAGES:
         raise ValueError("Invalid release stages")
+    validate_decoration(project.brief, stages, settings.stickers is not None)
     render_config = load_config(settings.render)[0] if settings.render else None
     statuses = []
     for name, review in models.items():
@@ -430,6 +434,17 @@ def _reconcile(root: Path, manifest: dict) -> dict:
                 render_config.fingerprint(),
                 "Render configuration",
             )
+            rendered = stage_reports["render"]
+            _equal(
+                [v["name"] for v in rendered["views"]],
+                [v.name for v in render_config.views],
+                "Rendered view names",
+            )
+            for view in rendered["views"]:
+                filename = view["name"] + ".png"
+                _equal(view["file"], filename, "Rendered view filename")
+                if filename not in rendered["file_sha256"]:
+                    raise ValueError(f"Rendered view lacks a checksum: {filename}")
         authored = AuthoredModel(
             model,
             (),
@@ -454,7 +469,9 @@ def _reconcile(root: Path, manifest: dict) -> dict:
         statuses.append(status)
     overall = _status(statuses)
     _equal(summary["status"], overall, "Build check summary")
-    findings = policy_findings(summary, policy)
+    findings = policy_findings(
+        summary, policy, project.brief, stickers=settings.stickers is not None
+    )
     _equal(manifest["policy_findings"], findings, "Policy findings")
     if manifest["label"] == "verified_artifacts" and findings:
         raise ValueError(

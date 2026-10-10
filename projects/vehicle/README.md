@@ -118,12 +118,13 @@ claimed. CI uses the committed declarations, not downloaded mesh libraries.
 bindings to pass for every pose. Its explicit inputs retain geometry review notes.
 
 ```sh
-uv run --locked brickbuilder release projects/vehicle --stage connections \
+uv run --locked brickbuilder release projects/vehicle --stage connections --draft \
   --destination output/vehicle-release
 uv run --locked brickbuilder verify-release output/vehicle-release
 ```
 
-Omit the stage override and supply the render extra/library for configured views.
+This partial package and its verification return exit 3: requested views are absent.
+Omit the stage override and supply the render extra/library for a complete release.
 Read [release scope](../../docs/releases.md): verified artifacts are not physical
 certification, and review images still need visual acceptance.
 

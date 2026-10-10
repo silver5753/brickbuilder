@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
 Updated: 10 October 2026. Status: P1–P5 complete within the scoped limits below;
-post-review C1–C3 namespace, replacement-ordering and placement fixes are complete.
+post-review C1–C4 namespace, replacement, placement and brief-delivery fixes are complete.
 Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
@@ -29,8 +29,8 @@ works today. Current user instructions take precedence over this plan.
   render-extra suite passed **283 tests**, including installed-wheel workflows.
   The prescribed ty check passed with warnings treated as errors.
 - Scope: reserved-name protection only. Replacement ordering and placement checks
-  are covered by C2–C3 below; brief/release reconciliation and the other review
-  proposals remain future work.
+  are covered by C2–C3 below; C4 covers brief/release reconciliation. The other
+  review proposals remain future work.
   Frozen fixtures and physical design data are unchanged.
 
 Implementation history: [assembly selections](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py)
@@ -81,9 +81,48 @@ Implementation history: [replacement previews](https://github.com/silver5753/bri
   installed-wheel workflows. Ty with warnings treated as errors and pinned Ruff
   checks passed.
 - Scope: colour-independent exact placement only. Frozen fixtures and example
-  design data are unchanged. C4 brief/release reconciliation is next.
+  design data are unchanged. C4 brief/release reconciliation follows below.
 
 Implementation history: [placement diagnostics](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/geometry.py).
+
+## Post-review C4 — Reconcile delivery with the brief
+
+**Complete, 10 October 2026.** Follows
+[C3](https://github.com/silver5753/brickbuilder/commit/3af9c09af52230e50867d9991b0eee4372fca49a).
+
+- Normal releases require every requested deliverable and named requirement view
+  for every pose, independently of the policy's optional list of required checks.
+  Missing deliverables/views become explicit manifest and handoff policy findings.
+  Partial deliveries remain labelled drafts; a stage override does not narrow the
+  brief. Selected build checks can pass while delivery findings remain unresolved.
+- Reject forbidden sticker deliverables, generation and render overlays before
+  executing the builder, including drafts. Unknown sticker permission blocks a
+  normal release when stickers are requested/used, but permits a labelled draft.
+  Unused configuration files and undecorated builds remain supported.
+- Offline verification recalculates delivery findings from captured inputs and
+  reconciled stage reports. Check rendered view names, filenames and checksums so
+  configured cameras alone cannot establish delivery. No renderer or project code
+  runs during verification.
+- Correct the building example's contradictory default: its unchanged brief
+  forbids stickers, so disable default sticker generation/overlays. Keep optional
+  artwork assets and document a separate explicitly allowed variant. Core-only
+  example releases now demonstrate partial drafts; the full replacement rehearsal
+  requests and delivers all six supported deliverables.
+- Verification: eight initial regressions reproduced omitted deliverables/views
+  and forbidden sticker use before the fix. Additional coverage exercises unknown
+  versus allowed permission, captured-brief changes, incomplete-image tampering,
+  core-only draft verification and complete installed-wheel release verification.
+  All **35** targeted tests and **297** full render-extra suite tests passed;
+  ty with warnings treated as errors, pinned Ruff and whitespace checks passed.
+- Limits: this checks artifact delivery and the explicit decoration constraint,
+  not visual/physical acceptance or sourcing compliance. Budget, region, condition,
+  stock and standalone sourcing evidence remain separate reviews. Compromises
+  require an explicit brief revision and decision record; prose never auto-waives
+  a constraint. Old partial releases labelled verified under earlier behavior must
+  be regenerated as drafts or completed. Frozen fixtures remain unchanged.
+
+Implementation history: [brief delivery contracts](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/delivery.py).
+Next: C5 agent readiness and stale guidance, then C6 evidence/report contracts.
 
 ## Goal and success criteria
 
@@ -763,7 +802,7 @@ Agent, starter, playbook and validation instructions now link the shipped scope.
 The testing guide was also repaired: its body had duplicated the inventory guide;
 it now describes locked setup, pytest markers, wheel isolation and evidence limits.
 
-The planned P1–P5 slices are complete; post-review C1–C3 are recorded above.
+The planned P1–P5 slices are complete; post-review C1–C4 are recorded above.
 A useful follow-up is a fresh-agent
 usability pass on a third unrelated brief and measured physical trial feedback.
 Use those findings to propose the next work; no additional phase is pre-authorized

@@ -33,6 +33,12 @@ Keep decisions beside the requirements: decision ID, affected requirement IDs,
 date, choice, reason, evidence, and whether it is an agent assumption or a
 user-accepted compromise. Do not claim approval that was never given.
 
+Normal releases reconcile requested deliverables, named requirement views and
+sticker permission with the captured brief. Use a labelled draft for a partial
+delivery. Accepted changes need an explicit brief revision and decision record;
+neither a stage override nor free-text decision silently waives a hard constraint.
+See [release policy](releases.md) for the automated checks and remaining limits.
+
 ## Trace each requirement to a check
 
 Keep one row per independently reviewable requirement. For new projects,

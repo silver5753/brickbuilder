@@ -21,11 +21,21 @@ def test_installed_building_authoring(installed_core, tmp_path):
     bundle = tmp_path / "default"
     release = json.loads(
         installed_core.run(
-            "release", project, "--stage", "connections", "--destination", bundle
+            "release",
+            project,
+            "--stage",
+            "connections",
+            "--destination",
+            bundle,
+            "--draft",
+            expected=3,
         ).stdout
     )
-    assert release["label"] == "verified_artifacts"
-    verified = json.loads(installed_core.run("verify-release", bundle).stdout)
+    assert release["label"] == "draft"
+    assert any("preview" in f for f in release["policy_findings"])
+    verified = json.loads(
+        installed_core.run("verify-release", bundle, expected=3).stdout
+    )
     assert verified["manifest_sha256"] == release["manifest_sha256"]
     execution = json.loads((bundle / "build_report.json").read_text())
     assert execution["status"] == "pass"

@@ -59,6 +59,12 @@ Without `build.json`, only CAD/inventories and basic placement/count/binding
 checks run. This preserves existing Model-returning builders without inventing a
 connection root or render setup. The starter remains deliberately unimplemented.
 
+Before executing the builder, build rejects requested sticker deliverables,
+sticker generation or render overlays when the brief forbids stickers. Unused
+sticker configuration files are allowed. Build may otherwise produce an incomplete
+draft; release additionally reconciles requested deliverables, views and sticker
+permission against the brief (see [release policy](releases.md)).
+
 | Stage | Inputs and scope |
 |---|---|
 | `cad` | Always generated: complete CAD, native BOM, groups and alternative selections |

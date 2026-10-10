@@ -123,6 +123,24 @@ def test_config_errors_precede_code_and_builder_errors_publish_nothing(
     assert not (tmp_path / "out").exists()
 
 
+@pytest.mark.parametrize("stage", ["stickers", "render", "cad"])
+def test_forbidden_stickers_fail_before_builder(project, tmp_path, stage):
+    path = project / "brief.json"
+    brief = json.loads(path.read_text())
+    brief["sticker_policy"] = "forbidden"
+    if stage == "cad":
+        brief["deliverables"].append("stickers")
+    path.write_text(json.dumps(brief))
+    path = project / "build.json"
+    config = json.loads(path.read_text())
+    config["stickers"] = "missing-stickers.json"
+    path.write_text(json.dumps(config))
+    with pytest.raises(ValueError, match="forbidden"):
+        build_project(project, tmp_path / "out", stages=(stage,))
+    assert not (project / "calls.txt").exists()
+    assert not (tmp_path / "out").exists()
+
+
 def test_pose_identity_and_inventory_contract():
     model = Assembly(
         "fixture", (PartInstance("a", "a.dat", 1), PartInstance("b", "b.dat", 2))

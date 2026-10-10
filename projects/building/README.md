@@ -132,12 +132,13 @@ seating plane; studs protrude into the floor area. No hinged door is claimed.
 bindings to pass for every pose. Its explicit inputs retain geometry review notes.
 
 ```sh
-uv run --locked brickbuilder release projects/building --stage connections \
+uv run --locked brickbuilder release projects/building --stage connections --draft \
   --destination output/building-release
 uv run --locked brickbuilder verify-release output/building-release
 ```
 
-Omit the stage override and supply the render extra/library for configured views.
+This partial package and its verification return exit 3: requested views are absent.
+Omit the stage override and supply the render extra/library for a complete release.
 Read [release scope](../../docs/releases.md): verified artifacts are not physical
 certification, and review images still need visual acceptance.
 
@@ -148,11 +149,13 @@ to `building/cap/lintel`. The original geometric image contains no fonts or
 third-party assets. It is a demonstration input, not an artwork generator or
 required visual style for future projects. Native CAD and quantities are unchanged.
 
-The default build/release now generates a front-facing preview and a 47.2 × 7.2 mm
-printable label with calibration marks. The frame is native part-local; it moves
-with that part in poses. See [artwork placement](../../docs/artwork.md). Required
-release checks are unchanged; image inspection and physical label fit remain
-separate reviews.
+The default brief forbids stickers, so default builds do not use this optional
+artwork. To explore a decorated variant, make a separate project revision with an
+explicitly allowed sticker policy and recorded decision, set `build.json.stickers`
+to `stickers.json`, and add the stickers stage/deliverable. The fixture produces a
+47.2 × 7.2 mm label with calibration marks and a part-local placement that follows
+poses. See [artwork placement](../../docs/artwork.md). Image inspection and physical
+label fit remain separate reviews.
 
 ## Illustrated assembly sequence
 

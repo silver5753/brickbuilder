@@ -3,13 +3,12 @@
   "stages": [
     "connections",
     "render",
-    "stickers",
     "instructions"
   ],
   "root": "building/foundation/plate",
   "catalog": "connectors.json",
   "render": "render_config.json",
-  "stickers": "stickers.json",
+  "stickers": null,
   "exceptions": null,
   "orders": []
 }

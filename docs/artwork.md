@@ -89,17 +89,22 @@ matrix, not whether the frame lies on a usable real surface.
 
 ## Generate and inspect
 
-The building example includes one small wayfinding PNG as a workflow fixture.
-Its default `build.json` requests connections, renders and stickers:
+The building example includes one small wayfinding PNG as an optional workflow
+fixture. Its default brief forbids stickers, and its default build leaves them
+disabled. For a reviewed decorated variant, copy the project to
+`projects/building-artwork`, record the accepted change in `decisions.json`, set
+`brief.json.sticker_policy` to `allowed`, add the `stickers` deliverable and stage,
+and set `build.json.stickers` to `stickers.json`. Then run:
 
 ```sh
 mkdir -p output
-uv run --locked --extra render brickbuilder release projects/building \
+uv run --locked --extra render brickbuilder release projects/building-artwork \
   --library /path/to/ldraw --destination output/building-artwork
 uv run --locked brickbuilder verify-release output/building-artwork
 ```
 
-For print-only work on an already generated building model:
+For print-only tooling trials on an already generated building model (standalone
+commands do not load or revise a project brief):
 
 ```sh
 uv run --locked --extra artwork brickbuilder stickers output/building-core/model.ldr \

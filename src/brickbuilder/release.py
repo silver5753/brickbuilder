@@ -10,6 +10,7 @@ import shutil
 from tempfile import TemporaryDirectory
 
 from .execution import build_project, load_build_config, _json
+from .delivery import validate_decoration
 from .jsonio import read_json
 from .project import load_project, project_path
 from .rendering.stickers import artwork_dependencies
@@ -73,6 +74,13 @@ def release_project(
     if destination.resolve().is_relative_to(directory):
         raise ValueError("Keep release outputs outside the project directory")
     policy = load_policy(directory)
+    project = load_project(directory)
+    settings = load_build_config(project)
+    validate_decoration(
+        project.brief,
+        set(settings.stages if stages is None else stages),
+        settings.stickers is not None,
+    )
     before = _inputs(directory, policy)
     with TemporaryDirectory(
         prefix="brickbuilder-release-", dir=destination.parent
@@ -90,7 +98,12 @@ def release_project(
                 raise ValueError(
                     f"Build input does not match captured release input: {name}"
                 )
-        findings = policy_findings(summary, policy)
+        findings = policy_findings(
+            summary,
+            policy,
+            project.brief,
+            stickers=settings.stickers is not None,
+        )
         if findings and not draft:
             raise ValueError(
                 "Release policy not met; use --draft for a review package: "
@@ -100,7 +113,6 @@ def release_project(
             target = folder / "provenance/project" / name
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(payload)
-        project = load_project(directory)
         _json(
             folder / "provenance/environment.json",
             {

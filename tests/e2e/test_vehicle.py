@@ -19,11 +19,21 @@ def test_installed_vehicle_authoring(installed_core, tmp_path):
     bundle = tmp_path / "bundle"
     release = json.loads(
         installed_core.run(
-            "release", project, "--stage", "connections", "--destination", bundle
+            "release",
+            project,
+            "--stage",
+            "connections",
+            "--destination",
+            bundle,
+            "--draft",
+            expected=3,
         ).stdout
     )
-    assert release["label"] == "verified_artifacts"
-    verified = json.loads(installed_core.run("verify-release", bundle).stdout)
+    assert release["label"] == "draft"
+    assert any("preview" in f for f in release["policy_findings"])
+    verified = json.loads(
+        installed_core.run("verify-release", bundle, expected=3).stdout
+    )
     assert verified["manifest_sha256"] == release["manifest_sha256"]
     execution = json.loads((bundle / "build_report.json").read_text())
     assert execution["status"] == "pass"
@@ -222,6 +232,14 @@ def author(project):
     roof_ids = [f"vehicle/body/roof/{side}_tile" for side in ("left", "right")]
     brief = read(project / "brief.json")
     brief["sticker_policy"] = "allowed"
+    brief["deliverables"] = [
+        "cad",
+        "inventory",
+        "preview",
+        "instructions",
+        "stickers",
+        "orders",
+    ]
     (project / "brief.json").write_text(json.dumps(brief))
     stickers = dict(
         schema_version=2,
@@ -319,3 +337,22 @@ def author(project):
     shutil.rmtree(library)
     verified = json.loads(installed_core.run("verify-release", output).stdout)
     assert verified["status"] == "pass"
+    assert verified["policy_findings"] == []
+    # A configured view is not evidence that its image was actually delivered.
+    report_path = output / "render/render_report.json"
+    report = read(report_path)
+    missing = report["views"][0]["file"]
+    (output / "render" / missing).unlink()
+    del report["file_sha256"][missing]
+    report_path.write_text(json.dumps(report))
+    manifest_path = output / "release_manifest.json"
+    manifest = read(manifest_path)
+    del manifest["artifacts"]["render/" + missing]
+    manifest["artifacts"]["render/render_report.json"] = sha256(
+        report_path.read_bytes()
+    ).hexdigest()
+    manifest_path.write_text(json.dumps(manifest))
+    rejected = json.loads(
+        installed_core.run("verify-release", output, expected=1).stdout
+    )
+    assert any("Rendered view lacks a checksum" in e for e in rejected["errors"])
