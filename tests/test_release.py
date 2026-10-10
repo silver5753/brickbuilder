@@ -109,6 +109,56 @@ def test_policy_drafts_and_existing_release(project, tmp_path, state, status):
     assert verify_release(folder)["status"] == "fail"
 
 
+@pytest.mark.parametrize("offset, status", [(0, "fail"), (2000, "pass")])
+def test_colour_independent_placements_gate_release(project, tmp_path, offset, status):
+    builder = project / "build.py"
+    builder.write_text(
+        builder.read_text()
+        + f"""
+
+from dataclasses import replace
+from brickbuilder.transforms import Transform
+
+original_build = build
+
+
+def build(project):
+    result = original_build(project)
+    part = result.model.parts[0]
+    duplicate = replace(
+        part.moved(Transform(({offset}, 0, 0))),
+        instance_id="duplicate", colour=1 if part.colour != 1 else 4,
+    )
+    return replace(result, model=replace(result.model, parts=(*result.model.parts, duplicate)))
+"""
+    )
+    (project / "release.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                required_checks=["placements"],
+                inputs=[],
+            )
+        )
+    )
+    folder = tmp_path / "release"
+    if status == "fail":
+        with pytest.raises(ValueError, match="Release policy not met"):
+            release_project(project, folder, stages=("cad",))
+        assert not folder.exists()
+    release_project(project, folder, stages=("cad",), draft=status == "fail")
+    report_path = folder / "build_report.json"
+    report = json.loads(report_path.read_text())
+    assert report["models"]["default"]["checks"]["placements"] == status
+    assert verify_release(folder)["validation_status"] == status
+    if status == "fail":
+        # Offline verification must recompute placements, not trust a reported pass.
+        report["models"]["default"]["checks"]["placements"] = "pass"
+        report_path.write_text(json.dumps(report))
+        refresh_manifest(folder)
+        assert verify_release(folder)["status"] == "fail"
+
+
 def test_capture_helpers_and_reject_mutating_inputs(project, tmp_path):
     (project / "helper.py").write_text("COLOUR = 71\n")
     folder = tmp_path / "release"

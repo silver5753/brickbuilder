@@ -135,10 +135,12 @@ def test_duplicate_ids_and_invalid_fields():
 def test_duplicate_placements_report_ids_without_deletion():
     first = PartInstance("first", "test.dat", 71)
     second = replace(first, instance_id="second")
-    third = replace(first, instance_id="third", colour=0)
-    model = Model((first, second, third))
-    assert duplicate_placements(model) == (("first", "second"),)
-    assert len(model.parts) == 3
+    third = replace(first, instance_id="third", reference="TEST.DAT", colour=0, step=2)
+    separated = replace(third, instance_id="separated", transform=Transform((20, 0, 0)))
+    different = replace(third, instance_id="different", reference="other.dat")
+    model = Model((first, second, third, separated, different))
+    assert duplicate_placements(model) == (("first", "second", "third"),)
+    assert model.parts == (first, second, third, separated, different)
 
 
 def test_all_baseline_variants_roundtrip_exact_parsed_values():
@@ -372,10 +374,11 @@ def test_inspect_invalid_input_and_missing_dependencies_fail(tmp_path, invoke_cl
     assert invoke_cli(["inspect", str(path)])[0] == 2
 
 
-def test_duplicate_placements_have_nonzero_exit(tmp_path, invoke_cli):
+@pytest.mark.parametrize("colour", [71, 4])
+def test_duplicate_placements_have_nonzero_exit(tmp_path, invoke_cli, colour):
     root = tmp_path
     path = Path(root) / "test.ldr"
-    path.write_text(REFERENCE + "\n" + REFERENCE)
+    path.write_text(REFERENCE + "\n" + REFERENCE.replace("1 71 ", f"1 {colour} ", 1))
     code, output, _ = invoke_cli(["inspect", str(path)])
     assert code == 1
     assert len(json.loads(output)["duplicate_placements"]) == 1

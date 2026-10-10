@@ -116,8 +116,11 @@ including top-level primitives. Conditional lines contribute endpoints only,
 not their visibility-control points. BFC statements are preserved but face
 winding is irrelevant to this vertex-bound calculation. Bounds are not solid
 volumes, connector geometry, collision tests or physical dimensions certified
-by measurement. Duplicate diagnostics use exact reference/colour/transform
-values and never delete parts.
+by measurement. `duplicate_placements` groups instances with the same normalized
+native reference and exact transform, regardless of colour, group or step.
+Reference normalization ignores case and normalizes path separators. The check
+returns instance IDs and never deletes parts. It detects coincident copies of the
+same part, not general collisions between different shapes or unequal transforms.
 
 ## Format scope and limits
 

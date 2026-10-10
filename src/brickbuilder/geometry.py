@@ -128,12 +128,14 @@ def inspect_geometry(
 
 
 def duplicate_placements(model: Model) -> tuple[tuple[str, ...], ...]:
-    """Exact duplicate native reference/colour/transform; never silently remove."""
+    """Same normalized native reference and exact transform, regardless of colour.
+
+    Report identities without removing parts; this is not a general collision test.
+    """
     groups: dict[tuple, list[str]] = {}
     for part in model.parts:
         key = (
             reference_name(part.reference),
-            part.colour,
             part.transform.position,
             part.transform.rotation,
         )

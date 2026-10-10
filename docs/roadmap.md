@@ -1,7 +1,7 @@
 # Brick Builder implementation roadmap
 
 Updated: 10 October 2026. Status: P1–P5 complete within the scoped limits below;
-post-review C1 namespace protection and C2 replacement ordering are complete.
+post-review C1–C3 namespace, replacement-ordering and placement fixes are complete.
 Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
@@ -28,8 +28,8 @@ works today. Current user instructions take precedence over this plan.
   passed after the fixes. All 30 assembly/rendering tests passed; the complete
   render-extra suite passed **283 tests**, including installed-wheel workflows.
   The prescribed ty check passed with warnings treated as errors.
-- Scope: reserved-name protection only. Replacement ordering is covered by C2
-  below; placement checks, brief/release reconciliation and the other review
+- Scope: reserved-name protection only. Replacement ordering and placement checks
+  are covered by C2–C3 below; brief/release reconciliation and the other review
   proposals remain future work.
   Frozen fixtures and physical design data are unchanged.
 
@@ -59,6 +59,31 @@ and [sticker output names](https://github.com/silver5753/brickbuilder/commits/ma
   example design data, instruction plans or physical-build claims changed.
 
 Implementation history: [replacement previews](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/replacements.py).
+
+## Post-review C3 — Detect physical duplicate placements
+
+**Complete, 10 October 2026.** Follows
+[C2](https://github.com/silver5753/brickbuilder/commit/0190771a7bcf9c082cece87e64690a4d216b9c2d).
+
+- Make `duplicate_placements` compare normalized native reference and exact
+  transform independently of colour. Existing inspection, build and offline
+  release checks now reject differently coloured coincident copies consistently.
+- Preserve instance IDs, CAD and inventory quantities; diagnostics never delete
+  parts. No exact-record comparison API is needed by existing callers.
+- Extend the native model and execution guides with the corrected contract:
+  colours, groups and steps do not distinguish physical placement. Different
+  references, separated copies and unequal transforms remain outside this exact
+  duplicate diagnostic; it is not a general collision or clearance certificate.
+- Verification: three regressions failed before the fix (helper, inspection exit
+  and release gate). All **77** targeted core/execution/release tests passed,
+  including separated-copy acceptance and offline rejection of a falsified
+  placement pass. The full render-extra suite passed **287 tests**, including
+  installed-wheel workflows. Ty with warnings treated as errors and pinned Ruff
+  checks passed.
+- Scope: colour-independent exact placement only. Frozen fixtures and example
+  design data are unchanged. C4 brief/release reconciliation is next.
+
+Implementation history: [placement diagnostics](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/geometry.py).
 
 ## Goal and success criteria
 
@@ -738,7 +763,7 @@ Agent, starter, playbook and validation instructions now link the shipped scope.
 The testing guide was also repaired: its body had duplicated the inventory guide;
 it now describes locked setup, pytest markers, wheel isolation and evidence limits.
 
-The planned P1–P5 slices are complete; post-review C1–C2 are recorded above.
+The planned P1–P5 slices are complete; post-review C1–C3 are recorded above.
 A useful follow-up is a fresh-agent
 usability pass on a third unrelated brief and measured physical trial feedback.
 Use those findings to propose the next work; no additional phase is pre-authorized

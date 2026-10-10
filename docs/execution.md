@@ -150,6 +150,11 @@ model certificate. Even CAD-only execution can report known placement/count or
 binding failures. Ordinary authoring bundles may retain failed/unknown checks to
 support repair; no verified-release label is produced.
 
+The `placements` check fails when instances share a normalized native reference
+and exact transform, even if their colours or authored steps differ. Inspection
+and offline release verification use the same check. Separated copies remain
+valid; this diagnostic does not establish general collision clearance.
+
 Requirement coverage resolves authored links and the brief's assembly names,
 including parent assemblies containing descendant groups. Unknown requirement
 IDs or links to nonexistent instances are invalid inputs. Missing declared
