@@ -32,6 +32,13 @@ metadata even if physical CAD stayed the same. Unaffected instances and their
 identities are retained. New physical parts must have new, deterministic IDs.
 Do not reuse a removed part's ID for a different assembly.
 
+Candidates are stably ordered by each part's authored LDraw `step` and checked
+for CAD serialization during preview. Retained parts keep their step values and
+relative order within a step; additions keep their recipe-authored values and
+follow retained parts at the same step. Replacement parts do not automatically
+inherit the removed part's step. This export order is separate from the authored
+`steps.json` instruction plan and does not establish physical assembly order.
+
 A known connection failure cannot be applied. Unknown connector coverage requires
 an explicit `allow_unknown=True`; use that only for an unfinished draft and retain
 the unknown findings. Optional geometry measurements do not become a fit gate:

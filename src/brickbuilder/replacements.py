@@ -8,6 +8,7 @@ from .build_result import authored
 from .connectivity.catalog import Catalog
 from .geometry import GeometryLoader, inspect_geometry
 from .inventory import difference
+from .ldraw import dumps, from_model
 from .model import Model, PartInstance
 
 
@@ -150,8 +151,14 @@ def preview_replacement(
     candidate = AuthoredModel(
         replace(
             source.model,
-            parts=tuple(p for p in source.model.parts if p.instance_id not in removed)
-            + additions.model.parts,
+            # Keep authored step values and stable order within each step.
+            parts=tuple(
+                sorted(
+                    tuple(p for p in source.model.parts if p.instance_id not in removed)
+                    + additions.model.parts,
+                    key=lambda p: p.step,
+                )
+            ),
         ),
         tuple(Attachment(a.name, endpoint(a.endpoint)) for a in source.attachments)
         + additions.attachments,
@@ -162,6 +169,8 @@ def preview_replacement(
         ),
         tuple((key, tuple(sorted(ids))) for key, ids in sorted(links.items())),
     )
+    # Validate the export contract before issuing a preview or its model hash.
+    dumps(from_model(candidate.model))
     all_ids = kept | added
     if root not in all_ids:
         raise ValueError(

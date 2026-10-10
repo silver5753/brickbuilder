@@ -7,11 +7,11 @@ import runpy
 
 import pytest
 
-from brickbuilder.assembly import Connection, Endpoint
+from brickbuilder.assembly import Connection, Endpoint, authoring_bundle
 from brickbuilder.connectivity.catalog import Catalog, load_catalog
 from brickbuilder.geometry import GeometryLoader
 from brickbuilder.instructions import load_steps, step_records
-from brickbuilder.ldraw import PartLibrary
+from brickbuilder.ldraw import PartLibrary, loads
 from brickbuilder.project import load_project
 from brickbuilder.replacements import preview_replacement, remap_steps
 from brickbuilder.transforms import Transform, rotation
@@ -80,6 +80,51 @@ def test_preview_atomic_application_and_step_migration(replacement_case, tmp_pat
         ),
     )
     assert json.loads(missing.report_json)["geometry"]["status"] == "unknown"
+
+
+def test_replacement_preserves_authored_steps_and_serializes(replacement_case):
+    source, recipe, catalog = replacement_case
+    # Reverse the retained order to ensure ties are stable, not sorted by ID.
+    parts = tuple(reversed(source.model.parts))
+    source = replace(
+        source,
+        model=replace(
+            source.model,
+            parts=tuple(
+                replace(p, step=1 if i == 0 else 3) for i, p in enumerate(parts)
+            ),
+        ),
+    )
+
+    def stepped(assembly):
+        return replace(
+            assembly,
+            parts=tuple(replace(p, step=i + 1) for i, p in enumerate(assembly.parts)),
+            children=tuple(stepped(child) for child in assembly.children),
+        )
+
+    recipe = replace(
+        recipe,
+        expected=tuple(
+            p
+            for p in source.model.parts
+            if p.instance_id == recipe.expected[0].instance_id
+        ),
+        additions=stepped(recipe.additions),
+    )
+    retained = tuple(p for p in source.model.parts if p not in recipe.expected)
+    additions = recipe.additions.flatten().model.parts
+    before = source.model.fingerprint()
+    preview = preview_replacement(source, recipe, catalog, root="vehicle/chassis")
+    result = preview.apply(source)
+    assert source.model.fingerprint() == before
+    bundle = authoring_bundle(result, title="Multi-step replacement")
+    assert result.model.parts == (retained[0], *additions, *retained[1:])
+    restored = loads(bundle["model.ldr"]).model
+    assert restored == result.model
+    assert (
+        restored.fingerprint() == json.loads(preview.report_json)["after_model_sha256"]
+    )
 
 
 @pytest.mark.parametrize(

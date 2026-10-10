@@ -141,11 +141,33 @@ def test_installed_vehicle_authoring(installed_core, tmp_path):
 def test_installed_replacement_release_regenerates_outputs(
     installed_core, installed_render, tmp_path
 ):
+    source = tmp_path / "stepped-source"
+    shutil.copytree(
+        ROOT / "projects/vehicle", source, ignore=shutil.ignore_patterns("__pycache__")
+    )
+    builder = source / "build.py"
+    builder.write_text(
+        builder.read_text()
+        + """
+
+from dataclasses import replace
+
+original_author = author
+
+
+def author(project):
+    result = original_author(project)
+    return replace(result, model=replace(result.model, parts=tuple(
+        replace(part, step=1 if i == 0 else 2)
+        for i, part in enumerate(result.model.parts)
+    )))
+"""
+    )
     project = tmp_path / "replacement-project"
     checked(
         [
             str(installed_core.python),
-            str(ROOT / "projects/vehicle/alternatives.py"),
+            str(source / "alternatives.py"),
             str(project),
         ],
         cwd=tmp_path,
@@ -257,6 +279,7 @@ def test_installed_replacement_release_regenerates_outputs(
         "release", project, "--library", library, "--destination", output
     )
     source_hash = sha256((output / "model.ldr").read_bytes()).hexdigest()
+    assert (output / "model.ldr").read_text().count("0 STEP\n") == 1
     execution = read(output / "build_report.json")["models"]["default"]
     assert execution["quantity"] == 22
     assert execution["checks"]["connections"] == "pass"

@@ -1,7 +1,8 @@
 # Brick Builder implementation roadmap
 
 Updated: 10 October 2026. Status: P1–P5 complete within the scoped limits below;
-post-review C1 namespace protection is complete. Original reviewed code baseline: commit
+post-review C1 namespace protection and C2 replacement ordering are complete.
+Original reviewed code baseline: commit
 `ecf01adc9944e4570004f1a7227b1c8366e23b57`.
 
 This is the current forward plan. The [workflow inventory](workflow-inventory.md)
@@ -27,12 +28,37 @@ works today. Current user instructions take precedence over this plan.
   passed after the fixes. All 30 assembly/rendering tests passed; the complete
   render-extra suite passed **283 tests**, including installed-wheel workflows.
   The prescribed ty check passed with warnings treated as errors.
-- Scope: reserved-name protection only. Replacement ordering, placement checks,
-  brief/release reconciliation and the other review proposals remain future work.
+- Scope: reserved-name protection only. Replacement ordering is covered by C2
+  below; placement checks, brief/release reconciliation and the other review
+  proposals remain future work.
   Frozen fixtures and physical design data are unchanged.
 
 Implementation history: [assembly selections](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py)
 and [sticker output names](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/stickers.py).
+
+## Post-review C2 — Preserve replacement serialization invariants
+
+**Complete, 10 October 2026.** Follows
+[C1](https://github.com/silver5753/brickbuilder/commit/b17d5a2f922d20e60aace9504e7b6eda94a78c05).
+
+- Stably order retained and added parts by authored LDraw step before reviewing
+  the replacement candidate. Preserve all step values and retained identities;
+  within a step, retained parts keep their relative order and precede additions.
+- Validate candidate CAD serialization during preview, before issuing a report
+  tied to its model hash. Single-step replacements keep their existing ordering.
+- Document the distinction between LDraw export order and the separately authored
+  instruction plan. New parts retain recipe steps rather than inheriting removed
+  parts' steps; physical assembly sequence still needs explicit review.
+- Verification: the new multi-step regression reproduced the export failure and
+  now checks retained instances, recipe step values, stable ties, CAD round-trip
+  and report hashes. All 10 targeted cases passed, including the installed-wheel
+  replacement workflow using a multi-step source, regenerated outputs and offline
+  release verification. The full render-extra suite passed **284 tests**; ty with
+  warnings treated as errors and the pinned Ruff check passed.
+- Scope: replacement ordering and export validation only. No frozen fixtures,
+  example design data, instruction plans or physical-build claims changed.
+
+Implementation history: [replacement previews](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/replacements.py).
 
 ## Goal and success criteria
 
@@ -712,7 +738,7 @@ Agent, starter, playbook and validation instructions now link the shipped scope.
 The testing guide was also repaired: its body had duplicated the inventory guide;
 it now describes locked setup, pytest markers, wheel isolation and evidence limits.
 
-The planned P1–P5 slices are complete; post-review C1 is recorded above.
+The planned P1–P5 slices are complete; post-review C1–C2 are recorded above.
 A useful follow-up is a fresh-agent
 usability pass on a third unrelated brief and measured physical trial feedback.
 Use those findings to propose the next work; no additional phase is pre-authorized
