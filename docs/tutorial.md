@@ -209,6 +209,7 @@ gaps. Regenerate ordering mappings, decals or instructions only if requested and
 supported; current stock/importer acceptance is separate from this workflow.
 
 The vehicle can be rehearsed with the same APIs and its own project runner and
-camera config. For a third subject, the expected changes are all project inputs
-and local geometry choices. If a missing reusable operation forces a core edit,
+camera config. The [desktop flower](../projects/flower/README.md) demonstrates a
+third, botanical brief using core-only authoring and release. For another subject,
+the expected changes are project inputs and local geometry choices. If a missing reusable operation forces a core edit,
 record the gap and justify extraction rather than adding a subject-name branch.

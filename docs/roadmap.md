@@ -10,7 +10,7 @@ Help an agent turn a user description into a reproducible brick-model review
 package using generic authoring, CAD, inventory, nominal connections, rendering,
 instructions and release tools. Keep subject, axes, geometry choices and sourcing
 constraints in project folders. Solar Orbiter is a frozen regression fixture;
-vehicle and building examples demonstrate unrelated subjects.
+vehicle, building and flower examples demonstrate unrelated subjects.
 
 Neither a polished render, connected graph nor verified release proves physical
 buildability, visual acceptance or stock availability. Preserve fail, unknown and
@@ -108,8 +108,21 @@ errors, pinned Ruff and whitespace checks passed. Regression coverage includes
 coincident incompatible interfaces, legacy unknowns, intended-pair checks,
 preparation coverage, migrated historical poses and installed-wheel publication.
 Identity labels preserve authored nominal evidence; they do not authenticate fit.
-The botanical rehearsal delivers CAD/inventory only; geometry, visual acceptance,
-stock, insertion and physical stability remain untested. Completed 12 October 2026.
+The C7 automated botanical rehearsal delivers CAD/inventory only; geometry and
+rendering were outside that release. Visual acceptance, stock, insertion and
+physical stability remain untested. Completed 12 October 2026.
+
+## Documentation and preview follow-up — 12 October 2026
+
+The README now describes the shipped workflow, package layout and all four
+models; completed P1–P5 work is no longer presented as future implementation.
+Execution/testing guidance reflects current defaults and the botanical example.
+A separate [all-model preview run](rendering.md#recorded-all-model-preview-run--12-october-2026)
+produced front/rear views and an articulated spacecraft view from actual CAD.
+The flower and shelter resolved rendered geometry; vehicle empty dependencies
+and spacecraft missing/empty dependencies remain recorded. This did not alter
+models, release policies or physical acceptance. Documentation changes were
+checked against CLI/configuration, relative links and the core quick-start run.
 
 ## Follow-up work outside the cleanup plan
 

@@ -27,6 +27,13 @@ stages or a reviewed build.json. For delivery, add release.json with required
 software checks and declared builder data inputs; use release and verify-release.
 Artifact verification does not establish physical or visual acceptance.
 
+Connector declarations need reviewed `interface` identities backed by evidence.
+A shared broad family or matching placement does not prove compatibility. Missing
+identities stay unknown; intended connection assertions cannot override them.
+Release policy can explicitly require render completeness or bind exact-model
+sourcing/collision evidence. Read docs/connectivity.md and docs/releases.md for
+scope limits before using those results as gates.
+
 Keep generated outputs, downloaded assets and environment files ignored. Record
 exact revisions and independent validation statuses; never treat unknown as pass.
 Review opposite sides and concealed attachments, not just the presentation view.

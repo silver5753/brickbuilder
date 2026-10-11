@@ -1,7 +1,7 @@
 # Nominal connections and attachment review
 
-Milestone 4 adds connector matching and rooted attachment paths. It leaves the
-frozen spacecraft placements unchanged. It does not certify physical strength,
+Connector matching checks reviewed nominal interfaces and rooted attachment paths.
+It leaves the frozen spacecraft placements unchanged. It does not certify physical strength,
 clutch, insertion access, collisions or assembly sequence.
 
 ## Run the review

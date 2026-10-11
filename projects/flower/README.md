@@ -42,9 +42,19 @@ The installed-wheel regression repeats the workflow, rejects a normal release
 when interface identities are removed, retains an unknown draft, then verifies
 the original release after deleting the project inputs.
 
-The rehearsal deliberately stops at the brief's CAD/inventory scope. Geometry,
-renders, botanical appearance, stability, strength, insertion order, available
-colours, stock, ordering and physical assembly remain untested. The one-stud stem
+The C7 core-only rehearsal stopped at the brief's CAD/inventory scope. Geometry
+and rendering were not part of that release. Botanical appearance, stability,
+strength, insertion order, available colours, stock, ordering and physical
+assembly remain untested. The one-stud stem
 and cantilevered leaves/head need physical review before treating this as a usable
 model. For a visual design delivery, first add a library, render settings and
 opposite/underside requirement views; use the existing rendering workflow.
+
+## Subsequent preview run
+
+On 12 October 2026, the unchanged eight-part model was rendered from both sides
+using actual LDraw geometry and standalone camera settings. Rendered surfaces and
+recursive geometry completeness were resolved. See the [all-model render record](../../docs/rendering.md#recorded-all-model-preview-run--12-october-2026)
+for the code revision and settings. This was an additional image-generation run;
+it did not add render settings to the project's default core-only build, upgrade
+its release policy or establish botanical/physical acceptance.

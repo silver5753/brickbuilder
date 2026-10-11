@@ -49,6 +49,8 @@ appearance but cannot prove dimensions, real part identities or connections.
 Every audit must identify its model hash, scope and limitations. Track pass,
 fail, unknown and not-tested independently for each validation dimension.
 Definite connection failures must fail; unsupported interfaces remain unknown.
+Connection edges require explicit reviewed interface identities as well as geometry;
+neither broad connector families nor authored intended pairs establish compatibility.
 A process exit, render or connected graph is not a physical-build certificate.
 
 A catalogue entry does not prove colour production, current stock or importer

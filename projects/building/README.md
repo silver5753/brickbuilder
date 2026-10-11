@@ -11,9 +11,11 @@ brief and how to adapt it to other subjects.
 
 ## Unified execution
 
-`build.json` configures connections and rendering for the shared command:
+`build.json` configures connections, rendering and instructions for the shared
+command:
 
 ```sh
+mkdir -p output
 uv run --locked brickbuilder build projects/building --stage connections \
   --destination output/building-core
 uv run --locked --extra render brickbuilder build projects/building \
@@ -21,7 +23,8 @@ uv run --locked --extra render brickbuilder build projects/building \
 ```
 
 CAD, native/group inventories, refreshed profiles and the draft build summary
-come from one builder call. The second command also generates configured views.
+come from one builder call. The second command also generates configured views
+and illustrated instructions.
 Read [execution](../../docs/execution.md) for statuses, optional stages and limits.
 The project-local script below remains useful for its explicit design variants.
 

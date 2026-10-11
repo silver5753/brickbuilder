@@ -1,6 +1,6 @@
 # Actual-CAD previews and print decals
 
-Milestone 5 ports the historical depth-buffer preview renderer into a reusable
+The package provides a depth-buffer CAD preview renderer through a reusable
 Python 3.12 API and CLI. The core keeps zero runtime dependencies. Rendering
 uses the separately locked `render` extra: NumPy 2.2.6, Pillow 11.3.0, Numba
 0.61.2 and its locked llvmlite dependency. The older Blender studio script is
@@ -152,3 +152,29 @@ checks. It is an optional [release policy check](releases.md). Instruction rende
 carry their own completeness reports but are not covered by this aggregate gate.
 Offline verification reconciles recorded counts/statuses without a geometry library;
 it does not independently reconstruct the external geometry.
+
+## Recorded all-model preview run — 12 October 2026
+
+The four project models and Solar Orbiter's articulated pose were rendered from
+code revision `ae040007bfbc788379f15d4ea53b6613e61cd932`, using the official LDraw
+complete library downloaded for this run. Vehicle, shelter and flower CAD came
+from their default builders; spacecraft CAD came from the frozen v15 fixtures.
+Front/rear views were produced for each project, plus one articulated spacecraft
+view. The PNGs and reports were delivered separately; generated images and fetched
+geometry remain outside source control.
+
+| Model | Parts | Surface status | Recursive geometry completeness |
+|---|---:|---|---|
+| Solar Orbiter, both poses | 966 each | Approximate | Partial: missing `7798.dat`; empty `1-16chrd.dat` and `empty.dat` dependencies |
+| Vehicle | 19 | Resolved | Partial: empty `1-16chrd.dat` and `empty.dat` dependencies |
+| Entrance shelter | 23 | Resolved | Resolved for rendered instances |
+| Flower | 8 | Resolved | Resolved for rendered instances |
+
+The run used project camera directions with 1400 × 1050 output and 2×
+supersampling. Flower used standalone three-quarter cameras at `(1,-0.6,-1.5)`
+and `(-1,-0.6,1.5)`, up `(0,-1,0)`, padding `0.1`, no envelopes or decals.
+Solar Orbiter used its recorded profile, exceptions and cosmetic solar stickers.
+This preview run did not change any model, project build-stage defaults or release
+policy. It demonstrates image generation, not physical assembly or acceptance of
+the design's appearance. Dependency bytes/hashes belong to each render report;
+a different local library revision may produce different completeness findings.

@@ -6,7 +6,7 @@ dependencies; rendering is an optional extra. Keep those boundaries testable.
 ```sh
 uv sync --locked
 uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
-uv run --locked pytest -m 'not render' -q
+uv run --locked pytest -m 'not render and not e2e' -q
 uv build
 ```
 
@@ -16,7 +16,7 @@ For the full suite, including actual-CAD image workflows:
 uv sync --locked --extra render
 uv run --locked --extra render ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
 uv run --locked --extra render pytest -q
-uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building
+uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building projects/flower
 ```
 
 Ruff is a supplementary pinned check, not a core runtime dependency. Read the CI
@@ -53,8 +53,8 @@ imports that an editable development install can hide.
 
 The workflows cover starter readiness, local parts/reference preparation, native
 round-trips and exports, connection profiles, previews/artwork, vehicle/building
-releases, authored instructions, replacements, sourcing and sampled collision
-bundles. They exercise source/config hashes, overwrite refusal, status exits,
+releases, the flower compatibility rehearsal, authored instructions, replacements,
+sourcing evidence and sampled collision bundles. They exercise source/config hashes, overwrite refusal, status exits,
 output reconciliation and offline release verification. Collision tests render
 isolated pairs with the installed renderer; this does not upgrade missing geometry.
 

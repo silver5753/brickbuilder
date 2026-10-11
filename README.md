@@ -1,133 +1,170 @@
 # Brick Builder
 
-Brick Builder prepares reusable tools and an agent playbook for designing,
-checking, rendering and sourcing brick models from user descriptions. Start with
-[the agent playbook](docs/playbook.md) and [a design brief](docs/design-brief.md).
-Solar Orbiter is a frozen regression example; new projects define their own
-subject, structure, coordinates and sourcing constraints.
+Brick Builder is a Python toolkit and an agent playbook for turning a user's
+brick-model description into CAD, a parts list, review images and a traceable
+handoff. The agent reads the brief, chooses parts and writes the design; the
+package supplies reusable authoring, checks and export tools. It does not contain
+an LLM, a prompt-to-model generator or an automatic design optimizer.
 
-The package includes typed part instances, rigid transforms, native LDraw
-round-trip tools, recursive geometry inspection, CI and frozen baseline fixtures.
-It also includes native inventories, ordering exports, nominal connection checks,
-actual-CAD previews, imported artwork, authored assembly instructions and explicit
-geometric replacements. [Offline sourcing comparisons](docs/sourcing.md) account
-for dated stock, owned parts and recorded costs. [Scoped collision and sampled motion
-diagnostics](docs/collisions.md) distinguish tested material from unresolved geometry.
+Start with [the playbook](docs/playbook.md) for the workflow or the
+[building tutorial](docs/tutorial.md) for a worked example. New projects keep
+their subject, dimensions, colours and sourcing constraints in their own folder.
 
-## Setup and checks
+## What happens from description to delivery
 
-Use Python 3.12 and uv:
+1. **Record the brief.** Create a project with `init`, then record requirements,
+   references, assumptions and desired outputs. `doctor` checks input readiness
+   without executing the builder.
+2. **Author the model.** Write a project-local `build.py` using named assemblies,
+   real part identities and rigid placements. Stable instance IDs keep the same
+   part recognizable across edits, reports and alternative poses.
+3. **Build and review.** `build` runs that Python once, writes native CAD and a
+   bill of materials (BOM), and runs the selected checks/output stages. The agent
+   inspects results and repairs the design.
+4. **Package a revision.** `release` enforces the explicit software policy and
+   the brief's required deliverables, captures inputs and hashes, and writes a
+   handoff. `verify-release` reconciles the package offline. `--draft` retains
+   failed, unknown or incomplete findings visibly.
+
+A project can start from a new description or existing flattened LDraw CAD.
+No prior spacecraft model or release is needed.
+
+## What the toolkit provides
+
+| Capability | Current support |
+|---|---|
+| CAD and identity | Typed parts, rigid transforms, stable IDs, LDraw round-trips, named groups and alternate poses |
+| Assembly authoring | Local coordinate frames, named attachment points, intended connections and requirement bindings |
+| Geometry | Recursive dependency inspection and vertex bounds; missing and empty geometry remain visible |
+| Connections | Explicit reviewed interface identities plus seat, axis, engagement and rooted-path checks |
+| Images and artwork | Actual-CAD PNG previews, finished PNG artwork supplied by the agent, and separate printable decals |
+| Instructions | Agent-authored steps, accumulated CAD, highlighted illustrations and an offline HTML booklet |
+| Parts and ordering | Native BOMs, selections, explicit marketplace mappings and reconciled BrickOwl/BrickLink exports |
+| Replacements | Reviewed one-to-many assembly recipes with immutable previews, support checks and new identities |
+| Sourcing | Dated offline stock/owned-parts snapshots, candidate baskets, shortages and unknown costs |
+| Collision and motion | Scoped bounds/material-box diagnostics at explicit poses and sampled joint angles |
+| Releases | Captured provenance, required checks, optional exact-model diagnostic evidence and offline verification |
+
+The agent still chooses structure and parts, supplies evidence/configuration,
+judges appearance, authors instructions and resolves unsupported interfaces.
+A connection graph or release pass does not establish physical buildability.
+Stock freshness, importer acceptance, strength and real-world assembly require
+separate evidence. Read [validation levels](docs/validation-levels.md).
+
+## Where things live
+
+| Location | Purpose |
+|---|---|
+| `src/brickbuilder/` | Reusable Python package and CLI; modeling, checks, rendering, inventory and release code |
+| `src/brickbuilder/starter/` | Packaged records and instructions copied by `init` |
+| `projects/<name>/` | Subject-specific briefs, builders, connector catalogs, cameras and evidence |
+| `docs/` and `AGENTS.md` | Workflow, API contracts, agent instructions, limitations and roadmap |
+| `tests/` | Behavioral regressions; `tests/e2e/` exercises installed wheels outside the checkout |
+| `tests/fixtures/solar_orbiter_v15/` | Frozen historical CAD/data whose bytes and counts must stay unchanged |
+| `tools/` | Preparation utilities; historical design recipes stay inside their project |
+| `.github/workflows/` | Separate core, renderer and installed-wheel CI jobs |
+
+The central code concepts are `PartInstance` (one identified physical part),
+`Model` (its complete collection), `Assembly`/`AuthoredModel` (named structure,
+attachments and requirements), and `BuildResult` (a primary model plus poses).
+`execution.py` orchestrates stages; `release.py` and `release_verify.py` package
+and reconcile their outputs. Marketplace aliases and cosmetic artwork stay
+separate from the native physical model.
+
+## Models included
+
+| Project | Default parts | Purpose |
+|---|---:|---|
+| [Solar Orbiter](projects/solar_orbiter/README.md) | 966 | Detailed historical design and frozen regression fixture; normal/articulated poses and alternative selections |
+| [Vehicle](projects/vehicle/README.md) | 19 | Generic authoring example with supported axles, wheels, cab and design variants |
+| [Entrance shelter](projects/building/README.md) | 23 | Tutorial covering staggered walls, doorway/lintel, roof, artwork and instructions |
+| [Desktop flower](projects/flower/README.md) | 8 | Small botanical rehearsal using the same core authoring/release APIs |
+
+These have different scopes and maturity. The small examples demonstrate the
+workflow, and none is a physical-build certificate. Solar Orbiter retains known
+connection/geometry unknowns. See [rendering](docs/rendering.md) for the latest
+recorded preview run and its dependency limits.
+
+## Install and try an existing model
+
+Use **Python 3.12** and **uv**. The core has no runtime dependencies:
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
-uv run --locked pytest -m 'not render' -q
-uv run --locked python -c "import brickbuilder; print(brickbuilder.__version__)"
-uv build
+uv run --locked brickbuilder --help
+mkdir -p output
+uv run --locked brickbuilder build projects/flower --destination output/flower-build
+uv run --locked brickbuilder release projects/flower --destination output/flower-release
+uv run --locked brickbuilder verify-release output/flower-release
 ```
 
-The core has no runtime dependencies. Tests use pytest from the locked development
-environment. Install the `render` extra for the complete suite:
+Review project Python before executing it. Destinations must be new; the flower's
+configured workflow needs no geometry library and delivers CAD/inventory with
+nominal checks. `doctor projects/flower` still reports unknown geometry and visual
+review links. That is distinct from verifying its requested artifact package.
+
+For images and illustrated instructions, install the optional renderer and supply
+your own LDraw library (including `LDConfig.ldr`):
 
 ```sh
 uv sync --locked --extra render
-uv run --locked --extra render pytest -q
+uv run --locked --extra render brickbuilder build projects/building \
+  --library /path/to/ldraw --destination output/building-review
 ```
 
-See [the testing guide](docs/testing.md) for fixtures, markers and coverage limits.
+The building and vehicle default stages include connections, rendering and
+instructions. Geometry is not downloaded by `build`; fetched libraries and
+outputs belong outside source control. The renderer is a CAD preview backend,
+with flat shading and an explicit approximation policy, not a studio renderer.
 
-## Starting a design
-
-For a new description, follow the [new-brief path](docs/playbook.md#new-user-description).
-Create the packaged starter and check its inputs:
+## Start a new design
 
 ```sh
 uv run --locked brickbuilder init projects/my_model
 uv run --locked brickbuilder doctor projects/my_model
 ```
 
-The fresh starter intentionally returns exit 3 (unknown) until its brief and
-planned parts are filled in. Read [project setup](docs/projects.md) for the format
-and diagnostics. Doctor never executes project Python or certifies a model.
-Use [parts and reference preparation](docs/preparation.md) to search local geometry,
-review connector coverage and cache explicitly selected evidence. Use
-[assembly authoring](docs/assembly.md) and the executable [vehicle example](projects/vehicle/README.md)
-for new models. Follow the [from-description tutorial](docs/tutorial.md) through
-the executable [building example](projects/building/README.md) for a complete
-authoring/review walkthrough. Use [project execution](docs/execution.md) to run a
-reviewed builder once and generate a draft bundle. Use [release packages](docs/releases.md)
-for policy gates, provenance and offline verification.
-Use [geometric replacement recipes](docs/replacements.md) to preview a physical
-assembly alternative, retain support requirements and regenerate the affected outputs.
+The starter intentionally returns exit 3 (unknown) until inputs are filled in;
+its builder must be implemented by the agent. The main records are:
 
-For an existing model, follow the [existing-CAD path](docs/playbook.md#existing-cad-or-project).
-Substitute your actual input path below; the output file must not already exist:
+- `project.json`: paths, project identity, planned parts and optional local library.
+- `brief.json`, `sources.json`, `decisions.json`: requirements, evidence and assumptions.
+- `build.py`: the actual design, returning a model or authored assembly.
+- Optional `build.json`, `release.json` and stage configs: execution and handoff policy.
+
+Follow [project setup](docs/projects.md), [parts/reference preparation](docs/preparation.md)
+and [assembly authoring](docs/assembly.md). For existing CAD, use the playbook's
+[existing-model path](docs/playbook.md#existing-cad-or-project); MPD/TEXMAP need
+external preparation and are not supported by the native parser.
+
+## Guides by task
+
+- **Plan:** [Agent instructions](AGENTS.md), [playbook](docs/playbook.md),
+  [design brief](docs/design-brief.md), [tutorial](docs/tutorial.md).
+- **Author and inspect:** [Model API](docs/model-api.md), [assembly](docs/assembly.md),
+  [connections](docs/connectivity.md), [compatibility migration](docs/connector-migration.md).
+- **Generate outputs:** [Execution](docs/execution.md), [rendering](docs/rendering.md),
+  [artwork](docs/artwork.md), [instructions](docs/instructions.md).
+- **Revise and source:** [Replacements](docs/replacements.md), [inventory/exports](docs/inventory-exports.md),
+  [sourcing](docs/sourcing.md), [collisions/motion](docs/collisions.md).
+- **Deliver and maintain:** [Releases](docs/releases.md), [validation levels](docs/validation-levels.md),
+  [testing](docs/testing.md), [roadmap](docs/roadmap.md), [third-party notices](THIRD_PARTY_NOTICES.md).
+
+## Development status and checks
+
+P1–P5 and the C1–C7 cleanup plan are complete within their documented scope. The
+[roadmap](docs/roadmap.md) records shipped work, validation and remaining limits;
+[implementation history](docs/implementation-history.md) preserves earlier plans.
+The latest code-validation run passed 317 tests, including installed-wheel workflows.
 
 ```sh
-uv run --locked brickbuilder inspect path/to/model.ldr
-mkdir -p output
-uv run --locked brickbuilder roundtrip path/to/model.ldr output/working.ldr
+uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked pytest -m 'not render and not e2e' -q
+uv run --locked --extra render pytest -q
+uv build
 ```
 
-Inspection without a supplied geometry library reports geometry as not tested.
-See the [API documentation](docs/model-api.md) for library/exceptions options,
-format limits and exit codes. Round-trip outputs preserve semantic placements
-and add stable instance metadata; the baseline files stay unchanged.
-
-## Start here
-
-- [Agent instructions](AGENTS.md)
-- [Playbook: new brief or existing CAD](docs/playbook.md)
-- [Design brief and acceptance checklist](docs/design-brief.md)
-- [Project format, init and doctor](docs/projects.md)
-- [Parts search and reference preparation](docs/preparation.md)
-- [Tutorial: description to reviewed model](docs/tutorial.md)
-- [Building example](projects/building/README.md)
-- [Unified project execution](docs/execution.md)
-- [Release packages and offline verification](docs/releases.md)
-- [Assembly authoring and generated bindings](docs/assembly.md)
-- [Vehicle example](projects/vehicle/README.md)
-- [Model API and inspection CLI](docs/model-api.md)
-- [Inventories and ordering exports](docs/inventory-exports.md)
-- [Connections and attachment checks](docs/connectivity.md)
-- [CAD previews and print stickers](docs/rendering.md)
-- [Import agent-created artwork](docs/artwork.md)
-- [Authored assembly instructions](docs/instructions.md)
-- [Collision and sampled motion diagnostics](docs/collisions.md)
-- [Current implementation roadmap](docs/roadmap.md)
-- [Historical workflow inventory](docs/workflow-inventory.md)
-- [Milestones 1–3 code review](docs/review-milestones-1-3.md)
-- [Validation levels](docs/validation-levels.md)
-- [Solar Orbiter project notes and requirements](projects/solar_orbiter/README.md)
-- [Frozen v15 baseline](tests/fixtures/solar_orbiter_v15/README.md)
-- [Third-party notices](THIRD_PARTY_NOTICES.md)
-
-The [desktop flower rehearsal](projects/flower/README.md) exercises a third, botanical
-brief through the core-only workflow and explicit connector compatibility.
-
-## Regression example
-
-The unbuilt Solar Orbiter v15 design is preserved for regression testing.
-Its counts, coordinate conventions, instrument requirements, regional sourcing
-and unresolved connection/geometry findings are in the
-[project notes](projects/solar_orbiter/README.md). Its frozen files must stay
-unchanged. The vehicle and building planning examples in the
-[brief guide](docs/design-brief.md#worked-planning-examples) illustrate the generic
-workflow. Both [vehicle](projects/vehicle/README.md) and
-[building](projects/building/README.md) are executable, with different construction
-needs demonstrated through the same APIs. Start with the [tutorial](docs/tutorial.md).
-
-## Next implementation phases
-
-See the [detailed roadmap](docs/roadmap.md) for deliverables, dependencies,
-acceptance criteria and proposed commit slices:
-
-1. Generic agent workflow and project starter.
-2. Parts preparation, assembly authoring and vehicle/building examples.
-3. Unified project execution and reproducible releases.
-4. Generic artwork and illustrated building instructions.
-5. Geometric substitutions, sourcing and collision/motion diagnostics.
-
-Generated renders, releases and fetched reference assets belong outside
-source-controlled code. The committed baseline fixture directory is the
-explicit exception for small, reproducible model data.
+Further progress should come from real design tasks, additional reviewed part
+coverage and measured physical trials. The historical [workflow inventory](docs/workflow-inventory.md)
+and [early code review](docs/review-milestones-1-3.md) describe earlier states;
+they are not the current backlog. Never rewrite frozen hashes to make a change pass.

@@ -15,8 +15,9 @@ uv run --locked --extra render brickbuilder build projects/building \
   --library /path/to/ldraw --destination output/building-review
 ```
 
-The examples configure connections and rendering by default. Repeat `--stage` to
-replace that list, for example `--stage connections --stage geometry`.
+The building and vehicle configure connections, rendering and instructions by
+default; the flower configures connections only. Repeat `--stage` to replace that
+list, for example `--stage connections --stage geometry`.
 `--stage cad` generates CAD/inventories without optional stages. CAD is always
 included. Missing render dependencies explain how to install the render extra;
 core-only builds do not require it. Nothing downloads assets or places orders.

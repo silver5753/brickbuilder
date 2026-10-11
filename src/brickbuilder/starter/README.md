@@ -43,3 +43,9 @@ requested deliverables and views. Forbidden stickers are rejected; record accept
 scope changes in the brief and decisions instead of silently omitting outputs.
 Read the repository's `docs/releases.md`; artifact verification
 is separate from physical and visual acceptance.
+
+Connection checks require explicit reviewed connector interface identities; legacy
+unlabelled interfaces remain unknown. Optional release gates can require recursive
+render completeness or bind dated sourcing/scoped collision evidence to the exact
+model. Those gates do not certify physical fit, live stock or continuous clearance.
+See the repository's docs/connectivity.md and docs/releases.md for the contracts.
