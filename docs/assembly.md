@@ -132,3 +132,8 @@ These outputs are also used by the build command. Use [release packages](release
 For physical assembly alternatives, use [replacement recipes](replacements.md)
 to preview native quantity/geometry changes, remap exposed endpoints and retain
 backing requirements. Return the applied AuthoredModel through the normal builder.
+
+Connector frames can still be inspected when compatibility is unknown; alignment
+is only placement arithmetic. Intended connection review requires matching reviewed
+interface identities as well as role/geometry checks. Missing identities remain
+unknown and different identities fail. See [connections](connectivity.md).

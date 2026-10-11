@@ -306,7 +306,9 @@ def build_index(
                 error,
                 lookup.get(ref),
                 "complete"
-                if declaration and declaration.complete
+                if declaration
+                and declaration.complete
+                and all(c.interface is not None for c in declaration.connectors)
                 else "partial"
                 if declaration
                 else "unknown",

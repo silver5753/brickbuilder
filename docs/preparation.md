@@ -205,3 +205,8 @@ smoke check; Poppler versions and fonts may change raster bytes across machines.
 
 These outputs reduce preparation work. Part selection, connection evidence review
 and interpretation of references still belong to the authoring agent.
+
+A catalog's `complete` flag does not supply compatibility evidence. Preparation
+reports partial connector coverage if any declared connector lacks a reviewed
+`interface` identity. Catalog selection preserves those identities without inventing
+or promoting them; see [connector migration](connector-migration.md).

@@ -81,9 +81,24 @@ def world_ports(part: PartInstance, declaration: PartConnectors) -> tuple[Port, 
     )
 
 
+def compatibility(a: Connector, b: Connector) -> str:
+    """Reviewed mating identity; family and geometry alone never establish fit."""
+    pair = (a.kind, b.kind)
+    if pair not in POINT_PAIRS and pair not in SHAFT_PAIRS:
+        pair = (b.kind, a.kind)
+    if pair not in POINT_PAIRS and pair not in SHAFT_PAIRS:
+        return "fail"
+    if a.interface is None or b.interface is None:
+        return "unknown"
+    return "pass" if a.interface == b.interface else "fail"
+
+
 def match_ports(a: Port, b: Port, tolerance: Tolerances = Tolerances()) -> Match | None:
     """Check one declared pair; this does not check occupancy or rooted paths."""
-    if a.instance_id == b.instance_id:
+    if (
+        a.instance_id == b.instance_id
+        or compatibility(a.connector, b.connector) != "pass"
+    ):
         return None
     a, b = _ordered(a, b)
     pair = a.connector.kind, b.connector.kind
@@ -220,12 +235,27 @@ def inspect_connections(
     unknown = []
     for part in model.parts:
         declaration = declarations.get(reference_name(part.reference))
-        if declaration is None or not declaration.complete:
+        unreviewed = (
+            [c.name for c in declaration.connectors if c.interface is None]
+            if declaration
+            else []
+        )
+        if declaration is None or not declaration.complete or unreviewed:
             unknown.append(
                 dict(
                     instance_id=part.instance_id,
                     reference=part.reference,
-                    reasons=list(declaration.limitations)
+                    reasons=(
+                        list(declaration.limitations)
+                        + (
+                            [
+                                "Missing reviewed interface identity: "
+                                + ", ".join(unreviewed)
+                            ]
+                            if unreviewed
+                            else []
+                        )
+                    )
                     if declaration
                     else ["No connector declaration"],
                 )
@@ -328,6 +358,7 @@ def inspect_connections(
             b=m.b.instance_id,
             b_connector=m.b.connector.name,
             kind=m.kind,
+            interface=m.a.connector.interface,
             engagement_ldu=m.engagement_ldu,
             restraint=m.restraint,
         )
@@ -337,7 +368,7 @@ def inspect_connections(
     return dict(
         schema_version=1,
         status=status,
-        method="nominal_connector_graph_v1",
+        method="nominal_connector_graph_v2",
         model_sha256=model.fingerprint(),
         catalog_fingerprint=catalog.fingerprint(),
         root_instance_id=root,
@@ -356,6 +387,7 @@ def inspect_connections(
         insertion_access="not_tested",
         collision="not_tested",
         limitations=[
+            "Edges require equal reviewed interface identities and supported mating roles; legacy unlabelled interfaces remain unknown.",
             "Nominal seat/axis/engagement checks only; minimum overlap is an audit policy, not a strength measurement.",
             "Round-hole axle edges allow rotation and do not establish angular restraint.",
             "With unsupported interfaces, missing paths/hosts remain unknown and cannot pass.",

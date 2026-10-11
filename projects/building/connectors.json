@@ -21,7 +21,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_0_1",
@@ -40,7 +41,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_0_2",
@@ -59,7 +61,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_0_3",
@@ -78,7 +81,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_0_4",
@@ -97,7 +101,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_0_5",
@@ -116,7 +121,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_0",
@@ -135,7 +141,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_1",
@@ -154,7 +161,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_2",
@@ -173,7 +181,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_3",
@@ -192,7 +201,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_4",
@@ -211,7 +221,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_5",
@@ -230,7 +241,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_0",
@@ -249,7 +261,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_1",
@@ -268,7 +281,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_2",
@@ -287,7 +301,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_3",
@@ -306,7 +321,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_4",
@@ -325,7 +341,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_5",
@@ -344,7 +361,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_0",
@@ -363,7 +381,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_1",
@@ -382,7 +401,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_2",
@@ -401,7 +421,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_3",
@@ -420,7 +441,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_4",
@@ -439,7 +461,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_5",
@@ -458,7 +481,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_4_0",
@@ -477,7 +501,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_4_1",
@@ -496,7 +521,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_4_2",
@@ -515,7 +541,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_4_3",
@@ -534,7 +561,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_4_4",
@@ -553,7 +581,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_4_5",
@@ -572,7 +601,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_5_0",
@@ -591,7 +621,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_5_1",
@@ -610,7 +641,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_5_2",
@@ -629,7 +661,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_5_3",
@@ -648,7 +681,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_5_4",
@@ -667,7 +701,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_5_5",
@@ -686,7 +721,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_6_0",
@@ -705,7 +741,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_6_1",
@@ -724,7 +761,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_6_2",
@@ -743,7 +781,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_6_3",
@@ -762,7 +801,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_6_4",
@@ -781,7 +821,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_6_5",
@@ -800,7 +841,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_7_0",
@@ -819,7 +861,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_7_1",
@@ -838,7 +881,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_7_2",
@@ -857,7 +901,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_7_3",
@@ -876,7 +921,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_7_4",
@@ -895,7 +941,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_7_5",
@@ -914,7 +961,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_8_0",
@@ -933,7 +981,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_8_1",
@@ -952,7 +1001,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_8_2",
@@ -971,7 +1021,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_8_3",
@@ -990,7 +1041,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_8_4",
@@ -1009,7 +1061,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_8_5",
@@ -1028,7 +1081,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_9_0",
@@ -1047,7 +1101,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_9_1",
@@ -1066,7 +1121,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_9_2",
@@ -1085,7 +1141,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_9_3",
@@ -1104,7 +1161,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_9_4",
@@ -1123,7 +1181,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_9_5",
@@ -1142,7 +1201,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_0",
@@ -1161,7 +1221,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_1",
@@ -1180,7 +1241,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_2",
@@ -1199,7 +1261,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_3",
@@ -1218,7 +1281,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_4",
@@ -1237,7 +1301,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_5",
@@ -1256,7 +1321,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_0",
@@ -1275,7 +1341,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_1",
@@ -1294,7 +1361,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_2",
@@ -1313,7 +1381,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_3",
@@ -1332,7 +1401,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_4",
@@ -1351,7 +1421,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_5",
@@ -1370,7 +1441,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_0",
@@ -1389,7 +1461,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_1",
@@ -1408,7 +1481,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_2",
@@ -1427,7 +1501,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_3",
@@ -1446,7 +1521,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_4",
@@ -1465,7 +1541,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_5",
@@ -1484,7 +1561,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_0",
@@ -1503,7 +1581,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_1",
@@ -1522,7 +1601,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_2",
@@ -1541,7 +1621,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_3",
@@ -1560,7 +1641,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_4",
@@ -1579,7 +1661,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_5",
@@ -1598,7 +1681,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_4_0",
@@ -1617,7 +1701,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_4_1",
@@ -1636,7 +1721,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_4_2",
@@ -1655,7 +1741,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_4_3",
@@ -1674,7 +1761,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_4_4",
@@ -1693,7 +1781,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_4_5",
@@ -1712,7 +1801,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_5_0",
@@ -1731,7 +1821,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_5_1",
@@ -1750,7 +1841,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_5_2",
@@ -1769,7 +1861,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_5_3",
@@ -1788,7 +1881,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_5_4",
@@ -1807,7 +1901,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_5_5",
@@ -1826,7 +1921,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_6_0",
@@ -1845,7 +1941,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_6_1",
@@ -1864,7 +1961,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_6_2",
@@ -1883,7 +1981,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_6_3",
@@ -1902,7 +2001,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_6_4",
@@ -1921,7 +2021,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_6_5",
@@ -1940,7 +2041,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_7_0",
@@ -1959,7 +2061,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_7_1",
@@ -1978,7 +2081,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_7_2",
@@ -1997,7 +2101,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_7_3",
@@ -2016,7 +2121,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_7_4",
@@ -2035,7 +2141,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_7_5",
@@ -2054,7 +2161,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_8_0",
@@ -2073,7 +2181,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_8_1",
@@ -2092,7 +2201,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_8_2",
@@ -2111,7 +2221,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_8_3",
@@ -2130,7 +2241,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_8_4",
@@ -2149,7 +2261,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_8_5",
@@ -2168,7 +2281,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_9_0",
@@ -2187,7 +2301,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_9_1",
@@ -2206,7 +2321,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_9_2",
@@ -2225,7 +2341,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_9_3",
@@ -2244,7 +2361,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_9_4",
@@ -2263,7 +2381,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_9_5",
@@ -2282,11 +2401,12 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         }
       ],
       "complete": true,
-      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=8. Conventional stud/underside interfaces only.",
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=8. Conventional stud/underside interfaces only. Interface identities explicitly migrated in C7 from this recorded nominal review; see docs/connector-migration.md. No new physical-fit evidence.",
       "limitations": []
     },
     {
@@ -2309,7 +2429,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_0",
@@ -2328,7 +2449,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_0",
@@ -2347,7 +2469,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_0",
@@ -2366,11 +2489,12 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         }
       ],
       "complete": true,
-      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only. Interface identities explicitly migrated in C7 from this recorded nominal review; see docs/connector-migration.md. No new physical-fit evidence.",
       "limitations": []
     },
     {
@@ -2393,7 +2517,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_0",
@@ -2412,7 +2537,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_0",
@@ -2431,7 +2557,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_0",
@@ -2450,7 +2577,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_0",
@@ -2469,7 +2597,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_0",
@@ -2488,11 +2617,12 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         }
       ],
       "complete": true,
-      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only. Interface identities explicitly migrated in C7 from this recorded nominal review; see docs/connector-migration.md. No new physical-fit evidence.",
       "limitations": []
     },
     {
@@ -2515,7 +2645,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_0",
@@ -2534,7 +2665,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_0",
@@ -2553,7 +2685,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_0",
@@ -2572,7 +2705,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_0",
@@ -2591,7 +2725,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_0",
@@ -2610,7 +2745,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_0",
@@ -2629,7 +2765,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_0",
@@ -2648,11 +2785,12 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         }
       ],
       "complete": true,
-      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only. Interface identities explicitly migrated in C7 from this recorded nominal review; see docs/connector-migration.md. No new physical-fit evidence.",
       "limitations": []
     },
     {
@@ -2675,7 +2813,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_1_0",
@@ -2694,7 +2833,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_2_0",
@@ -2713,7 +2853,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_3_0",
@@ -2732,7 +2873,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_4_0",
@@ -2751,7 +2893,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "stud_5_0",
@@ -2770,7 +2913,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_0_0",
@@ -2789,7 +2933,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_1_0",
@@ -2808,7 +2953,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_2_0",
@@ -2827,7 +2973,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_3_0",
@@ -2846,7 +2993,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_4_0",
@@ -2865,7 +3013,8 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         },
         {
           "name": "socket_5_0",
@@ -2884,11 +3033,12 @@
           "minimum_engagement": 0.0,
           "required": false,
           "roll_axis": null,
-          "closed_end": null
+          "closed_end": null,
+          "interface": "system-stud-v1"
         }
       ],
       "complete": true,
-      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only.",
+      "evidence": "Reviewed 2026-10-04; see geometry_review.json for exact source hashes, attribution and local-axis evidence. Reviewed native X/Z stud grid at 20 LDU pitch, top seating Y=0 and underside seating Y=24. Conventional stud/underside interfaces only. Interface identities explicitly migrated in C7 from this recorded nominal review; see docs/connector-migration.md. No new physical-fit evidence.",
       "limitations": []
     }
   ]

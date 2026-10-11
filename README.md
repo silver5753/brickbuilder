@@ -20,7 +20,7 @@ Use Python 3.12 and uv:
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests tools projects/vehicle projects/building --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
 uv run --locked pytest -m 'not render' -q
 uv run --locked python -c "import brickbuilder; print(brickbuilder.__version__)"
 uv build
@@ -101,6 +101,9 @@ and add stable instance metadata; the baseline files stay unchanged.
 - [Solar Orbiter project notes and requirements](projects/solar_orbiter/README.md)
 - [Frozen v15 baseline](tests/fixtures/solar_orbiter_v15/README.md)
 - [Third-party notices](THIRD_PARTY_NOTICES.md)
+
+The [desktop flower rehearsal](projects/flower/README.md) exercises a third, botanical
+brief through the core-only workflow and explicit connector compatibility.
 
 ## Regression example
 

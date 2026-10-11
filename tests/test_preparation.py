@@ -51,7 +51,7 @@ def part_inputs(tmp_path):
     )
     declaration = PartConnectors(
         "brick.dat",
-        (Connector("stud", "stud", (0, 0, 0), (0, -1, 0)),),
+        (Connector("stud", "stud", (0, 0, 0), (0, -1, 0), interface="synthetic-v1"),),
         False,
         "Synthetic seat",
         ("Underside not declared",),
@@ -247,3 +247,16 @@ def test_pdf_optional_tools_and_labelled_crop(tmp_path):
         sha256((tmp_path / "page/page.png").read_bytes()).hexdigest()
         == report["file_sha256"]["page.png"]
     )
+
+
+def test_complete_legacy_catalog_stays_partial_without_interface_review(part_inputs):
+    library, _, catalog = part_inputs
+    data = json.loads(catalog.read_text())
+    declaration = data["parts"][0]
+    declaration["complete"] = True
+    declaration["limitations"] = []
+    del declaration["connectors"][0]["interface"]
+    catalog.write_text(json.dumps(data))
+    index = build_index(library, ("brick.dat",), catalog_path=catalog)
+    assert index.entries[0].connector_coverage == "partial"
+    assert index.report()["incomplete_connectors"] == ["brick.dat"]

@@ -12,6 +12,7 @@ from .connectivity import (
     Tolerances,
     inspect_connections,
     match_ports,
+    compatibility,
     world_ports,
 )
 from .connectivity.catalog import Catalog
@@ -246,7 +247,14 @@ class AuthoredModel:
                 delta = subtract(b.position, a.position)
                 along = dot(delta, a.axis)
                 finding.update(
-                    status="pass" if match else "fail",
+                    status=(
+                        "unknown"
+                        if compatibility(a.connector, b.connector) == "unknown"
+                        else "pass"
+                        if match
+                        else "fail"
+                    ),
+                    compatibility=compatibility(a.connector, b.connector),
                     measurement={
                         "centre_distance_ldu": sqrt(dot(delta, delta)),
                         "axis_dot": dot(a.axis, b.axis),

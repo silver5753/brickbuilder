@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "stages": [
+    "connections"
+  ],
+  "root": "flower/base/part",
+  "catalog": "connectors.json",
+  "render": null,
+  "stickers": null,
+  "exceptions": null,
+  "orders": []
+}

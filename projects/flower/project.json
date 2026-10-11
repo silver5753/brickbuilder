@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "name": "flower",
+  "builder": "build.py",
+  "brief": "brief.json",
+  "sources": "sources.json",
+  "decisions": "decisions.json",
+  "library": null,
+  "parts": [
+    "3005.dat",
+    "3022.dat",
+    "3023.dat",
+    "3031.dat"
+  ]
+}

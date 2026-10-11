@@ -1,7 +1,7 @@
 # Brick Builder roadmap
 
-Updated: 11 October 2026. P1–P5 and review fixes C1–C6 are complete within
-their documented scope. C7 remains. Current user instructions take
+Updated: 12 October 2026. P1–P5 and review fixes C1–C7 are complete within
+their documented scope. Current user instructions take
 precedence over this plan.
 
 ## Goal
@@ -35,6 +35,7 @@ inventory remains in [workflow inventory](workflow-inventory.md).
 | C4 | Brief deliverables/views and sticker constraints gate normal releases; partial drafts remain | [Releases](releases.md) |
 | C5 | Current doctor readiness checks, CLI/starter guidance and separated history | [Projects](projects.md) |
 | C6 | Separate render completeness, exact-model diagnostic evidence gates and shared reporting helpers | [Releases](releases.md), [rendering](rendering.md) |
+| C7 | Explicit interface compatibility, nominal-evidence migration and botanical rehearsal | [Migration](connector-migration.md), [flower](../projects/flower/README.md) |
 
 ## C5 — Agent readiness and guidance
 
@@ -83,14 +84,41 @@ Render completeness does not cover omitted selections or aggregate instruction
 illustrations; collision material evidence is not independently authenticated.
 Frozen fixtures and runtime dependencies are unchanged. Completed 11 October 2026.
 
-## Next: C7 — Connector compatibility and generality
+## C7 — Connector compatibility and generality
 
-- Design a small, reviewed compatibility identity or explicit mating declaration;
-  coincident axes and broad families alone must not certify incompatible interfaces.
-- Migrate existing evidence explicitly; unsupported compatibility stays unknown.
-- Exercise a new unrelated user brief through the documented workflow and record
-  missing helpers, undocumented steps and any subject-specific core changes.
-- Physical trials and wider real-part catalog coverage remain separate work.
+Connection edges require matching reviewed interface identities, supported mating
+roles and the existing geometric checks. Missing identities remain unknown even
+in legacy catalogs marked complete; intended connections cannot bypass this.
+Different explicit identities do not match. Preparation reflects missing identity
+review as partial coverage. Existing nominal catalogs and the historical recipe
+were migrated explicitly; no general family-to-identity default exists in core.
+Historical baseline and frozen fixture files remain unchanged, with the prior
+catalog hash identified as historical rather than rewritten.
+
+The new [desktop flower](../projects/flower/README.md) is an agent-selected test
+brief for an unrelated botanical subject: eight parts, ten intended bearings,
+three bound requirements and nominal paths to the base. Init, doctor, build,
+release and offline verification ran through existing APIs. Installed-wheel tests
+also reject a release after compatibility labels are removed and retain an unknown
+draft. No subject-specific core logic or additional helper was needed.
+
+Verification: all **317** full render-extra suite tests passed, including installed
+core/render wheels and both frozen spacecraft poses. Ty with warnings treated as
+errors, pinned Ruff and whitespace checks passed. Regression coverage includes
+coincident incompatible interfaces, legacy unknowns, intended-pair checks,
+preparation coverage, migrated historical poses and installed-wheel publication.
+Identity labels preserve authored nominal evidence; they do not authenticate fit.
+The botanical rehearsal delivers CAD/inventory only; geometry, visual acceptance,
+stock, insertion and physical stability remain untested. Completed 12 October 2026.
+
+## Follow-up work outside the cleanup plan
+
+C1–C7 are complete; no further cleanup commit is currently scheduled. Select a
+real user design for a full library/render/visual-review rehearsal, expand reviewed
+part/interface coverage as that design needs it, and record physical trials tied
+to exact revisions. General adapter/pair-specific mating rules and independently
+authenticated material/compatibility evidence remain future work, not implied
+capabilities of the current labels or release verifier.
 
 ## Delivery gates
 

@@ -42,7 +42,9 @@ def declaration(ref, *connectors, complete=True):
 def connector(
     name, kind, position=(0, 0, 0), axis=(1, 0, 0), length=0, minimum=0, required=False
 ):
-    return Connector(name, kind, position, axis, length, minimum, required)
+    return Connector(
+        name, kind, position, axis, length, minimum, required, interface="synthetic-v1"
+    )
 
 
 def test_pin_joins_two_beams_and_reports_engagement(check_connections, pin_model):
@@ -473,9 +475,11 @@ def test_malformed_catalog_closed_end_is_clean_error():
 )
 def test_both_baseline_poses_report_remaining_unknowns(catalog, name):
     baseline = json.loads((PROJECT / "connection_baseline.json").read_text())
+    # The historical report remains untouched. C7 deliberately changes catalog
+    # identity while retaining the explicitly migrated nominal geometry below.
     assert (
         baseline["catalog_sha256"]
-        == sha256((PROJECT / "connectors.json").read_bytes()).hexdigest()
+        != sha256((PROJECT / "connectors.json").read_bytes()).hexdigest()
     )
     assert (
         baseline["profiles_sha256"]
@@ -515,3 +519,65 @@ def test_both_baseline_poses_report_remaining_unknowns(catalog, name):
     assert by_group["boom"]["reachable"] == 52
     assert by_group["dish"]["reachable"] == 15
     assert report["physical_strength"] == "not_tested"
+
+
+@pytest.mark.parametrize(
+    "kind, host, length",
+    [
+        ("stud", "socket", 0),
+        ("pin", "round_hole", 20),
+        ("bar", "clip", 20),
+        ("click_pin", "click_socket", 0),
+    ],
+)
+def test_interface_identity_is_required_even_at_matching_coordinates(
+    kind, host, length
+):
+    from brickbuilder.connectivity import compatibility
+
+    a = connector("a", kind, length=length, minimum=8 if length else 0)
+    b = connector(
+        "b", host, axis=(-1, 0, 0), length=length, minimum=8 if host == "clip" else 0
+    )
+    model = Model((part("a", "a.dat"), part("b", "b.dat")))
+
+    def review(other):
+        return inspect_connections(
+            model,
+            Catalog((declaration("a.dat", a), declaration("b.dat", other))),
+            root="a",
+        )
+
+    assert review(b)["status"] == "pass"
+    unknown = review(replace(b, interface=None))
+    assert unknown["status"] == "unknown" and unknown["edges"] == []
+    assert "Missing reviewed interface" in str(unknown["unsupported_instances"])
+    wrong = replace(b, interface="different-size-or-system-v1")
+    assert compatibility(a, wrong) == compatibility(wrong, a) == "fail"
+    assert review(wrong)["status"] == "fail" and review(wrong)["edges"] == []
+
+
+def test_legacy_catalog_does_not_inherit_family_compatibility():
+    c = asdict(connector("stud", "stud"))
+    del c["interface"]
+    payload = dict(
+        schema_version=1,
+        parts=[
+            dict(
+                reference="a.dat",
+                connectors=[c],
+                complete=True,
+                evidence="Legacy positions only",
+                limitations=[],
+            )
+        ],
+    )
+    cat = loads_catalog(json.dumps(payload))
+    assert cat.parts[0].connectors[0].interface is None
+    assert (
+        inspect_connections(Model((part("a", "a.dat"),)), cat, root="a")["status"]
+        == "unknown"
+    )
+    for value in ("", 123, []):
+        with pytest.raises(ValueError):
+            replace(cat.parts[0].connectors[0], interface=value)

@@ -159,6 +159,19 @@ def build(library_root: Path) -> tuple[Catalog, dict[str, object]]:
                     required,
                     (0, 1, 0) if kind in {"axle", "cross_hole"} else None,
                     closed_end,
+                    # Explicit identity migration for this finite historical recipe set.
+                    {
+                        "stud": "system-stud-v1",
+                        "socket": "system-stud-v1",
+                        "pin": "technic-standard-v1",
+                        "round_hole": "technic-standard-v1",
+                        "axle": "technic-standard-v1",
+                        "cross_hole": "technic-standard-v1",
+                        "bar": "bar-3.18mm-v1",
+                        "clip": "bar-3.18mm-v1",
+                        "click_pin": "click-44224-44225-v1",
+                        "click_socket": "click-44224-44225-v1",
+                    }[kind],
                 )
             )
 

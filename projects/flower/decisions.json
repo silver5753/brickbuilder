@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "decisions": [
+    {
+      "id": "D1",
+      "requirement_ids": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "recorded_on": "2026-10-11",
+      "kind": "assumption",
+      "choice": "Agent-selected C7 rehearsal brief, eight parts, CAD and inventory only; square head and two offset leaves",
+      "reason": "Exercise a new subject through existing APIs. This is a test assumption, not a user-approved flower design. Geometry, visual acceptance, stability and stock remain untested.",
+      "source_ids": [
+        "S1"
+      ]
+    }
+  ]
+}

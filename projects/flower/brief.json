@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "subject": "Stylized desktop flower with two offset leaves and a contrasting centre",
+  "dimensions": "Nominal envelope about 32 x 32 x 46.4 mm including top studs; geometry not remeasured in this rehearsal",
+  "scale": "Original miniature, not a botanical replica",
+  "part_count_limit": 12,
+  "budget": null,
+  "construction_style": "Studded vertical stack with horizontal leaves and square blossom",
+  "sticker_policy": "forbidden",
+  "sourcing_region": null,
+  "condition": null,
+  "owned_parts": null,
+  "axes": "+X right, -Y up, -Z front; LDraw units",
+  "deliverables": [
+    "cad",
+    "inventory"
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "One supporting base and a nominal attachment path for every part",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "flower/base"
+      ],
+      "views": [],
+      "validation": "Rooted nominal graph; physical stability remains untested"
+    },
+    {
+      "id": "R2",
+      "text": "Green upright stem with two leaves projecting to opposite sides",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "flower/stem_lower",
+        "flower/stem_middle",
+        "flower/stem_upper",
+        "flower/leaf_left",
+        "flower/leaf_right"
+      ],
+      "views": [],
+      "validation": "Review named bearings and opposite X offsets; botanical appearance untested"
+    },
+    {
+      "id": "R3",
+      "text": "Contrasting flower head and centre without stickers",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "flower/blossom",
+        "flower/centre"
+      ],
+      "views": [],
+      "validation": "CAD/BOM identities and colours; visual acceptance remains untested"
+    }
+  ]
+}

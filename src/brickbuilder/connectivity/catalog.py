@@ -45,9 +45,12 @@ class Connector:
     required: bool = False
     roll_axis: Vector | None = None
     closed_end: str | None = None
+    interface: str | None = None
 
     def __post_init__(self) -> None:
         text(self.name, "Connector name")
+        if self.interface is not None:
+            text(self.interface, "Reviewed interface identity")
         if self.kind not in KINDS:
             raise ValueError(f"Unsupported connector kind: {self.kind}")
         object.__setattr__(self, "position", vector(self.position))
@@ -155,7 +158,12 @@ def loads_catalog(payload: str) -> Catalog:
                     "required",
                     "roll_axis",
                     "closed_end",
-                },
+                }
+                | (
+                    {"interface"}
+                    if isinstance(raw_connector, dict) and "interface" in raw_connector
+                    else set()
+                ),
                 "connector",
             )
             connectors.append(
@@ -171,6 +179,7 @@ def loads_catalog(payload: str) -> Catalog:
                     if c["roll_axis"] is not None
                     else None,
                     c["closed_end"],
+                    c.get("interface"),
                 )
             )
         parts.append(

@@ -38,7 +38,7 @@ JSON. Declarations contain native `.dat` names, complete/partial coverage,
 evidence, limitations and named local-space connectors. Marketplace aliases
 are not connector identities. No declaration is inferred from a bounding box.
 
-Each connector declares a position, unit axis, family, segment length, minimum
+Each connector declares a reviewed `interface` identity, position, unit axis, family, segment length, minimum
 engagement, required-pin flag, optional cross-profile roll axis and optional
 pin collar end. Local dimensions are in LDU; model rigid transforms place them
 in world coordinates. Valid families are:
@@ -51,6 +51,14 @@ in world coordinates. Valid families are:
 | Axle / round hole | Coaxial finite segments; explicitly rotation-free |
 | Bar / clip | Coaxial finite segments with the declared clip engagement |
 | Click pin / socket | Coincident declared joint centers and opposing axes; detents remain unsupported in this profile |
+
+Matching requires equal non-null `interface` identities in addition to the role
+and geometry checks above. The part's evidence must support the shared mating
+system. Different labels never match. Missing labels remain unknown, even in a
+legacy catalog declaring complete geometry coverage; authored intended pairs
+cannot override this. `nominal_connector_graph_v2` edges record their interface.
+See [migration and evidence limits](connector-migration.md) for existing catalogs,
+legacy behavior and why labels do not prove physical compatibility.
 
 Default position tolerance is 0.0001 LDU and axis cosine is 0.999999. Point
 matching uses neighboring spatial cells, including tolerance-boundary cases.
@@ -114,7 +122,7 @@ its uncertain underside/detail seats prevent a complete assembly pass. Remaining
 unresolved paths also include irregular shield, rear-panel and antenna details.
 These are unresolved checks, not proof that each physical connection is broken.
 
-`connection_baseline.json` records the hashes, assembly results and unmatched
+The historical `connection_baseline.json` records the pre-C7 catalog hash, assembly results and unmatched
 pin IDs/positions for both poses. It is a regression record of this limited
 method, not a replacement for a physical build. Do not reduce its unknowns by
 adding unverified proximity edges.

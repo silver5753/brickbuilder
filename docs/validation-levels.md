@@ -38,5 +38,5 @@ exact-pose contact reviews and sampled-joint scope. A pass can depend on authore
 full-material coverage; the toolkit cannot verify that claim from an arbitrary
 mesh. Missing/empty dependencies and unreviewed hollow geometry remain unknown.
 Analytical fixture tests validate the algorithms; the vehicle rehearsal does not
-certify real-part clearance. Collision reports are standalone evidence, not a
-release policy gate.
+certify real-part clearance. Collision reports can be explicitly bound as optional release evidence; see
+[releases](releases.md). Offline reconciliation does not rerun geometry.

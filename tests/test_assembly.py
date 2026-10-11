@@ -28,13 +28,25 @@ def stacked():
         (
             PartConnectors(
                 "base.dat",
-                (Connector("top", "stud", (0, 0, 0), (0, -1, 0)),),
+                (
+                    Connector(
+                        "top", "stud", (0, 0, 0), (0, -1, 0), interface="synthetic-v1"
+                    ),
+                ),
                 True,
                 "Synthetic seat",
             ),
             PartConnectors(
                 "cap.dat",
-                (Connector("bottom", "socket", (0, 8, 0), (0, 1, 0)),),
+                (
+                    Connector(
+                        "bottom",
+                        "socket",
+                        (0, 8, 0),
+                        (0, 1, 0),
+                        interface="synthetic-v1",
+                    ),
+                ),
                 True,
                 "Synthetic seat",
             ),
@@ -127,7 +139,13 @@ def test_intended_pair_reports_measured_mismatch_and_unknown(stacked):
                 catalog.parts[0],
                 connectors=(
                     *catalog.parts[0].connectors,
-                    Connector("alternate", "stud", (3, 0, 0), (0, -1, 0)),
+                    Connector(
+                        "alternate",
+                        "stud",
+                        (3, 0, 0),
+                        (0, -1, 0),
+                        interface="synthetic-v1",
+                    ),
                 ),
             ),
             catalog.parts[1],
@@ -164,7 +182,8 @@ def test_bundle_hashes_partition_and_selections(stacked, tmp_path):
     assert report["source_sha256"] == source.sha256
     assert report["nominal"]["physical_strength"] == "not_tested"
     assert (
-        read_selection(folder / "selections.json", "full").document.model == result.model
+        read_selection(folder / "selections.json", "full").document.model
+        == result.model
     )
     selection = read_selection(folder / "selections.json", "sample/cap")
     assert len(selection.document.model.parts) == 1
@@ -207,3 +226,16 @@ def test_invalid_assembly_contracts(case):
             Assembly(
                 "test", transform=Transform(rotation=((-1, 0, 0), (0, 1, 0), (0, 0, 1)))
             )
+
+
+def test_intended_connection_retains_unknown_or_incompatible_identity(stacked):
+    assembly, catalog = stacked
+    parts = list(catalog.parts)
+    for identity, expected in [(None, "unknown"), ("different-interface", "fail")]:
+        parts[1] = replace(
+            catalog.parts[1],
+            connectors=(replace(catalog.parts[1].connectors[0], interface=identity),),
+        )
+        report = assembly.flatten().review(Catalog(tuple(parts)), root="sample/base")
+        assert report["status"] == expected
+        assert report["intended_connections"][0]["status"] == expected

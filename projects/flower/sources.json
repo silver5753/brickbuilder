@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "S1",
+      "location": "connectors.json",
+      "kind": "other",
+      "edition": "C7 nominal declaration subset, 2026-10-11",
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": "60e23f6ce680500bab691f5f958e25a6cf0721036c372c7ccf63ef814303db67",
+      "confidence": "medium",
+      "note": "Inherited rectangular stud/seat review from the existing catalog. No new geometry review, stock lookup, botanical reference or physical trial. See README.md."
+    }
+  ]
+}

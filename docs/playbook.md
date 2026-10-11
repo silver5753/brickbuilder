@@ -32,6 +32,9 @@ For a runnable rehearsal, follow the [generic tutorial](tutorial.md) and the
 [building example](../projects/building/README.md). Its wall/roof choices are
 project-local; the vehicle exercises different interfaces through the same API.
 
+For a minimal core-only rehearsal on a third subject, see the
+[desktop flower](../projects/flower/README.md), including its untested visual/physical limits.
+
 There is no requirement to load a previous release or the frozen spacecraft
 baseline to start a new design. A blank brief is a valid starting point.
 
