@@ -2,6 +2,8 @@
 
 from pathlib import Path
 import json
+import shutil
+from unittest.mock import patch
 
 import pytest
 
@@ -181,3 +183,97 @@ def test_decisions_and_pending_evidence(project_folder):
     source = json.loads(sources.read_text())["sources"][0]
     edit(sources, sources=[source | {"retrieval": "unavailable"}])
     assert doctor(project_folder).status == "unknown"
+
+
+def test_instruction_readiness_checks_inputs_without_running_builder(tmp_path):
+    folder = tmp_path / "vehicle"
+    shutil.copytree(Path(__file__).parents[1] / "projects/vehicle", folder)
+    edit(folder / "brief.json", deliverables=["cad", "instructions"])
+    edit(folder / "build.json", stages=["instructions"])
+    (folder / "build.py").write_text('raise RuntimeError("never execute")\n')
+    with patch(
+        "brickbuilder.rendering.backend.modules", return_value=(None, None, None)
+    ):
+        report = doctor(folder)
+    findings = {f["check"]: f for f in report.findings}
+    assert findings["deliverable:instructions"]["status"] == "pass"
+    assert findings["steps"]["status"] == "pass"
+    assert "steps.json" in report.input_sha256
+    assert not report.builder_executed
+    (folder / "steps.json").write_text('{"schema_version":1,"steps":[]}')
+    with patch(
+        "brickbuilder.rendering.backend.modules",
+        side_effect=ValueError("Install render extra"),
+    ):
+        report = doctor(folder)
+    findings = {f["check"]: f for f in report.findings}
+    assert findings["render_dependencies"]["status"] == "fail"
+    assert findings["steps"]["status"] == "fail"
+    assert report.status == "fail"
+
+
+def test_missing_deliverable_configuration_and_forbidden_artwork(project_folder):
+    edit(
+        project_folder / "brief.json",
+        deliverables=["stickers", "orders"],
+        sticker_policy="allowed",
+    )
+    findings = {f["check"]: f for f in doctor(project_folder).findings}
+    assert findings["deliverable:stickers"]["status"] == "unknown"
+    assert "PNG" in findings["deliverable:stickers"]["message"]
+    assert findings["deliverable:orders"]["status"] == "unknown"
+    edit(project_folder / "brief.json", sticker_policy="forbidden")
+    findings = {f["check"]: f for f in doctor(project_folder).findings}
+    assert findings["sticker_policy"]["status"] == "fail"
+
+
+@pytest.mark.render
+def test_artwork_and_rules_are_parsed_and_hashed_without_model_binding(tmp_path):
+    folder = tmp_path / "building"
+    shutil.copytree(Path(__file__).parents[1] / "projects/building", folder)
+    edit(
+        folder / "brief.json",
+        deliverables=["stickers", "orders"],
+        sticker_policy="allowed",
+    )
+    edit(
+        folder / "build.json",
+        stages=["stickers", "orders"],
+        stickers="stickers.json",
+        orders=[
+            dict(name="test", rules="rules.json", selection="full", allow_untested=True)
+        ],
+    )
+    rules = folder / "rules.json"
+    rules.write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                market="brickowl",
+                parts=[],
+                colours=[],
+                rejected=[],
+                identity_fallback=dict(
+                    status="untested",
+                    recorded_on="2026-10-10",
+                    note="Synthetic readiness fixture",
+                    source="test",
+                ),
+            )
+        )
+    )
+    (folder / "build.py").write_text('raise RuntimeError("never execute")\n')
+    report = doctor(folder)
+    findings = {f["check"]: f for f in report.findings}
+    assert findings["deliverable:stickers"]["status"] == "pass"
+    assert findings["deliverable:orders"]["status"] == "pass"
+    assert {
+        "rules.json",
+        "stickers.json",
+        "artwork/wayfinding.png",
+    } <= report.input_sha256.keys()
+    (folder / "artwork/wayfinding.png").unlink()
+    rules.write_text("{}")
+    findings = {f["check"]: f for f in doctor(folder).findings}
+    assert findings["sticker_config"]["status"] == "fail"
+    assert findings["order_rules:test"]["status"] == "fail"

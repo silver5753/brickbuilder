@@ -92,8 +92,9 @@ Duplicate native references (including case variants) and unknown fields fail.
 
 Evidence references should identify dated project records or files: colour
 production evidence, existing marketplace rule records, and stock observations.
-These are references, not a new purchasing schema. Price/quantity planning and
-refreshable stock adapters remain P5 work. Do not mark an importer mapping
+These are references, not a purchasing schema. [Offline sourcing](sourcing.md)
+supports dated stock/owned snapshots and price/quantity comparisons; live stock
+adapters remain outside the workflow. Do not mark an importer mapping
 accepted because a colour or mesh exists.
 
 Connector input uses the existing [catalog schema](connectivity.md). Supply only

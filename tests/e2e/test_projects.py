@@ -44,7 +44,7 @@ def test_installed_project_starter_and_doctor(installed_core, tmp_path):
 
     brief_path = folder / "brief.json"
     brief = json.loads(brief_path.read_text())
-    brief["deliverables"].append("preview")
+    brief["deliverables"].append("instructions")
     brief_path.write_text(json.dumps(brief))
     report = json.loads(installed_core.run("doctor", folder, expected=1).stdout)
     assert any(

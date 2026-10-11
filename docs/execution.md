@@ -172,7 +172,7 @@ still human/agent work. No script converts binding coverage into acceptance.
 
 The summary leaves physical build, collision, insertion, motion, stock and importer
 acceptance untested. The per-stage reports retain their existing limitations.
-P3a captures the main builder and selected input records, not a complete dependency
+Build captures the main builder and selected input records, not a complete dependency
 manifest of arbitrary Python imports, external assets or environment state.
 Use [release](releases.md) for local code/input snapshots, environment records and offline artifact verification.
 

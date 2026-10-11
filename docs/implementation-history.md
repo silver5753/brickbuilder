@@ -1,0 +1,826 @@
+# Brick Builder implementation history
+
+Archived on 10 October 2026 after C4. The following milestone records and
+original plans are preserved from the former roadmap; future-tense statements
+reflect their historical context. Use [the current roadmap](roadmap.md) for
+remaining work and the capability guides for current behavior.
+
+# Brick Builder implementation roadmap
+
+Updated: 10 October 2026. Status: P1–P5 complete within the scoped limits below;
+post-review C1–C4 namespace, replacement, placement and brief-delivery fixes are complete.
+Original reviewed code baseline: commit
+`ecf01adc9944e4570004f1a7227b1c8366e23b57`.
+
+This is the current forward plan. The [workflow inventory](workflow-inventory.md)
+preserves the original project history and extraction plan; its “Implemented”
+labels sometimes describe historical scripts rather than shipped package APIs.
+Use this roadmap for sequencing new work, and the API documentation for what
+works today. Current user instructions take precedence over this plan.
+
+## Post-review C1 — Protect generated namespaces
+
+**Complete, 10 October 2026.** Review baseline:
+`379c90499d7d7ce9effb5caea16d3199180d1675`.
+
+- Reject the exact group name `full` when creating authoring/build bundles, before
+  it can replace the complete-model selection with a partial group selection.
+  Nested group paths such as `vehicle/full` remain valid.
+- Reserve sticker template names matching `stickers_a4_<number>` for generated
+  A4 sheets. Shared template validation covers legacy and imported artwork, so
+  neither can overwrite its standalone SVG with a sheet.
+- Document these restrictions in the assembly, artwork and rendering guides.
+  Existing valid output filenames and schemas remain unchanged.
+- Verification: three regression cases failed against the reviewed baseline and
+  passed after the fixes. All 30 assembly/rendering tests passed; the complete
+  render-extra suite passed **283 tests**, including installed-wheel workflows.
+  The prescribed ty check passed with warnings treated as errors.
+- Scope: reserved-name protection only. Replacement ordering and placement checks
+  are covered by C2–C3 below; C4 covers brief/release reconciliation. The other
+  review proposals remain future work.
+  Frozen fixtures and physical design data are unchanged.
+
+Implementation history: [assembly selections](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py)
+and [sticker output names](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/stickers.py).
+
+## Post-review C2 — Preserve replacement serialization invariants
+
+**Complete, 10 October 2026.** Follows
+[C1](https://github.com/silver5753/brickbuilder/commit/b17d5a2f922d20e60aace9504e7b6eda94a78c05).
+
+- Stably order retained and added parts by authored LDraw step before reviewing
+  the replacement candidate. Preserve all step values and retained identities;
+  within a step, retained parts keep their relative order and precede additions.
+- Validate candidate CAD serialization during preview, before issuing a report
+  tied to its model hash. Single-step replacements keep their existing ordering.
+- Document the distinction between LDraw export order and the separately authored
+  instruction plan. New parts retain recipe steps rather than inheriting removed
+  parts' steps; physical assembly sequence still needs explicit review.
+- Verification: the new multi-step regression reproduced the export failure and
+  now checks retained instances, recipe step values, stable ties, CAD round-trip
+  and report hashes. All 10 targeted cases passed, including the installed-wheel
+  replacement workflow using a multi-step source, regenerated outputs and offline
+  release verification. The full render-extra suite passed **284 tests**; ty with
+  warnings treated as errors and the pinned Ruff check passed.
+- Scope: replacement ordering and export validation only. No frozen fixtures,
+  example design data, instruction plans or physical-build claims changed.
+
+Implementation history: [replacement previews](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/replacements.py).
+
+## Post-review C3 — Detect physical duplicate placements
+
+**Complete, 10 October 2026.** Follows
+[C2](https://github.com/silver5753/brickbuilder/commit/0190771a7bcf9c082cece87e64690a4d216b9c2d).
+
+- Make `duplicate_placements` compare normalized native reference and exact
+  transform independently of colour. Existing inspection, build and offline
+  release checks now reject differently coloured coincident copies consistently.
+- Preserve instance IDs, CAD and inventory quantities; diagnostics never delete
+  parts. No exact-record comparison API is needed by existing callers.
+- Extend the native model and execution guides with the corrected contract:
+  colours, groups and steps do not distinguish physical placement. Different
+  references, separated copies and unequal transforms remain outside this exact
+  duplicate diagnostic; it is not a general collision or clearance certificate.
+- Verification: three regressions failed before the fix (helper, inspection exit
+  and release gate). All **77** targeted core/execution/release tests passed,
+  including separated-copy acceptance and offline rejection of a falsified
+  placement pass. The full render-extra suite passed **287 tests**, including
+  installed-wheel workflows. Ty with warnings treated as errors and pinned Ruff
+  checks passed.
+- Scope: colour-independent exact placement only. Frozen fixtures and example
+  design data are unchanged. C4 brief/release reconciliation follows below.
+
+Implementation history: [placement diagnostics](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/geometry.py).
+
+## Post-review C4 — Reconcile delivery with the brief
+
+**Complete, 10 October 2026.** Follows
+[C3](https://github.com/silver5753/brickbuilder/commit/3af9c09af52230e50867d9991b0eee4372fca49a).
+
+- Normal releases require every requested deliverable and named requirement view
+  for every pose, independently of the policy's optional list of required checks.
+  Missing deliverables/views become explicit manifest and handoff policy findings.
+  Partial deliveries remain labelled drafts; a stage override does not narrow the
+  brief. Selected build checks can pass while delivery findings remain unresolved.
+- Reject forbidden sticker deliverables, generation and render overlays before
+  executing the builder, including drafts. Unknown sticker permission blocks a
+  normal release when stickers are requested/used, but permits a labelled draft.
+  Unused configuration files and undecorated builds remain supported.
+- Offline verification recalculates delivery findings from captured inputs and
+  reconciled stage reports. Check rendered view names, filenames and checksums so
+  configured cameras alone cannot establish delivery. No renderer or project code
+  runs during verification.
+- Correct the building example's contradictory default: its unchanged brief
+  forbids stickers, so disable default sticker generation/overlays. Keep optional
+  artwork assets and document a separate explicitly allowed variant. Core-only
+  example releases now demonstrate partial drafts; the full replacement rehearsal
+  requests and delivers all six supported deliverables.
+- Verification: eight initial regressions reproduced omitted deliverables/views
+  and forbidden sticker use before the fix. Additional coverage exercises unknown
+  versus allowed permission, captured-brief changes, incomplete-image tampering,
+  core-only draft verification and complete installed-wheel release verification.
+  All **35** targeted tests and **297** full render-extra suite tests passed;
+  ty with warnings treated as errors, pinned Ruff and whitespace checks passed.
+- Limits: this checks artifact delivery and the explicit decoration constraint,
+  not visual/physical acceptance or sourcing compliance. Budget, region, condition,
+  stock and standalone sourcing evidence remain separate reviews. Compromises
+  require an explicit brief revision and decision record; prose never auto-waives
+  a constraint. Old partial releases labelled verified under earlier behavior must
+  be regenerated as drafts or completed. Frozen fixtures remain unchanged.
+
+Implementation history: [brief delivery contracts](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/delivery.py).
+Next: C5 agent readiness and stale guidance, then C6 evidence/report contracts.
+
+## Goal and success criteria
+
+An agent should be able to take a user description, record constraints, research
+references, choose real parts, construct a model, inspect it and deliver a
+reproducible review package using documented tools. It should not need to invent
+a new modeling framework, reconstruct old conversations or modify the core for
+each subject.
+
+The agent remains responsible for interpreting the brief and judging visual
+quality. Code should manage identities, placement, evidence, checks and outputs.
+Neither a polished render nor a connected graph proves physical buildability.
+
+We will judge progress by completing two unrelated new projects—a small wheeled
+vehicle and a small building—from briefs through the same documented workflow.
+Solar Orbiter remains a frozen regression example, not the default design or
+the source of universal geometry, colour, region or view assumptions.
+
+## Starting point
+
+| Area | Shipped scope | Remaining gap |
+|---|---|---|
+| Environment | Python 3.12, uv lock, ty, pytest and installed-wheel e2e CI | Preserve these boundaries as features grow |
+| CAD | Typed flat models, rigid transforms, single-file LDraw, dependency resolution, bounds and duplicate diagnostics | Authoring assemblies and stable identities across generated rebuilds |
+| Inventory | Native counts, selections, deltas, one-for-one identity/colour substitutions and reconciled marketplace exports | Geometric replacements and stock/cost planning |
+| Connections | Declared connector matching, engagement, occupancy and rooted paths | Broader evidence-backed catalog, generated bindings and actionable authoring feedback |
+| Rendering | Actual-CAD previews, explicit cameras, provenance and separate dimensional SVG decals | Generic artwork and build-step illustrations |
+| Workflow | Individual commands, source records and a substantial frozen spacecraft example | Validated new-project brief, part preparation, assembly creation and unified release |
+
+The current commands are `init`, `doctor`, `parts`, `sources`, `reference-page`,
+`inspect`, `roundtrip`, `inventory`, `diff`, `export`, `connections`, `render` and
+`stickers`, `sourcing`, `collisions`, `build`, `release` and `verify-release`. Execution and release
+verification are implemented. MPD/TEXMAP support is outside this roadmap's
+initial scope; preserve explicit format errors instead of implying support.
+
+## Sequence and dependencies
+
+| Phase | Outcome | Depends on | Proposed commit slices |
+|---|---|---|---|
+| P1 | Generic agent workflow and new-project starter | Current core | P1a instructions; P1b schema, init and doctor |
+| P2 | Parts preparation and assembly authoring, demonstrated on two subjects | P1 | P2a parts index; P2b assembly API and vehicle; P2c building and tutorial |
+| P3 | One reproducible project execution and release path | P1–P2 | P3a orchestration; P3b manifests and release verification |
+| P4 | Illustrated building instructions and generic artwork | P2–P3 | P4a artwork; P4b step plans and illustrations |
+| P5 | Geometric substitutions, sourcing and collision/motion review | P2–P3; P4 for refreshed instructions | P5a replacements; P5b sourcing; P5c collision and motion diagnostics |
+
+These are reviewable slices, not a promise to fit each feature into one large
+commit. Split a slice when needed, keeping each commit usable. Detailed motion
+analysis follows authoring and release work because agents first need a reliable
+way to create and inspect an ordinary new model.
+
+## P1 — Generic workflow and starter project
+
+**Purpose:** Remove dependence on the spacecraft conversation and give an agent
+a clear starting point for any subject.
+
+**P1a: documentation and scope — complete, 4 October 2026**
+
+- Rewrite the playbook with separate entry paths for a new brief and an existing
+  CAD model. Reading a previous release must be optional for a new project.
+- Change root instructions to `projects/<project_name>/`; move spacecraft axes,
+  named instruments and regional sourcing details into its own project notes.
+- Explain the loop: brief → evidence → structure → details → checks → visual
+  review → sourcing → delivery. State which actions are executable today.
+- Add an acceptance checklist linking each requested feature to an assembly,
+  evidence record, required view and appropriate validation method.
+- Keep public prose in “brick” terminology; preserve technical identifiers,
+  source URLs and required third-party attribution.
+
+**P1b: project contract and starter commands — complete, 4 October 2026**
+
+- Define a small, versioned project schema. Prefer strict JSON, matching existing
+  configuration loaders, and Python dataclasses over a new configuration DSL.
+  Do not force an unrelated migration of historical YAML records.
+- Capture subject, target dimensions/scale, part-count or budget preferences,
+  appearance priorities, moving features, build style, sticker policy, sourcing
+  constraints and requested deliverables. Distinguish hard constraints,
+  preferences, assumptions and accepted compromises; allow unknown values.
+- Record references with URL/local identity, retrieval status, checksum where
+  available, source type, edition, figure/page distinction and confidence.
+- Add a decisions ledger with stable requirement IDs and reasons for changes.
+  Derive acceptance reporting from these IDs rather than duplicating requirements
+  in a second manually maintained checklist.
+- Provide a packaged starter containing a project manifest, brief, source and
+  decision records, a minimal `build.py`, and project-specific instructions.
+  Define one typed builder entry point; document project Python as executable
+  code that must be reviewed before running an unfamiliar project.
+- Implemented `brickbuilder init`: create the starter without overwriting existing
+  files. Implemented `brickbuilder doctor`: check schema, declared paths, Python,
+  optional dependencies and geometry readiness with actionable diagnostics.
+  Doctor must work before a completed model exists and must not certify a model.
+- Keep generated output and downloaded caches ignored. Ship templates as package
+  resources so initialization works from an installed wheel outside the checkout.
+
+**Done when:** An agent can initialize a vehicle or building project, record its
+brief and assumptions, and identify the next action without reading Solar
+Orbiter files. Invalid configuration reports a specific field/path. An incomplete
+brief or missing geometry is visible, never silently filled with spacecraft defaults.
+
+**Verification:** Extend installed-wheel coverage for initialization and doctor;
+cover overwrite protection and malformed required fields. Review the starter
+instructions against both example briefs. No runtime modeling features are
+claimed by the documentation-only slice.
+
+## P2 — Parts preparation and reusable assembly authoring
+
+**Purpose:** Reduce the largest remaining manual burden: selecting parts and
+turning them into correctly placed, identifiable assemblies.
+
+**P2a: parts and evidence preparation — complete, 4 October 2026**
+
+- Build a local index over a user-supplied geometry library: native identity,
+  description/category, dependency availability and geometry bounds. Keep
+  curated dimensions and connector declarations distinct from measured bounds.
+- Add queries by function, nominal dimensions and supported connection family.
+  Unknown metadata must be searchable as unknown, not guessed from filenames.
+- Track colour-production evidence, marketplace mappings, mesh availability and
+  stock observations separately. Existing geometry does not prove stock.
+- Generalize preparation tools that currently hard-code spacecraft part lists
+  and its missing-mesh exception. Let a project's selected parts drive coverage
+  reports; require reviewed evidence before promoting connector declarations.
+- Add a small asset-preparation utility with explicit requested sources, cached
+  checksums, retrieval/failure records and offline reuse. Do not bundle entire
+  libraries, papers or photos by default. Use optional tools for PDF text/page
+  extraction and labelled crops; keep edition and page mappings in source records.
+- Start with the parts needed for the two examples. Do not attempt an exhaustive
+  global parts catalog or automatic connector inference in this phase.
+
+**P2b: assembly API and vehicle — complete, 4 October 2026**
+
+- Add ordinary Python assembly composition with local frames, named attachment
+  ports, semantic part IDs, groups, intended connections and requirement links.
+  Flatten to the existing Model/LDraw representation at the output boundary.
+- Generate deterministic IDs such as `vehicle/front_axle/left_wheel`; preserve
+  them across repeat builds and unrelated edits. Existing UUID-based creation
+  remains available; do not renumber frozen imported models.
+- Add explicit rigid attachment/alignment helpers that reuse current transforms
+  and connector conventions. Do not stretch parts or silently snap arbitrary
+  geometry into place. Avoid a general constraint solver initially.
+- Extract a small set of demonstrated helpers: stacked plates/panels, supported
+  axle mounts and pinned beam connections. Introduce helpers when examples need
+  them, not a speculative framework with many empty abstractions.
+- Generate selections, assembly bindings and connection profiles from the same
+  authoring result. Bind file hashes after CAD serialization, avoiding a circular
+  dependency between model generation and source-bound profiles.
+- Make diagnostics name assembly/part/port, expected relationship and measured
+  mismatch where available. An intended connection is an assertion to check,
+  never evidence that the pieces actually mate.
+- Build a small vehicle with a chassis, supported wheel axles and body details.
+  Document its dimensions and supported connector coverage. Rotation may be
+  demonstrated as a pose; clearance/holding behaviour remains untested here.
+
+**P2c: building and generic tutorial — complete, 4 October 2026**
+
+- Build a small building with a base, interlocking walls, an opening and a
+  supported roof. Keep every decorative part attached or explicitly identify
+  it as a separate loose assembly in the brief.
+- Reuse the same project contract and composition API; parameterize dimensions
+  or colours to prove this is an authoring example rather than a fixed CAD import.
+- Write the default tutorial from a blank brief through part selection,
+  attachment checks and front/rear/detail review. Use these examples in primary
+  documentation; keep spacecraft-specific recipes in its project directory.
+
+**Done when:** Both examples rebuild with stable identities, have complete native
+inventories and pass the declared nominal connection scope without project-specific
+branches in core code. Unsupported coverage blocks a blanket connection-pass
+claim. The examples expose genuinely different construction needs.
+
+**Verification:** Add focused tests for identity stability, frame composition,
+port mismatch and generated profile coverage. Add one compact workflow test per
+example and reuse existing e2e infrastructure. Synthetic geometry can test the
+pipeline in CI, but review real-part geometry before presenting example renders
+as construction evidence. Record any unresolved fit or physical-test limitations.
+
+## P3 — Unified project execution and reproducible release
+
+**Purpose:** Replace manual command sequences and stale output folders with one
+repeatable route from project inputs to a reviewable deliverable.
+
+**P3a: execution — complete, 4 October 2026**
+
+- Implemented `brickbuilder build <project>`: load the project contract, invoke its
+  builder once, then call existing APIs for native CAD, selected inventories,
+  connection reports, configured views, decals and ordering exports. Do not
+  duplicate algorithms or compose brittle shell command strings.
+- Support explicit stages and optional outputs. Missing render dependencies
+  should explain how to install them; a core-only build should remain useful.
+- Produce an immutable result shared by checks and outputs. Verify alternate
+  poses retain the same identities and inventory unless the project explicitly
+  defines a different model/selection.
+- Invalidate derived profiles and reports after geometry/identity edits. Surface
+  failures, unknowns and not-tested dimensions independently in a review summary.
+- Generate required views and requirement coverage from project configuration;
+  no universal shield, wings, instrument or spacecraft camera defaults.
+
+**P3b: release and provenance — complete, 4 October 2026**
+
+- Implemented `brickbuilder release <project>`: create a new output directory using
+  the same execution path; publish it only after outputs and manifest reconcile.
+  Preserve prior releases and leave failures clearly incomplete.
+- Record source/model/config hashes, builder and package versions, Python and
+  dependency versions, geometry dependency hashes, evidence dates, output hashes,
+  selection/pose identities, validation scope and limitations.
+- Include complete native CAD, BOMs, requested order files/manual additions,
+  reports, review images and generated handoff notes. Clearly name the ordering
+  file and distinguish alternative selections from quantities to combine.
+- Add offline release verification for checksums, missing artifacts, shared model
+  provenance and complete/order/manual quantity reconciliation.
+- Allow clearly labelled draft review packages with unknowns or failed checks.
+  Do not label them verified releases. Define required checks in project policy;
+  never allow policy to relabel unknown as pass. Physical-build status stays a
+  separate field even when all software checks pass.
+
+**Done when:** Each new example goes from its project directory to a complete
+review bundle with one command and no hand-edited generated files. Changing the
+model cannot leave an apparently current report or image in the next release.
+
+**Verification:** Extend the example e2e flows through release verification.
+Check stale/tampered artifacts, quantity reconciliation, unknown/fail propagation
+and preservation of an existing release. Compare semantic outputs and hashes;
+require identical rendered bytes only within the documented same-environment
+scope. Keep machine/timestamp metadata separate from reproducible content.
+
+## P4 — Generic artwork and illustrated building instructions
+
+**Purpose:** Make a release useful for assembling and finishing a model, beyond
+viewing CAD or buying parts.
+
+**P4a: importing agent-created artwork — complete, 5 October 2026**
+
+Scope revised with the user: the using agent creates artwork with its own tools.
+The repository handles importing, placement, printing, preview and provenance;
+it does not prepare a design collection or build a font/pattern generator.
+
+- Import finished single-frame PNGs, with explicit background and attribution.
+  The agent exports vector/text originals externally; direct SVG interpretation
+  and font rendering are outside this slice. Keep the legacy solar format.
+- Separate a part-local rigid placement and nominal rectangular size from artwork.
+  Bind exact semantic instances, require matching native parts and one decal per
+  instance; preserve measured insets, quantity mapping and print calibration.
+- Embed the same normalized image in printable SVG sheets and depth-tested CAD
+  preview textures. Preserve aspect ratio and report effective print resolution.
+- Include original/normalized image hashes, attribution and decoder version in
+  reports; capture original image inputs automatically in releases. Keep all
+  cosmetic content out of native CAD and inventories.
+- Keep PNG decoding optional (`artwork` extra); the render extra already supplies
+  it. Existing solar printing and offline release verification stay core-only.
+
+**P4b: assembly steps — complete, 6 October 2026**
+
+- Define an explicit step plan referencing semantic instances and subassemblies,
+  with prerequisites, orientation, added-part lists and callouts. Existing LDraw
+  STEP groups alone are not a practical instruction sequence.
+- Generate accumulated-model views, highlight additions, and permit manual
+  camera/orientation overrides for obscured connections and mirrored parts.
+- Validate every physical part appears exactly once in the assembly plan,
+  prerequisites have no cycles, and step totals match the chosen model inventory.
+  Reused subassembly instructions must account for every physical copy.
+- Flag insertion/access questions for review. Start with authored step sequences;
+  do not promise automatic discovery of a feasible construction order.
+- Deliver a navigable instruction set with optional PDF export, plus a physical
+  build feedback form linked to steps, parts and the exact revision.
+
+**Done when:** Both new examples have readable illustrated instructions and at
+least one non-solar artwork example. A reviewer can trace each step back to CAD
+and identify untested access/fit assumptions. Record a real trial build when
+available; do not claim one from automated step checks.
+
+**Verification:** Check step coverage, dependency errors, decal dimensions/counts
+and inventory separation. Visually review representative pages and connection
+close-ups. Reuse release provenance rather than inventing a second manifest.
+
+## P5 — Substitutions, sourcing and collision/motion diagnostics
+
+**Purpose:** Make revisions practical under real purchasing constraints and
+identify geometric risks without overstating physical certainty.
+
+**P5a: geometric replacements — complete, 7 October 2026**
+
+- Extend one-for-one substitutions to explicit assembly recipes, starting with
+  a large tile replaced by smaller tiles and a supported mount alternative.
+- Declare matched instances, removed/added parts, local transforms, exposed
+  ports, backing/support requirements and expected footprint changes.
+- Preview the geometry and quantity delta before application. Apply recipes
+  atomically, preserve unaffected IDs, and give replacement parts stable IDs.
+- Regenerate all affected profiles, checks, renders, decals, steps and orders.
+  Equal area or the same silhouette is not proof of equivalent attachment.
+
+**P5b: sourcing — complete, 9 October 2026**
+
+- Accept dated stock/price snapshots and owned-parts inventories. Treat country,
+  seller, condition, currency, quantities and budget as project inputs.
+- Separate catalog identity, produced colours, stock and importer acceptance.
+  Preserve accepted/rejected/untested mapping evidence and observation dates.
+- Rank feasible options using available price/quantity data, with shipping,
+  minimum order and freshness limits explicit when unknown. Do not claim the
+  cheapest complete purchase when data is incomplete.
+- Start with offline user-provided data; keep future service adapters outside
+  the geometry core. Purchasing and messages to sellers are not automatic build
+  steps. No default assumption of Israeli sourcing.
+
+**P5c: collision and motion — complete, 9 October 2026**
+
+- Add conservative broad-phase candidate detection, then supported targeted
+  geometry/contact checks. Bounds overlap alone must never mean material collision.
+- Declare joints with local frames, permitted poses/limits and moving assemblies.
+  Sample specified motions and report tested intervals, resolution and geometry
+  limitations; discrete samples do not establish continuous clearance.
+- Distinguish expected mating contact, interference, uncertain hollow geometry
+  and missing meshes. Scope reviewed exceptions to exact pairs/revisions with
+  reasons, not blanket suppression of an assembly.
+- Produce isolated diagnostic views. Reuse the vehicle or a small hinge fixture
+  before applying the feature to the spacecraft's dish and boom.
+- Keep force, sag, clutch, stability and insertion access separate from nominal
+  geometry. Record measured physical feedback instead of invented material data.
+
+**Done when:** An unavailable part can be replaced through an auditable recipe,
+with revised quantities and connection checks; a dated sourcing report explains
+remaining shortages; motion diagnostics report both tested clearance and their
+limits. Each capability also works on a non-spacecraft example.
+
+**Verification:** Test attachment-changing substitutions, unmet support needs,
+rollback and quantity changes; sourcing shortages and stale/missing data; known
+interference, intentional mating contact, a hollow part and an unsupported mesh.
+Use focused fixtures and the existing example flows rather than another large
+set of nearly identical spacecraft snapshots.
+
+## Guardrails for every implementation slice
+
+1. Keep subject, region, colours, units-to-subject axis mappings and special
+   exceptions in project data. Core code should not branch on a project name.
+2. Reuse current transforms, loaders, exporters and report conventions. Add typed
+   interfaces where needed; avoid parallel model schemas and a new modeling DSL.
+3. Use Python 3.12 only, uv, ty and pytest. Preserve the dependency-free core and
+   optional rendering boundary. Run relevant checks, then stop redundant testing.
+4. Keep frozen fixtures unchanged. Compatibility adapters must be explicit and
+   documented; changing a baseline is a separate intentional design revision.
+5. Tie findings to semantic instances, evidence and exact revisions. Never hide
+   unsupported coverage or upgrade unknown to pass to satisfy a milestone.
+6. Demonstrate reusable features on an unrelated subject. A project-specific
+   helper may stay local until a second use justifies extraction.
+7. Give the agent actionable defaults and diagnostics; ask the user only for
+   consequential missing preferences. Record reasonable assumptions and avoid
+   adding approval gates for routine reversible work.
+8. Keep tests about contracts, meaningful errors and complete workflows. Reuse
+   fixtures/parametrization; do not test every trivial wrapper or duplicate an
+   implementation in its test.
+
+## Tracking and handoff
+
+| Slice | Status | Shipped entry points / evidence | Remaining limits |
+|---|---|---|---|
+| P1a | Complete, 4 October 2026 | Generic [agent instructions](../AGENTS.md), [playbook](playbook.md), [brief/checklist](design-brief.md), [project notes](../projects/solar_orbiter/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/docs/playbook.md) | Documentation and manual templates only; no new CLI or models |
+| P1b | Complete, 4 October 2026 | [Project format and CLI](projects.md), typed records, packaged starter, non-executing doctor; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/project.py) | Readiness only; no builder execution, source verification or model validation |
+| P2a | Complete, 4 October 2026 | [Parts and reference preparation](preparation.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/parts.py) | Supplied metadata/declarations; source meaning, stock and physical fit remain unverified |
+| P2b | Complete, 4 October 2026 | [Assembly API](assembly.md), [vehicle example](../projects/vehicle/README.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/assembly.py) | Nominal interfaces only; no physical build, collision, motion or release certification |
+| P2c | Complete, 4 October 2026 | [Building example](../projects/building/README.md), [generic tutorial](tutorial.md); [implementation history](https://github.com/silver5753/brickbuilder/commits/main/projects/building/build.py) | Nominal and visual review; physical trial, collision, strength and automatic acceptance remain untested |
+| P3a | Complete, 4 October 2026 | [Unified execution](execution.md), shared example builders; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/execution.py) | Draft outputs; full release manifest, physical testing and acceptance remain unverified |
+| P3b | Complete, 4 October 2026 | [Release and offline verification](releases.md), example policies; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/release.py) | Artifact consistency and software policy only; no physical/visual acceptance or hermetic Python execution |
+| P4a | Complete, 5 October 2026 | [Imported artwork](artwork.md), building PNG/placement example; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/rendering/artwork.py) | Finished PNGs and flat rectangular labels; no graphic/font generation, curved wrapping, colour proof or physical print validation |
+| P4b | Complete, 6 October 2026 | [Authored instructions](instructions.md), vehicle/building step plans; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/instructions.py) | Authored order and views; insertion access and physical assembly remain untested |
+| P5a | Complete, 7 October 2026 | [Replacement recipes](replacements.md), optional vehicle rehearsal; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/replacements.py) | Explicit authored alternatives and nominal support checks; footprint equivalence and physical build remain untested |
+| P5b | Complete, 9 October 2026 | [Offline sourcing](sourcing.md), `sourcing` CLI and fictional vehicle snapshot; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/sourcing.py) | Dated offline comparisons; no live stock, purchase, FX or global cart optimization |
+| P5c | Complete, 9 October 2026 | [Collision/motion guide](collisions.md), `collisions` CLI and vehicle axle rehearsal; [implementation history](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/collisions.py) | Reviewed material boxes and one sampled revolute joint; no arbitrary mesh solids, continuous clearance or physical simulation |
+
+P1a verification: checked relative document links and heading anchors, whitespace
+and current-command descriptions against the API guides/CLI. Walked the new-brief
+path through vehicle and building planning examples: both identify their first
+structural task, missing evidence and acceptance methods without using spacecraft
+files. These are documentation walkthroughs, not generated or physically tested
+models. Runtime tests were not rerun for this documentation-only change.
+
+P1b verification: ty passed for source, tests and tools; the complete pytest suite
+passed all 176 cases, including six installed-wheel e2e cases. New coverage checks
+strict fields and linked IDs, duplicate JSON/records, path traversal and symlink
+escapes, missing/empty recursive geometry, source-state uncertainty, input hashes,
+packaged starter files, overwrite refusal and missing optional rendering modules.
+A builder containing a deliberate runtime error is never imported by doctor.
+The vehicle fixture exercises filled records; the building e2e starts blank.
+Documentation links/anchors, examples and formatting were checked.
+
+P1b scope: JSON version 1 records preserve null/unknown choices, separate source
+and decision evidence, and derive acceptance entries from the requirement list.
+Doctor checks declared local input readiness; its schema/source statuses do not
+verify evidence or executable code. Geometry scope is limited to explicitly
+listed planned parts. Existing historical YAML and frozen CAD remain unchanged.
+A fresh starter exits 3 until completed; its builder deliberately raises
+NotImplementedError. No runtime dependency or CI job was added.
+
+P2a verification: ty passed and all 186 pytest cases passed, including seven
+installed-wheel e2e cases. Added coverage exercises measured/curated evidence
+separation, query filters and unknowns, project-selected connector subsets,
+invalid metadata, offline reuse after review-note changes, checksum tampering,
+acquisition errors and optional page-tool contracts. HTTP acquisition is mocked
+in tests; no live publisher availability is claimed. A real Poppler smoke run on
+a synthetic PDF produced a 300×200 crop, full-page text and edition/page/figure
+labels. Formatting and document link/anchor checks passed.
+
+P2a scope: index explicit project parts, a caller-selected list, or immediate
+library candidates; save hashes and copy supplied connector declarations without
+promotion. Colour, mapping and stock evidence remain separate references, not a
+live purchasing database. Explicit selected-source acquisition is offline by
+default and produces immutable cache entries plus dated failure/success receipts.
+PDF extraction is an optional Poppler adapter, not a core Python dependency.
+Historical connector recipes moved into the spacecraft project; historical
+assembly-binding recovery stays separate until P2b provides generated bindings.
+Frozen CAD, connector baselines and fixture hashes remain unchanged.
+
+P2b verification: ty passed for source, tests, tools and the executable vehicle
+builder; all 196 pytest cases passed, including eight installed-wheel e2e cases.
+Focused coverage checks semantic identity, nested frames, port-frame rotation,
+explicit alignment, intended mismatches even with a connected nominal graph,
+unknown coverage, invalid names/placements and source-bound profile/selection
+round trips. The installed-core workflow builds the 19-part vehicle, checks all
+24 intended joints and complete nominal coverage, inspects group inventory and
+rebuilds a different colour/wheelbase with the same semantic bindings.
+
+P2b scope: assemblies flatten to the existing Model and LDraw types. Public
+port matching reuses the existing connection checker; intent never adds an edge.
+The vehicle's seven native part types and relevant interface primitives were
+reviewed in a real local geometry library, with hashes/attribution retained.
+Front, rear and underside surface renders were generated and visually inspected
+without mesh envelopes. Generated previews/dependency libraries remain ignored.
+No live stock, physical fit, strength, insertion or motion tests are claimed.
+Stacked-body and supported-axle helpers stay project-local until reused; unused
+pinned-beam abstractions were not added. Requirement bindings are traceability,
+not automatic acceptance. Unified execution/release remains P3 work; frozen
+spacecraft files and UUID creation are unchanged.
+
+P2c verification: ty passed for source, tests, tools and both example builders;
+all 197 pytest cases passed, including nine installed-wheel e2e cases. One new
+building workflow checks complete nominal coverage, both lintel supports,
+staggered corner bonds, generated profile/BOM selections, repeatable default CAD,
+and preserved existing IDs through a taller, differently coloured revision.
+The default has 23 parts and 92 intended bearings; the taller version has 34
+parts and 128 bearings. Formatting, lint and relative documentation links passed.
+
+P2c scope: the building uses the existing assembly API with no core changes.
+Its base, alternating wall courses, doorway, supported lintel and overhanging roof
+use five reviewed native part types. Actual mesh headers/hashes and nominal
+metadata are recorded; real front/rear/underside and filtered detail views were
+rendered and inspected without approximation envelopes. A doorway camera was
+adjusted to reveal depth against the rear wall. No images or geometry libraries
+are added to source control. Physical build, collision, strength, insertion and
+stock remain untested. Both unrelated examples now meet P2's scoped authoring
+criteria, without a subject-name branch in core code.
+
+The tutorial starts from a blank brief and includes a runnable starter rehearsal,
+part preparation, authoring, exact-source connection review, visual inspection,
+and revision/handoff guidance. A fresh-folder rehearsal reproduced the reviewed
+CAD; the documented local parts query and doctor readiness check succeeded.
+Requirement links remain traceability rather than automatic acceptance. Unified
+execution and release verification are explicitly still P3 work.
+
+P3a verification: ty passed for source, tests, tools and both example builders;
+all 206 pytest cases passed, including ten installed-wheel e2e cases. Tests cover
+single builder invocation, immutable pose identities, refreshed source hashes,
+optional outputs, missing geometry/dependencies, requirement binding failures,
+connection statuses and incomplete publication. Both unrelated examples ran
+through the shared command with their real local geometry library: 19 vehicle
+parts and 23 building parts, resolved renders and passing nominal connections.
+Their model fingerprints match the previously reviewed geometry.
+
+P3a scope: one reviewed Python invocation produces CAD, native/group inventories,
+source-bound profiles, configured renders, decals and selected ordering exports.
+Required assembly/view bindings are checked, while acceptance remains not-tested.
+Named poses conserve instance IDs, native parts and colours; design variants are
+separate builds. Existing destinations are refused and failed publication leaves
+an incomplete marker. This is trusted Python execution, not a sandbox or physical
+certificate. Input/main-builder hashes and draft summaries are provided; complete
+imported-code/dependency provenance and release reconciliation remain P3b work.
+No frozen fixture or dependency changes were needed.
+
+P3b verification: ty and all 218 pytest cases passed, with the same ten e2e
+workflows extended instead of duplicated. Both unrelated examples now release
+and verify through the installed core wheel. The optional-output workflow creates
+a labelled draft with two poses, geometry uncertainty, images, decals, selected
+orders and mixed import/manual quantities; offline verification succeeds in the
+core-only wheel after deleting its original project and geometry library.
+Tampered manual quantities fail even after rehashing the artifact. Focused cases
+cover missing/extra files, inventory/source/selection inconsistencies, unsafe
+paths, symlinks, policy failures/unknowns, changing inputs and interrupted copying.
+A same-size/same-mtime helper edit with deliberately stale bytecode is honored:
+private project helper imports now compile source directly.
+
+P3b scope: explicit release policies gate required software checks per pose;
+--draft preserves findings without promotion. Captured project/local Python and
+declared data inputs, environment/tool versions and source hashes, evidence dates,
+complete artifact hashes and a generated handoff make the package inspectable.
+Existing destinations are preserved; staged reconciliation precedes publication,
+and incomplete copying leaves a marker. Offline checks reconcile CAD, selections,
+BOMs, source-bound reports, configuration/coverage and regenerated order/manual
+outputs. Physical build, stock and importer acceptance remain separate untested
+fields. Checksums are not signatures; arbitrary undeclared Python I/O is not
+traced, and external libraries/assets are recorded by stage hashes rather than
+redistributed. The publication protocol is marked copying, not an atomic rename.
+
+P3 usability rehearsal: initialized a third subject, a small three-part display
+bench, from the starter in ignored output. Authored two 3004 supports and a 3009
+seat with semantic IDs and one requirement, reusing reviewed connector data.
+The normal release passed placement, count, nominal connectivity and requirement
+binding gates; offline verification passed. No core edit, subject-specific helper
+or prior spacecraft artifact was needed. This is a minimal authoring/release
+rehearsal, not a visually reviewed or physically tested finished set. Remaining
+agent work is explicit: choose/review real part interfaces, author placements,
+configure useful views, declare builder data and assess appearance. Keep P4
+focused on artwork and assembly illustrations rather than speculative layout
+solvers; retain P5's sourcing and collision limits until supported evidence exists.
+
+P4a verification: ty, Ruff and all 225 pytest cases passed. Seven focused cases
+cover size/aspect fit, alpha flattening, exact IDs, duplicate/mismatched targets,
+unsafe or corrupt imports, rigid frames, texture sampling, depth occlusion and
+front-face left/right orientation. The existing optional-output e2e now imports a
+PNG into both poses and verifies the complete release in the core-only wheel after
+removing the original project/library. No duplicate e2e workflow was added.
+
+P4a visual review: generated a real-library building release with a single
+wayfinding label on its front lintel. Reviewed the door-detail PNG and exported
+its A4 SVG sheet through Inkscape to inspect image embedding, arrow direction,
+label size/cut frame and calibration line. This caught and corrected a front-frame
+orientation and SVG image-link compatibility issue before delivery. Print-only
+execution succeeded with the artwork extra. The physical CAD remains the same
+23-part model; no live printer, adhesion or surface-fit test is claimed.
+
+P4a limits: normalized RGB PNG transport, centered aspect-preserving fit,
+opaque background and nearest-neighbor orthographic texture sampling with flat
+lighting. Agents prepare artwork and record original source/font rights; the
+repository does not authenticate those records or interpret SVG/fonts. Local
+surface frames are reviewed declarations, not automatically inferred attachment
+surfaces. Original vector assets can be declared release inputs. No core runtime
+dependency was added; the new extra reuses pinned Pillow. Frozen fixtures are
+unchanged. The one small original arrow image is a workflow input, not a reusable
+design catalog.
+
+P4b verification: Ruff, ty and all 232 pytest cases passed. Seven focused
+cases check repeated physical copies, complete/unique coverage, unknown groups,
+prerequisite order/cycles, future callouts and mandatory overview views. The
+existing optional-output e2e now builds illustrated steps for both poses and
+verifies them in an installed core-only wheel after removing the source project
+and geometry library. A tampered step inventory fails semantic reconciliation
+even when its artifact hash is updated; no duplicate e2e workflow was added.
+
+P4b scope: project-local `steps.json` supplies semantic instances/assemblies,
+prerequisites, cameras, callouts and explicit access notes. The `instructions`
+build/release stage writes accumulated native CAD, highlighted PNGs, per-step
+inventories, navigable print-styled HTML and revision-bound physical feedback.
+Captured plans and reports reuse release provenance and offline verification.
+Every physical instance is accounted for once, including repeated assemblies.
+No runtime dependency or physical CAD change was required.
+
+Both examples were released with real local geometry and passing nominal
+connection checks: 11 vehicle steps over 19 parts and six building steps over
+23 parts. Representative underside/axle, lintel-bearing and completed-vehicle
+illustrations were visually inspected. New additions are gold and prior parts
+grey only in illustrations; native colours remain in CAD and inventories.
+Artwork is omitted from structural step views. Optional PDF delivery uses the
+browser's Print / Save as PDF; browser pagination and physical builds were not
+tested. Authored order, access notes and connection checks do not prove a feasible
+insertion sequence, strength or clutch fit. Generated review bundles remain ignored.
+
+P5a verification: all 241 pytest cases passed; ty and Ruff passed. Eight focused
+cases cover stale expected parts and authored metadata, ID collisions, missing
+successors/exposed endpoint mappings/backing, failed/unknown connection gates,
+rotated support frames, alias/requirement preservation, step migration and missing
+geometry. One new installed-wheel workflow prepares a replacement project and
+regenerates connections, renders, imported labels, instructions and complete
+orders. The core-only wheel verifies the package after its project and synthetic
+geometry library are removed. CI now type-checks both complete example directories.
+
+P5a scope: `ReplacementRecipe` reuses Assembly/PartInstance/Transform rather than
+introducing another modeling language. Immutable previews hold exact removed
+instances, candidate CAD, native quantity deltas, successor and endpoint mappings,
+required retained supports, exposed aliases, retired internal joints, catalog/model
+hashes and optional bounds/dependency evidence. Applying a stale preview or a known
+connection failure raises without mutation; unknowns need an explicit override.
+Requirements transfer through declared successors. New physical parts have new
+stable IDs; unaffected instances stay unchanged. No dependencies were added.
+
+The project-local rehearsal starts from a 19-part tile-roof vehicle, splits one
+2 x 2 tile into two 1 x 2 tiles and replaces a cab-support brick with three plates.
+It writes a separate 22-part project, preview receipts and 13 authored steps,
+retaining the original default vehicle. Real tile underside geometry and seating
+planes were reviewed and hashes recorded. A real-library release passed nominal
+connections and artifact verification; front and support-step illustrations were
+inspected. Visual review led to separate middle/top plate steps so additions
+remain legible. Physical trial, insertion, clutch and load capacity remain untested.
+
+Changed-part geometry resolves fully and measured available-geometry overall
+bounds are unchanged. The complete bounds report retains uncertainty from empty
+wheel helper files (`1-16chrd.dat`, `empty.dat`); no exception hides this finding.
+The expected footprint is authored guidance, not an automatic equivalence gate.
+Port presence and a root path do not establish sufficient support for a load.
+Only authored external intent is preserved; undocumented support requirements
+must be added by the agent. Replacements with no retained backing are outside
+this initial supported recipe scope.
+
+Step migration expands explicit part/callout IDs and validates coverage; internal
+order, access notes and camera review remain authored. Artwork resizing and seam
+choices remain agent work. Fresh build/release stages regenerate profiles,
+checks, renders, decals, steps and orders after those input changes. Captured
+preview reports are evidence inputs, not independently replayed by offline
+verification. Frozen spacecraft fixtures remain unchanged.
+
+P5b verification: all 263 pytest cases passed; ty and Ruff passed. Twenty-two
+focused cases cover owned-demand conservation, exact decimal costs, shipping-aware
+ranking, stock/evidence eligibility, freshness boundaries, minimum orders, budgets,
+unknown prices/terms and invalid or ambiguous snapshots. The existing installed-core
+vehicle workflow now exercises the sourcing CLI, source hashes, exact snapshot
+byte capture including a UTF-8 BOM, overwrite refusal and shortage exit status.
+No duplicate e2e workflow or runtime dependency was added.
+
+P5b scope: strict dated snapshots carry policy, sellers, lots and owned quantities.
+Native mappings, colour production, stock observations and importer acceptance
+remain separate evidence records. The `sourcing` command supports a native model
+or existing selection, subtracts usable owned parts, reports per-identity shortages
+and evaluates single-seller baskets plus one deterministic unit-price greedy split.
+Reports preserve evidence, input/model/source hashes, allocated quantities,
+minimum-order gaps, unknown costs and budget findings. Money uses decimal strings;
+no currency conversion, silent zero shipping or minimum-order filler is invented.
+
+A fictional Canadian/CAD vehicle snapshot demonstrates generic sourcing without
+regional defaults: one owned chassis leaves 18 parts; the complete known-cost
+seller basket is CAD 4.20, while the cheaper-unit seller has unknown shipping.
+This is synthetic workflow evidence, not a real purchase recommendation. Snapshots
+use an explicit as-of date, so later runs remain reproducible. Stale/future stock,
+unsupported conditions/currencies/destinations and unaccepted mappings cannot hide
+shortages. Unknown production or delivery/cost terms prevent a candidate pass.
+
+Limits: the heuristic can miss a feasible or cheaper mixed basket. Candidate status
+and totals are scoped to supplied observations, never live availability or the
+cheapest complete purchase. Shipping is a supplied flat destination quote; taxes,
+lot multiples, tiered shipping and discounts are not inferred. Separate source
+records can still describe the same cross-listed stock unless the agent resolves
+that ambiguity. Owned stock is not reserved. Sourcing remains a standalone
+comparison, not a release policy gate; snapshots/reports can be captured as explicit
+release inputs without converting stock or importer acceptance to a live pass.
+No marketplace request, purchase or seller message is performed.
+
+P5c verification: all 280 pytest cases passed; ty and Ruff passed. Sixteen focused
+analytical cases cover interference, contact reviews that cannot suppress failures,
+rotated separation requiring a cross-product axis, partial material coverage,
+hollow/empty/missing geometry, stale model/dependency evidence, local joint frames,
+limits and identity preservation. One installed-wheel workflow exercises the
+core-only diagnostic CLI, captured hashes/configuration, overwrite/stale-input
+refusal and optional-render isolated views. After final view-priority changes,
+the 23 affected algorithm/installed workflows and ty/Ruff passed again.
+
+P5c scope: `diagnose` and `collisions` reuse Model/Transform, recursive geometry,
+existing CAD export and rendering. All instance pairs are checked per explicit
+pose. Complete disjoint vertex bounds can establish scoped separation; overlapping
+bounds alone remain unknown. A targeted 15-axis oriented-box test supports reviewed
+part-local material regions, bound to transitive dependency bytes and evidence.
+Full material coverage is an authored claim, not inferred or verified mesh solidity.
+Partial regions can detect interference but cannot establish complete clearance.
+Expected contact reviews name exact pairs and pose hashes; they cannot suppress
+penetration or unsupported/hollow geometry. No runtime dependency was added.
+
+One revolute joint is sampled relative to a stationary anchor's local rigid frame.
+Explicit moving IDs preserve identities, quantities and their relative geometry.
+Reports retain limits, sampled span, angle gaps, per-pose hashes, missing geometry,
+source/config/dependency evidence and independent physical not-tested dimensions.
+The bundle includes full poses and bounded isolated-pair CAD with checksums and
+omitted-view counts; failures are prioritized. The existing renderer produces PNGs.
+This remains a standalone review operation, not a new release gate or continuous
+collision/kinematic solver. Multi-joint coupling and physical insertion, holding
+force, sag, clutch and stability are untested.
+
+The real-library 19-part vehicle rehearsal rotates the front shaft, wheels and
+bushes together at 0, 45 and 90 degrees. Each pose checks 171 pairs: 87 have separated
+bounds, 18 need material/hollow-interface review, and 66 include unresolved geometry.
+Empty helper dependencies (`1-16chrd.dat`, `empty.dat`) in four bushes remain visible;
+no declaration hides them. Overall status is unknown. Underside/full-pose and isolated
+shaft/support views were inspected. Geometry rendering can succeed even while the
+stricter completeness diagnostic remains unknown. Default vehicle and frozen
+spacecraft designs stay unchanged. Generated bundles remain ignored.
+
+Agent, starter, playbook and validation instructions now link the shipped scope.
+The testing guide was also repaired: its body had duplicated the inventory guide;
+it now describes locked setup, pytest markers, wheel isolation and evidence limits.
+
+The planned P1–P5 slices are complete; post-review C1–C4 are recorded above.
+A useful follow-up is a fresh-agent
+usability pass on a third unrelated brief and measured physical trial feedback.
+Use those findings to propose the next work; no additional phase is pre-authorized
+or implied by completion of the software roadmap.
+
+For each completed slice, update this file with its status, commit link, shipped
+entry points, verification performed and remaining limits. Keep proposed syntax
+clearly marked until it exists. Update README/API documentation in the same
+implementation commit so future agents have one consistent entry path.
+
+P3 usability review above addresses: can a fresh agent build a third,
+unrelated small subject using only the documented workflow and project-local
+code? Record every missing helper, undocumented step and required core edit.
+Use that evidence to adjust P4–P5 scope before expanding the framework further.

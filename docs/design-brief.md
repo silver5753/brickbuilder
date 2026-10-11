@@ -91,5 +91,6 @@ and support over the opening. Do not copy the vehicle's axle workflow.
 
 Both briefs can proceed through evidence gathering, structure, details, checks,
 visual review, sourcing and delivery without a prior release or spacecraft data.
-Both still need part selection and project-local authoring until P2 ships. These
-are planning walkthroughs, not substitutes for the executable examples in P2.
+These are planning walkthroughs. The shipped [vehicle](../projects/vehicle/README.md)
+and [building](../projects/building/README.md) examples demonstrate concrete part
+selection and project-local authoring through the shared workflow.

@@ -133,4 +133,5 @@ Selecting rendering tests without the extra fails collection instead of skipping
 
 The frozen native CAD and all baseline fixture hashes remain unchanged.
 Use [release packages](releases.md) for provenance and offline verification.
-Motion/collision review remains future work.
+Separate [collision and sampled-motion diagnostics](collisions.md) are available;
+render success does not establish clearance or physical feasibility.

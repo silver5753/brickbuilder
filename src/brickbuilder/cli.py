@@ -627,7 +627,7 @@ def _parser() -> argparse.ArgumentParser:
     render.set_defaults(handler=_render_command)
     stickers = commands.add_parser(
         "stickers",
-        help="Create dimensional SVG solar decals without rendering dependencies",
+        help="Create dimensional SVG sheets from imported PNG artwork or legacy patterns",
     )
     stickers.add_argument("source", type=Path)
     stickers.add_argument("--config", type=Path, required=True)

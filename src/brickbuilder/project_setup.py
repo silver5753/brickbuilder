@@ -1,15 +1,23 @@
 """Non-executing project preparation and readiness diagnostics."""
 
 from dataclasses import dataclass
+from collections.abc import Callable
+from hashlib import sha256
 from importlib.resources import files
 import json
 from pathlib import Path
 import sys
 
 from .exporters import write_bundle
+from .exporters.rules import loads_rules
+from .delivery import validate_decoration
+from .execution import load_build_config
+from .instructions import load_steps
 from .geometry import GeometryLoader
 from .ldraw import Dependency, PartLibrary
 from .project import Requirement, _identifier, load_project, project_path
+from .rendering.config import load_config
+from .rendering.stickers import load_stickers, artwork_dependencies
 
 STARTER_FILES = (
     "project.json",
@@ -60,6 +68,10 @@ class ReadinessReport:
 def doctor(directory: Path, *, library: Path | None = None) -> ReadinessReport:
     """Check declared inputs, never execute/import the builder or fetch sources."""
     project = load_project(directory)
+    settings = load_build_config(project)
+    hashes = dict(project.input_hashes)
+    if settings.sha256:
+        hashes["build.json"] = settings.sha256
     findings: list[dict[str, str]] = []
 
     def add(check: str, status: str, message: str) -> None:
@@ -129,35 +141,135 @@ def doctor(directory: Path, *, library: Path | None = None) -> ReadinessReport:
             f"Recorded retrieval={source.retrieval}, confidence={source.confidence}; source not fetched or independently verified.",
         )
 
-    if "preview" in brief.deliverables:
+    enabled = set(settings.stages)
+    requested = set(brief.deliverables)
+    wanted = (
+        enabled
+        | ({"render"} if "preview" in requested else set())
+        | (requested & {"instructions", "stickers", "orders"})
+    )
+    try:
+        validate_decoration(brief, enabled, settings.stickers is not None)
+        add(
+            "sticker_policy",
+            "unknown" if brief.sticker_policy == "unknown" else "pass",
+            "Recorded sticker permission checked against requested outputs and configured overlays.",
+        )
+    except ValueError as exc:
+        add("sticker_policy", "fail", str(exc))
+
+    def check_input(
+        check: str, path: Path | None, parse: Callable[[Path], object]
+    ) -> str:
+        if path is None:
+            add(
+                check,
+                "unknown",
+                f"Configure {check}; the capability is supported but inputs are missing.",
+            )
+            return "unknown"
+        try:
+            hashes[path.relative_to(project.root).as_posix()] = sha256(
+                path.read_bytes()
+            ).hexdigest()
+            parse(path)
+            add(
+                check,
+                "pass",
+                f"Parsed {path.name}; model bindings and physical acceptance are not tested.",
+            )
+            return "pass"
+        except (OSError, ValueError) as exc:
+            add(check, "fail", str(exc))
+            return "fail"
+
+    render_status = "not_tested"
+    if wanted & {"render", "instructions"}:
         from .rendering.backend import modules
 
         try:
             modules()
+            render_status = "pass"
             add(
                 "render_dependencies",
                 "pass",
                 "Optional rendering modules import successfully.",
             )
         except ValueError as exc:
+            render_status = "fail"
             add("render_dependencies", "fail", str(exc))
     else:
         add(
             "render_dependencies",
             "not_tested",
-            "No preview requested; rendering dependencies are optional.",
+            "No preview/instructions requested or render/instructions stage configured; rendering dependencies are optional.",
         )
-    for deliverable in sorted(
-        set(brief.deliverables) & {"instructions", "orders", "stickers"}
-    ):
+    render_input = "not_tested"
+    if wanted & {"render", "instructions"}:
+        render_input = check_input("render_config", settings.render, load_config)
+    configurations = {}
+    if "render" in wanted:
+        configurations["preview"] = [render_status, render_input]
+    if "instructions" in wanted:
+        steps = project_path(project.root, "steps.json", "Step plan")
+        configurations["instructions"] = [
+            render_status,
+            render_input,
+            check_input(
+                "steps",
+                steps if steps.exists() else None,
+                lambda p: load_steps(p.read_bytes()),
+            ),
+        ]
+    if "stickers" in wanted or ("render" in wanted and settings.stickers is not None):
+
+        def sticker_inputs(path: Path) -> None:
+            load_stickers(path)
+            for asset in artwork_dependencies(path):
+                hashes[asset.relative_to(project.root).as_posix()] = sha256(
+                    asset.read_bytes()
+                ).hexdigest()
+
+        configurations["stickers"] = [
+            check_input("sticker_config", settings.stickers, sticker_inputs)
+        ]
+    if "orders" in wanted:
+        if not settings.orders:
+            add(
+                "order_jobs",
+                "unknown",
+                "Configure at least one build.json order job and its marketplace rules.",
+            )
+        configurations["orders"] = [
+            check_input(
+                f"order_rules:{job.name}",
+                job.rules,
+                lambda p: loads_rules(p.read_text(encoding="utf-8-sig")),
+            )
+            for job in settings.orders
+        ] or ["unknown"]
+    for deliverable, states in configurations.items():
+        stage = "render" if deliverable == "preview" else deliverable
+        missing_stage = stage not in enabled and deliverable in requested
+        if missing_stage:
+            states.append("unknown")
+        status = (
+            "fail" if "fail" in states else "unknown" if "unknown" in states else "pass"
+        )
         add(
             f"deliverable:{deliverable}",
-            "unknown",
+            status,
             {
-                "instructions": "Illustrated instruction generation is planned; author and review manually.",
-                "orders": "Configure marketplace rules and check dated stock separately before ordering.",
-                "stickers": "Current artwork is solar-pattern-only; review suitability and configure tiles separately.",
-            }[deliverable],
+                "preview": "Actual-CAD PNG previews are supported; visual acceptance remains untested.",
+                "instructions": "Authored steps.json and illustrated HTML instructions are supported; model coverage and physical sequence remain untested.",
+                "orders": "Marketplace exports are supported; selection bindings, importer acceptance and dated stock remain untested.",
+                "stickers": "Imported PNG artwork and legacy SVG patterns are supported; exact-instance placement and print fit remain untested.",
+            }[deliverable]
+            + (
+                f" Enable the {stage} stage in build.json for default builds."
+                if missing_stage
+                else ""
+            ),
         )
 
     selected_library = library.resolve() if library is not None else project.library
@@ -204,7 +316,7 @@ def doctor(directory: Path, *, library: Path | None = None) -> ReadinessReport:
         else "unknown"
         if "unknown" in statuses
         else "pass",
-        input_sha256=dict(project.input_hashes),
+        input_sha256=hashes,
         findings=findings,
         acceptance=project.acceptance(),
         dependencies=tuple(dependencies),

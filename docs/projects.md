@@ -1,6 +1,6 @@
 # New projects: init, records and doctor
 
-P1b adds a versioned project format and packaged starter. It prepares authoring
+The versioned project format and packaged starter prepare authoring
 inputs; it does not generate a design or execute project Python. Use Python 3.12.
 The core needs no runtime dependencies, geometry downloads or account access.
 
@@ -85,7 +85,7 @@ The brief's scalar fields are:
 | `sticker_policy` | `allowed`, `forbidden`, `unknown` |
 | `sourcing_region` | Nonempty string or null; no default country |
 | `condition` | `new`, `used`, `any`, or null |
-| `owned_parts` | Project-relative file path or null; only existence is checked; inventory parsing is future work |
+| `owned_parts` | Project-relative file path or null; doctor checks existence only; the separate sourcing workflow parses inventory snapshots |
 | `deliverables` | Unique entries from `cad`, `inventory`, `orders`, `preview`, `stickers`, `instructions` |
 | `requirements` | Requirement records below; empty is valid but incomplete |
 
@@ -193,12 +193,27 @@ not check colour production, connections, collision, stock, or whether the build
 will actually use those parts. Geometry exceptions/previews remain separate CAD
 inspection inputs; doctor does not hide missing meshes with approximations.
 
-Only a requested `preview` triggers an import check for the optional render
-modules. `instructions` remains unknown because generation is planned; `orders`
-requires separate rules/stock review; `stickers` requires a suitability check
-because the current generator produces solar patterns. These messages cannot be
-cleared just by marking a requirement passed. Detailed downstream configuration
-and unified orchestration arrive in later phases.
+Requested previews or instructions, and configured render/instructions stages,
+trigger the optional rendering import check. Instructions use authored `steps.json`
+and produce illustrated HTML; stickers support finished PNG artwork as well as
+legacy SVG patterns. PNG input validation needs the artwork extra (also included
+in render). Doctor never generates either output.
+
+Doctor reads `build.json` and parses relevant render settings, instruction plans,
+sticker configuration/artwork and order rules with the existing validators. Absent
+configuration or a requested stage omitted from the default build is `unknown`;
+declared missing files, invalid data or missing required dependencies are `fail`.
+Valid inputs are `pass` within this preparation scope. `deliverable:*` findings
+summarize configuration and stage readiness, not successful generation. A missing
+steps.json is unfinished authoring; malformed steps fail. Brief contradictions
+such as forbidden sticker generation/overlays also fail readiness.
+
+Inspected configuration and artwork hashes accompany the input records. Geometry
+and dependency findings remain separate. Doctor does not execute/import the
+builder, bind selections or step coverage to CAD, check insertion order, validate
+palette contents, test an importer, or prove stock, physical fit or visual quality.
+Read the [execution](execution.md), [instruction](instructions.md),
+[artwork](artwork.md) and [release](releases.md) guides for those workflow boundaries.
 
 ## Python entry points and the next authoring step
 
