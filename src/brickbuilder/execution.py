@@ -13,17 +13,19 @@ import sys
 from tempfile import TemporaryDirectory
 from uuid import uuid4
 
-from .assembly import AuthoredModel, authoring_bundle
+from .assembly import authoring_bundle
 from .build_result import BuildResult
 from .connectivity.catalog import loads_catalog
 from .exporters import bundle as order_bundle, write_bundle
 from .exporters.rules import loads_rules
+from .reporting import combine_status, requirement_coverage
+from .jsonio import write_json
 from .geometry import GeometryLoader, duplicate_placements, inspect_geometry
 from .delivery import validate_decoration
 from .jsonio import array, decode_json, text, versioned, object_fields
 from .ldraw import PartLibrary, read_source
 from .project import Project, load_project, project_path
-from .rendering.config import RenderConfig, load_config
+from .rendering.config import load_config
 from .rendering.stickers import load_stickers
 
 STAGES = frozenset(
@@ -165,61 +167,6 @@ def _invoke(project: Project) -> tuple[BuildResult, str]:
     return result, sha256(payload).hexdigest()
 
 
-def _status(values: list[str]) -> str:
-    return "fail" if "fail" in values else "unknown" if "unknown" in values else "pass"
-
-
-def _coverage(
-    project: Project,
-    authored: AuthoredModel,
-    config: RenderConfig | None,
-    generated: set[str],
-) -> list[dict]:
-    links = dict(authored.requirements)
-    known = {r.id for r in project.brief.requirements}
-    if set(links) - known:
-        raise ValueError("Authored requirement links name IDs absent from the brief")
-    ids = {p.instance_id for p in authored.model.parts}
-    if any(not set(members) <= ids for members in links.values()):
-        raise ValueError("Requirement links name missing instances")
-    configured = {v.name for v in config.views} if config is not None else set()
-    rows = []
-    for req in project.brief.requirements:
-        missing = []
-        members = set(links.get(req.id, ()))
-        for name in req.assemblies:
-            selected = {
-                instance_id
-                for group, group_ids in authored.groups().items()
-                if group == name or group.startswith(name + "/")
-                for instance_id in group_ids
-            }
-            if not selected:
-                missing.append(name)
-            members.update(selected)
-        views_missing = set(req.views) - configured
-        rows.append(
-            dict(
-                requirement_id=req.id,
-                priority=req.priority,
-                instance_ids=sorted(members),
-                missing_assemblies=missing,
-                missing_configured_views=sorted(views_missing),
-                binding_status="fail"
-                if missing or (config is not None and views_missing)
-                else "unknown"
-                if not members or views_missing
-                else "pass",
-                views_status="pass"
-                if req.views and set(req.views) <= generated
-                else "not_tested",
-                acceptance="not_tested",
-                validation=req.validation,
-            )
-        )
-    return rows
-
-
 def build_project(
     directory: Path,
     destination: Path,
@@ -352,7 +299,7 @@ def build_project(
                 checks["geometry"] = (
                     "pass" if geometry.status == "resolved" else "unknown"
                 )
-                _json(
+                write_json(
                     folder / "geometry.json",
                     {
                         **asdict(geometry),
@@ -366,6 +313,7 @@ def build_project(
             else:
                 checks["geometry"] = "not_tested"
             generated: set[str] = set()
+            render_completeness = "not_tested"
             if "render" in enabled:
                 from .rendering import render_bundle
 
@@ -388,6 +336,11 @@ def build_project(
                     "pass" if rendered["geometry_status"] == "resolved" else "unknown"
                 )
                 generated = {v.name for v in render_config.views}
+                completeness = rendered["geometry_completeness"]
+                assert isinstance(completeness, dict)
+                render_completeness = (
+                    "pass" if completeness["status"] == "resolved" else "unknown"
+                )
             checks["render"] = "pass" if generated else "not_tested"
             if "stickers" in enabled:
                 from .rendering import sticker_bundle
@@ -445,19 +398,20 @@ def build_project(
                     if instructions["geometry_status"] == "resolved"
                     else "unknown"
                 )
-            coverage = _coverage(project, model, render_config, generated)
+            coverage = requirement_coverage(project, model, render_config, generated)
             checks["requirement_bindings"] = (
-                _status([r["binding_status"] for r in coverage])
+                combine_status([r["binding_status"] for r in coverage])
                 if coverage
                 else "not_tested"
             )
             reviews[name] = dict(
-                status=_status(list(checks.values())),
+                status=combine_status(list(checks.values())),
                 source_sha256=source.sha256,
                 model_sha256=model.model.fingerprint(),
                 quantity=len(model.model.parts),
                 checks=checks,
                 requirements=coverage,
+                render_completeness=render_completeness,
                 physical_build="not_tested",
                 stock="not_tested",
                 importer_acceptance="not_tested",
@@ -469,7 +423,7 @@ def build_project(
         summary = dict(
             schema_version=1,
             kind="draft_build",
-            status=_status([r["status"] for r in reviews.values()]),
+            status=combine_status([r["status"] for r in reviews.values()]),
             project=project.name,
             stages=sorted(enabled | {"cad"}),
             input_sha256=hashes,
@@ -477,7 +431,7 @@ def build_project(
             pose_identity_check="pass" if result.poses else "not_tested",
             release_verification="not_tested",
         )
-        _json(target / "build_report.json", summary)
+        write_json(target / "build_report.json", summary)
         # Exclusively reserve a new destination; interrupted publication stays labelled.
         destination.mkdir()
         marker = destination / "BUILD_INCOMPLETE"
@@ -485,9 +439,3 @@ def build_project(
         shutil.copytree(target, destination, dirs_exist_ok=True)
         marker.unlink()
     return summary
-
-
-def _json(path: Path, value: object) -> None:
-    path.write_text(
-        json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8"
-    )

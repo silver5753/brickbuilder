@@ -11,7 +11,9 @@ import json
 from .assembly import AuthoredModel
 from .build_result import BuildResult
 from .delivery import delivery_findings, validate_decoration
-from .execution import load_build_config, STAGES, _coverage, _status
+from .evidence import validate_evidence, review_evidence, evidence_findings
+from .execution import load_build_config, STAGES
+from .reporting import combine_status, requirement_coverage
 from .exporters import bundle as order_bundle
 from .exporters.rules import loads_rules
 from .geometry import duplicate_placements
@@ -32,6 +34,7 @@ CHECKS = frozenset(
         "geometry",
         "render",
         "render_geometry",
+        "render_completeness",
         "stickers",
         "orders",
         "requirement_bindings",
@@ -42,9 +45,11 @@ CHECKS = frozenset(
 
 
 def load_policy(root: Path) -> dict:
+    raw = read_json(root / "release.json")
     data = versioned(
-        read_json(root / "release.json"),
-        {"required_checks", "inputs"},
+        raw,
+        {"required_checks", "inputs"}
+        | ({"evidence"} if isinstance(raw, dict) and "evidence" in raw else set()),
         "release policy",
     )
     checks = [
@@ -58,6 +63,7 @@ def load_policy(root: Path) -> dict:
         raise ValueError("Duplicate release inputs")
     for path in inputs:
         project_path(root, path, "Release input")
+    validate_evidence(root, data.get("evidence", []))
     return data
 
 
@@ -93,7 +99,11 @@ def policy_findings(
         findings.append(f"Build status is {summary['status']}")
     for name, model in summary["models"].items():
         for check in policy["required_checks"]:
-            status = model["checks"].get(check, "not_tested")
+            status = (
+                model.get("render_completeness", "not_tested")
+                if check == "render_completeness"
+                else model["checks"].get(check, "not_tested")
+            )
             if status != "pass":
                 findings.append(f"{name}: required {check} is {status}")
     return findings + delivery_findings(brief, summary, stickers=stickers)
@@ -435,6 +445,53 @@ def _reconcile(root: Path, manifest: dict) -> dict:
                 "Render configuration",
             )
             rendered = stage_reports["render"]
+            if "geometry_completeness" in rendered:
+                completeness = rendered["geometry_completeness"]
+                _equal(
+                    rendered["surface_status"],
+                    rendered["geometry_status"],
+                    "Surface status",
+                )
+                _equal(
+                    completeness["scope"],
+                    "selected physical instances",
+                    "Geometry completeness scope",
+                )
+                if completeness["status"] not in {"resolved", "partial", "empty"}:
+                    raise ValueError("Invalid geometry completeness status")
+                selected = {
+                    i for view in rendered["views"] for i in view["instance_ids"]
+                }
+                _equal(
+                    completeness["total_instances"],
+                    len(selected),
+                    "Completeness instance count",
+                )
+                resolved = completeness["resolved_instances"]
+                if type(resolved) is not int or not 0 <= resolved <= len(selected):
+                    raise ValueError("Invalid resolved instance count")
+                incomplete = completeness["missing"] or completeness["empty"]
+                expected_status = (
+                    "partial"
+                    if incomplete
+                    else ("resolved" if completeness["bounds"] is not None else "empty")
+                )
+                _equal(
+                    completeness["status"],
+                    expected_status,
+                    "Geometry completeness status",
+                )
+                if expected_status == "resolved" and resolved != len(selected):
+                    raise ValueError(
+                        "Resolved geometry has incomplete instance coverage"
+                    )
+                _equal(
+                    review.get("render_completeness"),
+                    "pass" if completeness["status"] == "resolved" else "unknown",
+                    "Render completeness",
+                )
+            elif review.get("render_completeness", "not_tested") != "not_tested":
+                raise ValueError("Render completeness requires a captured report")
             _equal(
                 [v["name"] for v in rendered["views"]],
                 [v.name for v in render_config.views],
@@ -445,6 +502,8 @@ def _reconcile(root: Path, manifest: dict) -> dict:
                 _equal(view["file"], filename, "Rendered view filename")
                 if filename not in rendered["file_sha256"]:
                     raise ValueError(f"Rendered view lacks a checksum: {filename}")
+        elif review.get("render_completeness", "not_tested") != "not_tested":
+            raise ValueError("Render completeness requires the render stage")
         authored = AuthoredModel(
             model,
             (),
@@ -456,28 +515,30 @@ def _reconcile(root: Path, manifest: dict) -> dict:
             if "render" in stages and render_config
             else set()
         )
-        coverage = _coverage(project, authored, render_config, generated)
+        coverage = requirement_coverage(project, authored, render_config, generated)
         _equal(review["requirements"], coverage, "Requirement coverage")
         expected_checks["requirement_bindings"] = (
-            _status([r["binding_status"] for r in coverage])
+            combine_status([r["binding_status"] for r in coverage])
             if coverage
             else "not_tested"
         )
         _equal(review["checks"], expected_checks, f"{name} stage checks")
-        status = _status(list(expected_checks.values()))
+        status = combine_status(list(expected_checks.values()))
         _equal(review["status"], status, f"{name} check summary")
         statuses.append(status)
-    overall = _status(statuses)
+    overall = combine_status(statuses)
     _equal(summary["status"], overall, "Build check summary")
     findings = policy_findings(
         summary, policy, project.brief, stickers=settings.stickers is not None
     )
+    diagnostic_evidence = review_evidence(snapshot, root, policy, set(models))
+    findings += evidence_findings(diagnostic_evidence)
     _equal(manifest["policy_findings"], findings, "Policy findings")
     if manifest["label"] == "verified_artifacts" and findings:
         raise ValueError(
             "Failed/unknown/untested required checks cannot be a verified release"
         )
-    return summary
+    return summary | {"diagnostic_evidence": diagnostic_evidence}
 
 
 def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
@@ -524,6 +585,7 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
             label=manifest["label"],
             validation_status=summary["status"],
             policy_findings=manifest["policy_findings"],
+            diagnostic_evidence=summary["diagnostic_evidence"],
             manifest_sha256=manifest_hash,
             physical_build="not_tested",
             errors=[],

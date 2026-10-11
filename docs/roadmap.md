@@ -1,7 +1,7 @@
 # Brick Builder roadmap
 
-Updated: 11 October 2026. P1–P5 and review fixes C1–C5 are complete within
-their documented scope. C6 and C7 remain. Current user instructions take
+Updated: 11 October 2026. P1–P5 and review fixes C1–C6 are complete within
+their documented scope. C7 remains. Current user instructions take
 precedence over this plan.
 
 ## Goal
@@ -34,6 +34,7 @@ inventory remains in [workflow inventory](workflow-inventory.md).
 | C3 | Colour-independent duplicate physical placements | [History](implementation-history.md#post-review-c3--detect-physical-duplicate-placements) |
 | C4 | Brief deliverables/views and sticker constraints gate normal releases; partial drafts remain | [Releases](releases.md) |
 | C5 | Current doctor readiness checks, CLI/starter guidance and separated history | [Projects](projects.md) |
+| C6 | Separate render completeness, exact-model diagnostic evidence gates and shared reporting helpers | [Releases](releases.md), [rendering](rendering.md) |
 
 ## C5 — Agent readiness and guidance
 
@@ -56,17 +57,33 @@ after its new historical-context header. No frozen fixture or subject design is
 changed by C5. Completed 11 October 2026.
 Implementation history: [readiness diagnostics](https://github.com/silver5753/brickbuilder/commits/main/src/brickbuilder/project_setup.py).
 
-## Next: C6 — Evidence and report contracts
+## C6 — Evidence and report contracts
 
-- Distinguish rendered-surface success from geometry/dependency completeness.
-- Add explicit model-revision binding for optional sourcing and collision evidence
-  before using it as a release gate; retain unknowns and scoped findings.
-- Reduce private cross-module reporting imports with small shared contracts,
-  while preserving independent CAD, inventory and ordering reconciliation.
-- Verify stale evidence rejection and core-only offline verification. Do not
-  promote sampled motion to continuous clearance or sourcing heuristics to optima.
+Render reports distinguish surface generation from recursive geometry completeness
+for selected instances. Main render completeness is an explicit optional release
+check. Empty helpers remain visible even when parent faces render successfully;
+no geometry is loaded for omitted view selections.
 
-## Then: C7 — Connector compatibility and generality
+Optional release evidence binds sourcing reports/snapshots and collision
+reports/configurations to exact default or named-pose model fingerprints. Required
+nonpassing evidence blocks normal releases; drafts retain findings. Optional
+nonpassing reports remain visible. Stale or inconsistent bindings reject both.
+Offline sourcing is recomputed from captured dated observations. Collision evidence
+checks sampled pose hashes, pair/instance coverage and status aggregation without
+rerunning external geometry. Shared status, requirement-binding and JSON-writing
+helpers replace private imports from build execution.
+
+Verification: all **309** full render-extra suite tests passed, including installed
+wheel workflows. Ty with warnings treated as errors, pinned Ruff and whitespace
+checks passed. Targeted evidence tests include
+rehashing stale captured evidence, omitted collision poses, optional/required gates,
+empty render dependencies, and installed core-only offline sourcing verification.
+No physical-build, live-stock, global-optimum or continuous-clearance claim is made.
+Render completeness does not cover omitted selections or aggregate instruction
+illustrations; collision material evidence is not independently authenticated.
+Frozen fixtures and runtime dependencies are unchanged. Completed 11 October 2026.
+
+## Next: C7 — Connector compatibility and generality
 
 - Design a small, reviewed compatibility identity or explicit mating declaration;
   coincident axes and broad families alone must not certify incompatible interfaces.

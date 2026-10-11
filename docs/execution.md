@@ -177,3 +177,10 @@ manifest of arbitrary Python imports, external assets or environment state.
 Use [release](releases.md) for local code/input snapshots, environment records and offline artifact verification.
 
 Use [assembly instructions](instructions.md) for authored step plans, coverage checks and optional browser PDF export.
+
+Main render-stage summaries include an independent `render_completeness` status:
+pass for recursively resolved selected geometry, unknown for partial/empty geometry,
+and not_tested without rendering. This does not change the surface-generation
+check or automatically block releases; projects can explicitly require it in
+[release policy](releases.md). Sourcing/collision evidence is bound at release time,
+with its own scopes and statuses, rather than changing untested build dimensions.

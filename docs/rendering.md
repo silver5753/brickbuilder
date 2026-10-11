@@ -135,3 +135,20 @@ The frozen native CAD and all baseline fixture hashes remain unchanged.
 Use [release packages](releases.md) for provenance and offline verification.
 Separate [collision and sampled-motion diagnostics](collisions.md) are available;
 render success does not establish clearance or physical feasibility.
+
+## Surface output and recursive completeness
+
+Reports retain `geometry_status` as the legacy surface-generation status and add
+its explicit alias `surface_status` (`resolved` or `approximate`). Separately,
+`geometry_completeness` records recursive bounds, missing/empty dependencies,
+resolved/total instance counts and `resolved`, `partial` or `empty` status. Its
+scope is the union of selected physical instances; unselected geometry is not
+loaded. A render with visible faces can still have an empty child dependency and
+partial completeness. Line geometry can contribute bounds without representing
+solid material, so resolved completeness is not proof of solidity or clearance.
+
+The main build render stage exposes `render_completeness` separately from ordinary
+checks. It is an optional [release policy check](releases.md). Instruction renders
+carry their own completeness reports but are not covered by this aggregate gate.
+Offline verification reconciles recorded counts/statuses without a geometry library;
+it does not independently reconstruct the external geometry.

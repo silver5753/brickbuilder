@@ -68,3 +68,10 @@ def number(value: object, context: str) -> float:
 def coordinates(value: object, context: str) -> Vector:
     values = array(value, context)
     return vector(number(v, context) for v in values)
+
+
+def write_json(path: Path, value: object) -> None:
+    """Write deterministic readable report JSON with finite values only."""
+    path.write_text(
+        json.dumps(value, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+    )

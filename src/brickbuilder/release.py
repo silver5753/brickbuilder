@@ -9,9 +9,10 @@ import platform
 import shutil
 from tempfile import TemporaryDirectory
 
-from .execution import build_project, load_build_config, _json
+from .execution import build_project, load_build_config
 from .delivery import validate_decoration
-from .jsonio import read_json
+from .evidence import review_evidence, evidence_findings
+from .jsonio import read_json, write_json
 from .project import load_project, project_path
 from .rendering.stickers import artwork_dependencies
 from .release_verify import verify_release, policy_findings, file_hashes, load_policy
@@ -43,6 +44,11 @@ def _inputs(directory: Path, policy: dict) -> dict[str, bytes]:
     paths.update(project.root.rglob("*.py"))
     paths.update(
         project_path(project.root, name, "Release input") for name in policy["inputs"]
+    )
+    paths.update(
+        project_path(project.root, row[key], "Evidence input")
+        for row in policy.get("evidence", [])
+        for key in ("report", "input")
     )
     result = {}
     for path in sorted(paths):
@@ -104,6 +110,9 @@ def release_project(
             project.brief,
             stickers=settings.stickers is not None,
         )
+        findings += evidence_findings(
+            review_evidence(directory, folder, policy, set(summary["models"]))
+        )
         if findings and not draft:
             raise ValueError(
                 "Release policy not met; use --draft for a review package: "
@@ -113,7 +122,7 @@ def release_project(
             target = folder / "provenance/project" / name
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(payload)
-        _json(
+        write_json(
             folder / "provenance/environment.json",
             {
                 "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -152,7 +161,7 @@ def release_project(
             _handoff(folder, summary, label, findings), encoding="utf-8"
         )
         manifest["artifacts"] = file_hashes(folder)
-        _json(folder / "release_manifest.json", manifest)
+        write_json(folder / "release_manifest.json", manifest)
         checked = verify_release(folder)
         if checked["status"] != "pass":
             raise ValueError(

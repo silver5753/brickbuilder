@@ -10,8 +10,9 @@ import platform
 from typing import Any
 
 from ..exporters import write_bundle
+from ..geometry import GeometryLoader, inspect_geometry
 from ..ldraw import PartLibrary, Primitive, RawLine, SourceDocument, parse_line
-from ..model import reference_name
+from ..model import Model, reference_name
 from ..transforms import cross, unit
 from .backend import environment, modules, raster
 from .config import RenderConfig, View
@@ -405,6 +406,14 @@ def render_bundle(
             )
         )
     files.update(print_payloads)
+    completeness = inspect_geometry(
+        Model(
+            tuple(
+                p for p in source.document.model.parts if p.instance_id in rendered_ids
+            )
+        ),
+        GeometryLoader(library),
+    )
     report: dict[str, object] = dict(
         schema_version=1,
         renderer="serial_cpu_zbuffer_v2" if imported else "serial_cpu_zbuffer_v1",
@@ -446,6 +455,10 @@ def render_bundle(
             for i, sticker in sorted(decal_selection.items())
         ],
         geometry_status="approximate" if approximations else "resolved",
+        surface_status="approximate" if approximations else "resolved",
+        geometry_completeness=dict(
+            scope="selected physical instances", **asdict(completeness)
+        ),
         approximations=[
             dict(instance_id=i, dependencies=names)
             for i, names in sorted(approximations.items())

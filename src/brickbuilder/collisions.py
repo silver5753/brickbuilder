@@ -173,7 +173,7 @@ def _materials(
     return result
 
 
-def _poses(model: Model, data: object) -> tuple[tuple[Model, ...], dict]:
+def sampled_poses(model: Model, data: object) -> tuple[tuple[Model, ...], dict]:
     if data is None:
         return (model,), {"status": "not_tested", "samples_degrees": []}
     row = object_fields(
@@ -424,7 +424,7 @@ def diagnose(
         raise ValueError("Collision tolerance must be at least 0.000001 LDU")
     loader = GeometryLoader(library)
     materials = _materials(data["materials"], model, loader)
-    poses, motion = _poses(model, data["joint"])
+    poses, motion = sampled_poses(model, data["joint"])
     reviews = _reviews(data["expected_contacts"], poses)
     pose_reports = []
     for pose in poses:

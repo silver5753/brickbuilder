@@ -31,11 +31,53 @@ Put `release.json` beside `project.json`:
 
 Both fields are required. `required_checks` is a nonempty unique list drawn from
 `placements`, `part_count`, `connections`, `geometry`, `render`, `render_geometry`,
-`stickers`, `orders`, `instructions`, `instructions_geometry` and `requirement_bindings`. Every required check must pass for
+`stickers`, `orders`, `instructions`, `instructions_geometry`, `render_completeness`
+and `requirement_bindings`. Every required check must pass for
 every pose. Any selected check's failure or unknown also blocks a normal release,
 even if it is not listed. Untested required checks block it too. Policy never
 converts unknown into pass. Both examples use the policy above; add `render` and
 `render_geometry` when resolved images must be a release gate.
+
+`render_completeness` is opt-in: unlike selected stage checks, its unknown status
+only blocks a normal release when explicitly required. It covers recursive geometry
+for the union of selected instances in the main render stage, not unselected parts,
+step illustrations, solid-volume correctness or visual acceptance. Surface generation
+can succeed despite an empty child dependency; see [rendering](rendering.md).
+
+### Optional diagnostic evidence
+
+Add an optional `evidence` array to the policy. Each record has exactly these fields:
+
+```json
+{
+  "kind": "sourcing",
+  "model": "default",
+  "report": "reviews/sourcing.json",
+  "input": "reviews/snapshot.json",
+  "required": true
+}
+```
+
+Use `kind: "collisions"` with the diagnostic report and its configuration as `input`.
+`model` names `default` or an emitted pose; one binding per kind/model is allowed.
+Both files are automatically captured from safe project-relative paths. Generate
+the report against the entire exact target model: an earlier revision or subset
+is rejected even for a draft. Report input hashes must match captured input bytes.
+Listing files only in `inputs` captures bytes without these semantic checks.
+
+Sourcing is recomputed from the captured dated snapshot and native inventory.
+Collision verification reconstructs configured sampled pose fingerprints and checks
+pair/instance coverage and status aggregation; it does not rerun geometry, authenticate
+material declarations or establish continuous clearance. Both retain scoped reports
+and unknowns. A required nonpassing diagnostic blocks normal publication; drafts
+retain its findings. Optional nonpassing evidence remains visible without blocking.
+Invalid/stale bindings always fail. `verify-release` returns these bindings and
+statuses in `diagnostic_evidence`, independently of ordinary build checks.
+
+These checks use the supplied sourcing policy, not an automatic translation of brief
+budget/region constraints. Snapshot freshness is evaluated at its recorded policy
+date, not the date of offline verification. Neither a sourcing pass nor collision
+pass certifies live stock, a global optimum, physical fit or a buildable model.
 
 A normal successful package is labelled `verified_artifacts`: its files and
 software check policy reconcile. This does **not** mean the design is physically

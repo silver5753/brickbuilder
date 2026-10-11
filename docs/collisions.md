@@ -2,7 +2,8 @@
 
 Use `brickbuilder collisions` to inspect possible overlaps in one native model,
 optionally at explicitly sampled angles of one revolute joint. This is a separate
-review operation, not a build/release gate or a mechanical simulation. The core
+review operation with an optional explicit [release evidence gate](releases.md),
+not a mechanical simulation. The core
 has no additional runtime dependencies. Use the existing optional renderer for
 PNG views of the emitted CAD.
 
@@ -181,4 +182,8 @@ The Python entry point is `diagnose(source, library, config_bytes)`, returning a
 `Diagnostics` object with reports and immutable Model poses. `.bundle(max_pairs=20)`
 returns flat CAD/report files for the existing `write_bundle`; the CLI also saves
 the exact configuration bytes. Capture reports/configs as explicit release inputs
-if needed. They are not automatically rerun or reconciled by release verification.
+if only byte capture is needed. To gate a release, explicitly bind them with a
+`collisions` record in `release.json.evidence`. Offline verification checks the
+exact model, configuration hash, sampled pose fingerprints, pair/geometry coverage
+and reported status aggregation. It does not rerun geometry or authenticate
+material evidence. Sampling and physical limitations remain unchanged.

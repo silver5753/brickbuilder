@@ -302,6 +302,28 @@ def test_filtered_view_does_not_fetch_unselected_geometry(tmp_path, render_sourc
     assert report["rendered_instance_quantity"] == 1
     assert report["not_rendered_instance_ids"] == ["unselected"]
     assert report["geometry_status"] == "resolved"
+    assert isinstance(report["geometry_completeness"], dict)
+    assert report["geometry_completeness"]["status"] == "resolved"
+    assert report["geometry_completeness"]["total_instances"] == 1
+
+
+@pytest.mark.render
+def test_rendered_surfaces_do_not_hide_empty_dependencies(tmp_path, render_source):
+    source, colours = render_source(tmp_path)
+    part = tmp_path / "part.dat"
+    part.write_text(part.read_text() + "1 16 0 0 0 1 0 0 0 1 0 0 0 1 empty.dat\n")
+    (tmp_path / "empty.dat").write_text("0 Empty helper\n")
+    report = render_bundle(
+        source,
+        PartLibrary((tmp_path,)),
+        RenderConfig((View("front", (0, 0, -1)),), width=256, height=256),
+        colours,
+        tmp_path / "render",
+    )
+    assert report["surface_status"] == report["geometry_status"] == "resolved"
+    assert isinstance(report["geometry_completeness"], dict)
+    assert report["geometry_completeness"]["status"] == "partial"
+    assert report["geometry_completeness"]["empty"] == ("empty.dat",)
 
 
 @pytest.mark.render

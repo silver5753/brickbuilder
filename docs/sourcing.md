@@ -147,10 +147,12 @@ No basket is labelled the cheapest possible complete purchase.
 4. Refresh observations before purchasing. Obtain shipping quotes and resolve
    minimum orders manually. Any purchase or message to a seller is a separate,
    explicitly authorized action.
-5. Declare the chosen snapshot and any reviewed report in `release.json.inputs`
-   if they should be captured with the next release. They are evidence inputs,
-   not a new release policy gate: offline verification does not rerun sourcing
-   or convert the release's stock/importer fields into live acceptance.
+5. Bind the report and snapshot with an optional `sourcing` record in
+   `release.json.evidence`; see [releases](releases.md). Verification recomputes
+   sourcing for the exact captured model and dated snapshot. Set `required: true`
+   to gate normal publication, or false to retain nonpassing findings. Plain
+   `release.json.inputs` captures bytes only. Neither route turns stock/importer
+   fields into live acceptance.
 
 No sourcing provider, default region, online scraping or purchasing capability is
 added to the geometry core. Future service adapters can supply the same snapshot
