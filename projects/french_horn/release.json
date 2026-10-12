@@ -6,7 +6,8 @@
     "requirement_bindings",
     "render",
     "instructions",
-    "connections"
+    "connections",
+    "collisions"
   ],
   "inputs": [
     "README.md",

@@ -273,6 +273,11 @@ def doctor(directory: Path, *, library: Path | None = None) -> ReadinessReport:
         )
 
     selected_library = library.resolve() if library is not None else project.library
+    add(
+        "collision_review",
+        "not_tested",
+        "Delivery requires a collision review for every pose. Release runs it with --library/project.json.library; doctor does not execute it. Failed, unknown or absent review requires --draft.",
+    )
     dependencies = []
     if selected_library is None:
         add(

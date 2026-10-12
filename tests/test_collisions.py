@@ -238,3 +238,33 @@ def test_invalid_joint_never_publishes_a_pose(collision_case, change):
     case[2]["joint"] = joint
     with pytest.raises(ValueError):
         run(case)
+
+
+def test_closed_mesh_containment_is_not_inferred_as_clearance(collision_case, tmp_path):
+    (tmp_path / "inner.dat").write_text("1 16 0 0 0 0.5 0 0 0 0.5 0 0 0 0.5 cube.dat\n")
+    case = collision_case(reference="inner.dat")
+    case[2]["materials"] = []
+    result = run(case)
+    assert result.report["status"] == "unknown"
+    assert (
+        result.report["poses"][0]["pairs"][0]["classification"]
+        == "unreviewed_material_or_hollow_geometry"
+    )
+
+
+def test_surface_failure_cannot_be_waived_as_expected_contact(collision_case):
+    case = collision_case((0.5, 0.6, 0.7))
+    case[2]["materials"] = []
+    case[2]["expected_contacts"] = [
+        dict(
+            model_sha256=case[2]["model_sha256"],
+            pair=["fixed", "moving"],
+            reason="Contact review cannot waive crossing",
+        )
+    ]
+    result = run(case)
+    assert result.report["status"] == "fail"
+    assert (
+        result.report["poses"][0]["pairs"][0]["classification"]
+        == "surface_intersection"
+    )

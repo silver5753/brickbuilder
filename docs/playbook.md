@@ -146,3 +146,16 @@ revision, affected instances, measurements and a targeted next repair.
 
 The [Solar Orbiter project notes](../projects/solar_orbiter/README.md) retain its
 specific coordinates, instruments, sourcing constraints and historical pitfalls.
+
+## Collision review before handoff
+
+For every model revision, run `build --stage collisions --library ...` or use
+release's automatic collision stage. Inspect failed pairs and unresolved geometry,
+including concealed attachments; a clean render, duplicate-placement check or
+passing connection graph does not replace this review. Recheck after any part
+movement. Do not describe a clearance fix as a mounting fix.
+
+New normal releases require a passing collision review for each delivered pose.
+Use `--draft` for fail/unknown/not-tested results and state those results alongside
+the images. Do not omit the library, narrow stages, make evidence optional, or
+fill hollow bounds with invented material merely to obtain a passing label.

@@ -22,7 +22,9 @@ def test_installed_flower_rehearsal_and_legacy_compatibility(installed_core, tmp
         for f in doctor["findings"]
     )
     output = tmp_path / "release"
-    installed_core.run("release", project, "--destination", output)
+    installed_core.run(
+        "release", project, "--draft", "--destination", output, expected=3
+    )
     report = json.loads((output / "connections.json").read_text())
     assert report["nominal"]["root_component_quantity"] == 8
     assert len(report["intended_connections"]) == 10
@@ -48,6 +50,8 @@ def test_installed_flower_rehearsal_and_legacy_compatibility(installed_core, tmp
     assert draft["status"] == "unknown"
     assert draft["nominal"]["edges"] == []
     shutil.rmtree(project)
-    verified = json.loads(installed_core.run("verify-release", output).stdout)
+    verified = json.loads(
+        installed_core.run("verify-release", output, expected=3).stdout
+    )
     assert verified["status"] == "pass"
     assert verified["physical_build"] == "not_tested"

@@ -49,3 +49,9 @@ unlabelled interfaces remain unknown. Optional release gates can require recursi
 render completeness or bind dated sourcing/scoped collision evidence to the exact
 model. Those gates do not certify physical fit, live stock or continuous clearance.
 See the repository's docs/connectivity.md and docs/releases.md for the contracts.
+
+Collision review is required for every delivery pose. Supply `--library` to
+`release` to run it automatically, or use `build --stage collisions` for early
+review. Inspect `collisions/collisions.json` and isolated pair CAD. Failed,
+unknown and absent collision reviews require `--draft`; narrowing stages or
+omitting collisions from `required_checks` cannot bypass the delivery gate.

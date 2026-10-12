@@ -108,3 +108,14 @@ not grant redistribution rights. No project distribution license is selected.
 
 For physical failures, record measured evidence tied to the affected instances
 and revision. Do not invent stiffness, clutch force, masses or tipping margins.
+
+## Required collision review
+
+Before presenting a model revision as checked, run collision diagnostics and
+inspect failed/unknown pairs as well as opposite-side renders. `release` runs
+collisions automatically with a supplied library and requires a collision review
+for every pose, regardless of stage overrides or an omitted policy check. Use
+`--draft` and report fail/unknown/not-tested results explicitly. A connection pass,
+no duplicate placements or a render cannot substitute for collision review.
+Keep unresolved geometry/material unknown; never waive a detected surface crossing
+as an expected contact. A separated floating assembly still needs a legal mount.

@@ -11,7 +11,14 @@ import json
 from .assembly import AuthoredModel
 from .build_result import BuildResult
 from .delivery import delivery_findings, validate_decoration
-from .evidence import validate_evidence, review_evidence, evidence_findings
+from .evidence import (
+    validate_evidence,
+    review_evidence,
+    evidence_findings,
+    review_collisions,
+    collision_reviews,
+    collision_findings,
+)
 from .execution import load_build_config, STAGES
 from .reporting import combine_status, requirement_coverage
 from .exporters import bundle as order_bundle
@@ -31,6 +38,7 @@ CHECKS = frozenset(
         "placements",
         "part_count",
         "connections",
+        "collisions",
         "geometry",
         "render",
         "render_geometry",
@@ -421,6 +429,23 @@ def _reconcile(root: Path, manifest: dict) -> dict:
             "stickers": "pass" if "stickers" in stages else "not_tested",
             "orders": "pass" if "orders" in stages else "not_tested",
         }
+        # Version-1 archives retain their original check set and policy.
+        if manifest["schema_version"] >= 2 or "collisions" in review["checks"]:
+            expected_checks["collisions"] = "not_tested"
+            if "collisions" in stages:
+                report = _linked_report(
+                    folder / "collisions/collisions.json",
+                    source.sha256,
+                    model.fingerprint(),
+                )
+                payload = (folder / "collisions/config.json").read_bytes()
+                review_collisions(model, report, payload)
+                expected_checks["collisions"] = report["status"]
+            _equal(
+                review.get("collision"),
+                expected_checks["collisions"],
+                f"{name} collision summary",
+            )
         if "instructions" in stages:
             if render_config is None:
                 raise ValueError("Instructions require captured render settings")
@@ -533,12 +558,18 @@ def _reconcile(root: Path, manifest: dict) -> dict:
     )
     diagnostic_evidence = review_evidence(snapshot, root, policy, set(models))
     findings += evidence_findings(diagnostic_evidence)
+    collisions = collision_reviews(summary, diagnostic_evidence)
+    if manifest["schema_version"] >= 2:
+        findings += collision_findings(collisions)
     _equal(manifest["policy_findings"], findings, "Policy findings")
     if manifest["label"] == "verified_artifacts" and findings:
         raise ValueError(
             "Failed/unknown/untested required checks cannot be a verified release"
         )
-    return summary | {"diagnostic_evidence": diagnostic_evidence}
+    return summary | {
+        "diagnostic_evidence": diagnostic_evidence,
+        "collision_reviews": collisions,
+    }
 
 
 def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
@@ -564,6 +595,7 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
                 "artifacts",
             },
             "release manifest",
+            versions=(1, 2),
         )
         if manifest["kind"] != "brickbuilder_release" or manifest["label"] not in {
             "draft",
@@ -586,6 +618,7 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
             validation_status=summary["status"],
             policy_findings=manifest["policy_findings"],
             diagnostic_evidence=summary["diagnostic_evidence"],
+            collision_reviews=summary["collision_reviews"],
             manifest_sha256=manifest_hash,
             physical_build="not_tested",
             errors=[],

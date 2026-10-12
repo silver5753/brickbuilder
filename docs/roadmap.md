@@ -1,6 +1,6 @@
 # Brick Builder roadmap
 
-Updated: 12 October 2026. P1–P5 and review fixes C1–C7 are complete within
+Updated: 13 October 2026. P1–P5 and review fixes C1–C7 are complete within
 their documented scope. Current user instructions take
 precedence over this plan.
 
@@ -199,3 +199,36 @@ outward, and an expanded-surface separating-plane check gives at least
 4.01 mm of bell-to-rest clearance in the revised preview. This fixes placement
 only; the physical neck/bracket remains unresolved. Opposite-side renders and
 the draft package are regenerated for the new model.
+
+## Collision delivery gap — 12 October 2026
+
+User review of the horn exposed an intersection that the delivery workflow had
+not checked. The core now expands native triangle/quad surfaces and detects
+strict transverse crossings with a dependency-free AABB hierarchy. Available
+surface failures take precedence over missing/empty helper unknowns. Coplanar
+contact, containment and unresolved material remain unknown; expected-contact
+annotations cannot suppress a surface crossing. No solid volumes are invented.
+
+`build --stage collisions` emits exact-model diagnostics. Release automatically
+runs it with a supplied library for every emitted pose, including CAD-only stage
+overrides. Version-2 delivery requires collision review regardless of omitted
+policy checks or optional evidence flags; fail/unknown/not-tested requires a
+draft. Exact-model advanced configurations are rerun when geometry is available.
+Offline verification reconciles report bindings, coverage and status; legacy
+version-1 archives retain their historical policy and expose absent review.
+Root/starter instructions, doctor guidance and the horn workflow now require the
+review and interpretation of unknowns before handoff.
+
+Real-library rehearsal: R1 reports 24 intersecting pairs, including ten involving
+the bell; R2 removes those ten but retains 14 other intersecting pairs. Both
+92-part checks took about 10 seconds. The model remains a failed collision draft;
+this tooling change does not repair those remaining placements. Exact hashes and
+scope are recorded in the horn notes. Synthetic regressions reproduce the original
+bell/coil placement without redistributing third-party geometry.
+
+Verification completed 13 October 2026: **371 tests passed**, including installed-wheel
+core/render workflows; ty with warnings treated as errors, pinned Ruff and
+whitespace checks passed. A real horn collision/connections draft reconciled
+offline with artifact integrity pass and collision validation fail. The prior R2
+version-1 package still verifies under its historical policy, with absent
+collision review explicitly reported as not-tested.

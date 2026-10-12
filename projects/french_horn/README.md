@@ -80,3 +80,21 @@ surface on one side and all 89 other parts on the other, with 10.03 LDU
 conservative lower bound for the loaded surface geometry, not a whole-model
 collision certificate. Empty library helper dependencies remain declared by
 the renderer. Internal bell mating and non-bell collisions were not certified.
+
+## Surface-check rehearsal — 12 October 2026
+
+The new automatic checker reports 24 intersecting pairs in the original R1 model,
+including all ten previously observed bell-to-other-part pairs. R2 removes those
+ten bell intersections, but **14 other surface-intersecting pairs remain**.
+R2 is therefore a failed collision draft, not merely an unreviewed mount draft.
+The model fingerprints are:
+
+- R1: `11debb31bdd960bfaad2d0220b9f30cd9f0076f1fcede73d6e1bb330a0147d02`
+- R2: `a32d1f72acb2e622dceb6dde4b202b72a5ff23f629b1b95fe52117d88c1fb728`
+
+Both full-model reviews used the same local LDraw library as the rendered drafts,
+default 0.01 LDU tolerance, no material/contact waivers, and the new transverse
+surface checker. Runtime was about 10 seconds per 92-part model. Empty helper
+unknowns remain; crossings are now detected before those unknowns can mask them.
+The unit regression uses independently authored analytical tube/cone surfaces at
+the R1/R2 placements. No external part geometry is redistributed in the tests.

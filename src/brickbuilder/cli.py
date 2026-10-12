@@ -485,6 +485,8 @@ def _selection_args(parser: argparse.ArgumentParser) -> None:
 
 
 def _parser() -> argparse.ArgumentParser:
+    from .execution import STAGES
+
     parser = argparse.ArgumentParser(prog="brickbuilder")
     commands = parser.add_subparsers(dest="command", required=True)
     for command in ("build", "release"):
@@ -496,16 +498,8 @@ def _parser() -> argparse.ArgumentParser:
         build.add_argument(
             "--stage",
             action="append",
-            choices=[
-                "cad",
-                "geometry",
-                "connections",
-                "render",
-                "stickers",
-                "orders",
-                "instructions",
-            ],
-            help="Repeat to override configured stages; CAD is always generated",
+            choices=sorted(STAGES),
+            help="Repeat to override configured stages; CAD is always generated and release still requires collision review",
         )
         build.add_argument("--library", type=Path)
         build.add_argument("--palette", type=Path)

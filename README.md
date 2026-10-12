@@ -21,7 +21,8 @@ their subject, dimensions, colours and sourcing constraints in their own folder.
 3. **Build and review.** `build` runs that Python once, writes native CAD and a
    bill of materials (BOM), and runs the selected checks/output stages. The agent
    inspects results and repairs the design.
-4. **Package a revision.** `release` enforces the explicit software policy and
+4. **Package a revision.** `release` requires collision review for every pose,
+   runs collisions automatically with a supplied library, and enforces the software policy and
    the brief's required deliverables, captures inputs and hashes, and writes a
    handoff. `verify-release` reconciles the package offline. `--draft` retains
    failed, unknown or incomplete findings visibly.
@@ -96,14 +97,15 @@ uv sync --locked
 uv run --locked brickbuilder --help
 mkdir -p output
 uv run --locked brickbuilder build projects/flower --destination output/flower-build
-uv run --locked brickbuilder release projects/flower --destination output/flower-release
+uv run --locked brickbuilder release projects/flower --draft --destination output/flower-release
 uv run --locked brickbuilder verify-release output/flower-release
 ```
 
 Review project Python before executing it. Destinations must be new; the flower's
 configured workflow needs no geometry library and delivers CAD/inventory with
 nominal checks. `doctor projects/flower` still reports unknown geometry and visual
-review links. That is distinct from verifying its requested artifact package.
+review links. Without a collision review the release remains a draft; release and
+verification return exit 3 even when its nominal connection checks pass.
 
 For images and illustrated instructions, install the optional renderer and supply
 your own LDraw library (including `LDConfig.ldr`):
@@ -158,7 +160,7 @@ external preparation and are not supported by the native parser.
 P1–P5 and the C1–C7 cleanup plan are complete within their documented scope. The
 [roadmap](docs/roadmap.md) records shipped work, validation and remaining limits;
 [implementation history](docs/implementation-history.md) preserves earlier plans.
-The latest code-validation run passed 353 tests, including installed-wheel workflows.
+The latest code-validation run passed 371 tests, including installed-wheel workflows.
 
 ```sh
 uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower projects/french_horn --error-on-warning
@@ -171,3 +173,10 @@ Further progress should come from real design tasks, additional reviewed part
 coverage and measured physical trials. The historical [workflow inventory](docs/workflow-inventory.md)
 and [early code review](docs/review-milestones-1-3.md) describe earlier states;
 they are not the current backlog. Never rewrite frozen hashes to make a change pass.
+
+Collision review now detects strict crossings of loaded part surfaces, even when
+empty/missing helpers leave overall geometry unresolved. It does not infer solid
+volumes or certify containment/physical fit. New version-2 releases require a
+passing collision review; otherwise use a clearly labelled draft. Historical
+version-1 packages retain their original verification policy. See
+[collision diagnostics](docs/collisions.md) and [delivery rules](docs/releases.md).

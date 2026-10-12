@@ -294,7 +294,14 @@ def author(project):
     (project / "build.json").write_text(json.dumps(config))
     output = tmp_path / "release"
     installed_render.run(
-        "release", project, "--library", library, "--destination", output
+        "release",
+        project,
+        "--library",
+        library,
+        "--draft",
+        "--destination",
+        output,
+        expected=1,
     )
     source_hash = sha256((output / "model.ldr").read_bytes()).hexdigest()
     assert (output / "model.ldr").read_text().count("0 STEP\n") == 1
@@ -335,9 +342,12 @@ def author(project):
     # Re-verification needs neither project, renderer nor geometry installation.
     shutil.rmtree(project)
     shutil.rmtree(library)
-    verified = json.loads(installed_core.run("verify-release", output).stdout)
+    verified = json.loads(
+        installed_core.run("verify-release", output, expected=1).stdout
+    )
     assert verified["status"] == "pass"
-    assert verified["policy_findings"] == []
+    assert verified["collision_reviews"]["default"] == "fail"
+    assert any("collision review" in f for f in verified["policy_findings"])
     # A configured view is not evidence that its image was actually delivered.
     report_path = output / "render/render_report.json"
     report = read(report_path)

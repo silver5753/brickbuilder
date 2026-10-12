@@ -14,6 +14,7 @@ from tempfile import TemporaryDirectory
 from uuid import uuid4
 
 from .assembly import authoring_bundle
+from .collisions import default_config, diagnose
 from .build_result import BuildResult
 from .connectivity.catalog import loads_catalog
 from .exporters import bundle as order_bundle, write_bundle
@@ -29,7 +30,16 @@ from .rendering.config import load_config
 from .rendering.stickers import load_stickers
 
 STAGES = frozenset(
-    {"cad", "geometry", "connections", "render", "stickers", "orders", "instructions"}
+    {
+        "cad",
+        "geometry",
+        "connections",
+        "collisions",
+        "render",
+        "stickers",
+        "orders",
+        "instructions",
+    }
 )
 
 
@@ -174,6 +184,7 @@ def build_project(
     stages: tuple[str, ...] | None = None,
     library: Path | None = None,
     palette: Path | None = None,
+    collision_configs: dict[str, bytes] | None = None,
 ) -> dict:
     """Create a draft execution bundle; invalid stages fail before publishing.
 
@@ -232,11 +243,14 @@ def build_project(
         palette = palette or selected_library / "LDConfig.ldr"
         if not palette.is_file():
             raise ValueError("Supply --palette or a library containing LDConfig.ldr")
-    if "geometry" in enabled and selected_library is None:
-        raise ValueError("Geometry stage requires --library or project.json.library")
+    if enabled & {"geometry", "collisions"} and selected_library is None:
+        raise ValueError(
+            "Geometry/collisions stage requires --library or project.json.library"
+        )
     exceptions = {}
     if settings.exceptions is not None and enabled & {
         "geometry",
+        "collisions",
         "render",
         "instructions",
     }:
@@ -292,6 +306,21 @@ def build_project(
                 and len(model.model.parts) > project.brief.part_count_limit
                 else "pass",
             }
+            checks["collisions"] = "not_tested"
+            if "collisions" in enabled:
+                assert selected_library is not None
+                collision_config = (collision_configs or {}).get(
+                    name, default_config(source.document.model)
+                )
+                diagnostic = diagnose(
+                    source,
+                    PartLibrary((selected_library,), missing=exceptions),
+                    collision_config,
+                )
+                files = diagnostic.bundle()
+                files["config.json"] = collision_config.decode("utf-8")
+                write_bundle(folder / "collisions", files)
+                checks["collisions"] = diagnostic.report["status"]
             if "geometry" in enabled:
                 assert selected_library is not None
                 parts = PartLibrary((selected_library,), missing=exceptions)
@@ -415,7 +444,7 @@ def build_project(
                 physical_build="not_tested",
                 stock="not_tested",
                 importer_acceptance="not_tested",
-                collision="not_tested",
+                collision=checks["collisions"],
                 insertion_access="not_tested",
                 motion="not_tested",
                 acceptance="not_tested",

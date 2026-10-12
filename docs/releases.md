@@ -17,6 +17,35 @@ and named views; both commands return exit 3. Omit the stage override and supply
 the render extra/library for a complete delivery. Nothing places orders or verifies current stock.
 Read project Python and imported helpers before running release, just as for build.
 
+## Collision review is required for delivery
+
+New release manifests use schema version **2**. Every delivered model/pose must
+have a passing scoped collision review for a normal release, even when
+`required_checks` omits collisions or `--stage cad` narrows the other stages.
+With `--library` or `project.json.library`, release automatically adds the
+`collisions` stage. It generates reports/configs and isolated pair CAD against
+that exact revision. Declared geometry exceptions remain unknown; loaded face
+crossings still fail. With no library, collision review is explicitly
+`not_tested` unless matching captured collision evidence supplies the review.
+
+Use `--draft` for failed, unknown or untested collision reviews. The per-pose
+`collision_reviews` returned by release/verification and prominent HANDOFF entries
+show these states independently of artifact integrity. A verified checksum set
+never turns an unresolved collision into clearance. Inspect isolated pairs and
+opposite-side views before presenting a model as corrected.
+
+Advanced collision evidence remains supported. With a library, release reruns
+its captured configuration (materials, expected contacts and sampled joint) using
+the current checker; without one, it validates the captured exact-model evidence
+offline. A failure in either source wins. The offline verifier checks model/source
+and config hashes, all pair/geometry coverage, pose identities, status aggregation
+and surface-witness failure status; it does not rerun geometry or authenticate
+material claims. Removing a required review cannot promote a version-2 draft.
+
+Version-1 archives retain their historical policy and check set. Verification
+exposes their collision review as `not_tested` where absent; their artifact pass
+is not a new collision check. Rebuild to receive the current delivery gate.
+
 ## Choose an explicit policy
 
 Put `release.json` beside `project.json`:
@@ -30,7 +59,7 @@ Put `release.json` beside `project.json`:
 ```
 
 Both fields are required. `required_checks` is a nonempty unique list drawn from
-`placements`, `part_count`, `connections`, `geometry`, `render`, `render_geometry`,
+`placements`, `part_count`, `connections`, `collisions`, `geometry`, `render`, `render_geometry`,
 `stickers`, `orders`, `instructions`, `instructions_geometry`, `render_completeness`
 and `requirement_bindings`. Every required check must pass for
 every pose. Any selected check's failure or unknown also blocks a normal release,
@@ -44,7 +73,7 @@ for the union of selected instances in the main render stage, not unselected par
 step illustrations, solid-volume correctness or visual acceptance. Surface generation
 can succeed despite an empty child dependency; see [rendering](rendering.md).
 
-### Optional diagnostic evidence
+### Diagnostic evidence
 
 Add an optional `evidence` array to the policy. Each record has exactly these fields:
 
@@ -70,7 +99,9 @@ Collision verification reconstructs configured sampled pose fingerprints and che
 pair/instance coverage and status aggregation; it does not rerun geometry, authenticate
 material declarations or establish continuous clearance. Both retain scoped reports
 and unknowns. A required nonpassing diagnostic blocks normal publication; drafts
-retain its findings. Optional nonpassing evidence remains visible without blocking.
+retain its findings. Optional nonpassing sourcing evidence remains visible without blocking. Collision
+review is mandatory independently of an evidence entry's `required` flag; a
+collision failure cannot be made optional.
 Invalid/stale bindings always fail. `verify-release` returns these bindings and
 statuses in `diagnostic_evidence`, independently of ordinary build checks.
 

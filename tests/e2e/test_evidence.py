@@ -63,8 +63,34 @@ def build(project):
             )
         )
     )
+    library = tmp_path / "library"
+    library.mkdir()
+    (library / "part.dat").write_text("3 16 0 0 0 10 0 0 0 10 0\n")
+    reviewed = json.loads(
+        installed_core.run(
+            "build",
+            project,
+            "--stage",
+            "collisions",
+            "--library",
+            library,
+            "--destination",
+            tmp_path / "collision-build",
+        ).stdout
+    )
+    assert reviewed["models"]["default"]["checks"]["collisions"] == "pass"
+    assert (tmp_path / "collision-build/collisions/collisions.json").is_file()
     output = tmp_path / "release"
-    installed_core.run("release", project, "--stage", "cad", "--destination", output)
+    installed_core.run(
+        "release",
+        project,
+        "--stage",
+        "cad",
+        "--library",
+        library,
+        "--destination",
+        output,
+    )
     shutil.rmtree(project)
     shutil.rmtree(seed)
     result = json.loads(installed_core.run("verify-release", output).stdout)

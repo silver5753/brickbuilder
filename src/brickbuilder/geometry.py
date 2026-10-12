@@ -39,6 +39,7 @@ class Geometry:
     points: tuple[Vector, ...]
     missing: tuple[str, ...] = ()
     empty: tuple[str, ...] = ()
+    triangles: tuple[tuple[Vector, Vector, Vector], ...] = ()
 
 
 class GeometryLoader:
@@ -65,21 +66,40 @@ class GeometryLoader:
         if records is None:
             return Geometry((), (key,))
         points: list[Vector] = []
+        triangles: list[tuple[Vector, Vector, Vector]] = []
         missing: set[str] = set()
         empty: set[str] = set()
         for record in records:
             if isinstance(record, Reference):
                 child = self.load(record.name, (*stack, key))
                 points.extend(record.transform.point(v) for v in child.points)
+                triangles.extend(
+                    (
+                        record.transform.point(a),
+                        record.transform.point(b),
+                        record.transform.point(c),
+                    )
+                    for a, b, c in child.triangles
+                )
                 missing.update(child.missing)
                 empty.update(child.empty)
             else:
                 points.extend(
                     record.vertices[:2] if record.kind == 5 else record.vertices
                 )
+                if record.kind in (3, 4):
+                    v = record.vertices
+                    triangles.append((v[0], v[1], v[2]))
+                    if record.kind == 4:
+                        triangles.append((v[0], v[2], v[3]))
         if not points and not missing:
             empty.add(key)
-        result = Geometry(tuple(points), tuple(sorted(missing)), tuple(sorted(empty)))
+        result = Geometry(
+            tuple(points),
+            tuple(sorted(missing)),
+            tuple(sorted(empty)),
+            tuple(triangles),
+        )
         self._cache[key] = result
         return result
 

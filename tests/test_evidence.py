@@ -24,6 +24,13 @@ def prepare(tmp_path: Path, kind: str, passing: bool = True):
 def build(project):
     return Model((PartInstance("part", "part.dat", 4),))
 """)
+    library = tmp_path / "library"
+    library.mkdir(exist_ok=True)
+    (library / "part.dat").write_text("3 16 0 0 0 10 0 0 0 10 0\n")
+    path = project / "project.json"
+    manifest = json.loads(path.read_text())
+    manifest["library"] = str(library)
+    path.write_text(json.dumps(manifest))
     seed = tmp_path / "seed"
     build_project(project, seed, stages=("cad",))
     source = read_source(seed / "model.ldr")
@@ -56,8 +63,6 @@ def build(project):
         payload = json.dumps(data).encode()
         report = compare_sourcing(source.document.model, load_snapshot(payload))
     else:
-        library = tmp_path / "library"
-        library.mkdir()
         (library / "part.dat").write_text(
             "3 16 0 0 0 10 0 0 0 10 0\n" if passing else "0 Empty helper\n"
         )
@@ -71,6 +76,8 @@ def build(project):
                 joint=None,
             )
         ).encode()
+        # Preserve even a BOM byte-for-byte when release reruns/captures config.
+        payload = b"\xef\xbb\xbf" + payload
         report = diagnose(source, PartLibrary((library,)), payload).report
     (project / "evidence-input.json").write_bytes(payload)
     (project / "evidence.json").write_text(json.dumps(report))
@@ -125,9 +132,14 @@ def test_evidence_gate_is_optional_and_retains_nonpassing_status(
     assert draft["diagnostic_evidence"][0]["status"] == status
     policy["evidence"][0]["required"] = False
     (project / "release.json").write_text(json.dumps(policy))
-    result = release_project(project, tmp_path / "optional", stages=("cad",))
+    if kind == "collisions":
+        with pytest.raises(ValueError, match="required collision review is unknown"):
+            release_project(project, tmp_path / "optional", stages=("cad",))
+    result = release_project(
+        project, tmp_path / "optional", stages=("cad",), draft=kind == "collisions"
+    )
     assert result["diagnostic_evidence"][0]["status"] == status
-    assert result["policy_findings"] == []
+    assert bool(result["policy_findings"]) == (kind == "collisions")
     # Editing a summary cannot hide nonpassing detailed evidence.
     report["status"] = "pass"
     (project / "evidence.json").write_text(json.dumps(report))
@@ -161,7 +173,7 @@ def test_offline_rejects_rehashed_stale_evidence(tmp_path):
 def test_render_completeness_is_an_explicit_release_gate(tmp_path):
     project, _, policy = prepare(tmp_path, "sourcing")
     library = tmp_path / "library"
-    library.mkdir()
+    library.mkdir(exist_ok=True)
     (library / "part.dat").write_text(
         "3 16 0 0 0 10 0 0 0 10 0\n1 16 0 0 0 1 0 0 0 1 0 0 0 1 empty.dat\n"
     )
@@ -196,7 +208,7 @@ def test_render_completeness_is_an_explicit_release_gate(tmp_path):
         )
     )
     output = tmp_path / "optional"
-    release_project(project, output, library=library, palette=palette)
+    release_project(project, output, library=library, palette=palette, draft=True)
     report = json.loads((output / "build_report.json").read_text())
     assert report["models"]["default"]["render_completeness"] == "unknown"
     assert verify_release(output)["status"] == "pass"

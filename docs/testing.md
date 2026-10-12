@@ -91,3 +91,10 @@ affects geometry or views. Keep generated bundles ignored. Passing tests, ty,
 nominal connections or release integrity does not establish physical assembly,
 clutch, strength, continuous motion, live stock or authenticated importer acceptance.
 See [validation levels](validation-levels.md) for the separate dimensions.
+
+Surface regressions cover rotated/reversed triangles, contact and tolerance bands,
+degenerate and coplanar faces, hollow/contained objects, nested transforms and
+crossings despite empty/missing dependencies. A synthetic horn-placement fixture
+protects the reported regression. Delivery tests cover mandatory per-pose checks,
+CAD-only overrides, absent reviews, retained surface witnesses, byte-exact configs,
+legacy verification and offline operation without the source geometry library.

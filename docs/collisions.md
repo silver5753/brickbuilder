@@ -1,8 +1,9 @@
 # Scoped collision and motion diagnostics
 
 Use `brickbuilder collisions` to inspect possible overlaps in one native model,
-optionally at explicitly sampled angles of one revolute joint. This is a separate
-review operation with an optional explicit [release evidence gate](releases.md),
+optionally at explicitly sampled angles of one revolute joint. It is available as a standalone command and a `build --stage collisions` stage.
+[Release](releases.md) runs it automatically when a library is supplied and
+requires a collision review for every delivered pose,
 not a mechanical simulation. The core
 has no additional runtime dependencies. Use the existing optional renderer for
 PNG views of the emitted CAD.
@@ -50,7 +51,8 @@ review, its result applies only to that subset, not the omitted surroundings.
 |---|---|
 | Complete vertex bounds separated beyond tolerance | Pass, conditional on the supplied geometry representing the part |
 | Overlapping bounds without reviewed material | Unknown; hollow regions and arbitrary surfaces are not filled solids |
-| Missing/empty dependency geometry | Unknown, even if the available partial bounds look separated |
+| Strict transverse crossing of loaded triangle surfaces | Fail with a world-coordinate witness, even if another dependency is missing/empty |
+| Missing/empty dependency geometry without a detected crossing | Unknown, even if the available partial bounds look separated |
 | Two reviewed material boxes penetrate beyond tolerance | Fail; the report records a separating-axis gap, not Euclidean penetration depth |
 | Reviewed full material decompositions separated | Pass within the declared material model |
 | Partial material coverage without detected penetration | Unknown; uncovered regions remain untested |
@@ -100,7 +102,7 @@ normals from each box and nine edge cross products. Near-zero cross axes are
 omitted for numerical stability. This implements the basic box separation test
 from Gottschalk, Lin and Manocha's
 [OBBTree paper](https://www.cs.cornell.edu/courses/cs667/2005sp/readings/gottschalk96.pdf),
-not its hierarchy or a general triangle/solid intersection solver.
+not a general solid intersection solver.
 
 ## Exact contact reviews
 
@@ -181,9 +183,40 @@ empty helper dependencies. A clean image does not resolve either finding.
 The Python entry point is `diagnose(source, library, config_bytes)`, returning a
 `Diagnostics` object with reports and immutable Model poses. `.bundle(max_pairs=20)`
 returns flat CAD/report files for the existing `write_bundle`; the CLI also saves
-the exact configuration bytes. Capture reports/configs as explicit release inputs
+the exact configuration bytes. Capture advanced reports/configs as explicit release inputs
 if only byte capture is needed. To gate a release, explicitly bind them with a
 `collisions` record in `release.json.evidence`. Offline verification checks the
 exact model, configuration hash, sampled pose fingerprints, pair/geometry coverage
 and reported status aggregation. It does not rerun geometry or authenticate
 material evidence. Sampling and physical limitations remain unchanged.
+
+## Automatic surface tests
+
+The dependency-free geometry loader expands type-3/4 faces through nested part
+transforms, splitting quads along their 0–2 diagonal. A deterministic AABB
+hierarchy prunes triangle pairs. The narrow phase intersects nonparallel face
+planes and checks the overlap of their triangle sections. Both triangles must
+straddle the other plane beyond `tolerance_ldu`; the section overlap must also
+exceed that tolerance. A positive result is `surface_intersection` / `fail`, with
+`witness_ldu` in world coordinates. Part colours and connection declarations do
+not suppress the test. Exact-contact reviews cannot waive a crossing.
+
+Available faces are tested **before** unresolved dependencies can return unknown.
+A missing/empty helper can prevent a clearance claim but cannot erase an observed
+crossing. Reports retain geometry unknowns alongside the failure. No surface
+intersection is inferred from type-2 or conditional lines.
+
+This is a conservative surface test, not a closed-solid classifier. Coplanar
+coincidence, face/edge contact, containment, degenerate faces and intersections
+within the tolerance band are not reported as definite surface crossings.
+No crossing never upgrades overlapping unreviewed geometry to pass. Existing
+bounds/material checks and their limitations still apply. Curved geometry is
+checked at the supplied tessellation; no manufacturing accuracy is inferred.
+
+`build --stage collisions` creates an exact-model default config with empty
+material/contact declarations, then writes `collisions/config.json`, the complete
+report, full pose CAD and up to 20 isolated pair files. All pairs are checked even
+when only 20 views are emitted. For advanced material/contact/joint reviews,
+continue using the standalone command and bind its exact-model evidence in the
+release policy. When a library is available, release reruns that configuration
+with the current checker rather than relying only on a prior report.

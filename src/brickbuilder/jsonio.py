@@ -36,9 +36,14 @@ def object_fields(value: Any, fields: set[str], context: str) -> dict[str, Any]:
     return value
 
 
-def versioned(value: Any, fields: set[str], context: str) -> dict[str, Any]:
+def versioned(
+    value: Any, fields: set[str], context: str, *, versions: tuple[int, ...] = (1,)
+) -> dict[str, Any]:
     data = object_fields(value, fields | {"schema_version"}, context)
-    if type(data["schema_version"]) is not int or data["schema_version"] != 1:
+    if (
+        type(data["schema_version"]) is not int
+        or data["schema_version"] not in versions
+    ):
         raise ValueError(f"Unsupported {context} schema version")
     return data
 

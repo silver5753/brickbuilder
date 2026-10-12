@@ -27,6 +27,15 @@ def project(tmp_path):
     for requirement in brief["requirements"]:
         requirement["views"] = []
     path.write_text(json.dumps(brief))
+    # Tiny synthetic surfaces isolate artifact-policy tests from real part fit.
+    library = tmp_path / "library"
+    library.mkdir()
+    path = folder / "project.json"
+    manifest = json.loads(path.read_text())
+    for reference in manifest["parts"]:
+        (library / reference).write_text("3 16 0 0 0 0.1 0 0 0 0.1 0\n")
+    manifest["library"] = str(library)
+    path.write_text(json.dumps(manifest))
     return folder
 
 
@@ -267,10 +276,10 @@ def test_interrupted_publication_is_not_verified(project, tmp_path):
     folder = tmp_path / "release"
     original = shutil.copytree
 
-    def fail_publication(src, dst, **kwargs):
+    def fail_publication(src, dst, *args, **kwargs):
         if Path(dst) == folder:
             raise OSError("disk full")
-        return original(src, dst, **kwargs)
+        return original(src, dst, *args, **kwargs)
 
     with patch("brickbuilder.release.shutil.copytree", side_effect=fail_publication):
         with pytest.raises(OSError, match="disk full"):

@@ -70,3 +70,14 @@ Start with unknown material coverage. Author a local joint frame and explicit
 moving IDs; never fill hollow parts with bounding-box solids. Scope contact
 reviews to exact pairs/poses. Inspect emitted isolated CAD in the existing renderer;
 sampled clearance and nominal connections do not prove physical motion.
+
+## Required collision review
+
+Before presenting a model revision as checked, run collision diagnostics and
+inspect failed/unknown pairs as well as opposite-side renders. `release` runs
+collisions automatically with a supplied library and requires a collision review
+for every pose, regardless of stage overrides or an omitted policy check. Use
+`--draft` and report fail/unknown/not-tested results explicitly. A connection pass,
+no duplicate placements or a render cannot substitute for collision review.
+Keep unresolved geometry/material unknown; never waive a detected surface crossing
+as an expected contact. A separated floating assembly still needs a legal mount.

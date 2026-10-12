@@ -7,6 +7,7 @@ import json
 from math import sqrt
 
 from .geometry import Bounds, GeometryLoader
+from .surfaces import SurfaceTree
 from .jsonio import (
     array,
     coordinates,
@@ -289,8 +290,21 @@ def _pair(
     unresolved: set[str],
     materials: dict[str, _Material],
     tolerance: float,
+    surfaces: dict[str, SurfaceTree | None],
 ) -> dict:
     row: dict = dict(pair=[a.instance_id, b.instance_id], status="unknown")
+    # Positive evidence in available faces remains useful even when another
+    # dependency is missing/empty. Missing faces must never imply clearance.
+    sa, sb = surfaces[a.instance_id], surfaces[b.instance_id]
+    if sa is not None and sb is not None:
+        witness = sa.crossing(sb, tolerance)
+        if witness is not None:
+            return dict(
+                row,
+                status="fail",
+                classification="surface_intersection",
+                witness_ldu=witness,
+            )
     if a.instance_id in unresolved or b.instance_id in unresolved:
         return dict(row, classification="unresolved_geometry")
     ba, bb = bounds[a.instance_id], bounds[b.instance_id]
@@ -384,6 +398,24 @@ class Diagnostics:
         return files
 
 
+def default_config(model: Model) -> bytes:
+    """Exact-pose conservative review with no invented material or contacts."""
+    return (
+        json.dumps(
+            dict(
+                schema_version=1,
+                model_sha256=model.fingerprint(),
+                tolerance_ldu=0.01,
+                materials=[],
+                expected_contacts=[],
+                joint=None,
+            ),
+            indent=2,
+        )
+        + "\n"
+    ).encode()
+
+
 def diagnose(
     source: SourceDocument, library: PartLibrary, config: bytes
 ) -> Diagnostics:
@@ -429,12 +461,23 @@ def diagnose(
     pose_reports = []
     for pose in poses:
         bounds = {}
+        surfaces = {}
         unresolved = set()
         geometry_rows = []
         for part in pose.parts:
             geometry = loader.load(part.reference)
             bounds[part.instance_id] = Bounds.of(
                 part.transform.point(v) for v in geometry.points
+            )
+            surfaces[part.instance_id] = SurfaceTree.build(
+                tuple(
+                    (
+                        part.transform.point(a),
+                        part.transform.point(b),
+                        part.transform.point(c),
+                    )
+                    for a, b, c in geometry.triangles
+                )
             )
             incomplete = not geometry.points or geometry.missing or geometry.empty
             if incomplete:
@@ -450,7 +493,7 @@ def diagnose(
         rows = []
         fingerprint = pose.fingerprint()
         for a, b in combinations(pose.parts, 2):
-            row = _pair(a, b, bounds, unresolved, materials, tolerance)
+            row = _pair(a, b, bounds, unresolved, materials, tolerance, surfaces)
             reason = reviews.get((fingerprint, *sorted((a.instance_id, b.instance_id))))
             row["expected_contact_reason"] = reason
             if reason and row["classification"] == "contact_tolerance_band":
@@ -473,7 +516,8 @@ def diagnose(
             model_sha256=model.fingerprint(),
             config_sha256=sha256(config).hexdigest(),
             scope="all unordered instance pairs in the supplied model at listed poses",
-            method="vertex AABB separation; reviewed material boxes with 15-axis SAT",
+            method="vertex AABB separation; transverse triangle surface crossings with AABB hierarchy; reviewed material boxes with 15-axis SAT",
+            surface_test="transverse_triangles_v1",
             tolerance_ldu=tolerance,
             materials={k: asdict(v) for k, v in materials.items()},
             dependencies=[
@@ -497,7 +541,8 @@ def diagnose(
                 "Bounds separation is conditional on the supplied geometry representing the part.",
                 "Tolerance-band contacts do not measure physical fit; reviews apply to exact poses only.",
                 "Discrete poses do not prove clearance between samples or mechanical joint feasibility.",
-                "No triangle-mesh solid solver, flexible parts or simultaneous joints are supported.",
+                "Surface tests detect strict transverse crossings only; no crossing does not prove clearance or exclude containment, coplanar overlap or tolerance-band interference.",
+                "No mesh-to-solid inference, flexible parts or simultaneous joints are supported.",
             ],
         ),
         poses,
