@@ -142,9 +142,13 @@ Verification: 35 new tests passed, including CLI request/response contracts,
 failure paths, real local redirect refusal and an installed core-only wheel setup
 check. All **352** full render-extra suite tests passed, including existing
 installed-wheel workflows. Ty with warnings treated as errors and pinned Ruff passed. The official
-v3 docs and OpenAPI parameter schema were reviewed. An authenticated live search
-remains untested because no Rebrickable API key was configured. Tests use synthetic
+v3 docs and OpenAPI parameter schema were reviewed. Automated tests use synthetic
 data; no catalog dump, dependency, secret, frozen fixture or model was added/changed.
+After the user supplied an API key, seven authenticated read-only CLI requests
+passed on 12 October 2026: text search, pagination, an exact part batch, three
+external-ID namespaces and combined color/category filtering. Multiple mapping
+candidates were retained correctly; no code fix was needed. See the
+[live-check record](catalog-search.md#authenticated-live-check--12-october-2026).
 
 Scope limits: Rebrickable is the only provider implemented. External-ID filters
 query its mappings, not BrickLink/BrickOwl directly. There is no pricing, live
@@ -152,9 +156,9 @@ stock, geometry download, connector inference or global catalog maintenance.
 
 ## Follow-up work outside the cleanup plan
 
-C1–C7 are complete; no further cleanup commit is currently scheduled. Configure
-the API key and run a small live catalog query before relying on the new adapter.
-Select a real user design for a full library/render/visual-review rehearsal, expand reviewed
+C1–C7 are complete; no further cleanup commit is currently scheduled. The live
+catalog adapter has passed its initial authenticated checks. Select a real user
+design for a full library/render/visual-review rehearsal, expand reviewed
 part/interface coverage as that design needs it, and record physical trials tied
 to exact revisions. General adapter/pair-specific mating rules and independently
 authenticated material/compatibility evidence remain future work, not implied

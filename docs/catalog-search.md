@@ -94,7 +94,25 @@ provide `api_key=...` explicitly; otherwise the environment variable is used.
 The adapter follows the official
 [v3 documentation](https://rebrickable.com/api/v3/docs/) and
 [OpenAPI parameters](https://rebrickable.com/api/v3/swagger/?format=openapi),
-reviewed 12 October 2026. Tests use synthetic responses and a local redirect
-server, plus a core-only installed-wheel setup check. No authenticated live query
-has been verified: no API key was configured during implementation. Run a small
-query after configuring your key before relying on the provider integration.
+reviewed 12 October 2026. Automated tests use synthetic responses and a local
+redirect server, plus a core-only installed-wheel setup check.
+
+### Authenticated live check — 12 October 2026
+
+Seven read-only CLI requests passed against the live API at 07:14–07:15 UTC:
+
+| Check | Observed result |
+|---|---|
+| Text `hinge plate`, page size 2 | 97 matches; two records and next page 2 |
+| Same query, page 2 | Two different records and next page 3 |
+| Exact batch `3001`, `3002` | Both requested parts, no next page |
+| BrickLink ID `3001` | Rebrickable candidates `3001` and `3556` |
+| BrickOwl ID `771344` | Rebrickable candidates `3001` and `3556` |
+| LDraw ID `3001` | Rebrickable candidates `3001` and `3001a` |
+| Exact `3001`, color 0 and its returned category | One matching record |
+
+This confirms authenticated request/response handling for those cases, including
+multiple candidates for an external ID. Results and counts can change. Requests
+were spaced apart; the key stayed in process memory and was not committed.
+This was a Rebrickable check, not a direct BrickLink/BrickOwl request or proof of
+fit, stock, prices or importer acceptance. No code fix was required.

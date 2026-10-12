@@ -78,7 +78,9 @@ and unknown terms; no purchase or marketplace request occurs.
 Catalog search tests use synthetic Rebrickable responses, a local redirect server
 and a core-only installed-wheel setup check. They cover request encoding, batch
 and namespaced lookups, pagination, credentials, bounded responses and explicit
-API/network failures. They do not verify authenticated live provider behavior.
+API/network failures. They do not verify authenticated live provider behavior;
+the separate [manual live check](catalog-search.md#authenticated-live-check--12-october-2026)
+records seven successful authenticated CLI requests on 12 October 2026.
 
 Frozen spacecraft fixtures protect historical bytes and counts. Read their
 manifest before changing fixture-dependent code, and never update hashes merely
