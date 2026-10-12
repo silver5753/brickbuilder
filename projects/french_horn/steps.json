@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "id": "step_1",
+      "title": "Stand \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/stand"
+      ],
+      "requires": [],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/stand/base"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_2",
+      "title": "Body \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/body"
+      ],
+      "requires": [
+        "step_1"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/body/bend_0"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_3",
+      "title": "Slide 0 \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_0"
+      ],
+      "requires": [
+        "step_2"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/slide_0/bottom_join"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_4",
+      "title": "Slide 1 \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_1"
+      ],
+      "requires": [
+        "step_3"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/slide_1/bottom_join"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_5",
+      "title": "Slide 2 \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_2"
+      ],
+      "requires": [
+        "step_4"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/slide_2/bottom_join"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_6",
+      "title": "Slide Carrier \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_carrier"
+      ],
+      "requires": [
+        "step_5"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/slide_carrier/roof"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_7",
+      "title": "Valves \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/valves"
+      ],
+      "requires": [
+        "step_6"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/valves/cap_0"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_8",
+      "title": "Bell \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/bell"
+      ],
+      "requires": [
+        "step_7"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/bell/flare"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    },
+    {
+      "id": "step_9",
+      "title": "Mouthpipe \u2014 draft placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/mouthpipe"
+      ],
+      "requires": [
+        "step_8"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "instances": [
+            "french_horn/mouthpipe/cup"
+          ]
+        }
+      ],
+      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+    }
+  ]
+}

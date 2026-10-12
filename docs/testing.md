@@ -5,7 +5,7 @@ dependencies; rendering is an optional extra. Keep those boundaries testable.
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower projects/french_horn --error-on-warning
 uv run --locked pytest -m 'not render and not e2e' -q
 uv build
 ```
@@ -14,9 +14,9 @@ For the full suite, including actual-CAD image workflows:
 
 ```sh
 uv sync --locked --extra render
-uv run --locked --extra render ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked --extra render ty check src tests tools projects/vehicle projects/building projects/flower projects/french_horn --error-on-warning
 uv run --locked --extra render pytest -q
-uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building projects/flower
+uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building projects/flower projects/french_horn
 ```
 
 Ruff is a supplementary pinned check, not a core runtime dependency. Read the CI

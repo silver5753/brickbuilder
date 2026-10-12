@@ -1,0 +1,4145 @@
+{
+  "schema_version": 1,
+  "parts": [
+    {
+      "reference": "1126.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 1126.dat, SHA256 3a3e8b5a1e2273f28c43aafdeac583de9ac08eb4c77b36d2c967bfa324849b88; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "25214.dat",
+      "connectors": [
+        {
+          "name": "left",
+          "kind": "cross_hole",
+          "position": [
+            -18.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "length": 16,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "closed_end": null,
+          "interface": "technic-cross-v1"
+        },
+        {
+          "name": "right",
+          "kind": "cross_hole",
+          "position": [
+            0.0,
+            0.0,
+            18.0
+          ],
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "length": 16,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "closed_end": null,
+          "interface": "technic-cross-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 25214.dat, SHA256 d48c550bb8c3ae8d67a62cb34f9641fe54fc0ea2cf9ed131106f3682f01888d3; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3003.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            24.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_1",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            24.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_1",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            24.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_1",
+          "kind": "socket",
+          "position": [
+            10.0,
+            24.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_1",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3003.dat, SHA256 aed0ccd750126a58d38b012a4e8b16c172896339547c120ef67b69e1386f490d; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3004.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3004.dat, SHA256 e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3005.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            0.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3005.dat, SHA256 f86e5f3aed432cab8f5dffcf2e41a9f2ee8c3bd4dcad1732da9630837849a4f8; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3022.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_1",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_1",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_1",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_1",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3022.dat, SHA256 3cd09bfe626e751ad95eab0ea83e5f3adea81f05d34993a1c4bf432ee386fe25; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3024.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            0.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3024.dat, SHA256 e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3032.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_1",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_1",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_2",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_2",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_3",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_3",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_1",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_1",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_2",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_2",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_3",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_3",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_1",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_1",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_2",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_2",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_3",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_3",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_1",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_1",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_2",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_2",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_3",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_3",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_0",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_0",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_1",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_1",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_2",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_2",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_3",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_3",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_0",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_0",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_1",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_1",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_2",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_2",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_3",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_3",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3032.dat, SHA256 35e8b828a5bf21de83ca898a49b9725e6d08d5752ad6eb57910f27086108ca1f; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3036.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_1",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_1",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_2",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_2",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_3",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_3",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_4",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_4",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_5",
+          "kind": "socket",
+          "position": [
+            -70.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_5",
+          "kind": "stud",
+          "position": [
+            -70.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_1",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_1",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_2",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_2",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_3",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_3",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_4",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_4",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_5",
+          "kind": "socket",
+          "position": [
+            -50.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_5",
+          "kind": "stud",
+          "position": [
+            -50.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_0",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_0",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_1",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_1",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_2",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_2",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_3",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_3",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_4",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_4",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_5",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_5",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_1",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_1",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_2",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_2",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_3",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_3",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_4",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_4",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_5",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_5",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_1",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_1",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_2",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_2",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_3",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_3",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_4",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_4",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_4_5",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_4_5",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_0",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_0",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_1",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_1",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_2",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_2",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_3",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_3",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_4",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_4",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_5_5",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_5_5",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_6_0",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_6_0",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_6_1",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_6_1",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_6_2",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_6_2",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_6_3",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_6_3",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_6_4",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_6_4",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_6_5",
+          "kind": "socket",
+          "position": [
+            50.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_6_5",
+          "kind": "stud",
+          "position": [
+            50.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_7_0",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_7_0",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            -50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_7_1",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_7_1",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            -30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_7_2",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_7_2",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_7_3",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_7_3",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_7_4",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_7_4",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            30.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_7_5",
+          "kind": "socket",
+          "position": [
+            70.0,
+            8.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_7_5",
+          "kind": "stud",
+          "position": [
+            70.0,
+            0.0,
+            50.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3036.dat, SHA256 3074a0b2952f5d9903ac2fe2196a8110e1553fd245a1d8bc7ccb43f99c654d38; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3062b.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            0.0,
+            24.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3062b.dat, SHA256 cea4d47bad2ba17130e8fdd298f4f0b0dd4efdaf6edadd3bdd5e089e1cb60bac; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3068b.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_0_1",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            -10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_1",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            10.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3068b.dat, SHA256 57179cd9dc0ee31742b9947157636b1b5eafc8d98a283fbd99e9abf8fda977ec; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3069b.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3069b.dat, SHA256 31203056de061c115b007f68a564bb2383761844b9373098df0c94cc4b18046a; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "32062.dat",
+      "connectors": [
+        {
+          "name": "axle",
+          "kind": "axle",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "length": 40,
+          "minimum_engagement": 8,
+          "required": false,
+          "roll_axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "closed_end": null,
+          "interface": "technic-cross-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 32062.dat, SHA256 5d5a970dccccabbd0a0e89e9519c69a51e6a8c75a35af1cfbf61f4fb46231da7; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3710.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            -30.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            -30.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_1_0",
+          "kind": "socket",
+          "position": [
+            -10.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_1_0",
+          "kind": "stud",
+          "position": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_2_0",
+          "kind": "socket",
+          "position": [
+            10.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_2_0",
+          "kind": "stud",
+          "position": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "socket_3_0",
+          "kind": "socket",
+          "position": [
+            30.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_3_0",
+          "kind": "stud",
+          "position": [
+            30.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3710.dat, SHA256 1a2d17e3e35750ccf02a54c7aee0cf7485c1c8596492746fc798d341399a3a6e; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3941.dat",
+      "connectors": [],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3941.dat, SHA256 d0cf49833082c39c358c248fd19c7568030ffc43d7add011feae168d5ad6e693; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "3943b.dat",
+      "connectors": [],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 3943b.dat, SHA256 9939d244a41a868d94a3531507fef0c825e12a2769c05264e585a7b1686827b5; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "44375b.dat",
+      "connectors": [],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 44375b.dat, SHA256 0411fa3593aeaa20301c54ed04b25baf1374b153551da06008e54fcee243b3e9; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "4519.dat",
+      "connectors": [
+        {
+          "name": "axle",
+          "kind": "axle",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "length": 60,
+          "minimum_engagement": 8,
+          "required": false,
+          "roll_axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "closed_end": null,
+          "interface": "technic-cross-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 4519.dat, SHA256 ecec609013e9d7af63c352cb61d990077c005c4c5453e121b3d192914ab55ff0; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "4589.dat",
+      "connectors": [],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 4589.dat, SHA256 bce02358484d09c47c3d8f5d512425ca2bc7b1ad1be39b8bc743ce12b38f0c9e; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "65473.dat",
+      "connectors": [
+        {
+          "name": "inlet",
+          "kind": "cross_hole",
+          "position": [
+            0.0,
+            -10.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 20,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "closed_end": null,
+          "interface": "technic-cross-v1"
+        },
+        {
+          "name": "outlet",
+          "kind": "cross_hole",
+          "position": [
+            14.017232188134525,
+            -43.84063218813453,
+            0.0
+          ],
+          "axis": [
+            -0.7071067811865476,
+            0.7071067811865476,
+            0.0
+          ],
+          "length": 20,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "closed_end": null,
+          "interface": "technic-cross-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 65473.dat, SHA256 85194f4f804412a19659fd677d67288b7cca732cbf741ed4d21ad6dc2b07d435; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "85861.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            0.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        },
+        {
+          "name": "stud_0_0",
+          "kind": "stud",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 85861.dat, SHA256 784d1058a83110e5c883ca5f289ceda9fb6b707ed9da86a53c29a89c30197857; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    },
+    {
+      "reference": "98138.dat",
+      "connectors": [
+        {
+          "name": "socket_0_0",
+          "kind": "socket",
+          "position": [
+            0.0,
+            8.0,
+            0.0
+          ],
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "length": 0.0,
+          "minimum_engagement": 0.0,
+          "required": false,
+          "roll_axis": null,
+          "closed_end": null,
+          "interface": "system-stud-v1"
+        }
+      ],
+      "complete": false,
+      "evidence": "12 October 2026: nominal seats reviewed against LDraw 98138.dat, SHA256 1d506f39ea2bf69757206009498025381bbf28d9fa0b79385a30f4c5fa37f111; geometry source author/license retained in the external library. No physical trial.",
+      "limitations": [
+        "Partial review: only explicitly listed interfaces. Decorative mounts, underside details, strength, insertion and gravity support remain unresolved."
+      ]
+    }
+  ]
+}

@@ -68,6 +68,10 @@ baseline to start a new design. A blank brief is a valid starting point.
 | Sourcing | Generate BOMs; compare dated availability and propose substitutions | Mapping evidence, shortages, exact quantity/identity deltas |
 | Delivery | Rebuild affected outputs, reconcile orders and explain limitations | Complete native CAD, selected outputs and current review checklist |
 
+After a CAD revision, use `parts --model output/model.ldr --library /path/to/ldraw`
+to inspect the actual selected references without recopying the manifest. Review
+front, rear and support contacts before polishing the presentation view.
+
 The loop is iterative. A geometry substitution returns to structural checks and
 visual review; a changed brief updates acceptance criteria. A pose change must
 preserve physical identities and inventory unless it defines a different model.

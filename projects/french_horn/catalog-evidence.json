@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "provider": "rebrickable",
+  "retrieved_at": "2026-10-12T12:06:28.209778+00:00",
+  "source_url": "https://rebrickable.com/api/v3/lego/parts/?part_nums=65473%2C25214%2C3941%2C3961%2C3943b%2C3062b%2C4032a&color_id=14&page=1&page_size=30&inc_part_details=1",
+  "parameters": {
+    "part_nums": "65473,25214,3941,3961,3943b,3062b,4032a",
+    "color_id": 14,
+    "page": 1,
+    "page_size": 30,
+    "inc_part_details": 1
+  },
+  "total": 7,
+  "returned": 7,
+  "page": 1,
+  "page_size": 30,
+  "next_page": null,
+  "results": [
+    {
+      "part_num": "25214",
+      "name": "Brick Round 1 x 1 diameter Tube with 90 Degree Elbow (2 x 2 x 1) and Axle Holes (Crossholes) at each end",
+      "part_cat_id": 20,
+      "part_url": "https://rebrickable.com/parts/25214/brick-round-1-x-1-diameter-tube-with-90-degree-elbow-2-x-2-x-1-and-axle-holes-crossholes-at-each-end/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/6179182.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "25214"
+        ],
+        "BrickOwl": [
+          "379359"
+        ],
+        "Brickset": [
+          "113048",
+          "25214",
+          "38896"
+        ],
+        "LDraw": [
+          "25214"
+        ],
+        "LEGO": [
+          "113048",
+          "25214",
+          "38896"
+        ]
+      }
+    },
+    {
+      "part_num": "3062b",
+      "name": "Brick Round 1 x 1 Open Stud",
+      "part_cat_id": 20,
+      "part_url": "https://rebrickable.com/parts/3062b/brick-round-1-x-1-open-stud/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/306201.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3062"
+        ],
+        "BrickOwl": [
+          "763649"
+        ],
+        "Brickset": [
+          "18860",
+          "30068",
+          "3062",
+          "35390"
+        ],
+        "LDraw": [
+          "30068",
+          "3062b"
+        ],
+        "LEGO": [
+          "18860",
+          "30068",
+          "3062",
+          "35390"
+        ]
+      }
+    },
+    {
+      "part_num": "3941",
+      "name": "Brick Round 2 x 2 with Axle Hole",
+      "part_cat_id": 20,
+      "part_url": "https://rebrickable.com/parts/3941/brick-round-2-x-2-with-axle-hole/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/614351.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3941"
+        ],
+        "BrickOwl": [
+          "997602"
+        ],
+        "Brickset": [
+          "39223",
+          "3941",
+          "6116",
+          "6143"
+        ],
+        "LDraw": [
+          "3941",
+          "6143"
+        ],
+        "LEGO": [
+          "39223",
+          "3941",
+          "6116",
+          "6143"
+        ]
+      }
+    },
+    {
+      "part_num": "3943b",
+      "name": "Cone 4 x 4 x 2, Axle Hole [Plain]",
+      "part_cat_id": 20,
+      "part_url": "https://rebrickable.com/parts/3943b/cone-4-x-4-x-2-axle-hole-plain/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/394326.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3943b"
+        ],
+        "BrickOwl": [
+          "215849"
+        ],
+        "Brickset": [
+          "3943"
+        ],
+        "LDraw": [
+          "3943b"
+        ],
+        "LEGO": [
+          "3943"
+        ]
+      }
+    },
+    {
+      "part_num": "3961",
+      "name": "Dish 8 x 8 Inverted [Radar], Solid Studs, Rounded Anti-stud Underside",
+      "part_cat_id": 21,
+      "part_url": "https://rebrickable.com/parts/3961/dish-8-x-8-inverted-radar-solid-studs-rounded-anti-stud-underside/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4268409.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3961"
+        ],
+        "BrickOwl": [
+          "890873"
+        ],
+        "Brickset": [
+          "3961"
+        ],
+        "LDraw": [
+          "3961"
+        ],
+        "LEGO": [
+          "3961"
+        ]
+      }
+    },
+    {
+      "part_num": "4032a",
+      "name": "Plate Round 2 x 2 with Axle Hole Type 1 (+ Opening)",
+      "part_cat_id": 21,
+      "part_url": "https://rebrickable.com/parts/4032a/plate-round-2-x-2-with-axle-hole-type-1-opening/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/403226.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "4032"
+        ],
+        "BrickOwl": [
+          "680648"
+        ],
+        "Brickset": [
+          "4032"
+        ],
+        "LDraw": [
+          "4032a"
+        ],
+        "LEGO": [
+          "4032"
+        ],
+        "Peeron": [
+          "4032"
+        ]
+      }
+    },
+    {
+      "part_num": "65473",
+      "name": "Brick Round 2 x 2 D. Tube with 45\u00b0 Elbow and Axle Holes (Crossholes) at Each End [SHORT]",
+      "part_cat_id": 20,
+      "part_url": "https://rebrickable.com/parts/65473/brick-round-2-x-2-d-tube-with-45-elbow-and-axle-holes-crossholes-at-each-end-short/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/6327811.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "65473"
+        ],
+        "BrickOwl": [
+          "547946"
+        ],
+        "Brickset": [
+          "1986",
+          "65473"
+        ],
+        "LDraw": [
+          "65473"
+        ],
+        "LEGO": [
+          "1986",
+          "65473"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Live provider catalog facts; not current stock, prices or importer acceptance.",
+    "External IDs are provider mappings, not verified geometric substitutions.",
+    "No geometry, connector compatibility or physical-build validation."
+  ]
+}

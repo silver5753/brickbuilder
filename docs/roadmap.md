@@ -171,3 +171,25 @@ For each slice, update this roadmap and its capability documentation. Use Python
 verification at integration boundaries. Preserve frozen hashes and stable IDs.
 See [testing](testing.md), [validation levels](validation-levels.md) and the
 [agent playbook](playbook.md). Commit evidence and remaining limits together.
+
+## French horn rehearsal — 12 October 2026
+
+A new 92-part instrument design exercises live part discovery, real curved-tube
+geometry, semantic assemblies, actual-CAD front/rear/hero previews and nine
+illustrated placement-review steps. Its 16 explicit main-coil mating assertions
+pass nominal checks; whole-model connections remain unknown. Bell, leadpipe and
+valve-carrier mounts, gravity support and physical assembly remain open. The
+project deliberately ships as a draft; no stock or ordering claim is made.
+See [the project review](../projects/french_horn/README.md).
+
+The trial added `parts --model` to inspect the current CAD references directly.
+It reuses local preparation APIs, records source/model hashes and instance count,
+deduplicates case variants, rejects conflicting selectors/raw geometry, and keeps
+empty selections empty. The installed-wheel preparation workflow covers these
+contracts. A horn regression checks that all intended coil joints pass, no
+reviewed stud occupancy conflicts remain, and unresolved mounts stay unknown.
+No global catalog, external dependency or subject-specific core branch was added.
+
+Verification: **353 tests passed**, including installed-wheel and rendering
+workflows; ty with warnings treated as errors, pinned Ruff and whitespace checks
+passed. The model remains an explicitly unresolved physical-design draft.

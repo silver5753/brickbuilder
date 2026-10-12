@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "required_checks": [
+    "placements",
+    "part_count",
+    "requirement_bindings",
+    "render",
+    "instructions",
+    "connections"
+  ],
+  "inputs": [
+    "README.md",
+    "catalog-evidence.json"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "stages": [
+    "connections",
+    "render",
+    "instructions"
+  ],
+  "root": "french_horn/stand/base",
+  "catalog": "connectors.json",
+  "render": "render_config.json",
+  "stickers": null,
+  "exceptions": null,
+  "orders": []
+}

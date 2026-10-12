@@ -80,6 +80,7 @@ separate from the native physical model.
 | [Vehicle](projects/vehicle/README.md) | 19 | Generic authoring example with supported axles, wheels, cab and design variants |
 | [Entrance shelter](projects/building/README.md) | 23 | Tutorial covering staggered walls, doorway/lintel, roof, artwork and instructions |
 | [Desktop flower](projects/flower/README.md) | 8 | Small botanical rehearsal using the same core authoring/release APIs |
+| [French horn](projects/french_horn/README.md) | 92 | Curved-tube CAD prototype; real renders and draft steps, unresolved mounts |
 
 These have different scopes and maturity. The small examples demonstrate the
 workflow, and none is a physical-build certificate. Solar Orbiter retains known
@@ -157,10 +158,10 @@ external preparation and are not supported by the native parser.
 P1–P5 and the C1–C7 cleanup plan are complete within their documented scope. The
 [roadmap](docs/roadmap.md) records shipped work, validation and remaining limits;
 [implementation history](docs/implementation-history.md) preserves earlier plans.
-The latest code-validation run passed 352 tests, including installed-wheel workflows.
+The latest code-validation run passed 353 tests, including installed-wheel workflows.
 
 ```sh
-uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower projects/french_horn --error-on-warning
 uv run --locked pytest -m 'not render and not e2e' -q
 uv run --locked --extra render pytest -q
 uv build

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "subject": "Compact French horn desktop display",
+  "dimensions": "Approximately 14 cm wide and 12 cm tall, to be measured from CAD",
+  "scale": "Stylized miniature; not a playable instrument or a specific manufacturer replica",
+  "part_count_limit": 220,
+  "budget": null,
+  "construction_style": "Rigid standard brick and Technic parts, coiled tubes, fixed valve details, dish bell, dark stand",
+  "sticker_policy": "forbidden",
+  "sourcing_region": null,
+  "condition": null,
+  "owned_parts": null,
+  "axes": "Native +X is image right, -Y is up, front camera looks from -Z. Coil lies in XY. Bell opens upper-left toward viewer.",
+  "deliverables": [
+    "cad",
+    "inventory",
+    "preview",
+    "instructions"
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Recognizable circular coiled horn body",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "assemblies": [
+        "french_horn/body"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Inspect actual CAD silhouette and nominal elbow/axle seats"
+    },
+    {
+      "id": "R2",
+      "text": "Three rotary valve details and layered tuning slides",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "assemblies": [
+        "french_horn/valves"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Inspect valve count and exposed slide routing; fixed details"
+    },
+    {
+      "id": "R3",
+      "text": "Clearly flared bell opening to the left",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "assemblies": [
+        "french_horn/bell"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Inspect concave opening and attachment; physical fit remains untested"
+    },
+    {
+      "id": "R4",
+      "text": "Distinct leadpipe and contrasting mouthpiece",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "assemblies": [
+        "french_horn/mouthpipe"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Inspect pipe continuity and silver mouthpiece"
+    },
+    {
+      "id": "R5",
+      "text": "Dark desktop display stand",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "french_horn/stand"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Inspect support contacts; physical stability trial pending"
+    }
+  ]
+}

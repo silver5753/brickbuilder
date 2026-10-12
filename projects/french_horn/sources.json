@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "S1",
+      "location": "User request 12 October 2026: build the French horn and render at the end",
+      "kind": "user",
+      "edition": null,
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "Design task and output authorization"
+    },
+    {
+      "id": "S2",
+      "location": "https://www.yamaha.com/en/musical_instrument_guide/horn/mechanism/",
+      "kind": "drawing",
+      "edition": "Retrieved 12 October 2026",
+      "pdf_page": null,
+      "figure": "F/B-flat full-double horn labelled diagram, mechanism_p01_01.jpg",
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "Reference for coiled body, bell, three finger levers, tuning slides and mouthpiece; proportions are stylized, not measured"
+    }
+  ]
+}
