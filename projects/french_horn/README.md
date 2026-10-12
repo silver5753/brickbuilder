@@ -1,4 +1,4 @@
-# French horn — design rehearsal, revision 1
+# French horn — design rehearsal, revision 2
 
 A 92-part yellow desktop horn study made from native physical LDraw parts:
 eight elbow segments form the main coil; a cone and concave dish suggest the
@@ -15,9 +15,9 @@ LDraw library, including its original authorship/license files and LDConfig.ldr.
 uv sync --locked --extra render
 uv run --locked --extra render brickbuilder doctor projects/french_horn --library /path/to/ldraw
 uv run --locked --extra render brickbuilder release projects/french_horn \
-  --library /path/to/ldraw --draft --destination output/horn-r1
-uv run --locked brickbuilder verify-release output/horn-r1
-uv run --locked brickbuilder parts --model output/horn-r1/model.ldr \
+  --library /path/to/ldraw --draft --destination output/horn-r2
+uv run --locked brickbuilder verify-release output/horn-r2
+uv run --locked brickbuilder parts --model output/horn-r2/model.ldr \
   --library /path/to/ldraw --catalog projects/french_horn/connectors.json
 ```
 
@@ -63,3 +63,20 @@ view obscured; those unresolved items remain above instead of being relabelled.
 Next useful design work is a small legal bracket/clip trial for the bell and
 valve carrier, followed by a physical stand/coil trial. Keep these subject-specific
 choices here; extract a shared attachment helper only after another model uses it.
+
+## Revision 2 — bell clearance correction
+
+User review identified a real interference in R1, not a rendering issue.
+Expanded LDraw surfaces showed both the flare and throat crossing the two
+upper-left coil elbows; the throat also crossed nearby slide/carrier parts.
+R2 translates the entire three-part bell by (-42, -31, 0) LDU, preserving
+its orientation and internal assembly. The bell is now visibly separated.
+This is a clearance correction only: the gap still needs a designed physical
+neck/bracket. The bell must not be treated as mounted or build-ready.
+
+A separating-plane check on all expanded face vertices places every bell
+surface on one side and all 89 other parts on the other, with 10.03 LDU
+(4.01 mm) of projected clearance along (-0.806405, -0.591364, 0). This is a
+conservative lower bound for the loaded surface geometry, not a whole-model
+collision certificate. Empty library helper dependencies remain declared by
+the renderer. Internal bell mating and non-bell collisions were not certified.

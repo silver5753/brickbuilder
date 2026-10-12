@@ -193,3 +193,9 @@ No global catalog, external dependency or subject-specific core branch was added
 Verification: **353 tests passed**, including installed-wheel and rendering
 workflows; ty with warnings treated as errors, pinned Ruff and whitespace checks
 passed. The model remains an explicitly unresolved physical-design draft.
+
+R2 follow-up: user review exposed bell/coil interference. The bell was moved
+outward, and an expanded-surface separating-plane check gives at least
+4.01 mm of bell-to-rest clearance in the revised preview. This fixes placement
+only; the physical neck/bracket remains unresolved. Opposite-side renders and
+the draft package are regenerated for the new model.

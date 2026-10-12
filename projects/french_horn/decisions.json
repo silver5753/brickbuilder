@@ -17,6 +17,19 @@
       "source_ids": [
         "S1"
       ]
+    },
+    {
+      "id": "D2",
+      "requirement_ids": [
+        "R3"
+      ],
+      "recorded_on": "2026-10-12",
+      "kind": "assumption",
+      "choice": "Move bell outside the coil with visible clearance; leave neck/bracket unresolved",
+      "reason": "User identified bell/coil interference. Native surfaces confirmed intersections; spatial separation fixes that defect without claiming a physical attachment.",
+      "source_ids": [
+        "S1"
+      ]
     }
   ]
 }

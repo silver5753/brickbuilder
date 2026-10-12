@@ -157,7 +157,9 @@ def build(project: Project) -> AuthoredModel:
     # Bell: a real cone connected to the convex back of a real dish, with the
     # concave underside facing outward. This is a visual bell, not an air path.
     bellrot = frame_y((-0.75, -0.55, -0.36))
-    bellframe = Transform((-40, -172, 0), bellrot)
+    # R2: move the whole bell outside the coil; the remaining gap needs a
+    # designed bracket/neck, not a fictitious overlapping attachment.
+    bellframe = Transform((-82, -203, 0), bellrot)
     bell = (
         part("throat", "3941", YELLOW, (0, -24, 0)),
         part("flare", "3943b", YELLOW, (0, 0, 0)),
