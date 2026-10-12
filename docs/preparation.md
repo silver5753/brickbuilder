@@ -5,6 +5,13 @@ for authoring; they do not build models, infer legal connectors, verify stock or
 execute a project builder. All Python APIs remain dependency-free. PDF page work
 uses separately installed Poppler executables.
 
+## Discover parts online
+
+Use [`catalog-search`](catalog-search.md) for live Rebrickable text, exact part
+number and external-ID searches. It returns bounded, sourced JSON without saving
+a catalog in the repo. It requires `REBRICKABLE_API_KEY`. Then use the local
+`parts` command below to inspect selected geometry and reviewed evidence.
+
 ## Index the parts you need
 
 Use a supplied local geometry library and the planned `parts` list from the

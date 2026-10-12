@@ -67,6 +67,8 @@ Read the relevant guide before changing or using a capability:
 
 - [Preparation](docs/preparation.md): local parts search, reviewed connector coverage,
   explicit reference acquisition and optional page extraction; no inferred connectors.
+- [Online catalog search](docs/catalog-search.md): live external discovery and
+  namespaced IDs; no maintained global catalog, inferred compatibility or stock claims.
 - [Generic tutorial](docs/tutorial.md): brief-to-model workflow using building and vehicle examples.
 - [Release packages](docs/releases.md): explicit policy, captured provenance, offline reconciliation and handoff.
 - [Project execution](docs/execution.md): reviewed Python, explicit stages, pose identity and draft summaries.

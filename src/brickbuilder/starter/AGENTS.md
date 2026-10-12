@@ -13,6 +13,12 @@ Read supplied references and captions. Record retrieval status and confidence;
 keep PDF page and figure numbers separate. Concept images do not prove real
 parts, dimensions or connections. Unknowns should remain explicit.
 
+For part discovery, use brickbuilder catalog-search with a REBRICKABLE_API_KEY
+environment variable; see docs/catalog-search.md in the repository. Query the
+external catalog rather than maintaining a global copy here. Treat external-ID
+mappings as candidates, then inspect selected local geometry with brickbuilder
+parts. Search results do not establish fit, live stock or importer acceptance.
+
 Review build.py before executing it. Its build(project) entry point returns
 Model, AuthoredModel or BuildResult containing flattened real-part instances with
 rigid transforms. Prefer AuthoredModel to retain intended joints and links. Preserve

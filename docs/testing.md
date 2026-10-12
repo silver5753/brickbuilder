@@ -75,6 +75,11 @@ backing, stale or failed previews, quantity changes and regenerated release outp
 Sourcing tests use fictional dated data and check eligibility, shortages, costs
 and unknown terms; no purchase or marketplace request occurs.
 
+Catalog search tests use synthetic Rebrickable responses, a local redirect server
+and a core-only installed-wheel setup check. They cover request encoding, batch
+and namespaced lookups, pagination, credentials, bounded responses and explicit
+API/network failures. They do not verify authenticated live provider behavior.
+
 Frozen spacecraft fixtures protect historical bytes and counts. Read their
 manifest before changing fixture-dependent code, and never update hashes merely
 to make a refactor pass. New designs belong in separate project revisions.

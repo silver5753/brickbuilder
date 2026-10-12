@@ -36,6 +36,7 @@ inventory remains in [workflow inventory](workflow-inventory.md).
 | C5 | Current doctor readiness checks, CLI/starter guidance and separated history | [Projects](projects.md) |
 | C6 | Separate render completeness, exact-model diagnostic evidence gates and shared reporting helpers | [Releases](releases.md), [rendering](rendering.md) |
 | C7 | Explicit interface compatibility, nominal-evidence migration and botanical rehearsal | [Migration](connector-migration.md), [flower](../projects/flower/README.md) |
+| Live catalog search | Bounded Rebrickable discovery with sourced JSON and external-ID lookups; no catalog mirror | [Catalog search](catalog-search.md) |
 
 ## C5 — Agent readiness and guidance
 
@@ -124,10 +125,36 @@ and spacecraft missing/empty dependencies remain recorded. This did not alter
 models, release policies or physical acceptance. Documentation changes were
 checked against CLI/configuration, relative links and the core quick-start run.
 
+## Live catalog search — 12 October 2026
+
+Following the user's direction, online catalog discovery uses an external service
+rather than a global part catalog maintained in this repo. `catalog-search` wraps
+Rebrickable v3 text search, selected part-number batches and BrickLink/BrickOwl/
+LDraw/LEGO ID filters. It returns compact, namespaced results with source URLs,
+retrieval time and explicit pagination. Color/category filters use Rebrickable IDs.
+The dependency-free adapter fetches one bounded page, writes no files, refuses
+credential-bearing redirects and reports authentication, throttling, malformed
+responses and network failures explicitly. It never converts a mapping into fit,
+stock or importer-acceptance evidence. Agent, preparation and starter guides now
+direct discovery to the live service and selected geometry/evidence to `parts`.
+
+Verification: 35 new tests passed, including CLI request/response contracts,
+failure paths, real local redirect refusal and an installed core-only wheel setup
+check. All **352** full render-extra suite tests passed, including existing
+installed-wheel workflows. Ty with warnings treated as errors and pinned Ruff passed. The official
+v3 docs and OpenAPI parameter schema were reviewed. An authenticated live search
+remains untested because no Rebrickable API key was configured. Tests use synthetic
+data; no catalog dump, dependency, secret, frozen fixture or model was added/changed.
+
+Scope limits: Rebrickable is the only provider implemented. External-ID filters
+query its mappings, not BrickLink/BrickOwl directly. There is no pricing, live
+stock, geometry download, connector inference or global catalog maintenance.
+
 ## Follow-up work outside the cleanup plan
 
-C1–C7 are complete; no further cleanup commit is currently scheduled. Select a
-real user design for a full library/render/visual-review rehearsal, expand reviewed
+C1–C7 are complete; no further cleanup commit is currently scheduled. Configure
+the API key and run a small live catalog query before relying on the new adapter.
+Select a real user design for a full library/render/visual-review rehearsal, expand reviewed
 part/interface coverage as that design needs it, and record physical trials tied
 to exact revisions. General adapter/pair-specific mating rules and independently
 authenticated material/compatibility evidence remain future work, not implied

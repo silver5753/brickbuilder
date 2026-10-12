@@ -18,7 +18,8 @@ for the limits of each check.
 3. Define model axes, approximate size and named assemblies. Choose an initial
    structural approach and a small trial connection if an interface is uncertain.
 4. Restore the locked Python 3.12 environment using the [testing guide](testing.md).
-   Use [parts/reference preparation](preparation.md) to search an explicit library,
+   Use [live catalog search](catalog-search.md) for external part discovery, then
+   [parts/reference preparation](preparation.md) to search an explicit library,
    review connector coverage and cache selected references, then run
    `brickbuilder doctor projects/<project_name>`. Exit 3 is expected for an
    incomplete starter; follow its findings without treating readiness as model validation.
@@ -81,6 +82,7 @@ gates and offline artifact reconciliation. Neither certifies physical assembly.
 | Task | Current operation | Agent work still needed |
 |---|---|---|
 | Prepare a project | `init`, `doctor` ([project format](projects.md)) | Fill the brief, select parts and review/implement the builder |
+| Discover parts online | `catalog-search` ([guide](catalog-search.md)) | Configure Rebrickable API key, review candidates and keep ID namespaces separate |
 | Prepare parts/evidence | `parts`, `sources`, optional `reference-page` ([preparation](preparation.md)) | Review metadata/declarations and source meaning; no inferred connectors |
 | Package a revision | `release`, `verify-release` ([releases](releases.md)) | Set required software checks, declare builder inputs and inspect the handoff |
 | Execute a project | `build` ([execution](execution.md)) | Review Python, configure stages/views and interpret draft findings |

@@ -439,6 +439,25 @@ def _sourcing_command(args: argparse.Namespace) -> int:
     return {"pass": 0, "fail": 1, "unknown": 3}[report["status"]]
 
 
+def _catalog_search_command(args: argparse.Namespace) -> int:
+    from .catalog_search import search_catalog
+
+    _print(
+        search_catalog(
+            query=args.query,
+            part_nums=tuple(args.part or ()),
+            external_id=(args.external_id[0], args.external_id[1])
+            if args.external_id
+            else None,
+            category_id=args.category_id,
+            color_id=args.color_id,
+            page=args.page,
+            page_size=args.page_size,
+        )
+    )
+    return 0
+
+
 def _selection_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("source", type=Path, nargs="?")
     parser.add_argument("--selections", type=Path)
@@ -485,6 +504,32 @@ def _parser() -> argparse.ArgumentParser:
     )
     verify.add_argument("directory", type=Path)
     verify.set_defaults(handler=_verify_release_command)
+    catalog = commands.add_parser(
+        "catalog-search",
+        help="Search live Rebrickable parts; requires REBRICKABLE_API_KEY",
+    )
+    selector = catalog.add_mutually_exclusive_group(required=True)
+    selector.add_argument("--query", help="Provider text search")
+    selector.add_argument(
+        "--part",
+        action="append",
+        help="Exact Rebrickable part number; repeat for a batch",
+    )
+    selector.add_argument(
+        "--external-id",
+        nargs=2,
+        metavar=("SYSTEM", "ID"),
+        help="Rebrickable mapping lookup: bricklink, brickowl, ldraw or lego",
+    )
+    catalog.add_argument("--category-id", type=int, help="Rebrickable category ID")
+    catalog.add_argument(
+        "--color-id", type=int, help="Rebrickable color ID (not LDraw/marketplace)"
+    )
+    catalog.add_argument("--page", type=int, default=1)
+    catalog.add_argument(
+        "--page-size", type=int, default=20, help="Results per page: 1–100 (default 20)"
+    )
+    catalog.set_defaults(handler=_catalog_search_command)
     parts = commands.add_parser(
         "parts", help="Index and search local part candidates and declared evidence"
     )

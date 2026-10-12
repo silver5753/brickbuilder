@@ -40,6 +40,7 @@ No prior spacecraft model or release is needed.
 | Images and artwork | Actual-CAD PNG previews, finished PNG artwork supplied by the agent, and separate printable decals |
 | Instructions | Agent-authored steps, accumulated CAD, highlighted illustrations and an offline HTML booklet |
 | Parts and ordering | Native BOMs, selections, explicit marketplace mappings and reconciled BrickOwl/BrickLink exports |
+| Online part discovery | Live Rebrickable search, exact/batched IDs, external-ID lookups and sourced JSON; no local catalog mirror |
 | Replacements | Reviewed one-to-many assembly recipes with immutable previews, support checks and new identities |
 | Sourcing | Dated offline stock/owned-parts snapshots, candidate baskets, shortages and unknown costs |
 | Collision and motion | Scoped bounds/material-box diagnostics at explicit poses and sampled joint angles |
@@ -142,7 +143,8 @@ external preparation and are not supported by the native parser.
 - **Plan:** [Agent instructions](AGENTS.md), [playbook](docs/playbook.md),
   [design brief](docs/design-brief.md), [tutorial](docs/tutorial.md).
 - **Author and inspect:** [Model API](docs/model-api.md), [assembly](docs/assembly.md),
-  [connections](docs/connectivity.md), [compatibility migration](docs/connector-migration.md).
+  [catalog search](docs/catalog-search.md), [connections](docs/connectivity.md),
+  [compatibility migration](docs/connector-migration.md).
 - **Generate outputs:** [Execution](docs/execution.md), [rendering](docs/rendering.md),
   [artwork](docs/artwork.md), [instructions](docs/instructions.md).
 - **Revise and source:** [Replacements](docs/replacements.md), [inventory/exports](docs/inventory-exports.md),
@@ -155,7 +157,7 @@ external preparation and are not supported by the native parser.
 P1–P5 and the C1–C7 cleanup plan are complete within their documented scope. The
 [roadmap](docs/roadmap.md) records shipped work, validation and remaining limits;
 [implementation history](docs/implementation-history.md) preserves earlier plans.
-The latest code-validation run passed 317 tests, including installed-wheel workflows.
+The latest code-validation run passed 352 tests, including installed-wheel workflows.
 
 ```sh
 uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
