@@ -499,7 +499,7 @@ def _parser() -> argparse.ArgumentParser:
             "--stage",
             action="append",
             choices=sorted(STAGES),
-            help="Repeat to override configured stages; CAD is always generated and release still requires collision review",
+            help="Repeat to override configured stages; CAD is always generated and release still enforces connectivity and collision review",
         )
         build.add_argument("--library", type=Path)
         build.add_argument("--palette", type=Path)
@@ -507,7 +507,7 @@ def _parser() -> argparse.ArgumentParser:
             build.add_argument(
                 "--draft",
                 action="store_true",
-                help="Publish a labelled draft, retaining policy findings",
+                help="Publish a labelled draft; does not waive rooted connectivity without explicit user approval",
             )
         build.set_defaults(handler=_build_command)
     verify = commands.add_parser(

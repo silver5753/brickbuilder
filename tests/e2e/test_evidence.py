@@ -17,6 +17,36 @@ def test_installed_sourcing_release_evidence(installed_core, tmp_path):
 def build(project):
     return Model((PartInstance("part", "part.dat", 4),))
 """)
+    (project / "build.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                stages=["cad"],
+                root="part",
+                catalog="connectors.json",
+                render=None,
+                stickers=None,
+                exceptions=None,
+                orders=[],
+            )
+        )
+    )
+    (project / "connectors.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                parts=[
+                    dict(
+                        reference="part.dat",
+                        connectors=[],
+                        complete=True,
+                        evidence="Synthetic single-part fixture; no mating interfaces",
+                        limitations=[],
+                    )
+                ],
+            )
+        )
+    )
     seed = tmp_path / "seed"
     installed_core.run("build", project, "--stage", "cad", "--destination", seed)
     snapshot = dict(

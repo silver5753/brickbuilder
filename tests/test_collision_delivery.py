@@ -28,6 +28,70 @@ def build(project):
     (root / "release.json").write_text(
         json.dumps(dict(schema_version=1, required_checks=["placements"], inputs=[]))
     )
+    # Independent analytical sliding connector joins both poses. Collision
+    # surfaces intentionally remain independent of this synthetic interface.
+    from brickbuilder.connectivity.catalog import Connector, PartConnectors
+    from dataclasses import asdict
+
+    (root / "connectors.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                parts=[
+                    asdict(
+                        PartConnectors(
+                            "a.dat",
+                            (
+                                Connector(
+                                    "shaft",
+                                    "bar",
+                                    (0, 0, 0),
+                                    (0, 1, 0),
+                                    40,
+                                    8,
+                                    interface="synthetic-slide",
+                                ),
+                            ),
+                            True,
+                            "Analytical sliding fixture",
+                        )
+                    ),
+                    asdict(
+                        PartConnectors(
+                            "b.dat",
+                            (
+                                Connector(
+                                    "seat",
+                                    "clip",
+                                    (0, 0, 0),
+                                    (0, 1, 0),
+                                    8,
+                                    8,
+                                    interface="synthetic-slide",
+                                ),
+                            ),
+                            True,
+                            "Analytical sliding fixture",
+                        )
+                    ),
+                ],
+            )
+        )
+    )
+    (root / "build.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                stages=["cad"],
+                root="fixed",
+                catalog="connectors.json",
+                render=None,
+                stickers=None,
+                exceptions=None,
+                orders=[],
+            )
+        )
+    )
     library = tmp_path / "library"
     library.mkdir()
     (library / "a.dat").write_text("3 16 -2 -2 0 2 -2 0 0 2 0\n")
@@ -81,7 +145,7 @@ def test_missing_collision_review_cannot_be_promoted_even_without_required_check
     assert set(result["collision_reviews"].values()) == {"not_tested"}
     path = output / "release_manifest.json"
     manifest = json.loads(path.read_text())
-    assert manifest["schema_version"] == 2
+    assert manifest["schema_version"] == 3
     manifest["label"] = "verified_artifacts"
     path.write_text(json.dumps(manifest))
     assert verify_release(output)["status"] == "fail"

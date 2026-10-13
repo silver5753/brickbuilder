@@ -38,21 +38,32 @@ def part(name, ref, colour, pos, rot=None):
 def build(project: Project) -> AuthoredModel:
     groups = []
     # The coiled body consists of eight real 45-degree tube elbows. Their axial
-    # seats are joined by 2L axles; no stretching or decorative torus is used.
+    # seats use 2L axles, with 3L axles through the top/bottom cross blocks.
+    # The two halves move 10 LDU apart to accommodate those real 20-LDU blocks.
     coil = []
     joints = []
-    centre = (30.0, -131.0, 0.0)
+    centre = (20.0, -146.0, 0.0)
     for i in range(8):
         a = radians(i * 45)
-        start = (centre[0] - 72 * cos(a), centre[1] - 72 * sin(a), 0.0)
+        half_offset = -10 if i in (0, 1, 6, 7) else 10
+        start = (centre[0] - 72 * cos(a) + half_offset, centre[1] - 72 * sin(a), 0.0)
         coil.append(part(f"bend_{i}", "65473", YELLOW, start, rotation("z", i * 45)))
-        coil.append(part(f"join_{i}", "32062", DARK, start, rotation("z", i * 45 + 90)))
+        joint = (centre[0], start[1], 0) if i in (2, 6) else start
+        coil.append(
+            part(
+                f"join_{i}",
+                "4519" if i in (2, 6) else "32062",
+                DARK,
+                joint,
+                rotation("z", i * 45 + 90),
+            )
+        )
         joints.extend(
             (
                 Connection(
                     Endpoint(f"bend_{i}", "inlet"),
                     Endpoint(f"join_{i}", "axle"),
-                    "2L axle occupies 20 LDU of each adjoining reviewed elbow bore",
+                    "Reviewed axle engages adjoining elbow bore; seam 2/6 also captures a cross block",
                 ),
                 Connection(
                     Endpoint(f"bend_{(i - 1) % 8}", "outlet"),
@@ -61,24 +72,63 @@ def build(project: Project) -> AuthoredModel:
                 ),
             )
         )
+    coil.extend(
+        (
+            part("top_anchor", "6536", DARK, (20, -218, 0)),
+            part("bottom_anchor", "6536", DARK, (20, -74, 0)),
+        )
+    )
     groups.append(
         Assembly("body", tuple(coil), connections=tuple(joints), requirements=("R1",))
     )
 
-    # A stud-built pedestal and two saddles support the display by gravity.
+    # Stud-built pedestal with positive mounts for every feature.
     stand = [part("base", "3036", DARK, (0, 0, 40))]
+    # A pinned cross block retains the coil, instead of relying on a saddle.
     stand.extend(
         (
-            part("cradle_core", "3003", DARK, (20, -24, 0)),
-            part("cradle_plate", "3022", DARK, (20, -32, 0)),
-            part("cradle_pad", "3068b", DARK, (20, -40, 0)),
+            part("coil_foot", "3004", DARK, (20, -24, 30)),
+            part("coil_shim_0", "3023", DARK, (20, -32, 30)),
+            part("coil_shim_1", "3023", DARK, (20, -40, 30)),
+            part("coil_bracket", "3700", DARK, (20, -64, 30)),
+            part("coil_pin", "6558", DARK, (20, -54, 20), rotation("y", -90)),
         )
     )
-    for z, side in ((-30, "front"), (30, "back")):
-        for level in range(2):
-            stand.append(
-                part(f"cradle_{side}_{level}", "3004", DARK, (20, -24 * (level + 1), z))
+    # The pipe tower also carries the two front-facing valve rails.
+    for level in range(7):
+        stand.append(
+            part(
+                f"pipe_post_{level}",
+                "87087" if level >= 5 else "3005",
+                DARK,
+                (50, -24 * (level + 1), 30),
             )
+        )
+    for level in range(2):
+        stand.append(
+            part(f"pipe_upper_{level}", "3005", DARK, (10, -200 - 24 * level, 30))
+        )
+    stand.append(
+        part("pipe_mount", "87087", YELLOW, (10, -248, 30), rotation("y", -90))
+    )
+    # Stud-built bell support, with a transverse cross axle into the throat/cone.
+    for level in range(7):
+        stand.append(
+            part(
+                f"bell_post_{level}",
+                "3004",
+                DARK,
+                (-70, -24 * (level + 1), 40),
+                rotation("y", 90),
+            )
+        )
+    stand.extend(
+        (
+            part("bell_shim", "3023", DARK, (-70, -176, 40), rotation("y", 90)),
+            part("bell_bracket", "32064a", DARK, (-70, -200, 40), rotation("y", 90)),
+            part("bell_axle", "4519", DARK, (-100, -190, 40)),
+        )
+    )
     # Two stud-built rear posts support the tuning-slide carrier plate.
     for x, name in ((-30, "left"), (70, "right")):
         for level in range(7):
@@ -99,36 +149,37 @@ def build(project: Project) -> AuthoredModel:
             (
                 part(f"rotor_{i}", "3062b", YELLOW, (x, -128, -24), front),
                 part(f"cap_{i}", "98138", YELLOW, (x, -128, -32), front),
-                part(f"lever_mount_{i}", "3024", SILVER, (x, -148, -8), front),
+                part(f"lever_mount_{i}", "3024", SILVER, (x, -152, -8), front),
                 part(
                     f"lever_{i}",
                     "1126",
                     SILVER,
-                    (x, -158, -16),
+                    (x, -162, -16),
                     multiply(front, rotation("y", 90)),
                 ),
             )
         )
     valves.extend(
         (
-            part("lower_rail", "3710", YELLOW, (30, -128, 0), front),
-            part("upper_rail", "3710", YELLOW, (30, -148, 0), front),
+            part("lower_rail", "3623", YELLOW, (20, -128, 0), front),
+            part("upper_rail", "3623", YELLOW, (20, -152, 0), front),
         )
     )
-    # Keep all internal stud placements together; the finger levers must clear
-    # the front of the coil. The rail-to-body mount is still unresolved.
+    # Both valve rails mate to the side studs of the shared support tower.
     groups.append(
         Assembly(
             "valves",
             tuple(valves),
-            transform=Transform((0, 0, -24)),
+            transform=Transform((10, -6, 12)),
             requirements=("R2",),
         )
     )
 
     # Three narrow tuning-slide loops; elbows expose real axle bores. Different
-    # lengths and front/back planes preserve the layered look of the instrument.
-    for i, (cx, cy, depth) in enumerate(((0, -90, 30), (20, -90, 50), (40, -90, 70))):
+    # front/back planes preserve the layered look of the instrument.
+    # Each stud-ended axle seats into the roof and grips two axle bushes plus
+    # the elbow bore; no shaft passes through a hollow round-brick stud.
+    for i, (cx, cy, depth) in enumerate(((0, -94, 30), (20, -94, 50), (40, -94, 70))):
         items = []
         # Each U uses two 90-degree elbows and a short horizontal axle seam.
         leftrot = multiply(rotation("z", 180), rotation("x", -90))
@@ -143,21 +194,19 @@ def build(project: Project) -> AuthoredModel:
                 items.append(
                     part(
                         side + f"_tube_{k}",
-                        "3062b",
+                        "3713",
                         YELLOW,
-                        (x, cy - 54 - 24 * k, depth),
+                        (x, -134 - 20 * k, depth),
+                        rotation("x", 90),
                     )
                 )
             items.append(
                 part(
-                    # A 3L axle pierced the round brick's small hollow stud.
-                    # Stop a 2L axle inside its wider underside cavity instead.
-                    # Clearance does not establish clutch in that cavity.
                     side + "_axle",
-                    "32062",
+                    "6587",
                     DARK,
-                    (x, cy - 30, depth),
-                    rotation("z", 90),
+                    (x, -138, depth),
+                    rotation("z", -90),
                 )
             )
         groups.append(Assembly(f"slide_{i}", tuple(items), requirements=("R2",)))
@@ -172,10 +221,10 @@ def build(project: Project) -> AuthoredModel:
 
     # Bell: a real cone connected to the convex back of a real dish, with the
     # concave underside facing outward. This is a visual bell, not an air path.
-    bellrot = frame_y((-0.75, -0.55, -0.36))
-    # R2: move the whole bell outside the coil; the remaining gap needs a
-    # designed bracket/neck, not a fictitious overlapping attachment.
-    bellframe = Transform((-82, -203, 0), bellrot)
+    bellrot = rotation("z", 90)
+    # The throat and cone share the stand-mounted cross axle; the dish studs
+    # engage the cone underside. All three now have a rooted connection.
+    bellframe = Transform((-114, -190, 40), bellrot)
     bell = (
         part("throat", "3941", YELLOW, (0, -24, 0)),
         part("flare", "3943b", YELLOW, (0, 0, 0)),
@@ -188,17 +237,16 @@ def build(project: Project) -> AuthoredModel:
     for i in range(4):
         mouth.append(
             part(
-                f"lead_{i}", "3062b", YELLOW, (43 + i * 24, -208, -6), rotation("z", 90)
+                f"lead_{i}", "3062b", YELLOW, (44 + i * 24, -238, 30), rotation("z", 90)
             )
         )
-    mouth.append(part("cup", "4589", SILVER, (143, -208, -6), rotation("z", 90)))
-    mouth.append(part("lip", "85861", SILVER, (151, -208, -6), rotation("z", 90)))
-    # Raise the complete pipe, preserving all internal seats, above the coil.
+    mouth.append(part("cup", "4589", SILVER, (140, -238, 30), rotation("z", 90)))
+    mouth.append(part("lip", "85861", SILVER, (148, -238, 30), rotation("z", 90)))
+    # The first tube seats on the side stud of the tower, above the coil.
     groups.append(
         Assembly(
             "mouthpipe",
             tuple(mouth),
-            transform=Transform((0, -26, 0)),
             requirements=("R4",),
         )
     )

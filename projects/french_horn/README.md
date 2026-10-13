@@ -1,127 +1,73 @@
-# French horn — design rehearsal, revision 3
+# French horn — connected design rehearsal, revision 4
 
-A 92-part yellow desktop horn study made from native physical LDraw parts:
-eight elbow segments form the main coil; a cone and concave dish suggest the
-bell; three fixed silver levers, rotor caps and three tuning-slide loops provide
-the instrument detail. A black pedestal carries the coil and rear slide carrier.
-This is a **CAD prototype, not a build-ready or order-ready design**.
+A 112-part yellow desktop horn built from native LDraw parts. **Every physical
+part now has a reviewed nominal connection path to the stand.** There are no
+connectivity exceptions: the user explicitly required real attachments.
+
+## What was repaired
+
+- The mouthpipe seats on a side stud at the top of a stud-built tower. The cup
+  position was corrected to close its four-LDU gap with the last pipe brick.
+- Both valve rails seat on side studs of the same support tower.
+- Each slide uses stud-ended 6587 axles, two genuine 3713 axle bushes per leg,
+  and the real elbow axle bores. The studs attach to the carrier underside.
+- Two real 6536 cross blocks join coil halves separated by 20 LDU. A friction
+  pin connects the bottom block to a stand-mounted Technic brick, retaining the
+  coil positively instead of leaving it on a gravity cradle.
+- A stand-mounted cross axle engages the bell throat and cone. The dish's
+  convex-side studs engage the cone underside; the bell opens horizontally left.
+
+The added supports are visible in front and rear renders. No proximity edges,
+fictional connectors, stretched parts or connectivity waivers are used.
 
 ## Reproduce
 
-Use Python 3.12 and the repository's locked render extra. Supply your own complete
-LDraw library, including its original authorship/license files and LDConfig.ldr.
+Use Python 3.12 and a complete external LDraw library including LDConfig.ldr.
 
 ```sh
 uv sync --locked --extra render
-uv run --locked --extra render brickbuilder doctor projects/french_horn --library /path/to/ldraw
+uv run --locked --extra render brickbuilder build projects/french_horn \
+  --stage connections --stage collisions --library /path/to/ldraw \
+  --destination output/horn-check
 uv run --locked --extra render brickbuilder release projects/french_horn \
-  --library /path/to/ldraw --draft --destination output/horn-r3
-uv run --locked brickbuilder verify-release output/horn-r3
-uv run --locked brickbuilder parts --model output/horn-r3/model.ldr \
-  --library /path/to/ldraw --catalog projects/french_horn/connectors.json
+  --library /path/to/ldraw --draft --destination output/horn-r4
+uv run --locked --extra render brickbuilder verify-release output/horn-r4
 ```
 
-The release and verifier return 3 for the intact draft with unresolved checks.
-Read artifact integrity separately from validation. The nine-step illustrated
-HTML is a placement review with explicit mount warnings, not certified assembly
-instructions. Front, rear and hero renders show the same native model; no
-image-generation artwork or invented geometry is substituted for the CAD.
+## Review results and limits
 
-## Observed limits
+The exact model fingerprint, geometry dependency fingerprint and mount review
+are in `connectivity-review.json`. The release contains the full connection and
+collision reports for that same model.
 
-- All 16 authored coil elbow/axle connections pass the reviewed nominal seat,
-  axis, clocking and engagement checks. This does not establish stiffness or
-  practical ring closure/insertion.
-- Rectangular stud seats and selected tube bores have project-local reviewed
-  declarations. Other interfaces remain partial; there is no whole-model
-  connection pass or collision certification.
-- The main coil rests on the cradle; its support is gravity contact, not a
-  stud/axle attachment. Retention and balance need a physical trial.
-- Bell/throat attachment to the coil, leadpipe attachment and the valve-rail
-  mount still need design work. Slide axle retention is also unverified. Their proximity in a render is not a connection.
-- The bell is the underside of a real dish supported by a real cone. Its central
-  molding is visible; it is not a hollow acoustic bell.
-- Rebrickable discovery confirmed selected yellow candidates on 12 October
-  2026, but not every final part/colour pair. No current stock, price, Israel
-  availability or importer acceptance is established. No ordering file is supplied.
-- The reference is Yamaha's labelled horn diagram in sources.json. The model
-  is stylized, not a measured replica. Source geometry is not redistributed.
+- **Rooted connectivity: pass, 112 / 112 parts.** No disconnected components,
+  no connector occupancy conflicts; all 16 authored coil joints and all three
+  required pin segments pass their nominal checks.
+- **Surface crossings: zero across 6,216 pairs.** 3,527 pairs have separated
+  bounds; 2,689 remain unknown (2,561 unresolved geometry, 128 unreviewed hollow
+  material). Tolerance is 0.01 LDU, with no material/contact waivers.
+- Broader connector coverage remains partial for unused interfaces. That keeps
+  the overall connection report unknown without erasing proven rooted paths.
+- Collision coverage is also unknown: the transverse surface test does not
+  certify containment or coplanar clearance. Empty helpers remain visible.
+- Clutch force, stiffness, balance and physical insertion have not been trial
+  built. The nine-step HTML is a placement review, not a certified build sequence.
+- Part discovery is recorded in the dated Rebrickable evidence files. Final
+  colour availability, stock, prices and importer acceptance remain unverified.
+  No ordering file is supplied. External part geometry is not redistributed.
 
-## What this trial improved
+The release is therefore a draft for these remaining checks, **not for waived
+connectivity**. The version-3 delivery gate passes with no user exception.
 
-During repeated part selection, copying the actual CAD references back into
-project.json was unnecessary bookkeeping. `parts --model` now indexes the exact
-CAD selection, deduplicates references, and carries its hashes/quantity in the
-saved report without running the builder. It uses existing parts APIs and does
-not introduce a maintained catalog.
+## History
 
-The first render exposed reversed tuning elbows and a floating cradle. The next
-connection review found a trim tile sharing the cradle's base studs. These were
-repaired before the final draft. Rear views exposed mounting work that the hero
-view obscured; those unresolved items remain above instead of being relabelled.
+R1 (92 parts) had 24 detected surface-crossing pairs. R2 moved the bell clear,
+leaving 14. R3 cleared those 14 by moving the pipe and valves and shortening slide
+axles, but left disconnected assemblies. Calling that a completed repair was
+insufficient. The previous `repair-review.json` is retained as historical R3
+evidence; it is not the current model's review.
 
-Next useful design work is a small legal bracket/clip trial for the bell and
-valve carrier, followed by a physical stand/coil trial. Keep these subject-specific
-choices here; extract a shared attachment helper only after another model uses it.
-
-## Revision 2 — bell clearance correction
-
-User review identified a real interference in R1, not a rendering issue.
-Expanded LDraw surfaces showed both the flare and throat crossing the two
-upper-left coil elbows; the throat also crossed nearby slide/carrier parts.
-R2 translates the entire three-part bell by (-42, -31, 0) LDU, preserving
-its orientation and internal assembly. The bell is now visibly separated.
-This is a clearance correction only: the gap still needs a designed physical
-neck/bracket. The bell must not be treated as mounted or build-ready.
-
-A separating-plane check on all expanded face vertices places every bell
-surface on one side and all 89 other parts on the other, with 10.03 LDU
-(4.01 mm) of projected clearance along (-0.806405, -0.591364, 0). This is a
-conservative lower bound for the loaded surface geometry, not a whole-model
-collision certificate. Empty library helper dependencies remain declared by
-the renderer. Internal bell mating and non-bell collisions were not certified.
-
-## Surface-check rehearsal — 12 October 2026
-
-The new automatic checker reports 24 intersecting pairs in the original R1 model,
-including all ten previously observed bell-to-other-part pairs. R2 removes those
-ten bell intersections, but **14 other surface-intersecting pairs remain**.
-R2 is therefore a failed collision draft, not merely an unreviewed mount draft.
-The model fingerprints are:
-
-- R1: `11debb31bdd960bfaad2d0220b9f30cd9f0076f1fcede73d6e1bb330a0147d02`
-- R2: `a32d1f72acb2e622dceb6dde4b202b72a5ff23f629b1b95fe52117d88c1fb728`
-
-Both full-model reviews used the same local LDraw library as the rendered drafts,
-default 0.01 LDU tolerance, no material/contact waivers, and the new transverse
-surface checker. Runtime was about 10 seconds per 92-part model. Empty helper
-unknowns remain; crossings are now detected before those unknowns can mask them.
-The unit regression uses independently authored analytical tube/cone surfaces at
-the R1/R2 placements. No external part geometry is redistributed in the tests.
-
-## Revision 3 — remaining interference repairs
-
-On 13 October 2026 the user requested repair of the fourteen remaining pairs.
-The complete valve assembly moves 24 LDU toward the front, preserving its
-internal seats; the complete mouthpipe moves up 26 LDU. Six vertical slide
-axles change from 3L (4519) to 2L (32062) and move 10 LDU down, centering
-them on the elbow mouths. The shorter axles end inside the round bricks'
-wider underside cavities, before their narrow hollow studs. No part is
-stretched, hidden, removed or excused with a contact waiver; quantity stays 92.
-
-The full-model surface review now finds **zero transverse surface crossings**
-among 4,186 pairs: 3,066 bounds-separated pairs and 1,120 unknown pairs
-(946 with unresolved geometry; 174 with unreviewed material/hollow geometry).
-All fourteen previously failing pairs were rechecked, with no new crossings.
-The model hash is `3049ce79a95e131b4df9af565a7dbaf6566b79d360bf28917ca3491a3874269b`.
-The exact pair comparison and dependency fingerprint are in `repair-review.json`.
-All sixteen authored coil connections still pass; no stud occupancy conflicts
-were reported.
-
-This is still a draft with **collision status unknown**, not collision-certified:
-the surface test does not establish containment or coplanar material clearance,
-and empty library helpers remain unresolved. The shorter slide axles do not
-establish a clutch connection to the wider round-brick cavities. Slide retention
-and bell, valve-rail and mouthpipe mounts need further design; moving those
-assemblies clear of the coil does not create mounts. Front, hero and rear
-LDraw renders and the nine-step placement review are regenerated for R3.
+R4 replaces those unresolved attachments with the real connections above. The
+repository workflow now refuses disconnected delivery even with `--draft` or
+stage overrides. Only explicit user consent tied to exact model/report hashes
+permits an exception. The prior R3 model is blocked under that rule.

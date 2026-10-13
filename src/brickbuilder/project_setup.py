@@ -278,6 +278,11 @@ def doctor(directory: Path, *, library: Path | None = None) -> ReadinessReport:
         "not_tested",
         "Delivery requires a collision review for every pose. Release runs it with --library/project.json.library; doctor does not execute it. Failed, unknown or absent review requires --draft.",
     )
+    add(
+        "connectivity_delivery",
+        "not_tested",
+        "Every part must have a reviewed path to the root before delivery. --draft does not waive connectivity; only explicit user consent bound to exact model/report hashes permits an exception. Doctor does not run this check.",
+    )
     dependencies = []
     if selected_library is None:
         add(

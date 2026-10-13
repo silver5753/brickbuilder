@@ -3,11 +3,50 @@
   "steps": [
     {
       "id": "step_1",
-      "title": "Stand \u2014 draft placement review",
-      "add": [],
-      "assemblies": [
-        "french_horn/stand"
+      "title": "Stand and lower supports \u2014 placement review",
+      "add": [
+        "french_horn/stand/base",
+        "french_horn/stand/bell_axle",
+        "french_horn/stand/bell_bracket",
+        "french_horn/stand/bell_post_0",
+        "french_horn/stand/bell_post_1",
+        "french_horn/stand/bell_post_2",
+        "french_horn/stand/bell_post_3",
+        "french_horn/stand/bell_post_4",
+        "french_horn/stand/bell_post_5",
+        "french_horn/stand/bell_post_6",
+        "french_horn/stand/bell_shim",
+        "french_horn/stand/coil_bracket",
+        "french_horn/stand/coil_foot",
+        "french_horn/stand/coil_pin",
+        "french_horn/stand/coil_shim_0",
+        "french_horn/stand/coil_shim_1",
+        "french_horn/stand/left_post_0",
+        "french_horn/stand/left_post_1",
+        "french_horn/stand/left_post_2",
+        "french_horn/stand/left_post_3",
+        "french_horn/stand/left_post_4",
+        "french_horn/stand/left_post_5",
+        "french_horn/stand/left_post_6",
+        "french_horn/stand/pipe_post_0",
+        "french_horn/stand/pipe_post_1",
+        "french_horn/stand/pipe_post_2",
+        "french_horn/stand/pipe_post_3",
+        "french_horn/stand/pipe_post_4",
+        "french_horn/stand/pipe_post_5",
+        "french_horn/stand/pipe_post_6",
+        "french_horn/stand/right_post_0",
+        "french_horn/stand/right_post_1",
+        "french_horn/stand/right_post_2",
+        "french_horn/stand/right_post_3",
+        "french_horn/stand/right_post_4",
+        "french_horn/stand/right_post_5",
+        "french_horn/stand/right_post_6",
+        "french_horn/stand/trim_60",
+        "french_horn/stand/trim_m20",
+        "french_horn/stand/trim_m60"
       ],
+      "assemblies": [],
       "requires": [],
       "views": [
         {
@@ -41,20 +80,20 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
             "french_horn/stand/base"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_2",
-      "title": "Body \u2014 draft placement review",
+      "title": "Carrier plate \u2014 placement review",
       "add": [],
       "assemblies": [
-        "french_horn/body"
+        "french_horn/slide_carrier"
       ],
       "requires": [
         "step_1"
@@ -91,21 +130,23 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/body/bend_0"
+            "french_horn/slide_carrier/roof"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_3",
-      "title": "Slide 0 \u2014 draft placement review",
-      "add": [],
-      "assemblies": [
-        "french_horn/slide_0"
+      "title": "Upper pipe tower \u2014 placement review",
+      "add": [
+        "french_horn/stand/pipe_mount",
+        "french_horn/stand/pipe_upper_0",
+        "french_horn/stand/pipe_upper_1"
       ],
+      "assemblies": [],
       "requires": [
         "step_2"
       ],
@@ -141,20 +182,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the revised 2L vertical axles. They stop inside the round bricks before the narrow hollow studs; retention in those wider cavities is unverified. This is a placement review, not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/slide_0/bottom_join"
+            "french_horn/stand/pipe_mount"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_4",
-      "title": "Slide 1 \u2014 draft placement review",
+      "title": "Pinned coil \u2014 placement review",
       "add": [],
       "assemblies": [
-        "french_horn/slide_1"
+        "french_horn/body"
       ],
       "requires": [
         "step_3"
@@ -191,20 +232,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the revised 2L vertical axles. They stop inside the round bricks before the narrow hollow studs; retention in those wider cavities is unverified. This is a placement review, not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/slide_1/bottom_join"
+            "french_horn/body/bottom_anchor"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_5",
-      "title": "Slide 2 \u2014 draft placement review",
+      "title": "Slide 0 \u2014 placement review",
       "add": [],
       "assemblies": [
-        "french_horn/slide_2"
+        "french_horn/slide_0"
       ],
       "requires": [
         "step_4"
@@ -241,20 +282,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the revised 2L vertical axles. They stop inside the round bricks before the narrow hollow studs; retention in those wider cavities is unverified. This is a placement review, not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/slide_2/bottom_join"
+            "french_horn/slide_0/left_axle"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_6",
-      "title": "Slide Carrier \u2014 draft placement review",
+      "title": "Slide 1 \u2014 placement review",
       "add": [],
       "assemblies": [
-        "french_horn/slide_carrier"
+        "french_horn/slide_1"
       ],
       "requires": [
         "step_5"
@@ -291,20 +332,20 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/slide_carrier/roof"
+            "french_horn/slide_1/left_axle"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_7",
-      "title": "Valves \u2014 draft placement review",
+      "title": "Slide 2 \u2014 placement review",
       "add": [],
       "assemblies": [
-        "french_horn/valves"
+        "french_horn/slide_2"
       ],
       "requires": [
         "step_6"
@@ -341,19 +382,20 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/valves/cap_0"
+            "french_horn/slide_2/left_axle"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_8",
-      "title": "Bell \u2014 draft placement review",
+      "title": "Valve rails and bell \u2014 placement review",
       "add": [],
       "assemblies": [
+        "french_horn/valves",
         "french_horn/bell"
       ],
       "requires": [
@@ -391,17 +433,17 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/bell/flare"
+            "french_horn/bell/throat"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     },
     {
       "id": "step_9",
-      "title": "Mouthpipe \u2014 draft placement review",
+      "title": "Mouthpipe \u2014 placement review",
       "add": [],
       "assemblies": [
         "french_horn/mouthpipe"
@@ -441,13 +483,13 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
-            "french_horn/mouthpipe/cup"
+            "french_horn/mouthpipe/lead_0"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
     }
   ]
 }

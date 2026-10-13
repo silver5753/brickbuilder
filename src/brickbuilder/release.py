@@ -9,6 +9,7 @@ import platform
 import shutil
 from tempfile import TemporaryDirectory
 
+from .connectivity_delivery import connectivity_reviews
 from .execution import build_project, load_build_config
 from .delivery import validate_decoration
 from .evidence import (
@@ -96,6 +97,12 @@ def release_project(
     selected_stages = tuple(settings.stages if stages is None else stages)
     if (library or project.library) and "collisions" not in selected_stages:
         selected_stages = (*selected_stages, "collisions")
+    if (
+        settings.catalog is not None
+        and settings.root is not None
+        and "connections" not in selected_stages
+    ):
+        selected_stages = (*selected_stages, "connections")
     collision_configs = {
         row["model"]: before[row["input"]]
         for row in policy.get("evidence", [])
@@ -122,6 +129,7 @@ def release_project(
                 raise ValueError(
                     f"Build input does not match captured release input: {name}"
                 )
+        connectivity = connectivity_reviews(folder, summary, policy, draft=draft)
         findings = policy_findings(
             summary,
             policy,
@@ -157,7 +165,7 @@ def release_project(
         )
         label = "draft" if draft else "verified_artifacts"
         manifest = dict(
-            schema_version=2,
+            schema_version=3,
             kind="brickbuilder_release",
             label=label,
             policy=policy,
@@ -177,7 +185,8 @@ def release_project(
             ],
         )
         (folder / "HANDOFF.md").write_text(
-            _handoff(folder, summary, label, findings, collisions), encoding="utf-8"
+            _handoff(folder, summary, label, findings, collisions, connectivity),
+            encoding="utf-8",
         )
         manifest["artifacts"] = file_hashes(folder)
         write_json(folder / "release_manifest.json", manifest)
@@ -209,6 +218,7 @@ def _handoff(
     label: str,
     findings: list[str],
     collisions: dict[str, str],
+    connectivity: dict[str, dict],
 ) -> str:
     lines = [
         f"# {summary['project']} — {label}",
@@ -236,6 +246,9 @@ def _handoff(
                 if (folder / prefix / "collisions/collisions.json").exists()
                 else "See bound collision evidence, or supply a geometry library to run the check."
             )
+        )
+        lines.append(
+            f"  - Rooted connectivity: **{connectivity[name]['status']}**; explicit user exception: {connectivity[name]['user_approved_exception']}."
         )
         if (folder / prefix / "instructions/index.html").exists():
             lines.append(

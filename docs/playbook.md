@@ -159,3 +159,13 @@ New normal releases require a passing collision review for each delivered pose.
 Use `--draft` for fail/unknown/not-tested results and state those results alongside
 the images. Do not omit the library, narrow stages, make evidence optional, or
 fill hollow bounds with invented material merely to obtain a passing label.
+
+
+## Mandatory connection gate
+
+After collision repairs, rerun connections and verify every part reaches the
+root through reviewed interfaces. Repair missing mounts before presenting the
+revision as fixed. A render, a subset of intended joints passing, or an unknown
+overall report does not establish whole-model connectivity. `--draft` is not
+user consent to relax connectivity. See the explicit user-approval and exact-report
+rules in [releases](releases.md); internal diagnostic builds remain available.

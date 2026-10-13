@@ -24,6 +24,18 @@
       "sha256": null,
       "confidence": "high",
       "note": "Reference for coiled body, bell, three finger levers, tuning slides and mouthpiece; proportions are stylized, not measured"
+    },
+    {
+      "id": "S3",
+      "location": "User instruction, 13 October 2026: fix floating parts and the workflow; connectivity relaxation only with explicit user agreement",
+      "kind": "user",
+      "edition": null,
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "No connectivity exception was requested or granted; every part must reach the stand."
     }
   ]
 }

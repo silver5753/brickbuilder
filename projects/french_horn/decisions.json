@@ -44,6 +44,24 @@
       "source_ids": [
         "S1"
       ]
+    },
+    {
+      "id": "D4",
+      "requirement_ids": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "recorded_on": "2026-10-13",
+      "kind": "assumption",
+      "choice": "Replace unresolved mounts with rooted stud, pin and axle attachments; widen the coil by 20 LDU at its top/bottom seams to capture real cross blocks, and mount the bell horizontally on a cross axle.",
+      "reason": "User requires real connectivity. A tower carries the pipe and valve rails; stud-ended slide axles grip bushes and elbows; a pinned bottom cross block retains the coil. No connectivity exception applies. Physical strength and insertion need trial, independently of nominal graph connectivity.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
     }
   ]
 }

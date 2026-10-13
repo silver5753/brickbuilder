@@ -257,3 +257,38 @@ R3 verification: the full release regenerated all three model views and eighteen
 step views. Render/instruction geometry checks pass; offline artifact verification
 passes with validation unknown. The project regression, ty, pinned Ruff and
 whitespace checks pass.
+
+
+## Rooted delivery gate and horn R4 — 13 October 2026
+
+R3 cleared intersections while leaving floating assemblies. The user rejected
+that stopping point and required explicit consent for any connectivity relaxation.
+Version-3 releases now enforce proven root paths for every physical instance,
+passing required-pin/intended-joint checks and no occupancy conflicts. The stage
+is added automatically when configured; `--draft`, omitted policy checks and
+stage overrides cannot bypass it. Internal `build` remains available for repair.
+
+The only exception is a recorded user agreement for the exact model and complete
+connection report, with quoted consent, date and source. It permits a labelled
+draft, retains nonpassing status, and expires when either fingerprint changes.
+No such exception was created for the horn. Root/starter/project instructions,
+CLI help and doctor guidance now require this behavior. Offline verification
+recomputes nominal connection graphs from captured CAD and connector declarations.
+Historical packages retain their policies and expose the new gate as not-tested.
+
+The 112-part horn now has **112 reviewed root paths**, zero disconnected
+components, zero occupancy conflicts, sixteen passing intended coil connections
+and three passing required pin segments. Real towers, stud-ended slide axles,
+axle bushes, a pinned coil cross block and a bell cross axle replace the former
+unresolved supports. Zero transverse crossings were found across 6,216 pairs.
+See the [R4 review](../projects/french_horn/connectivity-review.json).
+The old R3 model is rejected by the new gate even with `--draft`.
+
+Verification: **372 tests pass**, including core/render installed-wheel workflows;
+ty, pinned Ruff and whitespace checks pass. Tests cover stage override enforcement,
+refusal without consent, exact-report exception expiry, offline removal/tampering
+and the horn's all-part root paths. The full R4 release regenerated front, rear
+and hero images plus eighteen placement-review views; offline artifact integrity
+passes with rooted connectivity pass and no exception. Broader unused-interface
+coverage, unresolved collision material/geometry and physical strength/insertion
+remain separately unknown or untested; none creates a floating-part allowance.

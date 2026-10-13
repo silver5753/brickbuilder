@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-13",
+  "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+  "quantity": 112,
+  "root": "french_horn/stand/base",
+  "rooted_quantity": 112,
+  "disconnected_components": [],
+  "occupancy_conflicts": [],
+  "intended_connection_statuses": {
+    "pass": 16
+  },
+  "required_pin_statuses": {
+    "pass": 3
+  },
+  "catalog_fingerprint": "e8fac065efecd20ce52081918fd5900410aa5a12bf5af0cebf73e479ffbf8f1a",
+  "connectivity_approvals": [],
+  "surface_test": "transverse_triangles_v1",
+  "tolerance_ldu": 0.01,
+  "pair_count": 6216,
+  "surface_crossings": 0,
+  "pair_classifications": {
+    "unresolved_geometry": 2561,
+    "bounds_separated": 3527,
+    "unreviewed_material_or_hollow_geometry": 128
+  },
+  "geometry_dependency_fingerprint": "1048d603fabdea98b2dddb659f09fc2bc4e7afdb84adf13674d46829668ef2c7",
+  "dependency_fingerprint_format": "SHA256 of collision report dependencies without filesystem paths, JSON sorted keys, compact separators; full records in release collisions/collisions.json",
+  "contact_waivers": [],
+  "mounts": {
+    "mouthpipe": "87087 side stud on stand tower; continuous 3062b stud chain through 4589 cup and 85861 lip",
+    "valves": "Both 3623 rails seat on 87087 side studs at tower levels -144 and -168; rotor and lever components remain stud-connected",
+    "slides": "6587 stud-ended axles attach to carrier underside; two 3713 bushes and 25214 bore grip each shaft",
+    "coil": "Two 6536 cross blocks join translated ring halves via 4519 axles; lower block has 6558 friction pin into stand-mounted 3700",
+    "bell": "Stand-mounted 32064a holds 4519 shaft through 3941 throat and 3943b cone; cone underside receives 44375b dish studs"
+  },
+  "limits": [
+    "All 112 parts have reviewed nominal rooted paths; no connectivity exception granted or used.",
+    "Unused interfaces remain partial; broad connection status stays unknown independently of rooted connectivity pass.",
+    "Collision status remains unknown for unresolved geometry and unreviewed hollow material, despite zero transverse surface crossings.",
+    "Nominal engagement does not measure clutch force, strength, balance or insertion; no physical trial occurred."
+  ]
+}

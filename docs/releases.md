@@ -19,7 +19,7 @@ Read project Python and imported helpers before running release, just as for bui
 
 ## Collision review is required for delivery
 
-New release manifests use schema version **2**. Every delivered model/pose must
+New release manifests use schema version **3**. Every delivered model/pose must
 have a passing scoped collision review for a normal release, even when
 `required_checks` omits collisions or `--stage cad` narrows the other stages.
 With `--library` or `project.json.library`, release automatically adds the
@@ -42,9 +42,51 @@ and config hashes, all pair/geometry coverage, pose identities, status aggregati
 and surface-witness failure status; it does not rerun geometry or authenticate
 material claims. Removing a required review cannot promote a version-2 draft.
 
-Version-1 archives retain their historical policy and check set. Verification
+Version-1/2 archives retain their historical connectivity policy; verification
+reports the new rooted delivery gate as not-tested. Version-1 archives also
+retain their historical collision policy and check set. Verification
 exposes their collision review as `not_tested` where absent; their artifact pass
 is not a new collision check. Rebuild to receive the current delivery gate.
+
+## Rooted connectivity requires explicit user consent to relax
+
+Version-3 releases always check rooted connectivity for every pose. When a root
+and catalog are configured, release adds `connections` despite stage overrides.
+Every part must reach the root through reviewed interfaces, every required pin
+segment and intended connection must pass, and occupancy conflicts must be absent.
+Missing configuration/review is not-tested and blocks publication. **`--draft`
+does not bypass this gate.** Use `build` for internal diagnostic iterations.
+
+`connectivity_reviews` reports this focused result separately from the overall
+connection report. Partial declarations of unused interfaces can keep the broader
+report unknown while all parts have proven root paths. That is not permission to
+leave a part floating. The verifier recomputes nominal edges, root paths, pin
+engagement and occupancy from captured CAD and catalog; changing report counts
+cannot make an unconnected model pass. Strength and physical insertion remain
+separate checks.
+
+Only explicit user agreement permits an exception, and only for a draft. Add
+`connectivity_approvals` to release.json, one record per approved pose, with:
+
+- `model`: exact pose name, such as `default`.
+- `model_sha256`: fingerprint in the diagnostic connection report.
+- `report_sha256`: SHA256 of the complete connections.json bytes.
+- `approved_by`: exactly `user`.
+- `approved_on`: ISO date of the user's approval.
+- `approval_source`: traceable message/reference for the actual agreement.
+- `approval_quote`: the user's exact words accepting the stated connectivity limitation.
+- `reason`: the specific unresolved attachments covered by that agreement.
+
+Do not prefill or fabricate these fields. An agent's assumption, an earlier draft,
+a command flag or "keep going" is not consent. Explain the concrete unresolved
+connections and obtain agreement before creating this record. Exact hashes bind
+the exception to the reviewed result; geometry, connector evidence or report
+changes require renewed agreement. Approval never changes the diagnostic status
+to pass, and the handoff exposes every exception. These records preserve evidence;
+the CLI cannot authenticate a conversation or prevent fabricated testimony.
+
+Historical v1/v2 artifacts remain verifiable under their original rules; they do
+not acquire consent or a current connectivity pass. Rebuild to use the new gate.
 
 ## Choose an explicit policy
 
@@ -130,7 +172,8 @@ including in a draft. An unused sticker configuration is permitted. If sticker
 permission is `unknown`, a package requesting or using stickers can only be a
 draft. A normal package requires an explicit `allowed` policy for that use.
 
-Use `--draft` to retain a package whose checks are failed, unknown or incomplete:
+Use `--draft` to retain other failed, unknown or incomplete checks after the
+mandatory rooted connectivity gate passes (or a specific user exception is recorded):
 
 ```sh
 uv run --locked brickbuilder release projects/building --stage cad --draft \

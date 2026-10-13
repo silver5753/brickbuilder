@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "subject": "Compact French horn desktop display",
-  "dimensions": "Approximately 14 cm wide and 12 cm tall, to be measured from CAD",
+  "dimensions": "Stylized desktop miniature; final bounds recorded in the rendered release.",
   "scale": "Stylized miniature; not a playable instrument or a specific manufacturer replica",
   "part_count_limit": 220,
   "budget": null,
@@ -10,7 +10,7 @@
   "sourcing_region": null,
   "condition": null,
   "owned_parts": null,
-  "axes": "Native +X is image right, -Y is up, front camera looks from -Z. Coil lies in XY. Bell opens upper-left toward viewer.",
+  "axes": "Native +X is image right, -Y is up, front camera looks from -Z. Coil lies in XY. Bell opens left along -X from a stand-mounted axle.",
   "deliverables": [
     "cad",
     "inventory",
@@ -34,7 +34,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Inspect actual CAD silhouette and nominal elbow/axle seats"
+      "validation": "Inspect silhouette and reviewed elbow/axle/cross-block paths to pinned stand mount"
     },
     {
       "id": "R2",
@@ -52,7 +52,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Inspect valve count and exposed slide routing; fixed details"
+      "validation": "Verify both valve rails and all three stud-ended tuning slides reach the stand"
     },
     {
       "id": "R3",
@@ -70,7 +70,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Inspect concave opening and attachment; physical fit remains untested"
+      "validation": "Inspect left bell opening and cross-axle mount, verify rooted throat/cone/dish paths"
     },
     {
       "id": "R4",
@@ -88,7 +88,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Inspect pipe continuity and silver mouthpiece"
+      "validation": "Verify pipe tower side-stud seat and uninterrupted stud connections through mouthpiece"
     },
     {
       "id": "R5",
@@ -105,7 +105,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Inspect support contacts; physical stability trial pending"
+      "validation": "Verify every part has a nominal connection path to the stand; physical strength and balance trial pending"
     }
   ]
 }

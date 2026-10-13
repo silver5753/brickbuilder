@@ -81,3 +81,23 @@ for every pose, regardless of stage overrides or an omitted policy check. Use
 no duplicate placements or a render cannot substitute for collision review.
 Keep unresolved geometry/material unknown; never waive a detected surface crossing
 as an expected contact. A separated floating assembly still needs a legal mount.
+
+
+## Connectivity is mandatory before delivery
+
+Every physical instance must have a reviewed nominal connection path to the
+selected root, with no occupancy conflicts, missing required pin engagement or
+failed/unknown intended connections. Run connections after every placement or
+part change. Collision clearance alone is not a repair; a floating assembly is
+a blocking defect. Gravity contact is not a connection unless explicitly scoped
+and accepted by the user. Do not weaken a catalog or invent edges to pass.
+
+`build` is for internal diagnostics. `release` adds connections when configured
+and blocks unresolved rooted connectivity even with `--draft`, omitted policy
+checks or stage overrides. Only an explicit user-approved exception for the exact
+model and connection report permits a disconnected draft. Record the user's
+actual words, source, date and reason in `release.json.connectivity_approvals`;
+never infer consent from "draft", "continue", silence, an agent assumption or
+a general instruction to build. Never create approval records without that
+consent. Changed model/report hashes invalidate the exception. See docs/releases.md
+for the format. The French horn has no such exception and must remain fully rooted.

@@ -44,9 +44,19 @@ def test_installed_flower_rehearsal_and_legacy_compatibility(installed_core, tmp
     )
     assert not (tmp_path / "blocked").exists()
     installed_core.run(
-        "release", project, "--draft", "--destination", tmp_path / "draft", expected=3
+        "release", project, "--draft", "--destination", tmp_path / "draft", expected=2
     )
-    draft = json.loads((tmp_path / "draft/connections.json").read_text())
+    assert not (tmp_path / "draft").exists()
+    installed_core.run(
+        "build",
+        project,
+        "--stage",
+        "connections",
+        "--destination",
+        tmp_path / "internal",
+        expected=3,
+    )
+    draft = json.loads((tmp_path / "internal/connections.json").read_text())
     assert draft["status"] == "unknown"
     assert draft["nominal"]["edges"] == []
     shutil.rmtree(project)

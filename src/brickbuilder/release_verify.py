@@ -8,6 +8,9 @@ from pathlib import Path, PurePosixPath
 import re
 import json
 
+from .connectivity_delivery import connectivity_reviews, validate_approvals
+from .connectivity import inspect_connections
+from .connectivity.catalog import load_catalog
 from .assembly import AuthoredModel
 from .build_result import BuildResult
 from .delivery import delivery_findings, validate_decoration
@@ -57,7 +60,12 @@ def load_policy(root: Path) -> dict:
     data = versioned(
         raw,
         {"required_checks", "inputs"}
-        | ({"evidence"} if isinstance(raw, dict) and "evidence" in raw else set()),
+        | ({"evidence"} if isinstance(raw, dict) and "evidence" in raw else set())
+        | (
+            {"connectivity_approvals"}
+            if isinstance(raw, dict) and "connectivity_approvals" in raw
+            else set()
+        ),
         "release policy",
     )
     checks = [
@@ -72,6 +80,7 @@ def load_policy(root: Path) -> dict:
     for path in inputs:
         project_path(root, path, "Release input")
     validate_evidence(root, data.get("evidence", []))
+    validate_approvals(data.get("connectivity_approvals", []))
     return data
 
 
@@ -340,6 +349,20 @@ def _reconcile(root: Path, manifest: dict) -> dict:
             review["checks"]["connections"],
             f"{name} connections status",
         )
+        if manifest["schema_version"] >= 3 and "connections" in stages:
+            if settings.catalog is None or settings.root is None:
+                raise ValueError("Connectivity review needs captured catalog and root")
+            recomputed = inspect_connections(
+                model,
+                load_catalog(settings.catalog),
+                root=settings.root,
+                assemblies=expected_groups,
+            )
+            _equal(
+                connections["nominal"],
+                json.loads(json.dumps(recomputed)),
+                "Recomputed nominal connectivity",
+            )
         if settings.root is not None:
             profiles = read_json(folder / "connection_profiles.json")["profiles"]
             _equal(len(profiles), 1, "Connection profile quantity")
@@ -561,6 +584,14 @@ def _reconcile(root: Path, manifest: dict) -> dict:
     collisions = collision_reviews(summary, diagnostic_evidence)
     if manifest["schema_version"] >= 2:
         findings += collision_findings(collisions)
+    connectivity = (
+        connectivity_reviews(root, summary, policy, draft=manifest["label"] == "draft")
+        if manifest["schema_version"] >= 3
+        else {
+            name: {"status": "not_tested", "user_approved_exception": False}
+            for name in models
+        }
+    )
     _equal(manifest["policy_findings"], findings, "Policy findings")
     if manifest["label"] == "verified_artifacts" and findings:
         raise ValueError(
@@ -569,6 +600,7 @@ def _reconcile(root: Path, manifest: dict) -> dict:
     return summary | {
         "diagnostic_evidence": diagnostic_evidence,
         "collision_reviews": collisions,
+        "connectivity_reviews": connectivity,
     }
 
 
@@ -595,7 +627,7 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
                 "artifacts",
             },
             "release manifest",
-            versions=(1, 2),
+            versions=(1, 2, 3),
         )
         if manifest["kind"] != "brickbuilder_release" or manifest["label"] not in {
             "draft",
@@ -619,6 +651,7 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
             policy_findings=manifest["policy_findings"],
             diagnostic_evidence=summary["diagnostic_evidence"],
             collision_reviews=summary["collision_reviews"],
+            connectivity_reviews=summary["connectivity_reviews"],
             manifest_sha256=manifest_hash,
             physical_build="not_tested",
             errors=[],

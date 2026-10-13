@@ -31,6 +31,36 @@ def build(project):
     manifest = json.loads(path.read_text())
     manifest["library"] = str(library)
     path.write_text(json.dumps(manifest))
+    (project / "build.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                stages=["cad"],
+                root="part",
+                catalog="connectors.json",
+                render=None,
+                stickers=None,
+                exceptions=None,
+                orders=[],
+            )
+        )
+    )
+    (project / "connectors.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                parts=[
+                    dict(
+                        reference="part.dat",
+                        connectors=[],
+                        complete=True,
+                        evidence="Synthetic single-part fixture; no mating interfaces",
+                        limitations=[],
+                    )
+                ],
+            )
+        )
+    )
     seed = tmp_path / "seed"
     build_project(project, seed, stages=("cad",))
     source = read_source(seed / "model.ldr")
@@ -198,8 +228,8 @@ def test_render_completeness_is_an_explicit_release_gate(tmp_path):
             dict(
                 schema_version=1,
                 stages=["render"],
-                root=None,
-                catalog=None,
+                root="part",
+                catalog="connectors.json",
                 render="render.json",
                 stickers=None,
                 exceptions=None,

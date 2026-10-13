@@ -191,3 +191,9 @@ check or automatically block releases; projects can explicitly require it in
 [release policy](releases.md). Sourcing/collision evidence is bound at release time,
 with its own scopes and statuses. Release automatically runs collisions with a
 supplied library and requires a per-pose collision review for normal delivery.
+
+
+Internal builds may retain disconnected geometry for diagnosis. Delivery through
+`release` additionally enforces rooted connectivity for every pose, even with
+`--draft` or explicit stage overrides. Only explicit user consent tied to the
+exact model/report permits a connectivity exception. See [release rules](releases.md).
