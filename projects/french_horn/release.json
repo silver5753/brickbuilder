@@ -11,6 +11,7 @@
   ],
   "inputs": [
     "README.md",
-    "catalog-evidence.json"
+    "catalog-evidence.json",
+    "repair-review.json"
   ]
 }

@@ -30,6 +30,20 @@
       "source_ids": [
         "S1"
       ]
+    },
+    {
+      "id": "D3",
+      "requirement_ids": [
+        "R2",
+        "R4"
+      ],
+      "recorded_on": "2026-10-13",
+      "kind": "assumption",
+      "choice": "Clear the fourteen remaining R2 surface crossings: translate the full valve assembly 24 LDU toward the front, raise the entire mouthpipe 26 LDU, and replace six vertical slide 3L axles with 2L axles centered at the elbow mouths.",
+      "reason": "User requested repair. Keep all 92 physical parts and internal valve/pipe seats. The shortened axles stop inside the wider brick underside cavity instead of piercing its small hollow stud. This fixes interference but does not establish axle clutch in the cavity, slide retention, or the existing unresolved mounts.",
+      "source_ids": [
+        "S1"
+      ]
     }
   ]
 }

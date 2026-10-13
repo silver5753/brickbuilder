@@ -1,0 +1,949 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-13",
+  "scope": "Full 92-part native model, all 4186 unordered pairs; static default pose",
+  "before_model_sha256": "a32d1f72acb2e622dceb6dde4b202b72a5ff23f629b1b95fe52117d88c1fb728",
+  "after_model_sha256": "3049ce79a95e131b4df9af565a7dbaf6566b79d360bf28917ca3491a3874269b",
+  "surface_test": "transverse_triangles_v1",
+  "tolerance_ldu": 0.01,
+  "materials": {},
+  "contact_waivers": [],
+  "dependency_manifest_sha256": "c268adaa85faaef62ba3eb27d2db3e7d001270ce318db4f44c8127b75c054e4b",
+  "dependency_manifest_hash_format": "SHA256 of JSON dependency records excluding filesystem paths, sort_keys=True, separators=(comma,colon), UTF-8",
+  "dependencies": [
+    {
+      "reference": "1-16chrd.dat",
+      "sha256": "e429dd760eb6f0cf460a74e6ebf52c023bedbdea82de7801efa1694b5a1a82e8",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "1-4chrd.dat",
+      "sha256": "ccba3a97b5cc358754e476b78b4ce61cce5f404cd15e37471b73df3e81784aec",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "1-4cyls.dat",
+      "sha256": "aaee6ffe6e4a191d6cad4496677132eb0349303d6e48c13c7a2240dcea1db621",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "1-8chrd.dat",
+      "sha256": "7694157b725563188a6efd69b3f558b00533b375b8a4e82f469497a03e471e74",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "1-8cyli.dat",
+      "sha256": "46def63dc8293ad9a2dd1d1a5cb720b9ba883850e65d3280d2093c664a6140c4",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "1-8edge.dat",
+      "sha256": "50436a0bce461198c342dccbccb658a1bffae13e44b7c48689b158c946c2c2ab",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "1126.dat",
+      "sha256": "3a3e8b5a1e2273f28c43aafdeac583de9ac08eb4c77b36d2c967bfa324849b88",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "2-4chrd.dat",
+      "sha256": "3b0dfcf2cb881fae0acfe1e53b703104768878636477e540d0c893fc3fd87f8f",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "2-4cyli.dat",
+      "sha256": "d486780f0f84893899d9eadcd13150f13a42e15e77a3cda38cdf24ded98862c6",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "2-4cylo.dat",
+      "sha256": "4fa9f597d775c7f15e3fc66f60e20d914134d13004b485488b7dbff684776232",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "2-4edge.dat",
+      "sha256": "665400f76566b161c28303cdadce40d17d979a8ff9a8a133675af2d17fbe6763",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "2-4ndis.dat",
+      "sha256": "7557eae598be3f530b840471535198e6b07b03486ffbcc18a00e862c3d25d925",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "2-4ring2.dat",
+      "sha256": "dc1748fff34bb0cae3ba1d480921c2f73de4ea1d0532799356b2014a28c8f393",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "2-4ring9.dat",
+      "sha256": "66c4444b0d30e8b1cb0b1a3aa0e472e28750462cb55d2c43fadcd2e14b852f36",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "25214.dat",
+      "sha256": "d48c550bb8c3ae8d67a62cb34f9641fe54fc0ea2cf9ed131106f3682f01888d3",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3-4cyli.dat",
+      "sha256": "4a54732476cf4eaad2c9f7b40a3cef24db025132004328e4e84c0666cd217533",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3-4disc.dat",
+      "sha256": "86c45014c54ad4c82fcf8a96553942c756e39e6b2b109aeccb9f47873f5f3f52",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3-4edge.dat",
+      "sha256": "d7f5aff979bc227b601abbb8e0226d6055d08eafb5faaf507b3055f712cd4c04",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3003.dat",
+      "sha256": "aed0ccd750126a58d38b012a4e8b16c172896339547c120ef67b69e1386f490d",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3004.dat",
+      "sha256": "e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3005.dat",
+      "sha256": "f86e5f3aed432cab8f5dffcf2e41a9f2ee8c3bd4dcad1732da9630837849a4f8",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3022.dat",
+      "sha256": "3cd09bfe626e751ad95eab0ea83e5f3adea81f05d34993a1c4bf432ee386fe25",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3024.dat",
+      "sha256": "e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3032.dat",
+      "sha256": "35e8b828a5bf21de83ca898a49b9725e6d08d5752ad6eb57910f27086108ca1f",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3036.dat",
+      "sha256": "3074a0b2952f5d9903ac2fe2196a8110e1553fd245a1d8bc7ccb43f99c654d38",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3062b.dat",
+      "sha256": "cea4d47bad2ba17130e8fdd298f4f0b0dd4efdaf6edadd3bdd5e089e1cb60bac",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3068b.dat",
+      "sha256": "57179cd9dc0ee31742b9947157636b1b5eafc8d98a283fbd99e9abf8fda977ec",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3069b.dat",
+      "sha256": "31203056de061c115b007f68a564bb2383761844b9373098df0c94cc4b18046a",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "32062.dat",
+      "sha256": "5d5a970dccccabbd0a0e89e9519c69a51e6a8c75a35af1cfbf61f4fb46231da7",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3710.dat",
+      "sha256": "1a2d17e3e35750ccf02a54c7aee0cf7485c1c8596492746fc798d341399a3a6e",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3941.dat",
+      "sha256": "d0cf49833082c39c358c248fd19c7568030ffc43d7add011feae168d5ad6e693",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "3943b.dat",
+      "sha256": "9939d244a41a868d94a3531507fef0c825e12a2769c05264e585a7b1686827b5",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4con3.dat",
+      "sha256": "1aed96f9d90a36758bb299c01db21f8fd795a4734bcd605171c76ea61116697e",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4con4.dat",
+      "sha256": "7c49737dec9819a49e43d7af5926c05d8a1a1226bc0f2cb15cbe7cddb035f00b",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4cylc.dat",
+      "sha256": "0183cffc7f56a2f3e5e3511f0d07ac484d3039c2d41bee802a94344ec95ec8bd",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4cyli.dat",
+      "sha256": "4a742c2765b6ebf98245baaf8a160a4ff587fc93d36c8ee2b9074712a2f968c4",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4cylo.dat",
+      "sha256": "d6ca97ee2e75918b3309a5c88aafcd2455b3a316f7cef8963517c19f1d86b38f",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4cyls.dat",
+      "sha256": "eb26a554261899f82fda150ee70827a010b7d29206b5b577b2ee5831851d8f29",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4disc.dat",
+      "sha256": "a00b5547776f61a7389d303616987c76b3c4de86ad8ec32f22857e1bd5e5e40f",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4edge.dat",
+      "sha256": "54a52196e421fd1717d291ff52ea57553b1fb238907c1678cc1f1a84c698b1da",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ering.dat",
+      "sha256": "115b0158afebc9307ba47cb35673b26d97a1fa1a2d362f9b389d89aea703b72d",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ndis.dat",
+      "sha256": "21202dc15823f4336bc2544244d0b539b76745c89f7a59ad18cdd03ad45cc543",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ring1.dat",
+      "sha256": "4ae21061a6d0c9c80c608decb750f16fe1d113d84e08ef2f6082bcbb0f55194c",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ring2.dat",
+      "sha256": "6fb38804b1f5e9bee8c0b80caf1397b09454fc58b048dc19045b6f37c8762ab0",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ring3.dat",
+      "sha256": "1f2835ac308154edc2d6f479d8e742a55be981f6167b20bfa100c195bc0731dd",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ring4.dat",
+      "sha256": "e046737f05ca843c7fc32bbfe9f5b26f3409c5b42b786d8809aa789faf761154",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ring8.dat",
+      "sha256": "4d7ae146c56385df78fb08391c29f72a106355ffe4b7be472461899ebff840ca",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4-4ring9.dat",
+      "sha256": "f1b98f891616369b58e4ff5d25ba9598ff7ef71b63e72cf3c500e72540390efb",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "44375b.dat",
+      "sha256": "0411fa3593aeaa20301c54ed04b25baf1374b153551da06008e54fcee243b3e9",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "4589.dat",
+      "sha256": "bce02358484d09c47c3d8f5d512425ca2bc7b1ad1be39b8bc743ce12b38f0c9e",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-12cyli.dat",
+      "sha256": "a645a42a5ed912a059a9336ab1449d02efd067008f034549cc8c5ae488159fd3",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-12cylo.dat",
+      "sha256": "aba0697449741a95889cb0faf8d6231777086ebed8ee1956ac304bd32b208c6a",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-12edge.dat",
+      "sha256": "c1320fa098058f1bb4bb73a4bd02a9533bdcc4f22ac4a0f0a1dcd5cdf85deaed",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-12ring19.dat",
+      "sha256": "840ab2a2709e2e468463b3d504b0efc3866ab29b08f88633e74be819a68f3da9",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-4chrd.dat",
+      "sha256": "a735a3d5f7652eb4c1ec7fd2fc2d6fcbb0d54cd647cb92c60e64dd3ba000b0a1",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-4con1.dat",
+      "sha256": "a756c4f8bc1fc73248dfe282ced2d2cf57c49a2664e82106e7fddd02f267a58c",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-4cyli.dat",
+      "sha256": "e2ed297feaf608b7319c2e54cd81dcb653fbb3d87b5a8e48ab2f54b32953fc6b",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-4edge.dat",
+      "sha256": "e4ebabd21711f16411b3c8b8b278995a56c5f25919cd424976357da5b19943c6",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/1-4ring37.dat",
+      "sha256": "7cc94a551e06fc270aaace4f15d4ed7ad9bef9228aa4c08b9a80fcc1a66fe5ee",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4aring.dat",
+      "sha256": "4c0d575f91df941b5d3313427d699813cc3cf9f09c334cbad7a0eceeaf98f573",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4con1.dat",
+      "sha256": "006cf53cfd4180d3a2db8f8e9dd694c218f41783ad96ff4f5df4a2d932f5bd0c",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4con18.dat",
+      "sha256": "0dae8fa20d1be511e1db5ba7c00c1423363c592b6ca5d06e7731cbf037fc4830",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4con2.dat",
+      "sha256": "003fe131e9bb5cecefcdea0b7cea9c5e28c3093fd9060ffe61a6281378cfc275",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4con4.dat",
+      "sha256": "a28e99bbe1f9d7f7a776d7fdcb2382fd7e5e8325b34429188e39473feb3473cf",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4con5.dat",
+      "sha256": "86c49af64c12622bd3ebd7d741a23eb66394f277ecda99b4c164eb110fc5e8cc",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4cyli.dat",
+      "sha256": "6c466cd94f69ecdb3a5a83faee52ad2e5ecd9d1560975feaf854c3433de6e6a2",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4cylo.dat",
+      "sha256": "ce018b080f8d657ed514164b995e119e9ea104a03cd84e6a6f736b40f58252a6",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4edge.dat",
+      "sha256": "db8fd751c8c6b1f72211903adbff3aa90be6808cc4fcff391f1c320adced5da7",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4ring19.dat",
+      "sha256": "f4bd9302cd727b17eb2c115de5255dbc6ec332ad2ae9ec80e4e86ce6cbc8f574",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4ring29.dat",
+      "sha256": "6593bc159be612d23ffe69a2655818d33e2f88e5f2796ddc988270142b0bf0b1",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4ring37.dat",
+      "sha256": "47c11ebb3288cef8f007df5fde11ee0b7b37fa736a65e52772765077ad4def3c",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/4-4ring4.dat",
+      "sha256": "67c651ae1da2cf2d6952a69e62574fbfcfdec78e9dfab4b80147b8c6dd593e6a",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/tm08q2111.dat",
+      "sha256": "0d0b524be54d73530d6771340ed92dca4b842e3e95657ce32cc969ab91c93975",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "48/tm08q2639.dat",
+      "sha256": "d657cc7cc4ed6b37584e13bcacbd48984ae19b5b38bee5c7380448b84e0cc0c4",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "65473.dat",
+      "sha256": "85194f4f804412a19659fd677d67288b7cca732cbf741ed4d21ad6dc2b07d435",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "85861.dat",
+      "sha256": "784d1058a83110e5c883ca5f289ceda9fb6b707ed9da86a53c29a89c30197857",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "98138.dat",
+      "sha256": "1d506f39ea2bf69757206009498025381bbf28d9fa0b79385a30f4c5fa37f111",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl3ho10.dat",
+      "sha256": "7799ee39b85781d7283d952136cba415605b819a87b9ec92cbfe3f348c8c1f5e",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl3hol2.dat",
+      "sha256": "5d35ee8c2a5ecf50222d9e7a5a489730f4296b47e781157a7f01263b162c6901",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl3hol3.dat",
+      "sha256": "05fd46a65cb2342d3e88e3789a610b4f17f9fc8fd614f90bf8c2b3f44e13a171",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl3hol8.dat",
+      "sha256": "2349b82c7dd4559a45913986e07e185035fdb48928ac13e5fd774f4c30a65e96",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl3hol9.dat",
+      "sha256": "a99c7a963b46b735e36743f216efdd4916f982b4b984469de5b7e6bddb18e8c7",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl5ho10.dat",
+      "sha256": "5658b3df4183184a5d5104624ff85b3048a658972991b1dfc489dc05728278ba",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl5hol8.dat",
+      "sha256": "95b2d384c0697cd5dd4ebcc9fd4ab2d005307af5aa611bea20ce832a91f8bc68",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axl5hol9.dat",
+      "sha256": "d46a457be819e6b46b7fc85f8610b8850e0d0a40556c65b74dbda04179b68a20",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axleend2.dat",
+      "sha256": "cedcec0918b69285f612c94d1f6532f7352a08f18b2749dde6f6a5235c1a0c73",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axlehol2.dat",
+      "sha256": "9d3e161068b049c3a21fbb8c0970d8264215c08bfcefd3508b8bbff47974a319",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axlehol3.dat",
+      "sha256": "81caa1e48cb356fd74575f2a37a4422d75cafb930fae19182783f48381e48d2f",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axlehol8.dat",
+      "sha256": "e3cf8856c972ecaf486a344c171cb4ab601efcb08956bd7b6cfafa39b0439493",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "axlehole.dat",
+      "sha256": "8dfcdd5058a66fba2ea4f59ddc7fd4510118baca9f745e5dfe341ccf0e24b49e",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box2-11.dat",
+      "sha256": "7f29fb8601b419207b5c855af8fad8abb55a967ec73f3d8be841d370c360b97c",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box2-9p.dat",
+      "sha256": "6c68301a34e42d105e716e5ae5edf02e3d58978db24619f0364887c339edd331",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box3u2p.dat",
+      "sha256": "df73118b95f23d693c3b7d25c57c483db3bf61ae017d757848119955d28d59e0",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box3u4p.dat",
+      "sha256": "1d63ff287fe62f8636cf59cfdfce5118e1017f66559aeb32abc642bacbacd361",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box3u8p.dat",
+      "sha256": "0f6187106f023d041dcfd2a24e9f5a2a0c37b5c41b0ff171267ae776a8f16760",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box4.dat",
+      "sha256": "2cbfcf075ef5c87c6a5f543f837972a78d43274ac7771b92229b5fe5da797c1e",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box4t.dat",
+      "sha256": "9e85c281fff9c33ce26931d772310c8faeeaba4dca1036acf1e6ac578dc50c00",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "box5.dat",
+      "sha256": "ccb7b8a1d36692335b10ea6aa196849afcad4b15331683ed8112a10b50977318",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "empty.dat",
+      "sha256": "192c9b9ee2e425cfbc9e9b12ff61ee0f05ae1cb0c12dc37d5590adb6abb65128",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "rect.dat",
+      "sha256": "ffeb2dd3d9b83c38841f18f1f74800fbba9e90c5fb6badfff2a795f08a96cb71",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "rect1.dat",
+      "sha256": "48fdcd3181587b4bdc89d356a5aee21268688f3f2fcdd4d6f5c1a3d49b1a1ceb",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "rect2p.dat",
+      "sha256": "faac2b36241a9de0c0108471e59c45734df6c79813332d9cacf97f6391886acc",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/1126s01.dat",
+      "sha256": "0b6d965a37e3e95050ce590eab8140071d3e569e4801c49aece406c90620e3c0",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3003s01.dat",
+      "sha256": "58f0af5b23ccd2bf3b7569a1b6de0b62cb1ae95520994ba7aa0b37c35b2a8744",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3003s02.dat",
+      "sha256": "ceb77e4263964fc1658630d9533118d8feeddf2aeb7d0a1116c6e5bc2318a92f",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3004s01.dat",
+      "sha256": "e05db7f7baead09713c4296b4e4e215b3fa5ccbf526e3431cb66a3ce19e321b5",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3005s01.dat",
+      "sha256": "ed6218c566690622fed39b8fb3dac9ae9a36df66cac106e2e1d4b5862567841a",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3024s01.dat",
+      "sha256": "a706692e2c838f20f3b3e4bd5ff03c4ab6c5c0d5816b0944ac39d6100fd85275",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3062bs01.dat",
+      "sha256": "b1c8fbaebfab27230569a83c3e47853b7b7b98f9229c2d9540f4f86e9aff0325",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3068bs01.dat",
+      "sha256": "b49ecb2e8e57d8ae4a64aa5e71713d769c2a5dc91f4611fbd3157fbc30a4c6c3",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3069bs01.dat",
+      "sha256": "e910d77b65118a7fc941e846f05b46d8c5a7aa3cf5706d5479533a35423c9498",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3710s01.dat",
+      "sha256": "57df307f7e3843f4c702311b82e93988bab6d688cbb8ab82bb4338184696780e",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3941s01.dat",
+      "sha256": "0285481f2422f6e098a36f26cb5337338a26048c348a266a2220e154e6f3a7a2",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/3943s01.dat",
+      "sha256": "f54b116e71ebf760ee382bb83153dde6fc3362cdcefb071d4497cb4dfc133e12",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/44375s01.dat",
+      "sha256": "060160c7341232944de3661da1ab18fa61543f12fbb5f84670eb01e1d94a1c0c",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/65473s01.dat",
+      "sha256": "fccd913a5bb68dba5bb8d0b3d759b1f84164be3b3c0ee20271b193b570ee7652",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/98138s01.dat",
+      "sha256": "dff4bf55eb5b4d6a8f3889fc208b5946a8f7b139e297a1edb67e2f976fc165b9",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "s/98138s02.dat",
+      "sha256": "5bda194e7fcb4eaac3211f712ec73a18988f4312fc94aade40722b1e9da00548",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud.dat",
+      "sha256": "db037d518d7c08bcdc1f0e7497f4f98e97d99850531dd62d602965520f3bf8f4",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud10.dat",
+      "sha256": "f7dc3947e0f3b81fadffe6509c52723940dfd4d36e30049874d95784a864315a",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud2a.dat",
+      "sha256": "61fbed54b085a30490045309778d1e2a6d95485e6558996b12674f848028d557",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud3.dat",
+      "sha256": "d29e9160faeaf85b2b72a098e89a81f41e0082517a82065d7b1f149b5fd2addd",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud4.dat",
+      "sha256": "871cdcab26e7f5113488a24c453d6fabda75b275b06de592e0bfaad4292c12a3",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud4a.dat",
+      "sha256": "29e414ab757f2a79073aa0d5d10c4c925da1fc239d20019d7615c06db612e2f6",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud4h.dat",
+      "sha256": "ad758cd52c58cadc5ed16cc8d2248e22ef159d3529f25ca8312ce0ba8d131a92",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud4o.dat",
+      "sha256": "827edfc93ece0c6898443bf247207e0a5182fcdaf30e1efb85285c9ab586e884",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stud4od.dat",
+      "sha256": "6f6ba215655349845b069f9647fffa22fbc43cf083dff46900353c3dc579ec72",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stug-1x4.dat",
+      "sha256": "e88852b15ca37121e12f7052a234e4a90dc99a8c6d22d45e041f47103c2fb71c",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stug-2x2.dat",
+      "sha256": "16114159ea25719341a852d5403dc9982a6211f2fcb23f5c4c3eac05a2ad43f7",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stug10-2x2.dat",
+      "sha256": "860d8586325b33654acf4b20d9275ff078955468eaf86af3c6d7adc624446512",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "stug3-1x3.dat",
+      "sha256": "80f86a2ea87dfabc79c3daf963a14c7757caceea6b402ac4f2178a6088de08ac",
+      "status": "resolved",
+      "reason": null
+    },
+    {
+      "reference": "t04q5000.dat",
+      "sha256": "deeea454937bc900d1838e7b2ff7d1d3b9e873b8df9e971f2a49e43fb7d69e27",
+      "status": "resolved",
+      "reason": null
+    }
+  ],
+  "before_surface_crossings": 14,
+  "after_surface_crossings": 0,
+  "after_status": "unknown",
+  "after_pair_classifications": {
+    "unresolved_geometry": 946,
+    "bounds_separated": 3066,
+    "unreviewed_material_or_hollow_geometry": 174
+  },
+  "repaired_pairs": [
+    {
+      "pair": [
+        "french_horn/body/bend_0",
+        "french_horn/valves/lever_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unresolved_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_1",
+        "french_horn/mouthpipe/lead_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unresolved_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_1",
+        "french_horn/valves/lever_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unresolved_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_2",
+        "french_horn/mouthpipe/lead_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unresolved_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_2",
+        "french_horn/mouthpipe/lead_1"
+      ],
+      "before": "surface_intersection",
+      "after": "unresolved_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_2",
+        "french_horn/mouthpipe/lead_2"
+      ],
+      "before": "surface_intersection",
+      "after": "unresolved_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_2",
+        "french_horn/mouthpipe/lead_0"
+      ],
+      "before": "surface_intersection",
+      "after": "bounds_separated",
+      "after_status": "pass"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_2",
+        "french_horn/mouthpipe/lead_1"
+      ],
+      "before": "surface_intersection",
+      "after": "bounds_separated",
+      "after_status": "pass"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_axle",
+        "french_horn/slide_0/left_tube_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unreviewed_material_or_hollow_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_axle",
+        "french_horn/slide_0/right_tube_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unreviewed_material_or_hollow_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_axle",
+        "french_horn/slide_1/left_tube_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unreviewed_material_or_hollow_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_axle",
+        "french_horn/slide_1/right_tube_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unreviewed_material_or_hollow_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_axle",
+        "french_horn/slide_2/left_tube_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unreviewed_material_or_hollow_geometry",
+      "after_status": "unknown"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_axle",
+        "french_horn/slide_2/right_tube_0"
+      ],
+      "before": "surface_intersection",
+      "after": "unreviewed_material_or_hollow_geometry",
+      "after_status": "unknown"
+    }
+  ],
+  "remaining_limits": [
+    "Surface test cannot certify containment or coplanar material clearance.",
+    "Empty library helpers and unreviewed material remain unknown.",
+    "Short slide axles fit within the wider brick cavities; clutch and retention are not established.",
+    "Bell, valve-rail and mouthpipe mounts remain unresolved; stand stability and physical insertion remain untested."
+  ]
+}

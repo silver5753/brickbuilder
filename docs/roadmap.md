@@ -232,3 +232,28 @@ whitespace checks passed. A real horn collision/connections draft reconciled
 offline with artifact integrity pass and collision validation fail. The prior R2
 version-1 package still verifies under its historical policy, with absent
 collision review explicitly reported as not-tested.
+
+
+## French horn R3 interference repair — 13 October 2026
+
+The user-requested model repair clears all fourteen remaining R2 transverse
+surface crossings by moving the complete valve and mouthpipe assemblies and
+shortening the six vertical slide axles. All 4,186 pairs were rechecked with
+the same real LDraw library and no waivers: zero crossings, 3,066 separated
+pairs and 1,120 unknowns. All sixteen intended coil connections still pass
+with no nominal stud occupancy conflicts. The existing horn regression passes.
+Exact before/after hashes, dependency hashes and pair results are captured in
+[the project repair review](../projects/french_horn/repair-review.json).
+
+This is an interference repair, not completion of the horn's attachments.
+The shortened axles stop before the narrow hollow studs; retention inside
+the wider underside cavities remains unverified. Bell, mouthpipe and valve-rail
+mounts remain unresolved. Collision status is unknown because material and
+helper coverage is incomplete; full containment/coplanar clearance is not tested.
+The release remains a draft with regenerated opposite-side LDraw renders and
+a nine-step placement review.
+
+R3 verification: the full release regenerated all three model views and eighteen
+step views. Render/instruction geometry checks pass; offline artifact verification
+passes with validation unknown. The project regression, ty, pinned Ruff and
+whitespace checks pass.

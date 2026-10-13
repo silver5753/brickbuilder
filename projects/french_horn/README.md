@@ -1,4 +1,4 @@
-# French horn — design rehearsal, revision 2
+# French horn — design rehearsal, revision 3
 
 A 92-part yellow desktop horn study made from native physical LDraw parts:
 eight elbow segments form the main coil; a cone and concave dish suggest the
@@ -15,9 +15,9 @@ LDraw library, including its original authorship/license files and LDConfig.ldr.
 uv sync --locked --extra render
 uv run --locked --extra render brickbuilder doctor projects/french_horn --library /path/to/ldraw
 uv run --locked --extra render brickbuilder release projects/french_horn \
-  --library /path/to/ldraw --draft --destination output/horn-r2
-uv run --locked brickbuilder verify-release output/horn-r2
-uv run --locked brickbuilder parts --model output/horn-r2/model.ldr \
+  --library /path/to/ldraw --draft --destination output/horn-r3
+uv run --locked brickbuilder verify-release output/horn-r3
+uv run --locked brickbuilder parts --model output/horn-r3/model.ldr \
   --library /path/to/ldraw --catalog projects/french_horn/connectors.json
 ```
 
@@ -38,7 +38,7 @@ image-generation artwork or invented geometry is substituted for the CAD.
 - The main coil rests on the cradle; its support is gravity contact, not a
   stud/axle attachment. Retention and balance need a physical trial.
 - Bell/throat attachment to the coil, leadpipe attachment and the valve-rail
-  mount still need design work. Their proximity in a render is not a connection.
+  mount still need design work. Slide axle retention is also unverified. Their proximity in a render is not a connection.
 - The bell is the underside of a real dish supported by a real cone. Its central
   molding is visible; it is not a hollow acoustic bell.
 - Rebrickable discovery confirmed selected yellow candidates on 12 October
@@ -98,3 +98,30 @@ surface checker. Runtime was about 10 seconds per 92-part model. Empty helper
 unknowns remain; crossings are now detected before those unknowns can mask them.
 The unit regression uses independently authored analytical tube/cone surfaces at
 the R1/R2 placements. No external part geometry is redistributed in the tests.
+
+## Revision 3 — remaining interference repairs
+
+On 13 October 2026 the user requested repair of the fourteen remaining pairs.
+The complete valve assembly moves 24 LDU toward the front, preserving its
+internal seats; the complete mouthpipe moves up 26 LDU. Six vertical slide
+axles change from 3L (4519) to 2L (32062) and move 10 LDU down, centering
+them on the elbow mouths. The shorter axles end inside the round bricks'
+wider underside cavities, before their narrow hollow studs. No part is
+stretched, hidden, removed or excused with a contact waiver; quantity stays 92.
+
+The full-model surface review now finds **zero transverse surface crossings**
+among 4,186 pairs: 3,066 bounds-separated pairs and 1,120 unknown pairs
+(946 with unresolved geometry; 174 with unreviewed material/hollow geometry).
+All fourteen previously failing pairs were rechecked, with no new crossings.
+The model hash is `3049ce79a95e131b4df9af565a7dbaf6566b79d360bf28917ca3491a3874269b`.
+The exact pair comparison and dependency fingerprint are in `repair-review.json`.
+All sixteen authored coil connections still pass; no stud occupancy conflicts
+were reported.
+
+This is still a draft with **collision status unknown**, not collision-certified:
+the surface test does not establish containment or coplanar material clearance,
+and empty library helpers remain unresolved. The shorter slide axles do not
+establish a clutch connection to the wider round-brick cavities. Slide retention
+and bell, valve-rail and mouthpipe mounts need further design; moving those
+assemblies clear of the coil does not create mounts. Front, hero and rear
+LDraw renders and the nine-step placement review are regenerated for R3.

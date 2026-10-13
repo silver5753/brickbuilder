@@ -115,7 +115,16 @@ def build(project: Project) -> AuthoredModel:
             part("upper_rail", "3710", YELLOW, (30, -148, 0), front),
         )
     )
-    groups.append(Assembly("valves", tuple(valves), requirements=("R2",)))
+    # Keep all internal stud placements together; the finger levers must clear
+    # the front of the coil. The rail-to-body mount is still unresolved.
+    groups.append(
+        Assembly(
+            "valves",
+            tuple(valves),
+            transform=Transform((0, 0, -24)),
+            requirements=("R2",),
+        )
+    )
 
     # Three narrow tuning-slide loops; elbows expose real axle bores. Different
     # lengths and front/back planes preserve the layered look of the instrument.
@@ -141,7 +150,14 @@ def build(project: Project) -> AuthoredModel:
                 )
             items.append(
                 part(
-                    side + "_axle", "4519", DARK, (x, cy - 40, depth), rotation("z", 90)
+                    # A 3L axle pierced the round brick's small hollow stud.
+                    # Stop a 2L axle inside its wider underside cavity instead.
+                    # Clearance does not establish clutch in that cavity.
+                    side + "_axle",
+                    "32062",
+                    DARK,
+                    (x, cy - 30, depth),
+                    rotation("z", 90),
                 )
             )
         groups.append(Assembly(f"slide_{i}", tuple(items), requirements=("R2",)))
@@ -177,5 +193,13 @@ def build(project: Project) -> AuthoredModel:
         )
     mouth.append(part("cup", "4589", SILVER, (143, -208, -6), rotation("z", 90)))
     mouth.append(part("lip", "85861", SILVER, (151, -208, -6), rotation("z", 90)))
-    groups.append(Assembly("mouthpipe", tuple(mouth), requirements=("R4",)))
+    # Raise the complete pipe, preserving all internal seats, above the coil.
+    groups.append(
+        Assembly(
+            "mouthpipe",
+            tuple(mouth),
+            transform=Transform((0, -26, 0)),
+            requirements=("R4",),
+        )
+    )
     return Assembly(project.name, children=tuple(groups)).flatten()

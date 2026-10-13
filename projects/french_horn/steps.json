@@ -47,7 +47,7 @@
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_2",
@@ -97,7 +97,7 @@
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_3",
@@ -141,13 +141,13 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the revised 2L vertical axles. They stop inside the round bricks before the narrow hollow studs; retention in those wider cavities is unverified. This is a placement review, not a build-ready sequence.",
           "instances": [
             "french_horn/slide_0/bottom_join"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_4",
@@ -191,13 +191,13 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the revised 2L vertical axles. They stop inside the round bricks before the narrow hollow studs; retention in those wider cavities is unverified. This is a placement review, not a build-ready sequence.",
           "instances": [
             "french_horn/slide_1/bottom_join"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_5",
@@ -241,13 +241,13 @@
       ],
       "callouts": [
         {
-          "text": "Design-study placement only. Review unresolved mounts before physical assembly; this is not a build-ready sequence.",
+          "text": "Use the revised 2L vertical axles. They stop inside the round bricks before the narrow hollow studs; retention in those wider cavities is unverified. This is a placement review, not a build-ready sequence.",
           "instances": [
             "french_horn/slide_2/bottom_join"
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_6",
@@ -297,7 +297,7 @@
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_7",
@@ -347,7 +347,7 @@
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_8",
@@ -397,7 +397,7 @@
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     },
     {
       "id": "step_9",
@@ -447,7 +447,7 @@
           ]
         }
       ],
-      "access_review": "Physical insertion has not been tested. Bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
+      "access_review": "Physical insertion has not been tested. Slide axle retention plus bell, mouthpipe and valve-carrier mounts remain unresolved; do not force or glue parts to match the picture."
     }
   ]
 }
