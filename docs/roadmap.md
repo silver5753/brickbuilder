@@ -321,3 +321,23 @@ analytical coverage includes containment, coincident solids, coplanar overlap,
 face contact, cavities, rotations, cracks/T-junctions, malformed meshes, stale
 configuration and offline tampering. These are nominal tessellation checks;
 physical fit, strength and continuous motion remain separate.
+
+## French horn R5 lower rear-facing bell — 14 October 2026
+
+The user corrected the silhouette. R5 lowers the bell axis by 120 LDU and
+turns its opening from -X to rear +Z. A low pedestal seats on two actual base
+studs and retains the reviewed axle/throat/cone/dish connections; five tall
+support bricks are removed. All other instrument geometry remains unchanged.
+
+Real-library review: **107/107 parts rooted**, no occupancy conflicts, all sixteen
+intended joints and three required pin segments pass. **5,489 of 5,671 collision
+pairs pass** their nominal scope, with zero detected interference; **182 remain
+unknown** because of unsupported native solid boundaries, including close/contact
+candidates near the relocated mount. No unsupported pair is waived. Existing
+contact reviews are rebound only after asserting their exact instances unchanged.
+
+The horn connectivity regression, project type check and pinned Ruff checks pass.
+Native front/rear renders and instruction views are regenerated for this revision;
+release verification records rooted connectivity pass without user exception.
+Physical fit, balance and insertion remain untested. See the project README and
+exact-model review files for current evidence.

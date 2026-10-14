@@ -36,6 +36,18 @@
       "sha256": null,
       "confidence": "high",
       "note": "No connectivity exception was requested or granted; every part must reach the stand."
+    },
+    {
+      "id": "S4",
+      "location": "User instruction, 14 October 2026: \"make it actually look like a french horn, not a trumpet. the bell faces back at the bottom\"",
+      "kind": "user",
+      "edition": null,
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "Move the bell to the lower rear; preserve real mounts and native LDraw rendering."
     }
   ]
 }

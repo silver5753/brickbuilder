@@ -111,22 +111,16 @@ def build(project: Project) -> AuthoredModel:
     stand.append(
         part("pipe_mount", "87087", YELLOW, (10, -248, 30), rotation("y", -90))
     )
-    # Stud-built bell support, with a transverse cross axle into the throat/cone.
-    for level in range(7):
+    # Low rear-facing bell mount, aligned with two real base studs.
+    for level in range(2):
         stand.append(
-            part(
-                f"bell_post_{level}",
-                "3004",
-                DARK,
-                (-70, -24 * (level + 1), 40),
-                rotation("y", 90),
-            )
+            part(f"bell_post_{level}", "3004", DARK, (-60, -24 * (level + 1), 70))
         )
     stand.extend(
         (
-            part("bell_shim", "3023", DARK, (-70, -176, 40), rotation("y", 90)),
-            part("bell_bracket", "32064a", DARK, (-70, -200, 40), rotation("y", 90)),
-            part("bell_axle", "4519", DARK, (-100, -190, 40)),
+            part("bell_shim", "3023", DARK, (-60, -56, 70)),
+            part("bell_bracket", "32064a", DARK, (-60, -80, 70)),
+            part("bell_axle", "4519", DARK, (-60, -70, 100), rotation("y", -90)),
         )
     )
     # Two stud-built rear posts support the tuning-slide carrier plate.
@@ -221,10 +215,10 @@ def build(project: Project) -> AuthoredModel:
 
     # Bell: a real cone connected to the convex back of a real dish, with the
     # concave underside facing outward. This is a visual bell, not an air path.
-    bellrot = rotation("z", 90)
+    bellrot = rotation("x", 90)  # native +Y opens toward rear +Z
     # The throat and cone share the stand-mounted cross axle; the dish studs
     # engage the cone underside. All three now have a rooted connection.
-    bellframe = Transform((-114, -190, 40), bellrot)
+    bellframe = Transform((-60, -70, 114), bellrot)
     bell = (
         part("throat", "3941", YELLOW, (0, -24, 0)),
         part("flare", "3943b", YELLOW, (0, 0, 0)),

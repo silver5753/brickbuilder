@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-14",
-  "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
-  "revision": "R4, unchanged geometry; collision-checker upgrade",
+  "model_sha256": "6bf7da6829eb72915aed5a8a89414b1ffe14dce4b9b0e62ebd188caaf27d02f7",
+  "revision": "R5: bell lowered and rear-facing, real two-stud pedestal; other instrument geometry unchanged",
   "surface_test": "transverse_triangles_v1",
   "solid_test": "closed_boundary_parity_v1",
   "tolerance_ldu": 0.01,
-  "pair_count": 6216,
+  "pair_count": 5671,
   "pair_statuses": {
-    "unknown": 175,
-    "pass": 6041
+    "unknown": 182,
+    "pass": 5489
   },
   "pair_classifications": {
-    "unsupported_solid_boundary": 175,
-    "bounds_separated": 6024,
+    "unsupported_solid_boundary": 182,
+    "bounds_separated": 5472,
     "expected_contact": 13,
     "solid_separated": 4
   },
   "rooted_connectivity": "pass",
-  "rooted_quantity": 112,
-  "quantity": 112,
+  "rooted_quantity": 107,
+  "quantity": 107,
   "connectivity_approvals": [],
   "material_declarations": [],
   "contact_review_count": 13,
-  "config_sha256": "80bc9f01d24f9c2e736a106afb86e6f26f7d9dbdc8d81f7195b55d59fcd0d8c0",
+  "config_sha256": "6ab27f846e48ec7970b84292ecea56c7045c1bbf306ffca7a6e9a2ffd083e09d",
   "geometry_dependency_sha256": "1048d603fabdea98b2dddb659f09fc2bc4e7afdb84adf13674d46829668ef2c7",
   "intentional_empty": [
     "1-16chrd.dat",
@@ -362,6 +362,27 @@
       "pair": [
         "french_horn/bell/throat",
         "french_horn/stand/bell_axle"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/throat",
+        "french_horn/stand/left_post_1"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/throat",
+        "french_horn/stand/left_post_2"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/throat",
+        "french_horn/stand/left_post_3"
       ],
       "classification": "unsupported_solid_boundary"
     },
@@ -1158,6 +1179,20 @@
     },
     {
       "pair": [
+        "french_horn/stand/bell_bracket",
+        "french_horn/stand/left_post_2"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/bell_bracket",
+        "french_horn/stand/left_post_3"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
         "french_horn/stand/bell_post_0",
         "french_horn/stand/bell_post_1"
       ],
@@ -1165,43 +1200,57 @@
     },
     {
       "pair": [
+        "french_horn/stand/bell_post_0",
+        "french_horn/stand/left_post_0"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/bell_post_0",
+        "french_horn/stand/left_post_1"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
         "french_horn/stand/bell_post_1",
-        "french_horn/stand/bell_post_2"
-      ],
-      "classification": "unsupported_solid_boundary"
-    },
-    {
-      "pair": [
-        "french_horn/stand/bell_post_2",
-        "french_horn/stand/bell_post_3"
-      ],
-      "classification": "unsupported_solid_boundary"
-    },
-    {
-      "pair": [
-        "french_horn/stand/bell_post_3",
-        "french_horn/stand/bell_post_4"
-      ],
-      "classification": "unsupported_solid_boundary"
-    },
-    {
-      "pair": [
-        "french_horn/stand/bell_post_4",
-        "french_horn/stand/bell_post_5"
-      ],
-      "classification": "unsupported_solid_boundary"
-    },
-    {
-      "pair": [
-        "french_horn/stand/bell_post_5",
-        "french_horn/stand/bell_post_6"
-      ],
-      "classification": "unsupported_solid_boundary"
-    },
-    {
-      "pair": [
-        "french_horn/stand/bell_post_6",
         "french_horn/stand/bell_shim"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/bell_post_1",
+        "french_horn/stand/left_post_0"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/bell_post_1",
+        "french_horn/stand/left_post_1"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/bell_post_1",
+        "french_horn/stand/left_post_2"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/bell_shim",
+        "french_horn/stand/left_post_1"
+      ],
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/bell_shim",
+        "french_horn/stand/left_post_2"
       ],
       "classification": "unsupported_solid_boundary"
     },
@@ -1565,9 +1614,9 @@
   ],
   "limits": [
     "No detected transverse surface crossings or solid-interference witnesses; this is not complete collision clearance.",
-    "175 pairs involve unsupported native boundaries and remain unknown. Expected-contact annotations cannot waive these findings.",
+    "182 pairs involve unsupported native boundaries and remain unknown, including new close/contact candidates near the lower bell mount. Expected-contact annotations cannot waive these findings.",
     "Native visual primitives may be open or internally overlapping, e.g. open-bottom studs on uncut top faces. No invisible faces are invented to close them.",
     "Fixed decorative edge contacts, cap-to-rotor seats and leadpipe stud seats are individually reviewed in collisions.json after complete boundary-cell checks. No articulated valve motion is claimed.",
-    "Native geometry, inventory and all 112 nominal root paths are unchanged; physical insertion, clutch, strength and stability remain untested."
+    "R5 has 107 parts, all with nominal root paths. The bell and its mount move; five tall stand bricks are removed. Physical insertion, clutch, strength and stability remain untested."
   ]
 }

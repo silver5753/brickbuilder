@@ -10,11 +10,6 @@
         "french_horn/stand/bell_bracket",
         "french_horn/stand/bell_post_0",
         "french_horn/stand/bell_post_1",
-        "french_horn/stand/bell_post_2",
-        "french_horn/stand/bell_post_3",
-        "french_horn/stand/bell_post_4",
-        "french_horn/stand/bell_post_5",
-        "french_horn/stand/bell_post_6",
         "french_horn/stand/bell_shim",
         "french_horn/stand/coil_bracket",
         "french_horn/stand/coil_foot",
@@ -392,7 +387,7 @@
     },
     {
       "id": "step_8",
-      "title": "Valve rails and bell \u2014 placement review",
+      "title": "Low rear-facing bell and valves \u2014 placement review",
       "add": [],
       "assemblies": [
         "french_horn/valves",
@@ -436,6 +431,13 @@
           "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
           "instances": [
             "french_horn/bell/throat"
+          ]
+        },
+        {
+          "text": "The bell opens backward (+Z) near the bottom of the coil. Fit throat and cone onto the low stand axle, then engage the dish studs with the cone underside. Check the rear view; physical insertion and clutch are untested.",
+          "instances": [
+            "french_horn/bell/flare",
+            "french_horn/bell/rim"
           ]
         }
       ],

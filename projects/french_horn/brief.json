@@ -10,7 +10,7 @@
   "sourcing_region": null,
   "condition": null,
   "owned_parts": null,
-  "axes": "Native +X is image right, -Y is up, front camera looks from -Z. Coil lies in XY. Bell opens left along -X from a stand-mounted axle.",
+  "axes": "Native +X is image right, -Y is up, front camera looks from -Z. Coil lies in XY. The bell sits by the lower left of the coil and opens backward along +Z from a low stand-mounted axle.",
   "deliverables": [
     "cad",
     "inventory",
@@ -56,11 +56,12 @@
     },
     {
       "id": "R3",
-      "text": "Clearly flared bell opening to the left",
+      "text": "Clearly flared French-horn bell at the bottom, facing backward",
       "priority": "must",
       "source_ids": [
         "S1",
-        "S2"
+        "S2",
+        "S4"
       ],
       "assemblies": [
         "french_horn/bell"
@@ -70,7 +71,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Inspect left bell opening and cross-axle mount, verify rooted throat/cone/dish paths"
+      "validation": "Inspect low rear-facing bell in front and rear views; verify rooted throat/cone/dish paths and collision diagnostics."
     },
     {
       "id": "R4",

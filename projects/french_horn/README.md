@@ -1,6 +1,6 @@
-# French horn — connected design rehearsal, revision 4
+# French horn — connected design rehearsal, revision 5
 
-A 112-part yellow desktop horn built from native LDraw parts. **Every physical
+A 107-part yellow desktop horn built from native LDraw parts. **Every physical
 part now has a reviewed nominal connection path to the stand.** There are no
 connectivity exceptions: the user explicitly required real attachments.
 
@@ -14,8 +14,9 @@ connectivity exceptions: the user explicitly required real attachments.
 - Two real 6536 cross blocks join coil halves separated by 20 LDU. A friction
   pin connects the bottom block to a stand-mounted Technic brick, retaining the
   coil positively instead of leaving it on a gravity cradle.
-- A stand-mounted cross axle engages the bell throat and cone. The dish's
-  convex-side studs engage the cone underside; the bell opens horizontally left.
+- The bell now sits at the lower left of the coil and opens backward (+Z).
+  A low two-brick pedestal holds its cross axle; the throat, cone and dish
+  retain their real axle and stud connections. Five tall support bricks are removed.
 
 The added supports are visible in front and rear renders. No proximity edges,
 fictional connectors, stretched parts or connectivity waivers are used.
@@ -30,8 +31,8 @@ uv run --locked --extra render brickbuilder build projects/french_horn \
   --stage connections --stage collisions --library /path/to/ldraw \
   --destination output/horn-check
 uv run --locked --extra render brickbuilder release projects/french_horn \
-  --library /path/to/ldraw --draft --destination output/horn-r4
-uv run --locked --extra render brickbuilder verify-release output/horn-r4
+  --library /path/to/ldraw --draft --destination output/horn-r5
+uv run --locked --extra render brickbuilder verify-release output/horn-r5
 ```
 
 ## Review results and limits
@@ -40,14 +41,14 @@ The exact model fingerprint, geometry dependency fingerprint and mount review
 are in `connectivity-review.json`. The release contains the full connection and
 collision reports for that same model.
 
-- **Rooted connectivity: pass, 112 / 112 parts.** No disconnected components,
+- **Rooted connectivity: pass, 107 / 107 parts.** No disconnected components,
   no connector occupancy conflicts; all 16 authored coil joints and all three
   required pin segments pass their nominal checks.
-- **Collision coverage: 6,041 / 6,216 pairs pass their nominal scope.**
-  6,024 have separated bounds, four have separated validated solid boundaries,
+- **Collision coverage: 5,489 / 5,671 pairs pass their nominal scope.**
+  5,472 have separated bounds, four have separated validated solid boundaries,
   and thirteen have proved and individually reviewed fixed contacts. No transverse
   crossing or solid-interference witness was detected, at 0.01 LDU tolerance.
-- **175 pairs remain unknown:** they involve open/nonmanifold native material
+- **182 pairs remain unknown:** they involve open/nonmanifold native material
   boundaries.
   The current exact-model results and all unresolved pair IDs are in
   `collision-review.json`. These are not waived by the contact configuration.
@@ -79,11 +80,20 @@ permits an exception. The prior R3 model is blocked under that rule.
 
 ## Collision checker upgrade — 13 October 2026
 
-Geometry remains R4. The prior counts in `connectivity-review.json` document the
-original checker; `collision-review.json` supersedes only that collision snapshot.
+This checker upgrade was first reviewed on R4; the current review files now
+record the R5 geometry and its freshly rerun diagnostics.
 `build.json.collisions` now selects the repeatable exact-model contact configuration.
 The new core validates closed material boundaries, detects containment and occupied
 solid overlap, and partitions contact surfaces to prove nominal non-overlap before
 accepting a contact annotation. Invalid source boundaries remain visible. The
 remaining source-data issue needs reviewed material decompositions or faithful
 closed boundary geometry; a connector match alone cannot establish clearance.
+
+## Bell orientation correction — 14 October 2026
+
+R5 follows the user's correction: the bell belongs at the lower rear. Its axis
+moves down 120 LDU and turns from -X to +Z. The mount now uses two base studs,
+two support bricks, a shim and the same reviewed Technic axle connection.
+The opposite-side renders expose both the bell opening and its support.
+Other instrument geometry stays unchanged. Appearance remains a stylized brick
+miniature; physical fit and balance still need a trial build.
