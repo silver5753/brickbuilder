@@ -74,7 +74,7 @@ Read the relevant guide before changing or using a capability:
 - [Project execution](docs/execution.md): reviewed Python, explicit stages, pose identity and draft summaries.
 - [Assembly instructions](docs/instructions.md): authored step coverage, cameras, illustrations and trial feedback; no automatic insertion-order proof.
 - [Offline sourcing](docs/sourcing.md): dated stock/owned snapshots, scoped basket comparisons and explicit unknown costs; no purchasing or global-optimum claim.
-- [Collision/motion diagnostics](docs/collisions.md): exact poses, reviewed material regions and isolated candidate views; no inferred solid volumes or continuous-clearance proof.
+- [Collision/motion diagnostics](docs/collisions.md): exact poses, reviewed material regions and isolated candidate views; validated closed boundaries only; no arbitrary solid filling or continuous-clearance proof.
 - [Geometric replacements](docs/replacements.md): explicit assembly recipes, retained supports, immutable previews and regenerated outputs; no automatic fit equivalence.
 - [Assembly authoring](docs/assembly.md): named parts, local frames, intended joints and generated bindings.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
@@ -108,3 +108,44 @@ not grant redistribution rights. No project distribution license is selected.
 
 For physical failures, record measured evidence tied to the affected instances
 and revision. Do not invent stiffness, clutch force, masses or tipping margins.
+
+## Required collision review
+
+Before presenting a model revision as checked, run collision diagnostics and
+inspect failed/unknown pairs as well as opposite-side renders. `release` runs
+collisions automatically with a supplied library and requires a collision review
+for every pose, regardless of stage overrides or an omitted policy check. Use
+`--draft` and report fail/unknown/not-tested results explicitly. A connection pass,
+no duplicate placements or a render cannot substitute for collision review.
+Keep unresolved geometry/material unknown; never waive a detected surface crossing
+as an expected contact. A separated floating assembly still needs a legal mount.
+
+
+## Connectivity is mandatory before delivery
+
+Every physical instance must have a reviewed nominal connection path to the
+selected root, with no occupancy conflicts, missing required pin engagement or
+failed/unknown intended connections. Run connections after every placement or
+part change. Collision clearance alone is not a repair; a floating assembly is
+a blocking defect. Gravity contact is not a connection unless explicitly scoped
+and accepted by the user. Do not weaken a catalog or invent edges to pass.
+
+`build` is for internal diagnostics. `release` adds connections when configured
+and blocks unresolved rooted connectivity even with `--draft`, omitted policy
+checks or stage overrides. Only an explicit user-approved exception for the exact
+model and connection report permits a disconnected draft. Record the user's
+actual words, source, date and reason in `release.json.connectivity_approvals`;
+never infer consent from "draft", "continue", silence, an agent assumption or
+a general instruction to build. Never create approval records without that
+consent. Changed model/report hashes invalidate the exception. See docs/releases.md
+for the format.
+
+## Interpret collision coverage
+
+Read geometry and solid-boundary reasons, not only the failure count. Reviewed
+intentional no-op helpers are distinct from missing geometry. Closed-boundary
+checks may establish containment, separation or complete nominal contact; open,
+nonmanifold and ambiguous contact geometry stays unknown. Contact reviews may
+accept only proved contact, never suppress interference or unsupported boundaries.
+Use `build.json.collisions` for repeatable per-pose configurations and rerun after
+geometry changes. See docs/collisions.md for prerequisites and numerical limits.

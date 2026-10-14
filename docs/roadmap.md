@@ -1,6 +1,6 @@
 # Brick Builder roadmap
 
-Updated: 12 October 2026. P1–P5 and review fixes C1–C7 are complete within
+Updated: 13 October 2026. P1–P5 and review fixes C1–C7 are complete within
 their documented scope. Current user instructions take
 precedence over this plan.
 
@@ -171,3 +171,199 @@ For each slice, update this roadmap and its capability documentation. Use Python
 verification at integration boundaries. Preserve frozen hashes and stable IDs.
 See [testing](testing.md), [validation levels](validation-levels.md) and the
 [agent playbook](playbook.md). Commit evidence and remaining limits together.
+
+## French horn rehearsal — 12 October 2026
+
+A new 92-part instrument design exercises live part discovery, real curved-tube
+geometry, semantic assemblies, actual-CAD front/rear/hero previews and nine
+illustrated placement-review steps. Its 16 explicit main-coil mating assertions
+pass nominal checks; whole-model connections remain unknown. Bell, leadpipe and
+valve-carrier mounts, gravity support and physical assembly remain open. The
+project deliberately ships as a draft; no stock or ordering claim is made.
+See [the project review](../projects/french_horn/README.md).
+
+The trial added `parts --model` to inspect the current CAD references directly.
+It reuses local preparation APIs, records source/model hashes and instance count,
+deduplicates case variants, rejects conflicting selectors/raw geometry, and keeps
+empty selections empty. The installed-wheel preparation workflow covers these
+contracts. A horn regression checks that all intended coil joints pass, no
+reviewed stud occupancy conflicts remain, and unresolved mounts stay unknown.
+No global catalog, external dependency or subject-specific core branch was added.
+
+Verification: **353 tests passed**, including installed-wheel and rendering
+workflows; ty with warnings treated as errors, pinned Ruff and whitespace checks
+passed. The model remains an explicitly unresolved physical-design draft.
+
+R2 follow-up: user review exposed bell/coil interference. The bell was moved
+outward, and an expanded-surface separating-plane check gives at least
+4.01 mm of bell-to-rest clearance in the revised preview. This fixes placement
+only; the physical neck/bracket remains unresolved. Opposite-side renders and
+the draft package are regenerated for the new model.
+
+## Collision delivery gap — 12 October 2026
+
+User review of the horn exposed an intersection that the delivery workflow had
+not checked. The core now expands native triangle/quad surfaces and detects
+strict transverse crossings with a dependency-free AABB hierarchy. Available
+surface failures take precedence over missing/empty helper unknowns. Coplanar
+contact, containment and unresolved material remain unknown; expected-contact
+annotations cannot suppress a surface crossing. No solid volumes are invented.
+
+`build --stage collisions` emits exact-model diagnostics. Release automatically
+runs it with a supplied library for every emitted pose, including CAD-only stage
+overrides. Version-2 delivery requires collision review regardless of omitted
+policy checks or optional evidence flags; fail/unknown/not-tested requires a
+draft. Exact-model advanced configurations are rerun when geometry is available.
+Offline verification reconciles report bindings, coverage and status; legacy
+version-1 archives retain their historical policy and expose absent review.
+Root/starter instructions, doctor guidance and the horn workflow now require the
+review and interpretation of unknowns before handoff.
+
+Real-library rehearsal: R1 reports 24 intersecting pairs, including ten involving
+the bell; R2 removes those ten but retains 14 other intersecting pairs. Both
+92-part checks took about 10 seconds. The model remains a failed collision draft;
+this tooling change does not repair those remaining placements. Exact hashes and
+scope are recorded in the horn notes. Synthetic regressions reproduce the original
+bell/coil placement without redistributing third-party geometry.
+
+Verification completed 13 October 2026: **371 tests passed**, including installed-wheel
+core/render workflows; ty with warnings treated as errors, pinned Ruff and
+whitespace checks passed. A real horn collision/connections draft reconciled
+offline with artifact integrity pass and collision validation fail. The prior R2
+version-1 package still verifies under its historical policy, with absent
+collision review explicitly reported as not-tested.
+
+
+## French horn R3 interference repair — 13 October 2026
+
+The user-requested model repair clears all fourteen remaining R2 transverse
+surface crossings by moving the complete valve and mouthpipe assemblies and
+shortening the six vertical slide axles. All 4,186 pairs were rechecked with
+the same real LDraw library and no waivers: zero crossings, 3,066 separated
+pairs and 1,120 unknowns. All sixteen intended coil connections still pass
+with no nominal stud occupancy conflicts. The existing horn regression passes.
+Exact before/after hashes, dependency hashes and pair results are captured in
+[the project repair review](../projects/french_horn/repair-review.json).
+
+This is an interference repair, not completion of the horn's attachments.
+The shortened axles stop before the narrow hollow studs; retention inside
+the wider underside cavities remains unverified. Bell, mouthpipe and valve-rail
+mounts remain unresolved. Collision status is unknown because material and
+helper coverage is incomplete; full containment/coplanar clearance is not tested.
+The release remains a draft with regenerated opposite-side LDraw renders and
+a nine-step placement review.
+
+R3 verification: the full release regenerated all three model views and eighteen
+step views. Render/instruction geometry checks pass; offline artifact verification
+passes with validation unknown. The project regression, ty, pinned Ruff and
+whitespace checks pass.
+
+
+## Rooted delivery gate and horn R4 — 13 October 2026
+
+R3 cleared intersections while leaving floating assemblies. The user rejected
+that stopping point and required explicit consent for any connectivity relaxation.
+Version-3 releases now enforce proven root paths for every physical instance,
+passing required-pin/intended-joint checks and no occupancy conflicts. The stage
+is added automatically when configured; `--draft`, omitted policy checks and
+stage overrides cannot bypass it. Internal `build` remains available for repair.
+
+The only exception is a recorded user agreement for the exact model and complete
+connection report, with quoted consent, date and source. It permits a labelled
+draft, retains nonpassing status, and expires when either fingerprint changes.
+No such exception was created for the horn. Root/starter/project instructions,
+CLI help and doctor guidance now require this behavior. Offline verification
+recomputes nominal connection graphs from captured CAD and connector declarations.
+Historical packages retain their policies and expose the new gate as not-tested.
+
+The 112-part horn now has **112 reviewed root paths**, zero disconnected
+components, zero occupancy conflicts, sixteen passing intended coil connections
+and three passing required pin segments. Real towers, stud-ended slide axles,
+axle bushes, a pinned coil cross block and a bell cross axle replace the former
+unresolved supports. Zero transverse crossings were found across 6,216 pairs.
+See the [R4 review](../projects/french_horn/connectivity-review.json).
+The old R3 model is rejected by the new gate even with `--draft`.
+
+Verification: **372 tests pass**, including core/render installed-wheel workflows;
+ty, pinned Ruff and whitespace checks pass. Tests cover stage override enforcement,
+refusal without consent, exact-report exception expiry, offline removal/tampering
+and the horn's all-part root paths. The full R4 release regenerated front, rear
+and hero images plus eighteen placement-review views; offline artifact integrity
+passes with rooted connectivity pass and no exception. Broader unused-interface
+coverage, unresolved collision material/geometry and physical strength/insertion
+remain separately unknown or untested; none creates a floating-part allowance.
+
+## Collision coverage and solid/contact checks — 14 October 2026
+
+The [implementation plan](collision-upgrade-plan.md) addresses the two gaps from
+horn review. Exact reviewed intentional-empty LDraw primitives now propagate as
+recorded no-ops; unknown/changed/missing geometry and empty physical parts remain
+unresolved. Closed material boundaries are audited before parity/containment and
+occupied-witness tests. Contact surfaces are partitioned into complete boundary
+cells before an exact-pose contact review may pass them. Hollow cavities stay
+empty; open/nonmanifold/ambiguous boundaries are never filled to obtain clearance.
+Positive solid witnesses defeat contact annotations and conflicting material claims.
+
+Build/release accepts a per-pose collision-config map, captures those inputs and
+binds emitted configs offline. The verifier checks new solid prerequisites,
+witness statuses and exact configured contact reviews, while preserving historical
+reports. Rooted connectivity still cannot be relaxed without user approval.
+
+The unchanged R4 horn now has 6,041 passing pairs of 6,216: 6,024 bounds-separated,
+four solid-separated and thirteen individually reviewed fixed contacts. There are no
+detected crossings or solid-interference witnesses. All 112 root paths pass.
+**175 pairs remain unknown:** they involve native open/nonmanifold boundaries. The
+[current review](../projects/french_horn/collision-review.json) records each pair,
+per-reference boundary audits and fingerprints. No material geometry is invented.
+
+Verification: **401 tests passed**, including installed core/render workflows;
+analytical coverage includes containment, coincident solids, coplanar overlap,
+face contact, cavities, rotations, cracks/T-junctions, malformed meshes, stale
+configuration and offline tampering. These are nominal tessellation checks;
+physical fit, strength and continuous motion remain separate.
+
+## French horn R5 lower rear-facing bell — 14 October 2026
+
+The user corrected the silhouette. R5 lowers the bell axis by 120 LDU and
+turns its opening from -X to rear +Z. A low pedestal seats on two actual base
+studs and retains the reviewed axle/throat/cone/dish connections; five tall
+support bricks are removed. All other instrument geometry remains unchanged.
+
+Real-library review: **107/107 parts rooted**, no occupancy conflicts, all sixteen
+intended joints and three required pin segments pass. **5,489 of 5,671 collision
+pairs pass** their nominal scope, with zero detected interference; **182 remain
+unknown** because of unsupported native solid boundaries, including close/contact
+candidates near the relocated mount. No unsupported pair is waived. Existing
+contact reviews are rebound only after asserting their exact instances unchanged.
+
+The horn connectivity regression, project type check and pinned Ruff checks pass.
+Native front/rear renders and instruction views are regenerated for this revision;
+release verification records rooted connectivity pass without user exception.
+Physical fit, balance and insertion remain untested. See the project README and
+exact-model review files for current evidence.
+
+## French horn R6 photograph-led redesign — 14 October 2026
+
+Inspected the Yamaha YHR-567 product photograph and labelled horn diagram after
+the user rejected R5's silhouette and permitted a larger model. R5 incorrectly
+equated a backward-facing bell with camera +Z. R6 makes the bell a continuous
+extension of the lower outer sweep, shortens and angles the leadpipe, staggers
+the inner slides, adds an upper return loop, and removes the separate tall
+support columns. It uses 111 native rigid parts in approximately 10.5 × 15.3 ×
+6.4 cm including the stand.
+
+The first prototype check found three real intersections. Retracting the return
+axle by 4 LDU and moving the leadpipe bracket to the opposite side of the sweep
+removed those witnesses. Fresh review: **111/111 parts rooted**, no occupancy
+conflicts, ten intended joints and six required pin segments pass. **5,937/6,105
+collision pairs pass** (5,912 separated bounds, eight separated solids and 17
+proved fixed contacts); **168 remain unknown** due to unsupported native solid
+boundaries. No material or connectivity waiver is used.
+
+The regression now requires the bell, body and mouthpiece to connect without
+using the stand as a bridge, and checks the lower in-plane bell direction.
+**401 tests pass**, including installed-wheel and rendering workflows; ty passes.
+Native front/rear views and ten authored placement-review steps are regenerated.
+The exact review files and sources record this revision. Thick tubing and broad
+levers remain stylized approximations; appearance acceptance, physical strength,
+balance, insertion and sourcing are not certified by the software checks.

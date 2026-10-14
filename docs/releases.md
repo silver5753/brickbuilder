@@ -17,6 +17,77 @@ and named views; both commands return exit 3. Omit the stage override and supply
 the render extra/library for a complete delivery. Nothing places orders or verifies current stock.
 Read project Python and imported helpers before running release, just as for build.
 
+## Collision review is required for delivery
+
+New release manifests use schema version **3**. Every delivered model/pose must
+have a passing scoped collision review for a normal release, even when
+`required_checks` omits collisions or `--stage cad` narrows the other stages.
+With `--library` or `project.json.library`, release automatically adds the
+`collisions` stage. It generates reports/configs and isolated pair CAD against
+that exact revision. Declared geometry exceptions remain unknown; loaded face
+crossings still fail. With no library, collision review is explicitly
+`not_tested` unless matching captured collision evidence supplies the review.
+
+Use `--draft` for failed, unknown or untested collision reviews. The per-pose
+`collision_reviews` returned by release/verification and prominent HANDOFF entries
+show these states independently of artifact integrity. A verified checksum set
+never turns an unresolved collision into clearance. Inspect isolated pairs and
+opposite-side views before presenting a model as corrected.
+
+Advanced collision evidence remains supported. With a library, release reruns
+its captured configuration (materials, expected contacts and sampled joint) using
+the current checker; without one, it validates the captured exact-model evidence
+offline. A failure in either source wins. The offline verifier checks model/source
+and config hashes, all pair/geometry coverage, pose identities, status aggregation
+and surface-witness failure status; it does not rerun geometry or authenticate
+material claims. Removing a required review cannot promote a version-2 draft.
+
+Version-1/2 archives retain their historical connectivity policy; verification
+reports the new rooted delivery gate as not-tested. Version-1 archives also
+retain their historical collision policy and check set. Verification
+exposes their collision review as `not_tested` where absent; their artifact pass
+is not a new collision check. Rebuild to receive the current delivery gate.
+
+## Rooted connectivity requires explicit user consent to relax
+
+Version-3 releases always check rooted connectivity for every pose. When a root
+and catalog are configured, release adds `connections` despite stage overrides.
+Every part must reach the root through reviewed interfaces, every required pin
+segment and intended connection must pass, and occupancy conflicts must be absent.
+Missing configuration/review is not-tested and blocks publication. **`--draft`
+does not bypass this gate.** Use `build` for internal diagnostic iterations.
+
+`connectivity_reviews` reports this focused result separately from the overall
+connection report. Partial declarations of unused interfaces can keep the broader
+report unknown while all parts have proven root paths. That is not permission to
+leave a part floating. The verifier recomputes nominal edges, root paths, pin
+engagement and occupancy from captured CAD and catalog; changing report counts
+cannot make an unconnected model pass. Strength and physical insertion remain
+separate checks.
+
+Only explicit user agreement permits an exception, and only for a draft. Add
+`connectivity_approvals` to release.json, one record per approved pose, with:
+
+- `model`: exact pose name, such as `default`.
+- `model_sha256`: fingerprint in the diagnostic connection report.
+- `report_sha256`: SHA256 of the complete connections.json bytes.
+- `approved_by`: exactly `user`.
+- `approved_on`: ISO date of the user's approval.
+- `approval_source`: traceable message/reference for the actual agreement.
+- `approval_quote`: the user's exact words accepting the stated connectivity limitation.
+- `reason`: the specific unresolved attachments covered by that agreement.
+
+Do not prefill or fabricate these fields. An agent's assumption, an earlier draft,
+a command flag or "keep going" is not consent. Explain the concrete unresolved
+connections and obtain agreement before creating this record. Exact hashes bind
+the exception to the reviewed result; geometry, connector evidence or report
+changes require renewed agreement. Approval never changes the diagnostic status
+to pass, and the handoff exposes every exception. These records preserve evidence;
+the CLI cannot authenticate a conversation or prevent fabricated testimony.
+
+Historical v1/v2 artifacts remain verifiable under their original rules; they do
+not acquire consent or a current connectivity pass. Rebuild to use the new gate.
+
 ## Choose an explicit policy
 
 Put `release.json` beside `project.json`:
@@ -30,7 +101,7 @@ Put `release.json` beside `project.json`:
 ```
 
 Both fields are required. `required_checks` is a nonempty unique list drawn from
-`placements`, `part_count`, `connections`, `geometry`, `render`, `render_geometry`,
+`placements`, `part_count`, `connections`, `collisions`, `geometry`, `render`, `render_geometry`,
 `stickers`, `orders`, `instructions`, `instructions_geometry`, `render_completeness`
 and `requirement_bindings`. Every required check must pass for
 every pose. Any selected check's failure or unknown also blocks a normal release,
@@ -44,7 +115,13 @@ for the union of selected instances in the main render stage, not unselected par
 step illustrations, solid-volume correctness or visual acceptance. Surface generation
 can succeed despite an empty child dependency; see [rendering](rendering.md).
 
-### Optional diagnostic evidence
+### Diagnostic evidence
+
+For reusable collision configurations, `build.json.collisions` maps each pose to
+a configuration file. Release captures and reruns it; offline verification binds
+the emitted configuration to the captured input. Do not also provide an evidence
+configuration for the same pose. Existing standalone diagnostic bindings below
+remain supported.
 
 Add an optional `evidence` array to the policy. Each record has exactly these fields:
 
@@ -70,7 +147,9 @@ Collision verification reconstructs configured sampled pose fingerprints and che
 pair/instance coverage and status aggregation; it does not rerun geometry, authenticate
 material declarations or establish continuous clearance. Both retain scoped reports
 and unknowns. A required nonpassing diagnostic blocks normal publication; drafts
-retain its findings. Optional nonpassing evidence remains visible without blocking.
+retain its findings. Optional nonpassing sourcing evidence remains visible without blocking. Collision
+review is mandatory independently of an evidence entry's `required` flag; a
+collision failure cannot be made optional.
 Invalid/stale bindings always fail. `verify-release` returns these bindings and
 statuses in `diagnostic_evidence`, independently of ordinary build checks.
 
@@ -99,7 +178,8 @@ including in a draft. An unused sticker configuration is permitted. If sticker
 permission is `unknown`, a package requesting or using stickers can only be a
 draft. A normal package requires an explicit `allowed` policy for that use.
 
-Use `--draft` to retain a package whose checks are failed, unknown or incomplete:
+Use `--draft` to retain other failed, unknown or incomplete checks after the
+mandatory rooted connectivity gate passes (or a specific user exception is recorded):
 
 ```sh
 uv run --locked brickbuilder release projects/building --stage cad --draft \

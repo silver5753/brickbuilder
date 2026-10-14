@@ -273,6 +273,16 @@ def doctor(directory: Path, *, library: Path | None = None) -> ReadinessReport:
         )
 
     selected_library = library.resolve() if library is not None else project.library
+    add(
+        "collision_review",
+        "not_tested",
+        "Delivery requires a collision review for every pose. Release runs it with --library/project.json.library; doctor does not execute it. Failed, unknown or absent review requires --draft.",
+    )
+    add(
+        "connectivity_delivery",
+        "not_tested",
+        "Every part must have a reviewed path to the root before delivery. --draft does not waive connectivity; only explicit user consent bound to exact model/report hashes permits an exception. Doctor does not run this check.",
+    )
     dependencies = []
     if selected_library is None:
         add(
@@ -293,11 +303,14 @@ def doctor(directory: Path, *, library: Path | None = None) -> ReadinessReport:
             for part in project.parts:
                 try:
                     geometry = loader.load(part)
+                    incomplete = (
+                        not geometry.points or geometry.empty or geometry.missing
+                    )
                     add(
                         f"geometry:{part}",
-                        "unknown" if geometry.empty or geometry.missing else "pass",
+                        "unknown" if incomplete else "pass",
                         f"Partial/empty geometry: {geometry.empty + geometry.missing}"
-                        if geometry.empty or geometry.missing
+                        if incomplete
                         else "Declared part and recursive geometry dependencies resolve; fit/colour/stock untested.",
                     )
                 except (ValueError, OSError) as exc:

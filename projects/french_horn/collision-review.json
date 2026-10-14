@@ -1,0 +1,1668 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-14",
+  "revision": "R6: continuous low bell tail, round outer sweep, diagonal leadpipe, staggered slides and compact mount",
+  "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+  "surface_test": "transverse_triangles_v1",
+  "solid_test": "closed_boundary_parity_v1",
+  "tolerance_ldu": 0.01,
+  "pair_count": 6105,
+  "pair_statuses": {
+    "unknown": 168,
+    "pass": 5937
+  },
+  "pair_classifications": {
+    "unsupported_solid_boundary": 168,
+    "bounds_separated": 5912,
+    "expected_contact": 17,
+    "solid_separated": 8
+  },
+  "rooted_connectivity": "pass",
+  "rooted_quantity": 111,
+  "quantity": 111,
+  "connectivity_approvals": [],
+  "material_declarations": [],
+  "contact_review_count": 17,
+  "config_sha256": "b5799ddf294337c1de72fea53cf439fe7fc34407b5f19d569f6bdf0033472f44",
+  "geometry_dependency_sha256": "a7b83178859144188b7df7f346ea81f732fbb55f378771bf0e2d6866df83f106",
+  "intentional_empty": [
+    "1-16chrd.dat",
+    "4-4ering.dat",
+    "empty.dat"
+  ],
+  "solid_boundaries_by_reference": {
+    "3943b.dat": {
+      "status": "unknown",
+      "triangle_count": 1904,
+      "boundary_edges": 368,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 8
+    },
+    "44375b.dat": {
+      "status": "unknown",
+      "triangle_count": 1628,
+      "boundary_edges": 256,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 4
+    },
+    "3941.dat": {
+      "status": "unknown",
+      "triangle_count": 624,
+      "boundary_edges": 268,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 4
+    },
+    "4519.dat": {
+      "status": "pass",
+      "triangle_count": 176,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "closed_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0,
+      "components": 1
+    },
+    "65473.dat": {
+      "status": "unknown",
+      "triangle_count": 1180,
+      "boundary_edges": 412,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 4
+    },
+    "6536.dat": {
+      "status": "unknown",
+      "triangle_count": 804,
+      "boundary_edges": 210,
+      "nonmanifold_edges": 16,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 34
+    },
+    "25214.dat": {
+      "status": "unknown",
+      "triangle_count": 544,
+      "boundary_edges": 224,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "3713.dat": {
+      "status": "unknown",
+      "triangle_count": 488,
+      "boundary_edges": 168,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 16
+    },
+    "6587.dat": {
+      "status": "unknown",
+      "triangle_count": 264,
+      "boundary_edges": 48,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "3062b.dat": {
+      "status": "pass",
+      "triangle_count": 384,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "closed_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0,
+      "components": 1
+    },
+    "32062.dat": {
+      "status": "pass",
+      "triangle_count": 368,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "closed_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 32,
+      "components": 1
+    },
+    "3700.dat": {
+      "status": "unknown",
+      "triangle_count": 550,
+      "boundary_edges": 84,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 14
+    },
+    "4589.dat": {
+      "status": "unknown",
+      "triangle_count": 480,
+      "boundary_edges": 96,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "85861.dat": {
+      "status": "pass",
+      "triangle_count": 384,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "closed_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0,
+      "components": 1
+    },
+    "6558.dat": {
+      "status": "unknown",
+      "triangle_count": 2144,
+      "boundary_edges": 1920,
+      "nonmanifold_edges": 8,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 168
+    },
+    "3032.dat": {
+      "status": "unknown",
+      "triangle_count": 2620,
+      "boundary_edges": 864,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "3036.dat": {
+      "status": "unknown",
+      "triangle_count": 5692,
+      "boundary_edges": 1888,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "3004.dat": {
+      "status": "unknown",
+      "triangle_count": 172,
+      "boundary_edges": 48,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "3023.dat": {
+      "status": "unknown",
+      "triangle_count": 172,
+      "boundary_edges": 48,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "3623.dat": {
+      "status": "unknown",
+      "triangle_count": 268,
+      "boundary_edges": 80,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    },
+    "87087.dat": {
+      "status": "unknown",
+      "triangle_count": 248,
+      "boundary_edges": 16,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 8
+    },
+    "3069b.dat": {
+      "status": "pass",
+      "triangle_count": 44,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "closed_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0,
+      "components": 1
+    },
+    "98138.dat": {
+      "status": "pass",
+      "triangle_count": 256,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "closed_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0,
+      "components": 1
+    },
+    "1126.dat": {
+      "status": "pass",
+      "triangle_count": 212,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "closed_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0,
+      "components": 1
+    },
+    "3024.dat": {
+      "status": "unknown",
+      "triangle_count": 76,
+      "boundary_edges": 16,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "duplicate_faces": 0,
+      "reason": "open_or_nonmanifold_boundary",
+      "coordinate_rounding_ldu": 1e-9,
+      "edge_subdivisions": 0
+    }
+  },
+  "unresolved_pairs": [
+    {
+      "pair": [
+        "french_horn/bell/flare",
+        "french_horn/bell/rim"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/flare",
+        "french_horn/bell/throat"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/flare",
+        "french_horn/body/bell_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/flare",
+        "french_horn/slide_1/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/rim",
+        "french_horn/body/return_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/throat",
+        "french_horn/body/bell_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/throat",
+        "french_horn/stand/coil_bracket"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/bell/throat",
+        "french_horn/stand/mount_crossbar"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bell_axle",
+        "french_horn/body/bottom_anchor"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_0",
+        "french_horn/body/bend_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_0",
+        "french_horn/body/join_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_0",
+        "french_horn/body/lead_anchor"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_0",
+        "french_horn/body/return_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_0",
+        "french_horn/body/return_neck"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_1",
+        "french_horn/body/join_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_1",
+        "french_horn/body/join_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_1",
+        "french_horn/body/lead_anchor"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_1",
+        "french_horn/body/run_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_2",
+        "french_horn/body/bend_3"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_2",
+        "french_horn/body/join_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_2",
+        "french_horn/body/join_3"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_2",
+        "french_horn/body/run_3"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_3",
+        "french_horn/body/join_3"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_3",
+        "french_horn/body/join_4"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_3",
+        "french_horn/body/run_3"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_3",
+        "french_horn/body/run_4"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_4",
+        "french_horn/body/bend_5"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_4",
+        "french_horn/body/join_4"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_4",
+        "french_horn/body/join_5"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_4",
+        "french_horn/body/run_5"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_5",
+        "french_horn/body/join_5"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_5",
+        "french_horn/body/run_5"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_5",
+        "french_horn/body/tail_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bend_5",
+        "french_horn/body/tail_bush"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bottom_anchor",
+        "french_horn/body/tail_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bottom_anchor",
+        "french_horn/body/tail_bush"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/bottom_anchor",
+        "french_horn/stand/coil_pin"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_1",
+        "french_horn/body/lead_anchor"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_1",
+        "french_horn/mouthpipe/pin"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_2",
+        "french_horn/body/run_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_3",
+        "french_horn/body/run_3"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_4",
+        "french_horn/body/run_4"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/join_5",
+        "french_horn/body/run_5"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/lead_anchor",
+        "french_horn/mouthpipe/pin"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_axle",
+        "french_horn/body/return_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_axle",
+        "french_horn/body/return_neck"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_bend",
+        "french_horn/body/return_bush_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_bend",
+        "french_horn/body/return_neck"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_bend",
+        "french_horn/body/return_stud_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_bush_0",
+        "french_horn/body/return_bush_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_bush_0",
+        "french_horn/body/return_stud_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_bush_1",
+        "french_horn/body/return_stud_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/return_stud_axle",
+        "french_horn/body/return_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/body/tail_axle",
+        "french_horn/body/tail_bush"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/left_axle",
+        "french_horn/main_slide/left_base"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/left_axle",
+        "french_horn/main_slide/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/left_base",
+        "french_horn/main_slide/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/left_base",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/left_bend",
+        "french_horn/main_slide/top_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/left_bend",
+        "french_horn/main_slide/top_bush"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/right_axle",
+        "french_horn/main_slide/right_base"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/right_axle",
+        "french_horn/main_slide/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/right_base",
+        "french_horn/main_slide/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/right_base",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/right_bend",
+        "french_horn/main_slide/top_axle"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/right_bend",
+        "french_horn/main_slide/top_bush"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/main_slide/top_axle",
+        "french_horn/main_slide/top_bush"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/mouthpipe/bracket",
+        "french_horn/mouthpipe/lead_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/mouthpipe/bracket",
+        "french_horn/mouthpipe/pin"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/mouthpipe/cup",
+        "french_horn/mouthpipe/lead_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/mouthpipe/cup",
+        "french_horn/mouthpipe/lip"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/bottom_join",
+        "french_horn/slide_0/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/bottom_join",
+        "french_horn/slide_0/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_axle",
+        "french_horn/slide_0/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_axle",
+        "french_horn/slide_0/left_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_axle",
+        "french_horn/slide_0/left_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_axle",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_bend",
+        "french_horn/slide_0/left_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_bend",
+        "french_horn/slide_0/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_bend",
+        "french_horn/slide_1/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/left_tube_0",
+        "french_horn/slide_0/left_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_axle",
+        "french_horn/slide_0/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_axle",
+        "french_horn/slide_0/right_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_axle",
+        "french_horn/slide_0/right_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_axle",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_bend",
+        "french_horn/slide_0/right_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_bend",
+        "french_horn/slide_1/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_bend",
+        "french_horn/slide_1/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_bend",
+        "french_horn/valves/lower_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_0/right_tube_0",
+        "french_horn/slide_0/right_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/bottom_join",
+        "french_horn/slide_1/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/bottom_join",
+        "french_horn/slide_1/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_axle",
+        "french_horn/slide_1/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_axle",
+        "french_horn/slide_1/left_extension_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_axle",
+        "french_horn/slide_1/left_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_axle",
+        "french_horn/slide_1/left_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_bend",
+        "french_horn/slide_1/left_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_bend",
+        "french_horn/slide_1/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_bend",
+        "french_horn/slide_2/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_extension_0",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/left_tube_0",
+        "french_horn/slide_1/left_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_axle",
+        "french_horn/slide_1/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_axle",
+        "french_horn/slide_1/right_extension_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_axle",
+        "french_horn/slide_1/right_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_axle",
+        "french_horn/slide_1/right_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_bend",
+        "french_horn/slide_1/right_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_bend",
+        "french_horn/slide_2/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_bend",
+        "french_horn/slide_2/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_bend",
+        "french_horn/stand/pipe_post_6"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_bend",
+        "french_horn/stand/pipe_post_7"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_bend",
+        "french_horn/stand/pipe_post_8"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_extension_0",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_extension_0",
+        "french_horn/stand/pipe_post_10"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_extension_0",
+        "french_horn/stand/pipe_post_9"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_1/right_tube_0",
+        "french_horn/slide_1/right_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/bottom_join",
+        "french_horn/slide_2/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/bottom_join",
+        "french_horn/slide_2/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_axle",
+        "french_horn/slide_2/left_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_axle",
+        "french_horn/slide_2/left_extension_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_axle",
+        "french_horn/slide_2/left_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_axle",
+        "french_horn/slide_2/left_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_bend",
+        "french_horn/slide_2/left_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_bend",
+        "french_horn/slide_2/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_extension_0",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/left_tube_0",
+        "french_horn/slide_2/left_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_axle",
+        "french_horn/slide_2/right_bend"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_axle",
+        "french_horn/slide_2/right_extension_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_axle",
+        "french_horn/slide_2/right_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_axle",
+        "french_horn/slide_2/right_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_bend",
+        "french_horn/slide_2/right_tube_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_extension_0",
+        "french_horn/slide_carrier/roof"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_2/right_tube_0",
+        "french_horn/slide_2/right_tube_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_carrier/roof",
+        "french_horn/stand/pipe_post_10"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/slide_carrier/roof",
+        "french_horn/valves/upper_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/base",
+        "french_horn/stand/coil_foot_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/base",
+        "french_horn/stand/trim_60"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/base",
+        "french_horn/stand/trim_m20"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/base",
+        "french_horn/stand/trim_m60"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/coil_bracket",
+        "french_horn/stand/coil_pin"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/coil_bracket",
+        "french_horn/stand/coil_shim_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/coil_bracket",
+        "french_horn/stand/mount_crossbar"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/coil_foot_0",
+        "french_horn/stand/coil_foot_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/coil_foot_1",
+        "french_horn/stand/coil_foot_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/coil_foot_2",
+        "french_horn/stand/coil_shim_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/coil_shim_0",
+        "french_horn/stand/coil_shim_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/mount_crossbar",
+        "french_horn/stand/pipe_post_5"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/pipe_post_10",
+        "french_horn/stand/pipe_post_9"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/pipe_post_10",
+        "french_horn/valves/lower_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/pipe_post_10",
+        "french_horn/valves/upper_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/pipe_post_8",
+        "french_horn/stand/pipe_post_9"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/pipe_post_8",
+        "french_horn/valves/lower_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/pipe_post_9",
+        "french_horn/valves/lower_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/stand/pipe_post_9",
+        "french_horn/valves/upper_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_0",
+        "french_horn/valves/lever_mount_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_0",
+        "french_horn/valves/lever_mount_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_1",
+        "french_horn/valves/lever_mount_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_1",
+        "french_horn/valves/lever_mount_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_1",
+        "french_horn/valves/lever_mount_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_2",
+        "french_horn/valves/lever_mount_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_2",
+        "french_horn/valves/lever_mount_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_mount_0",
+        "french_horn/valves/lever_mount_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_mount_0",
+        "french_horn/valves/upper_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_mount_1",
+        "french_horn/valves/lever_mount_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_mount_1",
+        "french_horn/valves/upper_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lever_mount_2",
+        "french_horn/valves/upper_rail"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lower_rail",
+        "french_horn/valves/rotor_0"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lower_rail",
+        "french_horn/valves/rotor_1"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    },
+    {
+      "pair": [
+        "french_horn/valves/lower_rail",
+        "french_horn/valves/rotor_2"
+      ],
+      "status": "unknown",
+      "classification": "unsupported_solid_boundary"
+    }
+  ],
+  "limits": [
+    "168 pairs remain unknown due to open/nonmanifold native material boundaries. No unsupported pairs are waived.",
+    "Zero detected transverse surface or solid-interference witnesses is not a proof of all clearances.",
+    "No physical strength, balance, clutch force, insertion or motion trial."
+  ]
+}

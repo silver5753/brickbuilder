@@ -1,7 +1,7 @@
 """Execute reviewed project Python once, then orchestrate existing output APIs."""
 
 from contextlib import redirect_stdout
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from hashlib import sha256
 import importlib.util
 from importlib.abc import MetaPathFinder
@@ -14,6 +14,7 @@ from tempfile import TemporaryDirectory
 from uuid import uuid4
 
 from .assembly import authoring_bundle
+from .collisions import default_config, diagnose
 from .build_result import BuildResult
 from .connectivity.catalog import loads_catalog
 from .exporters import bundle as order_bundle, write_bundle
@@ -29,7 +30,16 @@ from .rendering.config import load_config
 from .rendering.stickers import load_stickers
 
 STAGES = frozenset(
-    {"cad", "geometry", "connections", "render", "stickers", "orders", "instructions"}
+    {
+        "cad",
+        "geometry",
+        "connections",
+        "collisions",
+        "render",
+        "stickers",
+        "orders",
+        "instructions",
+    }
 )
 
 
@@ -51,6 +61,7 @@ class BuildConfig:
     exceptions: Path | None
     orders: tuple[Order, ...]
     sha256: str | None
+    collisions: dict[str, Path] = field(default_factory=dict)
 
 
 def load_build_config(project: Project) -> BuildConfig:
@@ -58,9 +69,13 @@ def load_build_config(project: Project) -> BuildConfig:
     if not path.exists():
         return BuildConfig((), None, None, None, None, None, (), None)
     payload = path.read_bytes()
+    raw = decode_json(payload.decode("utf-8-sig"))
+    fields = {"stages", "root", "catalog", "render", "stickers", "exceptions", "orders"}
+    if isinstance(raw, dict) and "collisions" in raw:
+        fields.add("collisions")
     data = versioned(
-        decode_json(payload.decode("utf-8-sig")),
-        {"stages", "root", "catalog", "render", "stickers", "exceptions", "orders"},
+        raw,
+        fields,
         "build.json",
     )
     stages = tuple(text(s, "Stage") for s in array(data["stages"], "Stages"))
@@ -93,6 +108,9 @@ def load_build_config(project: Project) -> BuildConfig:
         )
     if len({o.name for o in orders}) != len(orders):
         raise ValueError("Duplicate order names")
+    collision_paths = data.get("collisions", {})
+    if not isinstance(collision_paths, dict):
+        raise ValueError("build.json.collisions must map pose names to config paths")
     return BuildConfig(
         stages,
         text(data["root"], "Root") if data["root"] is not None else None,
@@ -102,6 +120,12 @@ def load_build_config(project: Project) -> BuildConfig:
         paths["exceptions"],
         tuple(orders),
         sha256(payload).hexdigest(),
+        {
+            text(name, "Collision pose"): project_path(
+                project.root, path, "Collision config"
+            )
+            for name, path in collision_paths.items()
+        },
     )
 
 
@@ -174,6 +198,7 @@ def build_project(
     stages: tuple[str, ...] | None = None,
     library: Path | None = None,
     palette: Path | None = None,
+    collision_configs: dict[str, bytes] | None = None,
 ) -> dict:
     """Create a draft execution bundle; invalid stages fail before publishing.
 
@@ -232,11 +257,14 @@ def build_project(
         palette = palette or selected_library / "LDConfig.ldr"
         if not palette.is_file():
             raise ValueError("Supply --palette or a library containing LDConfig.ldr")
-    if "geometry" in enabled and selected_library is None:
-        raise ValueError("Geometry stage requires --library or project.json.library")
+    if enabled & {"geometry", "collisions"} and selected_library is None:
+        raise ValueError(
+            "Geometry/collisions stage requires --library or project.json.library"
+        )
     exceptions = {}
     if settings.exceptions is not None and enabled & {
         "geometry",
+        "collisions",
         "render",
         "instructions",
     }:
@@ -261,6 +289,17 @@ def build_project(
             snapshot(project_path(project.root, "steps.json", "Step plan"))
         )
     result, builder_hash = _invoke(project)
+    configs = dict(collision_configs or {})
+    if "collisions" in enabled:
+        if set(configs) & settings.collisions.keys():
+            raise ValueError(
+                "Duplicate collision configuration in build.json and evidence"
+            )
+        configs.update(
+            {name: snapshot(path) for name, path in settings.collisions.items()}
+        )
+        if set(configs) - {name for name, _ in result.models()}:
+            raise ValueError("Collision configuration names an unknown emitted pose")
     hashes[project.builder.relative_to(project.root).as_posix()] = builder_hash
     reviews: dict[str, dict] = {}
     with TemporaryDirectory(
@@ -292,6 +331,21 @@ def build_project(
                 and len(model.model.parts) > project.brief.part_count_limit
                 else "pass",
             }
+            checks["collisions"] = "not_tested"
+            if "collisions" in enabled:
+                assert selected_library is not None
+                collision_config = configs.get(
+                    name, default_config(source.document.model)
+                )
+                diagnostic = diagnose(
+                    source,
+                    PartLibrary((selected_library,), missing=exceptions),
+                    collision_config,
+                )
+                files = diagnostic.bundle()
+                files["config.json"] = collision_config.decode("utf-8")
+                write_bundle(folder / "collisions", files)
+                checks["collisions"] = diagnostic.report["status"]
             if "geometry" in enabled:
                 assert selected_library is not None
                 parts = PartLibrary((selected_library,), missing=exceptions)
@@ -415,7 +469,7 @@ def build_project(
                 physical_build="not_tested",
                 stock="not_tested",
                 importer_acceptance="not_tested",
-                collision="not_tested",
+                collision=checks["collisions"],
                 insertion_access="not_tested",
                 motion="not_tested",
                 acceptance="not_tested",

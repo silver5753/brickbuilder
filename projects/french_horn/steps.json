@@ -1,0 +1,503 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "id": "step_1",
+      "title": "Low stand and pinned mount — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/stand"
+      ],
+      "requires": [],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/stand/base"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_2",
+      "title": "Continuous outer sweep and bell tail — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/body"
+      ],
+      "requires": [
+        "step_1"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/body/bottom_anchor"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_3",
+      "title": "Lower bell on the tail axle — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/bell"
+      ],
+      "requires": [
+        "step_2"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/bell/throat"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_4",
+      "title": "Diagonal leadpipe — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/mouthpipe"
+      ],
+      "requires": [
+        "step_3"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/mouthpipe/bracket"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_5",
+      "title": "Inner-slide carrier — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_carrier"
+      ],
+      "requires": [
+        "step_4"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/slide_carrier/roof"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_6",
+      "title": "Upper return loop — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/main_slide"
+      ],
+      "requires": [
+        "step_5"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/main_slide/left_bend"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_7",
+      "title": "First tuning slide — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_0"
+      ],
+      "requires": [
+        "step_6"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/slide_0/left_axle"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_8",
+      "title": "Second tuning slide — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_1"
+      ],
+      "requires": [
+        "step_7"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/slide_1/left_axle"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_9",
+      "title": "Third tuning slide — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/slide_2"
+      ],
+      "requires": [
+        "step_8"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/slide_2/left_axle"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_10",
+      "title": "Rotary-valve details — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/valves"
+      ],
+      "requires": [
+        "step_9"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/valves/upper_rail"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    }
+  ]
+}

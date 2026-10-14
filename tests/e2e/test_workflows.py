@@ -514,6 +514,30 @@ def build(project):
             )
         )
     )
+    # This explicitly disconnected synthetic fixture exercises other stages.
+    # Fictional consent belongs only to these exact test models, never production.
+    diagnostics = tmp_path / "connectivity-diagnostics"
+    installed_core.run("build", project, "--stage", "cad", "--destination", diagnostics)
+    policy = read(project / "release.json")
+    approvals = []
+    for pose in ("default", "shifted"):
+        base = diagnostics if pose == "default" else diagnostics / "poses" / pose
+        connection = read(base / "connections.json")
+        approvals.append(
+            dict(
+                model=pose,
+                model_sha256=connection["model_sha256"],
+                report_sha256=digest(base / "connections.json"),
+                approved_by="user",
+                approved_on="2026-10-13",
+                approval_source="synthetic test fixture",
+                approval_quote="I accept the disconnected synthetic tile and shield for this test draft.",
+                reason="Test-only disconnected artifact pipeline fixture",
+            )
+        )
+    policy["connectivity_approvals"] = approvals
+    (project / "release.json").write_text(json.dumps(policy))
+    (project / "called.txt").unlink()  # Reset the builder-execution probe after setup.
     output = tmp_path / "built"
     args = [
         "release",

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "required_checks": [
+    "placements",
+    "part_count",
+    "requirement_bindings",
+    "render",
+    "instructions",
+    "connections",
+    "collisions"
+  ],
+  "inputs": [
+    "README.md",
+    "catalog-evidence.json",
+    "repair-review.json",
+    "connectivity-review.json",
+    "r4-catalog.json",
+    "r4-catalog-2.json",
+    "collision-review.json"
+  ]
+}

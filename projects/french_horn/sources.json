@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "S1",
+      "location": "User request 12 October 2026: build the French horn and render at the end",
+      "kind": "user",
+      "edition": null,
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "Design task and output authorization"
+    },
+    {
+      "id": "S2",
+      "location": "https://www.yamaha.com/en/musical_instrument_guide/horn/mechanism/",
+      "kind": "drawing",
+      "edition": "Retrieved 12 October 2026",
+      "pdf_page": null,
+      "figure": "F/B-flat full-double horn labelled diagram, mechanism_p01_01.jpg",
+      "retrieval": "available",
+      "sha256": "8fb3c3f451690b2f24930ca5f66ddcb17f0390a4dda8ca0ff8af5041cc46b894",
+      "confidence": "high",
+      "note": "Reference for coiled body, bell, three finger levers, tuning slides and mouthpiece; proportions are stylized, not measured; image bytes re-inspected 14 October 2026 at https://www.yamaha.com/en/musical_instrument_guide/common/images/horn/mechanism_p01_01.jpg"
+    },
+    {
+      "id": "S3",
+      "location": "User instruction, 13 October 2026: fix floating parts and the workflow; connectivity relaxation only with explicit user agreement",
+      "kind": "user",
+      "edition": null,
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "No connectivity exception was requested or granted; every part must reach the stand."
+    },
+    {
+      "id": "S4",
+      "location": "User instruction, 14 October 2026: \"make it actually look like a french horn, not a trumpet. the bell faces back at the bottom\"",
+      "kind": "user",
+      "edition": null,
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "Move the bell to the lower rear; preserve real mounts and native LDraw rendering."
+    },
+    {
+      "id": "S5",
+      "location": "User instruction, 14 October 2026: \"Look up some pictures of the French horn and understand why this is still wrong. Then fix it\"; \"You can make the model bigger if you need to\"",
+      "kind": "user",
+      "edition": null,
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": null,
+      "confidence": "high",
+      "note": "Authorizes reference-informed redesign and larger scale; no connectivity relaxation."
+    },
+    {
+      "id": "S6",
+      "location": "https://usa.yamaha.com/products/musical_instruments/winds/frenchhorns/yhr-567/index.html",
+      "kind": "photo",
+      "edition": "Retrieved and visually inspected 14 October 2026",
+      "pdf_page": null,
+      "figure": "YHR-567 product photograph",
+      "retrieval": "available",
+      "sha256": "fc9081b613c24f664e9f31116bd4dd7ca7b60a729409558ebb13c56798852a8b",
+      "confidence": "high",
+      "note": "Compared actual product photo with Yamaha labelled mechanism diagram S2. Continuous round outer bell tail, low flared bell, slim diagonal leadpipe and dense staggered inner loops. Images are references only and are not redistributed. Image bytes: https://my.yamaha.com/en/files/yhr-567_f_1002_tcm147-1659889.jpg?imhei=735&impolicy=large&imwid=735"
+    }
+  ]
+}

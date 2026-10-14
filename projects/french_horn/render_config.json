@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "views": [
+    {
+      "name": "front",
+      "eye": [
+        0,
+        0,
+        -1
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    },
+    {
+      "name": "hero",
+      "eye": [
+        -0.45,
+        -0.25,
+        -1.5
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    },
+    {
+      "name": "rear",
+      "eye": [
+        0.4,
+        -0.25,
+        1.5
+      ],
+      "up": [
+        0,
+        -1,
+        0
+      ],
+      "groups": []
+    }
+  ],
+  "width": 1400,
+  "height": 1100,
+  "padding": 0.1,
+  "envelopes": [],
+  "supersampling": 2
+}

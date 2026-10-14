@@ -121,7 +121,7 @@ def test_rotated_bounds_are_candidates_and_hollow_material_stays_unknown(
     config["materials"] = []
     assert (
         run((source, library, config)).report["poses"][0]["pairs"][0]["classification"]
-        == "unreviewed_material_or_hollow_geometry"
+        == "solid_separated"
     )
 
 
@@ -141,9 +141,7 @@ def test_unsupported_meshes_never_become_solid_or_clear(collision_case, tmp_path
     result = run(case)
     assert result.report["status"] == "unknown"
     assert result.report["poses"][0]["pairs"][0]["classification"] == (
-        "unreviewed_material_or_hollow_geometry"
-        if kind == "hollow"
-        else "unresolved_geometry"
+        "unsupported_solid_boundary" if kind == "hollow" else "unresolved_geometry"
     )
 
 
@@ -238,3 +236,94 @@ def test_invalid_joint_never_publishes_a_pose(collision_case, change):
     case[2]["joint"] = joint
     with pytest.raises(ValueError):
         run(case)
+
+
+def test_closed_mesh_containment_is_detected_without_material_boxes(
+    collision_case, tmp_path
+):
+    (tmp_path / "inner.dat").write_text("1 16 0 0 0 0.5 0 0 0 0.5 0 0 0 0.5 cube.dat\n")
+    case = collision_case(reference="inner.dat")
+    case[2]["materials"] = []
+    result = run(case)
+    assert result.report["status"] == "fail"
+    assert (
+        result.report["poses"][0]["pairs"][0]["classification"] == "solid_containment"
+    )
+
+
+def test_surface_failure_cannot_be_waived_as_expected_contact(collision_case):
+    case = collision_case((0.5, 0.6, 0.7))
+    case[2]["materials"] = []
+    case[2]["expected_contacts"] = [
+        dict(
+            model_sha256=case[2]["model_sha256"],
+            pair=["fixed", "moving"],
+            reason="Contact review cannot waive crossing",
+        )
+    ]
+    result = run(case)
+    assert result.report["status"] == "fail"
+    assert (
+        result.report["poses"][0]["pairs"][0]["classification"]
+        == "surface_intersection"
+    )
+
+
+@pytest.mark.parametrize(
+    "offset,expected",
+    [((2, 0, 0), "pass"), ((0, 0, 0), "fail"), ((1.999999, 0, 0), "unknown")],
+)
+def test_closed_mesh_contact_review_and_offline_witness_integrity(
+    collision_case, offset, expected
+):
+    from brickbuilder.evidence import review_collisions
+
+    case = collision_case(offset)
+    case[2]["materials"] = []
+    case[2]["expected_contacts"] = [
+        dict(
+            model_sha256=case[2]["model_sha256"],
+            pair=["fixed", "moving"],
+            reason="Synthetic cube face seat",
+        )
+    ]
+    result = run(case)
+    assert result.report["status"] == expected
+    result.report.update(json.loads(json.dumps(result.report)))
+    payload = json.dumps(case[2]).encode()
+    review_collisions(case[0].document.model, result.report, payload)
+    row = result.report["poses"][0]["pairs"][0]
+    if expected == "pass":
+        assert row["classification"] == "expected_contact"
+        assert row["contact_basis"] == "closed_boundary_cells"
+        assert row["cells_checked"] > 0
+        result.report["poses"][0]["geometry"][0]["solid_boundary"]["status"] = "unknown"
+        with pytest.raises(ValueError, match="closed boundaries"):
+            review_collisions(case[0].document.model, result.report, payload)
+    else:
+        row["status"] = "pass"
+        result.report["poses"][0]["status"] = "pass"
+        result.report["status"] = "pass"
+        with pytest.raises(ValueError, match="must fail|remain unknown"):
+            review_collisions(case[0].document.model, result.report, payload)
+
+
+def test_false_complete_box_claim_cannot_hide_solid_containment(
+    collision_case, tmp_path
+):
+    (tmp_path / "inner.dat").write_text("1 16 0 0 0 0.5 0 0 0 0.5 0 0 0 0.5 cube.dat\n")
+    case = collision_case(reference="inner.dat")
+    source, library, config = case
+    config["materials"][0]["boxes"] = [
+        dict(minimum=[-0.9, -0.9, -0.9], maximum=[-0.8, -0.8, -0.8])
+    ]
+    config["materials"][1]["geometry_sha256"] = geometry_fingerprint(
+        "inner.dat", library
+    )
+    config["materials"][1]["boxes"] = [dict(minimum=[0, 0, 0], maximum=[0.1, 0.1, 0.1])]
+    # The tool cannot authenticate authored completeness, but automatic positive
+    # solid evidence still defeats the deliberately false complete-box claim.
+    assert (
+        run(case).report["poses"][0]["pairs"][0]["classification"]
+        == "solid_containment"
+    )

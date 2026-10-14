@@ -9,9 +9,15 @@ import platform
 import shutil
 from tempfile import TemporaryDirectory
 
+from .connectivity_delivery import connectivity_reviews
 from .execution import build_project, load_build_config
 from .delivery import validate_decoration
-from .evidence import review_evidence, evidence_findings
+from .evidence import (
+    review_evidence,
+    evidence_findings,
+    collision_reviews,
+    collision_findings,
+)
 from .jsonio import read_json, write_json
 from .project import load_project, project_path
 from .rendering.stickers import artwork_dependencies
@@ -38,6 +44,7 @@ def _inputs(directory: Path, policy: dict) -> dict[str, bytes]:
     if (project.root / "steps.json").exists():
         paths.add(project.root / "steps.json")
     paths.update(job.rules for job in settings.orders)
+    paths.update(settings.collisions.values())
     if settings.stickers is not None:
         paths.update(artwork_dependencies(settings.stickers))
     # Include local helper code, even imports subsequently removed from sys.modules.
@@ -88,12 +95,31 @@ def release_project(
         settings.stickers is not None,
     )
     before = _inputs(directory, policy)
+    selected_stages = tuple(settings.stages if stages is None else stages)
+    if (library or project.library) and "collisions" not in selected_stages:
+        selected_stages = (*selected_stages, "collisions")
+    if (
+        settings.catalog is not None
+        and settings.root is not None
+        and "connections" not in selected_stages
+    ):
+        selected_stages = (*selected_stages, "connections")
+    collision_configs = {
+        row["model"]: before[row["input"]]
+        for row in policy.get("evidence", [])
+        if row["kind"] == "collisions"
+    }
     with TemporaryDirectory(
         prefix="brickbuilder-release-", dir=destination.parent
     ) as temp:
         folder = Path(temp) / "release"
         summary = build_project(
-            directory, folder, stages=stages, library=library, palette=palette
+            directory,
+            folder,
+            stages=selected_stages,
+            library=library,
+            palette=palette,
+            collision_configs=collision_configs,
         )
         if before != _inputs(directory, policy):
             raise ValueError(
@@ -104,15 +130,17 @@ def release_project(
                 raise ValueError(
                     f"Build input does not match captured release input: {name}"
                 )
+        connectivity = connectivity_reviews(folder, summary, policy, draft=draft)
         findings = policy_findings(
             summary,
             policy,
             project.brief,
             stickers=settings.stickers is not None,
         )
-        findings += evidence_findings(
-            review_evidence(directory, folder, policy, set(summary["models"]))
-        )
+        evidence = review_evidence(directory, folder, policy, set(summary["models"]))
+        findings += evidence_findings(evidence)
+        collisions = collision_reviews(summary, evidence)
+        findings += collision_findings(collisions)
         if findings and not draft:
             raise ValueError(
                 "Release policy not met; use --draft for a review package: "
@@ -138,7 +166,7 @@ def release_project(
         )
         label = "draft" if draft else "verified_artifacts"
         manifest = dict(
-            schema_version=1,
+            schema_version=3,
             kind="brickbuilder_release",
             label=label,
             policy=policy,
@@ -158,7 +186,8 @@ def release_project(
             ],
         )
         (folder / "HANDOFF.md").write_text(
-            _handoff(folder, summary, label, findings), encoding="utf-8"
+            _handoff(folder, summary, label, findings, collisions, connectivity),
+            encoding="utf-8",
         )
         manifest["artifacts"] = file_hashes(folder)
         write_json(folder / "release_manifest.json", manifest)
@@ -184,7 +213,14 @@ def release_project(
         return published
 
 
-def _handoff(folder: Path, summary: dict, label: str, findings: list[str]) -> str:
+def _handoff(
+    folder: Path,
+    summary: dict,
+    label: str,
+    findings: list[str],
+    collisions: dict[str, str],
+    connectivity: dict[str, dict],
+) -> str:
     lines = [
         f"# {summary['project']} — {label}",
         "",
@@ -203,6 +239,17 @@ def _handoff(folder: Path, summary: dict, label: str, findings: list[str]) -> st
         prefix = "" if name == "default" else f"poses/{name}/"
         lines.append(
             f"- {name}: `{prefix}model.ldr`, `{prefix}inventory.json`; {report['quantity']} physical parts; checks {report['status']}."
+        )
+        lines.append(
+            f"  - Collision review: **{collisions[name]}**. "
+            + (
+                f"See `{prefix}collisions/collisions.json` and isolated pair CAD."
+                if (folder / prefix / "collisions/collisions.json").exists()
+                else "See bound collision evidence, or supply a geometry library to run the check."
+            )
+        )
+        lines.append(
+            f"  - Rooted connectivity: **{connectivity[name]['status']}**; explicit user exception: {connectivity[name]['user_approved_exception']}."
         )
         if (folder / prefix / "instructions/index.html").exists():
             lines.append(

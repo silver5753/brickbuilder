@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "subject": "French horn desktop display — reference-informed R6",
+  "dimensions": "Larger stylized miniature permitted explicitly by user on 14 October 2026; native bounds in release.",
+  "scale": "Stylized miniature; not a playable instrument or a specific manufacturer replica",
+  "part_count_limit": 220,
+  "budget": null,
+  "construction_style": "Rigid standard brick and Technic parts, coiled tubes, fixed valve details, dish bell, dark stand",
+  "sticker_policy": "forbidden",
+  "sourcing_region": null,
+  "condition": null,
+  "owned_parts": null,
+  "axes": "Native +X is image right, -Y is up; front camera is at -Z. Coil lies in XY. Bell grows continuously from the lower outer sweep and opens -X at Y=-122. Backward is relative to the player, not automatically camera +Z; reference photographs determine the silhouette.",
+  "deliverables": [
+    "cad",
+    "inventory",
+    "preview",
+    "instructions"
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Recognizable circular coiled horn body",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5",
+        "S6"
+      ],
+      "assemblies": [
+        "french_horn/body"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Inspect silhouette and reviewed elbow/axle/cross-block paths to pinned stand mount"
+    },
+    {
+      "id": "R2",
+      "text": "Three rotary valve details and layered tuning slides",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "assemblies": [
+        "french_horn/valves"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Verify both valve rails and all three stud-ended tuning slides reach the stand"
+    },
+    {
+      "id": "R3",
+      "text": "Clearly flared French-horn bell at the bottom, facing backward",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4",
+        "S5",
+        "S6"
+      ],
+      "assemblies": [
+        "french_horn/bell"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Inspect continuous outer sweep into lower bell in front/hero/rear views; verify bell-root connection independently of the stand and review collisions."
+    },
+    {
+      "id": "R4",
+      "text": "Distinct leadpipe and contrasting mouthpiece",
+      "priority": "must",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "assemblies": [
+        "french_horn/mouthpipe"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Verify short diagonal pipe attaches by reviewed pin/bracket to the outer sweep, with continuous stud connections through mouthpiece."
+    },
+    {
+      "id": "R5",
+      "text": "Dark desktop display stand",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "french_horn/stand"
+      ],
+      "views": [
+        "front",
+        "rear",
+        "hero"
+      ],
+      "validation": "Verify every part has a nominal connection path to the stand; physical strength and balance trial pending"
+    }
+  ]
+}

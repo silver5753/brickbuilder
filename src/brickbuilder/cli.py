@@ -345,21 +345,39 @@ def _doctor_command(args: argparse.Namespace) -> int:
 
 
 def _parts_command(args: argparse.Namespace) -> int:
+    from .model import reference_name
     from .parts import build_index
     from .project import load_project
 
-    if args.project is not None and args.part is not None:
-        raise ValueError("Use --project or --part, not both")
+    if sum(value is not None for value in (args.project, args.part, args.model)) > 1:
+        raise ValueError("Use only one of --project, --part or --model")
     project = load_project(args.project) if args.project else None
     library = args.library or (project.library if project else None)
     if library is None:
         raise ValueError("Supply --library or a project with a declared library")
     references = project.parts if project else tuple(args.part) if args.part else None
+    source = read_source(args.model) if args.model is not None else None
+    if source is not None:
+        if any(
+            isinstance(record, RawLine)
+            and isinstance(parse_line(record.text), Primitive)
+            for record in source.document.records
+        ):
+            raise ValueError(
+                "--model requires flattened physical parts, without raw geometry"
+            )
+        references = tuple(
+            sorted({reference_name(p.reference) for p in source.document.model.parts})
+        )
     index = build_index(
         library, references, metadata_path=args.metadata, catalog_path=args.catalog
     )
     if project:
         index.provenance["project_input_sha256"] = dict(project.input_hashes)
+    if source is not None:
+        index.provenance["model_source_sha256"] = source.sha256
+        index.provenance["model_sha256"] = source.document.model.fingerprint()
+        index.provenance["model_quantity"] = len(source.document.model.parts)
     matches = index.search(
         query=args.query,
         function=args.function,
@@ -467,6 +485,8 @@ def _selection_args(parser: argparse.ArgumentParser) -> None:
 
 
 def _parser() -> argparse.ArgumentParser:
+    from .execution import STAGES
+
     parser = argparse.ArgumentParser(prog="brickbuilder")
     commands = parser.add_subparsers(dest="command", required=True)
     for command in ("build", "release"):
@@ -478,16 +498,8 @@ def _parser() -> argparse.ArgumentParser:
         build.add_argument(
             "--stage",
             action="append",
-            choices=[
-                "cad",
-                "geometry",
-                "connections",
-                "render",
-                "stickers",
-                "orders",
-                "instructions",
-            ],
-            help="Repeat to override configured stages; CAD is always generated",
+            choices=sorted(STAGES),
+            help="Repeat to override configured stages; CAD is always generated and release still enforces connectivity and collision review",
         )
         build.add_argument("--library", type=Path)
         build.add_argument("--palette", type=Path)
@@ -495,7 +507,7 @@ def _parser() -> argparse.ArgumentParser:
             build.add_argument(
                 "--draft",
                 action="store_true",
-                help="Publish a labelled draft, retaining policy findings",
+                help="Publish a labelled draft; does not waive rooted connectivity without explicit user approval",
             )
         build.set_defaults(handler=_build_command)
     verify = commands.add_parser(
@@ -534,6 +546,11 @@ def _parser() -> argparse.ArgumentParser:
         "parts", help="Index and search local part candidates and declared evidence"
     )
     parts.add_argument("--project", type=Path)
+    parts.add_argument(
+        "--model",
+        type=Path,
+        help="Index distinct physical references from flattened CAD; never run a builder",
+    )
     parts.add_argument("--library", type=Path)
     parts.add_argument("--part", action="append")
     parts.add_argument("--metadata", type=Path)

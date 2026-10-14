@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-14",
+  "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+  "quantity": 111,
+  "root": "french_horn/stand/base",
+  "rooted_quantity": 111,
+  "disconnected_components": [],
+  "occupancy_conflicts": [],
+  "intended_connection_statuses": {
+    "pass": 10
+  },
+  "required_pin_statuses": {
+    "pass": 6
+  },
+  "catalog_fingerprint": "e8fac065efecd20ce52081918fd5900410aa5a12bf5af0cebf73e479ffbf8f1a",
+  "connectivity_approvals": [],
+  "surface_test": "transverse_triangles_v1",
+  "tolerance_ldu": 0.01,
+  "pair_count": 6105,
+  "surface_crossings": 0,
+  "pair_classifications": {
+    "unsupported_solid_boundary": 168,
+    "bounds_separated": 5912,
+    "expected_contact": 17,
+    "solid_separated": 8
+  },
+  "geometry_dependency_fingerprint": "a7b83178859144188b7df7f346ea81f732fbb55f378771bf0e2d6866df83f106",
+  "dependency_fingerprint_format": "SHA256 of collision report dependencies without filesystem paths, JSON sorted keys, compact separators; full records in release collisions/collisions.json",
+  "contact_waivers": [],
+  "mounts": {
+    "mouthpipe": "6536 cross block on upper-left sweep; 6558 pin and front 3700 bracket support short diagonal stud-built pipe.",
+    "valves": "Two 3623 rails seat on 87087 side studs of the internal mast.",
+    "slides": "6587 stud-ended axles seat under carrier; native bushes and elbow bores grip each shaft. Upper loop mounts on carrier studs.",
+    "coil": "Five 3L axles retain six bends and four short round sections; lower 6536 block pins to the compact stand.",
+    "bell": "Lower outer sweep shares tail axle and 6536 block with the bell axle. Throat, cone and dish form a continuous -X bell at Y=-122; no separate bell pedestal."
+  },
+  "limits": [
+    "111/111 nominal paths pass with no connectivity exception.",
+    "Unused interfaces retain partial coverage; overall connection report remains unknown.",
+    "Collision coverage is independent; 168 unsupported pairs remain unknown.",
+    "No physical trial."
+  ]
+}

@@ -8,10 +8,20 @@ from pathlib import Path, PurePosixPath
 import re
 import json
 
+from .connectivity_delivery import connectivity_reviews, validate_approvals
+from .connectivity import inspect_connections
+from .connectivity.catalog import load_catalog
 from .assembly import AuthoredModel
 from .build_result import BuildResult
 from .delivery import delivery_findings, validate_decoration
-from .evidence import validate_evidence, review_evidence, evidence_findings
+from .evidence import (
+    validate_evidence,
+    review_evidence,
+    evidence_findings,
+    review_collisions,
+    collision_reviews,
+    collision_findings,
+)
 from .execution import load_build_config, STAGES
 from .reporting import combine_status, requirement_coverage
 from .exporters import bundle as order_bundle
@@ -31,6 +41,7 @@ CHECKS = frozenset(
         "placements",
         "part_count",
         "connections",
+        "collisions",
         "geometry",
         "render",
         "render_geometry",
@@ -49,7 +60,12 @@ def load_policy(root: Path) -> dict:
     data = versioned(
         raw,
         {"required_checks", "inputs"}
-        | ({"evidence"} if isinstance(raw, dict) and "evidence" in raw else set()),
+        | ({"evidence"} if isinstance(raw, dict) and "evidence" in raw else set())
+        | (
+            {"connectivity_approvals"}
+            if isinstance(raw, dict) and "connectivity_approvals" in raw
+            else set()
+        ),
         "release policy",
     )
     checks = [
@@ -64,6 +80,7 @@ def load_policy(root: Path) -> dict:
     for path in inputs:
         project_path(root, path, "Release input")
     validate_evidence(root, data.get("evidence", []))
+    validate_approvals(data.get("connectivity_approvals", []))
     return data
 
 
@@ -257,6 +274,8 @@ def _reconcile(root: Path, manifest: dict) -> dict:
     models = summary["models"]
     if not isinstance(models, dict) or "default" not in models:
         raise ValueError("Release requires a default model")
+    if "collisions" in summary["stages"] and set(settings.collisions) - models.keys():
+        raise ValueError("Collision configuration names an unknown emitted pose")
     primary = None
     stages = set(summary["stages"])
     if "cad" not in stages or stages - STAGES:
@@ -332,6 +351,20 @@ def _reconcile(root: Path, manifest: dict) -> dict:
             review["checks"]["connections"],
             f"{name} connections status",
         )
+        if manifest["schema_version"] >= 3 and "connections" in stages:
+            if settings.catalog is None or settings.root is None:
+                raise ValueError("Connectivity review needs captured catalog and root")
+            recomputed = inspect_connections(
+                model,
+                load_catalog(settings.catalog),
+                root=settings.root,
+                assemblies=expected_groups,
+            )
+            _equal(
+                connections["nominal"],
+                json.loads(json.dumps(recomputed)),
+                "Recomputed nominal connectivity",
+            )
         if settings.root is not None:
             profiles = read_json(folder / "connection_profiles.json")["profiles"]
             _equal(len(profiles), 1, "Connection profile quantity")
@@ -421,6 +454,29 @@ def _reconcile(root: Path, manifest: dict) -> dict:
             "stickers": "pass" if "stickers" in stages else "not_tested",
             "orders": "pass" if "orders" in stages else "not_tested",
         }
+        # Version-1 archives retain their original check set and policy.
+        if manifest["schema_version"] >= 2 or "collisions" in review["checks"]:
+            expected_checks["collisions"] = "not_tested"
+            if "collisions" in stages:
+                report = _linked_report(
+                    folder / "collisions/collisions.json",
+                    source.sha256,
+                    model.fingerprint(),
+                )
+                payload = (folder / "collisions/config.json").read_bytes()
+                if name in settings.collisions:
+                    _equal(
+                        payload,
+                        settings.collisions[name].read_bytes(),
+                        f"{name} captured collision configuration",
+                    )
+                review_collisions(model, report, payload)
+                expected_checks["collisions"] = report["status"]
+            _equal(
+                review.get("collision"),
+                expected_checks["collisions"],
+                f"{name} collision summary",
+            )
         if "instructions" in stages:
             if render_config is None:
                 raise ValueError("Instructions require captured render settings")
@@ -533,12 +589,27 @@ def _reconcile(root: Path, manifest: dict) -> dict:
     )
     diagnostic_evidence = review_evidence(snapshot, root, policy, set(models))
     findings += evidence_findings(diagnostic_evidence)
+    collisions = collision_reviews(summary, diagnostic_evidence)
+    if manifest["schema_version"] >= 2:
+        findings += collision_findings(collisions)
+    connectivity = (
+        connectivity_reviews(root, summary, policy, draft=manifest["label"] == "draft")
+        if manifest["schema_version"] >= 3
+        else {
+            name: {"status": "not_tested", "user_approved_exception": False}
+            for name in models
+        }
+    )
     _equal(manifest["policy_findings"], findings, "Policy findings")
     if manifest["label"] == "verified_artifacts" and findings:
         raise ValueError(
             "Failed/unknown/untested required checks cannot be a verified release"
         )
-    return summary | {"diagnostic_evidence": diagnostic_evidence}
+    return summary | {
+        "diagnostic_evidence": diagnostic_evidence,
+        "collision_reviews": collisions,
+        "connectivity_reviews": connectivity,
+    }
 
 
 def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
@@ -564,6 +635,7 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
                 "artifacts",
             },
             "release manifest",
+            versions=(1, 2, 3),
         )
         if manifest["kind"] != "brickbuilder_release" or manifest["label"] not in {
             "draft",
@@ -586,6 +658,8 @@ def verify_release(directory: Path, *, _publishing: bool = False) -> dict:
             validation_status=summary["status"],
             policy_findings=manifest["policy_findings"],
             diagnostic_evidence=summary["diagnostic_evidence"],
+            collision_reviews=summary["collision_reviews"],
+            connectivity_reviews=summary["connectivity_reviews"],
             manifest_sha256=manifest_hash,
             physical_build="not_tested",
             errors=[],

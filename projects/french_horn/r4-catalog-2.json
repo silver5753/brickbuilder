@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "provider": "rebrickable",
+  "retrieved_at": "2026-10-13T07:00:20.162778+00:00",
+  "source_url": "https://rebrickable.com/api/v3/lego/parts/?part_nums=6587%2C3713%2C3623%2C3700%2C3023&page=1&page_size=20&inc_part_details=1",
+  "parameters": {
+    "part_nums": "6587,3713,3623,3700,3023",
+    "page": 1,
+    "page_size": 20,
+    "inc_part_details": 1
+  },
+  "total": 5,
+  "returned": 5,
+  "page": 1,
+  "page_size": 20,
+  "next_page": null,
+  "results": [
+    {
+      "part_num": "3023",
+      "name": "Plate 1 x 2",
+      "part_cat_id": 14,
+      "part_url": "https://rebrickable.com/parts/3023/plate-1-x-2/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/302326.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3023"
+        ],
+        "BrickOwl": [
+          "44980"
+        ],
+        "Brickset": [
+          "28653",
+          "3023",
+          "6225"
+        ],
+        "LDraw": [
+          "28653",
+          "3023b"
+        ],
+        "LEGO": [
+          "28653",
+          "3023",
+          "6225"
+        ]
+      }
+    },
+    {
+      "part_num": "3623",
+      "name": "Plate 1 x 3",
+      "part_cat_id": 14,
+      "part_url": "https://rebrickable.com/parts/3623/plate-1-x-3/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/362326.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3623"
+        ],
+        "BrickOwl": [
+          "212990"
+        ],
+        "Brickset": [
+          "116322",
+          "118720",
+          "3623"
+        ],
+        "LDraw": [
+          "3623"
+        ],
+        "LEGO": [
+          "116322",
+          "118720",
+          "3623"
+        ]
+      }
+    },
+    {
+      "part_num": "3700",
+      "name": "Technic Brick 1 x 2 [1 Pin Hole]",
+      "part_cat_id": 8,
+      "part_url": "https://rebrickable.com/parts/3700/technic-brick-1-x-2-1-pin-hole/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/370026.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3700"
+        ],
+        "BrickOwl": [
+          "64503"
+        ],
+        "Brickset": [
+          "3700"
+        ],
+        "LDraw": [
+          "3700"
+        ],
+        "LEGO": [
+          "3700"
+        ]
+      }
+    },
+    {
+      "part_num": "3713",
+      "name": "Technic Bush",
+      "part_cat_id": 54,
+      "part_url": "https://rebrickable.com/parts/3713/technic-bush/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4211622.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3713"
+        ],
+        "BrickOwl": [
+          "88261"
+        ],
+        "Brickset": [
+          "42798",
+          "6590"
+        ],
+        "LDraw": [
+          "3713",
+          "6590"
+        ],
+        "LEGO": [
+          "42798",
+          "6590"
+        ],
+        "Peeron": [
+          "6590"
+        ]
+      }
+    },
+    {
+      "part_num": "6587",
+      "name": "Technic Axle 3 with Stud",
+      "part_cat_id": 46,
+      "part_url": "https://rebrickable.com/parts/6587/technic-axle-3-with-stud/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/6031821.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "6587"
+        ],
+        "BrickOwl": [
+          "662135"
+        ],
+        "Brickset": [
+          "13670",
+          "6587"
+        ],
+        "LDraw": [
+          "6587"
+        ],
+        "LEGO": [
+          "13670",
+          "6587"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Live provider catalog facts; not current stock, prices or importer acceptance.",
+    "External IDs are provider mappings, not verified geometric substitutions.",
+    "No geometry, connector compatibility or physical-build validation."
+  ]
+}

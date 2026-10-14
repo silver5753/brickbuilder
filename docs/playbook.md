@@ -68,6 +68,10 @@ baseline to start a new design. A blank brief is a valid starting point.
 | Sourcing | Generate BOMs; compare dated availability and propose substitutions | Mapping evidence, shortages, exact quantity/identity deltas |
 | Delivery | Rebuild affected outputs, reconcile orders and explain limitations | Complete native CAD, selected outputs and current review checklist |
 
+After a CAD revision, use `parts --model output/model.ldr --library /path/to/ldraw`
+to inspect the actual selected references without recopying the manifest. Review
+front, rear and support contacts before polishing the presentation view.
+
 The loop is iterative. A geometry substitution returns to structural checks and
 visual review; a changed brief updates acceptance criteria. A pose change must
 preserve physical identities and inventory unless it defines a different model.
@@ -142,3 +146,33 @@ revision, affected instances, measurements and a targeted next repair.
 
 The [Solar Orbiter project notes](../projects/solar_orbiter/README.md) retain its
 specific coordinates, instruments, sourcing constraints and historical pitfalls.
+
+## Collision review before handoff
+
+For every model revision, run `build --stage collisions --library ...` or use
+release's automatic collision stage. Inspect failed pairs and unresolved geometry,
+including concealed attachments; a clean render, duplicate-placement check or
+passing connection graph does not replace this review. Recheck after any part
+movement. Do not describe a clearance fix as a mounting fix.
+
+New normal releases require a passing collision review for each delivered pose.
+Use `--draft` for fail/unknown/not-tested results and state those results alongside
+the images. Do not omit the library, narrow stages, make evidence optional, or
+fill hollow bounds with invented material merely to obtain a passing label.
+
+
+## Mandatory connection gate
+
+After collision repairs, rerun connections and verify every part reaches the
+root through reviewed interfaces. Repair missing mounts before presenting the
+revision as fixed. A render, a subset of intended joints passing, or an unknown
+overall report does not establish whole-model connectivity. `--draft` is not
+user consent to relax connectivity. See the explicit user-approval and exact-report
+rules in [releases](releases.md); internal diagnostic builds remain available.
+
+For unresolved collisions, inspect the per-part solid-boundary audit and exact
+pair reason. Known intentional empty helpers no longer invalidate otherwise
+resolved geometry. Use closed-boundary solid/contact results where qualified;
+otherwise supply reviewed material evidence or retain the unknown. A contact
+annotation is permitted only after the checker proves nominal non-overlap.
+Store per-pose configurations in `build.json.collisions` for repeatable releases.

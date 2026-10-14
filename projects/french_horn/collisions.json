@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+  "tolerance_ldu": 0.01,
+  "materials": [],
+  "expected_contacts": [
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/body/return_tube_0",
+        "french_horn/body/return_tube_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/mouthpipe/lead_0",
+        "french_horn/mouthpipe/lead_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/slide_2/left_extension_0",
+        "french_horn/slide_2/left_extension_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/slide_2/right_extension_0",
+        "french_horn/slide_2/right_extension_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/stand/pipe_post_5",
+        "french_horn/stand/pipe_post_6"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/stand/pipe_post_6",
+        "french_horn/stand/pipe_post_7"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/stand/pipe_post_7",
+        "french_horn/stand/pipe_post_8"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/stand/trim_m20",
+        "french_horn/stand/trim_m60"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/cap_0",
+        "french_horn/valves/cap_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/cap_0",
+        "french_horn/valves/rotor_0"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/cap_1",
+        "french_horn/valves/cap_2"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/cap_1",
+        "french_horn/valves/rotor_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/cap_2",
+        "french_horn/valves/rotor_2"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/lever_0",
+        "french_horn/valves/lever_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/lever_1",
+        "french_horn/valves/lever_2"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/rotor_0",
+        "french_horn/valves/rotor_1"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    },
+    {
+      "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+      "pair": [
+        "french_horn/valves/rotor_1",
+        "french_horn/valves/rotor_2"
+      ],
+      "reason": "Reviewed fixed native stud seat or adjacent decorative contact. Complete closed-boundary cell partition must prove non-overlap at this exact R6 pose; no motion or physical clearance claim."
+    }
+  ],
+  "joint": null
+}

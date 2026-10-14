@@ -54,7 +54,9 @@ Put strict schema-version-1 `build.json` beside `project.json`:
 }
 ```
 
-All fields are required when the file exists. Paths are relative to the project
+The fields above are required when the file exists. An optional `collisions`
+object maps emitted pose names to exact-model collision configuration paths;
+see [collision configurations](collisions.md#reusable-project-configurations). Paths are relative to the project
 and cannot escape it through traversal or symlinks. Null means unconfigured.
 Without `build.json`, only CAD/inventories and basic placement/count/binding
 checks run. This preserves existing Model-returning builders without inventing a
@@ -71,6 +73,7 @@ permission against the brief (see [release policy](releases.md)).
 | `cad` | Always generated: complete CAD, native BOM, groups and alternative selections |
 | `connections` | Requires catalog/root; checks nominal interfaces and supplied intended joints |
 | `geometry` | Requires explicit library; recursive vertex bounds/dependency coverage, not collision |
+| `collisions` | Requires library; all-pair bounds, surfaces and qualified solid/contact review; default or configured exact-pose evidence |
 | `render` | Requires render config, library and palette; generates configured views |
 | `stickers` | Requires sticker config; generates configured imported-artwork or legacy solar SVG templates/sheets |
 | `instructions` | Requires project-root steps.json, render config/library/palette; accumulated CAD, highlights and offline HTML |
@@ -171,7 +174,11 @@ Unconfigured required views and requirements with no mapped parts remain unknown
 `not_tested`. Reading requirement text, judging appearance and physical tests are
 still human/agent work. No script converts binding coverage into acceptance.
 
-The summary leaves physical build, collision, insertion, motion, stock and importer
+The optional `collisions` stage records its status in both `checks.collisions`
+and the model's `collision` field. Without that stage they are `not_tested`.
+It requires a geometry library but no render dependencies, and emits
+`collisions/` with an exact-model config, report and isolated pair CAD.
+The summary leaves physical build, insertion, motion, stock and importer
 acceptance untested. The per-stage reports retain their existing limitations.
 Build captures the main builder and selected input records, not a complete dependency
 manifest of arbitrary Python imports, external assets or environment state.
@@ -184,4 +191,11 @@ pass for recursively resolved selected geometry, unknown for partial/empty geome
 and not_tested without rendering. This does not change the surface-generation
 check or automatically block releases; projects can explicitly require it in
 [release policy](releases.md). Sourcing/collision evidence is bound at release time,
-with its own scopes and statuses, rather than changing untested build dimensions.
+with its own scopes and statuses. Release automatically runs collisions with a
+supplied library and requires a per-pose collision review for normal delivery.
+
+
+Internal builds may retain disconnected geometry for diagnosis. Delivery through
+`release` additionally enforces rooted connectivity for every pose, even with
+`--draft` or explicit stage overrides. Only explicit user consent tied to the
+exact model/report permits a connectivity exception. See [release rules](releases.md).

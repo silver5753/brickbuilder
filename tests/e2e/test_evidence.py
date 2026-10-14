@@ -17,6 +17,36 @@ def test_installed_sourcing_release_evidence(installed_core, tmp_path):
 def build(project):
     return Model((PartInstance("part", "part.dat", 4),))
 """)
+    (project / "build.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                stages=["cad"],
+                root="part",
+                catalog="connectors.json",
+                render=None,
+                stickers=None,
+                exceptions=None,
+                orders=[],
+            )
+        )
+    )
+    (project / "connectors.json").write_text(
+        json.dumps(
+            dict(
+                schema_version=1,
+                parts=[
+                    dict(
+                        reference="part.dat",
+                        connectors=[],
+                        complete=True,
+                        evidence="Synthetic single-part fixture; no mating interfaces",
+                        limitations=[],
+                    )
+                ],
+            )
+        )
+    )
     seed = tmp_path / "seed"
     installed_core.run("build", project, "--stage", "cad", "--destination", seed)
     snapshot = dict(
@@ -63,8 +93,34 @@ def build(project):
             )
         )
     )
+    library = tmp_path / "library"
+    library.mkdir()
+    (library / "part.dat").write_text("3 16 0 0 0 10 0 0 0 10 0\n")
+    reviewed = json.loads(
+        installed_core.run(
+            "build",
+            project,
+            "--stage",
+            "collisions",
+            "--library",
+            library,
+            "--destination",
+            tmp_path / "collision-build",
+        ).stdout
+    )
+    assert reviewed["models"]["default"]["checks"]["collisions"] == "pass"
+    assert (tmp_path / "collision-build/collisions/collisions.json").is_file()
     output = tmp_path / "release"
-    installed_core.run("release", project, "--stage", "cad", "--destination", output)
+    installed_core.run(
+        "release",
+        project,
+        "--stage",
+        "cad",
+        "--library",
+        library,
+        "--destination",
+        output,
+    )
     shutil.rmtree(project)
     shutil.rmtree(seed)
     result = json.loads(installed_core.run("verify-release", output).stdout)

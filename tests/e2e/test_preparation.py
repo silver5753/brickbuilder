@@ -39,6 +39,42 @@ def test_installed_parts_and_offline_sources(installed_core, tmp_path):
         result["provenance"]["project_input_sha256"]["project.json"]
         == sha256(manifest.read_bytes()).hexdigest()
     )
+    # Index the actual CAD after a revision, including case-normalized repeats.
+    # No manifest copying or execution of project Python is needed.
+    model = tmp_path / "review.ldr"
+    model.write_text(
+        "0 Draft model\n"
+        "1 14 0 0 0 1 0 0 0 1 0 0 0 1 brick.dat\n"
+        "1 0 40 0 0 1 0 0 0 1 0 0 0 1 BRICK.DAT\n"
+    )
+    indexed = json.loads(
+        installed_core.run(
+            "parts",
+            "--model",
+            model,
+            "--library",
+            library,
+            "--destination",
+            tmp_path / "model-index",
+        ).stdout
+    )
+    assert indexed["matches"] == ["brick.dat"]
+    assert indexed["provenance"]["model_quantity"] == 2
+    assert (
+        indexed["provenance"]["model_source_sha256"]
+        == sha256(model.read_bytes()).hexdigest()
+    )
+    saved = json.loads((tmp_path / "model-index/parts.json").read_text())
+    assert saved["provenance"] == indexed["provenance"]
+    installed_core.run("parts", "--model", model, "--project", project, expected=2)
+    installed_core.run("parts", "--model", model, "--part", "brick.dat", expected=2)
+    model.write_text("0 Empty model\n")
+    empty = json.loads(
+        installed_core.run("parts", "--model", model, "--library", library).stdout
+    )
+    assert empty["parts"] == []  # Never fall back to indexing the whole library.
+    model.write_text("3 16 0 0 0 20 0 0 0 24 20\n")
+    installed_core.run("parts", "--model", model, "--library", library, expected=2)
     assert (
         "connector"
         in installed_core.run(

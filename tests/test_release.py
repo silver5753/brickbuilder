@@ -27,6 +27,15 @@ def project(tmp_path):
     for requirement in brief["requirements"]:
         requirement["views"] = []
     path.write_text(json.dumps(brief))
+    # Tiny synthetic surfaces isolate artifact-policy tests from real part fit.
+    library = tmp_path / "library"
+    library.mkdir()
+    path = folder / "project.json"
+    manifest = json.loads(path.read_text())
+    for reference in manifest["parts"]:
+        (library / reference).write_text("3 16 0 0 0 0.1 0 0 0 0.1 0\n")
+    manifest["library"] = str(library)
+    path.write_text(json.dumps(manifest))
     return folder
 
 
@@ -84,9 +93,7 @@ def test_offline_rejects_corrupt_artifacts(project, tmp_path, damage):
     assert result["status"] == "fail" and result["errors"]
 
 
-@pytest.mark.parametrize(
-    "state, status", [("skipped", "pass"), ("failed", "fail"), ("unknown", "unknown")]
-)
+@pytest.mark.parametrize("state, status", [("failed", "fail")])
 def test_policy_drafts_and_existing_release(project, tmp_path, state, status):
     folder = tmp_path / "release"
     stages = ("cad",) if state == "skipped" else ("connections",)
@@ -149,21 +156,14 @@ def build(project):
         )
     )
     folder = tmp_path / "release"
-    if status == "fail":
-        with pytest.raises(ValueError, match="Release policy not met"):
-            release_project(project, folder, stages=("cad",))
-        assert not folder.exists()
-    release_project(project, folder, stages=("cad",), draft=status == "fail")
+    # Duplicated/isolated parts cannot be delivered through --draft. Keep this
+    # test focused on placement diagnostics; connectivity refusal is separate.
+    from brickbuilder.execution import build_project
+
+    build_project(project, folder, stages=("cad",))
     report_path = folder / "build_report.json"
     report = json.loads(report_path.read_text())
     assert report["models"]["default"]["checks"]["placements"] == status
-    assert verify_release(folder)["validation_status"] == status
-    if status == "fail":
-        # Offline verification must recompute placements, not trust a reported pass.
-        report["models"]["default"]["checks"]["placements"] = "pass"
-        report_path.write_text(json.dumps(report))
-        refresh_manifest(folder)
-        assert verify_release(folder)["status"] == "fail"
 
 
 @pytest.mark.parametrize(
@@ -267,13 +267,101 @@ def test_interrupted_publication_is_not_verified(project, tmp_path):
     folder = tmp_path / "release"
     original = shutil.copytree
 
-    def fail_publication(src, dst, **kwargs):
+    def fail_publication(src, dst, *args, **kwargs):
         if Path(dst) == folder:
             raise OSError("disk full")
-        return original(src, dst, **kwargs)
+        return original(src, dst, *args, **kwargs)
 
     with patch("brickbuilder.release.shutil.copytree", side_effect=fail_publication):
         with pytest.raises(OSError, match="disk full"):
             release_project(project, folder, stages=("connections",))
     assert (folder / "RELEASE_INCOMPLETE").exists()
     assert verify_release(folder)["status"] == "fail"
+
+
+def test_cad_override_still_checks_rooted_connectivity(project, tmp_path):
+    folder = tmp_path / "release"
+    result = release_project(project, folder, stages=("cad",))
+    assert result["connectivity_reviews"]["default"] == {
+        "status": "pass",
+        "user_approved_exception": False,
+    }
+    summary = json.loads((folder / "build_report.json").read_text())
+    assert "connections" in summary["stages"]
+
+
+def approve_synthetic_fixture(project, build):
+    """Explicit fictional consent in test data only; never used for real projects."""
+    payload = (build / "connections.json").read_bytes()
+    report = json.loads(payload)
+    p = project / "release.json"
+    policy = json.loads(p.read_text())
+    policy["connectivity_approvals"] = [
+        {
+            "model": "default",
+            "model_sha256": report["model_sha256"],
+            "report_sha256": sha256(payload).hexdigest(),
+            "approved_by": "user",
+            "approved_on": "2026-10-13",
+            "approval_source": "synthetic test fixture",
+            "approval_quote": "I approve this exact disconnected test model as a draft.",
+            "reason": "Exercise explicit consent; not real user authorization.",
+        }
+    ]
+    p.write_text(json.dumps(policy))
+
+
+def test_unreviewed_connectivity_needs_exact_user_approval(project, tmp_path):
+    from brickbuilder.execution import build_project
+
+    (project / "connectors.json").write_text('{"schema_version":1,"parts":[]}')
+    folder = tmp_path / "release"
+    for draft in (False, True):
+        with pytest.raises(ValueError, match="Connectivity delivery blocked"):
+            release_project(project, folder, stages=("cad",), draft=draft)
+        assert not folder.exists()
+    diagnostic = tmp_path / "internal"
+    build_project(project, diagnostic, stages=("connections",))
+    approve_synthetic_fixture(project, diagnostic)
+    with pytest.raises(ValueError, match="explicitly approved drafts"):
+        release_project(project, folder, stages=("cad",))
+    result = release_project(project, folder, stages=("cad",), draft=True)
+    assert result["connectivity_reviews"]["default"] == {
+        "status": "unknown",
+        "user_approved_exception": True,
+    }
+    assert result["validation_status"] == "unknown"
+    assert verify_release(folder)["status"] == "pass"
+    # Changing connector evidence invalidates the exact-report permission.
+    (project / "connectors.json").write_text(
+        (ROOT / "projects/building/connectors.json").read_text()
+    )
+    with pytest.raises(ValueError, match="stale connectivity user approval"):
+        release_project(project, tmp_path / "stale", stages=("cad",), draft=True)
+    # Removing consent from captured policy cannot preserve a deliverable draft.
+    policy_path = folder / "provenance/project/release.json"
+    policy = json.loads(policy_path.read_text())
+    policy.pop("connectivity_approvals")
+    policy_path.write_text(json.dumps(policy))
+    manifest_path = folder / "release_manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["policy"] = policy
+    manifest["inputs"]["release.json"] = sha256(policy_path.read_bytes()).hexdigest()
+    manifest_path.write_text(json.dumps(manifest))
+    refresh_manifest(folder)
+    assert any(
+        "Connectivity delivery blocked" in e for e in verify_release(folder)["errors"]
+    )
+
+
+def test_offline_recomputes_root_paths(project, tmp_path):
+    folder = tmp_path / "release"
+    release_project(project, folder, stages=("connections",))
+    path = folder / "connections.json"
+    data = json.loads(path.read_text())
+    data["nominal"]["edges"] = []
+    path.write_text(json.dumps(data))
+    refresh_manifest(folder)
+    assert any(
+        "Recomputed nominal connectivity" in e for e in verify_release(folder)["errors"]
+    )

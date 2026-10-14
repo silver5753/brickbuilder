@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "provider": "rebrickable",
+  "retrieved_at": "2026-10-13T06:55:06.670259+00:00",
+  "source_url": "https://rebrickable.com/api/v3/lego/parts/?part_nums=6536%2C6558%2C87087%2C11211%2C32064a%2C59443%2C4519%2C3705%2C4274%2C4275%2C4276%2C3830%2C3831&page=1&page_size=30&inc_part_details=1",
+  "parameters": {
+    "part_nums": "6536,6558,87087,11211,32064a,59443,4519,3705,4274,4275,4276,3830,3831",
+    "page": 1,
+    "page_size": 30,
+    "inc_part_details": 1
+  },
+  "total": 11,
+  "returned": 11,
+  "page": 1,
+  "page_size": 30,
+  "next_page": null,
+  "results": [
+    {
+      "part_num": "11211",
+      "name": "Brick Special 1 x 2 with 2 Studs on 1 Side",
+      "part_cat_id": 5,
+      "part_url": "https://rebrickable.com/parts/11211/brick-special-1-x-2-with-2-studs-on-1-side/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/6015344.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "11211"
+        ],
+        "BrickOwl": [
+          "929279"
+        ],
+        "Brickset": [
+          "11211"
+        ],
+        "LDraw": [
+          "11211"
+        ],
+        "LEGO": [
+          "11211"
+        ]
+      }
+    },
+    {
+      "part_num": "32064a",
+      "name": "Technic Brick 1 x 2 with Axle Hole Type 1 [+ Opening] and Bottom Pin",
+      "part_cat_id": 8,
+      "part_url": "https://rebrickable.com/parts/32064a/technic-brick-1-x-2-with-axle-hole-type-1-opening-and-bottom-pin/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4114294.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "32064"
+        ],
+        "BrickOwl": [
+          "844353"
+        ],
+        "Brickset": [
+          "31493",
+          "32064"
+        ],
+        "LDraw": [
+          "32064c"
+        ],
+        "LEGO": [
+          "31493",
+          "32064"
+        ],
+        "Peeron": [
+          "32064"
+        ]
+      }
+    },
+    {
+      "part_num": "3705",
+      "name": "Technic Axle 4",
+      "part_cat_id": 46,
+      "part_url": "https://rebrickable.com/parts/3705/technic-axle-4/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/370526.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3705"
+        ],
+        "BrickOwl": [
+          "184264"
+        ],
+        "Brickset": [
+          "3705"
+        ],
+        "LDraw": [
+          "3705"
+        ],
+        "LEGO": [
+          "3705"
+        ]
+      }
+    },
+    {
+      "part_num": "3830",
+      "name": "Hinge Brick 1 x 4 [Upper]",
+      "part_cat_id": 18,
+      "part_url": "https://rebrickable.com/parts/3830/hinge-brick-1-x-4-upper/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/383001.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3830"
+        ],
+        "BrickOwl": [
+          "328454"
+        ],
+        "Brickset": [
+          "3830",
+          "65122"
+        ],
+        "LDraw": [
+          "3830"
+        ],
+        "LEGO": [
+          "3830",
+          "65122"
+        ],
+        "Peeron": [
+          "3830c01"
+        ]
+      }
+    },
+    {
+      "part_num": "3831",
+      "name": "Hinge Brick 1 x 4 [Lower]",
+      "part_cat_id": 18,
+      "part_url": "https://rebrickable.com/parts/3831/hinge-brick-1-x-4-lower/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/383101.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "3831"
+        ],
+        "BrickOwl": [
+          "664081"
+        ],
+        "Brickset": [
+          "3831"
+        ],
+        "LDraw": [
+          "3831"
+        ],
+        "LEGO": [
+          "3831"
+        ]
+      }
+    },
+    {
+      "part_num": "4274",
+      "name": "Technic Pin 1/2 without Friction Ridges",
+      "part_cat_id": 53,
+      "part_url": "https://rebrickable.com/parts/4274/technic-pin-12-without-friction-ridges/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4143005.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "4274"
+        ],
+        "BrickOwl": [
+          "778994"
+        ],
+        "Brickset": [
+          "4274"
+        ],
+        "LDraw": [
+          "4274"
+        ],
+        "LEGO": [
+          "4274"
+        ]
+      }
+    },
+    {
+      "part_num": "4519",
+      "name": "Technic Axle 3",
+      "part_cat_id": 46,
+      "part_url": "https://rebrickable.com/parts/4519/technic-axle-3/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4211815.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "4519"
+        ],
+        "BrickOwl": [
+          "151465"
+        ],
+        "Brickset": [
+          "4519"
+        ],
+        "LDraw": [
+          "4519"
+        ],
+        "LEGO": [
+          "4519"
+        ]
+      }
+    },
+    {
+      "part_num": "59443",
+      "name": "Technic Axle Connector Smooth [with x Hole + Orientation]",
+      "part_cat_id": 12,
+      "part_url": "https://rebrickable.com/parts/59443/technic-axle-connector-smooth-with-x-hole-orientation/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4512363.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "6538c"
+        ],
+        "BrickOwl": [
+          "213792"
+        ],
+        "Brickset": [
+          "59443"
+        ],
+        "LDraw": [
+          "59443"
+        ],
+        "LEGO": [
+          "59443"
+        ],
+        "Peeron": [
+          "6538c"
+        ]
+      }
+    },
+    {
+      "part_num": "6536",
+      "name": "Technic Axle and Pin Connector Perpendicular",
+      "part_cat_id": 12,
+      "part_url": "https://rebrickable.com/parts/6536/technic-axle-and-pin-connector-perpendicular/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4173668.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "6536"
+        ],
+        "BrickOwl": [
+          "80612"
+        ],
+        "Brickset": [
+          "40146",
+          "6536"
+        ],
+        "LDraw": [
+          "6536"
+        ],
+        "LEGO": [
+          "40146",
+          "6536"
+        ]
+      }
+    },
+    {
+      "part_num": "6558",
+      "name": "Technic Pin Long with Friction Ridges Lengthwise, 2 Center Slots",
+      "part_cat_id": 53,
+      "part_url": "https://rebrickable.com/parts/6558/technic-pin-long-with-friction-ridges-lengthwise-2-center-slots/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4514553.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "6558"
+        ],
+        "BrickOwl": [
+          "99899"
+        ],
+        "Brickset": [
+          "6558"
+        ],
+        "LDraw": [
+          "6558"
+        ],
+        "LEGO": [
+          "6558"
+        ]
+      }
+    },
+    {
+      "part_num": "87087",
+      "name": "Brick Special 1 x 1 with Stud on 1 Side",
+      "part_cat_id": 5,
+      "part_url": "https://rebrickable.com/parts/87087/brick-special-1-x-1-with-stud-on-1-side/",
+      "part_img_url": "https://cdn.rebrickable.com/media/parts/elements/4558953.jpg",
+      "print_of": null,
+      "external_ids": {
+        "BrickLink": [
+          "87087"
+        ],
+        "BrickOwl": [
+          "215571"
+        ],
+        "Brickset": [
+          "87087"
+        ],
+        "LDraw": [
+          "87087"
+        ],
+        "LEGO": [
+          "87087"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Live provider catalog facts; not current stock, prices or importer acceptance.",
+    "External IDs are provider mappings, not verified geometric substitutions.",
+    "No geometry, connector compatibility or physical-build validation."
+  ]
+}

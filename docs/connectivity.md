@@ -152,3 +152,13 @@ unknown coverage, stale profiles and both historical poses.
 
 Coordinate and native-format reference:
 [LDraw specification](https://www.ldraw.org/article/218.html).
+
+
+## Delivery gate
+
+Version-3 releases require every part to reach the root, no occupancy conflicts,
+and passing required-pin and intended-joint checks, even for drafts. The focused
+`connectivity_reviews` gate can pass when unused connector coverage is partial;
+the full connection report retains that unknown. No unproven root path is relaxed
+by this distinction. Delivery with unproven paths requires the user's explicit,
+exact-model/report approval; see [releases](releases.md).

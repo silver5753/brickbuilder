@@ -21,10 +21,12 @@ their subject, dimensions, colours and sourcing constraints in their own folder.
 3. **Build and review.** `build` runs that Python once, writes native CAD and a
    bill of materials (BOM), and runs the selected checks/output stages. The agent
    inspects results and repairs the design.
-4. **Package a revision.** `release` enforces the explicit software policy and
+4. **Package a revision.** `release` requires collision review for every pose,
+   runs collisions automatically with a supplied library, and enforces the software policy and
    the brief's required deliverables, captures inputs and hashes, and writes a
-   handoff. `verify-release` reconciles the package offline. `--draft` retains
-   failed, unknown or incomplete findings visibly.
+   handoff. `verify-release` reconciles the package offline. Rooted connectivity
+   is mandatory even with `--draft`; only explicit user consent tied to the exact
+   model/report permits an exception. Other unresolved checks remain visible.
 
 A project can start from a new description or existing flattened LDraw CAD.
 No prior spacecraft model or release is needed.
@@ -43,7 +45,7 @@ No prior spacecraft model or release is needed.
 | Online part discovery | Live Rebrickable search, exact/batched IDs, external-ID lookups and sourced JSON; no local catalog mirror |
 | Replacements | Reviewed one-to-many assembly recipes with immutable previews, support checks and new identities |
 | Sourcing | Dated offline stock/owned-parts snapshots, candidate baskets, shortages and unknown costs |
-| Collision and motion | Scoped bounds/material-box diagnostics at explicit poses and sampled joint angles |
+| Collision and motion | Bounds/surface checks, validated closed-solid containment and contact, reviewed material boxes and sampled joint angles |
 | Releases | Captured provenance, required checks, optional exact-model diagnostic evidence and offline verification |
 
 The agent still chooses structure and parts, supplies evidence/configuration,
@@ -80,6 +82,7 @@ separate from the native physical model.
 | [Vehicle](projects/vehicle/README.md) | 19 | Generic authoring example with supported axles, wheels, cab and design variants |
 | [Entrance shelter](projects/building/README.md) | 23 | Tutorial covering staggered walls, doorway/lintel, roof, artwork and instructions |
 | [Desktop flower](projects/flower/README.md) | 8 | Small botanical rehearsal using the same core authoring/release APIs |
+| [French horn](projects/french_horn/README.md) | 111 | R6 reference-informed silhouette; all parts rooted; no detected interference, 168 collision pairs unknown; physical trials pending |
 
 These have different scopes and maturity. The small examples demonstrate the
 workflow, and none is a physical-build certificate. Solar Orbiter retains known
@@ -95,14 +98,15 @@ uv sync --locked
 uv run --locked brickbuilder --help
 mkdir -p output
 uv run --locked brickbuilder build projects/flower --destination output/flower-build
-uv run --locked brickbuilder release projects/flower --destination output/flower-release
+uv run --locked brickbuilder release projects/flower --draft --destination output/flower-release
 uv run --locked brickbuilder verify-release output/flower-release
 ```
 
 Review project Python before executing it. Destinations must be new; the flower's
 configured workflow needs no geometry library and delivers CAD/inventory with
 nominal checks. `doctor projects/flower` still reports unknown geometry and visual
-review links. That is distinct from verifying its requested artifact package.
+review links. Without a collision review the release remains a draft; release and
+verification return exit 3 even when its nominal connection checks pass.
 
 For images and illustrated instructions, install the optional renderer and supply
 your own LDraw library (including `LDConfig.ldr`):
@@ -157,10 +161,10 @@ external preparation and are not supported by the native parser.
 P1–P5 and the C1–C7 cleanup plan are complete within their documented scope. The
 [roadmap](docs/roadmap.md) records shipped work, validation and remaining limits;
 [implementation history](docs/implementation-history.md) preserves earlier plans.
-The latest code-validation run passed 352 tests, including installed-wheel workflows.
+The latest code-validation run passed 372 tests, including installed-wheel workflows.
 
 ```sh
-uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower projects/french_horn --error-on-warning
 uv run --locked pytest -m 'not render and not e2e' -q
 uv run --locked --extra render pytest -q
 uv build
@@ -170,3 +174,11 @@ Further progress should come from real design tasks, additional reviewed part
 coverage and measured physical trials. The historical [workflow inventory](docs/workflow-inventory.md)
 and [early code review](docs/review-milestones-1-3.md) describe earlier states;
 they are not the current backlog. Never rewrite frozen hashes to make a change pass.
+
+Collision review now detects strict crossings of loaded part surfaces, even when
+empty/missing helpers leave overall geometry unresolved. It does not infer solid
+volumes or certify containment/physical fit. Version-3 releases require passing rooted connectivity even for drafts; explicit
+user-approved exceptions bind exact model/report hashes. Collision unknowns still
+require a labelled draft. Historical version-1/2 packages retain their original
+policies and do not acquire a current connectivity pass. See
+[collision diagnostics](docs/collisions.md) and [delivery rules](docs/releases.md).

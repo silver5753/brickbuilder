@@ -30,7 +30,22 @@ uv run --locked brickbuilder parts --library /path/to/ldraw \
   --part 3001.dat --part 3020.dat --query brick
 ```
 
-With neither `--project` nor `--part`, the command indexes immediate `.dat`
+After authoring or revising CAD, inspect its actual part set directly:
+
+```sh
+uv run --locked brickbuilder parts --model output/model.ldr \
+  --library /path/to/ldraw --unknown connectors
+```
+
+`--model`, `--project` and `--part` are mutually exclusive. The model path must
+contain flattened physical references, not raw geometry or MPD. Repeated native
+references (including case variants and different colours) are indexed once.
+The report and saved bundle retain the source-byte hash, model fingerprint and
+physical instance count. No builder is executed and no manifest is modified.
+An empty CAD selection remains empty rather than scanning the entire library.
+This is local geometry/evidence inspection, not live catalog discovery.
+
+With none of `--project`, `--part` or `--model`, the command indexes immediate `.dat`
 candidates in the library's `parts/` folder (or library root if no `parts/` exists).
 It does not recursively treat subparts/primitives as physical inventory. A file
 being a candidate is not proof of its physical part identity. Broad indexing can

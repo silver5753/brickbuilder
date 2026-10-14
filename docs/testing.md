@@ -5,7 +5,7 @@ dependencies; rendering is an optional extra. Keep those boundaries testable.
 
 ```sh
 uv sync --locked
-uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower projects/french_horn --error-on-warning
 uv run --locked pytest -m 'not render and not e2e' -q
 uv build
 ```
@@ -14,9 +14,9 @@ For the full suite, including actual-CAD image workflows:
 
 ```sh
 uv sync --locked --extra render
-uv run --locked --extra render ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked --extra render ty check src tests tools projects/vehicle projects/building projects/flower projects/french_horn --error-on-warning
 uv run --locked --extra render pytest -q
-uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building projects/flower
+uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building projects/flower projects/french_horn
 ```
 
 Ruff is a supplementary pinned check, not a core runtime dependency. Read the CI
@@ -91,3 +91,18 @@ affects geometry or views. Keep generated bundles ignored. Passing tests, ty,
 nominal connections or release integrity does not establish physical assembly,
 clutch, strength, continuous motion, live stock or authenticated importer acceptance.
 See [validation levels](validation-levels.md) for the separate dimensions.
+
+Surface regressions cover rotated/reversed triangles, contact and tolerance bands,
+degenerate and coplanar faces, hollow/contained objects, nested transforms and
+crossings despite empty/missing dependencies. A synthetic horn-placement fixture
+protects the reported regression. Delivery tests cover mandatory per-pose checks,
+CAD-only overrides, absent reviews, retained surface witnesses, byte-exact configs,
+legacy verification and offline operation without the source geometry library.
+
+Closed-boundary regressions additionally cover nested empty cavities, winding
+independence, full containment, coincident/coplanar solids, exact and near contact,
+rotations, open/duplicate/degenerate/intersecting boundaries, arithmetic noise,
+T-junctions without crack filling, byte-bound no-op ancestry and empty physical
+parts. Release tests bind project-selected collision configs and reject tampered
+positive solid witnesses or unreviewed contact passes. The 14 October 2026 upgrade
+passes 401 tests, including installed core and rendering workflows.
