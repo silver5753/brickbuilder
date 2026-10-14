@@ -82,7 +82,7 @@ separate from the native physical model.
 | [Vehicle](projects/vehicle/README.md) | 19 | Generic authoring example with supported axles, wheels, cab and design variants |
 | [Entrance shelter](projects/building/README.md) | 23 | Tutorial covering staggered walls, doorway/lintel, roof, artwork and instructions |
 | [Desktop flower](projects/flower/README.md) | 8 | Small botanical rehearsal using the same core authoring/release APIs |
-| [French horn](projects/french_horn/README.md) | 112 | All parts reach the stand through reviewed mounts; zero detected surface crossings; physical trials pending |
+| [French horn](projects/french_horn/README.md) | 111 | R6 reference-informed silhouette; all parts rooted; no detected interference, 168 collision pairs unknown; physical trials pending |
 
 These have different scopes and maturity. The small examples demonstrate the
 workflow, and none is a physical-build certificate. Solar Orbiter retains known

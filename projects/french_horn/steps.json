@@ -3,45 +3,11 @@
   "steps": [
     {
       "id": "step_1",
-      "title": "Stand and lower supports \u2014 placement review",
-      "add": [
-        "french_horn/stand/base",
-        "french_horn/stand/bell_axle",
-        "french_horn/stand/bell_bracket",
-        "french_horn/stand/bell_post_0",
-        "french_horn/stand/bell_post_1",
-        "french_horn/stand/bell_shim",
-        "french_horn/stand/coil_bracket",
-        "french_horn/stand/coil_foot",
-        "french_horn/stand/coil_pin",
-        "french_horn/stand/coil_shim_0",
-        "french_horn/stand/coil_shim_1",
-        "french_horn/stand/left_post_0",
-        "french_horn/stand/left_post_1",
-        "french_horn/stand/left_post_2",
-        "french_horn/stand/left_post_3",
-        "french_horn/stand/left_post_4",
-        "french_horn/stand/left_post_5",
-        "french_horn/stand/left_post_6",
-        "french_horn/stand/pipe_post_0",
-        "french_horn/stand/pipe_post_1",
-        "french_horn/stand/pipe_post_2",
-        "french_horn/stand/pipe_post_3",
-        "french_horn/stand/pipe_post_4",
-        "french_horn/stand/pipe_post_5",
-        "french_horn/stand/pipe_post_6",
-        "french_horn/stand/right_post_0",
-        "french_horn/stand/right_post_1",
-        "french_horn/stand/right_post_2",
-        "french_horn/stand/right_post_3",
-        "french_horn/stand/right_post_4",
-        "french_horn/stand/right_post_5",
-        "french_horn/stand/right_post_6",
-        "french_horn/stand/trim_60",
-        "french_horn/stand/trim_m20",
-        "french_horn/stand/trim_m60"
+      "title": "Low stand and pinned mount — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/stand"
       ],
-      "assemblies": [],
       "requires": [],
       "views": [
         {
@@ -75,20 +41,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
             "french_horn/stand/base"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_2",
-      "title": "Carrier plate \u2014 placement review",
+      "title": "Continuous outer sweep and bell tail — placement review",
       "add": [],
       "assemblies": [
-        "french_horn/slide_carrier"
+        "french_horn/body"
       ],
       "requires": [
         "step_1"
@@ -125,23 +91,21 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/slide_carrier/roof"
+            "french_horn/body/bottom_anchor"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_3",
-      "title": "Upper pipe tower \u2014 placement review",
-      "add": [
-        "french_horn/stand/pipe_mount",
-        "french_horn/stand/pipe_upper_0",
-        "french_horn/stand/pipe_upper_1"
+      "title": "Lower bell on the tail axle — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/bell"
       ],
-      "assemblies": [],
       "requires": [
         "step_2"
       ],
@@ -177,20 +141,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/stand/pipe_mount"
+            "french_horn/bell/throat"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_4",
-      "title": "Pinned coil \u2014 placement review",
+      "title": "Diagonal leadpipe — placement review",
       "add": [],
       "assemblies": [
-        "french_horn/body"
+        "french_horn/mouthpipe"
       ],
       "requires": [
         "step_3"
@@ -227,20 +191,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/body/bottom_anchor"
+            "french_horn/mouthpipe/bracket"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_5",
-      "title": "Slide 0 \u2014 placement review",
+      "title": "Inner-slide carrier — placement review",
       "add": [],
       "assemblies": [
-        "french_horn/slide_0"
+        "french_horn/slide_carrier"
       ],
       "requires": [
         "step_4"
@@ -277,20 +241,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/slide_0/left_axle"
+            "french_horn/slide_carrier/roof"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_6",
-      "title": "Slide 1 \u2014 placement review",
+      "title": "Upper return loop — placement review",
       "add": [],
       "assemblies": [
-        "french_horn/slide_1"
+        "french_horn/main_slide"
       ],
       "requires": [
         "step_5"
@@ -327,20 +291,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/slide_1/left_axle"
+            "french_horn/main_slide/left_bend"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_7",
-      "title": "Slide 2 \u2014 placement review",
+      "title": "First tuning slide — placement review",
       "add": [],
       "assemblies": [
-        "french_horn/slide_2"
+        "french_horn/slide_0"
       ],
       "requires": [
         "step_6"
@@ -377,21 +341,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/slide_2/left_axle"
+            "french_horn/slide_0/left_axle"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_8",
-      "title": "Low rear-facing bell and valves \u2014 placement review",
+      "title": "Second tuning slide — placement review",
       "add": [],
       "assemblies": [
-        "french_horn/valves",
-        "french_horn/bell"
+        "french_horn/slide_1"
       ],
       "requires": [
         "step_7"
@@ -428,27 +391,20 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/bell/throat"
-          ]
-        },
-        {
-          "text": "The bell opens backward (+Z) near the bottom of the coil. Fit throat and cone onto the low stand axle, then engage the dish studs with the cone underside. Check the rear view; physical insertion and clutch are untested.",
-          "instances": [
-            "french_horn/bell/flare",
-            "french_horn/bell/rim"
+            "french_horn/slide_1/left_axle"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     },
     {
       "id": "step_9",
-      "title": "Mouthpipe \u2014 placement review",
+      "title": "Third tuning slide — placement review",
       "add": [],
       "assemblies": [
-        "french_horn/mouthpipe"
+        "french_horn/slide_2"
       ],
       "requires": [
         "step_8"
@@ -485,13 +441,63 @@
       ],
       "callouts": [
         {
-          "text": "Use the reviewed real stud, pin and axle mounts. Every part reaches the stand in the final model. Physical insertion, stiffness and balance still need trial.",
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
           "instances": [
-            "french_horn/mouthpipe/lead_0"
+            "french_horn/slide_2/left_axle"
           ]
         }
       ],
-      "access_review": "Every final-model part has a reviewed nominal path to the stand. Physical insertion order, friction, balance and strength have not been trial-built; do not force parts."
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
+    },
+    {
+      "id": "step_10",
+      "title": "Rotary-valve details — placement review",
+      "add": [],
+      "assemblies": [
+        "french_horn/valves"
+      ],
+      "requires": [
+        "step_9"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            -0.4,
+            -0.25,
+            -1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "rear",
+          "eye": [
+            0.4,
+            -0.25,
+            1.5
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Final-model nominal attachments are checked. These grouped placements do not certify an insertion order; preassemble trapped axles and do not force parts.",
+          "instances": [
+            "french_horn/valves/upper_rail"
+          ]
+        }
+      ],
+      "access_review": "No physical trial. Stiffness, balance, clutch force and insertion access remain untested."
     }
   ]
 }

@@ -341,3 +341,29 @@ Native front/rear renders and instruction views are regenerated for this revisio
 release verification records rooted connectivity pass without user exception.
 Physical fit, balance and insertion remain untested. See the project README and
 exact-model review files for current evidence.
+
+## French horn R6 photograph-led redesign — 14 October 2026
+
+Inspected the Yamaha YHR-567 product photograph and labelled horn diagram after
+the user rejected R5's silhouette and permitted a larger model. R5 incorrectly
+equated a backward-facing bell with camera +Z. R6 makes the bell a continuous
+extension of the lower outer sweep, shortens and angles the leadpipe, staggers
+the inner slides, adds an upper return loop, and removes the separate tall
+support columns. It uses 111 native rigid parts in approximately 10.5 × 15.3 ×
+6.4 cm including the stand.
+
+The first prototype check found three real intersections. Retracting the return
+axle by 4 LDU and moving the leadpipe bracket to the opposite side of the sweep
+removed those witnesses. Fresh review: **111/111 parts rooted**, no occupancy
+conflicts, ten intended joints and six required pin segments pass. **5,937/6,105
+collision pairs pass** (5,912 separated bounds, eight separated solids and 17
+proved fixed contacts); **168 remain unknown** due to unsupported native solid
+boundaries. No material or connectivity waiver is used.
+
+The regression now requires the bell, body and mouthpiece to connect without
+using the stand as a bridge, and checks the lower in-plane bell direction.
+**401 tests pass**, including installed-wheel and rendering workflows; ty passes.
+Native front/rear views and ten authored placement-review steps are regenerated.
+The exact review files and sources record this revision. Thick tubing and broad
+levers remain stylized approximations; appearance acceptance, physical strength,
+balance, insertion and sourcing are not certified by the software checks.

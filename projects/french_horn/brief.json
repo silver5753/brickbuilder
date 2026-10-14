@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "subject": "Compact French horn desktop display",
-  "dimensions": "Stylized desktop miniature; final bounds recorded in the rendered release.",
+  "subject": "French horn desktop display — reference-informed R6",
+  "dimensions": "Larger stylized miniature permitted explicitly by user on 14 October 2026; native bounds in release.",
   "scale": "Stylized miniature; not a playable instrument or a specific manufacturer replica",
   "part_count_limit": 220,
   "budget": null,
@@ -10,7 +10,7 @@
   "sourcing_region": null,
   "condition": null,
   "owned_parts": null,
-  "axes": "Native +X is image right, -Y is up, front camera looks from -Z. Coil lies in XY. The bell sits by the lower left of the coil and opens backward along +Z from a low stand-mounted axle.",
+  "axes": "Native +X is image right, -Y is up; front camera is at -Z. Coil lies in XY. Bell grows continuously from the lower outer sweep and opens -X at Y=-122. Backward is relative to the player, not automatically camera +Z; reference photographs determine the silhouette.",
   "deliverables": [
     "cad",
     "inventory",
@@ -24,7 +24,9 @@
       "priority": "must",
       "source_ids": [
         "S1",
-        "S2"
+        "S2",
+        "S5",
+        "S6"
       ],
       "assemblies": [
         "french_horn/body"
@@ -61,7 +63,9 @@
       "source_ids": [
         "S1",
         "S2",
-        "S4"
+        "S4",
+        "S5",
+        "S6"
       ],
       "assemblies": [
         "french_horn/bell"
@@ -71,7 +75,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Inspect low rear-facing bell in front and rear views; verify rooted throat/cone/dish paths and collision diagnostics."
+      "validation": "Inspect continuous outer sweep into lower bell in front/hero/rear views; verify bell-root connection independently of the stand and review collisions."
     },
     {
       "id": "R4",
@@ -89,7 +93,7 @@
         "rear",
         "hero"
       ],
-      "validation": "Verify pipe tower side-stud seat and uninterrupted stud connections through mouthpiece"
+      "validation": "Verify short diagonal pipe attaches by reviewed pin/bracket to the outer sweep, with continuous stud connections through mouthpiece."
     },
     {
       "id": "R5",

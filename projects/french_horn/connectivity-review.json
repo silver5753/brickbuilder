@@ -1,44 +1,44 @@
 {
   "schema_version": 1,
   "reviewed_on": "2026-10-14",
-  "model_sha256": "6bf7da6829eb72915aed5a8a89414b1ffe14dce4b9b0e62ebd188caaf27d02f7",
-  "quantity": 107,
+  "model_sha256": "176d8b26fd689757e1095e250d36489f17363fa4f0f57897414bd95bbebb3a43",
+  "quantity": 111,
   "root": "french_horn/stand/base",
-  "rooted_quantity": 107,
+  "rooted_quantity": 111,
   "disconnected_components": [],
   "occupancy_conflicts": [],
   "intended_connection_statuses": {
-    "pass": 16
+    "pass": 10
   },
   "required_pin_statuses": {
-    "pass": 3
+    "pass": 6
   },
   "catalog_fingerprint": "e8fac065efecd20ce52081918fd5900410aa5a12bf5af0cebf73e479ffbf8f1a",
   "connectivity_approvals": [],
   "surface_test": "transverse_triangles_v1",
   "tolerance_ldu": 0.01,
-  "pair_count": 5671,
+  "pair_count": 6105,
   "surface_crossings": 0,
   "pair_classifications": {
-    "unsupported_solid_boundary": 182,
-    "bounds_separated": 5472,
-    "expected_contact": 13,
-    "solid_separated": 4
+    "unsupported_solid_boundary": 168,
+    "bounds_separated": 5912,
+    "expected_contact": 17,
+    "solid_separated": 8
   },
-  "geometry_dependency_fingerprint": "1048d603fabdea98b2dddb659f09fc2bc4e7afdb84adf13674d46829668ef2c7",
+  "geometry_dependency_fingerprint": "a7b83178859144188b7df7f346ea81f732fbb55f378771bf0e2d6866df83f106",
   "dependency_fingerprint_format": "SHA256 of collision report dependencies without filesystem paths, JSON sorted keys, compact separators; full records in release collisions/collisions.json",
   "contact_waivers": [],
   "mounts": {
-    "mouthpipe": "87087 side stud on stand tower; continuous 3062b stud chain through 4589 cup and 85861 lip",
-    "valves": "Both 3623 rails seat on 87087 side studs at tower levels -144 and -168; rotor and lever components remain stud-connected",
-    "slides": "6587 stud-ended axles attach to carrier underside; two 3713 bushes and 25214 bore grip each shaft",
-    "coil": "Two 6536 cross blocks join translated ring halves via 4519 axles; lower block has 6558 friction pin into stand-mounted 3700",
-    "bell": "Low two-brick pedestal on two base studs at x=-70/-50, z=70. Rotated 32064a bracket holds a rearward 4519 axle through throat and cone; dish studs engage cone underside. Bell opens +Z at Y=-70."
+    "mouthpipe": "6536 cross block on upper-left sweep; 6558 pin and front 3700 bracket support short diagonal stud-built pipe.",
+    "valves": "Two 3623 rails seat on 87087 side studs of the internal mast.",
+    "slides": "6587 stud-ended axles seat under carrier; native bushes and elbow bores grip each shaft. Upper loop mounts on carrier studs.",
+    "coil": "Five 3L axles retain six bends and four short round sections; lower 6536 block pins to the compact stand.",
+    "bell": "Lower outer sweep shares tail axle and 6536 block with the bell axle. Throat, cone and dish form a continuous -X bell at Y=-122; no separate bell pedestal."
   },
   "limits": [
-    "All 107 parts have reviewed nominal rooted paths; no connectivity exception granted or used.",
-    "Unused interfaces remain partial; broad connection status stays unknown independently of rooted connectivity pass.",
-    "Collision status remains unknown for 182 unsupported solid-boundary pairs, despite zero detected transverse or solid interference.",
-    "Nominal engagement does not measure clutch force, strength, balance or insertion; no physical trial occurred."
+    "111/111 nominal paths pass with no connectivity exception.",
+    "Unused interfaces retain partial coverage; overall connection report remains unknown.",
+    "Collision coverage is independent; 168 unsupported pairs remain unknown.",
+    "No physical trial."
   ]
 }

@@ -1,25 +1,30 @@
-# French horn — connected design rehearsal, revision 5
+# French horn — reference-informed revision 6
 
-A 107-part yellow desktop horn built from native LDraw parts. **Every physical
-part now has a reviewed nominal connection path to the stand.** There are no
-connectivity exceptions: the user explicitly required real attachments.
+A 111-part native LDraw desktop horn, approximately **10.5 × 15.3 × 6.4 cm**
+including its stand. The user explicitly permitted a larger model.
 
-## What was repaired
+## What changed after inspecting photographs
 
-- The mouthpipe seats on a side stud at the top of a stud-built tower. The cup
-  position was corrected to close its four-LDU gap with the last pipe brick.
-- Both valve rails seat on side studs of the same support tower.
-- Each slide uses stud-ended 6587 axles, two genuine 3713 axle bushes per leg,
-  and the real elbow axle bores. The studs attach to the carrier underside.
-- Two real 6536 cross blocks join coil halves separated by 20 LDU. A friction
-  pin connects the bottom block to a stand-mounted Technic brick, retaining the
-  coil positively instead of leaving it on a gravity cradle.
-- The bell now sits at the lower left of the coil and opens backward (+Z).
-  A low two-brick pedestal holds its cross axle; the throat, cone and dish
-  retain their real axle and stud connections. Five tall support bricks are removed.
+The Yamaha YHR-567 product photograph and labelled horn diagram exposed the
+R5 error: moving a detached bell toward camera +Z did not reproduce the shape
+of the instrument. A horn's bell is the flared continuation of its outer tube;
+"backward" is relative to the player, not a fixed camera axis.
 
-The added supports are visible in front and rear renders. No proximity edges,
-fictional connectors, stretched parts or connectivity waivers are used.
+R6 rebuilds those relationships:
+
+- Six curved native tube sections and short axle-retained round sections form
+  the outer sweep, which continues directly into the low bell.
+- A short diagonal leadpipe attaches to that sweep through a real pinned bracket.
+- An upper return loop and staggered inner slides fill the coil around three
+  rotary-valve details.
+- One compact black mount replaces the separate tall support columns.
+- The bell, outer sweep and mouthpiece connect to each other independently of
+  the stand. A regression test checks that property as well as every rooted path.
+
+The front, hero and rear images render the actual `model.ldr`. No scaled parts,
+cosmetic replacement geometry or connectivity exceptions are used. The result
+is still a stylized miniature: thick tubing, broad levers and the dish bell are
+visible approximations, not a measured manufacturer replica.
 
 ## Reproduce
 
@@ -31,69 +36,43 @@ uv run --locked --extra render brickbuilder build projects/french_horn \
   --stage connections --stage collisions --library /path/to/ldraw \
   --destination output/horn-check
 uv run --locked --extra render brickbuilder release projects/french_horn \
-  --library /path/to/ldraw --draft --destination output/horn-r5
-uv run --locked --extra render brickbuilder verify-release output/horn-r5
+  --library /path/to/ldraw --draft --destination output/horn-r6
+uv run --locked --extra render brickbuilder verify-release output/horn-r6
 ```
 
-## Review results and limits
+## Review scope
 
-The exact model fingerprint, geometry dependency fingerprint and mount review
-are in `connectivity-review.json`. The release contains the full connection and
-collision reports for that same model.
+The exact model fingerprint and detailed results are in
+`connectivity-review.json` and `collision-review.json`. Release reports preserve
+the native geometry dependencies and every unresolved pair.
 
-- **Rooted connectivity: pass, 107 / 107 parts.** No disconnected components,
-  no connector occupancy conflicts; all 16 authored coil joints and all three
-  required pin segments pass their nominal checks.
-- **Collision coverage: 5,489 / 5,671 pairs pass their nominal scope.**
-  5,472 have separated bounds, four have separated validated solid boundaries,
-  and thirteen have proved and individually reviewed fixed contacts. No transverse
-  crossing or solid-interference witness was detected, at 0.01 LDU tolerance.
-- **182 pairs remain unknown:** they involve open/nonmanifold native material
-  boundaries.
-  The current exact-model results and all unresolved pair IDs are in
-  `collision-review.json`. These are not waived by the contact configuration.
-- Intentional empty helpers no longer count as missing geometry. The shared
-  checker recognizes their reviewed bytes and records their dependency ancestry.
-- Broader connector coverage remains partial for unused interfaces. That keeps
-  the overall connection report unknown without erasing proven rooted paths.
-- Clutch force, stiffness, balance and physical insertion have not been trial
-  built. The nine-step HTML is a placement review, not a certified build sequence.
-- Part discovery is recorded in the dated Rebrickable evidence files. Final
-  colour availability, stock, prices and importer acceptance remain unverified.
-  No ordering file is supplied. External part geometry is not redistributed.
+All **111 parts** have reviewed nominal paths to the stand, with no disconnected
+components or occupancy conflicts. All ten authored outer-tube joints pass.
+Collision review remains separate from connectivity: unsupported native material
+boundaries remain unknown and cannot be waived by a connector match.
 
-The release is therefore a draft for these remaining checks, **not for waived
-connectivity**. The version-3 delivery gate passes with no user exception.
+The first R6 collision pass caught an over-inserted axle and two intersections
+between the leadpipe mount and inner supports. R6 retracts that axle by 4 LDU and
+puts the leadpipe bracket on the opposite side of the outer tube. The final
+reports rerun all pairs for those exact placements.
+
+Clutch force, stiffness, balance and physical insertion have not been trial
+built. The ten-step HTML is a placement review, not a certified assembly
+sequence. Part discovery is recorded in the existing dated Rebrickable evidence;
+this revision uses those already-reviewed native references. Colour availability,
+stock, prices and importer acceptance remain unverified. No ordering file or
+third-party reference photos/part library are distributed.
 
 ## History
 
-R1 (92 parts) had 24 detected surface-crossing pairs. R2 moved the bell clear,
-leaving 14. R3 cleared those 14 by moving the pipe and valves and shortening slide
-axles, but left disconnected assemblies. Calling that a completed repair was
-insufficient. The previous `repair-review.json` is retained as historical R3
-evidence; it is not the current model's review.
+R1–R3 repaired detected intersections but left disconnected assemblies. R4
+replaced those with reviewed stud, pin and axle mounts and enforced mandatory
+rooted delivery. R5 lowered and rotated the bell, but the user's visual review
+showed that a position-only correction was insufficient. R6 replaces that
+geometry using inspected photographs. Earlier commits retain the previous
+reviews; `repair-review.json` is historical R3 evidence only.
 
-R4 replaces those unresolved attachments with the real connections above. The
-repository workflow now refuses disconnected delivery even with `--draft` or
-stage overrides. Only explicit user consent tied to exact model/report hashes
-permits an exception. The prior R3 model is blocked under that rule.
-
-## Collision checker upgrade — 13 October 2026
-
-This checker upgrade was first reviewed on R4; the current review files now
-record the R5 geometry and its freshly rerun diagnostics.
-`build.json.collisions` now selects the repeatable exact-model contact configuration.
-The new core validates closed material boundaries, detects containment and occupied
-solid overlap, and partitions contact surfaces to prove nominal non-overlap before
-accepting a contact annotation. Invalid source boundaries remain visible. The
-remaining source-data issue needs reviewed material decompositions or faithful
-closed boundary geometry; a connector match alone cannot establish clearance.
-
-## Bell orientation correction — 14 October 2026
-
-R5 follows the user's correction: the bell belongs at the lower rear. Its axis
-moves down 120 LDU and turns from -X to +Z. The mount now uses two base studs,
-two support bricks, a shim and the same reviewed Technic axle connection.
-The opposite-side renders expose both the bell opening and its support.
-Other instrument geometry stays unchanged. Appearance remains a stylized brick
-miniature; physical fit and balance still need a trial build.
+The shared collision checker distinguishes separated bounds, validated closed
+material boundaries, proved fixed contacts and unsupported geometry. An unknown
+overall report is not a physical-build certificate. No user connectivity waiver
+has been granted or used.
