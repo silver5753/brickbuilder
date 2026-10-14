@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+  "tolerance_ldu": 0.01,
+  "materials": [],
+  "expected_contacts": [
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/mouthpipe/lead_0",
+        "french_horn/mouthpipe/lead_1"
+      ],
+      "reason": "Reviewed 3062b stud-to-underside seat in the fixed leadpipe; complete boundary-cell test proves no solid overlap at the exact R4 pose."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/mouthpipe/lead_1",
+        "french_horn/mouthpipe/lead_2"
+      ],
+      "reason": "Reviewed 3062b stud-to-underside seat in the fixed leadpipe; complete boundary-cell test proves no solid overlap at the exact R4 pose."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/mouthpipe/lead_2",
+        "french_horn/mouthpipe/lead_3"
+      ],
+      "reason": "Reviewed 3062b stud-to-underside seat in the fixed leadpipe; complete boundary-cell test proves no solid overlap at the exact R4 pose."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/stand/trim_m20",
+        "french_horn/stand/trim_m60"
+      ],
+      "reason": "Adjacent decorative 3069b stand tiles share their end plane; each attaches independently to the stand, with no relative motion."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/cap_0",
+        "french_horn/valves/cap_1"
+      ],
+      "reason": "Adjacent fixed decorative valve caps touch nominally at their outer edges; no moving-valve clearance is claimed. Complete boundary-cell partition excludes overlapping material."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/cap_1",
+        "french_horn/valves/cap_2"
+      ],
+      "reason": "Adjacent fixed decorative valve caps touch nominally at their outer edges; no moving-valve clearance is claimed. Complete boundary-cell partition excludes overlapping material."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/lever_0",
+        "french_horn/valves/lever_1"
+      ],
+      "reason": "Adjacent fixed decorative valve levers touch nominally at their outer edges; no moving-valve clearance is claimed. Complete boundary-cell partition excludes overlapping material."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/lever_1",
+        "french_horn/valves/lever_2"
+      ],
+      "reason": "Adjacent fixed decorative valve levers touch nominally at their outer edges; no moving-valve clearance is claimed. Complete boundary-cell partition excludes overlapping material."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/rotor_0",
+        "french_horn/valves/rotor_1"
+      ],
+      "reason": "Adjacent fixed decorative valve rotors touch nominally at their outer edges; no moving-valve clearance is claimed. Complete boundary-cell partition excludes overlapping material."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/rotor_1",
+        "french_horn/valves/rotor_2"
+      ],
+      "reason": "Adjacent fixed decorative valve rotors touch nominally at their outer edges; no moving-valve clearance is claimed. Complete boundary-cell partition excludes overlapping material."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/cap_0",
+        "french_horn/valves/rotor_0"
+      ],
+      "reason": "Reviewed fixed 98138 cap seated on its 3062b rotor stud at the exact R4 pose. Complete closed-boundary partition checks 1420 cells and excludes solid overlap; no articulated valve motion is claimed."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/cap_1",
+        "french_horn/valves/rotor_1"
+      ],
+      "reason": "Reviewed fixed 98138 cap seated on its 3062b rotor stud at the exact R4 pose. Complete closed-boundary partition checks 1420 cells and excludes solid overlap; no articulated valve motion is claimed."
+    },
+    {
+      "model_sha256": "d782873a710f4e03de49c99efc7f22326ee71aaa972126c8c403568bc501ddcc",
+      "pair": [
+        "french_horn/valves/cap_2",
+        "french_horn/valves/rotor_2"
+      ],
+      "reason": "Reviewed fixed 98138 cap seated on its 3062b rotor stud at the exact R4 pose. Complete closed-boundary partition checks 1420 cells and excludes solid overlap; no articulated valve motion is claimed."
+    }
+  ],
+  "joint": null
+}

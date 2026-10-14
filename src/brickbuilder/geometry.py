@@ -8,6 +8,17 @@ from .model import Model, reference_name
 from .transforms import MM_PER_LDU, Vector, subtract, vector
 
 
+# Reviewed official low-resolution no-op primitives. Match bytes, not filenames
+# or prose (which can also occur in an accidentally truncated part). The 2025-08
+# empty.dat contains only a hidden MLCad conditional-line workaround; the
+# 2015-01 chord deliberately has no faces at the standard 16-segment resolution.
+# Ancestors consisting solely of these no-ops are derived, never allowlisted.
+INTENTIONAL_EMPTY = {
+    "empty.dat": "192c9b9ee2e425cfbc9e9b12ff61ee0f05ae1cb0c12dc37d5590adb6abb65128",
+    "1-16chrd.dat": "e429dd760eb6f0cf460a74e6ebf52c023bedbdea82de7801efa1694b5a1a82e8",
+}
+
+
 @dataclass(frozen=True)
 class Bounds:
     minimum: Vector
@@ -40,6 +51,7 @@ class Geometry:
     missing: tuple[str, ...] = ()
     empty: tuple[str, ...] = ()
     triangles: tuple[tuple[Vector, Vector, Vector], ...] = ()
+    intentional_empty: tuple[str, ...] = ()
 
 
 class GeometryLoader:
@@ -69,6 +81,7 @@ class GeometryLoader:
         triangles: list[tuple[Vector, Vector, Vector]] = []
         missing: set[str] = set()
         empty: set[str] = set()
+        intentional_empty: set[str] = set()
         for record in records:
             if isinstance(record, Reference):
                 child = self.load(record.name, (*stack, key))
@@ -83,6 +96,7 @@ class GeometryLoader:
                 )
                 missing.update(child.missing)
                 empty.update(child.empty)
+                intentional_empty.update(child.intentional_empty)
             else:
                 points.extend(
                     record.vertices[:2] if record.kind == 5 else record.vertices
@@ -93,12 +107,19 @@ class GeometryLoader:
                     if record.kind == 4:
                         triangles.append((v[0], v[2], v[3]))
         if not points and not missing:
-            empty.add(key)
+            reviewed = self.library.dependencies[key].sha256 == INTENTIONAL_EMPTY.get(
+                key
+            )
+            if not empty and (reviewed or intentional_empty):
+                intentional_empty.add(key)
+            else:
+                empty.add(key)
         result = Geometry(
             tuple(points),
             tuple(sorted(missing)),
             tuple(sorted(empty)),
             tuple(triangles),
+            tuple(sorted(intentional_empty)),
         )
         self._cache[key] = result
         return result
@@ -112,6 +133,7 @@ class GeometryReport:
     empty: tuple[str, ...]
     resolved_instances: int
     total_instances: int
+    intentional_empty: tuple[str, ...] = ()
 
 
 def inspect_geometry(
@@ -119,6 +141,7 @@ def inspect_geometry(
 ) -> GeometryReport:
     missing: set[str] = set()
     empty: set[str] = set()
+    intentional_empty: set[str] = set()
     resolved = 0
 
     def world_points() -> Iterator[Vector]:
@@ -127,6 +150,9 @@ def inspect_geometry(
             geometry = loader.load(part.reference)
             missing.update(geometry.missing)
             empty.update(geometry.empty)
+            intentional_empty.update(geometry.intentional_empty)
+            if not geometry.points:
+                empty.add(reference_name(part.reference))
             if geometry.points and not geometry.missing and not geometry.empty:
                 resolved += 1
             yield from (part.transform.point(v) for v in geometry.points)
@@ -144,6 +170,7 @@ def inspect_geometry(
         tuple(sorted(empty)),
         resolved,
         len(model.parts),
+        tuple(sorted(intentional_empty)),
     )
 
 

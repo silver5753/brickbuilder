@@ -54,7 +54,9 @@ Put strict schema-version-1 `build.json` beside `project.json`:
 }
 ```
 
-All fields are required when the file exists. Paths are relative to the project
+The fields above are required when the file exists. An optional `collisions`
+object maps emitted pose names to exact-model collision configuration paths;
+see [collision configurations](collisions.md#reusable-project-configurations). Paths are relative to the project
 and cannot escape it through traversal or symlinks. Null means unconfigured.
 Without `build.json`, only CAD/inventories and basic placement/count/binding
 checks run. This preserves existing Model-returning builders without inventing a
@@ -71,7 +73,7 @@ permission against the brief (see [release policy](releases.md)).
 | `cad` | Always generated: complete CAD, native BOM, groups and alternative selections |
 | `connections` | Requires catalog/root; checks nominal interfaces and supplied intended joints |
 | `geometry` | Requires explicit library; recursive vertex bounds/dependency coverage, not collision |
-| `collisions` | Requires library; all-pair bounds and transverse surface review with exact-pose default config |
+| `collisions` | Requires library; all-pair bounds, surfaces and qualified solid/contact review; default or configured exact-pose evidence |
 | `render` | Requires render config, library and palette; generates configured views |
 | `stickers` | Requires sticker config; generates configured imported-artwork or legacy solar SVG templates/sheets |
 | `instructions` | Requires project-root steps.json, render config/library/palette; accumulated CAD, highlights and offline HTML |

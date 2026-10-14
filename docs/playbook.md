@@ -169,3 +169,10 @@ revision as fixed. A render, a subset of intended joints passing, or an unknown
 overall report does not establish whole-model connectivity. `--draft` is not
 user consent to relax connectivity. See the explicit user-approval and exact-report
 rules in [releases](releases.md); internal diagnostic builds remain available.
+
+For unresolved collisions, inspect the per-part solid-boundary audit and exact
+pair reason. Known intentional empty helpers no longer invalidate otherwise
+resolved geometry. Use closed-boundary solid/contact results where qualified;
+otherwise supply reviewed material evidence or retain the unknown. A contact
+annotation is permitted only after the checker proves nominal non-overlap.
+Store per-pose configurations in `build.json.collisions` for repeatable releases.

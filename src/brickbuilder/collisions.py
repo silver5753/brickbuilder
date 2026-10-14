@@ -8,6 +8,7 @@ from math import sqrt
 
 from .geometry import Bounds, GeometryLoader
 from .surfaces import SurfaceTree
+from .solids import SolidMesh, audit as audit_solid, compare as compare_solids
 from .jsonio import (
     array,
     coordinates,
@@ -291,6 +292,8 @@ def _pair(
     materials: dict[str, _Material],
     tolerance: float,
     surfaces: dict[str, SurfaceTree | None],
+    solids: dict[str, SolidMesh | None],
+    solid_audits: dict[str, dict],
 ) -> dict:
     row: dict = dict(pair=[a.instance_id, b.instance_id], status="unknown")
     # Positive evidence in available faces remains useful even when another
@@ -316,17 +319,39 @@ def _pair(
     if gap > tolerance:
         return dict(row, status="pass", classification="bounds_separated")
     ma, mb = materials.get(a.instance_id), materials.get(b.instance_id)
-    if ma is None or mb is None:
-        return dict(row, classification="unreviewed_material_or_hollow_geometry")
-    gaps = [
-        _box_gap(x, a.transform, y, b.transform) for x, y in product(ma.boxes, mb.boxes)
-    ]
-    if min(gaps) < -tolerance:
+    gaps = (
+        [
+            _box_gap(x, a.transform, y, b.transform)
+            for x, y in product(ma.boxes, mb.boxes)
+        ]
+        if ma is not None and mb is not None
+        else []
+    )
+    if gaps and min(gaps) < -tolerance:
         return dict(
             row,
             status="fail",
             classification="material_interference",
             minimum_sat_gap_ldu=min(gaps),
+        )
+    solid_a, solid_b = solids[a.instance_id], solids[b.instance_id]
+    solid_result = (
+        compare_solids(solid_a, solid_b, tolerance)
+        if solid_a is not None and solid_b is not None
+        else None
+    )
+    # Authored material boxes cannot override a positive closed-solid witness.
+    if solid_result is not None and (solid_result["status"] == "fail" or not gaps):
+        return dict(row, **solid_result)
+    if ma is None or mb is None:
+        return dict(
+            row,
+            classification="unsupported_solid_boundary",
+            boundary_issues={
+                p.instance_id: solid_audits[p.instance_id]
+                for p in (a, b)
+                if solids[p.instance_id] is None
+            },
         )
     if not ma.complete or not mb.complete:
         return dict(row, classification="partial_material_coverage")
@@ -353,7 +378,11 @@ class Diagnostics:
                 from_model(model, "Diagnostic pose; physical motion untested")
             )
             for row in report["pairs"]:
-                if row["classification"] in ("bounds_separated", "material_separated"):
+                if row["classification"] in (
+                    "bounds_separated",
+                    "material_separated",
+                    "solid_separated",
+                ):
                     continue
                 candidates.append((model, pose_name, row))
         # Keep failures and resolved overlap candidates ahead of missing-mesh pairs.
@@ -458,10 +487,19 @@ def diagnose(
     materials = _materials(data["materials"], model, loader)
     poses, motion = sampled_poses(model, data["joint"])
     reviews = _reviews(data["expected_contacts"], poses)
+    # Audit once in each native part frame, before rigid transforms introduce
+    # round-off at shared vertices. Never weld or fill a native boundary.
+    solid_cache = {}
+    for part in model.parts:
+        if part.reference not in solid_cache:
+            geometry = loader.load(part.reference)
+            solid_cache[part.reference] = audit_solid(geometry.triangles)
     pose_reports = []
     for pose in poses:
         bounds = {}
         surfaces = {}
+        solids = {}
+        solid_audits = {}
         unresolved = set()
         geometry_rows = []
         for part in pose.parts:
@@ -479,6 +517,11 @@ def diagnose(
                     for a, b, c in geometry.triangles
                 )
             )
+            native_solid, solid_audit = solid_cache[part.reference]
+            solid_audits[part.instance_id] = solid_audit
+            solids[part.instance_id] = (
+                native_solid.moved(part.transform) if native_solid is not None else None
+            )
             incomplete = not geometry.points or geometry.missing or geometry.empty
             if incomplete:
                 unresolved.add(part.instance_id)
@@ -488,12 +531,24 @@ def diagnose(
                     status="unknown" if incomplete else "pass",
                     missing=geometry.missing,
                     empty=geometry.empty,
+                    intentional_empty=geometry.intentional_empty,
+                    solid_boundary=solid_audit,
                 )
             )
         rows = []
         fingerprint = pose.fingerprint()
         for a, b in combinations(pose.parts, 2):
-            row = _pair(a, b, bounds, unresolved, materials, tolerance, surfaces)
+            row = _pair(
+                a,
+                b,
+                bounds,
+                unresolved,
+                materials,
+                tolerance,
+                surfaces,
+                solids,
+                solid_audits,
+            )
             reason = reviews.get((fingerprint, *sorted((a.instance_id, b.instance_id))))
             row["expected_contact_reason"] = reason
             if reason and row["classification"] == "contact_tolerance_band":
@@ -516,8 +571,10 @@ def diagnose(
             model_sha256=model.fingerprint(),
             config_sha256=sha256(config).hexdigest(),
             scope="all unordered instance pairs in the supplied model at listed poses",
-            method="vertex AABB separation; transverse triangle surface crossings with AABB hierarchy; reviewed material boxes with 15-axis SAT",
+            method="vertex AABB separation; transverse triangle crossings; validated closed-boundary parity, occupied witnesses and complete contact-cell classification; reviewed material boxes with 15-axis SAT",
             surface_test="transverse_triangles_v1",
+            solid_test="closed_boundary_parity_v1",
+            solid_scope="Even-odd material interior of an embedded closed triangle boundary at supplied tessellation; no hole filling or welding",
             tolerance_ldu=tolerance,
             materials={k: asdict(v) for k, v in materials.items()},
             dependencies=[
@@ -541,8 +598,10 @@ def diagnose(
                 "Bounds separation is conditional on the supplied geometry representing the part.",
                 "Tolerance-band contacts do not measure physical fit; reviews apply to exact poses only.",
                 "Discrete poses do not prove clearance between samples or mechanical joint feasibility.",
-                "Surface tests detect strict transverse crossings only; no crossing does not prove clearance or exclude containment, coplanar overlap or tolerance-band interference.",
-                "No mesh-to-solid inference, flexible parts or simultaneous joints are supported.",
+                "Closed-boundary parity preserves cavities; open, duplicate, degenerate, self-intersecting or nonmanifold boundaries remain unsupported.",
+                "Containment and occupied probes can establish interference; absence of a probe witness never establishes contact clearance.",
+                "Clearance requires disjoint boundaries plus component membership checks or complete reviewed material; contact acceptance requires complete boundary-cell coverage or complete material and an exact-pose review. Ambiguous contact remains unknown.",
+                "No arbitrary mesh filling, flexible parts or simultaneous joints are supported. Supplied tessellation is not manufacturing geometry.",
             ],
         ),
         poses,

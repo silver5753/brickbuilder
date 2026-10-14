@@ -274,6 +274,8 @@ def _reconcile(root: Path, manifest: dict) -> dict:
     models = summary["models"]
     if not isinstance(models, dict) or "default" not in models:
         raise ValueError("Release requires a default model")
+    if "collisions" in summary["stages"] and set(settings.collisions) - models.keys():
+        raise ValueError("Collision configuration names an unknown emitted pose")
     primary = None
     stages = set(summary["stages"])
     if "cad" not in stages or stages - STAGES:
@@ -462,6 +464,12 @@ def _reconcile(root: Path, manifest: dict) -> dict:
                     model.fingerprint(),
                 )
                 payload = (folder / "collisions/config.json").read_bytes()
+                if name in settings.collisions:
+                    _equal(
+                        payload,
+                        settings.collisions[name].read_bytes(),
+                        f"{name} captured collision configuration",
+                    )
                 review_collisions(model, report, payload)
                 expected_checks["collisions"] = report["status"]
             _equal(

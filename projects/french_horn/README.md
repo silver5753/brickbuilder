@@ -43,13 +43,18 @@ collision reports for that same model.
 - **Rooted connectivity: pass, 112 / 112 parts.** No disconnected components,
   no connector occupancy conflicts; all 16 authored coil joints and all three
   required pin segments pass their nominal checks.
-- **Surface crossings: zero across 6,216 pairs.** 3,527 pairs have separated
-  bounds; 2,689 remain unknown (2,561 unresolved geometry, 128 unreviewed hollow
-  material). Tolerance is 0.01 LDU, with no material/contact waivers.
+- **Collision coverage: 6,041 / 6,216 pairs pass their nominal scope.**
+  6,024 have separated bounds, four have separated validated solid boundaries,
+  and thirteen have proved and individually reviewed fixed contacts. No transverse
+  crossing or solid-interference witness was detected, at 0.01 LDU tolerance.
+- **175 pairs remain unknown:** they involve open/nonmanifold native material
+  boundaries.
+  The current exact-model results and all unresolved pair IDs are in
+  `collision-review.json`. These are not waived by the contact configuration.
+- Intentional empty helpers no longer count as missing geometry. The shared
+  checker recognizes their reviewed bytes and records their dependency ancestry.
 - Broader connector coverage remains partial for unused interfaces. That keeps
   the overall connection report unknown without erasing proven rooted paths.
-- Collision coverage is also unknown: the transverse surface test does not
-  certify containment or coplanar clearance. Empty helpers remain visible.
 - Clutch force, stiffness, balance and physical insertion have not been trial
   built. The nine-step HTML is a placement review, not a certified build sequence.
 - Part discovery is recorded in the dated Rebrickable evidence files. Final
@@ -71,3 +76,14 @@ R4 replaces those unresolved attachments with the real connections above. The
 repository workflow now refuses disconnected delivery even with `--draft` or
 stage overrides. Only explicit user consent tied to exact model/report hashes
 permits an exception. The prior R3 model is blocked under that rule.
+
+## Collision checker upgrade — 13 October 2026
+
+Geometry remains R4. The prior counts in `connectivity-review.json` document the
+original checker; `collision-review.json` supersedes only that collision snapshot.
+`build.json.collisions` now selects the repeatable exact-model contact configuration.
+The new core validates closed material boundaries, detects containment and occupied
+solid overlap, and partitions contact surfaces to prove nominal non-overlap before
+accepting a contact annotation. Invalid source boundaries remain visible. The
+remaining source-data issue needs reviewed material decompositions or faithful
+closed boundary geometry; a connector match alone cannot establish clearance.

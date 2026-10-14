@@ -292,3 +292,32 @@ and hero images plus eighteen placement-review views; offline artifact integrity
 passes with rooted connectivity pass and no exception. Broader unused-interface
 coverage, unresolved collision material/geometry and physical strength/insertion
 remain separately unknown or untested; none creates a floating-part allowance.
+
+## Collision coverage and solid/contact checks — 14 October 2026
+
+The [implementation plan](collision-upgrade-plan.md) addresses the two gaps from
+horn review. Exact reviewed intentional-empty LDraw primitives now propagate as
+recorded no-ops; unknown/changed/missing geometry and empty physical parts remain
+unresolved. Closed material boundaries are audited before parity/containment and
+occupied-witness tests. Contact surfaces are partitioned into complete boundary
+cells before an exact-pose contact review may pass them. Hollow cavities stay
+empty; open/nonmanifold/ambiguous boundaries are never filled to obtain clearance.
+Positive solid witnesses defeat contact annotations and conflicting material claims.
+
+Build/release accepts a per-pose collision-config map, captures those inputs and
+binds emitted configs offline. The verifier checks new solid prerequisites,
+witness statuses and exact configured contact reviews, while preserving historical
+reports. Rooted connectivity still cannot be relaxed without user approval.
+
+The unchanged R4 horn now has 6,041 passing pairs of 6,216: 6,024 bounds-separated,
+four solid-separated and thirteen individually reviewed fixed contacts. There are no
+detected crossings or solid-interference witnesses. All 112 root paths pass.
+**175 pairs remain unknown:** they involve native open/nonmanifold boundaries. The
+[current review](../projects/french_horn/collision-review.json) records each pair,
+per-reference boundary audits and fingerprints. No material geometry is invented.
+
+Verification: **401 tests passed**, including installed core/render workflows;
+analytical coverage includes containment, coincident solids, coplanar overlap,
+face contact, cavities, rotations, cracks/T-junctions, malformed meshes, stale
+configuration and offline tampering. These are nominal tessellation checks;
+physical fit, strength and continuous motion remain separate.

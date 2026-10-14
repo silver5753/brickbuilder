@@ -117,6 +117,12 @@ can succeed despite an empty child dependency; see [rendering](rendering.md).
 
 ### Diagnostic evidence
 
+For reusable collision configurations, `build.json.collisions` maps each pose to
+a configuration file. Release captures and reruns it; offline verification binds
+the emitted configuration to the captured input. Do not also provide an evidence
+configuration for the same pose. Existing standalone diagnostic bindings below
+remain supported.
+
 Add an optional `evidence` array to the policy. Each record has exactly these fields:
 
 ```json

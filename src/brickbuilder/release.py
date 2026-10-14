@@ -44,6 +44,7 @@ def _inputs(directory: Path, policy: dict) -> dict[str, bytes]:
     if (project.root / "steps.json").exists():
         paths.add(project.root / "steps.json")
     paths.update(job.rules for job in settings.orders)
+    paths.update(settings.collisions.values())
     if settings.stickers is not None:
         paths.update(artwork_dependencies(settings.stickers))
     # Include local helper code, even imports subsequently removed from sys.modules.

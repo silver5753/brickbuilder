@@ -1,7 +1,7 @@
 """Execute reviewed project Python once, then orchestrate existing output APIs."""
 
 from contextlib import redirect_stdout
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from hashlib import sha256
 import importlib.util
 from importlib.abc import MetaPathFinder
@@ -61,6 +61,7 @@ class BuildConfig:
     exceptions: Path | None
     orders: tuple[Order, ...]
     sha256: str | None
+    collisions: dict[str, Path] = field(default_factory=dict)
 
 
 def load_build_config(project: Project) -> BuildConfig:
@@ -68,9 +69,13 @@ def load_build_config(project: Project) -> BuildConfig:
     if not path.exists():
         return BuildConfig((), None, None, None, None, None, (), None)
     payload = path.read_bytes()
+    raw = decode_json(payload.decode("utf-8-sig"))
+    fields = {"stages", "root", "catalog", "render", "stickers", "exceptions", "orders"}
+    if isinstance(raw, dict) and "collisions" in raw:
+        fields.add("collisions")
     data = versioned(
-        decode_json(payload.decode("utf-8-sig")),
-        {"stages", "root", "catalog", "render", "stickers", "exceptions", "orders"},
+        raw,
+        fields,
         "build.json",
     )
     stages = tuple(text(s, "Stage") for s in array(data["stages"], "Stages"))
@@ -103,6 +108,9 @@ def load_build_config(project: Project) -> BuildConfig:
         )
     if len({o.name for o in orders}) != len(orders):
         raise ValueError("Duplicate order names")
+    collision_paths = data.get("collisions", {})
+    if not isinstance(collision_paths, dict):
+        raise ValueError("build.json.collisions must map pose names to config paths")
     return BuildConfig(
         stages,
         text(data["root"], "Root") if data["root"] is not None else None,
@@ -112,6 +120,12 @@ def load_build_config(project: Project) -> BuildConfig:
         paths["exceptions"],
         tuple(orders),
         sha256(payload).hexdigest(),
+        {
+            text(name, "Collision pose"): project_path(
+                project.root, path, "Collision config"
+            )
+            for name, path in collision_paths.items()
+        },
     )
 
 
@@ -275,6 +289,17 @@ def build_project(
             snapshot(project_path(project.root, "steps.json", "Step plan"))
         )
     result, builder_hash = _invoke(project)
+    configs = dict(collision_configs or {})
+    if "collisions" in enabled:
+        if set(configs) & settings.collisions.keys():
+            raise ValueError(
+                "Duplicate collision configuration in build.json and evidence"
+            )
+        configs.update(
+            {name: snapshot(path) for name, path in settings.collisions.items()}
+        )
+        if set(configs) - {name for name, _ in result.models()}:
+            raise ValueError("Collision configuration names an unknown emitted pose")
     hashes[project.builder.relative_to(project.root).as_posix()] = builder_hash
     reviews: dict[str, dict] = {}
     with TemporaryDirectory(
@@ -309,7 +334,7 @@ def build_project(
             checks["collisions"] = "not_tested"
             if "collisions" in enabled:
                 assert selected_library is not None
-                collision_config = (collision_configs or {}).get(
+                collision_config = configs.get(
                     name, default_config(source.document.model)
                 )
                 diagnostic = diagnose(

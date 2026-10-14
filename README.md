@@ -45,7 +45,7 @@ No prior spacecraft model or release is needed.
 | Online part discovery | Live Rebrickable search, exact/batched IDs, external-ID lookups and sourced JSON; no local catalog mirror |
 | Replacements | Reviewed one-to-many assembly recipes with immutable previews, support checks and new identities |
 | Sourcing | Dated offline stock/owned-parts snapshots, candidate baskets, shortages and unknown costs |
-| Collision and motion | Scoped bounds/material-box diagnostics at explicit poses and sampled joint angles |
+| Collision and motion | Bounds/surface checks, validated closed-solid containment and contact, reviewed material boxes and sampled joint angles |
 | Releases | Captured provenance, required checks, optional exact-model diagnostic evidence and offline verification |
 
 The agent still chooses structure and parts, supplies evidence/configuration,

@@ -74,7 +74,7 @@ Read the relevant guide before changing or using a capability:
 - [Project execution](docs/execution.md): reviewed Python, explicit stages, pose identity and draft summaries.
 - [Assembly instructions](docs/instructions.md): authored step coverage, cameras, illustrations and trial feedback; no automatic insertion-order proof.
 - [Offline sourcing](docs/sourcing.md): dated stock/owned snapshots, scoped basket comparisons and explicit unknown costs; no purchasing or global-optimum claim.
-- [Collision/motion diagnostics](docs/collisions.md): exact poses, reviewed material regions and isolated candidate views; no inferred solid volumes or continuous-clearance proof.
+- [Collision/motion diagnostics](docs/collisions.md): exact poses, reviewed material regions and isolated candidate views; validated closed boundaries only; no arbitrary solid filling or continuous-clearance proof.
 - [Geometric replacements](docs/replacements.md): explicit assembly recipes, retained supports, immutable previews and regenerated outputs; no automatic fit equivalence.
 - [Assembly authoring](docs/assembly.md): named parts, local frames, intended joints and generated bindings.
 - [Model API](docs/model-api.md): rigid placement, geometry and single-file LDraw;
@@ -139,3 +139,13 @@ never infer consent from "draft", "continue", silence, an agent assumption or
 a general instruction to build. Never create approval records without that
 consent. Changed model/report hashes invalidate the exception. See docs/releases.md
 for the format.
+
+## Interpret collision coverage
+
+Read geometry and solid-boundary reasons, not only the failure count. Reviewed
+intentional no-op helpers are distinct from missing geometry. Closed-boundary
+checks may establish containment, separation or complete nominal contact; open,
+nonmanifold and ambiguous contact geometry stays unknown. Contact reviews may
+accept only proved contact, never suppress interference or unsupported boundaries.
+Use `build.json.collisions` for repeatable per-pose configurations and rerun after
+geometry changes. See docs/collisions.md for prerequisites and numerical limits.

@@ -4,7 +4,7 @@ from hashlib import sha256
 from pathlib import Path
 from itertools import combinations
 
-from .collisions import sampled_poses
+from .collisions import sampled_poses, _reviews
 from .jsonio import array, object_fields, read_json, text, decode_json, coordinates
 from .model import Model
 from .ldraw import read_source
@@ -103,6 +103,7 @@ def review_collisions(model: Model, report: dict, payload: bytes) -> None:
     if config.get("model_sha256") != model.fingerprint():
         raise ValueError("Stale collision evidence configuration")
     poses, motion = sampled_poses(model, config["joint"])
+    contacts = _reviews(config["expected_contacts"], poses)
     if (
         report.get("motion") != motion
         or [p["model_sha256"] for p in report.get("poses", [])]
@@ -134,13 +135,117 @@ def review_collisions(model: Model, report: dict, payload: bytes) -> None:
             raise ValueError("Collision evidence pose status mismatch")
     if report["status"] != combine_status([p["status"] for p in report["poses"]]):
         raise ValueError("Collision evidence summary status mismatch")
-    # A retained positive surface witness cannot be relabelled as pass/unknown.
+    # Retained positive witnesses cannot be relabelled as pass/unknown. New
+    # closed-boundary results also require matching complete boundary audits.
     for pose in report["poses"]:
+        geometry = {g["instance_id"]: g for g in pose["geometry"]}
         for row in pose["pairs"]:
-            if row.get("classification") == "surface_intersection":
+            classification = row.get("classification", "")
+            if report.get("solid_test") == "closed_boundary_parity_v1":
+                expected_status = (
+                    "pass"
+                    if classification
+                    in {
+                        "bounds_separated",
+                        "material_separated",
+                        "solid_separated",
+                        "expected_contact",
+                    }
+                    else "fail"
+                    if classification
+                    in {
+                        "surface_intersection",
+                        "material_interference",
+                        "solid_containment",
+                        "solid_overlap",
+                    }
+                    else "unknown"
+                )
+                if row["status"] != expected_status:
+                    if classification == "surface_intersection":
+                        raise ValueError("Surface intersection must fail")
+                    raise ValueError(
+                        "Collision classification/status mismatch; interference must fail and unresolved results must remain unknown"
+                    )
+                if (
+                    classification == "expected_contact"
+                    and row.get("contact_basis") != "closed_boundary_cells"
+                ):
+                    materials = report.get("materials", {})
+                    if not all(
+                        materials.get(i, {}).get("complete") is True
+                        for i in row["pair"]
+                    ):
+                        raise ValueError(
+                            "Expected contact requires complete material or boundary-cell evidence"
+                        )
+            if classification == "expected_contact":
+                key = (pose["model_sha256"], *sorted(row["pair"]))
+                if (
+                    row["status"] != "pass"
+                    or key not in contacts
+                    or row.get("expected_contact_reason") != contacts[key]
+                ):
+                    raise ValueError(
+                        "Expected contact requires its exact configured review"
+                    )
+            if classification in {
+                "surface_intersection",
+                "solid_containment",
+                "solid_overlap",
+            }:
                 if row["status"] != "fail":
-                    raise ValueError("Surface intersection must fail")
+                    label = (
+                        "Surface intersection"
+                        if classification == "surface_intersection"
+                        else "Solid interference"
+                    )
+                    raise ValueError(label + " must fail")
                 coordinates(row.get("witness_ldu"), "Surface crossing witness")
+            uses_solid = (
+                classification.startswith("solid_")
+                or row.get("contact_basis") == "closed_boundary_cells"
+            )
+            if uses_solid:
+                if report.get("solid_test") != "closed_boundary_parity_v1":
+                    raise ValueError("Unsupported solid collision method")
+                for instance_id in row["pair"]:
+                    g = geometry[instance_id]
+                    boundary = g.get("solid_boundary", {})
+                    if (
+                        g["status"] != "pass"
+                        or boundary.get("status") != "pass"
+                        or boundary.get("reason") != "closed_boundary"
+                        or any(
+                            boundary.get(k, -1) != 0
+                            for k in (
+                                "boundary_edges",
+                                "nonmanifold_edges",
+                                "degenerate_faces",
+                                "duplicate_faces",
+                            )
+                        )
+                    ):
+                        raise ValueError(
+                            "Solid result requires complete closed boundaries"
+                        )
+                if classification == "solid_separated" and row["status"] != "pass":
+                    raise ValueError("Solid separation status mismatch")
+                if (
+                    classification.startswith("solid_")
+                    and classification
+                    not in {"solid_containment", "solid_overlap", "solid_separated"}
+                    and row["status"] != "unknown"
+                ):
+                    raise ValueError("Unresolved solid result must remain unknown")
+            if row.get("contact_basis") == "closed_boundary_cells":
+                if (
+                    type(row.get("cells_checked")) is not int
+                    or row["cells_checked"] <= 0
+                    or classification
+                    not in {"contact_tolerance_band", "expected_contact"}
+                ):
+                    raise ValueError("Invalid closed-boundary contact evidence")
 
 
 def collision_reviews(summary: dict, evidence: list[dict]) -> dict[str, str]:

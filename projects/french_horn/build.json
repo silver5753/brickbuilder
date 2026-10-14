@@ -11,5 +11,8 @@
   "render": "render_config.json",
   "stickers": null,
   "exceptions": null,
-  "orders": []
+  "orders": [],
+  "collisions": {
+    "default": "collisions.json"
+  }
 }

@@ -101,3 +101,13 @@ never infer consent from "draft", "continue", silence, an agent assumption or
 a general instruction to build. Never create approval records without that
 consent. Changed model/report hashes invalidate the exception. See docs/releases.md
 for the format.
+
+## Interpret collision coverage
+
+Read geometry and solid-boundary reasons, not only the failure count. Reviewed
+intentional no-op helpers are distinct from missing geometry. Closed-boundary
+checks may establish containment, separation or complete nominal contact; open,
+nonmanifold and ambiguous contact geometry stays unknown. Contact reviews may
+accept only proved contact, never suppress interference or unsupported boundaries.
+Use `build.json.collisions` for repeatable per-pose configurations and rerun after
+geometry changes. See docs/collisions.md for prerequisites and numerical limits.

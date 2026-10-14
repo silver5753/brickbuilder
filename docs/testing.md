@@ -98,3 +98,11 @@ crossings despite empty/missing dependencies. A synthetic horn-placement fixture
 protects the reported regression. Delivery tests cover mandatory per-pose checks,
 CAD-only overrides, absent reviews, retained surface witnesses, byte-exact configs,
 legacy verification and offline operation without the source geometry library.
+
+Closed-boundary regressions additionally cover nested empty cavities, winding
+independence, full containment, coincident/coplanar solids, exact and near contact,
+rotations, open/duplicate/degenerate/intersecting boundaries, arithmetic noise,
+T-junctions without crack filling, byte-bound no-op ancestry and empty physical
+parts. Release tests bind project-selected collision configs and reject tampered
+positive solid witnesses or unreviewed contact passes. The 14 October 2026 upgrade
+passes 401 tests, including installed core and rendering workflows.

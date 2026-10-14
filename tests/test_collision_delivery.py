@@ -170,3 +170,37 @@ def test_version_one_archive_keeps_historical_policy_and_exposes_untested_collis
     result = verify_release(output)
     assert result["status"] == "pass"
     assert set(result["collision_reviews"].values()) == {"not_tested"}
+
+
+def test_project_collision_config_is_used_captured_and_bound_offline(project, tmp_path):
+    root, library = project
+    initial = tmp_path / "initial"
+    release_project(root, initial, library=library, draft=True)
+    config = json.loads((initial / "collisions/config.json").read_text())
+    config["tolerance_ldu"] = 0.002
+    (root / "collision-review.json").write_text(json.dumps(config))
+    settings = json.loads((root / "build.json").read_text())
+    settings["collisions"] = {"default": "collision-review.json"}
+    (root / "build.json").write_text(json.dumps(settings))
+    output = tmp_path / "configured"
+    release_project(root, output, library=library, draft=True)
+    assert (output / "collisions/config.json").read_bytes() == (
+        root / "collision-review.json"
+    ).read_bytes()
+    assert verify_release(output)["status"] == "pass"
+    # Keep report/config self-consistent, but disagree with captured project input.
+    changed = dict(config, tolerance_ldu=0.003)
+    payload = json.dumps(changed).encode()
+    (output / "collisions/config.json").write_bytes(payload)
+    path = output / "collisions/collisions.json"
+    report = json.loads(path.read_text())
+    report["config_sha256"] = sha256(payload).hexdigest()
+    report["tolerance_ldu"] = 0.003
+    path.write_text(json.dumps(report))
+    _refresh(output)
+    assert "captured collision configuration" in verify_release(output)["errors"][0]
+    settings["collisions"] = {"typo": "collision-review.json"}
+    (root / "build.json").write_text(json.dumps(settings))
+    with pytest.raises(ValueError, match="unknown emitted pose"):
+        release_project(root, tmp_path / "bad-pose", library=library, draft=True)
+    assert not (tmp_path / "bad-pose").exists()
