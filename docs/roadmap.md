@@ -186,3 +186,11 @@ warnings as errors, and whitespace checks passed. The project uses the existing
 release/verification pipeline with an explicit draft policy. Nominal connectivity
 still reaches 948 of 966 instances; the remaining paths and exact 7798 geometry
 remain unknown. Physical assembly, insertion and strength are not tested.
+
+Delivery verification completed 27 October 2026: all 242 step illustrations were
+generated and all 121 detail views retained visible additions. The offline
+release verifier returned artifact `status: pass`, draft label and
+`validation_status: unknown` with no integrity errors. The separately derived
+123-page PDF was checked for page bounds, step numbering and representative
+page layouts; every step's detail view was visually reviewed in contact sheets.
+The downloadable package retains the original unknown connection/geometry gates.
