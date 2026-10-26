@@ -63,6 +63,20 @@ tipping and live importer acceptance remain unverified.
   Review targeted contact rather than treating outer bounds as solid material.
 - Existing STEP groups are not illustrated, physically reviewed instructions.
 
+## Illustrated building instructions
+
+The [v15 instruction project](instructions_v15/README.md) supplies 121 authored
+steps for all 966 instances in the normal pose. Each step includes an accumulated
+overview, a filtered close-up, native-colour inventory and assembly notes. Mounts
+and axles precede concealing surfaces; all six solar modules are counted separately.
+Its captured annotated CAD preserves every original part ID, native part, colour
+and transform. Only assembly grouping changes for the close-ups; frozen fixtures
+remain untouched.
+
+Run its release with `--draft`: nominal connections still reach 948 of 966 parts,
+the 7798 envelope remains approximate, and physical insertion/strength are untested.
+The guide is a trial-build starting point, not a physical-build certification.
+
 ## Historical preparation code
 
 `legacy_connector_recipes.py` preserves the original fixed part lists, nominal

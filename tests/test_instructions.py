@@ -1,12 +1,34 @@
 """Authored sequence coverage and dependency contracts, independent of meshes."""
 
 import json
+from pathlib import Path
 
 import pytest
 
 from brickbuilder.instructions import load_steps, step_records
+from brickbuilder.ldraw import read_source
 from brickbuilder.model import Model, PartInstance
 from brickbuilder.transforms import Transform
+
+
+def test_satellite_instructions_preserve_frozen_physical_model():
+    root = Path(__file__).resolve().parents[1]
+    project = root / "projects/solar_orbiter/instructions_v15"
+    baseline = read_source(
+        root / "tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr"
+    ).document.model
+    model = read_source(project / "model.ldr").document.model
+    # Grouping may change for close-ups; physical identity and placement may not.
+    assert {
+        p.instance_id: (p.reference, p.colour, p.transform) for p in model.parts
+    } == {
+        p.instance_id: (p.reference, p.colour, p.transform) for p in baseline.parts
+    }
+    plan = load_steps((project / "steps.json").read_bytes())
+    rows = step_records(model, plan)
+    assert sum(len(row["added_ids"]) for row in rows) == 966
+    assert all(len(row["added_ids"]) <= 21 for row in rows)
+    assert all(row["insertion_access"] == "not_tested" for row in rows)
 
 
 @pytest.fixture

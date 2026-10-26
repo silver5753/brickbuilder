@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "stages": [
+    "connections",
+    "render",
+    "instructions"
+  ],
+  "root": "import-0c4db89b728f4e898e4e15843bd4cc7068e205098dc5ff9fec832638a4a33c01",
+  "catalog": "connectors.json",
+  "render": "render_config.json",
+  "stickers": null,
+  "exceptions": "geometry_exceptions.json",
+  "orders": []
+}

@@ -171,3 +171,18 @@ For each slice, update this roadmap and its capability documentation. Use Python
 verification at integration boundaries. Preserve frozen hashes and stable IDs.
 See [testing](testing.md), [validation levels](validation-levels.md) and the
 [agent playbook](playbook.md). Commit evidence and remaining limits together.
+
+## Solar Orbiter instructions - 26 October 2026
+
+The [normal-pose instruction project](../projects/solar_orbiter/instructions_v15/README.md)
+adds 121 authored steps for all 966 physical instances, with accumulated overviews,
+filtered module close-ups, part tables and access/support notes. Mounts precede
+concealing surfaces and each solar-module copy is explicitly counted. Frozen
+fixtures and native physical placements remain unchanged; stable IDs are retained.
+
+Validation: the core suite passed 319 tests before the added project regression;
+all 16 targeted instruction/baseline tests (including that regression), ty with
+warnings as errors, and whitespace checks passed. The project uses the existing
+release/verification pipeline with an explicit draft policy. Nominal connectivity
+still reaches 948 of 966 instances; the remaining paths and exact 7798 geometry
+remain unknown. Physical assembly, insertion and strength are not tested.

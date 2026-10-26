@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "required_checks": [
+    "placements",
+    "part_count",
+    "connections",
+    "instructions",
+    "instructions_geometry",
+    "requirement_bindings"
+  ],
+  "inputs": [
+    "model.ldr"
+  ]
+}

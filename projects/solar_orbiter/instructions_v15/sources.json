@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "S1",
+      "location": "https://github.com/silver5753/brickbuilder/blob/9f5677c0aeead79cf89ea3bc9bb32fa3cbc77477/tests/fixtures/solar_orbiter_v15/solar_orbiter_v15.ldr",
+      "kind": "other",
+      "edition": "Frozen v15 normal pose",
+      "pdf_page": null,
+      "figure": null,
+      "retrieval": "available",
+      "sha256": "6da0f38625c5357af6984fd06e31bf89438a90a9f36a80a419b354630b07d035",
+      "confidence": "high",
+      "note": "Authoritative input for parts and placements, not evidence of physical buildability. Parent project sources.yaml retains subject references."
+    }
+  ]
+}

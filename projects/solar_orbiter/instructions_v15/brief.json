@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "subject": "Illustrated assembly guide for the unchanged Solar Orbiter v15, normal pose",
+  "dimensions": "Existing v15 CAD; no resizing",
+  "scale": "Existing brick approximation",
+  "part_count_limit": 966,
+  "budget": null,
+  "construction_style": "Technic frame with System surfaces",
+  "sticker_policy": "allowed",
+  "sourcing_region": "Israel (historical; not rechecked)",
+  "condition": null,
+  "owned_parts": null,
+  "axes": "+X wing span, +Y down, -Z Sun-facing; LDraw units",
+  "deliverables": [
+    "cad",
+    "inventory",
+    "preview",
+    "instructions"
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "text": "Account for every original physical instance exactly once; retain placements, native identities and colours.",
+      "priority": "must",
+      "source_ids": [
+        "S1"
+      ],
+      "assemblies": [
+        "chassis",
+        "shield",
+        "his",
+        "instruments",
+        "shield_detail",
+        "side_equipment",
+        "cover_mounts",
+        "covers",
+        "body_detail",
+        "rear_panel",
+        "wings",
+        "arrays",
+        "boom_mount",
+        "boom",
+        "dish",
+        "antennas",
+        "lower_antennas",
+        "stand_cradle",
+        "stand"
+      ],
+      "views": [
+        "front",
+        "rear"
+      ],
+      "validation": "Exact physical-signature comparison and complete instruction coverage; physical assembly untested."
+    }
+  ]
+}
