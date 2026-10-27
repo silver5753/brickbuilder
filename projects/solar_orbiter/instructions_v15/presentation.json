@@ -1,0 +1,1401 @@
+{
+  "schema_version": 1,
+  "source_model_sha256": "ea1359622ceb6c9866dc1fb2b1750fc6a96d30206ec8dfc79f53c90c0065d177",
+  "checkpoints": [
+    6,
+    12,
+    16,
+    22,
+    28,
+    30,
+    36,
+    42,
+    48,
+    54,
+    59,
+    65,
+    71,
+    73,
+    79,
+    85,
+    91,
+    97,
+    103,
+    109,
+    115,
+    116,
+    118,
+    121
+  ],
+  "steps": {
+    "step_022": {
+      "full_page": true,
+      "eye": [
+        -0.65,
+        -0.7,
+        0.8
+      ],
+      "panels": [
+        {
+          "name": "parts",
+          "title": "A  Parts in their final relative positions",
+          "instances": [
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "highlight": [
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "placement",
+          "title": "B  Axle direction / schematic placement",
+          "instances": [
+            "import-0f0b9d531a0e7449c8e7f439cfc9ee70c332ac8f1e3126a9b9c2f571854d2d21",
+            "import-0ff9569c9f0b208e7422f422f9fc8a54b4c67bb1144af72ff8e0e4c54454680f",
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "highlight": [
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "offsets": {
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908": [
+              -120,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -330.0,
+                -20.0,
+                20.0
+              ],
+              "end": [
+                -210.0,
+                -20.0,
+                20.0
+              ]
+            }
+          ]
+        }
+      ],
+      "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic."
+    },
+    "step_026": {
+      "full_page": true,
+      "eye": [
+        0.4,
+        -0.8,
+        1
+      ],
+      "panels": [
+        {
+          "name": "parts",
+          "title": "A  Parts in their final relative positions",
+          "instances": [
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
+          ],
+          "highlight": [
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "placement",
+          "title": "B  Axle direction / schematic placement",
+          "instances": [
+            "import-1d3c2483f9dd8273c0ab2ac7966a44cba0ea3c1c145a85cb223508a3f41b712e",
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-4323156252b2d0ffa7f6fd8d1f09dad45dad513a6b6377c3a7118a1ec1a55430",
+            "import-462ba412f2275ae0bf7ebf08b67cda420f39de32d659136a1f40d95689647306",
+            "import-4853c98c4263e83ec2e9de3198606035e2f91aab8742ddd647cbc97a507cb4ba",
+            "import-4c50c9b7a05758e21f27d3f39de74e5aac7fa0d2d9f97504ae959e2c4360089f",
+            "import-6ab7600cd6cfbad5d423beb9c590799bbadd1d4eb50844a363340a3b36300b32",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-9df63222ac5a4d0942e570930b4d7b9f712b3a0f94d6745e1b6fee5dd47e7edc",
+            "import-b47be1dc9fce2268a6c9872b698d997a8ea2e8c70aab0b6be663c3505a971ea5",
+            "import-b7ade47659fabb878b9ffae6dbef7af738cd2c0358aabd76f421e6cd984e69f0",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac",
+            "import-f5830fe9147993100e95a47a22b87c5ddd39cb64e7d7c667ad228dd57dfa2436"
+          ],
+          "highlight": [
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
+          ],
+          "offsets": {
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81": [
+              -120,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -120.0,
+                -220.0,
+                -60.0
+              ],
+              "end": [
+                0.0,
+                -220.0,
+                -60.0
+              ]
+            }
+          ]
+        }
+      ],
+      "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic."
+    },
+    "step_035": {
+      "full_page": true,
+      "panels": [
+        {
+          "name": "spacers",
+          "title": "A  Fit the four 1\u00d71 spacers first",
+          "instances": [
+            "import-0103702b548730a5b530f0bd2f0138fa508c8e03f5af21bf8476f47ffb291ed9",
+            "import-0c9b0e6467a45a626da5f185ed938387b67e902bda6d74c1e4a1f776c3b94757",
+            "import-135dfa37c7a7ef097874e0cc0658d18b8b1dcd77df1f10901c99cdb3ed59b7d9",
+            "import-238aad21701bac661919861d6dd74a7cb93dc637ed7feb1c72a715a9001cd704",
+            "import-26acff5467bcfdeb97e039c011a8ddb0b806030803f182e2cbba651acf532a6e",
+            "import-2d6023054694bcd68948cacf624bce7bd91bd7b7cdef43c8bd8f29ecd577dc2a",
+            "import-3185e8ec8b617d175a55b64230b9610ae9c01d24140f39fe75fe5020fa649016",
+            "import-343a8df26805d51e7f5432c9f38a1d97ecd4b76f935e81120f8acbdf8522d854",
+            "import-40365cdb0eed28a3a3f664b10443ade2d1f1aa5b62d987ca02ef98ca6ba40679",
+            "import-40adab49d0c1c519b59af95392dc5e21c2d7c07b4f61e8192bccb89f0f5c7ebc",
+            "import-462d3aced733a1f9f25bf10cfd349e731fdfd1b5d34dbdc25567df41e56e5254",
+            "import-54afbbdb22c06b6e48f3fb2b21880b60cd7df7b3491ac5fa2e52d7acba24f2ce",
+            "import-5b70eb714400434169bc0f1e99cc8d1eaa8ced8e0be86fc1486bbff9559d8c6e",
+            "import-5e1b2a2154a515563e49ef4ca14e7eae0532d54d4cc75fc68300144db57b6350",
+            "import-69464fb658cc1cd7b72e8af97b858949382d9408145d7710b760a94130732dd7",
+            "import-6cddd3b8ac75346d1fdcebdf4d4cbea4e25d15b4065292d92386fbd55bec83a3",
+            "import-72534f72ccf085781fab539d0622bd7de7f8ab9625a65a012276eb00fe40d0ca",
+            "import-73a2b980e67c0a21a2aec7f2bf96a6394ec90d145db18479c644484817316b78",
+            "import-795bf5793f1540a7b22c6d6ad738d0244f06adc79249f4025ebba99f13d5aa4a",
+            "import-7a87e51e128ce2102ca5ea4d200bd4f1531cbfd82f730b8cb72ab8564752d83d",
+            "import-7b5101c184463909a842e2a8be9fff67c4bced2a1f925fb42f2b1935c2005d38",
+            "import-84948102cbd1c15ca88445206aeff402728360780ed73943e22f39737999d43d",
+            "import-98b15924cee77843cee9ba780cde19fd537c77453cc689aa27c636f1104d7e7c",
+            "import-9a46ca5baef392bda28069eee627e6b5d6b5507ad4475d147f3c060ea9142f1e",
+            "import-aedb0345e76ec3b2d5c4622361b1f2a10be919443419a5c387f1c504ccc2d0a4",
+            "import-bbe488fb24f75d5b2f066c914b9fdb0b725e6c077ece1e693abfc7615ae0a4a2",
+            "import-c052f10e25c35814d045f881bb0771d5b49738beaa9c4be64b47fe7945b6b223",
+            "import-c53377c7a911da3fb534aebf7deba43bd4f6b4a2fdc7e53ce2a1903d5ca79193",
+            "import-df807a263abe5d8c0046bd5bca39ccf61f58cb2bdb1ad7b87408df84e8908545",
+            "import-e6a3ccde004f5b8c2658de86cfaa06eae57d6543946a275634cb4d11972731f0",
+            "import-f20da4fb63187754181d4bf16901aee234b659fd86b54d713ff36196b705103a",
+            "import-fd118bcd8a9e746266c4909b58ccc51c315690947d5cb62ef44a3e1daa91ef5f"
+          ],
+          "highlight": [
+            "import-343a8df26805d51e7f5432c9f38a1d97ecd4b76f935e81120f8acbdf8522d854",
+            "import-462d3aced733a1f9f25bf10cfd349e731fdfd1b5d34dbdc25567df41e56e5254",
+            "import-69464fb658cc1cd7b72e8af97b858949382d9408145d7710b760a94130732dd7",
+            "import-7b5101c184463909a842e2a8be9fff67c4bced2a1f925fb42f2b1935c2005d38"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "closure",
+          "title": "B  Press on the 6\u00d76 cover, then fit clips and bar",
+          "instances": [
+            "import-0103702b548730a5b530f0bd2f0138fa508c8e03f5af21bf8476f47ffb291ed9",
+            "import-0c9b0e6467a45a626da5f185ed938387b67e902bda6d74c1e4a1f776c3b94757",
+            "import-135dfa37c7a7ef097874e0cc0658d18b8b1dcd77df1f10901c99cdb3ed59b7d9",
+            "import-238aad21701bac661919861d6dd74a7cb93dc637ed7feb1c72a715a9001cd704",
+            "import-26acff5467bcfdeb97e039c011a8ddb0b806030803f182e2cbba651acf532a6e",
+            "import-2d6023054694bcd68948cacf624bce7bd91bd7b7cdef43c8bd8f29ecd577dc2a",
+            "import-3068f0cfe0153d0631a41375fd122441bd4f3b55b3d1265f6e131a5766be9606",
+            "import-3185e8ec8b617d175a55b64230b9610ae9c01d24140f39fe75fe5020fa649016",
+            "import-343a8df26805d51e7f5432c9f38a1d97ecd4b76f935e81120f8acbdf8522d854",
+            "import-40365cdb0eed28a3a3f664b10443ade2d1f1aa5b62d987ca02ef98ca6ba40679",
+            "import-40adab49d0c1c519b59af95392dc5e21c2d7c07b4f61e8192bccb89f0f5c7ebc",
+            "import-462d3aced733a1f9f25bf10cfd349e731fdfd1b5d34dbdc25567df41e56e5254",
+            "import-54afbbdb22c06b6e48f3fb2b21880b60cd7df7b3491ac5fa2e52d7acba24f2ce",
+            "import-5b70eb714400434169bc0f1e99cc8d1eaa8ced8e0be86fc1486bbff9559d8c6e",
+            "import-5e1b2a2154a515563e49ef4ca14e7eae0532d54d4cc75fc68300144db57b6350",
+            "import-69464fb658cc1cd7b72e8af97b858949382d9408145d7710b760a94130732dd7",
+            "import-6cddd3b8ac75346d1fdcebdf4d4cbea4e25d15b4065292d92386fbd55bec83a3",
+            "import-72534f72ccf085781fab539d0622bd7de7f8ab9625a65a012276eb00fe40d0ca",
+            "import-73a2b980e67c0a21a2aec7f2bf96a6394ec90d145db18479c644484817316b78",
+            "import-795bf5793f1540a7b22c6d6ad738d0244f06adc79249f4025ebba99f13d5aa4a",
+            "import-7a87e51e128ce2102ca5ea4d200bd4f1531cbfd82f730b8cb72ab8564752d83d",
+            "import-7b5101c184463909a842e2a8be9fff67c4bced2a1f925fb42f2b1935c2005d38",
+            "import-84948102cbd1c15ca88445206aeff402728360780ed73943e22f39737999d43d",
+            "import-98b15924cee77843cee9ba780cde19fd537c77453cc689aa27c636f1104d7e7c",
+            "import-9a46ca5baef392bda28069eee627e6b5d6b5507ad4475d147f3c060ea9142f1e",
+            "import-aedb0345e76ec3b2d5c4622361b1f2a10be919443419a5c387f1c504ccc2d0a4",
+            "import-bbe488fb24f75d5b2f066c914b9fdb0b725e6c077ece1e693abfc7615ae0a4a2",
+            "import-c052f10e25c35814d045f881bb0771d5b49738beaa9c4be64b47fe7945b6b223",
+            "import-c53377c7a911da3fb534aebf7deba43bd4f6b4a2fdc7e53ce2a1903d5ca79193",
+            "import-df807a263abe5d8c0046bd5bca39ccf61f58cb2bdb1ad7b87408df84e8908545",
+            "import-e6a3ccde004f5b8c2658de86cfaa06eae57d6543946a275634cb4d11972731f0",
+            "import-f20da4fb63187754181d4bf16901aee234b659fd86b54d713ff36196b705103a",
+            "import-fd118bcd8a9e746266c4909b58ccc51c315690947d5cb62ef44a3e1daa91ef5f"
+          ],
+          "highlight": [
+            "import-3068f0cfe0153d0631a41375fd122441bd4f3b55b3d1265f6e131a5766be9606"
+          ],
+          "offsets": {
+            "import-3068f0cfe0153d0631a41375fd122441bd4f3b55b3d1265f6e131a5766be9606": [
+              -65,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -263.0,
+                -90.0,
+                10.0
+              ],
+              "end": [
+                -198.0,
+                -90.0,
+                10.0
+              ]
+            }
+          ]
+        }
+      ],
+      "check": "All four spacers go behind the cover. Support the frame while pressing."
+    },
+    "step_038": {
+      "full_page": true,
+      "panels": [
+        {
+          "name": "layers",
+          "title": "A  Build the box outward: plate, brick, plate, grilles",
+          "instances": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "highlight": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "offsets": {
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67": [
+              0,
+              0,
+              0
+            ],
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6": [
+              -18,
+              0,
+              0
+            ],
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff": [
+              -36,
+              0,
+              0
+            ],
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5": [
+              -72,
+              0,
+              0
+            ],
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f": [
+              -72,
+              0,
+              0
+            ],
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0": [
+              -72,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -258.0,
+                -70.0,
+                -80.0
+              ],
+              "end": [
+                -222.0,
+                -70.0,
+                -80.0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "built",
+          "title": "B  Completed box / match the grille direction",
+          "instances": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "highlight": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "offsets": {},
+          "arrows": []
+        }
+      ],
+      "check": "Use this same layer order for the other three equipment boxes; their locations are shown separately."
+    },
+    "step_063": {
+      "full_page": true,
+      "panels": [
+        {
+          "name": "mounts",
+          "title": "A  Fit the three stud pins and bricks",
+          "instances": [
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "highlight": [
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "offsets",
+          "title": "B  Jumper plates first, then the 1\u00d71 spacers",
+          "instances": [
+            "import-1323273edb184761e18f7997897cb7bfbeb95fddf8801d65b05dd5f57c7fa855",
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-2d8037da6efbca2cf1882528fdc815e077b56f64dc3d3ae2d57f1db7572c460f",
+            "import-3ef7e51c852b6bc3a6ff842d185ece996e5774df4f2796bbc85b7e8aa27c8ee9",
+            "import-491ad4334e7196c6297a3cb1c819d46c89a1fb7df7393d02394d885b29de82a9",
+            "import-492b8bb48b29ad69f1e2b43719e617cc84f72a0a4c227d71ecb2bccc1ddb47c2",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-7f46597139312f11cd4e5f1308aca9ce8e181e6aced6f681be10bde50cc19268",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "highlight": [
+            "import-1323273edb184761e18f7997897cb7bfbeb95fddf8801d65b05dd5f57c7fa855",
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-2d8037da6efbca2cf1882528fdc815e077b56f64dc3d3ae2d57f1db7572c460f",
+            "import-3ef7e51c852b6bc3a6ff842d185ece996e5774df4f2796bbc85b7e8aa27c8ee9",
+            "import-491ad4334e7196c6297a3cb1c819d46c89a1fb7df7393d02394d885b29de82a9",
+            "import-492b8bb48b29ad69f1e2b43719e617cc84f72a0a4c227d71ecb2bccc1ddb47c2",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-7f46597139312f11cd4e5f1308aca9ce8e181e6aced6f681be10bde50cc19268",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "offsets": {
+            "import-492b8bb48b29ad69f1e2b43719e617cc84f72a0a4c227d71ecb2bccc1ddb47c2": [
+              0,
+              0,
+              -35
+            ],
+            "import-3ef7e51c852b6bc3a6ff842d185ece996e5774df4f2796bbc85b7e8aa27c8ee9": [
+              0,
+              0,
+              -35
+            ],
+            "import-2d8037da6efbca2cf1882528fdc815e077b56f64dc3d3ae2d57f1db7572c460f": [
+              0,
+              0,
+              -35
+            ],
+            "import-1323273edb184761e18f7997897cb7bfbeb95fddf8801d65b05dd5f57c7fa855": [
+              0,
+              0,
+              -65
+            ],
+            "import-7f46597139312f11cd4e5f1308aca9ce8e181e6aced6f681be10bde50cc19268": [
+              0,
+              0,
+              -65
+            ],
+            "import-491ad4334e7196c6297a3cb1c819d46c89a1fb7df7393d02394d885b29de82a9": [
+              0,
+              0,
+              -65
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -110.0,
+                70.0,
+                -177.0
+              ],
+              "end": [
+                -110.0,
+                70.0,
+                -142.0
+              ]
+            },
+            {
+              "start": [
+                -110.0,
+                10.0,
+                -177.0
+              ],
+              "end": [
+                -110.0,
+                10.0,
+                -142.0
+              ]
+            },
+            {
+              "start": [
+                -110.0,
+                -50.0,
+                -177.0
+              ],
+              "end": [
+                -110.0,
+                -50.0,
+                -142.0
+              ]
+            }
+          ]
+        }
+      ],
+      "check": "Check the offset jumper studs before adding the shield backing. Repeat the opposite side in step 64."
+    },
+    "step_075": {
+      "full_page": true,
+      "panels": [
+        {
+          "name": "beams",
+          "title": "A  Align the overlapping beams / count the holes",
+          "instances": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59"
+          ],
+          "highlight": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "pins",
+          "title": "B  Insert the joining pins before mounting the rail",
+          "instances": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-0cd84c20576ebdb12e914c5e5954d604ea078cf8819b796a2c4358dc63ae9039",
+            "import-1d4cfe6914caf24fd8d16b827bbdd9c1aa5af84fd0635e4395e1cbe95b64349c",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59",
+            "import-4c81b0a09ac7331da50a698abdd1dcd77346fef3bebe9d4179ff9b78f2973922",
+            "import-c96d25ee7310a29494cdc27cc0544da4367b606dba9c5dd4463de90dffef6395",
+            "import-ee21f9e4abd75d8df4e84991da0c4332eec8b14ee15c4eb937e2feb865d1f5ee"
+          ],
+          "highlight": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-0cd84c20576ebdb12e914c5e5954d604ea078cf8819b796a2c4358dc63ae9039",
+            "import-1d4cfe6914caf24fd8d16b827bbdd9c1aa5af84fd0635e4395e1cbe95b64349c",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59",
+            "import-4c81b0a09ac7331da50a698abdd1dcd77346fef3bebe9d4179ff9b78f2973922",
+            "import-c96d25ee7310a29494cdc27cc0544da4367b606dba9c5dd4463de90dffef6395",
+            "import-ee21f9e4abd75d8df4e84991da0c4332eec8b14ee15c4eb937e2feb865d1f5ee"
+          ],
+          "offsets": {
+            "import-0cd84c20576ebdb12e914c5e5954d604ea078cf8819b796a2c4358dc63ae9039": [
+              0,
+              0,
+              -65
+            ],
+            "import-1d4cfe6914caf24fd8d16b827bbdd9c1aa5af84fd0635e4395e1cbe95b64349c": [
+              0,
+              0,
+              -65
+            ],
+            "import-4c81b0a09ac7331da50a698abdd1dcd77346fef3bebe9d4179ff9b78f2973922": [
+              0,
+              0,
+              -65
+            ],
+            "import-c96d25ee7310a29494cdc27cc0544da4367b606dba9c5dd4463de90dffef6395": [
+              0,
+              0,
+              -65
+            ],
+            "import-ee21f9e4abd75d8df4e84991da0c4332eec8b14ee15c4eb937e2feb865d1f5ee": [
+              0,
+              0,
+              -65
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -820.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -820.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -540.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -540.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -560.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -560.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -800.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -800.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -320.0,
+                -40.0,
+                -35.0
+              ],
+              "end": [
+                -320.0,
+                -40.0,
+                30.0
+              ]
+            }
+          ]
+        }
+      ],
+      "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported."
+    },
+    "step_110": {
+      "full_page": true,
+      "panels": [
+        {
+          "name": "beams",
+          "title": "A  Align the overlapping beams / count the holes",
+          "instances": [
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d"
+          ],
+          "highlight": [
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "pins",
+          "title": "B  Insert the joining pins before mounting the rail",
+          "instances": [
+            "import-00f37b3ac29626c2b44cd12903b889fbef73bdb148485a539e3ad8b24b05a42c",
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+            "import-3ed76cd1171b66e7b044988475f38e953b7dada1da97d1a320f274e7beb2d60e",
+            "import-8782dc800ac080f54189d7891a0327dfe5d31e900bb5a8364d2c575f0f715030",
+            "import-b4616b1c482d7c82ea56243484022fccde2b6beea69175d7b6d054ed2d9210c1",
+            "import-e880b2989f7d72bc82cc0241725be6ac1e264b5540d19fd812d439000680d6f9"
+          ],
+          "highlight": [
+            "import-00f37b3ac29626c2b44cd12903b889fbef73bdb148485a539e3ad8b24b05a42c",
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+            "import-3ed76cd1171b66e7b044988475f38e953b7dada1da97d1a320f274e7beb2d60e",
+            "import-8782dc800ac080f54189d7891a0327dfe5d31e900bb5a8364d2c575f0f715030",
+            "import-b4616b1c482d7c82ea56243484022fccde2b6beea69175d7b6d054ed2d9210c1",
+            "import-e880b2989f7d72bc82cc0241725be6ac1e264b5540d19fd812d439000680d6f9"
+          ],
+          "offsets": {
+            "import-00f37b3ac29626c2b44cd12903b889fbef73bdb148485a539e3ad8b24b05a42c": [
+              -65,
+              0,
+              0
+            ],
+            "import-3ed76cd1171b66e7b044988475f38e953b7dada1da97d1a320f274e7beb2d60e": [
+              -65,
+              0,
+              0
+            ],
+            "import-8782dc800ac080f54189d7891a0327dfe5d31e900bb5a8364d2c575f0f715030": [
+              -65,
+              0,
+              0
+            ],
+            "import-b4616b1c482d7c82ea56243484022fccde2b6beea69175d7b6d054ed2d9210c1": [
+              -65,
+              0,
+              0
+            ],
+            "import-e880b2989f7d72bc82cc0241725be6ac1e264b5540d19fd812d439000680d6f9": [
+              -65,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                200.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                200.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                220.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                220.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                260.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                260.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                180.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                180.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                240.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                240.0
+              ]
+            }
+          ]
+        }
+      ],
+      "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported."
+    },
+    "step_117": {
+      "full_page": true,
+      "panels": [
+        {
+          "name": "joint_pairs",
+          "title": "A  Match each socket with its pin half",
+          "instances": [
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "highlight": [
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "offsets": {
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed": [
+              0,
+              0,
+              55
+            ],
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e": [
+              0,
+              0,
+              55
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                180.0,
+                180.0,
+                275.0
+              ],
+              "end": [
+                180.0,
+                180.0,
+                220.0
+              ]
+            },
+            {
+              "start": [
+                81.0050506,
+                278.994949,
+                255.0
+              ],
+              "end": [
+                81.0050506,
+                278.994949,
+                200.0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "link_pins",
+          "title": "B  Join the arm with the two friction pins",
+          "instances": [
+            "import-1665809ba34eee53c36dd0ab1a85d8310888f6396479e58d87f2935402992ee0",
+            "import-6a17057490fdb8e122915213ce657a35cb4e851006f64592aacdf7fc37acabe8",
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "highlight": [
+            "import-1665809ba34eee53c36dd0ab1a85d8310888f6396479e58d87f2935402992ee0",
+            "import-6a17057490fdb8e122915213ce657a35cb4e851006f64592aacdf7fc37acabe8",
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "offsets": {
+            "import-1665809ba34eee53c36dd0ab1a85d8310888f6396479e58d87f2935402992ee0": [
+              0,
+              0,
+              65
+            ],
+            "import-6a17057490fdb8e122915213ce657a35cb4e851006f64592aacdf7fc37acabe8": [
+              0,
+              0,
+              65
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                123.431458,
+                236.568542,
+                275.0
+              ],
+              "end": [
+                123.431458,
+                236.568542,
+                210.0
+              ]
+            },
+            {
+              "start": [
+                137.573593,
+                222.426407,
+                275.0
+              ],
+              "end": [
+                137.573593,
+                222.426407,
+                210.0
+              ]
+            }
+          ]
+        }
+      ],
+      "check": "Match both joint orientations to the completed arm. Do not force a click joint; the normal pose is shown.",
+      "eye": [
+        0.85,
+        -0.3,
+        0.45
+      ]
+    },
+    "step_118": {
+      "full_page": true,
+      "panels": [
+        {
+          "name": "stack",
+          "title": "A  Reflector stack / assemble from the arm outward",
+          "instances": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "highlight": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "offsets": {
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856": [
+              0,
+              0,
+              0
+            ],
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375": [
+              0,
+              0,
+              22
+            ],
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd": [
+              0,
+              0,
+              44
+            ],
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e": [
+              0,
+              0,
+              66
+            ],
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a": [
+              0,
+              0,
+              88
+            ],
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a": [
+              0,
+              0,
+              110
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                11.7230183,
+                238.994949,
+                270.0
+              ],
+              "end": [
+                11.7230183,
+                238.994949,
+                226.0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "built",
+          "title": "B  Completed reflector and feed",
+          "instances": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "highlight": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "offsets": {},
+          "arrows": []
+        }
+      ],
+      "check": "Support the arm while seating the stack. Keep the feed pointing away from the reflector.",
+      "checkpoint_check": "Reflector and feed match the normal pose.",
+      "eye": [
+        0.95,
+        -0.25,
+        0.22
+      ]
+    },
+    "step_024": {
+      "cue": "Same technique as step 22; follow this view for side and orientation."
+    },
+    "step_027": {
+      "cue": "Same technique as step 26; follow this view for side and orientation."
+    },
+    "step_036": {
+      "cue": "Same technique as step 35; follow this view for side and orientation."
+    },
+    "step_039": {
+      "cue": "Same technique as step 38; follow this view for side and orientation."
+    },
+    "step_044": {
+      "cue": "Same technique as step 35; follow this view for side and orientation."
+    },
+    "step_045": {
+      "cue": "Same technique as step 35; follow this view for side and orientation."
+    },
+    "step_047": {
+      "cue": "Same technique as step 38; follow this view for side and orientation."
+    },
+    "step_048": {
+      "cue": "Same technique as step 38; follow this view for side and orientation.",
+      "checkpoint_check": "Check all four equipment boxes and both side closures."
+    },
+    "step_064": {
+      "cue": "Same technique as step 63; follow this view for side and orientation."
+    },
+    "step_076": {
+      "cue": "Same technique as step 75; follow this view for side and orientation."
+    },
+    "step_093": {
+      "cue": "Same technique as step 75; follow this view for side and orientation."
+    },
+    "step_094": {
+      "cue": "Same technique as step 75; follow this view for side and orientation."
+    },
+    "step_111": {
+      "cue": "Same technique as step 110; follow this view for side and orientation."
+    },
+    "step_112": {
+      "cue": "Same technique as step 110; follow this view for side and orientation."
+    },
+    "step_113": {
+      "cue": "Same technique as step 110; follow this view for side and orientation."
+    },
+    "step_084": {
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+    },
+    "step_088": {
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+    },
+    "step_098": {
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+    },
+    "step_102": {
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+    },
+    "step_106": {
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+    },
+    "step_006": {
+      "checkpoint_check": "Front and rear frames are aligned; all four bridges are pinned."
+    },
+    "step_016": {
+      "checkpoint_check": "Support the body and check the stand before releasing your grip."
+    },
+    "step_030": {
+      "checkpoint_check": "Axles and carriers remain accessible before the body is covered."
+    },
+    "step_059": {
+      "checkpoint_check": "Rear seams are overlapped; the four curved ring segments face inward."
+    },
+    "step_073": {
+      "checkpoint_check": "Both left shield openings remain clear; standoffs are seated evenly."
+    },
+    "step_091": {
+      "checkpoint_check": "All three left panels are attached; support the wing."
+    },
+    "step_109": {
+      "checkpoint_check": "Compare left and right wing positions and support both sides."
+    },
+    "step_116": {
+      "checkpoint_check": "Sensor heads face the distinct directions shown."
+    },
+    "step_121": {
+      "checkpoint_check": "Check antennas clear the shield; support the wings and boom."
+    }
+  },
+  "part_labels": {
+    "11211": {
+      "label": "1\u00d72 side studs",
+      "description": "Brick  1 x  2 with Two Studs on One Side",
+      "source_sha256": "a88c76a8936395abe5554aa2273c92271cc3c595e800a6ecfb479d2a9670f532"
+    },
+    "15100": {
+      "label": "Pin + hole",
+      "description": "Technic Pin with Friction with Perpendicular Pin Hole Type 1",
+      "source_sha256": "009edf5a2d86ee3d87345a27b646500efd66b6bb63437fbcb3ddce22218d4ebb"
+    },
+    "15712": {
+      "label": "1\u00d71 clip",
+      "description": "Tile  1 x  1 with Clip (Thick C-Clip)",
+      "source_sha256": "d038b496c5c172e56967e26266d82734447417b21c951ce116f20c77b3640007"
+    },
+    "18654": {
+      "label": "1 hole",
+      "description": "Technic Beam  1",
+      "source_sha256": "80a0c04eb2ac78eed9f0fa740cb332ce8d08f2c89c9839cbd9492e8b54d4474a"
+    },
+    "2412b": {
+      "label": "1\u00d72 grille",
+      "description": "Tile  1 x  2 Grille with Groove",
+      "source_sha256": "a7e7b03fc76cad9d94eb7199721b929f95227b1f8a35add5b7c66ee1ba6dca57"
+    },
+    "2569": {
+      "label": "Whip 8H",
+      "description": "Antenna  8H Whip",
+      "source_sha256": "a1e509988766312472af4bf96760a4c1ea560e64250fe24bd288ad5a3e487144"
+    },
+    "26603": {
+      "label": "2\u00d73 tile",
+      "description": "Tile  2 x  3",
+      "source_sha256": "74bc4947791435f65463427b1a0c187ed5861256256698b45696d2148daa67eb"
+    },
+    "2780": {
+      "label": "Friction pin",
+      "description": "Technic Pin with Friction and Slots",
+      "source_sha256": "2628d30bcfa42b3a616da38b8020cbc2b1edb98b055329cfac56425cdc9a8277"
+    },
+    "3002": {
+      "label": "2\u00d73 brick",
+      "description": "Brick  2 x  3",
+      "source_sha256": "02065cff45c9f5cbc52259757813d3ac66e013777b759bf35a6bb94c9cbf1681"
+    },
+    "3003": {
+      "label": "2\u00d72 brick",
+      "description": "Brick  2 x  2",
+      "source_sha256": "aed0ccd750126a58d38b012a4e8b16c172896339547c120ef67b69e1386f490d"
+    },
+    "3004": {
+      "label": "1\u00d72 brick",
+      "description": "Brick  1 x  2",
+      "source_sha256": "e1caee3b32175393c9d6ea176a47f8869173a01d03a451e1cfe10d09167c0203"
+    },
+    "3005": {
+      "label": "1\u00d71 brick",
+      "description": "Brick  1 x  1",
+      "source_sha256": "f86e5f3aed432cab8f5dffcf2e41a9f2ee8c3bd4dcad1732da9630837849a4f8"
+    },
+    "3020": {
+      "label": "2\u00d74 plate",
+      "description": "Plate  2 x  4",
+      "source_sha256": "551e433cc4bcfdeeb6e390e509d52ee2e62c90d3eae625ee36928ef32291bb79"
+    },
+    "3021": {
+      "label": "2\u00d73 plate",
+      "description": "Plate  2 x  3",
+      "source_sha256": "ad56a79b7c774b99d30a54bd1e198ab95918ba3d1bcfc6a788ca15cf05d757e8"
+    },
+    "3022": {
+      "label": "2\u00d72 plate",
+      "description": "Plate  2 x  2",
+      "source_sha256": "3cd09bfe626e751ad95eab0ea83e5f3adea81f05d34993a1c4bf432ee386fe25"
+    },
+    "3023": {
+      "label": "1\u00d72 plate",
+      "description": "~Moved to 3023b",
+      "source_sha256": "fa3eeab92b077488bae3dbc0fe974ef3327a77f130776d2965f13d3ebc22ab57"
+    },
+    "3024": {
+      "label": "1\u00d71 plate",
+      "description": "Plate  1 x  1",
+      "source_sha256": "e053af4f232374b0c8da2dc0f9620bedf0576ca43d7c3ceebc6676050ae61da8"
+    },
+    "3031": {
+      "label": "4\u00d74 plate",
+      "description": "Plate  4 x  4",
+      "source_sha256": "e67436538e47cb38b8352e91c2b5b7c7c274e070912603e5e9fc0b4513962338"
+    },
+    "3032": {
+      "label": "4\u00d76 plate",
+      "description": "Plate  4 x  6",
+      "source_sha256": "35e8b828a5bf21de83ca898a49b9725e6d08d5752ad6eb57910f27086108ca1f"
+    },
+    "3033": {
+      "label": "6\u00d710 plate",
+      "description": "Plate  6 x 10",
+      "source_sha256": "fccb28156f2a418eb0e9dc4f73cf51da4f13c5f5dadaa76e5bb643273e8c2067"
+    },
+    "30374": {
+      "label": "Bar 4L",
+      "description": "Bar  4L Lightsaber Blade",
+      "source_sha256": "db69ea3eecc2a6f2731aaad6ac8fb072c5ecbe136d1ea8a03de593014fe2e9c0"
+    },
+    "3062b": {
+      "label": "1\u00d71 round brick",
+      "description": "Brick  1 x  1 Round with Hollow Stud",
+      "source_sha256": "cea4d47bad2ba17130e8fdd298f4f0b0dd4efdaf6edadd3bdd5e089e1cb60bac"
+    },
+    "3068b": {
+      "label": "2\u00d72 tile",
+      "description": "Tile  2 x  2 with Groove",
+      "source_sha256": "57179cd9dc0ee31742b9947157636b1b5eafc8d98a283fbd99e9abf8fda977ec"
+    },
+    "32063": {
+      "label": "6 holes / thin",
+      "description": "Technic Beam  6 x  0.5",
+      "source_sha256": "5fd86025189ced9ab0273973134773be58f62c03d778f5c1bf3575af254f3406"
+    },
+    "32278": {
+      "label": "15 holes",
+      "description": "Technic Beam 15",
+      "source_sha256": "c655b689837e76d5bd9dcce36c5b1732384fc76993ad68c8fe7221218397843d"
+    },
+    "32316": {
+      "label": "5 holes",
+      "description": "Technic Beam  5",
+      "source_sha256": "321a837bbef296bdff22a2619dc2832eb8f241e9444c753e3a32b466706f42e1"
+    },
+    "32523": {
+      "label": "3 holes",
+      "description": "Technic Beam  3",
+      "source_sha256": "37d90eaee5ba21c0c20b25af1b299ae9a17ff945fdbcd3c3fe1d02039c22f3f7"
+    },
+    "32524": {
+      "label": "7 holes",
+      "description": "Technic Beam  7",
+      "source_sha256": "2c2c55243d404a65b013ea96aeaffc398cb65ae4a0be1fc7246c8a44e0f22947"
+    },
+    "32525": {
+      "label": "11 holes",
+      "description": "Technic Beam 11",
+      "source_sha256": "96eba31f9a5e2b7df6305fc73ce60881b7dcee02685ae17264d916725c8039c9"
+    },
+    "3666": {
+      "label": "1\u00d76 plate",
+      "description": "Plate  1 x  6",
+      "source_sha256": "f4fc83d8c3fc1df32c1a217dc09775a99fad1ced348cffc5167f9c6a69aa9bca"
+    },
+    "3700": {
+      "label": "1\u00d72 hole brick",
+      "description": "Technic Brick  1 x  2 with Hole",
+      "source_sha256": "6cb6522c580754cf970dad0fae688bb78cb3253a7237038dad83965fe47cfec6"
+    },
+    "3710": {
+      "label": "1\u00d74 plate",
+      "description": "Plate  1 x  4",
+      "source_sha256": "1a2d17e3e35750ccf02a54c7aee0cf7485c1c8596492746fc798d341399a3a6e"
+    },
+    "3713": {
+      "label": "Bush",
+      "description": "Technic Bush with Two Flanges",
+      "source_sha256": "2b813f30e7a6843cbd330035763f6ef904eafc8e7b5395c98332d07e8dfa1c43"
+    },
+    "3737": {
+      "label": "Axle 10L",
+      "description": "Technic Axle 10",
+      "source_sha256": "5e6f357403123b6ec87f1252be6142d7dc093454399cabfc865f02a8d11d52a1"
+    },
+    "3794b": {
+      "label": "1\u00d72 jumper",
+      "description": "Plate  1 x  2 with Groove with 1 Centre Stud",
+      "source_sha256": "839a2f23443b9442a32c099afad7411750438ea6cd234ef0b9831722c7f4b16d"
+    },
+    "3795": {
+      "label": "2\u00d76 plate",
+      "description": "Plate  2 x  6",
+      "source_sha256": "3a18cdb8f18fe9dba6fae79b525aee17be8bee71ea75fce3a794724d2a9b672f"
+    },
+    "3832": {
+      "label": "2\u00d710 plate",
+      "description": "Plate  2 x 10",
+      "source_sha256": "4928810faf064116f14126735c7a273df15c662fe1d648991c3a3c4cc79b0d49"
+    },
+    "3958": {
+      "label": "6\u00d76 plate",
+      "description": "Plate  6 x  6",
+      "source_sha256": "9f64b46369f84ca4b172fd1a9e239cfd9bc17801d0999c38ef8847bf683e1dac"
+    },
+    "39794": {
+      "label": "11\u00d77 frame",
+      "description": "Technic Beam 11 x  7 with Open Center  9 x  5",
+      "source_sha256": "0a52455cac815a42f2674d7be7039ed4bb3f36f8a5d5f0dde181226decdf7c80"
+    },
+    "4032a": {
+      "label": "2\u00d72 round plate",
+      "description": "Plate  2 x  2 Round with Axlehole",
+      "source_sha256": "ac5774e2a8eeb9811db795707f6c03cc0b834313b9b9ac5ba25dbb576c9851cb"
+    },
+    "41239": {
+      "label": "13 holes",
+      "description": "Technic Beam 13",
+      "source_sha256": "bbcef25c514c9939f5ce641e0015606ae514d715e3a89d2fef0e4bfef1c73fa5"
+    },
+    "4274": {
+      "label": "Half pin",
+      "description": "Technic Pin  1/2",
+      "source_sha256": "c421cee48c7c0233371144f5a256f7a4503f008318ff523b31e0b5a9d44d9704"
+    },
+    "43857": {
+      "label": "2 holes",
+      "description": "Technic Beam  2",
+      "source_sha256": "b0612fbdd2280e8913fd1c7f18b20e4d32f133fbbbdd3a0809a67d4e37eb45c6"
+    },
+    "44224": {
+      "label": "Joint socket",
+      "description": "Technic Beam  3 with Rotation Joint 3 Socket",
+      "source_sha256": "c9783a9c8aebeeb04f226a9d50d12ae676d2ca53762236a86950eb6bdbcfb18b"
+    },
+    "44225": {
+      "label": "Joint pin",
+      "description": "Technic Beam  3 with Rotation Joint 3 Pin",
+      "source_sha256": "b0851cbee52ff5fcbb242cf459eb47e9b948b06de47d4eb0748cab8deba942a6"
+    },
+    "44375a": {
+      "label": "6\u00d76 dish",
+      "description": "Dish  6 x  6 Inverted with Hollow Studs",
+      "source_sha256": "2926f2f74d75105bfc0b206f8f01bbf1b4c1b15d636dfe536c569e26b1a7a225"
+    },
+    "48092": {
+      "label": "4\u00d74 curve",
+      "description": "Brick  4 x  4 Corner Round",
+      "source_sha256": "f66b2127a90eda3c2e800fc3c79d7b23521afe48d7ec808d4ecf416b1c33cb1c"
+    },
+    "50451": {
+      "label": "Axle 16L",
+      "description": "Technic Axle 16",
+      "source_sha256": "e2c38a465d95a8c0a999f92538422fc377d7598a9b8970cc1b7a38cd277674be"
+    },
+    "6141": {
+      "label": "1\u00d71 round plate",
+      "description": "Plate  1 x  1 Round",
+      "source_sha256": "fb2cd4fad207392508bd2ca8b5469b1c351b692e111aa06b55da55d53fd44dd7"
+    },
+    "64179": {
+      "label": "7\u00d75 frame",
+      "description": "Technic Beam  7 x  5 with Open Center  5 x  3",
+      "source_sha256": "7e8e131d8c7ca9387ba9f3b79d1fbd2f089c6d28b3f3b415bcbd1224e1629834"
+    },
+    "6536": {
+      "label": "Axle/pin block",
+      "description": "Technic Cross Block 1 x 2 (Axle/Pin)",
+      "source_sha256": "a6d8a8a512ebf4b109a98e6cbbbc1868cec2058c771c3e7b27c7813d5676a743"
+    },
+    "6558": {
+      "label": "Long pin",
+      "description": "Technic Pin Long with Friction and Slot",
+      "source_sha256": "28d5dfb1009599f84edfae076be13eb648bbfae32cdba57b12b7d7829465057c"
+    },
+    "6636": {
+      "label": "1\u00d76 tile",
+      "description": "Tile  1 x  6",
+      "source_sha256": "e4bd77135a542e0953fd9d6e08e050911ce920582f0e1020f02bedcd9cbee84d"
+    },
+    "69729": {
+      "label": "2\u00d76 tile",
+      "description": "Tile  2 x  6",
+      "source_sha256": "2145aca5aa453d2a7ba512fb6be58ce7a77e9136fbbc137536aa759ef377ec61"
+    },
+    "7798": {
+      "label": "6\u00d76 tile*",
+      "description": "Approximate 6\u00d76 tile; original model identity retained",
+      "source_sha256": null
+    },
+    "87580": {
+      "label": "2\u00d72 jumper",
+      "description": "Plate  2 x  2 with Groove with 1 Centre Stud",
+      "source_sha256": "9f1fee81902d00778bb6e91d6239d83ac6e3fca788954f30bbaab149abff6d54"
+    },
+    "87994": {
+      "label": "Bar 3L",
+      "description": "Bar  3L",
+      "source_sha256": "1a6c0cb9de6da1175fbdf0bd4b7218c1a39e6dc1ff5e53b5d6080267267ee2e8"
+    },
+    "90498": {
+      "label": "8\u00d716 tile",
+      "description": "Tile  8 x 16 Type 2",
+      "source_sha256": "84827c92d9bedec854d7bc1fedb2211483d33b00758d55d2b5b5200f7eb56c7a"
+    },
+    "98138": {
+      "label": "1\u00d71 round tile",
+      "description": "Tile  1 x  1 Round with Groove",
+      "source_sha256": "1d506f39ea2bf69757206009498025381bbf28d9fa0b79385a30f4c5fa37f111"
+    }
+  }
+}

@@ -38,7 +38,7 @@ No prior spacecraft model or release is needed.
 | Geometry | Recursive dependency inspection and vertex bounds; missing and empty geometry remain visible |
 | Connections | Explicit reviewed interface identities plus seat, axis, engagement and rooted-path checks |
 | Images and artwork | Actual-CAD PNG previews, finished PNG artwork supplied by the agent, and separate printable decals |
-| Instructions | Agent-authored steps, accumulated CAD, highlighted illustrations and an offline HTML booklet |
+| Instructions | Agent-authored steps, accumulated CAD, offline HTML and optional native-colour teaching illustrations |
 | Parts and ordering | Native BOMs, selections, explicit marketplace mappings and reconciled BrickOwl/BrickLink exports |
 | Online part discovery | Live Rebrickable search, exact/batched IDs, external-ID lookups and sourced JSON; no local catalog mirror |
 | Replacements | Reviewed one-to-many assembly recipes with immutable previews, support checks and new identities |
@@ -157,7 +157,7 @@ external preparation and are not supported by the native parser.
 P1–P5 and the C1–C7 cleanup plan are complete within their documented scope. The
 [roadmap](docs/roadmap.md) records shipped work, validation and remaining limits;
 [implementation history](docs/implementation-history.md) preserves earlier plans.
-The latest code-validation run passed 352 tests, including installed-wheel workflows.
+The latest code-validation run passed 354 tests, including installed-wheel workflows.
 
 ```sh
 uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning

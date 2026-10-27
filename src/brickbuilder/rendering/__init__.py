@@ -160,6 +160,7 @@ def _png(
     config: RenderConfig,
     approximate: bool,
     textures: Any = None,
+    outline_faces: Any = None,
 ) -> tuple[bytes, dict[str, object]]:
     np, Image, _ = modules()
     right = unit(cross(view.up, view.eye))
@@ -194,8 +195,27 @@ def _png(
             textures=(*textures, shading) if textures is not None else None,
         )
     )
+    if outline_faces is not None:
+        # Rasterize all geometry again with binary face labels so hidden additions
+        # do not shine through older parts. Use exactly the same camera and depth.
+        mask_colours = np.zeros_like(colours)
+        mask_colours[outline_faces] = (255, 0, 255)
+        mask_pixels = raster(
+            pixels, mask_colours, config.width * factor, config.height * factor
+        )
+        mask = Image.fromarray(
+            np.all(mask_pixels == (255, 0, 255), axis=2).astype(np.uint8) * 255
+        )
+        if factor > 1:
+            mask = mask.resize((config.width, config.height), Image.Resampling.NEAREST)
     if factor > 1:
         image = image.resize((config.width, config.height), Image.Resampling.LANCZOS)
+    if outline_faces is not None:
+        filters = import_module("PIL.ImageFilter")
+        chops = import_module("PIL.ImageChops")
+        # Outer silhouette only; native colour inside every visible piece stays intact.
+        rim = chops.subtract(mask.filter(filters.MaxFilter(5)), mask)
+        image.paste((214, 45, 58), (0, 0), rim)
     draw = import_module("PIL.ImageDraw").Draw(image)
     font = import_module("PIL.ImageFont").load_default(
         size=max(12, min(22, config.width // 50))

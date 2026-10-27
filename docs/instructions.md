@@ -125,3 +125,75 @@ inventory identity. For compact guides, place two steps on each page and show
 whole-model checkpoints every five or six steps or at major assembly boundaries.
 Keep focused assembly diagrams on every step, explain highlight colours, mark
 approximate geometry, and verify readability at the intended paper size.
+
+
+## Native-colour teaching illustrations (optional Python API)
+
+`brickbuilder.rendering.illustrations` provides a reusable `IllustrationSession`,
+`PlacementArrow`, and `project_point`. It caches native meshes across views of one
+immutable source and explicit library. The existing release instruction stage and
+its gold/grey verifier contract are unchanged; derived presentations belong outside
+the immutable release. The satellite example keeps its layout and authored panel
+choices project-local.
+
+```python
+from brickbuilder.rendering.illustrations import IllustrationSession, PlacementArrow
+from brickbuilder.rendering.config import View
+
+session = IllustrationSession(source, library, config, palette_path)
+session.render(
+    destination,
+    instance_ids=frozenset(selected_ids),
+    added_ids=frozenset(new_ids),
+    view=View("assembly", (1, -1, -1)),
+    offsets={moving_id: (0, -60, 0)},
+    arrows=(PlacementArrow((20, -84, 0), (20, -24, 0)),),
+    note="Authored insertion-direction illustration; physical access untested.",
+)
+```
+
+All IDs must belong to the source; highlighted IDs and offsets must belong to the
+selected view. Offsets translate only the displayed copy, preserving original
+colours, transforms, model fingerprint and inventory. Arrow endpoints are explicit
+world coordinates, projected with the fitted camera; clipped or strongly
+foreshortened arrows fail. They are not inferred from nearby bounding boxes.
+Native colours remain inside surfaces. Red outlines follow only the visible
+silhouettes of additions, using the same depth buffer so occluded pieces do not
+shine through old parts. Adjacent additions may share an outline; the mechanism
+does not draw every internal boundary. Inline surface primitives are unsupported.
+
+Each view writes its PNG and `illustration.json`: original source/model hashes,
+selected/highlighted IDs, presentation offsets, authored/projected arrow endpoints,
+camera, palette/config, renderer/dependency/image hashes, approximations and explicit
+untested physical status. Output directories cannot be overwritten. Keep source
+library inputs immutable during a rendering session. The generic rendering tests
+use an unrelated coloured stack to check occlusion and native-colour preservation.
+
+### Authoring checklist for an instruction presentation
+
+1. Identify confusing parts using reviewed descriptions: beam hole counts, axle
+   lengths, plate/tile footprints, and distinguishing connector shapes. Keep native
+   IDs secondary and record the description source. Do not infer length from a
+   perspective thumbnail or equate axle length with beam hole count.
+2. Use native colours and a visible addition cue. Keep related cameras steady;
+   mark actual view-direction changes. The builder needs an orientation reference
+   after a change, not merely a different zoom.
+3. Author small A/B/C panels for concealed layers and off-model subassemblies.
+   Separate parts along a reviewed attachment direction, draw an explicit arrow,
+   then show the completed assembly in context. Preserve all physical transforms
+   outside the presentation and never claim that an arrow proves insertion access.
+4. Give difficult steps a full page when two per page would hide a connection.
+   Show model checkpoints every five or six steps and after major additions, with
+   a concrete visual check. Use close-ups for hole choice, protrusion and offsets.
+5. Repeat only proven identical builds with a quantity cue; mirrored variants need
+   explicit orientation differences. Preserve one-time physical instance coverage.
+6. For 1:1 references, use orthographic geometry and the recorded pixels/LDU scale,
+   convert using 0.4 mm/LDU, include a calibration line and require 100% printing.
+   Screen size and printer scaling are not calibrated by software.
+7. Verify counts, source bindings, all image hashes, page bounds and both PDF/HTML
+   layouts. Review every page in a contact sheet and difficult pages at print size.
+   A physical trial is still needed to validate access, stability and assembly order.
+
+Official layout examples (reference only; no artwork bundled):
+- [Numbered subassemblies and rotation cues](https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6252255.pdf), PDF page 29.
+- [Length number and 1:1 reference](https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6555765.pdf), PDF page 30.

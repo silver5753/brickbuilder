@@ -63,27 +63,69 @@ against the frozen fixture, then validates complete one-time step coverage.
 The release verifier checks the accumulated CAD, inventories, image/report hashes
 and captured inputs. Neither it nor visual inspection establishes real-world fit.
 
-## Compact visual booklet
+## Visual booklet and repeatable presentation pipeline
 
-`render_part_thumbnails.py` renders all native part/colour combinations with the
-existing renderer. `booklet.py` lays out a PDF and standalone HTML with two steps
-per A4 page, picture-based parts trays, secondary part references, and checkpoints
-no more than six steps apart (also at major assembly boundaries). This presentation
-has 63 pages rather than 123; all 121 steps and 966 additions remain unchanged.
-The last odd step shares its page with the finished model. The approximate 7798
-thumbnail is explicitly starred. Thumbnails are individually scaled, not life size.
+The current booklet has 70 A4 pages: 121 steps, 966 additions, 80 native
+part/colour thumbnails, 24 model checkpoints, nine full-page teaching steps,
+and one calibrated measuring page. The earlier compact layout had 63 pages;
+extra pages now explain difficult connections and identify easily confused parts.
+Most ordinary pages still have two steps. No physical placement changes.
 
-From the repository root:
+The immutable release retains its original gold/grey illustrations. This separate
+presentation uses native colours with red outlines around visible additions.
+`presentation.json` binds authored panels, offsets, arrow endpoints, selected IDs,
+size labels and checks to the exact model fingerprint. Its part descriptions and
+hashes come from the supplied LDraw library; this is project evidence, not a
+maintained global catalogue. Panels use existing part IDs and never add quantities.
+
+From the repository root (Python 3.12, explicit LDraw library):
 
 ```sh
 uv run --locked --extra render python projects/solar_orbiter/instructions_v15/render_part_thumbnails.py --release output/solar-orbiter-instructions-v15 --library /path/to/ldraw --output output/instruction-part-thumbnails
-uv run --with reportlab --extra render python projects/solar_orbiter/instructions_v15/booklet.py --release output/solar-orbiter-instructions-v15 --thumbnails output/instruction-part-thumbnails --output output/compact-booklet
+uv run --locked --extra render python projects/solar_orbiter/instructions_v15/illustrate.py --release output/solar-orbiter-instructions-v15 --library /path/to/ldraw --output output/solar-orbiter-visual
+uv run --locked --extra render python projects/solar_orbiter/instructions_v15/measurements.py --library /path/to/ldraw --output output/satellite-measurements
+uv run --with reportlab --extra render python projects/solar_orbiter/instructions_v15/booklet.py --release output/solar-orbiter-instructions-v15 --thumbnails output/instruction-part-thumbnails --illustrations output/solar-orbiter-visual --measurements output/satellite-measurements --output output/visual-booklet
+uv run --locked python projects/solar_orbiter/instructions_v15/package_booklet.py --release output/solar-orbiter-instructions-v15 --booklet output/visual-booklet --illustrations output/solar-orbiter-visual --thumbnails output/instruction-part-thumbnails --measurements output/satellite-measurements --destination output/Solar-Orbiter-v15-Complete-Instructions.zip
 ```
 
-The presentation helper needs ReportLab, Pillow, and system DejaVu Sans fonts.
-Keep presentation files outside the immutable verified release. The compact
-layout draws inspiration from LEGO's official ISS 21321 manual, PDF page 90:
+Use fresh output directories. `illustrate.py --steps 22 118` supports selective
+review; rerunning can resume only outputs whose source, settings, selections,
+offsets, arrows, camera, palette, renderer and dependency/image hashes still match.
+The booklet requires ReportLab, Pillow and system DejaVu Sans fonts. Its PDF/HTML
+layout remains project-local; the reusable rendering API is
+`brickbuilder.rendering.illustrations.IllustrationSession`.
+
+`package_booklet.py` verifies the original release and presentation bindings,
+counts and image hashes before packaging. It retains the original release as
+`Solar-Orbiter-v15/` and places the derived views/reports under `presentation/`.
+This presentation reconciliation is separate from the release verifier and does
+not upgrade any physical finding. New source models require a new reviewed plan.
+
+Print the measuring page at 100% / actual size and check the 50 mm calibration
+line. Its orthographic native geometry is scaled using recorded pixels per LDraw
+unit (0.4 mm/LDU), not thumbnail dimensions or an assumed nominal beam length.
+Other pictures are individually fitted and are not life size.
+
+Layout inspiration: the official ISS 21321 manual, PDF page 90:
 https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6327401.pdf
-Small coloured parts trays and large step numbers informed the layout; no LEGO
-manual artwork is copied or redistributed. Actual part images use the existing
-LDraw geometry and palette. Presentation changes do not resolve physical unknowns.
+Small coloured parts trays and large step numbers informed the layout; no manual
+artwork is copied or redistributed. Additional official examples of placement
+panels and measuring guides are linked in the general instruction guide.
+
+### Review evidence and remaining limits
+
+All 121 step views and nine teaching pages were reviewed in page contact sheets,
+with detailed checks of dense trays, the dish stack and calibrated measuring page.
+The source release still verifies with artifact status `pass`, label `draft`,
+validation `unknown`, and zero integrity errors. All 354 automated tests passed,
+including installed-wheel workflows; source/tests type checking passed.
+
+Arrows and exploded offsets are authored schematic cues, not inferred mating
+interfaces or collision-free paths. A wholly hidden new part receives no visible
+outline. Detail views still omit surrounding assemblies; use checkpoints to locate
+them. Distinct copies and mirrored parts remain individually counted; repeated
+techniques refer back to teaching steps without silently multiplying quantities.
+Physical assembly and the 18 unresolved connection paths remain untested/unknown.
+
+The standalone HTML was also rendered with WeasyPrint: 70 A4 pages, no image
+overflow, and the teaching-page layout was visually checked after correction.

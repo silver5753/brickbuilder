@@ -204,3 +204,26 @@ checkpoints. Part references remain secondary; 7798 stays marked approximate.
 Original release and physical placements remain unchanged. PDF layout and
 inventory coverage checked; physical assembly and existing connection unknowns
 remain untested/unresolved. Official LEGO ISS manual informed the visual layout.
+
+
+### Native-colour instruction teaching views — 27 October 2026
+
+Added reusable `IllustrationSession` with cached native geometry, depth-aware
+addition outlines, explicit presentation-only offsets and projected placement
+arrows. Reports bind original CAD, selections, cameras, annotations, dependencies
+and outputs; no physical CAD, connection policy or frozen fixture was changed.
+An unrelated synthetic coloured stack exercises visibility/occlusion and identity
+preservation. The full suite passed 354 tests, including installed-wheel workflows;
+source/tests type checking and focused lint checks passed.
+
+Solar Orbiter now has a source-bound presentation plan with readable part sizes,
+nine A/B/C teaching steps, native-colour assembly diagrams, camera-change notices,
+repeated-technique references, milestone checks and six calibrated 1:1 references.
+The PDF is 70 pages with 121 steps and 966 additions; 24 checkpoint overviews remain.
+The project includes repeatable render, measurement, PDF/HTML and packaging helpers.
+All pages were reviewed in contact sheets and representative pages at print size.
+The original release retains its draft/unknown physical status. Arrows are authored
+schematics, not clearance proofs; physically unresolved connections remain unknown.
+
+A separate two-brick building rehearsal with native LDraw geometry also rendered
+correctly using the same generic API, including a vertical placement arrow.
