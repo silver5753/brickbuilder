@@ -62,3 +62,28 @@ A regression compares every part ID's native reference, colour and transform
 against the frozen fixture, then validates complete one-time step coverage.
 The release verifier checks the accumulated CAD, inventories, image/report hashes
 and captured inputs. Neither it nor visual inspection establishes real-world fit.
+
+## Compact visual booklet
+
+`render_part_thumbnails.py` renders all native part/colour combinations with the
+existing renderer. `booklet.py` lays out a PDF and standalone HTML with two steps
+per A4 page, picture-based parts trays, secondary part references, and checkpoints
+no more than six steps apart (also at major assembly boundaries). This presentation
+has 63 pages rather than 123; all 121 steps and 966 additions remain unchanged.
+The last odd step shares its page with the finished model. The approximate 7798
+thumbnail is explicitly starred. Thumbnails are individually scaled, not life size.
+
+From the repository root:
+
+```sh
+uv run --locked --extra render python projects/solar_orbiter/instructions_v15/render_part_thumbnails.py --release output/solar-orbiter-instructions-v15 --library /path/to/ldraw --output output/instruction-part-thumbnails
+uv run --with reportlab --extra render python projects/solar_orbiter/instructions_v15/booklet.py --release output/solar-orbiter-instructions-v15 --thumbnails output/instruction-part-thumbnails --output output/compact-booklet
+```
+
+The presentation helper needs ReportLab, Pillow, and system DejaVu Sans fonts.
+Keep presentation files outside the immutable verified release. The compact
+layout draws inspiration from LEGO's official ISS 21321 manual, PDF page 90:
+https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6327401.pdf
+Small coloured parts trays and large step numbers informed the layout; no LEGO
+manual artwork is copied or redistributed. Actual part images use the existing
+LDraw geometry and palette. Presentation changes do not resolve physical unknowns.

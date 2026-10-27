@@ -194,3 +194,13 @@ release verifier returned artifact `status: pass`, draft label and
 123-page PDF was checked for page bounds, step numbering and representative
 page layouts; every step's detail view was visually reviewed in contact sheets.
 The downloadable package retains the original unknown connection/geometry gates.
+
+
+### Solar Orbiter compact visual instructions — 2026-10-27
+
+Added project-local native-colour thumbnail and booklet helpers: 80 part/colour
+pictures, 121 steps over 63 A4 pages, two steps per page, and 24 whole-model
+checkpoints. Part references remain secondary; 7798 stays marked approximate.
+Original release and physical placements remain unchanged. PDF layout and
+inventory coverage checked; physical assembly and existing connection unknowns
+remain untested/unresolved. Official LEGO ISS manual informed the visual layout.

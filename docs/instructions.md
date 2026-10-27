@@ -116,3 +116,12 @@ Before delivery, inspect overview and detail pictures at readable size. Gold
 colouring does not guarantee an addition is visible through surrounding parts.
 Coverage does not establish strength, clutch, collision clearance or a feasible
 assembly sequence. Both included examples still need real physical trial builds.
+
+### Human-readable print presentations
+
+Prefer actual-colour part thumbnails with prominent quantities; keep native part
+numbers as secondary references. Pictures should supplement, not replace, native
+inventory identity. For compact guides, place two steps on each page and show
+whole-model checkpoints every five or six steps or at major assembly boundaries.
+Keep focused assembly diagrams on every step, explain highlight colours, mark
+approximate geometry, and verify readability at the intended paper size.
