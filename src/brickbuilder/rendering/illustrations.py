@@ -85,6 +85,7 @@ class IllustrationSession:
         offsets: dict[str, Vector] | None = None,
         arrows: tuple[PlacementArrow, ...] = (),
         note: str = "",
+        contrast_new_black: bool = False,
     ) -> dict[str, Any]:
         if not instance_ids or not instance_ids <= self.parts.keys():
             raise ValueError(
@@ -102,6 +103,31 @@ class IllustrationSession:
         for v in offsets.values():
             coordinates(list(v), "Presentation offset")
         np, Image, _ = modules()
+        # Resolve scale from native mesh extents, never camera/perspective size.
+        sizes = {}
+        for i in instance_ids:
+            part = self.parts[i]
+            key = part.reference, part.colour
+            if key not in self.cache:
+                mesh = self.loader.load(*key)
+                if not mesh.faces:
+                    raise ValueError(
+                        f"No renderable surface geometry: {part.reference}"
+                    )
+                self.cache[key] = (*_arrays(mesh, self.colours), mesh.approximations)
+            vertices = self.cache[key][0].reshape(-1, 3)
+            sizes[i] = float(np.max(vertices.max(axis=0) - vertices.min(axis=0)))
+        all_new = added_ids == instance_ids
+        emphasized = {
+            i
+            for i in added_ids
+            if not all_new or sizes[i] <= 0.55 * max(sizes.values())
+        }
+        lightened = (
+            {i for i in emphasized if self.parts[i].colour == 0}
+            if contrast_new_black
+            else set()
+        )
         chunks = []
         values = []
         masks = []
@@ -123,7 +149,11 @@ class IllustrationSession:
             )
             world = world + np.asarray(offsets.get(part.instance_id, (0, 0, 0)))
             chunks.append(world)
-            values.append(colours)
+            values.append(
+                np.full_like(colours, (174, 185, 197))
+                if part.instance_id in lightened
+                else colours
+            )
             masks.append(np.full(len(world), part.instance_id in added_ids, dtype=bool))
             if missing:
                 approximate[part.instance_id] = list(missing)
@@ -191,7 +221,12 @@ class IllustrationSession:
             camera=camera,
             config_fingerprint=self.config.fingerprint(),
             palette_sha256=self.palette_hash,
-            colour_mode="native_with_visible_addition_outline",
+            colour_mode="native_with_selective_black_contrast"
+            if contrast_new_black
+            else "native_with_visible_addition_outline",
+            contrast_new_black=contrast_new_black,
+            lightened_instance_ids=sorted(lightened),
+            contrast_rule="New black pieces; if all pieces are new, only pieces with maximum native extent <= 55% of the largest",
             outline_rgb=[214, 45, 58],
             approximate_instances=approximate,
             note=note,

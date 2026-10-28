@@ -135,6 +135,7 @@ def main():
                     offsets=offsets,
                     arrows=tuple(arrows),
                     note="Authored satellite presentation; native model unchanged.",
+                    contrast_new_black=True,
                 )
         print(f"{n:03d}: {len(tasks)} views", flush=True)
     (a.output / "presentation.json").write_bytes(

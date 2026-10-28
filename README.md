@@ -157,7 +157,7 @@ external preparation and are not supported by the native parser.
 P1–P5 and the C1–C7 cleanup plan are complete within their documented scope. The
 [roadmap](docs/roadmap.md) records shipped work, validation and remaining limits;
 [implementation history](docs/implementation-history.md) preserves earlier plans.
-The latest code-validation run passed 354 tests, including installed-wheel workflows.
+The latest code-validation run passed 355 tests, including installed-wheel workflows.
 
 ```sh
 uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning

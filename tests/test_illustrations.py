@@ -104,3 +104,50 @@ def test_native_colours_occlusion_offsets_and_projection(tmp_path: Path):
             arrows=(PlacementArrow((0, 0, 0), (0, 0, 5)),),
         )
     assert not (tmp_path / "short").exists()
+
+
+def test_selective_black_contrast_preserves_native_model(tmp_path):
+    (tmp_path / "large.dat").write_text("4 16 -20 -20 0 20 -20 0 20 20 0 -20 20 0\n")
+    (tmp_path / "small.dat").write_text("4 16 -4 -4 0 4 -4 0 4 4 0 -4 4 0\n")
+    palette = tmp_path / "palette.ldr"
+    palette.write_text("0 !COLOUR Black CODE 0 VALUE #121212 EDGE #000000\n")
+    f = tmp_path / "model.ldr"
+    f.write_text(
+        dumps(
+            from_model(
+                Model(
+                    (
+                        PartInstance("large", "large.dat", 0),
+                        PartInstance("small", "small.dat", 0, Transform((40, 0, 0))),
+                    )
+                )
+            )
+        )
+    )
+    source = read_source(f)
+    before = source.document.model.fingerprint()
+    v = View("detail", (0, 0, 1))
+    session = IllustrationSession(
+        source,
+        PartLibrary((tmp_path,)),
+        RenderConfig((v,), width=320, height=240),
+        palette,
+    )
+    ids = frozenset({"large", "small"})
+    a = session.render(
+        tmp_path / "all",
+        instance_ids=ids,
+        added_ids=ids,
+        view=v,
+        contrast_new_black=True,
+    )
+    assert a["lightened_instance_ids"] == ["small"]
+    b = session.render(
+        tmp_path / "mixed",
+        instance_ids=ids,
+        added_ids=frozenset({"large"}),
+        view=v,
+        contrast_new_black=True,
+    )
+    assert b["lightened_instance_ids"] == ["large"]
+    assert source.document.model.fingerprint() == before

@@ -197,3 +197,20 @@ use an unrelated coloured stack to check occlusion and native-colour preservatio
 Official layout examples (reference only; no artwork bundled):
 - [Numbered subassemblies and rotation cues](https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6252255.pdf), PDF page 29.
 - [Length number and 1:1 reference](https://www.lego.com/cdn/product-assets/product.bi.core.pdf/6555765.pdf), PDF page 30.
+
+
+### Compact pages and black-piece contrast
+
+For dense print guides, prefer three sections per A4 page with vertical parts
+trays; reserve two sections for an involved teaching sequence. Keep quantities,
+size labels, assembly diagrams and short notes readable at print size. Pack steps
+in their authored order and allow extra room rather than shrink a critical joint.
+
+`IllustrationSession.render(..., contrast_new_black=True)` optionally lightens
+new native-black parts to opaque RGB (174,185,197), preserving shading and depth.
+When the whole selected view is new, it lightens only smaller parts (maximum
+native mesh extent <= 55% of the largest selected part). The report records the
+rule and exact `lightened_instance_ids`. Uniformly sized all-new parts remain
+native-coloured. Other colours, actual CAD and inventory remain unchanged.
+Keep real colours in parts trays and explain the illustration tint in the legend.
+Transparency is deliberately not used, so hidden surfaces do not show through.

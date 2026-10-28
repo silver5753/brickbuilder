@@ -65,11 +65,11 @@ and captured inputs. Neither it nor visual inspection establishes real-world fit
 
 ## Visual booklet and repeatable presentation pipeline
 
-The current booklet has 70 A4 pages: 121 steps, 966 additions, 80 native
-part/colour thumbnails, 24 model checkpoints, nine full-page teaching steps,
+The current booklet has 48 A4 pages: 121 steps, 966 additions, 80 native
+part/colour thumbnails, 24 model checkpoints, nine two-section teaching steps,
 and one calibrated measuring page. The earlier compact layout had 63 pages;
 extra pages now explain difficult connections and identify easily confused parts.
-Most ordinary pages still have two steps. No physical placement changes.
+Ordinary pages use three sections with vertical parts trays. No physical placement changes.
 
 The immutable release retains its original gold/grey illustrations. This separate
 presentation uses native colours with red outlines around visible additions.
@@ -114,10 +114,10 @@ panels and measuring guides are linked in the general instruction guide.
 
 ### Review evidence and remaining limits
 
-All 121 step views and nine teaching pages were reviewed in page contact sheets,
+All 121 step views and nine teaching sequences were reviewed in page contact sheets,
 with detailed checks of dense trays, the dish stack and calibrated measuring page.
 The source release still verifies with artifact status `pass`, label `draft`,
-validation `unknown`, and zero integrity errors. All 354 automated tests passed,
+validation `unknown`, and zero integrity errors. All 355 automated tests passed,
 including installed-wheel workflows; source/tests type checking passed.
 
 Arrows and exploded offsets are authored schematic cues, not inferred mating
@@ -129,3 +129,19 @@ Physical assembly and the 18 unresolved connection paths remain untested/unknown
 
 The standalone HTML was also rendered with WeasyPrint: 70 A4 pages, no image
 overflow, and the teaching-page layout was visually checked after correction.
+
+
+### Compact contrast revision - 28 October 2026
+
+Three equal sections per page, with vertical native-colour parts trays. Teaching
+steps use two sections and share a page with an ordinary step where possible.
+The revised output is 48 pages, retaining all 121 steps, 966 parts and 24 checkpoints.
+New black pieces use opaque grey-blue presentation shading. If the entire selected
+view is new, only pieces whose largest native mesh extent is at most 55% of the
+largest piece are lightened. This makes small connectors easier to distinguish;
+it is a size heuristic, not an inferred part function. Actual inventory colours
+and physical CAD remain unchanged. The legend explains the distinction.
+
+Use fresh illustration and booklet output directories for the new renderer.
+All 355 tests passed, including the selective-contrast regression; type checking
+passed. PDF page bounds, dense trays, teaching layouts and HTML print were checked.

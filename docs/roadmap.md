@@ -227,3 +227,15 @@ schematics, not clearance proofs; physically unresolved connections remain unkno
 
 A separate two-brick building rehearsal with native LDraw geometry also rendered
 correctly using the same generic API, including a vertical placement arrow.
+
+
+### Compact instruction layout and selective contrast - 28 October 2026
+
+Solar Orbiter now uses three sections per page, vertical parts trays, and two
+sections for teaching sequences: 48 pages instead of 70. All 121 steps, 966 parts
+and 24 overview checkpoints remain. Added optional native-black contrast to the
+generic illustration API; all-new views emphasize smaller parts by native mesh
+extent. Reports retain exact lightened IDs and physical CAD is unchanged.
+Validation: 355 tests passed, including selective contrast and installed-wheel
+workflows; ty passed. Dense PDF pages and HTML print were reviewed. Physical
+assembly and the existing connection/geometry unknowns remain untested/unknown.

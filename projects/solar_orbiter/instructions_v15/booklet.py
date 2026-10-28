@@ -142,7 +142,7 @@ class Booklet:
             11,
         )
         self.pic(hero, 28, 315, 539, 360)
-        intro = "Choose pieces by their colour, shape and size label. Red outlines mark newly added pieces; arrows indicate the authored placement direction. Most pages contain two steps. Difficult assemblies have a full page of small teaching panels."
+        intro = "Choose pieces by their colour, shape and size label. Red outlines mark newly added pieces; arrows indicate the authored placement direction. Pages use three sections with vertical parts trays. Difficult assemblies use two sections of teaching panels. Grey-blue pieces are illustrative highlights; use the trays for actual colours."
         limits = "Trial-build draft: 18 of 966 parts have unresolved connection paths. Part 7798 is shown with an approximate shape (*). Physical assembly, access and strength remain untested."
         self.para(intro, 32, 275, 530, 11)
         self.para(limits, 32, 177, 530, 10)
@@ -158,7 +158,7 @@ class Booklet:
         self.para("Read the pictures", 32, 793, 530, 25, True)
         notes = [
             "Parts trays show real colours, quantities and size labels. Small part numbers remain a reference. Beam labels count holes; axle and bar lengths use stud units (L). Pictures are not to scale except on the measuring page.",
-            "Assembly pictures retain real colours. Red outlines identify visible new pieces; hidden pieces cannot be seen through other parts. Use the teaching panels to see concealed layers before closing them.",
+            "New black pieces are lightened to grey-blue. When everything is new, smaller pieces are lightened and larger structure stays dark. Parts trays retain real colours. Red outlines mark visible additions; hidden pieces remain hidden. Use the teaching panels to see concealed layers before closing them.",
             "A red arrow shows an authored placement direction. Spaced pictures explain order and orientation; they are schematic and do not prove that a part can slide along the entire arrow without obstruction.",
             "VIEW CHANGED marks a camera-direction change. Locate the same assembly before continuing. The body, wing and boom detail pictures may omit surrounding parts; these have not been removed.",
             "Checkpoints show the accumulated model at least every six steps and at major additions. Keep the wings and boom supported. Optional solar stickers are not shown. An asterisk marks approximate 7798 geometry.",
@@ -314,113 +314,128 @@ class Booklet:
             note += " Check: unresolved connection path."
         return note
 
-    def standard(self, n, slot, tall=False):
+    def vertical_tray(self, row, top):
+        count = len(row["inventory"])
+        height = count * 31 + 4
+        self.c.setFillColor(HexColor("#f1f4f6"))
+        self.c.roundRect(28, top - height, 112, height, 4, fill=1, stroke=0)
+        body = []
+        for k, q in enumerate(row["inventory"]):
+            part, colour = q["native"]["part"], q["native"]["colour"]
+            m = self.mapping[(part, colour)]
+            path = self.args.thumbnails / "renders" / m["image"]
+            y = top - 3 - k * 31
+            self.pic(path, 32, y - 23, 39, 23, True)
+            self.para(str(q["quantity"]) + "×", 73, y - 4, 18, 8, True)
+            label = self.plan["part_labels"][part]["label"]
+            self.para(label, 92, y - 2, 45, 6.4, True, max_height=27)
+            self.para(part + ("*" if m["approximate"] else ""), 32, y - 24, 55, 5.8)
+            body.append(
+                '<div class="vpiece">'
+                + self.img(path, True)
+                + f"<b>{q['quantity']}×</b><span>{html.escape(label)}</span><small>{part}</small></div>"
+            )
+        return '<div class="vtray">' + "".join(body) + "</div>"
+
+    def compact(self, n, slot, teaching=False):
         row = self.rows[n - 1]
         spec = self.plan["steps"].get(row["id"], {})
-        bottom = 51 if tall else (439 if slot == 0 else 51)
-        top = 795 if tall else bottom + 356
-        image_height = top - bottom - 205
-        body = self.header(n, row, top) + self.tray(row, top)
-        detail = self.view_path(row, "detail")
+        top = 800 - slot * 250
+        body = self.header(n, row, top) + self.vertical_tray(row, top - 35)
         checkpoint = n in self.plan["checkpoints"]
-        if checkpoint:
-            self.pic(detail, 28, bottom + 85, 365, image_height)
-            self.pic(
-                self.view_path(row, "overview"),
-                402,
-                bottom + 94,
-                165,
-                image_height - 16,
-            )
-            self.para("MODEL CHECKPOINT", 402, bottom + 86, 165, 7, True)
-        else:
-            self.pic(detail, 28, bottom + 85, 539, image_height)
-        note = self.notes(n, row, spec)
-        self.para(note, 28, bottom + 75, 539, 8.1, max_height=72)
-        body += (
-            '<div class="diagrams">'
-            + self.img(detail, cls="detail")
-            + (
-                '<div class="overview">'
-                + self.img(self.view_path(row, "overview"))
-                + "<small>MODEL CHECKPOINT</small></div>"
-                if checkpoint
-                else ""
-            )
-            + '</div><p class="note">'
-            + html.escape(note)
-            + "</p>"
-        )
-        return (
-            '<article class="' + ("single" if tall else "") + '">' + body + "</article>"
-        )
-
-    def teaching(self, n):
-        row = self.rows[n - 1]
-        spec = self.plan["steps"][row["id"]]
-        top = 795
-        body = self.header(n, row, top) + self.tray(row, top)
-        for k, panel in enumerate(spec["panels"]):
-            y = 665 - k * 180
-            self.para(panel["title"], 28, y, 539, 9.5, True, max_height=25)
-            path = self.view_path(row, panel["name"])
-            self.pic(path, 28, y - 170, 539, 145)
+        detail = self.view_path(row, "detail")
+        if teaching:
+            a, b = spec["panels"]
+            self.para(a["title"], 150, top - 37, 417, 8.5, True, max_height=24)
+            self.pic(self.view_path(row, a["name"]), 150, top - 222, 417, 158)
+            self.para(b["title"], 28, top - 242, 260, 8.5, True, max_height=24)
+            self.pic(self.view_path(row, b["name"]), 28, top - 426, 260, 158)
+            self.para("C  Assembled view", 305, top - 242, 262, 8.5, True)
+            self.pic(detail, 305, top - 426, 262, 158)
+            note = self.notes(n, row, spec)
+            self.para(note, 28, top - 440, 539, 8.1, max_height=49)
+            # On teaching steps the completed detail is the orientation checkpoint.
+            # Preserve whole-model checkpoints as a small inset beside panel A.
+            if checkpoint:
+                self.pic(self.view_path(row, "overview"), 478, top - 222, 89, 55)
             body += (
-                '<div class="teaching-panel"><h3>'
-                + html.escape(panel["title"])
+                '<div class="teach-a"><h3>'
+                + html.escape(a["title"])
                 + "</h3>"
-                + self.img(path)
-                + "</div>"
+                + self.img(self.view_path(row, a["name"]))
+                + '</div><div class="teach-pair"><div><h3>'
+                + html.escape(b["title"])
+                + "</h3>"
+                + self.img(self.view_path(row, b["name"]))
+                + "</div><div><h3>C  Assembled view</h3>"
+                + self.img(detail)
+                + '</div></div><p class="teach-note">'
+                + html.escape(note)
+                + "</p>"
             )
-        self.para("C  Assembled view / match this orientation", 28, 305, 539, 9.5, True)
-        detail = self.view_path(row, "detail")
-        checkpoint = n in self.plan["checkpoints"]
-        if checkpoint:
-            self.pic(detail, 28, 137, 365, 145)
-            self.pic(self.view_path(row, "overview"), 402, 149, 165, 128)
-            self.para("MODEL CHECKPOINT", 402, 141, 165, 7, True)
+            if checkpoint:
+                body += (
+                    '<div class="teach-check">'
+                    + self.img(self.view_path(row, "overview"))
+                    + "</div>"
+                )
         else:
-            self.pic(detail, 28, 137, 539, 145)
-        body += (
-            '<div class="teaching-panel"><h3>C  Assembled view / match this orientation</h3><div class="diagrams">'
-            + self.img(detail, cls="detail")
-            + (
-                '<div class="overview">'
-                + self.img(self.view_path(row, "overview"))
-                + "<small>MODEL CHECKPOINT</small></div>"
-                if checkpoint
-                else ""
+            if checkpoint:
+                self.pic(detail, 150, top - 190, 305, 152)
+                self.pic(self.view_path(row, "overview"), 461, top - 176, 106, 120)
+                self.para("CHECKPOINT", 461, top - 181, 106, 6.5, True)
+            else:
+                self.pic(detail, 150, top - 190, 417, 152)
+            note = self.notes(n, row, spec)
+            self.para(note, 150, top - 199, 417, 8, max_height=43)
+            body += (
+                '<div class="compact-diagram">'
+                + self.img(detail, cls="detail")
+                + (
+                    '<div class="overview">'
+                    + self.img(self.view_path(row, "overview"))
+                    + "<small>CHECKPOINT</small></div>"
+                    if checkpoint
+                    else ""
+                )
+                + '</div><p class="compact-note">'
+                + html.escape(note)
+                + "</p>"
             )
-            + "</div></div>"
+        return (
+            '<article class="compact '
+            + ("double" if teaching else "one")
+            + '">'
+            + body
+            + "</article>"
         )
-        note = self.notes(n, row, spec)
-        self.para(note, 28, 120, 539, 9, max_height=70)
-        body += '<p class="note">' + html.escape(note) + "</p>"
-        self.end('<article class="full">' + body + "</article>")
 
     def build(self):
         self.front()
         self.measure()
         n = 1
         while n <= len(self.rows):
-            spec = self.plan["steps"].get(self.rows[n - 1]["id"], {})
-            if spec.get("full_page"):
-                self.teaching(n)
+            slot = 0
+            body = ""
+            while n <= len(self.rows):
+                teaching = bool(
+                    self.plan["steps"].get(self.rows[n - 1]["id"], {}).get("full_page")
+                )
+                cost = 2 if teaching else 1
+                if slot + cost > 3:
+                    break
+                if slot:
+                    self.c.setStrokeColor(HexColor("#dde2e6"))
+                    self.c.line(28, 810 - slot * 250, 567, 810 - slot * 250)
+                body += self.compact(n, slot, teaching)
+                slot += cost
                 n += 1
-                continue
-            paired = n < len(self.rows) and not self.plan["steps"].get(
-                self.rows[n]["id"], {}
-            ).get("full_page")
-            body = self.standard(n, 0, tall=not paired)
-            n += 1
-            if paired:
-                body += self.standard(n, 1)
-                n += 1
-                self.c.setStrokeColor(HexColor("#dde2e6"))
-                self.c.line(28, 427, 567, 427)
+                if slot == 3:
+                    break
             self.end(body)
         self.c.save()
         css = """@page{size:A4;margin:0}*{box-sizing:border-box}body{margin:0;background:#e5e7eb;color:#172638;font:10pt Arial,sans-serif}.page{width:210mm;height:297mm;padding:16mm 10mm 18mm;margin:12px auto;background:white;position:relative;break-after:page}h1{font-size:26pt}h2{font-size:15pt}p{line-height:1.4}.index{margin:6px 0}footer{position:absolute;bottom:7mm;left:10mm;right:10mm;font-size:7pt;border-top:1px solid #ddd;padding-top:3mm}footer span{float:right}.hero{width:100%;height:125mm;object-fit:contain}article{height:133mm;padding:0 0 5mm}article+article{border-top:1px solid #ddd;padding-top:5mm}header{display:flex;align-items:center;gap:6mm;height:13mm;position:relative}header strong{font-size:25pt;min-width:20mm}header h2{font-size:12pt}header small{position:absolute;right:0;bottom:0;font-size:6.7pt}.tray{height:27mm;display:flex;background:#f1f4f6;border-radius:4px;padding:2mm}.piece{width:16.66%;position:relative;padding-right:6mm}.piece img{width:100%;height:14mm;object-fit:contain}.piece b{position:absolute;right:1mm;top:4mm;font-size:10pt}.piece small{display:block;font-size:7pt;font-weight:bold;white-space:nowrap}.piece em{display:block;font-size:6.5pt;font-style:normal}.diagrams{height:58mm;display:flex;gap:3mm;padding-top:3mm}.detail{width:100%;height:100%;max-height:100%;min-width:0;object-fit:contain}.diagrams:has(.overview) .detail{width:68%}.overview{width:32%;display:flex;flex-direction:column;justify-content:center}.overview img{width:100%;height:45mm;object-fit:contain}.overview small{font-size:7pt;text-align:center}.note{font-size:8.1pt;margin:2mm 0}.full{height:auto}.single{height:265mm}.single .diagrams{height:191mm}.single .overview img{height:180mm}.teaching-panel{height:63mm}.teaching-panel h3{font-size:9.5pt;margin:3mm 0 1mm}.teaching-panel>img{width:100%;height:51mm;object-fit:contain}.teaching-panel .diagrams{height:51mm}.full .note{font-size:9pt}.measurement{height:29.3mm;font-size:10pt}.measurement img{display:block;margin-top:4mm}.calibration{width:50mm;border-top:1px solid #172638;margin:10mm 0 8mm;font-size:9pt;padding-top:3mm}.pause .hero{height:78mm}@media print{body{background:white}.page{margin:0}}"""
+        css += ".compact{position:relative;height:88.2mm;padding:0}.compact.double{height:176.4mm}.compact+article{padding-top:0}.compact header{height:12mm}.compact header strong{font-size:24pt}.compact header h2{font-size:12pt}.vtray{position:absolute;left:0;top:12.35mm;width:39.5mm;padding:1mm;background:#f1f4f6;border-radius:4px}.vpiece{position:relative;height:10.94mm}.vpiece img{position:absolute;left:0;top:0;width:14mm;height:8mm;object-fit:contain}.vpiece b{position:absolute;left:15mm;top:1.4mm;font-size:8pt}.vpiece span{position:absolute;left:22mm;top:.7mm;width:16mm;font-size:6.4pt;font-weight:bold}.vpiece small{position:absolute;left:0;top:8mm;font-size:5.8pt}.compact-diagram{position:absolute;left:43mm;top:13.4mm;width:147mm;height:53.6mm;display:flex;gap:2mm}.compact-diagram .detail{height:100%;width:100%;min-width:0;object-fit:contain}.compact-diagram:has(.overview) .detail{width:73%}.compact-diagram .overview{width:25%}.compact-diagram .overview img{height:42mm}.compact-note{position:absolute;left:43mm;right:0;top:70.2mm;margin:0;font-size:8pt;line-height:1.3}.teach-a{position:absolute;left:43mm;top:13mm;width:147mm;height:65mm}.teach-a img{width:100%;height:55mm;object-fit:contain}.compact h3{font-size:8.5pt;margin:0 0 2mm;line-height:1.3}.teach-pair{position:absolute;top:85mm;left:0;right:0;display:flex;gap:6mm;height:66mm}.teach-pair>div{width:50%;height:66mm}.teach-pair img{width:100%;height:56mm;object-fit:contain}.teach-note{position:absolute;left:0;right:0;top:155mm;font-size:8.1pt;line-height:1.3;margin:0}.teach-check{position:absolute;right:0;top:59mm;width:31mm;height:19mm;background:white}.teach-check img{width:100%;height:100%;object-fit:contain}"
         (self.args.output / (STEM + ".html")).write_text(
             '<!doctype html><html lang="en"><meta charset="utf-8"><title>Solar Orbiter visual building instructions</title><style>'
             + css
@@ -433,7 +448,7 @@ class Booklet:
             "parts": sum(len(x["added_ids"]) for x in self.rows),
             "pages": len(self.pages),
             "step_pages": self.step_pages,
-            "full_page_steps": [
+            "two_section_steps": [
                 int(k[-3:]) for k, v in self.plan["steps"].items() if v.get("full_page")
             ],
             "checkpoints": self.plan["checkpoints"],
