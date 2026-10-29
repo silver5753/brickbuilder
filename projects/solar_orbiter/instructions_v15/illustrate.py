@@ -6,6 +6,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 from brickbuilder.ldraw import PartLibrary, read_source
+from brickbuilder.transforms import cross, unit
 from brickbuilder.rendering.config import load_config, View
 from brickbuilder.rendering.illustrations import IllustrationSession, PlacementArrow
 
@@ -61,7 +62,7 @@ def main():
         added = set(row["added_ids"])
         view = View("detail", eye, up)
         tasks = [("detail", selected, added, {}, [], view)]
-        if n in plan["checkpoints"]:
+        if n in plan["checkpoints"] or spec.get("locator"):
             overview = next(v for v in row["views"] if v["name"] == "overview")
             tasks.append(
                 (
@@ -70,7 +71,11 @@ def main():
                     added,
                     {},
                     [],
-                    View("overview", tuple(overview["eye"]), tuple(overview["up"])),
+                    View(
+                        "overview",
+                        eye if spec.get("locator") else tuple(overview["eye"]),
+                        up if spec.get("locator") else tuple(overview["up"]),
+                    ),
                 )
             )
         for panel in spec.get("panels", []):
@@ -86,10 +91,15 @@ def main():
                         PlacementArrow(tuple(x["start"]), tuple(x["end"]))
                         for x in panel["arrows"]
                     ],
-                    View(panel["name"], eye, up),
+                    View(panel["name"], tuple(panel.get("eye", eye)), up),
                 )
             )
         for name, ids, adds, offsets, arrows, view in tasks:
+            locator_ids = (
+                frozenset(added)
+                if name == "overview" and spec.get("locator")
+                else frozenset()
+            )
             dest = target / name
             if dest.exists():
                 # Resume only a byte-verified image with the same authored request,
@@ -97,6 +107,10 @@ def main():
                 report = json.loads((dest / "illustration.json").read_text())
                 checks = [
                     report["source_sha256"] == source.sha256,
+                    report.get("locator_ids", []) == sorted(locator_ids),
+                    report["camera"]["up"]
+                    == list(cross(view.eye, unit(cross(view.up, view.eye)))),
+                    report.get("contrast_new_black") is True,
                     report["instance_ids"] == sorted(ids),
                     report["added_ids"] == sorted(adds),
                     report["offsets_ldu"] == {i: list(x) for i, x in offsets.items()},
@@ -136,6 +150,7 @@ def main():
                     arrows=tuple(arrows),
                     note="Authored satellite presentation; native model unchanged.",
                     contrast_new_black=True,
+                    locator_ids=locator_ids,
                 )
         print(f"{n:03d}: {len(tasks)} views", flush=True)
     (a.output / "presentation.json").write_bytes(

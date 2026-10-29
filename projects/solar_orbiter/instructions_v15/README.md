@@ -65,8 +65,8 @@ and captured inputs. Neither it nor visual inspection establishes real-world fit
 
 ## Visual booklet and repeatable presentation pipeline
 
-The current booklet has 48 A4 pages: 121 steps, 966 additions, 80 native
-part/colour thumbnails, 24 model checkpoints, nine two-section teaching steps,
+The current booklet has 49 A4 pages: 121 steps, 966 additions, 80 native
+part/colour thumbnails, 24 model checkpoints, eleven two-section teaching steps,
 and one calibrated measuring page. The earlier compact layout had 63 pages;
 extra pages now explain difficult connections and identify easily confused parts.
 Ordinary pages use three sections with vertical parts trays. No physical placement changes.
@@ -127,8 +127,8 @@ them. Distinct copies and mirrored parts remain individually counted; repeated
 techniques refer back to teaching steps without silently multiplying quantities.
 Physical assembly and the 18 unresolved connection paths remain untested/unknown.
 
-The standalone HTML was also rendered with WeasyPrint: 70 A4 pages, no image
-overflow, and the teaching-page layout was visually checked after correction.
+The earlier teaching revision was also rendered with WeasyPrint: 70 A4 pages, no
+image overflow. Later revisions and page counts are recorded below.
 
 
 ### Compact contrast revision - 28 October 2026
@@ -145,3 +145,22 @@ and physical CAD remain unchanged. The legend explains the distinction.
 Use fresh illustration and booklet output directories for the new renderer.
 All 355 tests passed, including the selective-contrast regression; type checking
 passed. PDF page bounds, dense trays, teaching layouts and HTML print were checked.
+
+
+### Placement clarity - 29 October 2026
+
+45 authored `locator` steps show the full accumulated model from the detail view's
+direction. Blue boxes locate the current additions, including concealed geometry.
+These insets replace the checkpoint image where the two coincide. All 24 checkpoint
+steps remain. Locator boxes do not infer interfaces or establish insertion access.
+
+Steps 80 and 98 now include explicit back-face teaching panels with the corresponding
+mounting beams retained. Panel `eye` overrides label the change of viewing direction;
+`context_ids` bind the supporting geometry to already-built physical instances.
+Other solar-panel locations remain individually counted. The PDF/HTML generator
+keeps locator insets beside teaching panels without covering them. Package checks
+reconcile exact cameras, accumulated selections, locator IDs and presentation hashes.
+
+Next: review insertion order and blocked access; resolve the existing 18 connection
+unknowns and exact 7798 geometry; extract generic booklet layout only when another
+project demonstrates reuse. No physical assembly has been tested in this revision.

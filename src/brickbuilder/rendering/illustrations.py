@@ -86,6 +86,7 @@ class IllustrationSession:
         arrows: tuple[PlacementArrow, ...] = (),
         note: str = "",
         contrast_new_black: bool = False,
+        locator_ids: frozenset[str] = frozenset(),
     ) -> dict[str, Any]:
         if not instance_ids or not instance_ids <= self.parts.keys():
             raise ValueError(
@@ -93,6 +94,8 @@ class IllustrationSession:
             )
         if not added_ids <= instance_ids:
             raise ValueError("Added IDs must belong to the illustration selection")
+        if not locator_ids <= instance_ids:
+            raise ValueError("Locator IDs must belong to the illustration selection")
         if view.groups:
             raise ValueError(
                 "Use explicit instance_ids; illustration view groups must be empty"
@@ -132,6 +135,7 @@ class IllustrationSession:
         values = []
         masks = []
         approximate = {}
+        locator_vertices = []
         for part in self.source.document.model.parts:
             if part.instance_id not in instance_ids:
                 continue
@@ -149,6 +153,8 @@ class IllustrationSession:
             )
             world = world + np.asarray(offsets.get(part.instance_id, (0, 0, 0)))
             chunks.append(world)
+            if part.instance_id in locator_ids:
+                locator_vertices.append(world.reshape(-1, 3))
             values.append(
                 np.full_like(colours, (174, 185, 197))
                 if part.instance_id in lightened
@@ -167,6 +173,29 @@ class IllustrationSession:
         )
         image = Image.open(BytesIO(png)).convert("RGB")
         draw = import_module("PIL.ImageDraw").Draw(image)
+        locator_box = None
+        if locator_vertices:
+            points = np.concatenate(locator_vertices)
+            px = (
+                points @ np.asarray(camera["right"])
+                - np.asarray(camera["projected_center_ldu"])[0]
+            ) * camera["pixels_per_ldu"] + self.config.width / 2
+            py = (
+                -(
+                    points @ np.asarray(camera["up"])
+                    - np.asarray(camera["projected_center_ldu"])[1]
+                )
+                * camera["pixels_per_ldu"]
+                + (self.config.height + 12) / 2
+            )
+            locator_box = [
+                max(4, float(px.min()) - 12),
+                max(52, float(py.min()) - 12),
+                min(self.config.width - 4, float(px.max()) + 12),
+                min(self.config.height - 42, float(py.max()) + 12),
+            ]
+            draw.rectangle(locator_box, outline="white", width=8)
+            draw.rectangle(locator_box, outline=(0, 113, 168), width=4)
         projected_arrows = []
         for arrow in arrows:
             start = project_point(
@@ -218,6 +247,9 @@ class IllustrationSession:
             offsets_ldu={i: list(v) for i, v in offsets.items()},
             arrows=[asdict(v) for v in arrows],
             projected_arrows=projected_arrows,
+            locator_ids=sorted(locator_ids),
+            locator_box_pixels=locator_box,
+            locator_meaning="Projected location only, including hidden geometry; not a visibility or connection proof",
             camera=camera,
             config_fingerprint=self.config.fingerprint(),
             palette_sha256=self.palette_hash,

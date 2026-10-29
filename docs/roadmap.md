@@ -1,6 +1,6 @@
 # Brick Builder roadmap
 
-Updated: 12 October 2026. P1–P5 and review fixes C1–C7 are complete within
+Updated: 29 October 2026. P1–P5 and review fixes C1–C7 are complete within
 their documented scope. Current user instructions take
 precedence over this plan.
 
@@ -239,3 +239,26 @@ extent. Reports retain exact lightened IDs and physical CAD is unchanged.
 Validation: 355 tests passed, including selective contrast and installed-wheel
 workflows; ty passed. Dense PDF pages and HTML print were reviewed. Physical
 assembly and the existing connection/geometry unknowns remain untested/unknown.
+
+
+### Placement locators and reverse-side panels - 29 October 2026
+
+Added reusable explicit `locator_ids` to native illustrations: blue projected
+geometry bounds identify a region without revealing occluded surfaces or changing
+physical CAD. Generic synthetic geometry tests cover hidden-layer location,
+invalid IDs, preserved native bytes and depth-respecting addition outlines.
+
+The satellite adds 45 same-direction accumulated-model locator insets and back-face
+teaching panels for solar-panel steps 80 and 98. The booklet is 49 pages, with
+121 steps, 966 parts, 24 checkpoint steps and eleven two-section teaching steps.
+Insets occupy their own space beside teaching diagrams. Packaging checks bind exact
+selected IDs and cameras to the plan, including alternate panel eyes and locators.
+355 tests, ty and focused lint passed. All 49 PDF pages were visually reviewed;
+dense locator/teaching pages and the HTML print were checked at readable size.
+All 205 presentation views reconciled against the unchanged verified release.
+Physical assembly/access remain untested;
+18 connection paths and the exact 7798 geometry remain unknown.
+
+Next instruction work: review insertion order/blocked access, resolve model
+uncertainties with evidence, and generalize booklet layout when another project
+provides a concrete second use. Placement clarity does not resolve those gates.

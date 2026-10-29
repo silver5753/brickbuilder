@@ -104,6 +104,31 @@ def test_native_colours_occlusion_offsets_and_projection(tmp_path: Path):
             arrows=(PlacementArrow((0, 0, 0), (0, 0, 5)),),
         )
     assert not (tmp_path / "short").exists()
+    # A locator can identify a hidden layer without claiming it is visible.
+    located = session.render(
+        tmp_path / "located",
+        instance_ids=ids,
+        added_ids=added,
+        view=view,
+        locator_ids=added,
+    )
+    box = located["locator_box_pixels"]
+    for point in [(-20, -20, 0), (20, 20, 0)]:
+        x, y = project_point(point, located["camera"], 320, 240)
+        assert box[0] <= x <= box[2] and box[1] <= y <= box[3]
+    assert located["locator_ids"] == ["new"]
+    im = np.asarray(Image.open(tmp_path / "located/detail.png"))
+    assert np.any(np.all(im == (0, 113, 168), axis=2))
+    assert not np.any(np.all(im == (214, 45, 58), axis=2))
+    assert source_path.read_bytes() == before
+    with pytest.raises(ValueError, match="Locator"):
+        session.render(
+            tmp_path / "invalid-locator",
+            instance_ids=ids,
+            added_ids=added,
+            view=view,
+            locator_ids=frozenset({"absent"}),
+        )
 
 
 def test_selective_black_contrast_preserves_native_model(tmp_path):

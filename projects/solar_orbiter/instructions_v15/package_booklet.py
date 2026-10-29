@@ -8,6 +8,8 @@ from zipfile import ZipFile, ZIP_DEFLATED
 
 from brickbuilder.ldraw import read_source
 from brickbuilder.release_verify import verify_release
+from brickbuilder.rendering.config import View
+from brickbuilder.transforms import cross, unit
 
 
 def require(condition, message):
@@ -74,15 +76,30 @@ def main():
         "Part coverage mismatch",
     )
     count = 0
+    parts = {p.instance_id: p for p in source.document.model.parts}
     for row in rows:
         spec = plan["steps"].get(row["id"], {})
+        detail_view = next(v for v in row["views"] if v["name"] == "detail")
         expected = {"detail": None}
-        if int(row["id"][-3:]) in plan["checkpoints"]:
+        if int(row["id"][-3:]) in plan["checkpoints"] or spec.get("locator"):
             expected["overview"] = None
         expected.update({p["name"]: p for p in spec.get("panels", [])})
         for name, panel in expected.items():
             directory = a.illustrations / row["id"] / name
             r = json.loads((directory / "illustration.json").read_text())
+            authored = next((v for v in row["views"] if v["name"] == name), detail_view)
+            eye = spec.get("eye", detail_view["eye"])
+            if panel:
+                eye = panel.get("eye", eye)
+            elif name == "overview" and not spec.get("locator"):
+                eye = authored["eye"]
+            view = View(name, tuple(eye), tuple(authored["up"]))
+            require(
+                r["camera"]["eye"] == list(view.eye)
+                and r["camera"]["up"]
+                == list(cross(view.eye, unit(cross(view.up, view.eye)))),
+                "Illustration camera differs from authored plan",
+            )
             require(
                 r["source_sha256"] == source.sha256 and r["model_sha256"] == model_hash,
                 "Illustration source mismatch",
@@ -99,6 +116,30 @@ def main():
                 r["offsets_are_physical_changes"] is False,
                 "Physical changes are forbidden",
             )
+            expected_locator = (
+                sorted(row["added_ids"])
+                if name == "overview" and spec.get("locator")
+                else []
+            )
+            require(
+                r.get("locator_ids", []) == expected_locator,
+                "Locator selection mismatch",
+            )
+            if expected_locator:
+                require(
+                    r["instance_ids"] == sorted(row["accumulated_ids"]),
+                    "Locator omits surrounding parts",
+                )
+                detail = json.loads(
+                    (
+                        a.illustrations / row["id"] / "detail/illustration.json"
+                    ).read_text()
+                )
+                require(
+                    r["camera"]["eye"] == detail["camera"]["eye"]
+                    and r["camera"]["up"] == detail["camera"]["up"],
+                    "Locator direction differs from detail",
+                )
             if panel:
                 require(
                     r["instance_ids"] == sorted(panel["instances"])
@@ -111,6 +152,21 @@ def main():
                     "Panel placement cue mismatch",
                 )
             else:
+                expected_ids = set(row["accumulated_ids"])
+                if name == "detail":
+                    expected_ids = {
+                        i
+                        for i in expected_ids
+                        if any(
+                            parts[i].group == g
+                            or (parts[i].group or "").startswith(g + "/")
+                            for g in detail_view["groups"]
+                        )
+                    } | set(spec.get("context_ids", []))
+                require(
+                    r["instance_ids"] == sorted(expected_ids),
+                    "Accumulated selection mismatch",
+                )
                 require(
                     not r["offsets_ldu"] and not r["arrows"],
                     "Accumulated view was displaced",

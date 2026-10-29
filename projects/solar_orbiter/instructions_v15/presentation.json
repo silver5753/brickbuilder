@@ -94,7 +94,8 @@
           ]
         }
       ],
-      "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic."
+      "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic.",
+      "locator": true
     },
     "step_026": {
       "full_page": true,
@@ -178,7 +179,8 @@
           ]
         }
       ],
-      "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic."
+      "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic.",
+      "locator": true
     },
     "step_035": {
       "full_page": true,
@@ -517,7 +519,8 @@
           ]
         }
       ],
-      "check": "Check the offset jumper studs before adding the shield backing. Repeat the opposite side in step 64."
+      "check": "Check the offset jumper studs before adding the shield backing. Repeat the opposite side in step 64.",
+      "locator": true
     },
     "step_075": {
       "full_page": true,
@@ -652,7 +655,8 @@
           ]
         }
       ],
-      "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported."
+      "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported.",
+      "locator": true
     },
     "step_110": {
       "full_page": true,
@@ -787,7 +791,8 @@
           ]
         }
       ],
-      "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported."
+      "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported.",
+      "locator": true
     },
     "step_117": {
       "full_page": true,
@@ -910,7 +915,8 @@
         0.85,
         -0.3,
         0.45
-      ]
+      ],
+      "locator": true
     },
     "step_118": {
       "full_page": true,
@@ -1010,13 +1016,15 @@
         0.95,
         -0.25,
         0.22
-      ]
+      ],
+      "locator": true
     },
     "step_024": {
       "cue": "Same technique as step 22; follow this view for side and orientation."
     },
     "step_027": {
-      "cue": "Same technique as step 26; follow this view for side and orientation."
+      "cue": "Same technique as step 26; follow this view for side and orientation.",
+      "locator": true
     },
     "step_036": {
       "cue": "Same technique as step 35; follow this view for side and orientation."
@@ -1053,25 +1061,94 @@
       "cue": "Same technique as step 110; follow this view for side and orientation."
     },
     "step_112": {
-      "cue": "Same technique as step 110; follow this view for side and orientation."
+      "cue": "Same technique as step 110; follow this view for side and orientation.",
+      "locator": true
     },
     "step_113": {
       "cue": "Same technique as step 110; follow this view for side and orientation."
     },
     "step_084": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+      "locator": true
     },
     "step_088": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+      "locator": true
     },
     "step_098": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+      "locator": true,
+      "full_page": true,
+      "context_ids": [
+        "import-20ecf7f255d9eef76d19abf3c1584a595404c1b08b7c69191a9f55486156bace",
+        "import-3424ae7bb03249b29693331964b63ea3ec6bac1e1f8e71763969dc0cfaaf5f59",
+        "import-4bb32a33601bd7321ff725bebf85e0713bbaa31a8188f6c9e848010c4ef31f7e",
+        "import-6b110b89863d0e0c114e3214e82ce7769758b14d1d71334dcdfd607b56a1640b",
+        "import-75fef5487f73d835e2fdfaa31aa73d9fd488b7802ae1e7b20e85459ea8b97a67",
+        "import-94d13e36f9ec2f708cd9b286c02d8edc11f49c4f81619150b41d285f3adbdc67"
+      ],
+      "check": "Use the back-face view to align the backing with its mounting beams. Other model parts are omitted for clarity.",
+      "panels": [
+        {
+          "name": "backing",
+          "title": "A  Panel backing",
+          "instances": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4"
+          ],
+          "highlight": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "back_face",
+          "title": "B  Turn over: back face and mounts",
+          "instances": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4",
+            "import-20ecf7f255d9eef76d19abf3c1584a595404c1b08b7c69191a9f55486156bace",
+            "import-3424ae7bb03249b29693331964b63ea3ec6bac1e1f8e71763969dc0cfaaf5f59",
+            "import-4bb32a33601bd7321ff725bebf85e0713bbaa31a8188f6c9e848010c4ef31f7e",
+            "import-6b110b89863d0e0c114e3214e82ce7769758b14d1d71334dcdfd607b56a1640b",
+            "import-75fef5487f73d835e2fdfaa31aa73d9fd488b7802ae1e7b20e85459ea8b97a67",
+            "import-94d13e36f9ec2f708cd9b286c02d8edc11f49c4f81619150b41d285f3adbdc67"
+          ],
+          "highlight": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4"
+          ],
+          "offsets": {},
+          "arrows": [],
+          "eye": [
+            -0.15988236984776982,
+            -0.4156941616042016,
+            0.895341271147511
+          ]
+        }
+      ]
     },
     "step_102": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+      "locator": true
     },
     "step_106": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here."
+      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+      "locator": true
     },
     "step_006": {
       "checkpoint_check": "Front and rear frames are aligned; all four bridges are pinned."
@@ -1080,13 +1157,15 @@
       "checkpoint_check": "Support the body and check the stand before releasing your grip."
     },
     "step_030": {
-      "checkpoint_check": "Axles and carriers remain accessible before the body is covered."
+      "checkpoint_check": "Axles and carriers remain accessible before the body is covered.",
+      "locator": true
     },
     "step_059": {
       "checkpoint_check": "Rear seams are overlapped; the four curved ring segments face inward."
     },
     "step_073": {
-      "checkpoint_check": "Both left shield openings remain clear; standoffs are seated evenly."
+      "checkpoint_check": "Both left shield openings remain clear; standoffs are seated evenly.",
+      "locator": true
     },
     "step_091": {
       "checkpoint_check": "All three left panels are attached; support the wing."
@@ -1098,7 +1177,155 @@
       "checkpoint_check": "Sensor heads face the distinct directions shown."
     },
     "step_121": {
-      "checkpoint_check": "Check antennas clear the shield; support the wings and boom."
+      "checkpoint_check": "Check antennas clear the shield; support the wings and boom.",
+      "locator": true
+    },
+    "step_007": {
+      "locator": true
+    },
+    "step_009": {
+      "locator": true
+    },
+    "step_011": {
+      "locator": true
+    },
+    "step_012": {
+      "locator": true
+    },
+    "step_015": {
+      "locator": true
+    },
+    "step_017": {
+      "locator": true
+    },
+    "step_018": {
+      "locator": true
+    },
+    "step_019": {
+      "locator": true
+    },
+    "step_020": {
+      "locator": true
+    },
+    "step_021": {
+      "locator": true
+    },
+    "step_023": {
+      "locator": true
+    },
+    "step_025": {
+      "locator": true
+    },
+    "step_028": {
+      "locator": true
+    },
+    "step_029": {
+      "locator": true
+    },
+    "step_031": {
+      "locator": true
+    },
+    "step_040": {
+      "locator": true
+    },
+    "step_049": {
+      "locator": true
+    },
+    "step_050": {
+      "locator": true
+    },
+    "step_051": {
+      "locator": true
+    },
+    "step_053": {
+      "locator": true
+    },
+    "step_060": {
+      "locator": true
+    },
+    "step_062": {
+      "locator": true
+    },
+    "step_074": {
+      "locator": true
+    },
+    "step_080": {
+      "locator": true,
+      "full_page": true,
+      "context_ids": [
+        "import-308f0e2982200e09c5856d55b794e13b0d5b011b734293f0c257e906ea38fda7",
+        "import-3c3f0c2943e269ed83b752c752e7fa7c586422a3f784e43f902f6298a492c703",
+        "import-8f2f3ed74f7554a550814efd83c069d2980e36505def66c80993740d00a5a0e3",
+        "import-c93c7b464a2c69f9538d2efe8efb0ed2cf0283e52a906c4feb19f0c8383da049",
+        "import-ec79480eca5a03ba05491f37ba7cea288fbab119ac6d8bd00e494a80fcba074d",
+        "import-f70327687421dc2a19baf5b7ca3a1de10da33c0634cccecce117e735ce5ba349"
+      ],
+      "check": "Use the back-face view to align the backing with its mounting beams. Other model parts are omitted for clarity.",
+      "panels": [
+        {
+          "name": "backing",
+          "title": "A  Panel backing",
+          "instances": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f"
+          ],
+          "highlight": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "back_face",
+          "title": "B  Turn over: back face and mounts",
+          "instances": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f",
+            "import-308f0e2982200e09c5856d55b794e13b0d5b011b734293f0c257e906ea38fda7",
+            "import-3c3f0c2943e269ed83b752c752e7fa7c586422a3f784e43f902f6298a492c703",
+            "import-8f2f3ed74f7554a550814efd83c069d2980e36505def66c80993740d00a5a0e3",
+            "import-c93c7b464a2c69f9538d2efe8efb0ed2cf0283e52a906c4feb19f0c8383da049",
+            "import-ec79480eca5a03ba05491f37ba7cea288fbab119ac6d8bd00e494a80fcba074d",
+            "import-f70327687421dc2a19baf5b7ca3a1de10da33c0634cccecce117e735ce5ba349"
+          ],
+          "highlight": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f"
+          ],
+          "offsets": {},
+          "arrows": [],
+          "eye": [
+            0.15988236984776982,
+            -0.4156941616042016,
+            0.895341271147511
+          ]
+        }
+      ]
+    },
+    "step_092": {
+      "locator": true
+    },
+    "step_114": {
+      "locator": true
+    },
+    "step_119": {
+      "locator": true
+    },
+    "step_120": {
+      "locator": true
     }
   },
   "part_labels": {
@@ -1397,5 +1624,6 @@
       "description": "Tile  1 x  1 Round with Groove",
       "source_sha256": "1d506f39ea2bf69757206009498025381bbf28d9fa0b79385a30f4c5fa37f111"
     }
-  }
+  },
+  "locator_legend": "Blue boxes locate this step\u2019s additions on the accumulated model, from the same direction as the close-up. Hidden pieces may lie inside the box; the box is not a connection or visibility claim."
 }

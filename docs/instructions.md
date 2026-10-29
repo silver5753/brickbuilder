@@ -214,3 +214,21 @@ rule and exact `lightened_instance_ids`. Uniformly sized all-new parts remain
 native-coloured. Other colours, actual CAD and inventory remain unchanged.
 Keep real colours in parts trays and explain the illustration tint in the legend.
 Transparency is deliberately not used, so hidden surfaces do not show through.
+
+
+### Locating a close-up in the model
+
+`IllustrationSession.render(..., locator_ids=frozenset(focus_ids))` draws a blue
+rectangle around the projected native geometry of an explicit selection. Render
+all accumulated parts, use the detail camera's eye/up, and place the result beside
+the close-up. IDs must belong to the rendered selection. The report records exact
+locator IDs and pixel bounds; the model and inventory are unchanged. The rectangle
+includes hidden geometry: it is a location cue, never a claim that the parts are
+visible or connected. Distinguish it from red visible-addition outlines in the legend.
+
+Use locators at assembly transitions and view changes. When a joint remains hidden,
+author an opposite-side view with explicit supporting parts and label the turn.
+Do not infer connections from proximity. The satellite presentation demonstrates
+back-face panels for the first solar panel on each side, and reconciles camera,
+selection and locator bindings before packaging. Keep teaching panels and locators
+in separate layout regions so an inset cannot cover a connection diagram.
