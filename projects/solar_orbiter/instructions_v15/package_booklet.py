@@ -28,6 +28,7 @@ def main():
         "destination",
     ]:
         p.add_argument("--" + flag, type=Path, required=True)
+    p.add_argument("--access-audit", type=Path)
     a = p.parse_args()
     require(not a.destination.exists(), "Destination already exists")
     release_report = verify_release(a.release)
@@ -41,6 +42,34 @@ def main():
     ]
     plan = json.loads((a.illustrations / "presentation.json").read_text())
     record = json.loads((a.booklet / "presentation-record.json").read_text())
+    if plan.get("sequence_review"):
+        require(
+            a.access_audit is not None, "Assembly-order revision requires access audit"
+        )
+        audit = json.loads((a.access_audit / "access-audit.json").read_text())
+        review_bytes = (a.access_audit / "access-review.json").read_bytes()
+        review = json.loads(review_bytes)
+        captured = a.release / "provenance/project"
+        captured_review = json.loads((captured / "access-review.json").read_text())
+        require(
+            all(review.get(k) == v for k, v in captured_review.items()),
+            "Captured access review changed",
+        )
+        require(audit["source_model_sha256"] == model_hash, "Audit model changed")
+        require(
+            audit["steps_sha256"]
+            == sha256((captured / "steps.json").read_bytes()).hexdigest(),
+            "Audit sequence changed",
+        )
+        require(
+            audit["review_sha256"] == sha256(review_bytes).hexdigest(),
+            "Audit review changed",
+        )
+        require(
+            audit["sequence_constraints"] == "pass"
+            and audit["original_order_witness"] == "reproduced",
+            "Access audit incomplete",
+        )
     require(
         plan["source_model_sha256"] == record["source_model_sha256"] == model_hash,
         "Model hash mismatch",
@@ -224,6 +253,19 @@ def main():
         attribution.append("")
     (a.booklet / "LDRAW-ATTRIBUTION.txt").write_text("\n".join(attribution))
     with ZipFile(a.destination, "x", ZIP_DEFLATED) as z:
+        project = Path(__file__).parent
+        require((project / 'presentation.json').read_bytes() == (a.illustrations / 'presentation.json').read_bytes(), 'Presentation source changed')
+        require((project / 'steps.json').read_bytes() == (a.release / 'provenance/project/steps.json').read_bytes(), 'Source steps changed')
+        for file in sorted(project.iterdir()):
+            if file.is_file():
+                z.write(file, str(Path('presentation/source') / file.name))
+        if a.access_audit:
+            for file in sorted(a.access_audit.rglob("*")):
+                if file.is_file():
+                    z.write(
+                        file,
+                        str(Path("access-review") / file.relative_to(a.access_audit)),
+                    )
         for folder, prefix in [
             (a.release, "Solar-Orbiter-v15"),
             (a.illustrations, "presentation/views"),

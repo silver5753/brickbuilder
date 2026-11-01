@@ -146,7 +146,7 @@ class Booklet:
         limits = "Trial-build draft: 18 of 966 parts have unresolved connection paths. Part 7798 is shown with an approximate shape (*). Physical assembly, access and strength remain untested."
         self.para(intro, 32, 275, 530, 11)
         self.para(limits, 32, 177, 530, 10)
-        revision = "Placement clarity revision / 29 October 2026"
+        revision = "Assembly-order revision / 1 November 2026"
         self.para(revision, 32, 100, 530, 9, True)
         self.end(
             "<h1>SOLAR ORBITER</h1><h2>Visual building instructions</h2><p>121 steps / 966 parts / Native colours and placement cues</p>"
@@ -310,7 +310,7 @@ class Booklet:
         )
 
     def notes(self, n, row, spec):
-        note = row["callouts"][0]["text"]
+        note = spec.get("note_override", row["callouts"][0]["text"])
         extra = spec.get("check") or spec.get("cue") or spec.get("checkpoint_check")
         if extra:
             note += " " + extra

@@ -6,23 +6,29 @@
     12,
     16,
     22,
+    25,
+    26,
     28,
-    30,
-    36,
-    42,
-    48,
-    54,
-    59,
-    65,
+    34,
+    40,
+    46,
+    52,
+    57,
+    60,
+    63,
+    66,
+    69,
     71,
-    73,
-    79,
-    85,
-    91,
-    97,
-    103,
-    109,
-    115,
+    77,
+    83,
+    89,
+    95,
+    101,
+    107,
+    108,
+    111,
+    112,
+    114,
     116,
     118,
     121
@@ -97,7 +103,7 @@
       "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic.",
       "locator": true
     },
-    "step_026": {
+    "step_115": {
       "full_page": true,
       "eye": [
         0.4,
@@ -107,7 +113,7 @@
       "panels": [
         {
           "name": "parts",
-          "title": "A  Parts in their final relative positions",
+          "title": "A Final positions / keep bushes separate while threading",
           "instances": [
             "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
             "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
@@ -179,10 +185,11 @@
           ]
         }
       ],
-      "check": "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic.",
-      "locator": true
+      "check": "Hold the boom and loose bushes in alignment as the axle advances. Confirm both rails are captured before removing temporary support.",
+      "locator": true,
+      "note_override": "Keep the assembled boom supported. Feed the axle following the arrow, adding the loose bushes in axial order as it passes through the supports. Do not preload the bushes before threading."
     },
-    "step_035": {
+    "step_033": {
       "full_page": true,
       "panels": [
         {
@@ -297,7 +304,7 @@
       ],
       "check": "All four spacers go behind the cover. Support the frame while pressing."
     },
-    "step_038": {
+    "step_036": {
       "full_page": true,
       "panels": [
         {
@@ -391,7 +398,7 @@
       ],
       "check": "Use this same layer order for the other three equipment boxes; their locations are shown separately."
     },
-    "step_063": {
+    "step_061": {
       "full_page": true,
       "panels": [
         {
@@ -519,10 +526,10 @@
           ]
         }
       ],
-      "check": "Check the offset jumper studs before adding the shield backing. Repeat the opposite side in step 64.",
+      "check": "Check the offset jumper studs before adding the shield backing. Repeat the opposite side in step 62.",
       "locator": true
     },
-    "step_075": {
+    "step_073": {
       "full_page": true,
       "panels": [
         {
@@ -658,7 +665,7 @@
       "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported.",
       "locator": true
     },
-    "step_110": {
+    "step_108": {
       "full_page": true,
       "panels": [
         {
@@ -791,7 +798,7 @@
           ]
         }
       ],
-      "check": "Match each overlap and pin hole to the assembled view. Keep the long free end supported.",
+      "check": "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled.",
       "locator": true
     },
     "step_117": {
@@ -1022,61 +1029,67 @@
     "step_024": {
       "cue": "Same technique as step 22; follow this view for side and orientation."
     },
-    "step_027": {
-      "cue": "Same technique as step 26; follow this view for side and orientation.",
-      "locator": true
+    "step_116": {
+      "cue": "Same technique as step 115; follow this view for side and orientation.",
+      "locator": true,
+      "check": "Hold the boom and loose bushes in alignment as the axle advances. Confirm both rails are captured before removing temporary support."
     },
-    "step_036": {
-      "cue": "Same technique as step 35; follow this view for side and orientation."
+    "step_034": {
+      "cue": "Same technique as step 33; follow this view for side and orientation."
     },
-    "step_039": {
-      "cue": "Same technique as step 38; follow this view for side and orientation."
+    "step_037": {
+      "cue": "Same technique as step 36; follow this view for side and orientation."
     },
-    "step_044": {
-      "cue": "Same technique as step 35; follow this view for side and orientation."
+    "step_042": {
+      "cue": "Same technique as step 33; follow this view for side and orientation."
+    },
+    "step_043": {
+      "cue": "Same technique as step 33; follow this view for side and orientation."
     },
     "step_045": {
-      "cue": "Same technique as step 35; follow this view for side and orientation."
+      "cue": "Same technique as step 36; follow this view for side and orientation."
     },
-    "step_047": {
-      "cue": "Same technique as step 38; follow this view for side and orientation."
-    },
-    "step_048": {
-      "cue": "Same technique as step 38; follow this view for side and orientation.",
+    "step_046": {
+      "cue": "Same technique as step 36; follow this view for side and orientation.",
       "checkpoint_check": "Check all four equipment boxes and both side closures."
     },
-    "step_064": {
-      "cue": "Same technique as step 63; follow this view for side and orientation."
+    "step_062": {
+      "cue": "Same technique as step 61; follow this view for side and orientation."
     },
-    "step_076": {
-      "cue": "Same technique as step 75; follow this view for side and orientation."
+    "step_074": {
+      "cue": "Same technique as step 73; follow this view for side and orientation."
     },
-    "step_093": {
-      "cue": "Same technique as step 75; follow this view for side and orientation."
+    "step_091": {
+      "cue": "Same technique as step 73; follow this view for side and orientation."
     },
-    "step_094": {
-      "cue": "Same technique as step 75; follow this view for side and orientation."
+    "step_092": {
+      "cue": "Same technique as step 73; follow this view for side and orientation."
     },
-    "step_111": {
-      "cue": "Same technique as step 110; follow this view for side and orientation."
-    },
-    "step_112": {
-      "cue": "Same technique as step 110; follow this view for side and orientation.",
-      "locator": true
+    "step_109": {
+      "cue": "Same technique as step 108; follow this view for side and orientation.",
+      "locator": true,
+      "check": "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled."
     },
     "step_113": {
-      "cue": "Same technique as step 110; follow this view for side and orientation."
+      "cue": "Same technique as step 108; follow this view for side and orientation.",
+      "locator": true,
+      "check": "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled."
     },
-    "step_084": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+    "step_114": {
+      "cue": "Same technique as step 108; follow this view for side and orientation.",
+      "locator": true,
+      "check": "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled."
+    },
+    "step_082": {
+      "cue": "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here.",
       "locator": true
     },
-    "step_088": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+    "step_086": {
+      "cue": "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here.",
       "locator": true
     },
-    "step_098": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+    "step_096": {
+      "cue": "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here.",
       "locator": true,
       "full_page": true,
       "context_ids": [
@@ -1142,12 +1155,12 @@
         }
       ]
     },
-    "step_102": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+    "step_100": {
+      "cue": "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here.",
       "locator": true
     },
-    "step_106": {
-      "cue": "Repeat the panel technique from steps 80\u201383 at this position; parts are counted here.",
+    "step_104": {
+      "cue": "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here.",
       "locator": true
     },
     "step_006": {
@@ -1156,25 +1169,27 @@
     "step_016": {
       "checkpoint_check": "Support the body and check the stand before releasing your grip."
     },
-    "step_030": {
+    "step_028": {
       "checkpoint_check": "Axles and carriers remain accessible before the body is covered.",
       "locator": true
     },
-    "step_059": {
+    "step_057": {
       "checkpoint_check": "Rear seams are overlapped; the four curved ring segments face inward."
     },
-    "step_073": {
+    "step_071": {
       "checkpoint_check": "Both left shield openings remain clear; standoffs are seated evenly.",
       "locator": true
     },
-    "step_091": {
+    "step_089": {
       "checkpoint_check": "All three left panels are attached; support the wing."
     },
-    "step_109": {
+    "step_107": {
       "checkpoint_check": "Compare left and right wing positions and support both sides."
     },
-    "step_116": {
-      "checkpoint_check": "Sensor heads face the distinct directions shown."
+    "step_112": {
+      "checkpoint_check": "Sensor heads face the distinct directions shown.",
+      "locator": true,
+      "cue": "The right rail is intentionally absent here; it follows after all sensor carriers."
     },
     "step_121": {
       "checkpoint_check": "Check antennas clear the shield; support the wings and boom.",
@@ -1216,40 +1231,40 @@
     "step_025": {
       "locator": true
     },
-    "step_028": {
+    "step_026": {
+      "locator": true
+    },
+    "step_027": {
       "locator": true
     },
     "step_029": {
       "locator": true
     },
-    "step_031": {
+    "step_038": {
       "locator": true
     },
-    "step_040": {
+    "step_047": {
+      "locator": true
+    },
+    "step_048": {
       "locator": true
     },
     "step_049": {
       "locator": true
     },
-    "step_050": {
-      "locator": true
-    },
     "step_051": {
       "locator": true
     },
-    "step_053": {
+    "step_058": {
       "locator": true
     },
     "step_060": {
       "locator": true
     },
-    "step_062": {
+    "step_072": {
       "locator": true
     },
-    "step_074": {
-      "locator": true
-    },
-    "step_080": {
+    "step_078": {
       "locator": true,
       "full_page": true,
       "context_ids": [
@@ -1315,17 +1330,22 @@
         }
       ]
     },
-    "step_092": {
+    "step_090": {
       "locator": true
     },
-    "step_114": {
-      "locator": true
+    "step_110": {
+      "locator": true,
+      "cue": "The right rail is intentionally absent here; it follows after all sensor carriers."
     },
     "step_119": {
       "locator": true
     },
     "step_120": {
       "locator": true
+    },
+    "step_111": {
+      "locator": true,
+      "cue": "The right rail is intentionally absent here; it follows after all sensor carriers."
     }
   },
   "part_labels": {
@@ -1625,5 +1645,7 @@
       "source_sha256": "1d506f39ea2bf69757206009498025381bbf28d9fa0b79385a30f4c5fa37f111"
     }
   },
-  "locator_legend": "Blue boxes locate this step\u2019s additions on the accumulated model, from the same direction as the close-up. Hidden pieces may lie inside the box; the box is not a connection or visibility claim."
+  "locator_legend": "Blue boxes locate this step\u2019s additions on the accumulated model, from the same direction as the close-up. Hidden pieces may lie inside the box; the box is not a connection or visibility claim.",
+  "revision_label": "Assembly-order review / 29 October 2026",
+  "sequence_review": "access-review.json"
 }

@@ -1576,7 +1576,7 @@
       ],
       "callouts": [
         {
-          "text": "Pin both upper support frames to the chassis before roof closure.",
+          "text": "Pin both boom support frames to the open chassis. Leave both long support axles and their bushes out until steps 115\u2013116.",
           "instances": [
             "import-4c50c9b7a05758e21f27d3f39de74e5aac7fa0d2d9f97504ae959e2c4360089f",
             "import-f5830fe9147993100e95a47a22b87c5ddd39cb64e7d7c667ad228dd57dfa2436",
@@ -1591,134 +1591,10 @@
           ]
         }
       ],
-      "access_review": "Support the assembly beside the connection being pressed. Pin both upper support frames to the chassis before roof closure. Physical insertion and holding strength have not been trial-built."
+      "access_review": "Pin both boom support frames to the open chassis. Leave both long support axles and their bushes out until steps 115\u2013116. Physical insertion, handling clearance and holding strength remain untested."
     },
     {
       "id": "step_026",
-      "title": "Forward boom support axle",
-      "add": [
-        "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
-        "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
-        "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
-        "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
-        "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
-        "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
-      ],
-      "assemblies": [],
-      "requires": [
-        "step_025"
-      ],
-      "views": [
-        {
-          "name": "overview",
-          "eye": [
-            0.5,
-            -1.5,
-            0.7
-          ],
-          "up": [
-            0,
-            -1,
-            0
-          ],
-          "groups": []
-        },
-        {
-          "name": "detail",
-          "eye": [
-            0.5,
-            -1.5,
-            0.7
-          ],
-          "up": [
-            0,
-            -1,
-            0
-          ],
-          "groups": [
-            "boom_mount/main"
-          ]
-        }
-      ],
-      "callouts": [
-        {
-          "text": "Thread the axle and all five bushes into the illustrated positions before restricting access.",
-          "instances": [
-            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
-            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
-            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
-            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
-            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
-            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
-          ]
-        }
-      ],
-      "access_review": "Support the assembly beside the connection being pressed. Thread the axle and all five bushes into the illustrated positions before restricting access. Physical insertion and holding strength have not been trial-built."
-    },
-    {
-      "id": "step_027",
-      "title": "Rear boom support axle",
-      "add": [
-        "import-69a0cc749d0da873ea56f2880df2c9e335f899e9afd5348666a204bb65821784",
-        "import-fddd71e2677475117cf67877693a3c21bcba5371bf35173c34de071a15d28750",
-        "import-0a00155ee98ba75ea55cdef9e204a5a3d4912e0dc73658cc3a0681167692f632",
-        "import-0c495553d2429128f15f82b97cfa49d7de1fef44100f9609ce9be415a4969aac",
-        "import-5a5f3ecf93d7f787dc3c8a4f91c55524213c85e2422b790fe6aa176680cc656d",
-        "import-83c925984035c34be5eee5901acda92c0ebf86a9e818175bb67c4cdf830cef51"
-      ],
-      "assemblies": [],
-      "requires": [
-        "step_026"
-      ],
-      "views": [
-        {
-          "name": "overview",
-          "eye": [
-            0.5,
-            -1.5,
-            0.7
-          ],
-          "up": [
-            0,
-            -1,
-            0
-          ],
-          "groups": []
-        },
-        {
-          "name": "detail",
-          "eye": [
-            0.5,
-            -1.5,
-            0.7
-          ],
-          "up": [
-            0,
-            -1,
-            0
-          ],
-          "groups": [
-            "boom_mount/main"
-          ]
-        }
-      ],
-      "callouts": [
-        {
-          "text": "Repeat at the rear support. Leave the offset spaces for the two boom rails.",
-          "instances": [
-            "import-69a0cc749d0da873ea56f2880df2c9e335f899e9afd5348666a204bb65821784",
-            "import-fddd71e2677475117cf67877693a3c21bcba5371bf35173c34de071a15d28750",
-            "import-0a00155ee98ba75ea55cdef9e204a5a3d4912e0dc73658cc3a0681167692f632",
-            "import-0c495553d2429128f15f82b97cfa49d7de1fef44100f9609ce9be415a4969aac",
-            "import-5a5f3ecf93d7f787dc3c8a4f91c55524213c85e2422b790fe6aa176680cc656d",
-            "import-83c925984035c34be5eee5901acda92c0ebf86a9e818175bb67c4cdf830cef51"
-          ]
-        }
-      ],
-      "access_review": "Support the assembly beside the connection being pressed. Repeat at the rear support. Leave the offset spaces for the two boom rails. Physical insertion and holding strength have not been trial-built."
-    },
-    {
-      "id": "step_028",
       "title": "Left lower antenna carrier",
       "add": [
         "import-305607163e8293b964049ea5f05a2fc33df45d6d9e6090c0f092062e2a0e049b",
@@ -1730,7 +1606,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_027"
+        "step_025"
       ],
       "views": [
         {
@@ -1780,7 +1656,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the carrier and rotating head before installing the heat shield. Add the fragile whip later. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_029",
+      "id": "step_027",
       "title": "Right lower antenna carrier",
       "add": [
         "import-027be6871ef11c714229257e8bc78ab2d22448f1ce5472bebcadd00463ce95fc",
@@ -1792,7 +1668,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_028"
+        "step_026"
       ],
       "views": [
         {
@@ -1842,7 +1718,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the carrier and rotating head before installing the heat shield. Add the fragile whip later. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_030",
+      "id": "step_028",
       "title": "Dish shoulder mounting beams",
       "add": [
         "import-9584026f1c56df95ec1a4c9c6b7b830901bfe3febbee71eaf9171370964e047a",
@@ -1856,7 +1732,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_029"
+        "step_027"
       ],
       "views": [
         {
@@ -1908,7 +1784,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the two mounting beams and elbow connectors to the rear-side frame before adding the side equipment. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_031",
+      "id": "step_029",
       "title": "Left equipment: upper front backing",
       "add": [
         "import-fd118bcd8a9e746266c4909b58ccc51c315690947d5cb62ef44a3e1daa91ef5f",
@@ -1921,7 +1797,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_030"
+        "step_028"
       ],
       "views": [
         {
@@ -1972,7 +1848,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_032",
+      "id": "step_030",
       "title": "Left equipment: upper rear backing",
       "add": [
         "import-135dfa37c7a7ef097874e0cc0658d18b8b1dcd77df1f10901c99cdb3ed59b7d9",
@@ -1985,7 +1861,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_031"
+        "step_029"
       ],
       "views": [
         {
@@ -2036,7 +1912,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_033",
+      "id": "step_031",
       "title": "Left equipment: lower front backing",
       "add": [
         "import-54afbbdb22c06b6e48f3fb2b21880b60cd7df7b3491ac5fa2e52d7acba24f2ce",
@@ -2049,7 +1925,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_032"
+        "step_030"
       ],
       "views": [
         {
@@ -2100,7 +1976,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_034",
+      "id": "step_032",
       "title": "Left equipment: lower rear backing",
       "add": [
         "import-5e1b2a2154a515563e49ef4ca14e7eae0532d54d4cc75fc68300144db57b6350",
@@ -2113,7 +1989,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_033"
+        "step_031"
       ],
       "views": [
         {
@@ -2164,7 +2040,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_035",
+      "id": "step_033",
       "title": "Left equipment: upper closure",
       "add": [
         "import-3068f0cfe0153d0631a41375fd122441bd4f3b55b3d1265f6e131a5766be9606",
@@ -2178,7 +2054,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_034"
+        "step_032"
       ],
       "views": [
         {
@@ -2230,7 +2106,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_036",
+      "id": "step_034",
       "title": "Left equipment: lower closure",
       "add": [
         "import-57e6a7365d7f78402aa868602cc574621f2fddf003a0cbce96b43729721e6843",
@@ -2244,7 +2120,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_035"
+        "step_033"
       ],
       "views": [
         {
@@ -2296,7 +2172,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_037",
+      "id": "step_035",
       "title": "Left equipment: edge tiles",
       "add": [
         "import-b5612dacb1cf69438f0902843eee09a4e3a282c695b7c83b61d0b265466db47d",
@@ -2310,7 +2186,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_036"
+        "step_034"
       ],
       "views": [
         {
@@ -2362,7 +2238,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the eight exposed edge tiles. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_038",
+      "id": "step_036",
       "title": "Left upper instrument box",
       "add": [
         "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
@@ -2374,7 +2250,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_037"
+        "step_035"
       ],
       "views": [
         {
@@ -2424,7 +2300,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Stack plate, brick and top plate, then add the three grille tiles. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_039",
+      "id": "step_037",
       "title": "Left lower instrument box",
       "add": [
         "import-914076ba152d59cd3ea407121f9ae41bc2abcfcd0c31ce7c968b50d74a615360",
@@ -2436,7 +2312,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_038"
+        "step_036"
       ],
       "views": [
         {
@@ -2486,7 +2362,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Build the second box in the same layer order. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_040",
+      "id": "step_038",
       "title": "Right equipment: upper front backing",
       "add": [
         "import-8e400b02d14b8d7bd38b0edac0dfddb78ac94a2aa4d1743dd3f8f55b47e8e771",
@@ -2499,7 +2375,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_039"
+        "step_037"
       ],
       "views": [
         {
@@ -2550,7 +2426,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_041",
+      "id": "step_039",
       "title": "Right equipment: upper rear backing",
       "add": [
         "import-87a4ef204786bc6d462ee24fcdd5e6bd074318247a9789b2977f253ff1b1b922",
@@ -2563,7 +2439,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_040"
+        "step_038"
       ],
       "views": [
         {
@@ -2614,7 +2490,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_042",
+      "id": "step_040",
       "title": "Right equipment: lower front backing",
       "add": [
         "import-5b6f223d4b4907d2ea7d62fb8b1579683653be05b7642a15a64ad96ac00a08c3",
@@ -2627,7 +2503,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_041"
+        "step_039"
       ],
       "views": [
         {
@@ -2678,7 +2554,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_043",
+      "id": "step_041",
       "title": "Right equipment: lower rear backing",
       "add": [
         "import-fa4607a2189543780748236cb9c994c386e24e64fe75c87e61a6a7e17ff173d4",
@@ -2691,7 +2567,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_042"
+        "step_040"
       ],
       "views": [
         {
@@ -2742,7 +2618,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_044",
+      "id": "step_042",
       "title": "Right equipment: upper closure",
       "add": [
         "import-044360153320e0439bc9251786fbf361188b98c6ab0ee35ddcced1def5ce13ee",
@@ -2756,7 +2632,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_043"
+        "step_041"
       ],
       "views": [
         {
@@ -2808,7 +2684,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_045",
+      "id": "step_043",
       "title": "Right equipment: lower closure",
       "add": [
         "import-8cb5703224505c6b126739527ebb720c5d7d788925bca98bcb06751864c4f413",
@@ -2822,7 +2698,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_044"
+        "step_042"
       ],
       "views": [
         {
@@ -2874,7 +2750,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_046",
+      "id": "step_044",
       "title": "Right equipment: edge tiles",
       "add": [
         "import-da88d492d59b27998a9145da8268299bb7abe6372e1779b213ae41415433a2f2",
@@ -2888,7 +2764,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_045"
+        "step_043"
       ],
       "views": [
         {
@@ -2940,7 +2816,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the eight exposed edge tiles. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_047",
+      "id": "step_045",
       "title": "Right upper instrument box",
       "add": [
         "import-6d4a950ef07a9f8e5fd448e3c5c7fc7f48d094c611e224d6af8ff2e01731eaa5",
@@ -2952,7 +2828,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_046"
+        "step_044"
       ],
       "views": [
         {
@@ -3002,7 +2878,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Stack plate, brick and top plate, then add the three grille tiles. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_048",
+      "id": "step_046",
       "title": "Right lower instrument box",
       "add": [
         "import-c1e94fdcdb99bb80f401dfdebf83a12d30e2f43521974a797c54ea9481a028dc",
@@ -3014,7 +2890,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_047"
+        "step_045"
       ],
       "views": [
         {
@@ -3064,7 +2940,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Build the second box in the same layer order. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_049",
+      "id": "step_047",
       "title": "Close the underside",
       "add": [
         "import-7594db33dcb406fd1eccf4d7dd9b2cff7431cd906ce921906f436772dcac1dc5",
@@ -3075,7 +2951,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_048"
+        "step_046"
       ],
       "views": [
         {
@@ -3124,7 +3000,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Turn the supported body carefully. Seat the two backing plates, then overlap their seams with three plates. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_050",
+      "id": "step_048",
       "title": "Close the roof",
       "add": [
         "import-005004dc11832c1baf3983072181b4750ef4fe37e5e74e9d8e7343bdfbfea35a",
@@ -3135,7 +3011,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_049"
+        "step_047"
       ],
       "views": [
         {
@@ -3184,7 +3060,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the two roof backing plates, then add the three overlapping plates. Check the boom frames remain accessible. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_051",
+      "id": "step_049",
       "title": "Roof electronics",
       "add": [
         "import-bbb4a8292d7a1b7ccc2d9917a02bbedef674bc67e522925ba49773a14d8ae1ca",
@@ -3197,7 +3073,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_050"
+        "step_048"
       ],
       "views": [
         {
@@ -3248,7 +3124,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Build the two electronics stacks on the roof; add the grille last. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_052",
+      "id": "step_050",
       "title": "Roof round fitting",
       "add": [
         "import-a1cd2a002b91ae635a964a68c9a8095afd3c8e30678c5ed6b198a422d4b498b5",
@@ -3256,7 +3132,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_051"
+        "step_049"
       ],
       "views": [
         {
@@ -3302,7 +3178,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the round brick and its cap on the roof. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_053",
+      "id": "step_051",
       "title": "Rear thermal-panel mounts",
       "add": [
         "import-37492557bbabb1af0a6300846a3814497486e34c5a2414bfb35eb7131bcc6448",
@@ -3316,7 +3192,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_052"
+        "step_050"
       ],
       "views": [
         {
@@ -3368,7 +3244,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit the four stud pins and jumper offsets. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_054",
+      "id": "step_052",
       "title": "Rear panel backing",
       "add": [
         "import-b28e4c03b83b0608097606cb0faf43c0383fc758df70bc8195fefca228802f2e",
@@ -3382,7 +3258,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_053"
+        "step_051"
       ],
       "views": [
         {
@@ -3434,7 +3310,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Lay out the backing plates and join them with the next layer while supporting loose edges. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_055",
+      "id": "step_053",
       "title": "Rear panel seam reinforcement",
       "add": [
         "import-72b8670994e3cfa60e7e730453d5afaa6fc5aed4e4e45f7be5711ff47c0ff3d0",
@@ -3452,7 +3328,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_054"
+        "step_052"
       ],
       "views": [
         {
@@ -3508,7 +3384,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Overlap the backing seams with this second plate layer. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_056",
+      "id": "step_054",
       "title": "Launch-adapter ring",
       "add": [
         "import-8a0522f5cba3035449c63e2f4bd32b24cc41f095f1c748a7e695629952c24175",
@@ -3518,7 +3394,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_055"
+        "step_053"
       ],
       "views": [
         {
@@ -3566,7 +3442,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Place all four curved segments with their distinct quarter-turn orientations. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_057",
+      "id": "step_055",
       "title": "Rear finish: left",
       "add": [
         "import-5162f49fbb456f786f5f8e505a0c1f53aaf5070ce380a4d8fd2b5fd2959499e2",
@@ -3585,7 +3461,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_056"
+        "step_054"
       ],
       "views": [
         {
@@ -3642,7 +3518,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Press each tile onto the exposed studs; do not bridge over the adapter ring. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_058",
+      "id": "step_056",
       "title": "Rear finish: right",
       "add": [
         "import-ea7ddbe21e0d38af8b99cb57bca798da7c12a8e39b7b4c4a50972103782ac0e4",
@@ -3663,7 +3539,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_057"
+        "step_055"
       ],
       "views": [
         {
@@ -3722,7 +3598,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Press each tile onto the exposed studs; do not bridge over the adapter ring. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_059",
+      "id": "step_057",
       "title": "Rear finish: top grilles",
       "add": [
         "import-db20df19ac59efdb0ec58180d5a99c3af41b962e7039e88c17c3b684b809a5d5",
@@ -3730,7 +3606,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_058"
+        "step_056"
       ],
       "views": [
         {
@@ -3776,7 +3652,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Press each tile onto the exposed studs; do not bridge over the adapter ring. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_060",
+      "id": "step_058",
       "title": "HIS mounting standoffs",
       "add": [
         "import-4b290380b2b95e6b45d18e83008bb36bdf27a1678a6a79b793b12e7783ab9b69",
@@ -3786,7 +3662,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_059"
+        "step_057"
       ],
       "views": [
         {
@@ -3834,7 +3710,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Insert both stud pins and bricks before placing the instrument backing. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_061",
+      "id": "step_059",
       "title": "HIS body and narrow slit",
       "add": [
         "import-e330de071975b58be8c48d4d36c06c37c3a8f9351050ca3c532e5ce9492031a5",
@@ -3845,7 +3721,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_060"
+        "step_058"
       ],
       "views": [
         {
@@ -3894,7 +3770,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Build outward from the backing plate; keep the slit facing the Sun (-Z). Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_062",
+      "id": "step_060",
       "title": "PAS instrument",
       "add": [
         "import-21ce355495b6f6eeae604331ee6d7ccf0ab100fd22ec9563eddd85f985850fb8",
@@ -3906,7 +3782,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_061"
+        "step_059"
       ],
       "views": [
         {
@@ -3956,7 +3832,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat both stud pins, then stack the plates and brick. Keep the lower-left shield cutout clear. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_063",
+      "id": "step_061",
       "title": "Heat-shield standoffs: left",
       "add": [
         "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
@@ -3974,7 +3850,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_062"
+        "step_060"
       ],
       "views": [
         {
@@ -4030,7 +3906,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit the stud pins, bricks, jumper offsets and small spacers before any shield backing. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_064",
+      "id": "step_062",
       "title": "Heat-shield standoffs: right",
       "add": [
         "import-cc615fb470efb345f9437ff9df50e80b65c992e8591c7d3be38f0106eb709bba",
@@ -4048,7 +3924,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_063"
+        "step_061"
       ],
       "views": [
         {
@@ -4104,7 +3980,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit the stud pins, bricks, jumper offsets and small spacers before any shield backing. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_065",
+      "id": "step_063",
       "title": "Lay out heat-shield backing",
       "add": [
         "import-4362df16887f70cb6eec4badc8d4dbb4df84da758b943394bf0ea2a5e2b6dc06",
@@ -4131,7 +4007,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_064"
+        "step_062"
       ],
       "views": [
         {
@@ -4196,7 +4072,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Support these backing plates flat and join them with the next layer before lifting. Preserve BOTH open left corners. The image shows their final mounted positions. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_066",
+      "id": "step_064",
       "title": "Heat-shield middle reinforcement",
       "add": [
         "import-24e2a566fa4ee0296c49eabbfe0c14a71307f0c1279e70e08e836940ae0cdc20",
@@ -4217,7 +4093,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_065"
+        "step_063"
       ],
       "views": [
         {
@@ -4276,7 +4152,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Overlap the backing seams with the horizontal plate rows; keep the shield supported. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_067",
+      "id": "step_065",
       "title": "Heat-shield edge reinforcement",
       "add": [
         "import-77eb5d903ea0e19e232558700d3b0e05c93dcb947eef6fd59e2295a9d57ec3dd",
@@ -4296,7 +4172,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_066"
+        "step_064"
       ],
       "views": [
         {
@@ -4354,7 +4230,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the upper and lower reinforcement and narrow edge plates. Seat the completed backing evenly on all six standoffs. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_068",
+      "id": "step_066",
       "title": "Large heat-shield tiles",
       "add": [
         "import-0b580f301b4a2b7b1626b41e7de5953f8a4f5b8a25b5087bc51fff50c52117b2",
@@ -4362,7 +4238,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_067"
+        "step_065"
       ],
       "views": [
         {
@@ -4408,7 +4284,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Seat the large tiles without forcing. Part 7798 is drawn as an approximate envelope: confirm its real underside fit before pressing. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_069",
+      "id": "step_067",
       "title": "Shield tiles: upper edge",
       "add": [
         "import-cfa1cac8874fec77732a5fc5f40a53a747788338d4c6a9415afb88f38d059bb0",
@@ -4425,7 +4301,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_068"
+        "step_066"
       ],
       "views": [
         {
@@ -4480,7 +4356,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_070",
+      "id": "step_068",
       "title": "Shield tiles: lower edge",
       "add": [
         "import-cf70df675d48769ab19b4debd0bbdac66556bf370f83c11a8f1928f79b0ff136",
@@ -4497,7 +4373,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_069"
+        "step_067"
       ],
       "views": [
         {
@@ -4552,7 +4428,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_071",
+      "id": "step_069",
       "title": "Shield tiles: left upper",
       "add": [
         "import-79014465c7f61400143b8f16b9d70965899541033abc254e146cfc48091befd7",
@@ -4567,7 +4443,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_070"
+        "step_068"
       ],
       "views": [
         {
@@ -4620,7 +4496,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_072",
+      "id": "step_070",
       "title": "Shield tiles: left lower",
       "add": [
         "import-5e6e962bb82f400b4daa3bcd401866fe033e2ccc4fc406bfa642f1e3e341b0a2",
@@ -4634,7 +4510,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_071"
+        "step_069"
       ],
       "views": [
         {
@@ -4686,7 +4562,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_073",
+      "id": "step_071",
       "title": "Heat-shield cover details",
       "add": [
         "import-d0de542dbadca2fb85b7677ae4809f0fd5c328b53acad35b75d882180abe5215",
@@ -4698,7 +4574,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_072"
+        "step_070"
       ],
       "views": [
         {
@@ -4748,7 +4624,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the round details only on the indicated jumper studs. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_074",
+      "id": "step_072",
       "title": "Left wing yoke",
       "add": [
         "import-01f9e113095a2481939f4303218756c230c48903b6a23c877fe111fbaf186a84",
@@ -4760,7 +4636,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_073"
+        "step_071"
       ],
       "views": [
         {
@@ -4810,7 +4686,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Assemble the yoke around the axle connector. Support the hinge; do not rely on friction to carry the unfinished wing. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_075",
+      "id": "step_073",
       "title": "Left upper wing spar",
       "add": [
         "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59",
@@ -4824,7 +4700,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_074"
+        "step_072"
       ],
       "views": [
         {
@@ -4876,7 +4752,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Join the three overlapping beams with pins before attaching the spar at the yoke. Keep the free end supported. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_076",
+      "id": "step_074",
       "title": "Left lower wing spar",
       "add": [
         "import-686ae81ef16d8779ab5706a5d7cb5afcda91e0827d70c6ddfc1b4a3aaaf27dab",
@@ -4890,7 +4766,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_075"
+        "step_073"
       ],
       "views": [
         {
@@ -4942,7 +4818,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Build the matching lower spar with the same overlaps. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_077",
+      "id": "step_075",
       "title": "Left inner panel mounting beams",
       "add": [
         "import-308f0e2982200e09c5856d55b794e13b0d5b011b734293f0c257e906ea38fda7",
@@ -4954,7 +4830,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_076"
+        "step_074"
       ],
       "views": [
         {
@@ -5004,7 +4880,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_078",
+      "id": "step_076",
       "title": "Left middle panel mounting beams",
       "add": [
         "import-7deb46084a07405b1e577f129aab2451ac416a5ed5e54368ea57ff861ee6e1fc",
@@ -5020,7 +4896,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_077"
+        "step_075"
       ],
       "views": [
         {
@@ -5074,7 +4950,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_079",
+      "id": "step_077",
       "title": "Left outer panel mounting beams",
       "add": [
         "import-78cc807e2be3397c3cb682699d0dc67ab56fff893acf60b83da33e676876de59",
@@ -5086,7 +4962,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_078"
+        "step_076"
       ],
       "views": [
         {
@@ -5136,7 +5012,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_080",
+      "id": "step_078",
       "title": "Left inner solar panel: backing",
       "add": [
         "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f",
@@ -5147,7 +5023,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_079"
+        "step_077"
       ],
       "views": [
         {
@@ -5196,7 +5072,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Insert the four mounting studs into the transverse beams, then seat the large plate evenly. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_081",
+      "id": "step_079",
       "title": "Left inner solar panel: tiles",
       "add": [
         "import-9eb6a3e9e0cc865fc5c9b23dc58b5fef257f0a1e684c3e48ed387de5007cee12",
@@ -5209,7 +5085,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_080"
+        "step_078"
       ],
       "views": [
         {
@@ -5260,7 +5136,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_082",
+      "id": "step_080",
       "title": "Left inner solar panel: first edge",
       "add": [
         "import-890e653bcff1c0b396d34d39826a3b56dc3721ea13bf3c15d70a100cfc782683",
@@ -5281,7 +5157,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_081"
+        "step_079"
       ],
       "views": [
         {
@@ -5340,7 +5216,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit small plates and clips before seating the edge bars. Support the panel close to each clip. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_083",
+      "id": "step_081",
       "title": "Left inner solar panel: second edge",
       "add": [
         "import-429efcd1b567058bec0e2c169b1fc5d4fd9ca13690a0a125af3f8abb6004c6c2",
@@ -5361,7 +5237,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_082"
+        "step_080"
       ],
       "views": [
         {
@@ -5420,7 +5296,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_084",
+      "id": "step_082",
       "title": "Left middle solar panel: backing",
       "add": [
         "import-7a434dde76f2c288ff9e4b9c34bf40c078134d0394a81bd3f971fc90d86f9ddf",
@@ -5431,7 +5307,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_083"
+        "step_081"
       ],
       "views": [
         {
@@ -5480,7 +5356,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Insert the four mounting studs into the transverse beams, then seat the large plate evenly. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_085",
+      "id": "step_083",
       "title": "Left middle solar panel: tiles",
       "add": [
         "import-956671b8c77fa7e6af69f236378612c31626d5b376122bc94d905348c2f1ca3c",
@@ -5493,7 +5369,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_084"
+        "step_082"
       ],
       "views": [
         {
@@ -5544,7 +5420,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_086",
+      "id": "step_084",
       "title": "Left middle solar panel: first edge",
       "add": [
         "import-fa8570f27a31ab66086c2e371266705b40c968135f2ac74da11ee7d93a2d82e3",
@@ -5565,7 +5441,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_085"
+        "step_083"
       ],
       "views": [
         {
@@ -5624,7 +5500,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit small plates and clips before seating the edge bars. Support the panel close to each clip. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_087",
+      "id": "step_085",
       "title": "Left middle solar panel: second edge",
       "add": [
         "import-91d646d273f5411297f0020d38fdd8ffebc8257a987fecfe8c0f304a3430f01c",
@@ -5645,7 +5521,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_086"
+        "step_084"
       ],
       "views": [
         {
@@ -5704,7 +5580,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_088",
+      "id": "step_086",
       "title": "Left outer solar panel: backing",
       "add": [
         "import-c33b66aa85c5a01e21da2dee7ea5e3b8455759f98ee4c9ea613faae8a24a31e6",
@@ -5715,7 +5591,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_087"
+        "step_085"
       ],
       "views": [
         {
@@ -5764,7 +5640,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Insert the four mounting studs into the transverse beams, then seat the large plate evenly. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_089",
+      "id": "step_087",
       "title": "Left outer solar panel: tiles",
       "add": [
         "import-61cb2ace8762ad3f1b15fb62900636278a1ad8db14bc1aeb1122363e1f03fb03",
@@ -5777,7 +5653,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_088"
+        "step_086"
       ],
       "views": [
         {
@@ -5828,7 +5704,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_090",
+      "id": "step_088",
       "title": "Left outer solar panel: first edge",
       "add": [
         "import-2ea665f6437941918c6923d7eee6ce5e8f0ee78c32f2a80994efb52e2b87f57e",
@@ -5849,7 +5725,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_089"
+        "step_087"
       ],
       "views": [
         {
@@ -5908,7 +5784,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit small plates and clips before seating the edge bars. Support the panel close to each clip. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_091",
+      "id": "step_089",
       "title": "Left outer solar panel: second edge",
       "add": [
         "import-e0a2801813bb65af4f8fb8c3fcf129774ae8fca291f9a9315fda890e7863818a",
@@ -5929,7 +5805,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_090"
+        "step_088"
       ],
       "views": [
         {
@@ -5988,7 +5864,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_092",
+      "id": "step_090",
       "title": "Right wing yoke",
       "add": [
         "import-60e8d944aa7a1f58245c0711d9e5774a98da32dd85a0ed7e9754a8b16c2fcba8",
@@ -6000,7 +5876,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_091"
+        "step_089"
       ],
       "views": [
         {
@@ -6050,7 +5926,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Assemble the yoke around the axle connector. Support the hinge; do not rely on friction to carry the unfinished wing. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_093",
+      "id": "step_091",
       "title": "Right upper wing spar",
       "add": [
         "import-485319a9d5e458098a9b6aa08cc7f735aa2309d2046ec2cdc69ba665a3d4437a",
@@ -6064,7 +5940,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_092"
+        "step_090"
       ],
       "views": [
         {
@@ -6116,7 +5992,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Join the three overlapping beams with pins before attaching the spar at the yoke. Keep the free end supported. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_094",
+      "id": "step_092",
       "title": "Right lower wing spar",
       "add": [
         "import-c5872498c494a916cfa50b21e011c1ec8f21a1130cb34f8a085c25f36cee87aa",
@@ -6130,7 +6006,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_093"
+        "step_091"
       ],
       "views": [
         {
@@ -6182,7 +6058,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Build the matching lower spar with the same overlaps. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_095",
+      "id": "step_093",
       "title": "Right inner panel mounting beams",
       "add": [
         "import-75fef5487f73d835e2fdfaa31aa73d9fd488b7802ae1e7b20e85459ea8b97a67",
@@ -6194,7 +6070,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_094"
+        "step_092"
       ],
       "views": [
         {
@@ -6244,7 +6120,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_096",
+      "id": "step_094",
       "title": "Right middle panel mounting beams",
       "add": [
         "import-c71f3dfe31b4fd018e4667854b3b5f0576ee1fbd3d6ebfdf3cc8124224f4c8bb",
@@ -6260,7 +6136,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_095"
+        "step_093"
       ],
       "views": [
         {
@@ -6314,7 +6190,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_097",
+      "id": "step_095",
       "title": "Right outer panel mounting beams",
       "add": [
         "import-9975facbf4e729e44407e6c723289aa318139c0662f0fe3f508cb55cd82cf711",
@@ -6326,7 +6202,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_096"
+        "step_094"
       ],
       "views": [
         {
@@ -6376,7 +6252,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_098",
+      "id": "step_096",
       "title": "Right inner solar panel: backing",
       "add": [
         "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
@@ -6387,7 +6263,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_097"
+        "step_095"
       ],
       "views": [
         {
@@ -6436,7 +6312,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Insert the four mounting studs into the transverse beams, then seat the large plate evenly. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_099",
+      "id": "step_097",
       "title": "Right inner solar panel: tiles",
       "add": [
         "import-c9edfb7e8b2f8001ef3cb7674417ee7558b2a6b818788110db8ccf05d8fccec5",
@@ -6449,7 +6325,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_098"
+        "step_096"
       ],
       "views": [
         {
@@ -6500,7 +6376,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_100",
+      "id": "step_098",
       "title": "Right inner solar panel: first edge",
       "add": [
         "import-be6296afa98b2d47be32fbbf78de9255e65b94eb0478d04e0d26396022762727",
@@ -6521,7 +6397,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_099"
+        "step_097"
       ],
       "views": [
         {
@@ -6580,7 +6456,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit small plates and clips before seating the edge bars. Support the panel close to each clip. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_101",
+      "id": "step_099",
       "title": "Right inner solar panel: second edge",
       "add": [
         "import-e54f234637779f1a0d3b756d97f0d4fe4c5c063933c423ba5f322422a0e823bb",
@@ -6601,7 +6477,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_100"
+        "step_098"
       ],
       "views": [
         {
@@ -6660,7 +6536,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_102",
+      "id": "step_100",
       "title": "Right middle solar panel: backing",
       "add": [
         "import-2e0c1c31b4cbbdb46b52aec0ede9ff406031c210a1a9012e0bc23b50e077e179",
@@ -6671,7 +6547,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_101"
+        "step_099"
       ],
       "views": [
         {
@@ -6720,7 +6596,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Insert the four mounting studs into the transverse beams, then seat the large plate evenly. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_103",
+      "id": "step_101",
       "title": "Right middle solar panel: tiles",
       "add": [
         "import-38f911b8721bf748742eb55c98cd23272d6f80f743796814f67e2c4e95298086",
@@ -6733,7 +6609,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_102"
+        "step_100"
       ],
       "views": [
         {
@@ -6784,7 +6660,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_104",
+      "id": "step_102",
       "title": "Right middle solar panel: first edge",
       "add": [
         "import-1b383f06906d7e8ac721e066ff50da063616094123ac87bbf80248f268affbb2",
@@ -6805,7 +6681,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_103"
+        "step_101"
       ],
       "views": [
         {
@@ -6864,7 +6740,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit small plates and clips before seating the edge bars. Support the panel close to each clip. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_105",
+      "id": "step_103",
       "title": "Right middle solar panel: second edge",
       "add": [
         "import-de8fcf6f65ff564c03b02be8691256975d91018a752a85467bee69e3c2e11eb0",
@@ -6885,7 +6761,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_104"
+        "step_102"
       ],
       "views": [
         {
@@ -6944,7 +6820,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_106",
+      "id": "step_104",
       "title": "Right outer solar panel: backing",
       "add": [
         "import-b8946fdbcb4ac5c3ef4e9437607efdf4b0074dc7387321b2bb1f75fa941bbd06",
@@ -6955,7 +6831,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_105"
+        "step_103"
       ],
       "views": [
         {
@@ -7004,7 +6880,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Insert the four mounting studs into the transverse beams, then seat the large plate evenly. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_107",
+      "id": "step_105",
       "title": "Right outer solar panel: tiles",
       "add": [
         "import-fae9b103c11ce4bcc08afd944783c2ddbcc33abd3fcc2aee162510a0259aace6",
@@ -7017,7 +6893,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_106"
+        "step_104"
       ],
       "views": [
         {
@@ -7068,7 +6944,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_108",
+      "id": "step_106",
       "title": "Right outer solar panel: first edge",
       "add": [
         "import-09064dde38b7977add66c54acd87a1abe548080f54b882e7b272efe98cea3c7c",
@@ -7089,7 +6965,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_107"
+        "step_105"
       ],
       "views": [
         {
@@ -7148,7 +7024,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Fit small plates and clips before seating the edge bars. Support the panel close to each clip. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_109",
+      "id": "step_107",
       "title": "Right outer solar panel: second edge",
       "add": [
         "import-742cd3d438e3ee526e8be3f7c8d85076870f05cd57d1c7ba544912f6c0d11c3a",
@@ -7169,7 +7045,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_108"
+        "step_106"
       ],
       "views": [
         {
@@ -7228,7 +7104,7 @@
       "access_review": "Support the assembly beside the connection being pressed. Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement. Physical insertion and holding strength have not been trial-built."
     },
     {
-      "id": "step_110",
+      "id": "step_108",
       "title": "Boom left inner rail and splice",
       "add": [
         "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
@@ -7242,7 +7118,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_109"
+        "step_107"
       ],
       "views": [
         {
@@ -7278,7 +7154,7 @@
       ],
       "callouts": [
         {
-          "text": "Join the first two rails with the short splice beam and five pins. Thread the inner end onto the two support axles; support the far end.",
+          "text": "Build the boom off the model on a supported surface. Join the first two left rails with the splice and five pins. The pictures show final positions; mounting axles are fitted in steps 115\u2013116.",
           "instances": [
             "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
             "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
@@ -7291,10 +7167,10 @@
           ]
         }
       ],
-      "access_review": "Support the assembly beside the connection being pressed. Join the first two rails with the short splice beam and five pins. Thread the inner end onto the two support axles; support the far end. Physical insertion and holding strength have not been trial-built."
+      "access_review": "Build the boom off the model on a supported surface. Join the first two left rails with the splice and five pins. The pictures show final positions; mounting axles are fitted in steps 115\u2013116. Physical insertion, handling clearance and holding strength remain untested."
     },
     {
-      "id": "step_111",
+      "id": "step_109",
       "title": "Boom left outer rail and splice",
       "add": [
         "import-6b82610e1a436e5fa64a7fc19d287ce75d37ea0eb1bfedb340e713607db16055",
@@ -7307,7 +7183,7 @@
       ],
       "assemblies": [],
       "requires": [
-        "step_110"
+        "step_108"
       ],
       "views": [
         {
@@ -7343,7 +7219,7 @@
       ],
       "callouts": [
         {
-          "text": "Extend the rail with the second splice and its five pins. Keep temporary support under the rail.",
+          "text": "Extend the left rail with the second splice and five pins. Keep it supported flat while fitting the sensor carriers next.",
           "instances": [
             "import-6b82610e1a436e5fa64a7fc19d287ce75d37ea0eb1bfedb340e713607db16055",
             "import-38239e85903a3492c25797b4a7125cff0bbd9e8ccb82f0610acfef8a273f315a",
@@ -7355,31 +7231,31 @@
           ]
         }
       ],
-      "access_review": "Support the assembly beside the connection being pressed. Extend the rail with the second splice and its five pins. Keep temporary support under the rail. Physical insertion and holding strength have not been trial-built."
+      "access_review": "Extend the left rail with the second splice and five pins. Keep it supported flat while fitting the sensor carriers next. Physical insertion, handling clearance and holding strength remain untested."
     },
     {
-      "id": "step_112",
-      "title": "Boom right inner rail and splice",
+      "id": "step_110",
+      "title": "Two MAG sensor stations",
       "add": [
-        "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866",
-        "import-1a95193b50176f758390e7c28eda42df06b4453cd7191cafd9782250dfb832a6",
-        "import-c872ca8f063f9456f9f817569f3b58206c957a7480e5a8a7e9541bdf7c95f2ca",
-        "import-0c99e2a2866a661ffe8d85875ae8e002560a228fde98e54bd3d7beb136c1ab9b",
-        "import-5c5a2a86003bc1c7add3456337099ab8e9756fa85a9992314d38d75645eddec6",
-        "import-2c895ceea3ea0a172bf88d3a5565686924e3f92266e9fa86ec28b49a04a68a0e",
-        "import-a1a9d4265160bc3ccd34444760543d7e222e3042617031861bf69fe40d7861fd",
-        "import-8fa20bb1595fc04571c1e09073997b8ce101974160066dec697e5ae36e0fde78"
+        "import-6fefbcb576c760af42f047d61f435e1b720826114120b33cc54705468e54f585",
+        "import-18038b4199f6d80a6013315b66fc77578731f1256731c2a2fab39ec4d5570e8d",
+        "import-84c1710a317542da991bb485bc91e596441fb5a3d66b4b2619e19e72be485b27",
+        "import-d3169191ee5ff077c49cec2e360a0b6b15a9032833ba68d661c70bd24ee430bd",
+        "import-2d380734dd8ee4ce47d9ce41c0aa84b3687b8fdf9446bb694073b87c2d9364a9",
+        "import-fc69cde1a3960812b1f1296a937f47f023479b3c178e36c4c4ae8e6aee79f5f8",
+        "import-9ccfcd469ac1e96a5e46785c905546eb250cefbfbe81de8fd6b24e891e0c8abd",
+        "import-c847aeddd202f95cb206c69774a3528786ad08289b675f103728455d7f3c0580"
       ],
       "assemblies": [],
       "requires": [
-        "step_111"
+        "step_109"
       ],
       "views": [
         {
           "name": "overview",
           "eye": [
             1,
-            -0.8,
+            0.7,
             1
           ],
           "up": [
@@ -7393,7 +7269,7 @@
           "name": "detail",
           "eye": [
             1,
-            -0.8,
+            0.7,
             1
           ],
           "up": [
@@ -7402,38 +7278,180 @@
             0
           ],
           "groups": [
-            "boom/right"
+            "boom/sensors",
+            "boom/left"
           ]
         }
       ],
       "callouts": [
         {
-          "text": "Join the first two rails with the short splice beam and five pins. Thread the inner end onto the two support axles; support the far end.",
+          "text": "While the right rail is still absent, fit both sensor carriers and long pins to the left rail from the open side. Add their plates and grilles; leave the long pin ends exposed for the right rail.",
           "instances": [
-            "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866",
-            "import-1a95193b50176f758390e7c28eda42df06b4453cd7191cafd9782250dfb832a6",
-            "import-c872ca8f063f9456f9f817569f3b58206c957a7480e5a8a7e9541bdf7c95f2ca",
-            "import-0c99e2a2866a661ffe8d85875ae8e002560a228fde98e54bd3d7beb136c1ab9b",
-            "import-5c5a2a86003bc1c7add3456337099ab8e9756fa85a9992314d38d75645eddec6",
-            "import-2c895ceea3ea0a172bf88d3a5565686924e3f92266e9fa86ec28b49a04a68a0e",
-            "import-a1a9d4265160bc3ccd34444760543d7e222e3042617031861bf69fe40d7861fd",
-            "import-8fa20bb1595fc04571c1e09073997b8ce101974160066dec697e5ae36e0fde78"
+            "import-6fefbcb576c760af42f047d61f435e1b720826114120b33cc54705468e54f585",
+            "import-18038b4199f6d80a6013315b66fc77578731f1256731c2a2fab39ec4d5570e8d",
+            "import-84c1710a317542da991bb485bc91e596441fb5a3d66b4b2619e19e72be485b27",
+            "import-d3169191ee5ff077c49cec2e360a0b6b15a9032833ba68d661c70bd24ee430bd",
+            "import-2d380734dd8ee4ce47d9ce41c0aa84b3687b8fdf9446bb694073b87c2d9364a9",
+            "import-fc69cde1a3960812b1f1296a937f47f023479b3c178e36c4c4ae8e6aee79f5f8",
+            "import-9ccfcd469ac1e96a5e46785c905546eb250cefbfbe81de8fd6b24e891e0c8abd",
+            "import-c847aeddd202f95cb206c69774a3528786ad08289b675f103728455d7f3c0580"
           ]
         }
       ],
-      "access_review": "Support the assembly beside the connection being pressed. Join the first two rails with the short splice beam and five pins. Thread the inner end onto the two support axles; support the far end. Physical insertion and holding strength have not been trial-built."
+      "access_review": "While the right rail is still absent, fit both sensor carriers and long pins to the left rail from the open side. Add their plates and grilles; leave the long pin ends exposed for the right rail. Physical insertion, handling clearance and holding strength remain untested."
+    },
+    {
+      "id": "step_111",
+      "title": "RPW / SCM sensor package",
+      "add": [
+        "import-461a2d808b57b5f6d6a28641500956c093b9dcc1dabe4c9a1884b95e42ee162a",
+        "import-2720bc86f5dada8dfd7c90b4c62f6d4b10efcded6460e980e5913d28cd20d1a7",
+        "import-eab78f6c87f013eaf4cc387c34d6798d684485b8b49154a2964f40c4e65dff4f",
+        "import-a412344cf0c9576c8750be6ecb1db0f925c9706cc143bc7706fa9831cfcd4608",
+        "import-c4b5a92e93d42a553673cae88a64a9f49f02eafea2f3bce737577ace9fab093c",
+        "import-02b178ea6b2ee70ab622bb776b385a150d5923bc14d06d23d75e2de4649b596e",
+        "import-5af72c9ee14b2f0c52be28a2cdb486b5c39be439a757c5030f8a038cd140a442",
+        "import-1cc2f63a1099b6e532ffe149f22be9302bc21062881994712940a249a69ef8bb",
+        "import-52dae9032fd3149805ac3f45869c943cb54c6158a170175d1384514f10f5de98"
+      ],
+      "assemblies": [],
+      "requires": [
+        "step_110"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            1,
+            0.7,
+            1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "detail",
+          "eye": [
+            1,
+            0.7,
+            1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": [
+            "boom/sensors",
+            "boom/left"
+          ]
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Fit both RPW / SCM carriers and long pins from the open side before the right rail. Add the platform and sensor details; support the left rail beside each joint.",
+          "instances": [
+            "import-461a2d808b57b5f6d6a28641500956c093b9dcc1dabe4c9a1884b95e42ee162a",
+            "import-2720bc86f5dada8dfd7c90b4c62f6d4b10efcded6460e980e5913d28cd20d1a7",
+            "import-eab78f6c87f013eaf4cc387c34d6798d684485b8b49154a2964f40c4e65dff4f",
+            "import-a412344cf0c9576c8750be6ecb1db0f925c9706cc143bc7706fa9831cfcd4608",
+            "import-c4b5a92e93d42a553673cae88a64a9f49f02eafea2f3bce737577ace9fab093c",
+            "import-02b178ea6b2ee70ab622bb776b385a150d5923bc14d06d23d75e2de4649b596e",
+            "import-5af72c9ee14b2f0c52be28a2cdb486b5c39be439a757c5030f8a038cd140a442",
+            "import-1cc2f63a1099b6e532ffe149f22be9302bc21062881994712940a249a69ef8bb",
+            "import-52dae9032fd3149805ac3f45869c943cb54c6158a170175d1384514f10f5de98"
+          ]
+        }
+      ],
+      "access_review": "Fit both RPW / SCM carriers and long pins from the open side before the right rail. Add the platform and sensor details; support the left rail beside each joint. Physical insertion, handling clearance and holding strength remain untested."
+    },
+    {
+      "id": "step_112",
+      "title": "Paired EAS heads at the boom tip",
+      "add": [
+        "import-051f2f2f14e89d6af6b89dea622007badd8d5fbfba0bdff7bff066b7c85bdb4f",
+        "import-af331e99bed6fa4e7d8252bc9288b901a3173a27c49e1617aa83b83907f524fb",
+        "import-8c52843eada2ab12a4aedb4ac35e1fae7bb71bff800e4e8854182d05587a18cb",
+        "import-276599e889115417f51e3ae585be2a5b59a5cc1d67f187c03388b836d905cb18",
+        "import-9bd791781c03f135da28fb08ce25548cf424d8acdcdb422d5078c36d3b2cb435",
+        "import-718d7b1069b185e5ece9599f600972e17f0b51dc61dd8e7c2f236e73a3cc0ef6",
+        "import-6308c68c21b13228baba19200130830c67eefce01148ae3b640f01340472e799",
+        "import-0bb196d5ac833f6347966dc93e16e7ce1b3d14e3d6ad04e45d54de74ec4da11a",
+        "import-33a4dcab972c9ccf2f8afad75277f1513d068fd1f07876bca3d6b5e9da57c814",
+        "import-2eb89acb31f0c259801b9622efa22fc947165291ad3fcacfad33a4fcaf169118"
+      ],
+      "assemblies": [],
+      "requires": [
+        "step_111"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            1,
+            0.7,
+            1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "detail",
+          "eye": [
+            1,
+            0.7,
+            1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": [
+            "boom/sensors",
+            "boom/left"
+          ]
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Fit both EAS carriers and long pins before the right rail, then add the platform and heads. Keep the projecting pin ends accessible and support the delicate heads.",
+          "instances": [
+            "import-051f2f2f14e89d6af6b89dea622007badd8d5fbfba0bdff7bff066b7c85bdb4f",
+            "import-af331e99bed6fa4e7d8252bc9288b901a3173a27c49e1617aa83b83907f524fb",
+            "import-8c52843eada2ab12a4aedb4ac35e1fae7bb71bff800e4e8854182d05587a18cb",
+            "import-276599e889115417f51e3ae585be2a5b59a5cc1d67f187c03388b836d905cb18",
+            "import-9bd791781c03f135da28fb08ce25548cf424d8acdcdb422d5078c36d3b2cb435",
+            "import-718d7b1069b185e5ece9599f600972e17f0b51dc61dd8e7c2f236e73a3cc0ef6",
+            "import-6308c68c21b13228baba19200130830c67eefce01148ae3b640f01340472e799",
+            "import-0bb196d5ac833f6347966dc93e16e7ce1b3d14e3d6ad04e45d54de74ec4da11a",
+            "import-33a4dcab972c9ccf2f8afad75277f1513d068fd1f07876bca3d6b5e9da57c814",
+            "import-2eb89acb31f0c259801b9622efa22fc947165291ad3fcacfad33a4fcaf169118"
+          ]
+        }
+      ],
+      "access_review": "Fit both EAS carriers and long pins before the right rail, then add the platform and heads. Keep the projecting pin ends accessible and support the delicate heads. Physical insertion, handling clearance and holding strength remain untested."
     },
     {
       "id": "step_113",
-      "title": "Boom right outer rail and splice",
+      "title": "Boom right inner rail and splice",
       "add": [
-        "import-b80faf8caf6538a6ba1b1c66e4f1a3fbf9b771199a703ec33887192073782226",
-        "import-a00981ee4f55f1945ff1fc4858e5ed4008ddb4fce0252752a469c0ec59646808",
-        "import-d854bc66dec1741f67ee00272346716fec2ebf04599d87e8282789e55a8d1b6b",
-        "import-7c324c0de2a7fe4632bd95553af2f21867319aa78813c852de2d0a18728c2c01",
-        "import-648d144856da8d163695fa3cac336e68d1fa4afd4f22a8fe3beed4e404fb1410",
-        "import-7f807b3a78e4353c13c18451db1bc5903bdb4f323da22d10087f85bbc4ce9168",
-        "import-ef759b3a150727edd413a87732318a37622e433ea00840dbd44cd7e43a14bb58"
+        "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866",
+        "import-1a95193b50176f758390e7c28eda42df06b4453cd7191cafd9782250dfb832a6",
+        "import-c872ca8f063f9456f9f817569f3b58206c957a7480e5a8a7e9541bdf7c95f2ca",
+        "import-0c99e2a2866a661ffe8d85875ae8e002560a228fde98e54bd3d7beb136c1ab9b",
+        "import-5c5a2a86003bc1c7add3456337099ab8e9756fa85a9992314d38d75645eddec6",
+        "import-2c895ceea3ea0a172bf88d3a5565686924e3f92266e9fa86ec28b49a04a68a0e",
+        "import-a1a9d4265160bc3ccd34444760543d7e222e3042617031861bf69fe40d7861fd",
+        "import-8fa20bb1595fc04571c1e09073997b8ce101974160066dec697e5ae36e0fde78"
       ],
       "assemblies": [],
       "requires": [
@@ -7473,7 +7491,72 @@
       ],
       "callouts": [
         {
-          "text": "Extend the rail with the second splice and its five pins. Keep temporary support under the rail.",
+          "text": "Assemble the right inner rail and splice off the model. Bring it onto the exposed sensor-pin ends from the open side; align the holes without forcing. The support axles are not fitted yet.",
+          "instances": [
+            "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866",
+            "import-1a95193b50176f758390e7c28eda42df06b4453cd7191cafd9782250dfb832a6",
+            "import-c872ca8f063f9456f9f817569f3b58206c957a7480e5a8a7e9541bdf7c95f2ca",
+            "import-0c99e2a2866a661ffe8d85875ae8e002560a228fde98e54bd3d7beb136c1ab9b",
+            "import-5c5a2a86003bc1c7add3456337099ab8e9756fa85a9992314d38d75645eddec6",
+            "import-2c895ceea3ea0a172bf88d3a5565686924e3f92266e9fa86ec28b49a04a68a0e",
+            "import-a1a9d4265160bc3ccd34444760543d7e222e3042617031861bf69fe40d7861fd",
+            "import-8fa20bb1595fc04571c1e09073997b8ce101974160066dec697e5ae36e0fde78"
+          ]
+        }
+      ],
+      "access_review": "Assemble the right inner rail and splice off the model. Bring it onto the exposed sensor-pin ends from the open side; align the holes without forcing. The support axles are not fitted yet. Physical insertion, handling clearance and holding strength remain untested."
+    },
+    {
+      "id": "step_114",
+      "title": "Boom right outer rail and splice",
+      "add": [
+        "import-b80faf8caf6538a6ba1b1c66e4f1a3fbf9b771199a703ec33887192073782226",
+        "import-a00981ee4f55f1945ff1fc4858e5ed4008ddb4fce0252752a469c0ec59646808",
+        "import-d854bc66dec1741f67ee00272346716fec2ebf04599d87e8282789e55a8d1b6b",
+        "import-7c324c0de2a7fe4632bd95553af2f21867319aa78813c852de2d0a18728c2c01",
+        "import-648d144856da8d163695fa3cac336e68d1fa4afd4f22a8fe3beed4e404fb1410",
+        "import-7f807b3a78e4353c13c18451db1bc5903bdb4f323da22d10087f85bbc4ce9168",
+        "import-ef759b3a150727edd413a87732318a37622e433ea00840dbd44cd7e43a14bb58"
+      ],
+      "assemblies": [],
+      "requires": [
+        "step_113"
+      ],
+      "views": [
+        {
+          "name": "overview",
+          "eye": [
+            1,
+            -0.8,
+            1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": []
+        },
+        {
+          "name": "detail",
+          "eye": [
+            1,
+            -0.8,
+            1
+          ],
+          "up": [
+            0,
+            -1,
+            0
+          ],
+          "groups": [
+            "boom/right"
+          ]
+        }
+      ],
+      "callouts": [
+        {
+          "text": "Add the right outer rail and splice onto the remaining exposed pin ends. Keep both rails supported and parallel for the two support axles next.",
           "instances": [
             "import-b80faf8caf6538a6ba1b1c66e4f1a3fbf9b771199a703ec33887192073782226",
             "import-a00981ee4f55f1945ff1fc4858e5ed4008ddb4fce0252752a469c0ec59646808",
@@ -7485,87 +7568,18 @@
           ]
         }
       ],
-      "access_review": "Support the assembly beside the connection being pressed. Extend the rail with the second splice and its five pins. Keep temporary support under the rail. Physical insertion and holding strength have not been trial-built."
-    },
-    {
-      "id": "step_114",
-      "title": "Two MAG sensor stations",
-      "add": [
-        "import-6fefbcb576c760af42f047d61f435e1b720826114120b33cc54705468e54f585",
-        "import-18038b4199f6d80a6013315b66fc77578731f1256731c2a2fab39ec4d5570e8d",
-        "import-84c1710a317542da991bb485bc91e596441fb5a3d66b4b2619e19e72be485b27",
-        "import-d3169191ee5ff077c49cec2e360a0b6b15a9032833ba68d661c70bd24ee430bd",
-        "import-2d380734dd8ee4ce47d9ce41c0aa84b3687b8fdf9446bb694073b87c2d9364a9",
-        "import-fc69cde1a3960812b1f1296a937f47f023479b3c178e36c4c4ae8e6aee79f5f8",
-        "import-9ccfcd469ac1e96a5e46785c905546eb250cefbfbe81de8fd6b24e891e0c8abd",
-        "import-c847aeddd202f95cb206c69774a3528786ad08289b675f103728455d7f3c0580"
-      ],
-      "assemblies": [],
-      "requires": [
-        "step_113"
-      ],
-      "views": [
-        {
-          "name": "overview",
-          "eye": [
-            1,
-            0.7,
-            1
-          ],
-          "up": [
-            0,
-            -1,
-            0
-          ],
-          "groups": []
-        },
-        {
-          "name": "detail",
-          "eye": [
-            1,
-            0.7,
-            1
-          ],
-          "up": [
-            0,
-            -1,
-            0
-          ],
-          "groups": [
-            "boom/sensors"
-          ]
-        }
-      ],
-      "callouts": [
-        {
-          "text": "Connect the two rails with each pinned sensor block, then add the plates and grilles.",
-          "instances": [
-            "import-6fefbcb576c760af42f047d61f435e1b720826114120b33cc54705468e54f585",
-            "import-18038b4199f6d80a6013315b66fc77578731f1256731c2a2fab39ec4d5570e8d",
-            "import-84c1710a317542da991bb485bc91e596441fb5a3d66b4b2619e19e72be485b27",
-            "import-d3169191ee5ff077c49cec2e360a0b6b15a9032833ba68d661c70bd24ee430bd",
-            "import-2d380734dd8ee4ce47d9ce41c0aa84b3687b8fdf9446bb694073b87c2d9364a9",
-            "import-fc69cde1a3960812b1f1296a937f47f023479b3c178e36c4c4ae8e6aee79f5f8",
-            "import-9ccfcd469ac1e96a5e46785c905546eb250cefbfbe81de8fd6b24e891e0c8abd",
-            "import-c847aeddd202f95cb206c69774a3528786ad08289b675f103728455d7f3c0580"
-          ]
-        }
-      ],
-      "access_review": "Support the assembly beside the connection being pressed. Connect the two rails with each pinned sensor block, then add the plates and grilles. Physical insertion and holding strength have not been trial-built."
+      "access_review": "Add the right outer rail and splice onto the remaining exposed pin ends. Keep both rails supported and parallel for the two support axles next. Physical insertion, handling clearance and holding strength remain untested."
     },
     {
       "id": "step_115",
-      "title": "RPW / SCM sensor package",
+      "title": "Forward boom support axle",
       "add": [
-        "import-461a2d808b57b5f6d6a28641500956c093b9dcc1dabe4c9a1884b95e42ee162a",
-        "import-2720bc86f5dada8dfd7c90b4c62f6d4b10efcded6460e980e5913d28cd20d1a7",
-        "import-eab78f6c87f013eaf4cc387c34d6798d684485b8b49154a2964f40c4e65dff4f",
-        "import-a412344cf0c9576c8750be6ecb1db0f925c9706cc143bc7706fa9831cfcd4608",
-        "import-c4b5a92e93d42a553673cae88a64a9f49f02eafea2f3bce737577ace9fab093c",
-        "import-02b178ea6b2ee70ab622bb776b385a150d5923bc14d06d23d75e2de4649b596e",
-        "import-5af72c9ee14b2f0c52be28a2cdb486b5c39be439a757c5030f8a038cd140a442",
-        "import-1cc2f63a1099b6e532ffe149f22be9302bc21062881994712940a249a69ef8bb",
-        "import-52dae9032fd3149805ac3f45869c943cb54c6158a170175d1384514f10f5de98"
+        "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+        "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+        "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+        "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+        "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+        "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
       ],
       "assemblies": [],
       "requires": [
@@ -7575,9 +7589,9 @@
         {
           "name": "overview",
           "eye": [
-            1,
-            0.7,
-            1
+            0.5,
+            -1.5,
+            0.7
           ],
           "up": [
             0,
@@ -7589,9 +7603,9 @@
         {
           "name": "detail",
           "eye": [
-            1,
-            0.7,
-            1
+            0.5,
+            -1.5,
+            0.7
           ],
           "up": [
             0,
@@ -7599,42 +7613,35 @@
             0
           ],
           "groups": [
-            "boom/sensors"
+            "boom_mount/main"
           ]
         }
       ],
       "callouts": [
         {
-          "text": "Pin both carriers between the rails before adding the platform and sensor details.",
+          "text": "With the completed boom supported between the frames, feed the forward axle through from the left. Add each bush as the axle advances: outer bush, frame, inner bush, spacer bush, left rail, centre bush, right rail, frame, outer bush. Do not push a beam over a fitted bush.",
           "instances": [
-            "import-461a2d808b57b5f6d6a28641500956c093b9dcc1dabe4c9a1884b95e42ee162a",
-            "import-2720bc86f5dada8dfd7c90b4c62f6d4b10efcded6460e980e5913d28cd20d1a7",
-            "import-eab78f6c87f013eaf4cc387c34d6798d684485b8b49154a2964f40c4e65dff4f",
-            "import-a412344cf0c9576c8750be6ecb1db0f925c9706cc143bc7706fa9831cfcd4608",
-            "import-c4b5a92e93d42a553673cae88a64a9f49f02eafea2f3bce737577ace9fab093c",
-            "import-02b178ea6b2ee70ab622bb776b385a150d5923bc14d06d23d75e2de4649b596e",
-            "import-5af72c9ee14b2f0c52be28a2cdb486b5c39be439a757c5030f8a038cd140a442",
-            "import-1cc2f63a1099b6e532ffe149f22be9302bc21062881994712940a249a69ef8bb",
-            "import-52dae9032fd3149805ac3f45869c943cb54c6158a170175d1384514f10f5de98"
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
           ]
         }
       ],
-      "access_review": "Support the assembly beside the connection being pressed. Pin both carriers between the rails before adding the platform and sensor details. Physical insertion and holding strength have not been trial-built."
+      "access_review": "With the completed boom supported between the frames, feed the forward axle through from the left. Add each bush as the axle advances: outer bush, frame, inner bush, spacer bush, left rail, centre bush, right rail, frame, outer bush. Do not push a beam over a fitted bush. Physical insertion, handling clearance and holding strength remain untested."
     },
     {
       "id": "step_116",
-      "title": "Paired EAS heads at the boom tip",
+      "title": "Rear boom support axle",
       "add": [
-        "import-051f2f2f14e89d6af6b89dea622007badd8d5fbfba0bdff7bff066b7c85bdb4f",
-        "import-af331e99bed6fa4e7d8252bc9288b901a3173a27c49e1617aa83b83907f524fb",
-        "import-8c52843eada2ab12a4aedb4ac35e1fae7bb71bff800e4e8854182d05587a18cb",
-        "import-276599e889115417f51e3ae585be2a5b59a5cc1d67f187c03388b836d905cb18",
-        "import-9bd791781c03f135da28fb08ce25548cf424d8acdcdb422d5078c36d3b2cb435",
-        "import-718d7b1069b185e5ece9599f600972e17f0b51dc61dd8e7c2f236e73a3cc0ef6",
-        "import-6308c68c21b13228baba19200130830c67eefce01148ae3b640f01340472e799",
-        "import-0bb196d5ac833f6347966dc93e16e7ce1b3d14e3d6ad04e45d54de74ec4da11a",
-        "import-33a4dcab972c9ccf2f8afad75277f1513d068fd1f07876bca3d6b5e9da57c814",
-        "import-2eb89acb31f0c259801b9622efa22fc947165291ad3fcacfad33a4fcaf169118"
+        "import-69a0cc749d0da873ea56f2880df2c9e335f899e9afd5348666a204bb65821784",
+        "import-fddd71e2677475117cf67877693a3c21bcba5371bf35173c34de071a15d28750",
+        "import-0a00155ee98ba75ea55cdef9e204a5a3d4912e0dc73658cc3a0681167692f632",
+        "import-0c495553d2429128f15f82b97cfa49d7de1fef44100f9609ce9be415a4969aac",
+        "import-5a5f3ecf93d7f787dc3c8a4f91c55524213c85e2422b790fe6aa176680cc656d",
+        "import-83c925984035c34be5eee5901acda92c0ebf86a9e818175bb67c4cdf830cef51"
       ],
       "assemblies": [],
       "requires": [
@@ -7644,9 +7651,9 @@
         {
           "name": "overview",
           "eye": [
-            1,
-            0.7,
-            1
+            0.5,
+            -1.5,
+            0.7
           ],
           "up": [
             0,
@@ -7658,9 +7665,9 @@
         {
           "name": "detail",
           "eye": [
-            1,
-            0.7,
-            1
+            0.5,
+            -1.5,
+            0.7
           ],
           "up": [
             0,
@@ -7668,28 +7675,24 @@
             0
           ],
           "groups": [
-            "boom/sensors"
+            "boom_mount/main"
           ]
         }
       ],
       "callouts": [
         {
-          "text": "Fit the two pinned carriers, platform and head supports. Check the two heads point in different directions as illustrated.",
+          "text": "Repeat the axle-and-bush sequence at the rear support while holding both rails level. Fit the final outer retaining bushes only after the axle passes through both rails.",
           "instances": [
-            "import-051f2f2f14e89d6af6b89dea622007badd8d5fbfba0bdff7bff066b7c85bdb4f",
-            "import-af331e99bed6fa4e7d8252bc9288b901a3173a27c49e1617aa83b83907f524fb",
-            "import-8c52843eada2ab12a4aedb4ac35e1fae7bb71bff800e4e8854182d05587a18cb",
-            "import-276599e889115417f51e3ae585be2a5b59a5cc1d67f187c03388b836d905cb18",
-            "import-9bd791781c03f135da28fb08ce25548cf424d8acdcdb422d5078c36d3b2cb435",
-            "import-718d7b1069b185e5ece9599f600972e17f0b51dc61dd8e7c2f236e73a3cc0ef6",
-            "import-6308c68c21b13228baba19200130830c67eefce01148ae3b640f01340472e799",
-            "import-0bb196d5ac833f6347966dc93e16e7ce1b3d14e3d6ad04e45d54de74ec4da11a",
-            "import-33a4dcab972c9ccf2f8afad75277f1513d068fd1f07876bca3d6b5e9da57c814",
-            "import-2eb89acb31f0c259801b9622efa22fc947165291ad3fcacfad33a4fcaf169118"
+            "import-69a0cc749d0da873ea56f2880df2c9e335f899e9afd5348666a204bb65821784",
+            "import-fddd71e2677475117cf67877693a3c21bcba5371bf35173c34de071a15d28750",
+            "import-0a00155ee98ba75ea55cdef9e204a5a3d4912e0dc73658cc3a0681167692f632",
+            "import-0c495553d2429128f15f82b97cfa49d7de1fef44100f9609ce9be415a4969aac",
+            "import-5a5f3ecf93d7f787dc3c8a4f91c55524213c85e2422b790fe6aa176680cc656d",
+            "import-83c925984035c34be5eee5901acda92c0ebf86a9e818175bb67c4cdf830cef51"
           ]
         }
       ],
-      "access_review": "Support the assembly beside the connection being pressed. Fit the two pinned carriers, platform and head supports. Check the two heads point in different directions as illustrated. Physical insertion and holding strength have not been trial-built."
+      "access_review": "Repeat the axle-and-bush sequence at the rear support while holding both rails level. Fit the final outer retaining bushes only after the axle passes through both rails. Physical insertion, handling clearance and holding strength remain untested."
     },
     {
       "id": "step_117",

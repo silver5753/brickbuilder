@@ -1,6 +1,7 @@
 """Authored sequence coverage and dependency contracts, independent of meshes."""
 
 import json
+from hashlib import sha256
 from pathlib import Path
 
 import pytest
@@ -21,14 +22,28 @@ def test_satellite_instructions_preserve_frozen_physical_model():
     # Grouping may change for close-ups; physical identity and placement may not.
     assert {
         p.instance_id: (p.reference, p.colour, p.transform) for p in model.parts
-    } == {
-        p.instance_id: (p.reference, p.colour, p.transform) for p in baseline.parts
-    }
+    } == {p.instance_id: (p.reference, p.colour, p.transform) for p in baseline.parts}
     plan = load_steps((project / "steps.json").read_bytes())
     rows = step_records(model, plan)
     assert sum(len(row["added_ids"]) for row in rows) == 966
     assert all(len(row["added_ids"]) <= 21 for row in rows)
     assert all(row["insertion_access"] == "not_tested" for row in rows)
+    review = json.loads((project / "access-review.json").read_text())
+    assert (
+        review["revised_steps_sha256"]
+        == sha256((project / "steps.json").read_bytes()).hexdigest()
+    )
+    installed = {i: n for n, row in enumerate(rows) for i in row["added_ids"]}
+    pins = [
+        p
+        for p in model.parts
+        if p.group == "boom/sensors" and p.reference == "6558.dat"
+    ]
+    right_rails = [p for p in model.parts if p.group == "boom/right"]
+    assert pins and right_rails
+    assert max(installed[p.instance_id] for p in pins) < min(
+        installed[p.instance_id] for p in right_rails
+    )
 
 
 @pytest.fixture

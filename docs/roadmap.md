@@ -262,3 +262,16 @@ Physical assembly/access remain untested;
 Next instruction work: review insertion order/blocked access, resolve model
 uncertainties with evidence, and generalize booklet layout when another project
 provides a concrete second use. Placement clarity does not resolve those gates.
+
+
+### Assembly-order review - 1 November 2026
+
+Corrected the satellite boom sequence: sensor pins precede right-rail closure,
+and rails precede support axles/bushes. Added a project-local repeatable diagnostic
+using existing collision APIs, with exact model, step and geometry bindings.
+One original-order pin-collar interference is reproduced; bush clearance remains
+unknown. Revised continuous paths and physical assembly remain untested.
+Next: physical trial, remaining connection evidence and exact 7798 geometry.
+
+Validation: 355 tests, type checking and focused lint pass. All 48 PDF pages were
+reviewed; 121 steps, 966 parts, 30 checkpoints and 49 locators are retained.

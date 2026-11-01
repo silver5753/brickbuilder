@@ -65,8 +65,8 @@ and captured inputs. Neither it nor visual inspection establishes real-world fit
 
 ## Visual booklet and repeatable presentation pipeline
 
-The current booklet has 49 A4 pages: 121 steps, 966 additions, 80 native
-part/colour thumbnails, 24 model checkpoints, eleven two-section teaching steps,
+The current booklet has 48 A4 pages: 121 steps, 966 additions, 80 native
+part/colour thumbnails, 30 model checkpoints, eleven two-section teaching steps,
 and one calibrated measuring page. The earlier compact layout had 63 pages;
 extra pages now explain difficult connections and identify easily confused parts.
 Ordinary pages use three sections with vertical parts trays. No physical placement changes.
@@ -164,3 +164,19 @@ reconcile exact cameras, accumulated selections, locator IDs and presentation ha
 Next: review insertion order and blocked access; resolve the existing 18 connection
 unknowns and exact 7798 geometry; extract generic booklet layout only when another
 project demonstrates reuse. No physical assembly has been tested in this revision.
+
+
+### Assembly order - 1 November 2026
+
+See [the access review](access-review.md) for the boom sequencing corrections,
+reproducible collision witness and remaining limits. Sensor pins now precede
+right-side closure; support axles and bushes follow the assembled rails.
+Physical parts, colours and placements remain unchanged. Generate a fresh release
+and illustrations after this sequence change; earlier releases retain the old order.
+Run `access_audit.py` as shown in the review and pass its output using
+`package_booklet.py --access-audit output/access-audit` in addition to the flags above.
+The cover reads “Assembly-order revision / 1 November 2026”.
+
+Validation: all 355 tests and source/test type checks pass. The 48-page PDF was
+visually reviewed, and all 121 titles occur on their assigned pages. The updated
+presentation source is included under `presentation/source/` in the complete ZIP.

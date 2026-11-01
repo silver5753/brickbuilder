@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "source_model_sha256": "ea1359622ceb6c9866dc1fb2b1750fc6a96d30206ec8dfc79f53c90c0065d177",
+  "previous_steps_sha256": "adc85adff2e522cf46e6ef47326dc6147ada95a366e611409e868ae75c7e584a",
+  "revised_steps_sha256": "0e9a099b3548444ce951f8a79ceb9c853f772d9b4ef0e12fba7c0e24f13c8026",
+  "old_to_new_step_numbers": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "11": 11,
+    "12": 12,
+    "13": 13,
+    "14": 14,
+    "15": 15,
+    "16": 16,
+    "17": 17,
+    "18": 18,
+    "19": 19,
+    "20": 20,
+    "21": 21,
+    "22": 22,
+    "23": 23,
+    "24": 24,
+    "25": 25,
+    "28": 26,
+    "29": 27,
+    "30": 28,
+    "31": 29,
+    "32": 30,
+    "33": 31,
+    "34": 32,
+    "35": 33,
+    "36": 34,
+    "37": 35,
+    "38": 36,
+    "39": 37,
+    "40": 38,
+    "41": 39,
+    "42": 40,
+    "43": 41,
+    "44": 42,
+    "45": 43,
+    "46": 44,
+    "47": 45,
+    "48": 46,
+    "49": 47,
+    "50": 48,
+    "51": 49,
+    "52": 50,
+    "53": 51,
+    "54": 52,
+    "55": 53,
+    "56": 54,
+    "57": 55,
+    "58": 56,
+    "59": 57,
+    "60": 58,
+    "61": 59,
+    "62": 60,
+    "63": 61,
+    "64": 62,
+    "65": 63,
+    "66": 64,
+    "67": 65,
+    "68": 66,
+    "69": 67,
+    "70": 68,
+    "71": 69,
+    "72": 70,
+    "73": 71,
+    "74": 72,
+    "75": 73,
+    "76": 74,
+    "77": 75,
+    "78": 76,
+    "79": 77,
+    "80": 78,
+    "81": 79,
+    "82": 80,
+    "83": 81,
+    "84": 82,
+    "85": 83,
+    "86": 84,
+    "87": 85,
+    "88": 86,
+    "89": 87,
+    "90": 88,
+    "91": 89,
+    "92": 90,
+    "93": 91,
+    "94": 92,
+    "95": 93,
+    "96": 94,
+    "97": 95,
+    "98": 96,
+    "99": 97,
+    "100": 98,
+    "101": 99,
+    "102": 100,
+    "103": 101,
+    "104": 102,
+    "105": 103,
+    "106": 104,
+    "107": 105,
+    "108": 106,
+    "109": 107,
+    "110": 108,
+    "111": 109,
+    "114": 110,
+    "115": 111,
+    "116": 112,
+    "112": 113,
+    "113": 114,
+    "26": 115,
+    "27": 116,
+    "117": 117,
+    "118": 118,
+    "119": 119,
+    "120": 120,
+    "121": 121
+  },
+  "findings": [
+    {
+      "id": "boom-retaining-bushes",
+      "previous_steps": [
+        26,
+        27,
+        110,
+        112
+      ],
+      "revised_steps": [
+        108,
+        113,
+        115,
+        116
+      ],
+      "status": "reviewed_sequence_hazard",
+      "collision_status": "unknown",
+      "basis": "3713 flange outer radius 9 exceeds the 32278 interior bore radius 6 in supplied native geometry. Bush dependencies include empty.dat and 1-16chrd.dat; strict collision material declarations are refused, so no collision pass/fail is claimed for this pair.",
+      "change": "Assemble both boom rails first; feed axles and spacer bushes in axial order afterward."
+    },
+    {
+      "id": "boom-sensor-pin-collars",
+      "previous_steps": [
+        112,
+        113,
+        114,
+        115,
+        116
+      ],
+      "revised_steps": [
+        110,
+        111,
+        112,
+        113,
+        114
+      ],
+      "status": "sampled_material_interference",
+      "basis": "A sensor pin translated 29 LDU toward the right insertion side puts its collar into the existing outer rail. Partial inscribed material regions are reviewed against 6558/confric8 and 32278/beamhole.",
+      "change": "Fit sensor carriers and long pins from the open side before adding the right rail."
+    }
+  ],
+  "physical_build": "not_tested",
+  "revised_path_clearance": "not_tested",
+  "scope": "Review of all 121 authored notes and closure order; detailed native-geometry review of boom axles and pin access. Not an exhaustive insertion-path search.",
+  "retained_uncertainties": [
+    "18 unresolved nominal connection paths",
+    "Approximate 7798 geometry",
+    "Finger/tool access, clutch, strength and temporary-support stability untested"
+  ],
+  "witness": {
+    "moving_id": "import-18038b4199f6d80a6013315b66fc77578731f1256731c2a2fab39ec4d5570e8d",
+    "offset_ldu": [
+      29,
+      0,
+      0
+    ],
+    "config": {
+      "schema_version": 1,
+      "model_sha256": "9516b816d1ef31deda62070f21a71f8345435d29137b268604b0a5f895dd41f1",
+      "tolerance_ldu": 0.01,
+      "materials": [
+        {
+          "instance_id": "import-1a95193b50176f758390e7c28eda42df06b4453cd7191cafd9782250dfb832a6",
+          "geometry_sha256": "1c47c0b6ff4542c13637a7284112da090904fdc697672ef7dbaaf6c377e7f7ac",
+          "complete": false,
+          "evidence": "Partial beam web at local x -7.2..-7 outside radius-6 bore and within the outer web, away from face recesses. beamhole.dat and side wall in 32278.dat.",
+          "boxes": [
+            {
+              "minimum": [
+                -7.2,
+                -0.5,
+                -98
+              ],
+              "maximum": [
+                -7,
+                0.5,
+                -97.8
+              ]
+            }
+          ]
+        },
+        {
+          "instance_id": "import-18038b4199f6d80a6013315b66fc77578731f1256731c2a2fab39ec4d5570e8d",
+          "geometry_sha256": "9f9e448393fd58a1bd557e60e9eff185c61809ad3af8a734e5238eb3f3787dae",
+          "complete": false,
+          "evidence": "6558.dat transforms confric8.dat collar: y -2..0, radial outer 8/inner 6, outside +/-1 split. Inscribed interior box only.",
+          "boxes": [
+            {
+              "minimum": [
+                -9.5,
+                7,
+                2
+              ],
+              "maximum": [
+                -8.5,
+                7.2,
+                2.2
+              ]
+            }
+          ]
+        }
+      ],
+      "expected_contacts": [],
+      "joint": null
+    }
+  }
+}

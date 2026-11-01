@@ -9,6 +9,7 @@
     "requirement_bindings"
   ],
   "inputs": [
-    "model.ldr"
+    "model.ldr",
+    "access-review.json"
   ]
 }

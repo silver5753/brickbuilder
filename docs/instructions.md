@@ -232,3 +232,15 @@ Do not infer connections from proximity. The satellite presentation demonstrates
 back-face panels for the first solar panel on each side, and reconciles camera,
 selection and locator bindings before packaging. Keep teaching panels and locators
 in separate layout regions so an inset cannot cover a connection diagram.
+
+
+## Review closure order separately
+
+Before enclosing a beam, panel or frame, review which pins, axles and loose
+retainers must pass through it. Keep clear evidence for failures, unknown geometry
+and untested access. A final CAD pose and nominal connection graph cannot prove
+insertion order. Use a small source-bound collision witness with reviewed material
+regions for a suspected obstruction; do not infer occupied solid volume from bounds.
+The satellite [access review](../projects/solar_orbiter/instructions_v15/access-review.md)
+composes the existing instruction and collision APIs for this purpose. Preserve
+physical identities and regenerate step-dependent illustrations after reordering.
