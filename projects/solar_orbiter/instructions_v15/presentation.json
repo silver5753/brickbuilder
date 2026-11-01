@@ -138,11 +138,13 @@
           "title": "B  Axle direction / schematic placement",
           "instances": [
             "import-1d3c2483f9dd8273c0ab2ac7966a44cba0ea3c1c145a85cb223508a3f41b712e",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
             "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
             "import-4323156252b2d0ffa7f6fd8d1f09dad45dad513a6b6377c3a7118a1ec1a55430",
             "import-462ba412f2275ae0bf7ebf08b67cda420f39de32d659136a1f40d95689647306",
             "import-4853c98c4263e83ec2e9de3198606035e2f91aab8742ddd647cbc97a507cb4ba",
             "import-4c50c9b7a05758e21f27d3f39de74e5aac7fa0d2d9f97504ae959e2c4360089f",
+            "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866",
             "import-6ab7600cd6cfbad5d423beb9c590799bbadd1d4eb50844a363340a3b36300b32",
             "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
             "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
@@ -187,7 +189,11 @@
       ],
       "check": "Hold the boom and loose bushes in alignment as the axle advances. Confirm both rails are captured before removing temporary support.",
       "locator": true,
-      "note_override": "Keep the assembled boom supported. Feed the axle following the arrow, adding the loose bushes in axial order as it passes through the supports. Do not preload the bushes before threading."
+      "note_override": "Keep the assembled boom supported. Feed the axle following the arrow, adding the loose bushes in axial order as it passes through the supports. Do not preload the bushes before threading.",
+      "context_ids": [
+        "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+        "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866"
+      ]
     },
     "step_033": {
       "full_page": true,
@@ -1032,7 +1038,11 @@
     "step_116": {
       "cue": "Same technique as step 115; follow this view for side and orientation.",
       "locator": true,
-      "check": "Hold the boom and loose bushes in alignment as the axle advances. Confirm both rails are captured before removing temporary support."
+      "check": "Hold the boom and loose bushes in alignment as the axle advances. Confirm both rails are captured before removing temporary support.",
+      "context_ids": [
+        "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+        "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866"
+      ]
     },
     "step_034": {
       "cue": "Same technique as step 33; follow this view for side and orientation."
