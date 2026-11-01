@@ -275,3 +275,13 @@ Next: physical trial, remaining connection evidence and exact 7798 geometry.
 
 Validation: 355 tests, type checking and focused lint pass. All 48 PDF pages were
 reviewed; 121 steps, 966 parts, 30 checkpoints and 49 locators are retained.
+
+
+### Connection triage - 2 November 2026
+
+[Focused review](../projects/solar_orbiter/instructions_v15/connection-triage.md)
+identified omitted declarations for five EAS sensor parts and three whips.
+An in-memory trial reached 956/966 instances, status unknown, no occupancy
+conflicts. Released catalog/PDF remain unchanged at 948/966. Deferred ten
+irregular/missing-geometry cases per user direction; next investigate exact 7798.
+The review includes the reproduction recipe and limits; no new full-suite claim.
