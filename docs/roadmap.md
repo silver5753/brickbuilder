@@ -285,3 +285,11 @@ An in-memory trial reached 956/966 instances, status unknown, no occupancy
 conflicts. Released catalog/PDF remain unchanged at 948/966. Deferred ten
 irregular/missing-geometry cases per user direction; next investigate exact 7798.
 The review includes the reproduction recipe and limits; no new full-suite claim.
+
+
+### 7798 source investigation - 2 November 2026
+
+Located an unofficial underside-geometry candidate with review holds; recorded
+[source links and resumption steps](../projects/solar_orbiter/instructions_v15/7798-geometry-review.md).
+No complete dependency bundle validated; approximation and unknown status remain.
+Deeper geometry work is deferred per user direction. No release or PDF change.
