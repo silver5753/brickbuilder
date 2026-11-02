@@ -293,3 +293,12 @@ Located an unofficial underside-geometry candidate with review holds; recorded
 [source links and resumption steps](../projects/solar_orbiter/instructions_v15/7798-geometry-review.md).
 No complete dependency bundle validated; approximation and unknown status remain.
 Deeper geometry work is deferred per user direction. No release or PDF change.
+
+
+### Reusable booklet plan - 2 November 2026
+
+[Implementation plan](booklet-generalization-plan.md) defines B0-B5: baseline
+recovery, strict presentation contract, shared assets, shared PDF/HTML layout,
+portable verification and two-model acceptance. Vehicle (19 parts, 11 steps)
+is the second project; satellite remains the large regression reference.
+Planning complete; implementation and new validation results remain pending.
