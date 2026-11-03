@@ -466,9 +466,63 @@ def _selection_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--instance-id", action="append")
 
 
+def _booklet_command(args: argparse.Namespace) -> int:
+    from .booklets.build import build_booklet
+
+    report = build_booklet(
+        args.release,
+        args.plan,
+        args.destination,
+        font=args.font,
+        font_bold=args.font_bold,
+        font_license=args.font_license,
+        library=args.library,
+        assets=args.assets,
+        attribution=args.attribution,
+        attachments=tuple(args.attachment or []),
+    )
+    print(json.dumps(report, indent=2))
+    return 0 if report["status"] == "pass" else 1
+
+
+def _verify_booklet_command(args: argparse.Namespace) -> int:
+    from .booklets.verify import verify_booklet
+
+    report = verify_booklet(args.directory)
+    print(json.dumps(report, indent=2))
+    return 0 if report["status"] == "pass" else 1
+
+
+def _package_booklet_command(args: argparse.Namespace) -> int:
+    from .booklets.build import package_booklet
+
+    print(json.dumps(package_booklet(args.directory, args.destination), indent=2))
+    return 0
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="brickbuilder")
     commands = parser.add_subparsers(dest="command", required=True)
+    booklet = commands.add_parser(
+        "booklet",
+        help="Create native-colour PDF and HTML from a verified source release",
+    )
+    booklet.add_argument("release", type=Path)
+    for flag in ("plan", "destination", "font", "font-bold", "font-license"):
+        booklet.add_argument("--" + flag, type=Path, required=True)
+    for flag in ("library", "assets", "attribution"):
+        booklet.add_argument("--" + flag, type=Path)
+    booklet.add_argument("--attachment", type=Path, action="append")
+    booklet.set_defaults(handler=_booklet_command)
+    check_booklet = commands.add_parser(
+        "verify-booklet", help="Verify a portable booklet offline"
+    )
+    check_booklet.add_argument("directory", type=Path)
+    check_booklet.set_defaults(handler=_verify_booklet_command)
+    pack_booklet = commands.add_parser("package-booklet", help="Zip a verified booklet")
+    pack_booklet.add_argument("directory", type=Path)
+    pack_booklet.add_argument("--destination", type=Path, required=True)
+    pack_booklet.set_defaults(handler=_package_booklet_command)
     for command in ("build", "release"):
         build = commands.add_parser(
             command, help="Execute reviewed project Python and generate a new bundle"

@@ -165,3 +165,5 @@ both wheels and bushes rotate together about the front supports. This is a
 kinematic hypothesis; bearing fit, rolling contact and holding forces are untested.
 The default design is unchanged. No material solids or expected-contact exceptions
 are invented for the example, so hollow-interface candidates remain unknown.
+
+The source-bound `booklet-plan.json` demonstrates the shared [illustrated booklet pipeline](../../docs/booklets.md): 11 named steps, native-colour thumbnails, checkpoints and six A4 pages. It preserves all 19 physical parts and the existing authored order.

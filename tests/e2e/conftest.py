@@ -53,7 +53,9 @@ def wheel(tmp_path_factory: pytest.TempPathFactory) -> Path:
     return wheels[0]
 
 
-def install(wheel: Path, folder: Path, *, render: bool) -> Installed:
+def install(
+    wheel: Path, folder: Path, *, render: bool, booklet: bool = False
+) -> Installed:
     venv = folder / "venv"
     checked(["uv", "venv", "--python", sys.executable, str(venv)], cwd=folder)
     bin_path = venv / ("Scripts" if os.name == "nt" else "bin")
@@ -72,6 +74,7 @@ def install(wheel: Path, folder: Path, *, render: bool) -> Installed:
                     "--locked",
                     "--extra",
                     "render",
+                    *(["--extra", "booklet"] if booklet else []),
                     "--no-dev",
                     "--no-emit-project",
                     "--format",
@@ -119,3 +122,12 @@ def installed_render(
     wheel: Path, tmp_path_factory: pytest.TempPathFactory
 ) -> Installed:
     return install(wheel, tmp_path_factory.mktemp("installed-render"), render=True)
+
+
+@pytest.fixture(scope="session")
+def installed_booklet(
+    wheel: Path, tmp_path_factory: pytest.TempPathFactory
+) -> Installed:
+    return install(
+        wheel, tmp_path_factory.mktemp("installed-booklet"), render=True, booklet=True
+    )

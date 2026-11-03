@@ -13,6 +13,10 @@ dependencies = []
 [project.optional-dependencies]
 artwork = ["pillow==11.3.0"]
 render = ["numpy==2.2.6", "pillow==11.3.0", "numba==0.61.2"]
+booklet = [
+    "pillow==11.3.0",
+    "reportlab==4.4.10",
+]
 
 [project.scripts]
 brickbuilder = "brickbuilder.cli:main"
@@ -30,6 +34,7 @@ dev = [
 testpaths = ["tests"]
 addopts = ["--import-mode=importlib", "--strict-markers", "--strict-config"]
 markers = [
+    "booklet: requires the optional PDF/image dependencies",
     "render: requires the optional rendering dependencies",
     "e2e: exercises an installed wheel through subprocesses",
 ]

@@ -170,3 +170,5 @@ Further progress should come from real design tasks, additional reviewed part
 coverage and measured physical trials. The historical [workflow inventory](docs/workflow-inventory.md)
 and [early code review](docs/review-milestones-1-3.md) describe earlier states;
 they are not the current backlog. Never rewrite frozen hashes to make a change pass.
+
+For compact native-colour PDF and standalone HTML instructions, see [illustrated booklets](docs/booklets.md). The vehicle and satellite use the same installed generator.

@@ -302,3 +302,20 @@ recovery, strict presentation contract, shared assets, shared PDF/HTML layout,
 portable verification and two-model acceptance. Vehicle (19 parts, 11 steps)
 is the second project; satellite remains the large regression reference.
 Planning complete; implementation and new validation results remain pending.
+
+
+### Reusable illustrated booklets — 3 November 2026
+
+Implemented the shared [booklet pipeline](booklets.md): source-bound presentation
+plans, native part/colour thumbnails, teaching/locator views, measured PDF and
+standalone HTML from one page plan, portable offline verification and ZIP delivery.
+The satellite preserves its 48-page map, 121 steps and 966 parts; the vehicle
+rehearsal uses 11 steps and 19 parts in six pages. Building provides a schema smoke
+check. Project access-audit checks remain in the satellite wrapper.
+
+Tests cover installed-wheel generation, core-only relocated verification,
+stale/unsafe plans, overflow, dense tray labels, tampering and overwrite refusal.
+All PDF pages received visual review. Browser HTML print review remains blocked
+by native browser socket permissions; it is tracked explicitly in the
+[implementation record](booklet-generalization-plan.md). No physical or nominal
+connection status was upgraded by this presentation work.

@@ -180,3 +180,17 @@ The cover reads “Assembly-order revision / 1 November 2026”.
 Validation: all 355 tests and source/test type checks pass. The 48-page PDF was
 visually reviewed, and all 121 titles occur on their assigned pages. The updated
 presentation source is included under `presentation/source/` in the complete ZIP.
+
+## Shared booklet generator
+
+Use `shared_booklet.py` with `--release`, `--access-audit`, `--destination`,
+`--font`, `--font-bold`, `--font-license`, and either `--library` or the pair
+`--assets` / `--attribution`. Optional `--zip` packages only after generic and
+project access-audit checks pass. The access audit remains project-specific.
+
+`booklet-plan.json` carries all presentation choices into the shared package.
+`migrate_booklet.py` recreates that plan from the legacy presentation data; run it
+only when intentionally migrating those choices. The existing scripts are kept
+for baseline reproduction, while new output should use the shared wrapper.
+See [booklet documentation](../../../docs/booklets.md) for schema, dependency,
+font, verification and printing instructions.

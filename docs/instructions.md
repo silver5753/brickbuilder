@@ -26,8 +26,9 @@ application separately in a callout and supply the print outputs when requested.
 
 Use the browser's Print / Save as PDF for optional PDF export. Print CSS separates
 steps and keeps each figure together. Inspect page breaks, table headings and
-image scale before sharing. There is no automatic PDF renderer or new PDF runtime
-dependency; the offline HTML package is the supported instruction deliverable.
+image scale before sharing. For compact native-colour PDF and standalone HTML, use the optional
+[illustrated booklet pipeline](booklets.md). The original instruction-stage HTML
+and its verifier remain available unchanged.
 
 ## Write steps.json
 
@@ -121,7 +122,7 @@ assembly sequence. Both included examples still need real physical trial builds.
 
 Prefer actual-colour part thumbnails with prominent quantities; keep native part
 numbers as secondary references. Pictures should supplement, not replace, native
-inventory identity. For compact guides, place two steps on each page and show
+inventory identity. For compact guides, place three ordinary sections on each page and show
 whole-model checkpoints every five or six steps or at major assembly boundaries.
 Keep focused assembly diagrams on every step, explain highlight colours, mark
 approximate geometry, and verify readability at the intended paper size.
@@ -133,8 +134,8 @@ approximate geometry, and verify readability at the intended paper size.
 `PlacementArrow`, and `project_point`. It caches native meshes across views of one
 immutable source and explicit library. The existing release instruction stage and
 its gold/grey verifier contract are unchanged; derived presentations belong outside
-the immutable release. The satellite example keeps its layout and authored panel
-choices project-local.
+the immutable release. Authored panel choices stay project-local; the optional [booklet pipeline](booklets.md)
+shares rendering, measured layout, PDF/HTML writing and offline verification.
 
 ```python
 from brickbuilder.rendering.illustrations import IllustrationSession, PlacementArrow

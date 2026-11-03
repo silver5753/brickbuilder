@@ -213,3 +213,5 @@ camera config. The [desktop flower](../projects/flower/README.md) demonstrates a
 third, botanical brief using core-only authoring and release. For another subject,
 the expected changes are project inputs and local geometry choices. If a missing reusable operation forces a core edit,
 record the gap and justify extraction rather than adding a subject-name branch.
+
+For compact native-colour PDF and standalone HTML instructions, see [illustrated booklets](booklets.md). The vehicle and satellite use the same installed generator.

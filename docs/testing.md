@@ -6,16 +6,16 @@ dependencies; rendering is an optional extra. Keep those boundaries testable.
 ```sh
 uv sync --locked
 uv run --locked ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
-uv run --locked pytest -m 'not render and not e2e' -q
+uv run --locked pytest -m 'not render and not booklet and not e2e' -q
 uv build
 ```
 
 For the full suite, including actual-CAD image workflows:
 
 ```sh
-uv sync --locked --extra render
-uv run --locked --extra render ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
-uv run --locked --extra render pytest -q
+uv sync --locked --extra render --extra booklet
+uv run --locked --extra render --extra booklet ty check src tests tools projects/vehicle projects/building projects/flower --error-on-warning
+uv run --locked --extra render --extra booklet pytest -q
 uvx --from ruff==0.12.12 ruff check src tests tools projects/vehicle projects/building projects/flower
 ```
 
@@ -35,8 +35,8 @@ Useful targeted commands:
 
 ```sh
 uv run --locked pytest tests/test_collisions.py -q
-uv run --locked --extra render pytest tests/e2e/test_workflows.py -q
-uv run --locked --extra render pytest -m e2e -q
+uv run --locked --extra render --extra booklet pytest tests/e2e/test_workflows.py -q
+uv run --locked --extra render --extra booklet pytest -m e2e -q
 ```
 
 Use `render` on tests requiring the optional renderer and `e2e` on installed-process
@@ -91,3 +91,9 @@ affects geometry or views. Keep generated bundles ignored. Passing tests, ty,
 nominal connections or release integrity does not establish physical assembly,
 clutch, strength, continuous motion, live stock or authenticated importer acceptance.
 See [validation levels](validation-levels.md) for the separate dimensions.
+
+Booklet tests additionally cover opaque IDs, empty groups/callouts, stale bindings,
+future-part context, invalid panels, measured overflow, consecutive teaching steps,
+installed PDF/HTML generation, relocation to a core-only environment, overwrite
+refusal, and changed/extra/incomplete package files. Use `booklet` on tests requiring
+ReportLab/Pillow. Real native-geometry visual review remains separate.

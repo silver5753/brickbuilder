@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "source_model_sha256": "71ad0e4d737efd70a5e1f686ca11109dfaeaa17517a4c1cd4c81840c19aae67a",
+  "steps_sha256": "6f0fb270bdfda4973861b803998f6180b42f78f9dbf0d0dedfc86450aac620d0",
+  "title": "Small brick runabout",
+  "revision": "Booklet extraction rehearsal / 2 November 2026",
+  "detail_view": "assembly",
+  "checkpoints": [
+    "front_retainers",
+    "roof"
+  ],
+  "steps": {},
+  "document": {
+    "stem": "vehicle_instructions",
+    "cover_view": "front",
+    "guide": [],
+    "notices": [],
+    "part_labels": {
+      "3034": "Plate 2 x 8",
+      "3700": "Brick with hole 1 x 2",
+      "3707": "Axle 8L",
+      "4288": "Wheel",
+      "3713": "Axle bush",
+      "3003": "Brick 2 x 2",
+      "3022": "Plate 2 x 2"
+    },
+    "measurements": []
+  }
+}

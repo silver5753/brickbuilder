@@ -1,0 +1,2136 @@
+{
+  "schema_version": 1,
+  "source_model_sha256": "ea1359622ceb6c9866dc1fb2b1750fc6a96d30206ec8dfc79f53c90c0065d177",
+  "steps_sha256": "0e9a099b3548444ce951f8a79ceb9c853f772d9b4ef0e12fba7c0e24f13c8026",
+  "title": "Solar Orbiter",
+  "revision": "Assembly-order revision / 1 November 2026",
+  "detail_view": "detail",
+  "checkpoints": [
+    "step_006",
+    "step_012",
+    "step_016",
+    "step_022",
+    "step_025",
+    "step_026",
+    "step_028",
+    "step_034",
+    "step_040",
+    "step_046",
+    "step_052",
+    "step_057",
+    "step_060",
+    "step_063",
+    "step_066",
+    "step_069",
+    "step_071",
+    "step_077",
+    "step_083",
+    "step_089",
+    "step_095",
+    "step_101",
+    "step_107",
+    "step_108",
+    "step_111",
+    "step_112",
+    "step_114",
+    "step_116",
+    "step_118",
+    "step_121"
+  ],
+  "steps": {
+    "step_001": {
+      "overview_view": "overview",
+      "notes": [
+        "Join the two long uprights with the top cross rail and its two pins. Hold the lower cross rail in position until the cradle pins secure it."
+      ]
+    },
+    "step_002": {
+      "overview_view": "overview",
+      "notes": [
+        "Build the matching rear frame. Keep both frames aligned and supported on the table."
+      ]
+    },
+    "step_003": {
+      "overview_view": "overview",
+      "notes": [
+        "Install the frame and two short bridging beams; insert their pins while the body is open."
+      ]
+    },
+    "step_004": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the lower bridge and fit the outer side rail."
+      ]
+    },
+    "step_005": {
+      "overview_view": "overview",
+      "notes": [
+        "Mirror the bridge arrangement; check the front and rear offsets."
+      ]
+    },
+    "step_006": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the lower bridge and fit the outer side rail.",
+        "Front and rear frames are aligned; all four bridges are pinned."
+      ]
+    },
+    "step_007": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Insert the cradle rails inside the open body; these pins also secure the lower front frame."
+      ]
+    },
+    "step_008": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit both short uprights, their pins and spacer bushes. Leave the lower connectors accessible."
+      ]
+    },
+    "step_009": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit the matching rear rails before closing the body underside."
+      ]
+    },
+    "step_010": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit both uprights with the spacers on the illustrated sides."
+      ]
+    },
+    "step_011": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit the short reinforcement at the front right corner."
+      ]
+    },
+    "step_012": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Lay these adjacent plates on a flat table; they are loose until the overlapping layers are added."
+      ]
+    },
+    "step_013": {
+      "overview_view": "overview",
+      "notes": [
+        "Press the second plate layer across the first-layer seams."
+      ]
+    },
+    "step_014": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the bridging plates across the middle of the base."
+      ]
+    },
+    "step_015": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Build the four pinned mounting blocks on the base. Match the inverted jumper orientation."
+      ]
+    },
+    "step_016": {
+      "overview_view": "overview",
+      "notes": [
+        "Support the spacecraft by hand while joining the legs, cross beam and cradle. Check stability before letting go; use temporary supports if needed.",
+        "Support the body and check the stand before releasing your grip."
+      ]
+    },
+    "step_017": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Install the Technic bricks, pins and jumper plates while the body is open."
+      ]
+    },
+    "step_018": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Match the opposite mounting blocks and jumper orientation."
+      ]
+    },
+    "step_019": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Install the Technic bricks, pins and jumper plates while the body is open."
+      ]
+    },
+    "step_020": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Match the opposite mounting blocks and jumper orientation."
+      ]
+    },
+    "step_021": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit the short fixed stop and its pin before the side panels conceal the frame."
+      ]
+    },
+    "step_022": {
+      "eye": [
+        -0.65,
+        -0.7,
+        0.8
+      ],
+      "locator": true,
+      "panels": [
+        {
+          "name": "parts",
+          "title": "A  Parts in their final relative positions",
+          "instances": [
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "highlight": [
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "placement",
+          "title": "B  Axle direction / schematic placement",
+          "instances": [
+            "import-0f0b9d531a0e7449c8e7f439cfc9ee70c332ac8f1e3126a9b9c2f571854d2d21",
+            "import-0ff9569c9f0b208e7422f422f9fc8a54b4c67bb1144af72ff8e0e4c54454680f",
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "highlight": [
+            "import-3d2dbcc411820c1d5802ee4cdc2fc117c2edecb17267022e0c03f7dfa8c910c3",
+            "import-7e14653a031fbd1ce713c470b45a49cfa6940cb4959a25169c08f61d85d06ad8",
+            "import-98265d62e86f7e3daf783713547c60759a17cc019c83f769086e172383f78783",
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908"
+          ],
+          "offsets": {
+            "import-bdf9fcb6264edcb90ed7b15135081ef12485a3cd797e58e792f36b3f37526908": [
+              -120,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -330.0,
+                -20.0,
+                20.0
+              ],
+              "end": [
+                -210.0,
+                -20.0,
+                20.0
+              ]
+            }
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Thread the axle and bushes through the frame while both ends remain accessible. Leave the wing unloaded.",
+        "Keep both axle ends accessible. Bush positions must match the assembled view; the spaced drawing is schematic."
+      ]
+    },
+    "step_023": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit the short fixed stop and its pin before the side panels conceal the frame."
+      ]
+    },
+    "step_024": {
+      "overview_view": "overview",
+      "notes": [
+        "Thread the axle and bushes through the frame while both ends remain accessible. Leave the wing unloaded.",
+        "Same technique as step 22; follow this view for side and orientation."
+      ]
+    },
+    "step_025": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Pin both boom support frames to the open chassis. Leave both long support axles and their bushes out until steps 115\u2013116."
+      ]
+    },
+    "step_026": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Pin the carrier and rotating head before installing the heat shield. Add the fragile whip later."
+      ]
+    },
+    "step_027": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Pin the carrier and rotating head before installing the heat shield. Add the fragile whip later."
+      ]
+    },
+    "step_028": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Pin the two mounting beams and elbow connectors to the rear-side frame before adding the side equipment.",
+        "Axles and carriers remain accessible before the body is covered."
+      ]
+    },
+    "step_029": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_030": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_031": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_032": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_033": {
+      "panels": [
+        {
+          "name": "spacers",
+          "title": "A  Fit the four 1\u00d71 spacers first",
+          "instances": [
+            "import-0103702b548730a5b530f0bd2f0138fa508c8e03f5af21bf8476f47ffb291ed9",
+            "import-0c9b0e6467a45a626da5f185ed938387b67e902bda6d74c1e4a1f776c3b94757",
+            "import-135dfa37c7a7ef097874e0cc0658d18b8b1dcd77df1f10901c99cdb3ed59b7d9",
+            "import-238aad21701bac661919861d6dd74a7cb93dc637ed7feb1c72a715a9001cd704",
+            "import-26acff5467bcfdeb97e039c011a8ddb0b806030803f182e2cbba651acf532a6e",
+            "import-2d6023054694bcd68948cacf624bce7bd91bd7b7cdef43c8bd8f29ecd577dc2a",
+            "import-3185e8ec8b617d175a55b64230b9610ae9c01d24140f39fe75fe5020fa649016",
+            "import-343a8df26805d51e7f5432c9f38a1d97ecd4b76f935e81120f8acbdf8522d854",
+            "import-40365cdb0eed28a3a3f664b10443ade2d1f1aa5b62d987ca02ef98ca6ba40679",
+            "import-40adab49d0c1c519b59af95392dc5e21c2d7c07b4f61e8192bccb89f0f5c7ebc",
+            "import-462d3aced733a1f9f25bf10cfd349e731fdfd1b5d34dbdc25567df41e56e5254",
+            "import-54afbbdb22c06b6e48f3fb2b21880b60cd7df7b3491ac5fa2e52d7acba24f2ce",
+            "import-5b70eb714400434169bc0f1e99cc8d1eaa8ced8e0be86fc1486bbff9559d8c6e",
+            "import-5e1b2a2154a515563e49ef4ca14e7eae0532d54d4cc75fc68300144db57b6350",
+            "import-69464fb658cc1cd7b72e8af97b858949382d9408145d7710b760a94130732dd7",
+            "import-6cddd3b8ac75346d1fdcebdf4d4cbea4e25d15b4065292d92386fbd55bec83a3",
+            "import-72534f72ccf085781fab539d0622bd7de7f8ab9625a65a012276eb00fe40d0ca",
+            "import-73a2b980e67c0a21a2aec7f2bf96a6394ec90d145db18479c644484817316b78",
+            "import-795bf5793f1540a7b22c6d6ad738d0244f06adc79249f4025ebba99f13d5aa4a",
+            "import-7a87e51e128ce2102ca5ea4d200bd4f1531cbfd82f730b8cb72ab8564752d83d",
+            "import-7b5101c184463909a842e2a8be9fff67c4bced2a1f925fb42f2b1935c2005d38",
+            "import-84948102cbd1c15ca88445206aeff402728360780ed73943e22f39737999d43d",
+            "import-98b15924cee77843cee9ba780cde19fd537c77453cc689aa27c636f1104d7e7c",
+            "import-9a46ca5baef392bda28069eee627e6b5d6b5507ad4475d147f3c060ea9142f1e",
+            "import-aedb0345e76ec3b2d5c4622361b1f2a10be919443419a5c387f1c504ccc2d0a4",
+            "import-bbe488fb24f75d5b2f066c914b9fdb0b725e6c077ece1e693abfc7615ae0a4a2",
+            "import-c052f10e25c35814d045f881bb0771d5b49738beaa9c4be64b47fe7945b6b223",
+            "import-c53377c7a911da3fb534aebf7deba43bd4f6b4a2fdc7e53ce2a1903d5ca79193",
+            "import-df807a263abe5d8c0046bd5bca39ccf61f58cb2bdb1ad7b87408df84e8908545",
+            "import-e6a3ccde004f5b8c2658de86cfaa06eae57d6543946a275634cb4d11972731f0",
+            "import-f20da4fb63187754181d4bf16901aee234b659fd86b54d713ff36196b705103a",
+            "import-fd118bcd8a9e746266c4909b58ccc51c315690947d5cb62ef44a3e1daa91ef5f"
+          ],
+          "highlight": [
+            "import-343a8df26805d51e7f5432c9f38a1d97ecd4b76f935e81120f8acbdf8522d854",
+            "import-462d3aced733a1f9f25bf10cfd349e731fdfd1b5d34dbdc25567df41e56e5254",
+            "import-69464fb658cc1cd7b72e8af97b858949382d9408145d7710b760a94130732dd7",
+            "import-7b5101c184463909a842e2a8be9fff67c4bced2a1f925fb42f2b1935c2005d38"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "closure",
+          "title": "B  Press on the 6\u00d76 cover, then fit clips and bar",
+          "instances": [
+            "import-0103702b548730a5b530f0bd2f0138fa508c8e03f5af21bf8476f47ffb291ed9",
+            "import-0c9b0e6467a45a626da5f185ed938387b67e902bda6d74c1e4a1f776c3b94757",
+            "import-135dfa37c7a7ef097874e0cc0658d18b8b1dcd77df1f10901c99cdb3ed59b7d9",
+            "import-238aad21701bac661919861d6dd74a7cb93dc637ed7feb1c72a715a9001cd704",
+            "import-26acff5467bcfdeb97e039c011a8ddb0b806030803f182e2cbba651acf532a6e",
+            "import-2d6023054694bcd68948cacf624bce7bd91bd7b7cdef43c8bd8f29ecd577dc2a",
+            "import-3068f0cfe0153d0631a41375fd122441bd4f3b55b3d1265f6e131a5766be9606",
+            "import-3185e8ec8b617d175a55b64230b9610ae9c01d24140f39fe75fe5020fa649016",
+            "import-343a8df26805d51e7f5432c9f38a1d97ecd4b76f935e81120f8acbdf8522d854",
+            "import-40365cdb0eed28a3a3f664b10443ade2d1f1aa5b62d987ca02ef98ca6ba40679",
+            "import-40adab49d0c1c519b59af95392dc5e21c2d7c07b4f61e8192bccb89f0f5c7ebc",
+            "import-462d3aced733a1f9f25bf10cfd349e731fdfd1b5d34dbdc25567df41e56e5254",
+            "import-54afbbdb22c06b6e48f3fb2b21880b60cd7df7b3491ac5fa2e52d7acba24f2ce",
+            "import-5b70eb714400434169bc0f1e99cc8d1eaa8ced8e0be86fc1486bbff9559d8c6e",
+            "import-5e1b2a2154a515563e49ef4ca14e7eae0532d54d4cc75fc68300144db57b6350",
+            "import-69464fb658cc1cd7b72e8af97b858949382d9408145d7710b760a94130732dd7",
+            "import-6cddd3b8ac75346d1fdcebdf4d4cbea4e25d15b4065292d92386fbd55bec83a3",
+            "import-72534f72ccf085781fab539d0622bd7de7f8ab9625a65a012276eb00fe40d0ca",
+            "import-73a2b980e67c0a21a2aec7f2bf96a6394ec90d145db18479c644484817316b78",
+            "import-795bf5793f1540a7b22c6d6ad738d0244f06adc79249f4025ebba99f13d5aa4a",
+            "import-7a87e51e128ce2102ca5ea4d200bd4f1531cbfd82f730b8cb72ab8564752d83d",
+            "import-7b5101c184463909a842e2a8be9fff67c4bced2a1f925fb42f2b1935c2005d38",
+            "import-84948102cbd1c15ca88445206aeff402728360780ed73943e22f39737999d43d",
+            "import-98b15924cee77843cee9ba780cde19fd537c77453cc689aa27c636f1104d7e7c",
+            "import-9a46ca5baef392bda28069eee627e6b5d6b5507ad4475d147f3c060ea9142f1e",
+            "import-aedb0345e76ec3b2d5c4622361b1f2a10be919443419a5c387f1c504ccc2d0a4",
+            "import-bbe488fb24f75d5b2f066c914b9fdb0b725e6c077ece1e693abfc7615ae0a4a2",
+            "import-c052f10e25c35814d045f881bb0771d5b49738beaa9c4be64b47fe7945b6b223",
+            "import-c53377c7a911da3fb534aebf7deba43bd4f6b4a2fdc7e53ce2a1903d5ca79193",
+            "import-df807a263abe5d8c0046bd5bca39ccf61f58cb2bdb1ad7b87408df84e8908545",
+            "import-e6a3ccde004f5b8c2658de86cfaa06eae57d6543946a275634cb4d11972731f0",
+            "import-f20da4fb63187754181d4bf16901aee234b659fd86b54d713ff36196b705103a",
+            "import-fd118bcd8a9e746266c4909b58ccc51c315690947d5cb62ef44a3e1daa91ef5f"
+          ],
+          "highlight": [
+            "import-3068f0cfe0153d0631a41375fd122441bd4f3b55b3d1265f6e131a5766be9606"
+          ],
+          "offsets": {
+            "import-3068f0cfe0153d0631a41375fd122441bd4f3b55b3d1265f6e131a5766be9606": [
+              -65,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -263.0,
+                -90.0,
+                10.0
+              ],
+              "end": [
+                -198.0,
+                -90.0,
+                10.0
+              ]
+            }
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar.",
+        "All four spacers go behind the cover. Support the frame while pressing."
+      ]
+    },
+    "step_034": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar.",
+        "Same technique as step 33; follow this view for side and orientation."
+      ]
+    },
+    "step_035": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the eight exposed edge tiles."
+      ]
+    },
+    "step_036": {
+      "panels": [
+        {
+          "name": "layers",
+          "title": "A  Build the box outward: plate, brick, plate, grilles",
+          "instances": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "highlight": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "offsets": {
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67": [
+              0,
+              0,
+              0
+            ],
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6": [
+              -18,
+              0,
+              0
+            ],
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff": [
+              -36,
+              0,
+              0
+            ],
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5": [
+              -72,
+              0,
+              0
+            ],
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f": [
+              -72,
+              0,
+              0
+            ],
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0": [
+              -72,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -258.0,
+                -70.0,
+                -80.0
+              ],
+              "end": [
+                -222.0,
+                -70.0,
+                -80.0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "built",
+          "title": "B  Completed box / match the grille direction",
+          "instances": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "highlight": [
+            "import-0cc8266da819ca2cda947b54d04637b5d5ac6954a5bf890630af227667296ee6",
+            "import-8494a687fb21772d77d077c578ef5bc2013925de17731f58edfc03cf71e4074f",
+            "import-a9a0da086fa1b670951fe7d9f6045737373d54f3bf02312fc9a52665c56605a0",
+            "import-c0efc0a822eb6a879157176dc2e432d7954cd4525e86f91d44ed0fddf8be0b67",
+            "import-f0c2cf65a71cb251866c9c0dd9e751919754ef1aa329a7c59fb7947b887a81e5",
+            "import-fdace66a7f5d315d1b813797d935943317638a9f4b05cee33b4b81ff9537a3ff"
+          ],
+          "offsets": {},
+          "arrows": []
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Stack plate, brick and top plate, then add the three grille tiles.",
+        "Use this same layer order for the other three equipment boxes; their locations are shown separately."
+      ]
+    },
+    "step_037": {
+      "overview_view": "overview",
+      "notes": [
+        "Build the second box in the same layer order.",
+        "Same technique as step 36; follow this view for side and orientation."
+      ]
+    },
+    "step_038": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_039": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_040": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_041": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the three stud-pin standoffs first, then press the backing plate onto them. Support the inner frame."
+      ]
+    },
+    "step_042": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar.",
+        "Same technique as step 33; follow this view for side and orientation."
+      ]
+    },
+    "step_043": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit the four small spacer plates BEFORE the larger closure plate; then add clips and bar.",
+        "Same technique as step 33; follow this view for side and orientation."
+      ]
+    },
+    "step_044": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the eight exposed edge tiles."
+      ]
+    },
+    "step_045": {
+      "overview_view": "overview",
+      "notes": [
+        "Stack plate, brick and top plate, then add the three grille tiles.",
+        "Same technique as step 36; follow this view for side and orientation."
+      ]
+    },
+    "step_046": {
+      "overview_view": "overview",
+      "notes": [
+        "Build the second box in the same layer order.",
+        "Same technique as step 36; follow this view for side and orientation."
+      ]
+    },
+    "step_047": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Turn the supported body carefully. Seat the two backing plates, then overlap their seams with three plates."
+      ]
+    },
+    "step_048": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Seat the two roof backing plates, then add the three overlapping plates. Check the boom frames remain accessible."
+      ]
+    },
+    "step_049": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Build the two electronics stacks on the roof; add the grille last."
+      ]
+    },
+    "step_050": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the round brick and its cap on the roof."
+      ]
+    },
+    "step_051": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit the four stud pins and jumper offsets."
+      ]
+    },
+    "step_052": {
+      "overview_view": "overview",
+      "notes": [
+        "Lay out the backing plates and join them with the next layer while supporting loose edges."
+      ]
+    },
+    "step_053": {
+      "overview_view": "overview",
+      "notes": [
+        "Overlap the backing seams with this second plate layer."
+      ]
+    },
+    "step_054": {
+      "overview_view": "overview",
+      "notes": [
+        "Place all four curved segments with their distinct quarter-turn orientations."
+      ]
+    },
+    "step_055": {
+      "overview_view": "overview",
+      "notes": [
+        "Press each tile onto the exposed studs; do not bridge over the adapter ring."
+      ]
+    },
+    "step_056": {
+      "overview_view": "overview",
+      "notes": [
+        "Press each tile onto the exposed studs; do not bridge over the adapter ring."
+      ]
+    },
+    "step_057": {
+      "overview_view": "overview",
+      "notes": [
+        "Press each tile onto the exposed studs; do not bridge over the adapter ring.",
+        "Rear seams are overlapped; the four curved ring segments face inward."
+      ]
+    },
+    "step_058": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Insert both stud pins and bricks before placing the instrument backing."
+      ]
+    },
+    "step_059": {
+      "overview_view": "overview",
+      "notes": [
+        "Build outward from the backing plate; keep the slit facing the Sun (-Z)."
+      ]
+    },
+    "step_060": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Seat both stud pins, then stack the plates and brick. Keep the lower-left shield cutout clear."
+      ]
+    },
+    "step_061": {
+      "locator": true,
+      "panels": [
+        {
+          "name": "mounts",
+          "title": "A  Fit the three stud pins and bricks",
+          "instances": [
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "highlight": [
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "offsets",
+          "title": "B  Jumper plates first, then the 1\u00d71 spacers",
+          "instances": [
+            "import-1323273edb184761e18f7997897cb7bfbeb95fddf8801d65b05dd5f57c7fa855",
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-2d8037da6efbca2cf1882528fdc815e077b56f64dc3d3ae2d57f1db7572c460f",
+            "import-3ef7e51c852b6bc3a6ff842d185ece996e5774df4f2796bbc85b7e8aa27c8ee9",
+            "import-491ad4334e7196c6297a3cb1c819d46c89a1fb7df7393d02394d885b29de82a9",
+            "import-492b8bb48b29ad69f1e2b43719e617cc84f72a0a4c227d71ecb2bccc1ddb47c2",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-7f46597139312f11cd4e5f1308aca9ce8e181e6aced6f681be10bde50cc19268",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "highlight": [
+            "import-1323273edb184761e18f7997897cb7bfbeb95fddf8801d65b05dd5f57c7fa855",
+            "import-13ea0185fc83e57b17505d1b84137292b2f65f512efd9bf229d35002eb5ad184",
+            "import-1ad6691fe5dea24eeaf3452545cfc7828f8c31c0ca9e3dea7d73a426dadc0189",
+            "import-1bf3c6635ac32b9e04062157d291f1e2c4fcf65e8d6434844dee2baf92c02678",
+            "import-2d8037da6efbca2cf1882528fdc815e077b56f64dc3d3ae2d57f1db7572c460f",
+            "import-3ef7e51c852b6bc3a6ff842d185ece996e5774df4f2796bbc85b7e8aa27c8ee9",
+            "import-491ad4334e7196c6297a3cb1c819d46c89a1fb7df7393d02394d885b29de82a9",
+            "import-492b8bb48b29ad69f1e2b43719e617cc84f72a0a4c227d71ecb2bccc1ddb47c2",
+            "import-4a422ae9a9436d790f81a83338e7e18371364a333c9e70729d2e02855edeab9e",
+            "import-7f46597139312f11cd4e5f1308aca9ce8e181e6aced6f681be10bde50cc19268",
+            "import-8b5a6165c3d8d896e7965c2ac0e2ccc56af60020f070c1025f49ff3986051648",
+            "import-a3a86d3ef6c906ed1f31556425165e76b1254c7c5508e4d866ee756bd43a1ed0"
+          ],
+          "offsets": {
+            "import-492b8bb48b29ad69f1e2b43719e617cc84f72a0a4c227d71ecb2bccc1ddb47c2": [
+              0,
+              0,
+              -35
+            ],
+            "import-3ef7e51c852b6bc3a6ff842d185ece996e5774df4f2796bbc85b7e8aa27c8ee9": [
+              0,
+              0,
+              -35
+            ],
+            "import-2d8037da6efbca2cf1882528fdc815e077b56f64dc3d3ae2d57f1db7572c460f": [
+              0,
+              0,
+              -35
+            ],
+            "import-1323273edb184761e18f7997897cb7bfbeb95fddf8801d65b05dd5f57c7fa855": [
+              0,
+              0,
+              -65
+            ],
+            "import-7f46597139312f11cd4e5f1308aca9ce8e181e6aced6f681be10bde50cc19268": [
+              0,
+              0,
+              -65
+            ],
+            "import-491ad4334e7196c6297a3cb1c819d46c89a1fb7df7393d02394d885b29de82a9": [
+              0,
+              0,
+              -65
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -110.0,
+                70.0,
+                -177.0
+              ],
+              "end": [
+                -110.0,
+                70.0,
+                -142.0
+              ]
+            },
+            {
+              "start": [
+                -110.0,
+                10.0,
+                -177.0
+              ],
+              "end": [
+                -110.0,
+                10.0,
+                -142.0
+              ]
+            },
+            {
+              "start": [
+                -110.0,
+                -50.0,
+                -177.0
+              ],
+              "end": [
+                -110.0,
+                -50.0,
+                -142.0
+              ]
+            }
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Fit the stud pins, bricks, jumper offsets and small spacers before any shield backing.",
+        "Check the offset jumper studs before adding the shield backing. Repeat the opposite side in step 62."
+      ]
+    },
+    "step_062": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit the stud pins, bricks, jumper offsets and small spacers before any shield backing.",
+        "Same technique as step 61; follow this view for side and orientation."
+      ]
+    },
+    "step_063": {
+      "overview_view": "overview",
+      "notes": [
+        "Support these backing plates flat and join them with the next layer before lifting. Preserve BOTH open left corners. The image shows their final mounted positions."
+      ]
+    },
+    "step_064": {
+      "overview_view": "overview",
+      "notes": [
+        "Overlap the backing seams with the horizontal plate rows; keep the shield supported."
+      ]
+    },
+    "step_065": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the upper and lower reinforcement and narrow edge plates. Seat the completed backing evenly on all six standoffs."
+      ]
+    },
+    "step_066": {
+      "overview_view": "overview",
+      "notes": [
+        "Seat the large tiles without forcing. Part 7798 is drawn as an approximate envelope: confirm its real underside fit before pressing."
+      ]
+    },
+    "step_067": {
+      "overview_view": "overview",
+      "notes": [
+        "Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed."
+      ]
+    },
+    "step_068": {
+      "overview_view": "overview",
+      "notes": [
+        "Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed."
+      ]
+    },
+    "step_069": {
+      "overview_view": "overview",
+      "notes": [
+        "Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed."
+      ]
+    },
+    "step_070": {
+      "overview_view": "overview",
+      "notes": [
+        "Fill the exposed studs as shown, leaving the HIS and PAS openings unobstructed."
+      ]
+    },
+    "step_071": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Add the round details only on the indicated jumper studs.",
+        "Both left shield openings remain clear; standoffs are seated evenly."
+      ]
+    },
+    "step_072": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Assemble the yoke around the axle connector. Support the hinge; do not rely on friction to carry the unfinished wing."
+      ]
+    },
+    "step_073": {
+      "locator": true,
+      "panels": [
+        {
+          "name": "beams",
+          "title": "A  Align the overlapping beams / count the holes",
+          "instances": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59"
+          ],
+          "highlight": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "pins",
+          "title": "B  Insert the joining pins before mounting the rail",
+          "instances": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-0cd84c20576ebdb12e914c5e5954d604ea078cf8819b796a2c4358dc63ae9039",
+            "import-1d4cfe6914caf24fd8d16b827bbdd9c1aa5af84fd0635e4395e1cbe95b64349c",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59",
+            "import-4c81b0a09ac7331da50a698abdd1dcd77346fef3bebe9d4179ff9b78f2973922",
+            "import-c96d25ee7310a29494cdc27cc0544da4367b606dba9c5dd4463de90dffef6395",
+            "import-ee21f9e4abd75d8df4e84991da0c4332eec8b14ee15c4eb937e2feb865d1f5ee"
+          ],
+          "highlight": [
+            "import-0255b5a8ca2b08f90796f2892e4894baaf78401058cf64ff3f8db65b25b7ea10",
+            "import-0cd84c20576ebdb12e914c5e5954d604ea078cf8819b796a2c4358dc63ae9039",
+            "import-1d4cfe6914caf24fd8d16b827bbdd9c1aa5af84fd0635e4395e1cbe95b64349c",
+            "import-30fce774fc7e17cd9b1862c46859badc34f1764e13e5cd8ef9ad14492efe5b8b",
+            "import-36858249a77d6480b2b821e3cc6983441b806ca6722e37d465ad77a0ffba3d59",
+            "import-4c81b0a09ac7331da50a698abdd1dcd77346fef3bebe9d4179ff9b78f2973922",
+            "import-c96d25ee7310a29494cdc27cc0544da4367b606dba9c5dd4463de90dffef6395",
+            "import-ee21f9e4abd75d8df4e84991da0c4332eec8b14ee15c4eb937e2feb865d1f5ee"
+          ],
+          "offsets": {
+            "import-0cd84c20576ebdb12e914c5e5954d604ea078cf8819b796a2c4358dc63ae9039": [
+              0,
+              0,
+              -65
+            ],
+            "import-1d4cfe6914caf24fd8d16b827bbdd9c1aa5af84fd0635e4395e1cbe95b64349c": [
+              0,
+              0,
+              -65
+            ],
+            "import-4c81b0a09ac7331da50a698abdd1dcd77346fef3bebe9d4179ff9b78f2973922": [
+              0,
+              0,
+              -65
+            ],
+            "import-c96d25ee7310a29494cdc27cc0544da4367b606dba9c5dd4463de90dffef6395": [
+              0,
+              0,
+              -65
+            ],
+            "import-ee21f9e4abd75d8df4e84991da0c4332eec8b14ee15c4eb937e2feb865d1f5ee": [
+              0,
+              0,
+              -65
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -820.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -820.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -540.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -540.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -560.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -560.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -800.0,
+                -40.0,
+                -15.0
+              ],
+              "end": [
+                -800.0,
+                -40.0,
+                50.0
+              ]
+            },
+            {
+              "start": [
+                -320.0,
+                -40.0,
+                -35.0
+              ],
+              "end": [
+                -320.0,
+                -40.0,
+                30.0
+              ]
+            }
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Join the three overlapping beams with pins before attaching the spar at the yoke. Keep the free end supported.",
+        "Match each overlap and pin hole to the assembled view. Keep the long free end supported."
+      ]
+    },
+    "step_074": {
+      "overview_view": "overview",
+      "notes": [
+        "Build the matching lower spar with the same overlaps.",
+        "Same technique as step 73; follow this view for side and orientation."
+      ]
+    },
+    "step_075": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes."
+      ]
+    },
+    "step_076": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes."
+      ]
+    },
+    "step_077": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes."
+      ]
+    },
+    "step_078": {
+      "context_ids": [
+        "import-308f0e2982200e09c5856d55b794e13b0d5b011b734293f0c257e906ea38fda7",
+        "import-3c3f0c2943e269ed83b752c752e7fa7c586422a3f784e43f902f6298a492c703",
+        "import-8f2f3ed74f7554a550814efd83c069d2980e36505def66c80993740d00a5a0e3",
+        "import-c93c7b464a2c69f9538d2efe8efb0ed2cf0283e52a906c4feb19f0c8383da049",
+        "import-ec79480eca5a03ba05491f37ba7cea288fbab119ac6d8bd00e494a80fcba074d",
+        "import-f70327687421dc2a19baf5b7ca3a1de10da33c0634cccecce117e735ce5ba349"
+      ],
+      "locator": true,
+      "panels": [
+        {
+          "name": "backing",
+          "title": "A  Panel backing",
+          "instances": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f"
+          ],
+          "highlight": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "back_face",
+          "title": "B  Turn over: back face and mounts",
+          "instances": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f",
+            "import-308f0e2982200e09c5856d55b794e13b0d5b011b734293f0c257e906ea38fda7",
+            "import-3c3f0c2943e269ed83b752c752e7fa7c586422a3f784e43f902f6298a492c703",
+            "import-8f2f3ed74f7554a550814efd83c069d2980e36505def66c80993740d00a5a0e3",
+            "import-c93c7b464a2c69f9538d2efe8efb0ed2cf0283e52a906c4feb19f0c8383da049",
+            "import-ec79480eca5a03ba05491f37ba7cea288fbab119ac6d8bd00e494a80fcba074d",
+            "import-f70327687421dc2a19baf5b7ca3a1de10da33c0634cccecce117e735ce5ba349"
+          ],
+          "highlight": [
+            "import-11e784df7356fbbf4abde1f26af9cc13922cc24bc78af535eaa3a4288a7ba7c8",
+            "import-15a7d8b6df16199d3fbae57ff6e1be6cedd63635f6993b5cbdad27859176b91b",
+            "import-53c157f6c00bfc6d23d642e3ce797a138eaddc0382f89af70dfcd9316fcbbdf4",
+            "import-7f303e2ab81c5476538e7cfa550b77f492a22901bdddc9d5eafa59bf7c3179ff",
+            "import-9afa68ae4cc4002f7e25613adc5eaa200b5296418bb929736294264ad8d0542f"
+          ],
+          "offsets": {},
+          "arrows": [],
+          "eye": [
+            0.15988236984776982,
+            -0.4156941616042016,
+            0.895341271147511
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Insert the four mounting studs into the transverse beams, then seat the large plate evenly.",
+        "Use the back-face view to align the backing with its mounting beams. Other model parts are omitted for clarity."
+      ]
+    },
+    "step_079": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views."
+      ]
+    },
+    "step_080": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit small plates and clips before seating the edge bars. Support the panel close to each clip."
+      ]
+    },
+    "step_081": {
+      "overview_view": "overview",
+      "notes": [
+        "Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement."
+      ]
+    },
+    "step_082": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Insert the four mounting studs into the transverse beams, then seat the large plate evenly.",
+        "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here."
+      ]
+    },
+    "step_083": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views."
+      ]
+    },
+    "step_084": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit small plates and clips before seating the edge bars. Support the panel close to each clip."
+      ]
+    },
+    "step_085": {
+      "overview_view": "overview",
+      "notes": [
+        "Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement."
+      ]
+    },
+    "step_086": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Insert the four mounting studs into the transverse beams, then seat the large plate evenly.",
+        "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here."
+      ]
+    },
+    "step_087": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views."
+      ]
+    },
+    "step_088": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit small plates and clips before seating the edge bars. Support the panel close to each clip."
+      ]
+    },
+    "step_089": {
+      "overview_view": "overview",
+      "notes": [
+        "Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement.",
+        "All three left panels are attached; support the wing."
+      ]
+    },
+    "step_090": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Assemble the yoke around the axle connector. Support the hinge; do not rely on friction to carry the unfinished wing."
+      ]
+    },
+    "step_091": {
+      "overview_view": "overview",
+      "notes": [
+        "Join the three overlapping beams with pins before attaching the spar at the yoke. Keep the free end supported.",
+        "Same technique as step 73; follow this view for side and orientation."
+      ]
+    },
+    "step_092": {
+      "overview_view": "overview",
+      "notes": [
+        "Build the matching lower spar with the same overlaps.",
+        "Same technique as step 73; follow this view for side and orientation."
+      ]
+    },
+    "step_093": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes."
+      ]
+    },
+    "step_094": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes."
+      ]
+    },
+    "step_095": {
+      "overview_view": "overview",
+      "notes": [
+        "Pin the transverse beams to both spars. At the middle positions include the illustrated spacer bushes."
+      ]
+    },
+    "step_096": {
+      "context_ids": [
+        "import-20ecf7f255d9eef76d19abf3c1584a595404c1b08b7c69191a9f55486156bace",
+        "import-3424ae7bb03249b29693331964b63ea3ec6bac1e1f8e71763969dc0cfaaf5f59",
+        "import-4bb32a33601bd7321ff725bebf85e0713bbaa31a8188f6c9e848010c4ef31f7e",
+        "import-6b110b89863d0e0c114e3214e82ce7769758b14d1d71334dcdfd607b56a1640b",
+        "import-75fef5487f73d835e2fdfaa31aa73d9fd488b7802ae1e7b20e85459ea8b97a67",
+        "import-94d13e36f9ec2f708cd9b286c02d8edc11f49c4f81619150b41d285f3adbdc67"
+      ],
+      "locator": true,
+      "panels": [
+        {
+          "name": "backing",
+          "title": "A  Panel backing",
+          "instances": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4"
+          ],
+          "highlight": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "back_face",
+          "title": "B  Turn over: back face and mounts",
+          "instances": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4",
+            "import-20ecf7f255d9eef76d19abf3c1584a595404c1b08b7c69191a9f55486156bace",
+            "import-3424ae7bb03249b29693331964b63ea3ec6bac1e1f8e71763969dc0cfaaf5f59",
+            "import-4bb32a33601bd7321ff725bebf85e0713bbaa31a8188f6c9e848010c4ef31f7e",
+            "import-6b110b89863d0e0c114e3214e82ce7769758b14d1d71334dcdfd607b56a1640b",
+            "import-75fef5487f73d835e2fdfaa31aa73d9fd488b7802ae1e7b20e85459ea8b97a67",
+            "import-94d13e36f9ec2f708cd9b286c02d8edc11f49c4f81619150b41d285f3adbdc67"
+          ],
+          "highlight": [
+            "import-0a70a2701b059c9c758b304a5d2f4da9393a5a199c22c6a23dec30a3675c29c1",
+            "import-2b8fb93e43e4fe0f93c7caa80f02997f86282f590326e06a69d2b4f6fa32ca6d",
+            "import-c11ed43e61c6cf666d0553049a960b1c2aba7356843689043178f896fd98a98b",
+            "import-c4656e131651cb1e4d4916016f86b0324f275be4b97a2438a6b3f9c4a358bd56",
+            "import-f131e6124e908837698fa5837f1aef5a77be3bf24d2a04a24708d300d9c063a4"
+          ],
+          "offsets": {},
+          "arrows": [],
+          "eye": [
+            -0.15988236984776982,
+            -0.4156941616042016,
+            0.895341271147511
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Insert the four mounting studs into the transverse beams, then seat the large plate evenly.",
+        "Use the back-face view to align the backing with its mounting beams. Other model parts are omitted for clarity."
+      ]
+    },
+    "step_097": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views."
+      ]
+    },
+    "step_098": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit small plates and clips before seating the edge bars. Support the panel close to each clip."
+      ]
+    },
+    "step_099": {
+      "overview_view": "overview",
+      "notes": [
+        "Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement."
+      ]
+    },
+    "step_100": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Insert the four mounting studs into the transverse beams, then seat the large plate evenly.",
+        "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here."
+      ]
+    },
+    "step_101": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views."
+      ]
+    },
+    "step_102": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit small plates and clips before seating the edge bars. Support the panel close to each clip."
+      ]
+    },
+    "step_103": {
+      "overview_view": "overview",
+      "notes": [
+        "Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement."
+      ]
+    },
+    "step_104": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Insert the four mounting studs into the transverse beams, then seat the large plate evenly.",
+        "Repeat the panel technique from steps 78\u201381 at this position; parts are counted here."
+      ]
+    },
+    "step_105": {
+      "overview_view": "overview",
+      "notes": [
+        "Add the plain tiles. Solar-cell artwork is optional and applied separately; it is omitted from these structural views."
+      ]
+    },
+    "step_106": {
+      "overview_view": "overview",
+      "notes": [
+        "Fit small plates and clips before seating the edge bars. Support the panel close to each clip."
+      ]
+    },
+    "step_107": {
+      "overview_view": "overview",
+      "notes": [
+        "Complete the opposite clips and bars. Compare with the overview for the correct mirrored placement.",
+        "Compare left and right wing positions and support both sides."
+      ]
+    },
+    "step_108": {
+      "locator": true,
+      "panels": [
+        {
+          "name": "beams",
+          "title": "A  Align the overlapping beams / count the holes",
+          "instances": [
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d"
+          ],
+          "highlight": [
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "pins",
+          "title": "B  Insert the joining pins before mounting the rail",
+          "instances": [
+            "import-00f37b3ac29626c2b44cd12903b889fbef73bdb148485a539e3ad8b24b05a42c",
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+            "import-3ed76cd1171b66e7b044988475f38e953b7dada1da97d1a320f274e7beb2d60e",
+            "import-8782dc800ac080f54189d7891a0327dfe5d31e900bb5a8364d2c575f0f715030",
+            "import-b4616b1c482d7c82ea56243484022fccde2b6beea69175d7b6d054ed2d9210c1",
+            "import-e880b2989f7d72bc82cc0241725be6ac1e264b5540d19fd812d439000680d6f9"
+          ],
+          "highlight": [
+            "import-00f37b3ac29626c2b44cd12903b889fbef73bdb148485a539e3ad8b24b05a42c",
+            "import-088207a90a78d7e6875e96c4ec91d9be09805dc607c217899c55d57e8a5d884e",
+            "import-278a6782a7ec8016252ad03c554c701429b3d8cc8f39922594b302f5d418f1f0",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+            "import-3ed76cd1171b66e7b044988475f38e953b7dada1da97d1a320f274e7beb2d60e",
+            "import-8782dc800ac080f54189d7891a0327dfe5d31e900bb5a8364d2c575f0f715030",
+            "import-b4616b1c482d7c82ea56243484022fccde2b6beea69175d7b6d054ed2d9210c1",
+            "import-e880b2989f7d72bc82cc0241725be6ac1e264b5540d19fd812d439000680d6f9"
+          ],
+          "offsets": {
+            "import-00f37b3ac29626c2b44cd12903b889fbef73bdb148485a539e3ad8b24b05a42c": [
+              -65,
+              0,
+              0
+            ],
+            "import-3ed76cd1171b66e7b044988475f38e953b7dada1da97d1a320f274e7beb2d60e": [
+              -65,
+              0,
+              0
+            ],
+            "import-8782dc800ac080f54189d7891a0327dfe5d31e900bb5a8364d2c575f0f715030": [
+              -65,
+              0,
+              0
+            ],
+            "import-b4616b1c482d7c82ea56243484022fccde2b6beea69175d7b6d054ed2d9210c1": [
+              -65,
+              0,
+              0
+            ],
+            "import-e880b2989f7d72bc82cc0241725be6ac1e264b5540d19fd812d439000680d6f9": [
+              -65,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                200.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                200.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                220.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                220.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                260.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                260.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                180.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                180.0
+              ]
+            },
+            {
+              "start": [
+                -35.0,
+                -220.0,
+                240.0
+              ],
+              "end": [
+                30.0,
+                -220.0,
+                240.0
+              ]
+            }
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Build the boom off the model on a supported surface. Join the first two left rails with the splice and five pins. The pictures show final positions; mounting axles are fitted in steps 115\u2013116.",
+        "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled."
+      ]
+    },
+    "step_109": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Extend the left rail with the second splice and five pins. Keep it supported flat while fitting the sensor carriers next.",
+        "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled."
+      ]
+    },
+    "step_110": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "While the right rail is still absent, fit both sensor carriers and long pins to the left rail from the open side. Add their plates and grilles; leave the long pin ends exposed for the right rail.",
+        "The right rail is intentionally absent here; it follows after all sensor carriers."
+      ]
+    },
+    "step_111": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit both RPW / SCM carriers and long pins from the open side before the right rail. Add the platform and sensor details; support the left rail beside each joint.",
+        "The right rail is intentionally absent here; it follows after all sensor carriers."
+      ]
+    },
+    "step_112": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit both EAS carriers and long pins before the right rail, then add the platform and heads. Keep the projecting pin ends accessible and support the delicate heads.",
+        "The right rail is intentionally absent here; it follows after all sensor carriers."
+      ]
+    },
+    "step_113": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Assemble the right inner rail and splice off the model. Bring it onto the exposed sensor-pin ends from the open side; align the holes without forcing. The support axles are not fitted yet.",
+        "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled."
+      ]
+    },
+    "step_114": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Add the right outer rail and splice onto the remaining exposed pin ends. Keep both rails supported and parallel for the two support axles next.",
+        "Keep the boom supported; do not attach it to the spacecraft until both rails and the sensor carriers are assembled."
+      ]
+    },
+    "step_115": {
+      "eye": [
+        0.4,
+        -0.8,
+        1
+      ],
+      "context_ids": [
+        "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+        "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866"
+      ],
+      "locator": true,
+      "panels": [
+        {
+          "name": "parts",
+          "title": "A Final positions / keep bushes separate while threading",
+          "instances": [
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
+          ],
+          "highlight": [
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
+          ],
+          "offsets": {},
+          "arrows": []
+        },
+        {
+          "name": "placement",
+          "title": "B  Axle direction / schematic placement",
+          "instances": [
+            "import-1d3c2483f9dd8273c0ab2ac7966a44cba0ea3c1c145a85cb223508a3f41b712e",
+            "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-4323156252b2d0ffa7f6fd8d1f09dad45dad513a6b6377c3a7118a1ec1a55430",
+            "import-462ba412f2275ae0bf7ebf08b67cda420f39de32d659136a1f40d95689647306",
+            "import-4853c98c4263e83ec2e9de3198606035e2f91aab8742ddd647cbc97a507cb4ba",
+            "import-4c50c9b7a05758e21f27d3f39de74e5aac7fa0d2d9f97504ae959e2c4360089f",
+            "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866",
+            "import-6ab7600cd6cfbad5d423beb9c590799bbadd1d4eb50844a363340a3b36300b32",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-9df63222ac5a4d0942e570930b4d7b9f712b3a0f94d6745e1b6fee5dd47e7edc",
+            "import-b47be1dc9fce2268a6c9872b698d997a8ea2e8c70aab0b6be663c3505a971ea5",
+            "import-b7ade47659fabb878b9ffae6dbef7af738cd2c0358aabd76f421e6cd984e69f0",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac",
+            "import-f5830fe9147993100e95a47a22b87c5ddd39cb64e7d7c667ad228dd57dfa2436"
+          ],
+          "highlight": [
+            "import-407797ce7eb139531d4b0c77285615a5080a71a8374376c1f77584c643ad1e21",
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81",
+            "import-8b69d4fe9eb524edb513e652db86fc94811c355e580c3a7a0127951496d7c949",
+            "import-c495066cb3cd6a84dde4bef741a26f3a24f1e95b9cc6033bddee0b783f3c1240",
+            "import-cbbf67f0dc2f60afc2888fa1ff8028ba7170fb8bf21641e5e8685b59990d225a",
+            "import-d05d3c03f52176a407dd42826e937320765b7548fdb3311411c1cd63c53363ac"
+          ],
+          "offsets": {
+            "import-78e60ac495faf246000d4c93ee3b7ce6277e4ec76d2976030a1b06d217737c81": [
+              -120,
+              0,
+              0
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                -120.0,
+                -220.0,
+                -60.0
+              ],
+              "end": [
+                0.0,
+                -220.0,
+                -60.0
+              ]
+            }
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Keep the assembled boom supported. Feed the axle following the arrow, adding the loose bushes in axial order as it passes through the supports. Do not preload the bushes before threading.",
+        "Hold the boom and loose bushes in alignment as the axle advances. Confirm both rails are captured before removing temporary support."
+      ]
+    },
+    "step_116": {
+      "context_ids": [
+        "import-35f73a00eaf515c9db81a0877127dd63074fb4e1ef9aa9d532d7be605f5e0d8d",
+        "import-5ef4766eb99ff0f3f83a0be4083a72c032de128f6fc911499884991b60863866"
+      ],
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Repeat the axle-and-bush sequence at the rear support while holding both rails level. Fit the final outer retaining bushes only after the axle passes through both rails.",
+        "Hold the boom and loose bushes in alignment as the axle advances. Confirm both rails are captured before removing temporary support."
+      ]
+    },
+    "step_117": {
+      "eye": [
+        0.85,
+        -0.3,
+        0.45
+      ],
+      "locator": true,
+      "panels": [
+        {
+          "name": "joint_pairs",
+          "title": "A  Match each socket with its pin half",
+          "instances": [
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "highlight": [
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "offsets": {
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed": [
+              0,
+              0,
+              55
+            ],
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e": [
+              0,
+              0,
+              55
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                180.0,
+                180.0,
+                275.0
+              ],
+              "end": [
+                180.0,
+                180.0,
+                220.0
+              ]
+            },
+            {
+              "start": [
+                81.0050506,
+                278.994949,
+                255.0
+              ],
+              "end": [
+                81.0050506,
+                278.994949,
+                200.0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "link_pins",
+          "title": "B  Join the arm with the two friction pins",
+          "instances": [
+            "import-1665809ba34eee53c36dd0ab1a85d8310888f6396479e58d87f2935402992ee0",
+            "import-6a17057490fdb8e122915213ce657a35cb4e851006f64592aacdf7fc37acabe8",
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "highlight": [
+            "import-1665809ba34eee53c36dd0ab1a85d8310888f6396479e58d87f2935402992ee0",
+            "import-6a17057490fdb8e122915213ce657a35cb4e851006f64592aacdf7fc37acabe8",
+            "import-6ae571aa949f8b12c8ca5c246b6bd0cfc5bef556da2f38adc838ef68492cea22",
+            "import-7eccd125802d66154a8b8a9ea9790dac3b6ed4de1d50081e9dec670b6aa51c05",
+            "import-826862bf2276849a0b94bbe111edf43dabca7b55e252d88cec46b79d7b9684ed",
+            "import-cd2f55f500f09398ffa4398919c0f01cab4c934b6f356e712607b5b0ceb2dc0e"
+          ],
+          "offsets": {
+            "import-1665809ba34eee53c36dd0ab1a85d8310888f6396479e58d87f2935402992ee0": [
+              0,
+              0,
+              65
+            ],
+            "import-6a17057490fdb8e122915213ce657a35cb4e851006f64592aacdf7fc37acabe8": [
+              0,
+              0,
+              65
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                123.431458,
+                236.568542,
+                275.0
+              ],
+              "end": [
+                123.431458,
+                236.568542,
+                210.0
+              ]
+            },
+            {
+              "start": [
+                137.573593,
+                222.426407,
+                275.0
+              ],
+              "end": [
+                137.573593,
+                222.426407,
+                210.0
+              ]
+            }
+          ]
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Mate the click-joint halves and fit the two linking pins. Set the illustrated pose without forcing the joints.",
+        "Match both joint orientations to the completed arm. Do not force a click joint; the normal pose is shown."
+      ]
+    },
+    "step_118": {
+      "eye": [
+        0.95,
+        -0.25,
+        0.22
+      ],
+      "locator": true,
+      "panels": [
+        {
+          "name": "stack",
+          "title": "A  Reflector stack / assemble from the arm outward",
+          "instances": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "highlight": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "offsets": {
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856": [
+              0,
+              0,
+              0
+            ],
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375": [
+              0,
+              0,
+              22
+            ],
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd": [
+              0,
+              0,
+              44
+            ],
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e": [
+              0,
+              0,
+              66
+            ],
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a": [
+              0,
+              0,
+              88
+            ],
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a": [
+              0,
+              0,
+              110
+            ]
+          },
+          "arrows": [
+            {
+              "start": [
+                11.7230183,
+                238.994949,
+                270.0
+              ],
+              "end": [
+                11.7230183,
+                238.994949,
+                226.0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "built",
+          "title": "B  Completed reflector and feed",
+          "instances": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "highlight": [
+            "import-6fb668f10ac3ed12f06aa0136c2b0eab70a9c034c0e0b796da5a78a93a089375",
+            "import-7f00c01496476ce8de083f332377845b180fe4defdf99d4fb83f03e1b2927b5a",
+            "import-87f7224290cf2c0d9a8dc38cfc90949742f6c0e1e54d10319ab82af79fbaa9cd",
+            "import-97945c70e44fc1971c485dbafb9cef439a7d1851e120ed6c5ad0022ec3e2a856",
+            "import-ed7e531e9cd13e07cea179e781f3a8aff68d431fefbf978fff69909852af8c7a",
+            "import-ef4d840e36ed426370d6f40a12d8cef2e238098b6b4b93ffe57de794aec3fb7e"
+          ],
+          "offsets": {},
+          "arrows": []
+        }
+      ],
+      "overview_view": "overview",
+      "sections": 2,
+      "notes": [
+        "Support the arm while stacking the reflector mount, dish and feed. This instruction set shows the normal pose only.",
+        "Support the arm while seating the stack. Keep the feed pointing away from the reflector."
+      ]
+    },
+    "step_119": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Stack the jumper, plate and round brick, then add the fragile whip last."
+      ]
+    },
+    "step_120": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit the round holder and whip to the previously installed rotating carrier. Check it clears the shield."
+      ]
+    },
+    "step_121": {
+      "locator": true,
+      "overview_view": "overview",
+      "notes": [
+        "Fit the round holder and whip to the previously installed rotating carrier. Check it clears the shield.",
+        "Check antennas clear the shield; support the wings and boom."
+      ]
+    }
+  },
+  "document": {
+    "stem": "solar_orbiter_instructions",
+    "cover_view": "hero",
+    "guide": [
+      {
+        "step": "step_001",
+        "label": "Body frame"
+      },
+      {
+        "step": "step_007",
+        "label": "Cradle and display stand"
+      },
+      {
+        "step": "step_017",
+        "label": "Concealed mounts and axles"
+      },
+      {
+        "step": "step_029",
+        "label": "Side equipment"
+      },
+      {
+        "step": "step_047",
+        "label": "Covers and rear panel"
+      },
+      {
+        "step": "step_058",
+        "label": "Instruments and heat shield"
+      },
+      {
+        "step": "step_072",
+        "label": "Wings and solar panels"
+      },
+      {
+        "step": "step_108",
+        "label": "Science boom, dish and antennas"
+      }
+    ],
+    "notices": [
+      "Keep wings and boom supported. Optional solar stickers are not shown. Part 7798 uses approximate geometry (*)."
+    ],
+    "part_labels": {
+      "11211": "1\u00d72 side studs",
+      "15100": "Pin + hole",
+      "15712": "1\u00d71 clip",
+      "18654": "1 hole",
+      "2412b": "1\u00d72 grille",
+      "2569": "Whip 8H",
+      "26603": "2\u00d73 tile",
+      "2780": "Friction pin",
+      "3002": "2\u00d73 brick",
+      "3003": "2\u00d72 brick",
+      "3004": "1\u00d72 brick",
+      "3005": "1\u00d71 brick",
+      "3020": "2\u00d74 plate",
+      "3021": "2\u00d73 plate",
+      "3022": "2\u00d72 plate",
+      "3023": "1\u00d72 plate",
+      "3024": "1\u00d71 plate",
+      "3031": "4\u00d74 plate",
+      "3032": "4\u00d76 plate",
+      "3033": "6\u00d710 plate",
+      "30374": "Bar 4L",
+      "3062b": "1\u00d71 round brick",
+      "3068b": "2\u00d72 tile",
+      "32063": "6 holes / thin",
+      "32278": "15 holes",
+      "32316": "5 holes",
+      "32523": "3 holes",
+      "32524": "7 holes",
+      "32525": "11 holes",
+      "3666": "1\u00d76 plate",
+      "3700": "1\u00d72 hole brick",
+      "3710": "1\u00d74 plate",
+      "3713": "Bush",
+      "3737": "Axle 10L",
+      "3794b": "1\u00d72 jumper",
+      "3795": "2\u00d76 plate",
+      "3832": "2\u00d710 plate",
+      "3958": "6\u00d76 plate",
+      "39794": "11\u00d77 frame",
+      "4032a": "2\u00d72 round plate",
+      "41239": "13 holes",
+      "4274": "Half pin",
+      "43857": "2 holes",
+      "44224": "Joint socket",
+      "44225": "Joint pin",
+      "44375a": "6\u00d76 dish",
+      "48092": "4\u00d74 curve",
+      "50451": "Axle 16L",
+      "6141": "1\u00d71 round plate",
+      "64179": "7\u00d75 frame",
+      "6536": "Axle/pin block",
+      "6558": "Long pin",
+      "6636": "1\u00d76 tile",
+      "69729": "2\u00d76 tile",
+      "7798": "6\u00d76 tile*",
+      "87580": "2\u00d72 jumper",
+      "87994": "Bar 3L",
+      "90498": "8\u00d716 tile",
+      "98138": "1\u00d71 round tile"
+    },
+    "measurements": [
+      {
+        "part": "3737",
+        "label": "Axle 10L",
+        "eye": [
+          0,
+          -1,
+          0
+        ],
+        "up": [
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "part": "50451",
+        "label": "Axle 16L",
+        "eye": [
+          0,
+          -1,
+          0
+        ],
+        "up": [
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "part": "32524",
+        "label": "7 holes",
+        "eye": [
+          0,
+          -1,
+          0
+        ],
+        "up": [
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "part": "32525",
+        "label": "11 holes",
+        "eye": [
+          0,
+          -1,
+          0
+        ],
+        "up": [
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "part": "41239",
+        "label": "13 holes",
+        "eye": [
+          0,
+          -1,
+          0
+        ],
+        "up": [
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "part": "32278",
+        "label": "15 holes",
+        "eye": [
+          0,
+          -1,
+          0
+        ],
+        "up": [
+          1,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}
