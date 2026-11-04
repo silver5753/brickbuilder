@@ -25,6 +25,10 @@ brickbuilder = "brickbuilder.cli:main"
 packages = ["src/brickbuilder"]
 
 [dependency-groups]
+browser = [
+    "playwright==1.55.0",
+    "pypdf==6.1.1",
+]
 dev = [
     "ty>=0.0.84",
     "pytest==9.0.2",

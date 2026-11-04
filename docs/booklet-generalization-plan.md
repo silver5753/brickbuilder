@@ -282,3 +282,14 @@ unchecked above; it must not be inferred from the PDF or unit-test results.
 Fresh core-only installed environment: ty passed and both real-model booklets
 verified without optional dependencies. Satellite PDF/HTML/ZIP updated to saved
 version 6; vehicle PDF/HTML/ZIP saved as the unrelated-model rehearsal.
+
+### Browser compatibility follow-up — 4 November 2026
+
+The original commit's core, rendering and installed-wheel GitHub jobs all passed
+(run 41651885359). Local browser socket support remains unavailable. Added a
+repeatable Chromium print checker and a separate CI job instead of repeatedly
+attempting the blocked local launch. The fixture covers teaching sections,
+measurement geometry, native-colour thumbnails, embedded fonts/images and page
+pagination, with an intentional paper-size failure as a negative check.
+CI execution results are recorded in the subsequent follow-up below. This does
+not claim that the previously saved real-model HTML files were rendered in CI.

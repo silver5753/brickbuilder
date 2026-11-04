@@ -2,6 +2,8 @@
 
 import json
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -11,7 +13,7 @@ pytestmark = [pytest.mark.e2e, pytest.mark.render, pytest.mark.booklet]
 
 
 def test_installed_booklet_relocation_and_tampering(
-    installed_booklet, installed_core, tmp_path
+    installed_booklet, installed_core, tmp_path, request
 ):
     project = tmp_path / "vehicle"
     shutil.copytree(
@@ -45,6 +47,33 @@ def test_installed_booklet_relocation_and_tampering(
             cwd=tmp_path,
         ).stdout.strip()
     )
+    browser_review = request.config.getoption("--browser-review")
+    if browser_review:
+        # Exercise calibrated references and consecutive teaching layouts in the
+        # browser job, while ordinary installed-wheel coverage stays lightweight.
+        plan_path = project / "booklet-plan.json"
+        plan = json.loads(plan_path.read_text())
+        plan["document"]["measurements"] = [
+            dict(part="3707", label="Axle 8L", eye=[0, -1, 0], up=[0, 0, 1])
+        ]
+        rows = json.loads((release / "instructions/instructions.json").read_text())[
+            "steps"
+        ]
+        for row in rows[:2]:
+            plan["steps"][row["id"]] = dict(
+                panels=[
+                    dict(
+                        name=name,
+                        title=name,
+                        instances=row["added_ids"],
+                        highlight=row["added_ids"],
+                        offsets={},
+                        arrows=[],
+                    )
+                    for name in ("parts", "seated")
+                ]
+            )
+        plan_path.write_text(json.dumps(plan))
     bundle = tmp_path / "booklet"
     args = (
         "booklet",
@@ -63,7 +92,8 @@ def test_installed_booklet_relocation_and_tampering(
         bundle,
     )
     result = json.loads(installed_booklet.run(*args).stdout)
-    assert result["steps"] == 11 and result["parts"] == 19 and result["pages"] == 6
+    assert result["steps"] == 11 and result["parts"] == 19
+    assert result["pages"] == (8 if browser_review else 6)
     assert result["physical_build"] == "not_tested"
     installed_booklet.run(*args, expected=2)
     relocated = tmp_path / "relocated"
@@ -75,6 +105,32 @@ def test_installed_booklet_relocation_and_tampering(
         json.loads(installed_core.run("verify-booklet", relocated).stdout)["status"]
         == "pass"
     )
+    if browser_review:
+        review_output = Path(
+            request.config.getoption("--browser-review-output")
+        ).resolve()
+        command = [
+            sys.executable,
+            str(ROOT / "tools/check_booklet_html.py"),
+            str(relocated),
+            "--destination",
+            str(review_output),
+        ]
+        checked(command, cwd=tmp_path)
+        report = json.loads((review_output / "review.json").read_text())
+        assert report["status"] == "pass" and report["pages"] == 8
+        html = relocated / "vehicle_instructions.html"
+        original = html.read_bytes()
+        html.write_bytes(original.replace(b"height:297mm", b"height:298mm"))
+        failed = subprocess.run(
+            command[:-1] + [str(review_output.parent / "invalid-print-size")],
+            cwd=tmp_path,
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        assert failed.returncode == 1 and "not A4" in failed.stderr
+        html.write_bytes(original)
     archive = tmp_path / "delivery.zip"
     installed_core.run("package-booklet", relocated, "--destination", archive)
     installed_core.run(

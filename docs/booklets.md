@@ -128,3 +128,31 @@ The legacy satellite scripts remain available for baseline reproduction; new
 booklets use the shared package. Arbitrary panel counts, paper sizes and themes,
 automatic assembly-order planning, physical trial validation and connector work
 are outside this first extraction.
+
+## Browser print review
+
+A separate browser test group keeps Chromium out of the package runtime. On a
+machine that permits browser processes, first verify the booklet, then run:
+
+```sh
+uv sync --locked --extra render --extra booklet --group browser
+uv run --locked --group browser playwright install chromium
+uv run --locked brickbuilder verify-booklet output/vehicle-booklet
+uv run --locked --group browser python tools/check_booklet_html.py \
+  output/vehicle-booklet --destination output/vehicle-browser-review
+```
+
+The review refuses an existing output directory or output inside the verified
+booklet. It loads the self-contained HTML with external requests blocked, checks
+embedded fonts/images, compares page text and positioned image/line geometry to
+the measured layout, prints with CSS A4 dimensions, and verifies page count and
+text in the resulting PDF. Calibration lines and actual-size references are
+included in those geometry checks. The source package is not modified.
+
+The `browser-print` CI job runs this against an installed-wheel vehicle fixture
+with ordinary steps, consecutive teaching sections and a measurement page, plus
+a deliberately incorrect paper-size case. Synthetic meshes exercise the output
+pipeline and do not establish real-part appearance or physical buildability.
+The job retains its printed PDF, page screenshots and JSON report for 14 days.
+This automated compatibility test complements readable-size visual review of the
+actual deliverable; it does not silently mark a different HTML file as reviewed.

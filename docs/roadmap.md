@@ -319,3 +319,10 @@ All PDF pages received visual review. Browser HTML print review remains blocked
 by native browser socket permissions; it is tracked explicitly in the
 [implementation record](booklet-generalization-plan.md). No physical or nominal
 connection status was upgraded by this presentation work.
+
+Browser-print follow-up (4 November): a separate Chromium CI job now exercises
+the installed booklet generator, including consecutive teaching steps and a
+measurement page. `tools/check_booklet_html.py` can also review a real verified
+booklet locally without changing its package. Browser evidence includes the
+printed PDF, page screenshots and input HTML checksum; it is specific to the
+reviewed input, not a blanket visual approval of all saved booklets.

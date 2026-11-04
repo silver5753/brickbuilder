@@ -97,3 +97,18 @@ future-part context, invalid panels, measured overflow, consecutive teaching ste
 installed PDF/HTML generation, relocation to a core-only environment, overwrite
 refusal, and changed/extra/incomplete package files. Use `booklet` on tests requiring
 ReportLab/Pillow. Real native-geometry visual review remains separate.
+
+For the required Chromium CI regression, install the `browser` dependency group
+and Chromium, then run:
+
+```sh
+uv run --locked --extra render --extra booklet --group browser pytest \
+  tests/e2e/test_booklets.py --browser-review \
+  --browser-review-output output/browser-review -q
+```
+
+Without `--browser-review`, the installed-wheel test keeps its ordinary core/
+render/booklet coverage. With the flag, missing browser dependencies, failed
+resource loading, altered geometry, print text loss or incorrect page count fail
+the test; browser checks are not silently skipped. CI always supplies the flag
+in its separate `browser-print` job.

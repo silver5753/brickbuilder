@@ -131,3 +131,17 @@ def installed_booklet(
     return install(
         wheel, tmp_path_factory.mktemp("installed-booklet"), render=True, booklet=True
     )
+
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--browser-review",
+        action="store_true",
+        default=False,
+        help="Require Chromium booklet print review (browser dependency group)",
+    )
+    parser.addoption(
+        "--browser-review-output",
+        default="output/browser-review",
+        help="Directory for Chromium print PDF, page screenshots and report",
+    )
